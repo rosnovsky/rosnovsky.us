@@ -1,10 +1,11 @@
 import {format, distanceInWords, differenceInDays} from 'date-fns'
 import React from 'react'
-import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
+// import {buildImageObj} from '../lib/helpers'
+// import {imageUrlFor} from '../lib/image-url'
 import PortableText from './portableText'
 import Container from './container'
 import AuthorList from './author-list'
+import Img from 'gatsby-image'
 
 import styles from './blog-post.module.css'
 
@@ -13,15 +14,9 @@ function BlogPost (props) {
   return (
     <article className={styles.root}>
       {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
-              .auto('format')
-              .url()}
-            alt={mainImage.alt}
+        <div>
+          <Img fluid={props.mainImage.asset.fluid}
+
           />
         </div>
       )}

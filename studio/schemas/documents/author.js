@@ -2,6 +2,7 @@ export default {
   name: 'author',
   type: 'document',
   title: 'Author',
+  __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
   fields: [
     {
       name: 'name',

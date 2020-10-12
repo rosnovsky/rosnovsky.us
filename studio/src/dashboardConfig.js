@@ -1,6 +1,6 @@
 export default {
   widgets: [
-    { name: 'structure-menu' },
+    {name: 'structure-menu'},
     {
       name: 'project-info',
       options: {
@@ -33,15 +33,20 @@ export default {
             value: 'https://github.com/rosnovsky/sanity-gatsby-blog',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://sanity-gatsby-blog-web-m3s8t9e5.netlify.app', category: 'apps' }
+          {title: 'Frontend', value: 'https://sanity-gatsby-blog-web-m3s8t9e5.netlify.app', category: 'apps'}
         ]
       }
     },
-    { name: 'project-users', layout: { height: 'auto' } },
+    {name: 'project-users', layout: {height: 'auto'}},
     {
       name: 'document-list',
-      options: { title: 'Recent blog posts', order: '_createdAt desc', types: ['post'] },
-      layout: { width: 'medium' }
+      options: {title: 'Recent blog posts', order: '_createdAt desc', types: ['post']},
+      layout: {width: 'medium'}
+    },
+    {
+      name: 'document-chart',
+      options: {types: ['post', 'author', 'sanity.imageAsset']},
+      layout: {width: 'full'}
     }
   ]
 }

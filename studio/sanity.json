@@ -17,7 +17,14 @@
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "@sanity/studio-hints"
+    "@sanity/studio-hints",
+    "asset-source-thispersondoesnotexist",
+    "url-metadata-input",
+    "@sanity/code-input",
+    "seo-tools",
+    "mux-input",
+    "asset-source-unsplash",
+    "dashboard-widget-document-chart"
   ],
   "parts": [
     {

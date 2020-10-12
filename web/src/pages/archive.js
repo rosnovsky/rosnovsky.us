@@ -20,7 +20,11 @@ export const query = graphql`
           id
           publishedAt
           mainImage {
-            ...SanityImage
+            asset{
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
             alt
           }
           title

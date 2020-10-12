@@ -48,6 +48,30 @@ export default {
     {
       type: 'mainImage',
       options: {hotspot: true}
+    },
+    {
+      name: 'code',
+      title: 'Code editor',
+      description: 'Code editor',
+      type: 'code',
+      options: {
+        language: 'js'
+      }
+    },
+    {
+      title: 'Video blog post',
+      name: 'videoBlogPost',
+      type: 'object',
+      fields: [
+        // https://github.com/sanity-io/sanity-mux-player
+        {title: 'Title', name: 'title', type: 'string'},
+        {
+          title: 'Video file',
+          name: 'video',
+          type: 'mux.video'
+        }
+      ]
     }
+
   ]
 }
