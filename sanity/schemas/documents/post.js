@@ -1,4 +1,4 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 
 export default {
   name: 'post',
@@ -19,34 +19,6 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
-      type: 'seo-tools', // use seo-tools type
-      options: {
-        baseUrl: 'https://sanity-gatsby-blog-web-m3s8t9e5.netlify.com/', // (REQUIRED) This is the baseUrl for your site
-        // baseUrl (doc) {
-        //   return 'https://.../' // for dynamic baseUrls
-        // },
-        slug (doc) { // (REQUIRED) a function to return the sug of the current page, which will be appended to the baseUrl
-          return doc.slug.current
-        },
-        fetchRemote: true, // Can be set to false to disable fetching the remote source (you will need to pass the content helpers for analysis)
-        content (doc) {
-          return 'simple html representation of your doc' // (OPTIONAL) If your site is generated after Sanity content updates you can use this for better real time feedback
-        },
-        title (doc) {
-          return 'page title' // (OPTIONAL) return page title otherwise inferred from scrape
-        },
-        description (doc) {
-          return 'page description' // (OPTIONAL) return page description otherwise inferred from scrape
-        },
-        locale (doc) {
-          return 'page locale' // (OPTIONAL) return page locale otherwise inferred from scrape
-        },
-        contentSelector: 'body' // (OPTIONAL) option to finetune where Yoast will look for the content. (only applicable for scraping without content function)
       }
     },
     {
@@ -99,7 +71,7 @@ export default {
       name: 'relatedUrls',
       title: 'Related URLs',
       type: 'array',
-      of: [{type: 'urlWithMetadata'}]
+      of: [{ type: 'urlWithMetadata' }]
     }
   ],
   orderings: [
@@ -139,7 +111,7 @@ export default {
       slug: 'slug',
       media: 'mainImage'
     },
-    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
+    prepare({ title = 'No title', publishedAt, slug = {}, media }) {
       const dateSegment = format(publishedAt, 'YYYY/MM')
       const path = `/${dateSegment}/${slug.current}/`
       return {
