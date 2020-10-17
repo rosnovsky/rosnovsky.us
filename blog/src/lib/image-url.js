@@ -1,11 +1,12 @@
 import imageUrlBuilder from '@sanity/image-url'
-
-const builder = imageUrlBuilder({
-  projectId: process.env.SANITY_PROJECT_ID,
-  dataset: process.env.SANITY_DATASET
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV || 'development'}`
 })
+const clientConfig = require('.../../../client-config')
+
+const builder = imageUrlBuilder(clientConfig.sanity)
 
 export function imageUrlFor(source) {
-  console.info(builder.image(source))
+  console.info(process.env)
   return builder.image(source)
 }

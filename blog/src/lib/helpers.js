@@ -29,8 +29,6 @@ export function buildImageObj(source = { asset: {} }) {
   if (source.crop) imageObj.crop = source.crop
   if (source.hotspot) imageObj.hotspot = source.hotspot
 
-  console.info(imageObj)
-
   return imageObj
 }
 
