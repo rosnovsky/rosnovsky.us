@@ -69,3 +69,5 @@ yarn.lock
 
 # Secrets
 .env.development
+.env.production
+.env
