@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "Rosnovsky Park"
+    "name": "Rosnovsky Park",
+    "baseUrl": "https://rosnovskyus.netlify.app/"
   },
   "api": {
     "projectId": "n3o7a5dl",
