@@ -17,11 +17,7 @@ export const query = graphql`
         title
       }
       mainImage {
-        asset{
-          fluid{
-        ...GatsbySanityImageFluid
-          }
-        }
+        ...SanityImage
         alt
       }
       title

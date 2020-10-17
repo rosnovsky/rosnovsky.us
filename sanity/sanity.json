@@ -24,8 +24,7 @@
     "mux-input",
     "asset-source-unsplash",
     "dashboard-widget-document-chart",
-    "@sanity/vision",
-    "@sanity/color-input"
+    "@sanity/vision"
   ],
   "parts": [
     {
