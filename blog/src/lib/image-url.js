@@ -1,9 +1,7 @@
 import imageUrlBuilder from '@sanity/image-url'
+import sanityConfig from '../../client-config'
 
-const builder = imageUrlBuilder({
-  projectId: 'n3o7a5dl',
-  dataset: 'production'
-})
+const builder = imageUrlBuilder(sanityConfig.sanity)
 
 export function imageUrlFor(source) {
   console.info(process.env)
