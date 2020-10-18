@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@browniebroke/gatsby-image-gallery": "^4.0.0",
+    "@loadable/component": "^5.13.2",
     "gatsby-image": "^2.0.41",
     "get-youtube-id": "^1.0.1",
     "react-syntax-highlighter": "^15.2.1",

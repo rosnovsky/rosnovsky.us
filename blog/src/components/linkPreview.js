@@ -1,8 +1,11 @@
 import React from 'react'
-import { ReactTinyLink } from 'react-tiny-link'
+// import { ReactTinyLink } from 'react-tiny-link'
+import loadable from '@loadable/component'
+
+const ReactTinyLink = loadable(() => import('react-tiny-link'))
 
 const PreviewCard = props => {
-  return (
+  return ReactTinyLink ? (
     <ReactTinyLink
       cardSize="small"
       showGraphic={true}
@@ -11,6 +14,8 @@ const PreviewCard = props => {
       // loadSecureUrl={true}
       url={props.url}
     />
+  ) : (
+    <div>{props.url}</div>
   )
 }
 
