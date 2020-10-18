@@ -4,8 +4,13 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
+import Gallery from '@browniebroke/gatsby-image-gallery'
+import '@browniebroke/gatsby-image-gallery/dist/style.css'
+import { buildGaleryImageObj } from '../lib/helpers'
+import 'react-image-lightbox/style.css'
 
 import style from '../styles/custom-media.css'
+import PreviewCard from './linkPreview'
 
 const serializers = {
   types: {
@@ -25,6 +30,25 @@ const serializers = {
         <SyntaxHighlighter language={language || 'text'} style={docco}>
           {code}
         </SyntaxHighlighter>
+      )
+    },
+    linkCard: node => {
+      return <PreviewCard url={node.node.href} />
+    },
+    photoGallery: node => {
+      const images = node.node.images.map(node => {
+        return buildGaleryImageObj(node)
+      })
+      return (
+        <div>
+          <h3>{node.node.galleryTitle}</h3>
+          <Gallery
+            lightboxOptions={{
+              reactModalProps: { shouldReturnFocusAfterClose: false }
+            }}
+            images={images}
+          />
+        </div>
       )
     }
   }

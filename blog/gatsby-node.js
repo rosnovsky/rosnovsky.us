@@ -1,19 +1,17 @@
-const {isFuture} = require('date-fns')
+const { isFuture } = require('date-fns')
 /**
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-const {format} = require('date-fns')
+const { format } = require('date-fns')
 
-async function createBlogPostPages (graphql, actions) {
-  const {createPage} = actions
+async function createBlogPostPages(graphql, actions) {
+  const { createPage } = actions
   const result = await graphql(`
     {
-      allSanityPost(
-        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-      ) {
+      allSanityPost(filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }) {
         edges {
           node {
             id
@@ -34,18 +32,18 @@ async function createBlogPostPages (graphql, actions) {
   postEdges
     .filter(edge => !isFuture(edge.node.publishedAt))
     .forEach((edge, index) => {
-      const {id, slug = {}, publishedAt} = edge.node
-      const dateSegment = format(publishedAt, 'YYYY/MM')
+      const { id, slug = {}, publishedAt } = edge.node
+      const dateSegment = format(Date.parse(publishedAt), 'yyyy/MM')
       const path = `/blog/${dateSegment}/${slug.current}/`
 
       createPage({
         path,
         component: require.resolve('./src/templates/blog-post.js'),
-        context: {id}
+        context: { id }
       })
     })
 }
 
-exports.createPages = async ({graphql, actions}) => {
+exports.createPages = async ({ graphql, actions }) => {
   await createBlogPostPages(graphql, actions)
 }

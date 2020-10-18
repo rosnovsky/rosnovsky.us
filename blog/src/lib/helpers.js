@@ -1,4 +1,6 @@
 import { format, isFuture } from 'date-fns'
+import clientConfig from '../../client-config'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 
 export function cn(...args) {
   return args.filter(Boolean).join(' ')
@@ -18,7 +20,8 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
 }
 
 export function getBlogUrl(publishedAt, slug) {
-  return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`
+  return `/blog/${format(Date.parse(publishedAt), 'yyyy/MM')}/${slug.current ||
+    slug}/`
 }
 
 export function buildImageObj(source = { asset: {} }) {
@@ -30,6 +33,21 @@ export function buildImageObj(source = { asset: {} }) {
   if (source.hotspot) imageObj.hotspot = source.hotspot
 
   return imageObj
+}
+
+export function buildGaleryImageObj(node) {
+  const full = getFluidGatsbyImage(
+    node.asset._id,
+    { maxWidth: 1024 },
+    clientConfig.sanity
+  )
+  const thumb = getFluidGatsbyImage(
+    node.asset._id,
+    { maxWidth: 360, maxHeight: 360 },
+    clientConfig.sanity
+  )
+
+  return { thumb, full }
 }
 
 export function toPlainText(blocks) {
