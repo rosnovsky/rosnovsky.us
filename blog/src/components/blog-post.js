@@ -10,14 +10,6 @@ import styles from './blog-post.module.css'
 
 function BlogPost(props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
-  console.warn(
-    imageUrlFor(buildImageObj(mainImage))
-      .width(1200)
-      .height(Math.floor((9 / 16) * 1200))
-      .fit('crop')
-      .auto('format')
-      .url()
-  )
   return (
     <article className={styles.root}>
       {mainImage && mainImage.asset && (
@@ -42,9 +34,9 @@ function BlogPost(props) {
           <aside className={styles.metaContent}>
             {publishedAt && (
               <div className={styles.publishedAt}>
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do, YYYY')}
+                {differenceInDays(Date.parse(publishedAt), new Date()) > 3
+                  ? distanceInWords(Date.parse(publishedAt), new Date())
+                  : format(Date.parse(publishedAt), 'MMMM do, yyyy')}
               </div>
             )}
             {authors && <AuthorList items={authors} title="Authors" />}

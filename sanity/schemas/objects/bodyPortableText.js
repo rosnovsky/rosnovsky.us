@@ -66,20 +66,23 @@ export default {
     },
     {
       type: 'youtube'
+    },
+    {
+      name: 'linkCard',
+      title: 'Link Preview Card',
+      description: 'Link Preview Card',
+      type: 'linkCard',
+      preview: {
+        select: {
+          title: 'linkCard.title'
+        }
+      }
+    },
+    {
+      name: 'photoGallery',
+      type: 'photoGallery',
+      title: 'Photo Gallery',
+      description: 'Add photo gallery to post'
     }
-    // {
-    //   title: 'Video blog post',
-    //   name: 'videoBlogPost',
-    //   type: 'object',
-    //   fields: [
-    //     // https://github.com/sanity-io/sanity-mux-player
-    //     { title: 'Title', name: 'title', type: 'string' },
-    //     {
-    //       title: 'Video file',
-    //       name: 'video',
-    //       type: 'mux.video'
-    //     }
-    //   ]
-    // }
   ]
 }

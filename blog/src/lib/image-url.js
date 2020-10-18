@@ -1,9 +1,8 @@
-const clientConfig = require('../../client-config')
 import imageUrlBuilder from '@sanity/image-url'
+import sanityConfig from '../../client-config'
 
-const builder = imageUrlBuilder(clientConfig.sanity)
+const builder = imageUrlBuilder(sanityConfig.sanity)
 
 export function imageUrlFor(source) {
-  console.info(builder.image(source))
   return builder.image(source)
 }

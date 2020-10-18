@@ -19,3 +19,11 @@
   top: 0;
   left: 0;
 }
+
+.react_tinylink_card {
+  color: black !important;
+}
+
+.react_tinylink_card :hover {
+  color: darkblue;
+}
