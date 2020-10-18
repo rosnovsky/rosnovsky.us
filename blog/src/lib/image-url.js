@@ -1,8 +1,8 @@
 import imageUrlBuilder from '@sanity/image-url'
 
 const builder = imageUrlBuilder({
-  projectId: process.env.SANITY_PROJECT_ID,
-  dataset: process.env.SANITY_DATASET
+  projectId: 'n3o7a5dl',
+  dataset: 'production'
 })
 
 export function imageUrlFor(source) {
