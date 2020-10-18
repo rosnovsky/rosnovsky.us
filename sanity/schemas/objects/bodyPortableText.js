@@ -67,19 +67,5 @@ export default {
     {
       type: 'youtube'
     }
-    // {
-    //   title: 'Video blog post',
-    //   name: 'videoBlogPost',
-    //   type: 'object',
-    //   fields: [
-    //     // https://github.com/sanity-io/sanity-mux-player
-    //     { title: 'Title', name: 'title', type: 'string' },
-    //     {
-    //       title: 'Video file',
-    //       name: 'video',
-    //       type: 'mux.video'
-    //     }
-    //   ]
-    // }
   ]
 }
