@@ -16,7 +16,7 @@ export function filterOutDocsWithoutSlugs({ slug }) {
 }
 
 export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
-  return !isFuture(publishedAt)
+  return !isFuture(Date.parse(publishedAt))
 }
 
 export function getBlogUrl(publishedAt, slug) {
