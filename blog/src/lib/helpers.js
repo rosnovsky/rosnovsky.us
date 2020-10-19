@@ -20,8 +20,10 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
 }
 
 export function getBlogUrl(publishedAt, slug) {
-  return `/blog/${format(Date.parse(publishedAt), 'yyyy/MM')}/${slug.current ||
-    slug}/`
+  return `/blog/${format(
+    Date.parse(publishedAt),
+    'yyyy/MM/do'
+  )}/${slug.current || slug}/`
 }
 
 export function buildImageObj(source = { asset: {} }) {
