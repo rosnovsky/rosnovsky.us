@@ -49,10 +49,14 @@
   "dependencies": {
     "@browniebroke/gatsby-image-gallery": "^4.0.0",
     "@loadable/component": "^5.13.2",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/ui": "^0.6.2",
     "gatsby-image": "^2.0.41",
+    "gatsby-plugin-manifest": "^2.4.35",
     "get-youtube-id": "^1.0.1",
     "react-syntax-highlighter": "^15.2.1",
     "react-youtube": "^7.13.0",
-    "sanity-mux-player": "^0.0.26"
+    "sanity-mux-player": "^0.0.26",
+    "tailwindcss": "^1.9.5"
   }
 }
