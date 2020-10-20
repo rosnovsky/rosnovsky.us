@@ -1,23 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
-const Preview = ({ value }) => {
-  const [data, setData] = useState()
-
-  useEffect(() => {
-    const response = async () => {
-      let url = 'https://api.github.com/repos/rosnovsky/rosnovskyus/commits'
-      let response = await fetch(url)
-
-      let commits = await response.json() // read response body and parse as JSON
-
-      setData(commits[0].commit.author.name)
-      console.warn(commits[0].commit.author.name)
-      return commits[0].commit.author.name
-    }
-    response()
-  }, [])
-  return <p>{data}</p>
-}
+import LinkCard from '../../src/LinkCard'
 
 export default {
   title: 'Link Card',
@@ -27,7 +9,7 @@ export default {
     select: {
       url: 'href'
     },
-    component: Preview
+    component: LinkCard
   },
   fields: [
     {
