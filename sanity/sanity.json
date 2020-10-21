@@ -19,10 +19,7 @@
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
     "asset-source-thispersondoesnotexist",
-    "url-metadata-input",
     "@sanity/code-input",
-    "seo-tools",
-    "mux-input",
     "asset-source-unsplash",
     "dashboard-widget-document-chart",
     "@sanity/vision"

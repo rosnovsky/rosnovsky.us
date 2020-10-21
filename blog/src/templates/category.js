@@ -6,8 +6,6 @@ import SEO from '../components/seo'
 import Layout from '../containers/layout'
 import BlogPostPreviewGrid from '../components/blog-post-preview-grid'
 
-import { mapEdgesToNodes } from '../lib/helpers'
-
 import { responsiveTitle1 } from '../components/typography.module.css'
 
 // Add “posts” to the GraphQL query
