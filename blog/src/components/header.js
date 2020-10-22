@@ -25,9 +25,9 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
                 <Link to="/" aria-label="Home">
                   <img
                     className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
+                    src="https://rosnovsky.us/favicon.png"
                     alt="Logo"
-                  />
+                  ></img>
                 </Link>
                 <div className="-mr-2 flex items-center md:hidden">
                   <button
@@ -89,7 +89,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
+                    src="https://rosnovsky.us/favicon.png"
                     alt=""
                   />
                 </div>
