@@ -68,7 +68,6 @@ async function createCategoryPages(graphql, actions) {
   categoryNodes
     // Loop through the category nodes, but don't return anything
     .forEach(node => {
-      console.warn(node.node)
       // Desctructure the id and slug fields for each category
       const { id, slug } = node.node
       // If there isn't a slug, we want to do nothing
