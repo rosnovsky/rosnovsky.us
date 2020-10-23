@@ -8,7 +8,7 @@ import PortableText from './portableText'
 
 function BlogPostPreview(props) {
   return (
-    <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+    <div className="flex flex-col rounded-lg shadow-lg overflow-hidden h-full">
       <div className="flex-shrink-0">
         <Link
           className="block"

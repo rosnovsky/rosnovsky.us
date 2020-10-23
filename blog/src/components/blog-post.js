@@ -6,15 +6,23 @@ import { imageUrlFor } from '../lib/image-url'
 import PortableText from './portableText'
 import Container from './container'
 import AuthorList from './author-list'
+import Figure from './Figure'
 
 function BlogPost(props) {
   const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
   const categoryUrl = `/category/${categories[0].slug.current}`
   return (
-    <article className="relative py-16 bg-white overflow-hidden">
-      <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+    <>
+    <div className="w-screen-xl mx-auto my-10 px-4 sm:px-6">
+        <div className="object-cover z-10 rounded-lg">
+          <Figure node={mainImage}
+          />
+        </div>
+    </div>
+    <article className="relative w-full py-16 overflow-hidden">
+      <div className="hidden mt-64  lg:block  lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
         <div className="relative h-full text-lg max-w-prose mx-auto">
-          <svg className="absolute top-12 left-full transform translate-x-32" width="404" height="384" fill="none" viewBox="0 0 404 384">
+          <svg className="absolute top-12 h-full left-full transform translate-x-32" width="404" height="384" fill="none" viewBox="0 0 404 384">
             <defs>
               <pattern id="74b3fd99-0a6f-4271-bef2-e80eeafdf357" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
                 <rect x="0" y="0" width="4" height="4" className="text-gray-200" fill="currentColor" />
@@ -40,21 +48,8 @@ function BlogPost(props) {
           </svg>
         </div>
       </div>
-      {/* {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
-              .auto('format')
-              .url()}
-            alt={mainImage.alt}
-          />
-        </div>
-      )} */}
       <Container>
-      <div className="relative px-4 sm:px-6 lg:px-8">
+      <div className="relative h-full rounded-2xl bg-white px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6">
           <p className="text-base text-center leading-6 text-orange-600 font-semibold tracking-wide uppercase"><Link to={categoryUrl}>{categories[0].title}</Link>
           </p>
@@ -91,6 +86,7 @@ function BlogPost(props) {
         </div>
       </Container>
     </article>
+    </>
   )
 }
 

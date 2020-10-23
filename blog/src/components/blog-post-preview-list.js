@@ -11,12 +11,12 @@ function BlogPostPreviewGrid (props) {
       <div>
         <Covid />
       </div>
-    <div className={styles.root}>
+      <div className="relative max-w-5xl mx-auto">
       {props.title && <h2 className={styles.headline}>{props.title}</h2>}
-      <ul className={styles.grid}>
+      <ul className="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-2 lg:max-w-none">
         {props.nodes &&
           props.nodes.map(node => (
-            <li key={node.id}>
+            <li className="h-full" key={node.id}>
               <BlogPostPreview {...node} isInList />
             </li>
           ))}
