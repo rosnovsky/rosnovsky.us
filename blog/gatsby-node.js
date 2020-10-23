@@ -1,6 +1,6 @@
 const { isFuture, format } = require('date-fns')
 
-async function createBlogPostPages(graphql, actions) {
+async function createBlogPostPages(graphql, actions, reporter) {
   const { createPage } = actions
   const result = await graphql(`
     {
@@ -25,7 +25,12 @@ async function createBlogPostPages(graphql, actions) {
   const postEdges = (result.data.allSanityPost || {}).edges || []
 
   postEdges
-    .filter(edge => !isFuture(Date.parse(edge.node.publishedAt)))
+    .filter(edge => {
+      if(isFuture(Date.parse(edge.node.publishedAt)) || edge.node.publishedAt === null){
+        reporter.warn(`Can't create pages with empty or future publish dates. Skipping ${edge.node.title} because the date is ${edge.node.publishedAt}`)
+      }
+      return !isFuture(Date.parse(edge.node.publishedAt)) && edge.node.publishedAt !== null
+    })
     .forEach((edge, index) => {
       const { id, slug = {}, publishedAt } = edge.node
       const dateSegment = format(Date.parse(publishedAt), 'yyyy/MM/dd')
@@ -39,7 +44,7 @@ async function createBlogPostPages(graphql, actions) {
     })
 }
 
-async function createCategoryPages(graphql, actions) {
+async function createCategoryPages(graphql, actions, reporter) {
   // Get Gatsby‘s method for creating new pages
   const { createPage } = actions
   // Query Gatsby‘s GraphAPI for all the categories that come from Sanity
@@ -50,6 +55,7 @@ async function createCategoryPages(graphql, actions) {
         edges {
           node {
             id
+            title
             slug {
               current
             }
@@ -69,9 +75,11 @@ async function createCategoryPages(graphql, actions) {
     // Loop through the category nodes, but don't return anything
     .forEach(node => {
       // Desctructure the id and slug fields for each category
-      const { id, slug } = node.node
+      const { id, slug, title } = node.node
       // If there isn't a slug, we want to do nothing
-      if (!id || !slug.current) return 'No category id or slug!'
+      if (!id || !slug.current) {
+        reporter.warn(`Category ${title} has no id or slug. Make sure you've added 'slug' to category schema in Sanity.`)
+      }
 
       // Make the URL with the current slug
       const path = `/category/${slug.current}`
@@ -113,7 +121,7 @@ exports.createResolvers = ({ createResolvers }) => {
   createResolvers(resolvers)
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  await createBlogPostPages(graphql, actions)
-  await createCategoryPages(graphql, actions)
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  await createBlogPostPages(graphql, actions, reporter)
+  await createCategoryPages(graphql, actions, reporter)
 }

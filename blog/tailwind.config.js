@@ -1,7 +1,9 @@
 module.exports = {
-  purge: {
-    mode: "all"
-  },
+  purge: [
+    './src/**/*.html',
+    './src/**/*.js',
+    './src/**/*.jsx',
+  ],
   theme: {
     typography: {
       default: {
@@ -19,5 +21,11 @@ module.exports = {
   },
   variants: {},
   // https://github.com/tailwindcss/custom-forms
-  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/custom-forms'), require('@tailwindcss/typography')]
+  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/custom-forms'), require('@tailwindcss/typography')],
+  future: {
+    purgeLayersByDefault: true,
+    defaultLineHeights: true,
+    standardFontWeights: true,
+    removeDeprecatedGapUtilities: true,
+  },
 }

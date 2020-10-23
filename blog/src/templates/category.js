@@ -37,6 +37,8 @@ const CategoryPostTemplate = props => {
   const {data = {}, errors} = props
   const {title, description, posts} = data.category || {}
 
+  const visiblePosts = process.env.NODE_ENV === 'production' ? posts.filter(post => !post.publishedAt === null) : posts
+
   if (errors) {
     return (
       <Layout>
@@ -51,7 +53,7 @@ const CategoryPostTemplate = props => {
       <Container>
         <h1 className={responsiveTitle1}>{title}</h1>
         <p>{description}</p>
-        {posts && posts.length > 0 && <BlogPostPreviewGrid nodes={posts} />}
+        {posts && posts.length > 0 && <BlogPostPreviewGrid nodes={visiblePosts} />}
       </Container>
     </Layout>
   )

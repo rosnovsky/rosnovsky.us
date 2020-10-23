@@ -1,191 +1,170 @@
 import { Link } from 'gatsby'
-import React from 'react'
+import React, {useState} from 'react'
 import Icon from './icon'
 import { cn } from '../lib/helpers'
 
 import '../styles/style.css'
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <div className="relative bg-white overflow-hidden">
-    <div className="max-w-screen-xl mx-auto">
-      <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-        <svg
-          className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-          fill="currentColor"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <polygon points="50,0 100,0 50,100 0,100" />
-        </svg>
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
+  const [isOn, setIsOn] = useState(true);
 
-        <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
-          <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start">
-            <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-              <div className="flex items-center justify-between w-full md:w-auto">
-                <Link to="/" aria-label="Home">
-                  <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://rosnovsky.us/favicon.png"
-                    alt="Logo"
-                  ></img>
-                </Link>
-                <div className="-mr-2 flex items-center md:hidden">
-                  <button
-                    type="button"
-                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                    id="main-menu"
-                    aria-label="Main menu"
-                    aria-haspopup="true"
-                  >
-                    <svg
-                      className="h-6 w-6"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="hidden md:block md:ml-10 md:pr-4">
-              <a
-                href="#"
-                className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-              >
-                About Me
-              </a>
-              <Link
-                to="/archive/"
-                className="ml-8 font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-              >
-                Archive
-              </Link>
-              <a
-                href="#"
-                className="ml-8 font-medium text-orange-600 hover:text-orange-900 transition duration-150 ease-in-out"
-              >
-                Log in
-              </a>
-            </div>
-          </nav>
+  return <div className="relative bg-gray-50">
+  <div className="relative bg-white shadow">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div className="w-0 flex-1 flex">
+          <a href="#" className="inline-flex">
+            <img className="h-8 w-auto sm:h-10" src="https://rosnovsky.us/favicon.png" alt="Workflow" />
+          </a>
         </div>
+        <div className="-mr-2 -my-2 md:hidden">
+          <button type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
 
-        <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-          <div className="rounded-lg shadow-md">
-            <div
-              className="rounded-lg bg-white shadow-xs overflow-hidden"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="main-menu"
-            >
-              <div className="px-5 pt-4 flex items-center justify-between">
-                <div>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://rosnovsky.us/favicon.png"
-                    alt=""
-                  />
-                </div>
-                <div className="-mr-2">
-                  <button
-                    type="button"
-                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                    aria-label="Close menu"
-                  >
-                    <svg
-                      className="h-6 w-6"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div className="px-2 pt-2 pb-3">
-                <a
-                  href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                  role="menuitem"
-                >
-                  About Me
-                </a>
-                <Link
-                  to="/archive/"
-                  className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                  role="menuitem"
-                >
-                  Archive
-                </Link>
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="block w-full px-5 py-3 text-center font-medium text-orange-600 bg-gray-50 hover:bg-gray-100 hover:text-orange-700 focus:outline-none focus:bg-gray-100 focus:text-orange-700 transition duration-150 ease-in-out"
-                  role="menuitem"
-                >
-                  Log in
-                </a>
-              </div>
-            </div>
-          </div>
+            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-
-        <main className="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-          <div className="sm:text-center lg:text-left">
-            <h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
-              Welcome to&nbsp;
-              <br className="xl:hidden" />
-              <span className="text-orange-600">{siteTitle}</span>
-            </h2>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-              My name is Art. I'm running this park for you. I'm a web developer
-              and a hiker, I love reading, American Football and help folks
-              learn things. This is what this park is all about.
-            </p>
-            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-              <div className="rounded-md shadow">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
-                >
-                  Explore
-                </a>
-              </div>
-              <div className="mt-3 sm:mt-0 sm:ml-3">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-orange-700 bg-orange-100 hover:text-orange-600 hover:bg-orange-50 focus:outline-none focus:shadow-outline-orange focus:border-orange-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
-                >
-                  Live stream
-                </a>
-              </div>
-            </div>
-          </div>
-        </main>
+        <nav className="hidden md:flex space-x-10">
+          <a href="#" className="text-gray-500 inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 transition ease-in-out duration-150">
+            Archive
+          </a>
+          <a href="#" className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+            About Me
+          </a>
+          <a href="#" className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+            Projects
+          </a>
+        </nav>
+        <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
+          <a href="#" className="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150">
+            Sign in
+          </a>
+          <span className="inline-flex rounded-md shadow-sm">
+            <a href="#" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-150">
+              Sign up
+            </a>
+          </span>
+        </div>
       </div>
     </div>
-    <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-      <img
-        className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-        src="https://s3.us-west-1.wasabisys.com/rosnovsky-media/IMG_0700.jpeg"
-        alt=""
-      />
+    <div onClick={(e => console.log(e))} className={`absolute top-0 inset-x-0 z-10 p-2 transition transform origin-top-right md:hidden`}>
+      <div className="rounded-lg shadow-lg">
+        <div className="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
+          <div className="pt-5 pb-6 px-5 space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <img className="h-8 w-auto" src="https://rosnovsky.us/favicon.png" alt="Workflow" />
+              </div>
+              <div className="-mr-2">
+                <button type="button" className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+
+                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div>
+              <nav className="grid gap-y-8">
+                <a href="#" className="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+
+                  <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <div className="text-base leading-6 font-medium text-gray-900">
+                    Analytics
+                  </div>
+                </a>
+                <a href="#" className="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+
+                  <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                  </svg>
+                  <div className="text-base leading-6 font-medium text-gray-900">
+                    Engagement
+                  </div>
+                </a>
+                <a href="#" className="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+
+                  <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <div className="text-base leading-6 font-medium text-gray-900">
+                    Security
+                  </div>
+                </a>
+                <a href="#" className="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+
+                  <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                  </svg>
+                  <div className="text-base leading-6 font-medium text-gray-900">
+                    Integrations
+                  </div>
+                </a>
+                <a href="#" className="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+
+                  <svg className="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  <div className="text-base leading-6 font-medium text-gray-900">
+                    Automations
+                  </div>
+                </a>
+              </nav>
+            </div>
+          </div>
+          <div className="py-6 px-5 space-y-6">
+            <div className="space-y-6">
+              <span className="w-full flex rounded-md shadow-sm">
+                <a href="#" className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                  Sign up
+                </a>
+              </span>
+              <p className="text-center text-base leading-6 font-medium text-gray-500">
+                Already a member?
+                <a href="#" className="text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
+                  Sign in
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-)
+
+  <main className="lg:relative">
+    <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
+      <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
+        <h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">
+          Welcome&nbsp;to
+          <br className="xl:hidden" />
+          <span className="text-orange-600"> {siteTitle}</span>
+        </h2>
+        <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
+          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+        </p>
+        <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+          <div className="rounded-md shadow">
+            <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+              Get started
+            </a>
+          </div>
+          <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+            <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-orange-600 bg-white hover:text-orange-500 focus:outline-none focus:border-orange-300 focus:shadow-outline-orange transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+              Live demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
+      <img className="absolute inset-0 w-full h-full object-cover" src="https://s3.us-west-1.wasabisys.com/rosnovsky-media/IMG_0700.jpeg" alt="Woman on her phone" />
+    </div>
+  </main>
+</div>
+}
 
 export default Header
