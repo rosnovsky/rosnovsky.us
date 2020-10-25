@@ -31,8 +31,21 @@ module.exports = {
         postCssPlugins: [
           require(`tailwindcss`)(tailwindConfig),
           require(`autoprefixer`),
-          ...(process.env.NODE_ENV === `production` ? [require(`cssnano`)] : [])
+          ...(process.env.NODE_ENV === `production`
+            ? [
+                require(`cssnano`)({
+                  preset: `default`
+                })
+              ]
+            : [])
         ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        tailwind: true,
+        purgeOnly: [`src/styles/stles.css`]
       }
     }
   ]

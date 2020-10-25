@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@custom-media --media-min-small (min-width: 450px);
-@custom-media --media-max-small (max-width: 449px);
-@custom-media --media-min-medium (min-width: 675px);
-@custom-media --media-min-large (min-width: 900px);
-
 .youtubeContainer {
   position: relative;
   width: 100%;
@@ -22,12 +17,4 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.react_tinylink_card {
-  color: black !important;
-}
-
-.react_tinylink_card :hover {
-  color: darkblue;
 }
