@@ -26,10 +26,18 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
   postEdges
     .filter(edge => {
-      if(isFuture(Date.parse(edge.node.publishedAt)) || edge.node.publishedAt === null){
-        reporter.warn(`Can't create pages with empty or future publish dates. Skipping ${edge.node.title} because the date is ${edge.node.publishedAt}`)
+      if (
+        isFuture(Date.parse(edge.node.publishedAt)) ||
+        edge.node.publishedAt === null
+      ) {
+        reporter.warn(
+          `Can't create pages with empty or future publish dates. Skipping ${edge.node.title} because the date is ${edge.node.publishedAt}`
+        )
       }
-      return !isFuture(Date.parse(edge.node.publishedAt)) && edge.node.publishedAt !== null
+      return (
+        !isFuture(Date.parse(edge.node.publishedAt)) &&
+        edge.node.publishedAt !== null
+      )
     })
     .forEach((edge, index) => {
       const { id, slug = {}, publishedAt } = edge.node
@@ -38,7 +46,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
       createPage({
         path,
-        component: require.resolve('./src/templates/BlogPost.tsx'),
+        component: require.resolve('./src/templates/blogpost.tsx'),
         context: { id }
       })
     })
@@ -78,7 +86,9 @@ async function createCategoryPages(graphql, actions, reporter) {
       const { id, slug, title } = node.node
       // If there isn't a slug, we want to do nothing
       if (!id || !slug.current) {
-        reporter.warn(`Category ${title} has no id or slug. Make sure you've added 'slug' to category schema in Sanity.`)
+        reporter.warn(
+          `Category ${title} has no id or slug. Make sure you've added 'slug' to category schema in Sanity.`
+        )
       }
 
       // Make the URL with the current slug
@@ -88,7 +98,7 @@ async function createCategoryPages(graphql, actions, reporter) {
       // that we can use to query for the right category in the template file
       createPage({
         path,
-        component: require.resolve('./src/templates/CategoryPage.tsx'),
+        component: require.resolve('./src/templates/categorypage.tsx'),
         context: { id }
       })
     })
