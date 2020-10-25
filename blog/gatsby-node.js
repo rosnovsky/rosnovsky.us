@@ -38,7 +38,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
 
       createPage({
         path,
-        component: require.resolve('./src/templates/blog-post.js'),
+        component: require.resolve('./src/templates/BlogPost.tsx'),
         context: { id }
       })
     })
@@ -88,7 +88,7 @@ async function createCategoryPages(graphql, actions, reporter) {
       // that we can use to query for the right category in the template file
       createPage({
         path,
-        component: require.resolve('./src/templates/category.js'),
+        component: require.resolve('./src/templates/CategoryPage.tsx'),
         context: { id }
       })
     })

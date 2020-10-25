@@ -1,0 +1,9 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "moduleResolution": "Node"
+  }
+}
