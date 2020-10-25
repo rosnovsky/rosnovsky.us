@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import BlogPostPreview from '../Post/blogpostcard'
-import Covid from '../Covid/covid'
+import Covid from '../Covid/Covid'
 
 // import styles from './blog-post-preview-list.module.css'
 
