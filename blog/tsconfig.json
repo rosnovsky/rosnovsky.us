@@ -1,0 +1,27 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "*": ["./node_modules/@types/*", "*"]
+    },
+    "module": "commonjs",
+    // "baseUrl": "./src",
+    "moduleResolution": "node",
+    "target": "ES2019",
+    "jsx": "react",
+    "lib": ["dom", "esnext"],
+    "strict": false,
+    "noEmit": true,
+    "sourceMap": true,
+    "isolatedModules": false,
+    "esModuleInterop": false,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "resolveJsonModule": false,
+    "checkJs": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*.tsx", "src"],
+  "exclude": ["node_modules", "public"]
+}

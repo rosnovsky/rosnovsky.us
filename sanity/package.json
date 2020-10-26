@@ -26,6 +26,8 @@
     "@sanity/vision": "^2.0.1",
     "date-fns": "^2.16.1",
     "get-youtube-id": "^1.0.1",
+    "metascraper": "^5.14.17",
+    "metascraper-url": "^5.14.17",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
