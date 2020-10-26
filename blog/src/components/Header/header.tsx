@@ -1,10 +1,11 @@
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import Icon from '../icon'
-import { cn } from '../../utils/helpers'
+import { useAuth0 } from '../../utils/auth'
 
 const Header = () => {
   const [isOn, setIsOn] = useState(false)
+  const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0()
 
   return (
     <div className="w-max-  full relative bg-gray-50">
@@ -37,7 +38,7 @@ const Header = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    stroke-width="2"
+                    strokeWidth=""
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 </svg>
@@ -63,22 +64,27 @@ const Header = () => {
                 Projects
               </Link>
             </nav>
-            <div className="hidden lg:flex xl:flex md:flex sm:flex-1 items-center justify-end space-x-8 lg:w-0">
-              <a
-                href="#"
-                className="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 transition ease-in-out duration-150"
-              >
-                Sign in
-              </a>
-              <span className="inline-flex rounded-md shadow-sm">
-                <a
-                  href="#"
+            {!isAuthenticated && !loading && (
+              <div className="hidden lg:flex xl:flex md:flex sm:flex-1 items-center justify-end space-x-8 lg:w-0">
+                <button
                   className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-150"
+                  onClick={() =>
+                    loginWithRedirect({
+                      appState: `${window.location.pathname}`
+                    })
+                  }
                 >
-                  Sign up
-                </a>
-              </span>
-            </div>
+                  Sign in
+                </button>
+                <span className="inline-flex rounded-md shadow-sm"></span>
+              </div>
+            )}
+            {isAuthenticated && (
+              <div className="hidden lg:flex xl:flex md:flex sm:flex-1 items-center justify-end space-x-8 lg:w-0">
+                <Link to="/account">My Account</Link>
+                <button onClick={() => logout()}>Log out</button>
+              </div>
+            )}
           </div>
         </div>
         <div
@@ -116,7 +122,7 @@ const Header = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          stroke-width="2"
+                          strokeWidth=""
                           d="M6 18L18 6M6 6l12 12"
                         />
                       </svg>
@@ -139,7 +145,7 @@ const Header = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          stroke-width="2"
+                          strokeWidth=""
                           d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                         />
                       </svg>
@@ -161,7 +167,7 @@ const Header = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          stroke-width="2"
+                          strokeWidth=""
                           d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                         />
                       </svg>
@@ -183,7 +189,7 @@ const Header = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          stroke-width="2"
+                          strokeWidth=""
                           d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                         />
                       </svg>
@@ -197,21 +203,19 @@ const Header = () => {
               <div className="py-6 px-5 space-y-6">
                 <div className="space-y-6">
                   <span className="w-full flex rounded-md shadow-sm">
-                    <a
-                      href="#"
+                    <button
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-150"
+                      onClick={() =>
+                        loginWithRedirect({
+                          appState: `${window.location.pathname}`
+                        })
+                      }
                     >
-                      Sign up
-                    </a>
+                      Member Account
+                    </button>
                   </span>
                   <p className="text-center text-base leading-6 font-medium text-gray-500">
-                    Already a member? <br />
-                    <a
-                      href="#"
-                      className="text-orange-600 hover:text-orange-500 transition ease-in-out duration-150"
-                    >
-                      Sign in
-                    </a>
+                    Login on Join
                   </p>
                 </div>
               </div>

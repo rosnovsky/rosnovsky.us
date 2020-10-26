@@ -14,6 +14,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   plugins: [
+    `gatsby-plugin-preload-link-crossorigin`,
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     {
