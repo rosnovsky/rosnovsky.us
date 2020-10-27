@@ -4,6 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
+import SanityMuxPlayer from 'sanity-mux-player'
 import Gallery from '@browniebroke/gatsby-image-gallery'
 import '@browniebroke/gatsby-image-gallery/dist/style.css'
 import { buildGaleryImageObj } from '../../utils/helpers'
@@ -22,6 +23,17 @@ const serializers = {
         <div className="w-full">
           <YouTube containerClassName={'youtubeContainer'} videoId={id} />
         </div>
+      )
+    },
+    mux: node => {
+      console.log(node)
+      return (
+        <SanityMuxPlayer
+          assetDocument={node}
+          autoload={true}
+          autoplay={false}
+          showControls={true}
+        />
       )
     },
     code: props => {

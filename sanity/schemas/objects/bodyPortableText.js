@@ -83,6 +83,11 @@ export default {
       type: 'photoGallery',
       title: 'Photo Gallery',
       description: 'Add photo gallery to post'
+    },
+    {
+      name: 'mux',
+      title: 'MUX video',
+      type: 'mux.video'
     }
   ]
 }
