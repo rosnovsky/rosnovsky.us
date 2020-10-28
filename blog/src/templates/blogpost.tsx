@@ -27,8 +27,8 @@ export const query = graphql`
       slug {
         current
       }
-      _rawExcerpt(resolveReferences: { maxDepth: 5 })
-      _rawBody(resolveReferences: { maxDepth: 10 })
+      _rawExcerpt(resolveReferences: { maxDepth: 15 })
+      _rawBody
       authors {
         _key
         author {

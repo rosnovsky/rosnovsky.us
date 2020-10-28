@@ -4,7 +4,6 @@ import BasePortableText from '@sanity/block-content-to-react'
 import serializers from './serializers'
 
 const PortableText = blocks => {
-  console.log(blocks)
   return (
     <BasePortableText
       blocks={blocks.blocks}
