@@ -28,6 +28,12 @@ export default {
       description: 'This can be used to schedule post for publishing'
     },
     {
+      name: 'featured',
+      type: 'boolean',
+      title: 'Featured Post',
+      description: 'Toggle this to feature this post on the home page.'
+    },
+    {
       name: 'mainImage',
       type: 'mainImage',
       title: 'Main image'

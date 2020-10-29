@@ -67,27 +67,30 @@ export default {
     {
       type: 'youtube'
     },
-    {
-      name: 'linkCard',
-      title: 'Link Preview Card',
-      description: 'Link Preview Card',
-      type: 'linkCard',
-      preview: {
-        select: {
-          title: 'linkCard.title'
-        }
-      }
-    },
-    {
-      name: 'photoGallery',
-      type: 'photoGallery',
-      title: 'Photo Gallery',
-      description: 'Add photo gallery to post'
-    },
+
+    // TODO: Figure out better components for LinkCard and Gallery
+
+    // {
+    //   name: 'linkCard',
+    //   title: 'Link Preview Card',
+    //   description: 'Link Preview Card',
+    //   type: 'linkCard',
+    //   preview: {
+    //     select: {
+    //       title: 'linkCard.title'
+    //     }
+    //   }
+    // },
+    // {
+    //   name: 'photoGallery',
+    //   type: 'photoGallery',
+    //   title: 'Photo Gallery',
+    //   description: 'Add photo gallery to post'
+    // },
     {
       name: 'mux',
       title: 'MUX video',
-      type: 'mux.video'
+      type: 'mux'
     }
   ]
 }

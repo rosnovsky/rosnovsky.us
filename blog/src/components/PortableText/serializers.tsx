@@ -5,21 +5,23 @@ import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
 import ReactPlayer from 'react-player/lazy'
-import Gallery from '@browniebroke/gatsby-image-gallery'
+// import Gallery from '@browniebroke/gatsby-image-gallery'
 import '@browniebroke/gatsby-image-gallery/dist/style.css'
-import { buildGaleryImageObj } from '../../utils/helpers'
+// import { buildGaleryImageObj } from '../../utils/helpers'
 import 'react-image-lightbox/style.css'
 import sanityClient from '@sanity/client'
 import sanityConfig from '../../../client-config'
 
-import PreviewCard from './linkPreview'
+// import PreviewCard from './linkPreview'
 
-const client = sanityClient(sanityConfig.sanity)
+const client = sanityClient({ ...sanityConfig.sanity, useCdn: true })
 
 const serializers = {
   types: {
     authorReference: ({ node }) => <span>{node.author.name}</span>,
     mainImage: Figure,
+
+    // Youtube component could be replaced with ReactPlayer, removing 2 dependencies (YouTube and getYoutubeId)
     youtube: ({ node }) => {
       const { url } = node
       const id = getYouTubeId(url)
@@ -30,7 +32,6 @@ const serializers = {
       )
     },
     mux: props => {
-      console.warn(props)
       // TODO: Fix this bullshit
       const [asset, setAsset] = useState()
 
@@ -42,7 +43,7 @@ const serializers = {
         console.warn(client)
         client
           .fetch(query)
-          .then(asset => setAsset(asset[0].asset[0].playbackId))
+          .then(video => setAsset(video[0].asset[0].playbackId))
       }, [])
 
       return (
@@ -74,26 +75,29 @@ const serializers = {
           {code}
         </SyntaxHighlighter>
       )
-    },
-    linkCard: node => {
-      return <PreviewCard url={node.node.href} />
-    },
-    photoGallery: node => {
-      const images = node.node.images.map(node => {
-        return buildGaleryImageObj(node)
-      })
-      return (
-        <div>
-          <h3>{node.node.galleryTitle}</h3>
-          <Gallery
-            lightboxOptions={{
-              reactModalProps: { shouldReturnFocusAfterClose: false }
-            }}
-            images={images}
-          />
-        </div>
-      )
     }
+
+    // TODO: Figure out better ways and/or better components to use for LinkCard and Gallery
+
+    // linkCard: node => {
+    //   return <PreviewCard url={node.node.href} />
+    // },
+    // photoGallery: node => {
+    //   const images = node.node.images.map(node => {
+    //     return buildGaleryImageObj(node)
+    //   })
+    //   return (
+    //     <div>
+    //       <h3>{node.node.galleryTitle}</h3>
+    //       <Gallery
+    //         lightboxOptions={{
+    //           reactModalProps: { shouldReturnFocusAfterClose: false }
+    //         }}
+    //         images={images}
+    //       />
+    //     </div>
+    //   )
+    // }
   }
 }
 
