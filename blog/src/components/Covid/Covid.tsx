@@ -44,7 +44,7 @@ export default function Covid() {
           setCases(massagedData)
           setLastModified(
             new Intl.RelativeTimeFormat().format(
-              Math.floor(
+              Math.ceil(
                 (Date.parse(data[0].lastModified) - Date.now()) /
                   (1000 * 60 * 60 * 24)
               ),
