@@ -52,7 +52,7 @@ export function buildGaleryImageObj(node) {
   return { thumb, full }
 }
 
-export function toPlainText(blocks) {
+export function toPlainText(blocks): string {
   if (!blocks) {
     return ''
   }

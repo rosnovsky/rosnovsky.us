@@ -72,6 +72,12 @@ export default {
       name: 'body',
       type: 'bodyPortableText',
       title: 'Body'
+    },
+    {
+      name: 'tags',
+      type: 'tags',
+      title: 'Tags',
+      description: 'Add tags that describe this blog post.'
     }
   ],
   orderings: [

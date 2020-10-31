@@ -63,7 +63,7 @@ export const query = graphql`
 
 const BlogPostTemplate = props => {
   const { data, errors } = props
-  const post = data && data.post
+  const post: Post = data && data.post
   return (
     <Layout>
       {errors && (

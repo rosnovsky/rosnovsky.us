@@ -22,6 +22,7 @@ export default function Covid() {
   const [lastModified, setLastModified] = useState<string>()
 
   useEffect(() => {
+    // TODO: Catch and handle errors
     const fetchCases = async () => {
       const currentTotals: Record<string, Number> = await fetch(
         `https://api.covidtracking.com/v1/us/current.json`,

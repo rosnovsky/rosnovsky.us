@@ -3,6 +3,12 @@
 
 # Dependency directories
 /node_modules
+package-lock.json
+package.json
+
+lerna.json
+
+sanity-plugin-autocomplete-tags/
 
 # lerna files
 /lerna-debug.log

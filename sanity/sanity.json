@@ -23,7 +23,8 @@
     "asset-source-unsplash",
     "dashboard-widget-document-chart",
     "@sanity/vision",
-    "mux-input"
+    "mux-input",
+    "autocomplete-tags"
   ],
   "parts": [
     {
