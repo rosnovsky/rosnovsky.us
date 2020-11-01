@@ -10,6 +10,7 @@ import Container from '../components/Containers/container'
 import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
+import Covid from '../components/Covid/Covid'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -57,6 +58,12 @@ export const query = graphql`
           slug {
             current
           }
+          categories {
+            title
+            slug {
+              current
+            }
+          }
           featured
         }
       }
@@ -100,6 +107,9 @@ const IndexPage = props => {
       />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
+        <div>
+          <Covid />
+        </div>
         {postNodes && (
           <BlogPostPreviewList
             title="Latest blog posts"

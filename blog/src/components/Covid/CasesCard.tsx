@@ -17,7 +17,7 @@ export default function TotalCases(props) {
     } else if (cases >= 10000 && cases <= 1010000) {
       return `${(cases / 1000).toFixed(2)} K`
     } else {
-      return `${(cases / 1000000).toFixed(2)} MM`
+      return `${(cases / 1000000).toFixed(2)} M`
     }
   }
 
@@ -42,11 +42,11 @@ export default function TotalCases(props) {
       </>
     ) : (
       <>
-        <div className="ml-1 flex items-baseline text-sm leading-5 font-semibold">
+        <div className="flex my-auto ml-0 xl:ml-3 xs:ml-2 md:ml-2 items-center text-sm font-semibold">
           <svg
-            className="self-center flex-shrink-0 h-5 w-5 text-red-500"
+            className="self-center flex-shrink-0 h-5 w-4 text-red-500"
             fill="currentColor"
-            viewBox="0 0 20 20"
+            viewBox="7 0 10 20"
           >
             <path
               fillRule="evenodd"

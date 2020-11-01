@@ -9,7 +9,7 @@ import AuthorList from '../Author/authorlist'
 import Figure from '../PortableText/figure'
 
 function BlogPost(props) {
-  const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
+  const { _rawBody, categories, title, mainImage, publishedAt } = props
   const categoryUrl = `/category/${categories[0].slug.current}`
   return (
     <>

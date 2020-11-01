@@ -4,7 +4,7 @@ import Container from '../components/Containers/container'
 import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
-import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardsgrid'
+import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardslist'
 
 // Add “posts” to the GraphQL query
 export const query = graphql`
@@ -21,6 +21,13 @@ export const query = graphql`
         mainImage {
           ...SanityImage
           alt
+        }
+        categories {
+          title
+          description
+          slug {
+            current
+          }
         }
         title
         _rawExcerpt
