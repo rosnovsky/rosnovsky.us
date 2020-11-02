@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import React, { useState } from 'react'
+import React from 'react'
 // import { useAuth0 } from '../../utils/auth'
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
       <div className="w-max-full relative bg-gray-20">
         <div className="bg-white">
           <div className="w-full max-w-7xl mx-auto px-4">
-            <div className="flex align-middle justify-center items-center py-6">
+            <div className="flex align-middle justify-center items-center py-14">
               <div className="flex-col text-center">
                 <Link
                   to="/"
