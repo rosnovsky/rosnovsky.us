@@ -5,6 +5,7 @@ import { getBlogUrl } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'
 
 function BlogPostPreview(props) {
+  console.info(props)
   return (
     <div className="flex flex-col md:w-1/2 lg:w-1/2 xl:w-1/2 h-full">
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">

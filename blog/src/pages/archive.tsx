@@ -6,6 +6,7 @@ import Container from '../components/Containers/container'
 import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
+import Header from '../components/Header/header'
 
 export const query = graphql`
   query ArchivePageQuery {
@@ -25,6 +26,13 @@ export const query = graphql`
           _rawExcerpt
           slug {
             current
+          }
+          categories {
+            title
+            description
+            slug {
+              current
+            }
           }
         }
       }
@@ -48,6 +56,7 @@ const ArchivePage = props => {
   return (
     <Layout>
       <SEO lang="en" meta={[]} keywords={[]} image={null} title="Archive" />
+      <Header />
       <Container>
         <div className="mx-auto">
           <h1 className="mt-10 font-semibold text-center text-4xl">Archive</h1>

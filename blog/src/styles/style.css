@@ -18,3 +18,23 @@
   top: 0;
   left: 0;
 }
+
+.construction {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(246, 224, 94, 0.9),
+    rgba(246, 224, 94, 1) 10px,
+    rgba(26, 32, 44, 0.9) 10px,
+    rgba(26, 32, 44, 1) 20px
+  );
+}
+
+.covid {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(246, 224, 94, 0.9),
+    rgba(246, 224, 94, 1) 10px,
+    rgba(26, 32, 44, 0.9) 10px,
+    rgba(26, 32, 44, 1) 20px
+  );
+}

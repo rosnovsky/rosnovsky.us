@@ -8,8 +8,8 @@ function BlogPostPreviewGrid(props) {
 
   return (
     <>
-      <div className="mt-20 relative max-w-5xl mx-auto">
-        <div className="mt-10 max-w-lg mx-auto h-full xl:max-w-none lg:max-w-none lg:mx-5 md:max-w-none">
+      <div className="mt-20 mx-auto">
+        <div className="mt-10 mx-auto h-full max-w-none lg:max-w-none lg:mx-5 md:max-w-none">
           {props.title && (
             <h2 className="ml-5 mt-10 mb-4 font-semibold text-2xl">
               {props.title}

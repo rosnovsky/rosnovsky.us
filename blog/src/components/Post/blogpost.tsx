@@ -1,18 +1,20 @@
-import { format, distanceInWords, differenceInDays } from 'date-fns'
+// import { format, distanceInWords, differenceInDays } from 'date-fns'
 import React from 'react'
 import { Link } from 'gatsby'
-import { buildImageObj } from '../../utils/helpers'
-import { imageUrlFor } from '../../utils/imageUrl'
+// import { buildImageObj } from '../../utils/helpers'
+// import { imageUrlFor } from '../../utils/imageUrl'
 import PortableText from '../PortableText/portableText'
 import Container from '../Containers/container'
-import AuthorList from '../Author/authorlist'
+// import AuthorList from '../Author/authorlist'
 import Figure from '../PortableText/figure'
+import Header from '../Header/header'
 
 function BlogPost(props) {
   const { _rawBody, categories, title, mainImage, publishedAt } = props
   const categoryUrl = `/category/${categories[0].slug.current}`
   return (
     <>
+      <Header />
       <div className="w-screen-xl mx-auto my-10 px-4 sm:px-6">
         <div className="object-cover z-10 rounded-lg">
           <Figure node={mainImage} />

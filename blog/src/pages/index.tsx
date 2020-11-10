@@ -10,7 +10,7 @@ import Container from '../components/Containers/container'
 import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
-import Covid from '../components/Covid/Covid'
+import Header from '../components/Header/header'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -96,7 +96,7 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout className="container w-screen">
+    <Layout className="container w-full">
       <SEO
         lang="en"
         description={site.description}
@@ -106,10 +106,7 @@ const IndexPage = props => {
         title={site.title}
       />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
-        <div>
-          <Covid />
-        </div>
+        <Header />
         {postNodes && (
           <BlogPostPreviewList
             title="Latest blog posts"
