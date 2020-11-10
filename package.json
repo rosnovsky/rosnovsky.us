@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "name": "sanity-gatsby-blog",
-  "version": "1.0.17",
-  "workspaces": [
-    "sanity",
-    "sanity-plugin-autocomplete-tags"
-  ]
-}

@@ -12,6 +12,7 @@ export default ({ node }) => {
     { maxWidth: 675 },
     clientConfig.sanity
   )
+
   return (
     <figure>
       <Img fluid={fluidProps} alt={node.alt} />
