@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Figure from './figure'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
-import ReactPlayer from 'react-player/lazy'
-// import Gallery from '@browniebroke/gatsby-image-gallery'
-import '@browniebroke/gatsby-image-gallery/dist/style.css'
-// import { buildGaleryImageObj } from '../../utils/helpers'
-import 'react-image-lightbox/style.css'
+import ReactPlayer from 'react-player'
 import sanityClient from '@sanity/client'
 import sanityConfig from '../../../client-config'
-
-// import PreviewCard from './linkPreview'
 
 const client = sanityClient({ ...sanityConfig.sanity, useCdn: true })
 
@@ -69,35 +61,9 @@ const serializers = {
       if (!props.node || !props.node.code) {
         return null
       }
-      const { language, code } = props.node
-      return (
-        <SyntaxHighlighter language={language || 'text'} style={docco}>
-          {code}
-        </SyntaxHighlighter>
-      )
+      const { code } = props.node
+      return { code }
     }
-
-    // TODO: Figure out better ways and/or better components to use for LinkCard and Gallery
-
-    // linkCard: node => {
-    //   return <PreviewCard url={node.node.href} />
-    // },
-    // photoGallery: node => {
-    //   const images = node.node.images.map(node => {
-    //     return buildGaleryImageObj(node)
-    //   })
-    //   return (
-    //     <div>
-    //       <h3>{node.node.galleryTitle}</h3>
-    //       <Gallery
-    //         lightboxOptions={{
-    //           reactModalProps: { shouldReturnFocusAfterClose: false }
-    //         }}
-    //         images={images}
-    //       />
-    //     </div>
-    //   )
-    // }
   }
 }
 

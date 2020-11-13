@@ -21,7 +21,7 @@ function BlogPost(props) {
         </div>
       </div>
       <article className="relative w-full py-16 overflow-hidden">
-        <div className="hidden mt-64  lg:block  lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+        <div className="hidden mt-64 lg:block  lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
           <div className="relative h-full text-lg max-w-prose mx-auto">
             <svg
               className="absolute top-12 h-full left-full transform translate-x-32"
@@ -124,12 +124,20 @@ function BlogPost(props) {
         <Container>
           <div className="relative h-full rounded-2xl bg-white px-4 sm:px-6 lg:px-8">
             <div className="text-lg max-w-prose mx-auto mb-6">
-              <p className="text-base text-center leading-6 text-orange-600 font-semibold tracking-wide uppercase">
+              <div className="text-base text-center leading-7 mb-7 text-orange-600 font-bold tracking-wide uppercase">
                 <Link to={categoryUrl}>{categories[0].title}</Link>
-              </p>
-              <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+              </div>
+              <h1 className="mt-2 mb-8 text-6xl text-center leading-20  tracking-tight text-gray-900 sm:leading-20 font-black">
                 {title}
               </h1>
+              <h4 className="text-gray-400 text-base text-center leading-7 mb-5 font-semibold tracking-wide uppercase">
+                {new Intl.DateTimeFormat('en-US', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                }).format(Date.parse(publishedAt))}
+              </h4>
               <div className="prose prose-lg text-gray-700 mx-auto">
                 {_rawBody && <PortableText blocks={_rawBody} />}
               </div>

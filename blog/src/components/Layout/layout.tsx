@@ -82,7 +82,7 @@ const Layout = ({ children }) => (
               </svg>
             </a>
           </div>
-          <p className="mt-8 text-center text-base leading-6 text-gray-400">
+          <p className="mt-8 text-center text-base leading-6 text-gray-500">
             &copy; 2003-{new Date().getFullYear()}, Art Rosnovsky
           </p>
         </div>

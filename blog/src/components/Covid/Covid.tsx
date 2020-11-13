@@ -21,11 +21,11 @@ export const Loading = () => {
             <div className="">
               <div className="flex flex-col xl:flex-row mx-auto lg:flex-row justify-between xs:mx-10 sm:mx-10 md:mx-10">
                 <CasesCard
-                  numbers={9000000}
+                  numbers={10000000}
                   change={125000}
                   title="🇺🇸 COVID Cases"
                 />
-                <CasesCard numbers={130000} change={1300} title="Dead" />
+                <CasesCard numbers={230000} change={1300} title="Dead" />
                 <CasesCard numbers={50000} change={3400} title="In Hospitals" />
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function Covid() {
   return (
     <div className="border-b border-accent-2 bg-black text-white">
       <Container>
-        <div className="flex py-2 text-center text-sm">
+        <div className="flex py-2 text-center text-sm max-w-5xl mx-auto">
           <div className="w-full text-lg">
             <div className="">
               <div className="flex flex-col xl:flex-row mx-auto lg:flex-row justify-between xs:mx-10 sm:mx-10 md:mx-10">

@@ -10,7 +10,9 @@ const Alert = () => {
           <div className="bg-white px-4 font-semibold text-lg mx-auto">
             Work in progress.{' '}
             <span className="underline hover:text-success duration-200 transition-colors">
-              <Link to="/posts/building-this-website">Learn More &rarr;</Link>
+              <Link to="/blog/2020/10/26/building-this-website/">
+                Learn More &rarr;
+              </Link>
             </span>
           </div>
           )

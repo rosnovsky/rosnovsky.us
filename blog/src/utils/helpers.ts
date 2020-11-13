@@ -65,3 +65,35 @@ export function toPlainText(blocks): string {
     })
     .join('\n\n')
 }
+
+export const relativeDate = publishedDate => {
+  const rtf1 = new Intl.RelativeTimeFormat('en', {
+    numeric: 'auto'
+  })
+  const today = Date.now()
+  const postDate = Date.parse(publishedDate)
+  const differenceInDays = Math.floor(
+    (postDate - today) / 1000 / 60 / 60 / 24
+  )
+
+  const realDifference = (days: number) => {
+    const absDays = Math.abs(days)
+    if (absDays < 7) {
+      return { days, unit: 'day' }
+    }
+    if (absDays >= 7 && absDays <= 30) {
+      return { days: Math.floor(days / 7), unit: 'week' }
+    }
+    if (absDays > 30 && absDays <= 365) {
+      return { days: Math.floor(days / 30), unit: 'month' }
+    }
+    if (absDays > 365) {
+      return { days: Math.floor(days / 365), unit: 'year' }
+    }
+  }
+
+  return rtf1.format(
+    realDifference(differenceInDays).days,
+    realDifference(differenceInDays).unit
+  )
+}

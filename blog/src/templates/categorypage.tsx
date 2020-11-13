@@ -5,6 +5,7 @@ import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
 import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardslist'
+import Header from '../components/Header/Header'
 
 // Add “posts” to the GraphQL query
 export const query = graphql`
@@ -42,6 +43,7 @@ const CategoryPostTemplate = props => {
   const { data = {}, errors } = props
   const { title, description, posts } = data.category || {}
 
+  console.info(props)
   const visiblePosts =
     process.env.NODE_ENV === 'production'
       ? posts.filter(post => !post.publishedAt === null)
@@ -59,6 +61,7 @@ const CategoryPostTemplate = props => {
     <Layout>
       <SEO lang="en" meta={[]} keywords={[]} image={null} title={title} />
       <Container>
+        <Header />
         <h1>{title}</h1>
         <p>{description}</p>
         {posts && posts.length > 0 && (

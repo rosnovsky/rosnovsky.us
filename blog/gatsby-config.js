@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-preload-link-crossorigin`,
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-preact`,
     {
       resolve: 'gatsby-source-sanity',
       options: {

@@ -8,10 +8,10 @@ function BlogPostPreviewGrid(props) {
 
   return (
     <>
-      <div className="mt-20 mx-auto">
-        <div className="mt-10 mx-auto h-full max-w-none lg:max-w-none lg:mx-5 md:max-w-none">
+      <div className="mt-20 mx-auto xl:max-w-3xl lg:max-w-2xl md:max-w-xl">
+        <div className="mt-10 mx-auto h-full lg:mx-5  md:max-w-none">
           {props.title && (
-            <h2 className="ml-5 mt-10 mb-4 font-semibold text-2xl">
+            <h2 className="ml-5 xs:text-center leading-relaxed mt-10 mb-4 font-semibold text-2xl">
               {props.title}
             </h2>
           )}
@@ -30,8 +30,8 @@ function BlogPostPreviewGrid(props) {
             )}
         </div>
         {props.browseMoreHref && (
-          <div className="text-center mt-10 text-xl">
-            <Link to={props.browseMoreHref}>Browse more</Link>
+          <div className="text-center text-gray-700 font-semibold mt-10 text-xl">
+            <Link to={props.browseMoreHref}>More posts</Link>
           </div>
         )}
       </div>
