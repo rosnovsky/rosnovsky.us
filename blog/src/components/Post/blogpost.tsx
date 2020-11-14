@@ -7,7 +7,7 @@ import PortableText from '../PortableText/portableText'
 import Container from '../Containers/container'
 // import AuthorList from '../Author/authorlist'
 import Figure from '../PortableText/figure'
-import Header from '../Header/header'
+import Header from '../Header/Header'
 
 function BlogPost(props) {
   const { _rawBody, categories, title, mainImage, publishedAt } = props

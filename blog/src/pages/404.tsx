@@ -8,7 +8,7 @@ const NotFoundPage = () => (
     <SEO
       lang="en"
       meta={[]}
-      keywords={[]}
+      tags={[]}
       image={null}
       title="Error 404: Page Not Found"
     />

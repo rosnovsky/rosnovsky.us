@@ -10,7 +10,7 @@ import Container from '../components/Containers/container'
 import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {

@@ -1,8 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import { getBlogUrl } from '../../utils/helpers'
+import { getBlogUrl, relativeDate } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'
-import { relativeDate } from '../../utils/helpers'
 
 function BlogPostPreview(props) {
   const categoryUrl = `/category/${props.categories[0].slug.current}`
