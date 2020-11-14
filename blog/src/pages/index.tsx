@@ -39,7 +39,10 @@ export const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
-      keywords
+      tags {
+        label
+        value
+      }
     }
     posts: allSanityPost(
       sort: { fields: [publishedAt], order: DESC }
@@ -102,7 +105,7 @@ const IndexPage = props => {
         lang="en"
         description={site.description}
         meta={[]}
-        keywords={site.keywords}
+        tags={site.tags}
         image={null}
         title={site.title}
       />
@@ -112,7 +115,7 @@ const IndexPage = props => {
           <BlogPostPreviewList
             title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref="/archive/"
+            browseMoreHref="/blog/"
           />
         )}
       </Container>

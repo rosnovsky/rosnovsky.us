@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import { imageUrlFor } from '../../utils/imageUrl'
 import { buildImageObj } from '../../utils/helpers'
 
-function SEO({ description, lang, meta, keywords, title, image }) {
+function SEO({ description, lang, meta, tags, title, image }) {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -66,10 +66,10 @@ function SEO({ description, lang, meta, keywords, title, image }) {
               }
             ]
               .concat(
-                keywords && keywords.length > 0
+                tags && tags.length > 0
                   ? {
                       name: 'keywords',
-                      content: keywords.join(', ')
+                      content: tags.join(', ')
                     }
                   : []
               )
@@ -84,14 +84,14 @@ function SEO({ description, lang, meta, keywords, title, image }) {
 SEO.defaultProps = {
   lang: 'en',
   meta: [],
-  keywords: []
+  tags: []
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired
 }
 
@@ -102,7 +102,10 @@ const detailsQuery = graphql`
     site: sanitySiteSettings(_id: { eq: "siteSettings" }) {
       title
       description
-      keywords
+      tags {
+        label
+        value
+      }
       author {
         name
       }

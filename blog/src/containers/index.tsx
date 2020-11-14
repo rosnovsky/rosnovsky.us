@@ -41,7 +41,7 @@ const IndexPage = props => {
         image={[]}
         title={site.title}
         description={site.description}
-        keywords={site.keywords}
+        tags={site.tags}
       />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
@@ -49,7 +49,7 @@ const IndexPage = props => {
           <BlogPostPreviewList
             title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref="/archive/"
+            browseMoreHref="/blog/"
           />
         )}
       </Container>
