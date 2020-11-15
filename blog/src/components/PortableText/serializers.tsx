@@ -32,7 +32,6 @@ const serializers = {
       }`
 
       useEffect(() => {
-        console.warn(client)
         client
           .fetch(query)
           .then(video => setAsset(video[0].asset[0].playbackId))

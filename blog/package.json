@@ -59,6 +59,8 @@
     "start-server-and-test": "^1.11.5"
   },
   "dependencies": {
+    "gatsby-plugin-robots-txt": "^1.5.3",
+    "gatsby-plugin-sitemap": "^2.6.0",
     "get-youtube-id": "^1.0.1",
     "postcss": "^8.1.7",
     "react-hls-player": "^1.1.0",

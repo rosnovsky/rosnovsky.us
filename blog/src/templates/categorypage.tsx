@@ -48,7 +48,6 @@ const CategoryPostTemplate = props => {
   const { data = {}, errors } = props
   const { title, description = '', posts } = data.category || {}
 
-  console.info(props)
   const visiblePosts =
     // process.env.NODE_ENV === 'production'
     // ? posts.filter(post => !post.publishedAt === null)

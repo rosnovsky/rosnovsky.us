@@ -20,6 +20,15 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-webpack-bundle-analyser-v2',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://next.rosnovsky.us',
+        sitemap: 'https://next.rosnovsky.us/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    }
     {
       resolve: 'gatsby-source-sanity',
       options: {
