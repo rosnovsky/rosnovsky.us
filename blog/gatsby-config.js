@@ -13,6 +13,9 @@ const clientConfig = require('./client-config')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://next.rosnovsky.us`
+  },
   polyfill: false,
   plugins: [
     `gatsby-plugin-preact`,
