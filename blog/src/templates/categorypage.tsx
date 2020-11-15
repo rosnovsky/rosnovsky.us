@@ -21,6 +21,11 @@ export const query = graphql`
         publishedAt
         mainImage {
           ...SanityImage
+          asset {
+            fluid(maxWidth: 800) {
+              ...GatsbySanityImageFluid
+            }
+          }
           alt
         }
         categories {
