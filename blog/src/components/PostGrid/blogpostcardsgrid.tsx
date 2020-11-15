@@ -5,7 +5,7 @@ import BlogPostPreview from '../Post/blogpostcard'
 function BlogPostPreviewGrid(props) {
   return (
     <div>
-      <div className="relative max-w-5xl mx-auto">
+      <div className="relative max-w-5xl mt-3 mx-auto">
         {props.title && (
           <div className="text-center mx-auto">
             <h2 className=" mx-auto text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">

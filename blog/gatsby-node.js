@@ -14,6 +14,12 @@ async function createBlogPostPages(graphql, actions, reporter) {
             slug {
               current
             }
+            categories {
+              slug {
+                current
+              }
+              title
+            }
           }
         }
       }
@@ -64,6 +70,7 @@ async function createCategoryPages(graphql, actions, reporter) {
           node {
             id
             title
+            description
             slug {
               current
             }

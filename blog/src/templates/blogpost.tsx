@@ -27,6 +27,7 @@ export const query = graphql`
       slug {
         current
       }
+      featured
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawBody(resolveReferences: { maxDepth: 5 })
       authors {
@@ -62,14 +63,14 @@ export const query = graphql`
 
 const BlogPostTemplate = props => {
   const { data, errors } = props
-  const post = data && data.post
+  const post: Post = data && data.post
   return (
     <Layout>
       {errors && (
         <SEO
           lang="en"
           meta={[]}
-          keywords={[]}
+          tags={[]}
           image={null}
           title="GraphQL Errors"
         />

@@ -10,6 +10,7 @@ import Container from '../components/Containers/container'
 import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
 import SEO from '../components/SEO/seo'
 import Layout from '../containers/layout'
+import Header from '../components/Header/Header'
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -38,12 +39,15 @@ export const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
-      keywords
+      tags {
+        label
+        value
+      }
     }
     posts: allSanityPost(
-      limit: 6
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      limit: 5
     ) {
       edges {
         node {
@@ -58,6 +62,13 @@ export const query = graphql`
           slug {
             current
           }
+          categories {
+            title
+            slug {
+              current
+            }
+          }
+          featured
         }
       }
     }
@@ -89,22 +100,22 @@ const IndexPage = props => {
   }
 
   return (
-    <Layout className="container w-screen">
+    <Layout className="container w-full">
       <SEO
         lang="en"
         description={site.description}
         meta={[]}
-        keywords={site.keywords}
+        tags={site.tags}
         image={null}
         title={site.title}
       />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
+        <Header />
         {postNodes && (
           <BlogPostPreviewList
             title="Latest blog posts"
             nodes={postNodes}
-            browseMoreHref="/archive/"
+            browseMoreHref="/blog/"
           />
         )}
       </Container>

@@ -1,0 +1,18 @@
+[build]
+  base = "blog"
+  command = "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages"
+  publish = "public"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  # optional, fails build when a category is below a threshold
+  [plugins.inputs.thresholds]
+    performance = 0.6
+    accessibility = 0.8
+    best-practices = 0.9
+    seo = 0.9
+    pwa = 0.4

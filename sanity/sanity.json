@@ -22,7 +22,9 @@
     "@sanity/code-input",
     "asset-source-unsplash",
     "dashboard-widget-document-chart",
-    "@sanity/vision"
+    "@sanity/vision",
+    "mux-input",
+    "autocomplete-tags"
   ],
   "parts": [
     {

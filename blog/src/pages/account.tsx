@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout/layout'
 import { useAuth0 } from '../utils/auth'
 import { ProtectedRoute } from '../components/Account/protected-route'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 const Account = () => {
   const { loading, user, isAuthenticated } = useAuth0()

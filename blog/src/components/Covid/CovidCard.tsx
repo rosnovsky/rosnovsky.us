@@ -1,15 +1,13 @@
 import React from 'react'
-import { icons } from './icons'
 
 interface CovidData {
-  type: string
   title: string
   numbers: number
   change: number
 }
 
-export default function TotalCases(props) {
-  const { type, title, numbers, change }: CovidData = props
+export default function TotalCases(props: CovidData) {
+  const { title, numbers, change }: CovidData = props
 
   const formatCases: (cases: number) => String = function(cases) {
     if (cases <= 9999) {
@@ -17,7 +15,7 @@ export default function TotalCases(props) {
     } else if (cases >= 10000 && cases <= 1010000) {
       return `${(cases / 1000).toFixed(2)} K`
     } else {
-      return `${(cases / 1000000).toFixed(2)} MM`
+      return `${(cases / 1000000).toFixed(2)} M`
     }
   }
 
@@ -42,11 +40,11 @@ export default function TotalCases(props) {
       </>
     ) : (
       <>
-        <div className="ml-1 flex items-baseline text-sm leading-5 font-semibold">
+        <div className="flex my-auto ml-1 items-center text-sm font-semibold">
           <svg
-            className="self-center flex-shrink-0 h-5 w-5 text-red-500"
+            className="self-center flex-shrink-1 h-5 w-4 text-red-500"
             fill="currentColor"
-            viewBox="0 0 20 20"
+            viewBox="7 0 10 20"
           >
             <path
               fillRule="evenodd"
@@ -62,27 +60,9 @@ export default function TotalCases(props) {
   }
 
   return (
-    <div className="overflow-hidden shadow rounded-lg w-full">
-      <div className="px-4 py-5 sm:p-6">
-        <div className="flex items-center">
-          <div className="flex-shrink-0 bg-orange-600 rounded-md p-3 md:hidden sm:hidden">
-            {icons[type]}
-          </div>
-          <div className="ml-5 md:mx-auto sm:mx-auto flex-1">
-            <dl>
-              <dt className="text-sm leading-5 font-medium text-gray-500 truncate">
-                {title}
-              </dt>
-              <dd className="flex items-baseline lg:flex-col sm:flex-col">
-                <div className="text-2xl sm:text-xl md:text-xl xl:text-xl leading-6 font-semibold text-gray-900">
-                  {formatCases(numbers)}
-                </div>
-                {changeStatus(change)}
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
+    <div className="flex items-center text-center mx-auto">
+      {title}:&nbsp; <span className="font-bold">{formatCases(numbers)}</span>
+      {changeStatus(change)}
     </div>
   )
 }

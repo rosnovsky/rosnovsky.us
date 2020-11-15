@@ -1,33 +1,37 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import BlogPostPreview from '../Post/blogpostcard'
-import Covid from '../Covid/Covid'
-
-// import styles from './blog-post-preview-list.module.css'
+import FeaturedPost from '../Post/featuredPost'
 
 function BlogPostPreviewGrid(props) {
+  const featuredPost = props.nodes.filter(node => node.featured === true)
+
   return (
     <>
-      <div>
-        <Covid />
-      </div>
-      <div className="relative max-w-5xl mx-auto">
-        {props.title && (
-          <h2 className="mt-10 mb-15 font-semibold text-center text-4xl">
-            {props.title}
-          </h2>
-        )}
-        <div className="mt-12 grid gap-5 max-w-lg mx-auto xl:grid-cols-2 xl:max-w-none lg:grid-cols-2 lg:max-w-none lg:mx-5 xl:gap-10">
+      <div className="mt-20 mx-auto xl:max-w-3xl lg:max-w-2xl md:max-w-xl">
+        <div className="mt-10 mx-auto h-full lg:mx-5  md:max-w-none">
+          {props.title && (
+            <h2 className="ml-5 xs:text-center leading-relaxed mt-10 mb-4 font-semibold text-2xl">
+              {props.title}
+            </h2>
+          )}
+          <div className="h-full">
+            {featuredPost.length > 0 ? (
+              <FeaturedPost post={featuredPost} />
+            ) : null}
+          </div>
           {props.nodes &&
-            props.nodes.map(node => (
-              <div className="h-full" key={node.id}>
-                <BlogPostPreview {...node} isInList />
-              </div>
-            ))}
+            props.nodes.map(node =>
+              node.featured ? null : (
+                <div className="h-full" key={node.id}>
+                  <BlogPostPreview {...node} isInList />
+                </div>
+              )
+            )}
         </div>
         {props.browseMoreHref && (
-          <div className="text-center mt-10 text-xl">
-            <Link to={props.browseMoreHref}>Browse more</Link>
+          <div className="text-center text-gray-700 font-semibold mt-10 text-xl">
+            <Link to={props.browseMoreHref}>More posts</Link>
           </div>
         )}
       </div>
