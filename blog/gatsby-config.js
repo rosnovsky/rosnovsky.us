@@ -13,11 +13,13 @@ const clientConfig = require('./client-config')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  polyfill: false,
   plugins: [
+    `gatsby-plugin-preact`,
     `gatsby-plugin-preload-link-crossorigin`,
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
-    `gatsby-plugin-preact`,
+    'gatsby-plugin-webpack-bundle-analyser-v2',
     {
       resolve: 'gatsby-source-sanity',
       options: {
