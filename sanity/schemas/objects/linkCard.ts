@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import LinkCard from '../../src/LinkCard'
+import LinkCard from '../../src/linkCard'
 
 export default {
   title: 'Link Card',
