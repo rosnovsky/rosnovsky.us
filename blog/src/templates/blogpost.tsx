@@ -22,6 +22,11 @@ export const query = graphql`
       mainImage {
         ...SanityImage
         alt
+        asset {
+          fluid(maxWidth: 600) {
+            ...GatsbySanityImageFluid
+          }
+        }
       }
       title
       slug {
@@ -52,6 +57,9 @@ export const query = graphql`
             }
             asset {
               _id
+              fluid(maxWidth: 700) {
+                ...GatsbySanityImageFluid
+              }
             }
           }
           name
@@ -64,16 +72,11 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const { data, errors } = props
   const post: Post = data && data.post
+
   return (
     <Layout>
       {errors && (
-        <SEO
-          lang="en"
-          meta={[]}
-          tags={[]}
-          image={null}
-          title="GraphQL Errors"
-        />
+        <SEO lang="en" meta={[]} image={null} title="GraphQL Errors" />
       )}
       {post && (
         <SEO

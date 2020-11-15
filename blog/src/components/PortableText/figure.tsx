@@ -1,22 +1,35 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { getFluidGatsbyImage } from 'gatsby-source-sanity'
-import clientConfig from '../../../client-config'
+import { graphql, useStaticQuery } from 'gatsby'
 
-export default ({ node }) => {
-  if (!node || !node.asset || !node.asset._id) {
+export default props => {
+  if (!props.node || !props.node.asset || !props.node.asset._id) {
     return null
   }
-  const fluidProps = getFluidGatsbyImage(
-    node.asset._id,
-    { maxWidth: 675 },
-    clientConfig.sanity
+
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allSanityImageAsset {
+        edges {
+          node {
+            id
+            fluid(maxWidth: 400) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const gatsbyImage = data.allSanityImageAsset.edges.filter(
+    image => image.node.id === props.node.asset._id
   )
 
   return (
     <figure>
-      <Img fluid={fluidProps} alt={node.alt} />
-      <figcaption>{node.caption}</figcaption>
+      <Img fluid={gatsbyImage[0].node.fluid} alt={props.node.alt} />
+      <figcaption>{props.node.caption}</figcaption>
     </figure>
   )
 }

@@ -1,23 +1,20 @@
-// import { format, distanceInWords, differenceInDays } from 'date-fns'
 import React from 'react'
 import { Link } from 'gatsby'
-// import { buildImageObj } from '../../utils/helpers'
-// import { imageUrlFor } from '../../utils/imageUrl'
 import PortableText from '../PortableText/portableText'
 import Container from '../Containers/container'
-// import AuthorList from '../Author/authorlist'
-import Figure from '../PortableText/figure'
+import Image from 'gatsby-image'
 import Header from '../Header/Header'
 
 function BlogPost(props) {
   const { _rawBody, categories, title, mainImage, publishedAt } = props
   const categoryUrl = `/category/${categories[0].slug.current}`
+
   return (
     <>
       <Header />
       <div className="w-screen-xl mx-auto my-10 px-4 sm:px-6">
         <div className="object-cover z-10 rounded-lg">
-          <Figure node={mainImage} />
+          <Image fluid={mainImage.asset.fluid} alt={mainImage.alt} />
         </div>
       </div>
       <article className="relative w-full py-16 overflow-hidden">
@@ -141,31 +138,6 @@ function BlogPost(props) {
               <div className="prose prose-lg text-gray-700 mx-auto">
                 {_rawBody && <PortableText blocks={_rawBody} />}
               </div>
-              {/* <aside className={styles.metaContent}>
-            {publishedAt && (
-              <div className={styles.publishedAt}>
-                {differenceInDays(Date.parse(publishedAt), new Date()) > 3
-                  ? distanceInWords(Date.parse(publishedAt), new Date())
-                  : format(Date.parse(publishedAt), 'MMMM do, yyyy')}
-              </div>
-            )}
-            {authors && <AuthorList items={authors} title="Authors" />}
-            {categories && (
-              <div className={styles.categories}>
-                <h3 className={styles.categoriesHeadline}>Categories</h3>
-                <ul>
-                  {categories.map(category => {
-                    const categoryUrl = `/category/${category.slug.current}`
-                    return (
-                      <li key={category._id}>
-                        <Link to={categoryUrl}>{category.title}</Link>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-          </aside> */}
             </div>
           </div>
         </Container>

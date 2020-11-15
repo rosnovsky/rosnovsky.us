@@ -55,6 +55,11 @@ export const query = graphql`
           publishedAt
           mainImage {
             ...SanityImage
+            asset {
+              fluid(maxWidth: 500) {
+                ...GatsbySanityImageFluid
+              }
+            }
             alt
           }
           title
@@ -99,13 +104,16 @@ const IndexPage = props => {
     )
   }
 
+  const tagsStrings = []
+  const tagValues = site.tags.forEach(tag => tagsStrings.push(tag.value))
+
   return (
     <Layout className="container w-full">
       <SEO
         lang="en"
         description={site.description}
         meta={[]}
-        tags={site.tags}
+        tags={tagsStrings}
         image={null}
         title={site.title}
       />

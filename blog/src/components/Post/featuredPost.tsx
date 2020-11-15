@@ -1,11 +1,12 @@
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 import React from 'react'
 import { getBlogUrl } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'
 import { relativeDate } from '../../utils/helpers'
 
 function FeaturedPost({ post }) {
-  const { title, publishedAt, slug, _rawExcerpt } = post[0]
+  const { title, publishedAt, slug, _rawExcerpt, mainImage } = post[0]
 
   return (
     <div className="flex flex-col xs:text-center md:w-xl lg:w-5xl xl:w-5xl h-full">
@@ -15,14 +16,14 @@ function FeaturedPost({ post }) {
             Featured
           </span>
           <Link className="block" to={getBlogUrl(publishedAt, slug.current)}>
-            <h3 className="text-5xl leading-relaxed font-semibold text-black">
+            <h3 className="text-5xl leading-relaxed font-black text-orange-900">
               {title}
             </h3>
-            <h4 className="text-gray-500 text-sm">
+            <h4 className="text-gray-500 text-sm mb-2">
               {relativeDate(publishedAt)}
             </h4>
-            <p className="text-sm xs:hidden leading-5 font-medium text-orange-600"></p>
-            <div className="mt-3 text-lg leading-relaxed text-gray-800 xs:hidden">
+            <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
+            <div className="mt-3 prose prose-2xl  leading-relaxed text-gray-800 xs:hidden">
               {_rawExcerpt && (
                 <div>
                   <PortableText blocks={_rawExcerpt} />

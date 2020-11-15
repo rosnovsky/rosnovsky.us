@@ -11,6 +11,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
           node {
             id
             publishedAt
+            _rawBody
             slug {
               current
             }
@@ -45,7 +46,7 @@ async function createBlogPostPages(graphql, actions, reporter) {
         edge.node.publishedAt !== null
       )
     })
-    .forEach((edge, index) => {
+    .forEach(edge => {
       const { id, slug = {}, publishedAt } = edge.node
       const dateSegment = format(Date.parse(publishedAt), 'yyyy/MM/dd')
       const path = `/blog/${dateSegment}/${slug.current}/`
