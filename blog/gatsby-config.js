@@ -28,7 +28,7 @@ module.exports = {
         sitemap: 'https://next.rosnovsky.us/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
-    }
+    },
     {
       resolve: 'gatsby-source-sanity',
       options: {
