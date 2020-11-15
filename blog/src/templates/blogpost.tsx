@@ -70,7 +70,7 @@ const BlogPostTemplate = props => {
         <SEO
           lang="en"
           meta={[]}
-          keywords={[]}
+          tags={[]}
           image={null}
           title="GraphQL Errors"
         />
