@@ -19,25 +19,13 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-preact`,
     {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        base64Width: 20,
-        forceBase64Format: `png`, // valid formats: png,jpg,webp
-        useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
-        base64: true,
-        stripMetadata: true,
-        defaultQuality: 8,
-        failOnError: true
-      }
-    },
-    {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
         token: process.env.SANITY_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd,
-        imageOptions: { maxWidth: '976' }
+        imageOptions: { maxWidth: '800' }
       }
     },
     {
