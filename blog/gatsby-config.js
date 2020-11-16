@@ -39,6 +39,7 @@ module.exports = {
         token: process.env.SANITY_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd,
+        useCdn: true,
         imageOptions: { maxWidth: '800' }
       }
     },
