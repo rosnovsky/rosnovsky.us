@@ -63,7 +63,14 @@ const CategoryPostTemplate = props => {
 
   return (
     <Layout>
-      <SEO lang="en" meta={[]} tags={[]} image={null} title={title} />
+      <SEO
+        lang="en"
+        tags={[]}
+        description={''}
+        meta={[]}
+        image={null}
+        title={title}
+      />
       <Container>
         <Header />
         <h1>{title}</h1>

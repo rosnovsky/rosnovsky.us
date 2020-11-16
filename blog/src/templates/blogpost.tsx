@@ -76,13 +76,23 @@ const BlogPostTemplate = props => {
   return (
     <Layout>
       {errors && (
-        <SEO lang="en" meta={[]} image={null} title="GraphQL Errors" />
+        <SEO
+          lang="en"
+          tags={[]}
+          description={toPlainText(post._rawExcerpt)}
+          meta={[]}
+          image={null}
+          title="GraphQL Errors"
+        />
       )}
       {post && (
         <SEO
           title={post.title || 'Untitled'}
           description={toPlainText(post._rawExcerpt)}
           image={post.mainImage}
+          lang="en"
+          meta={[]}
+          tags={[]}
         />
       )}
 

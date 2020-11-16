@@ -60,7 +60,14 @@ const BlogPage = props => {
 
   return (
     <Layout>
-      <SEO lang="en" meta={[]} tags={[]} image={null} title="Archive" />
+      <SEO
+        description={''}
+        lang="en"
+        meta={[]}
+        tags={[]}
+        image={null}
+        title="Archive"
+      />
       <Header />
       <Container>
         <div className="mx-auto">

@@ -6,6 +6,7 @@ import SEO from '../components/SEO/seo'
 const NotFoundPage = () => (
   <Layout>
     <SEO
+      description={''}
       lang="en"
       meta={[]}
       tags={[]}

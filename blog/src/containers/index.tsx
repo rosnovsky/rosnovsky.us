@@ -37,6 +37,7 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO
+        meta={[]}
         lang="en"
         image={[]}
         title={site.title}

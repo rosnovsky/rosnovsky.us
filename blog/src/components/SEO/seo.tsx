@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import { imageUrlFor } from '../../utils/imageUrl'
@@ -79,20 +78,6 @@ function SEO({ description, lang, meta, tags, title, image }) {
       }}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: 'en',
-  meta: [],
-  tags: []
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
 }
 
 export default SEO
