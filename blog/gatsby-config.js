@@ -24,6 +24,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-webpack-bundle-analyser-v2',
     'gatsby-plugin-sitemap',
+    `gatsby-plugin-image`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {

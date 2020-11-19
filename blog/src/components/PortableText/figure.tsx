@@ -1,6 +1,7 @@
 import React from 'react'
-import Img from 'gatsby-image'
+// import { GatsbyImage as Img } from 'gatsby-plugin-image/compat'
 import { graphql, useStaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 
 export default props => {
   if (!props.node || !props.node.asset || !props.node.asset._id) {
@@ -13,7 +14,7 @@ export default props => {
         edges {
           node {
             id
-            fluid(maxWidth: 400) {
+            fluid(maxWidth: 800) {
               ...GatsbySanityImageFluid
             }
           }

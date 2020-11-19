@@ -33,7 +33,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-standard": "^4.1.0",
-    "gatsby": "^2.26.1",
+    "gatsby": "^2.27.0-next.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.0",
     "gatsby-plugin-postcss": "^3.1.0",
@@ -41,7 +41,7 @@
     "gatsby-plugin-preload-link-crossorigin": "^1.0.2",
     "gatsby-plugin-purgecss": "^5.0.0",
     "gatsby-plugin-react-helmet": "^3.4.0",
-    "gatsby-plugin-sharp": "^2.8.0",
+    "gatsby-plugin-sharp": "^2.9.0-next.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.16",
     "gatsby-source-sanity": "^6.0.4",
     "husky": "^5.0.0-beta.0",
@@ -59,8 +59,11 @@
     "start-server-and-test": "^1.11.5"
   },
   "dependencies": {
+    "gatsby-plugin-image": "^0.2.0-next.0",
     "gatsby-plugin-robots-txt": "^1.5.3",
     "gatsby-plugin-sitemap": "^2.6.0",
+    "gatsby-source-filesystem": "^2.5.0",
+    "gatsby-transformer-sharp": "^2.7.0-next.1",
     "get-youtube-id": "^1.0.1",
     "postcss": "^8.1.7",
     "react-hls-player": "^1.1.0",
@@ -72,10 +75,12 @@
     "tailwindcss": "^1.9.5"
   },
   "browserslist": [
-    "last 2 versions",
-    ">10%",
-    "not IE 11",
-    "not IE_Mob 11",
-    "not dead"
+    "last 1 version",
+    ">15%",
+    "not ie_mob 11",
+    "not ie 11",
+    "not dead",
+    "not op_mini all",
+    "not op_mob 59"
   ]
 }

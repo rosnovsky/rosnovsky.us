@@ -21,12 +21,12 @@ export const Loading = () => {
             <div className="">
               <div className="flex flex-col xl:flex-row mx-auto lg:flex-row justify-between xs:mx-10 sm:mx-10 md:mx-10">
                 <CasesCard
-                  numbers={10000000}
+                  numbers={11000000}
                   change={125000}
                   title="🇺🇸 COVID Cases"
                 />
-                <CasesCard numbers={230000} change={1300} title="Dead" />
-                <CasesCard numbers={50000} change={3400} title="In Hospitals" />
+                <CasesCard numbers={240000} change={1300} title="Dead" />
+                <CasesCard numbers={70000} change={3400} title="In Hospitals" />
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@ export const Loading = () => {
 
 export default function Covid() {
   const fetcher = async (url: string) => {
-    const data = await fetch(url, {
+    const data: CovidFetchData = await fetch(url, {
       method: 'GET'
     })
       .then(result => {

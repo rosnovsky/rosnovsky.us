@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage as Img } from 'gatsby-plugin-image/compat'
 import React from 'react'
 import { getBlogUrl, relativeDate } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'

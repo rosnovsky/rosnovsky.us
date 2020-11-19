@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage as Img } from 'gatsby-plugin-image/compat'
 import React from 'react'
 import { getBlogUrl } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'
@@ -22,7 +22,11 @@ function FeaturedPost({ post }) {
             <h4 className="text-gray-500 text-sm mb-2">
               {relativeDate(publishedAt)}
             </h4>
-            <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
+            <Img
+              className="w-full max-h-96"
+              fluid={mainImage.asset.fluid}
+              alt={mainImage.alt}
+            />
             <div className="mt-3 prose prose-2xl  leading-relaxed text-gray-800 xs:hidden">
               {_rawExcerpt && (
                 <div>
