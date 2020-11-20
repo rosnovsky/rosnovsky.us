@@ -15,6 +15,9 @@ const Header = () => {
           From Pacific Northwest to the World
         </h2>
       </section>
+      <section className="text-center text-2xl md:text-xl xs:text-xl sm:text-xl tracking-tighter leading-tight mx-3">
+        Blog. Projects. Ideas.
+      </section>
     </>
   )
 }
