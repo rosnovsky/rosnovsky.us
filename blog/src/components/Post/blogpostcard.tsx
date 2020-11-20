@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import { GatsbyImage as Img } from 'gatsby-plugin-image/compat'
+import Img from 'gatsby-image'
 import React from 'react'
 import { getBlogUrl, relativeDate } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'
@@ -33,14 +33,14 @@ function BlogPostPreview(props) {
                 alt={props.mainImage.alt}
               />
             </div>
-            <div className="mt-5 xs:hidden text-lg leading-6 text-gray-800">
-              {props._rawExcerpt && (
-                <div>
-                  <PortableText blocks={props._rawExcerpt} />
-                </div>
-              )}
-            </div>
           </Link>
+          <div className="mt-5 xs:hidden text-lg leading-6 text-gray-800">
+            {props._rawExcerpt && (
+              <div>
+                <PortableText blocks={props._rawExcerpt} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
