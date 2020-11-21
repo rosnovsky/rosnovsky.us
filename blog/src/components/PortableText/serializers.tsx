@@ -5,6 +5,7 @@ import YouTube from 'react-youtube'
 import ReactPlayer from 'react-player'
 import sanityClient from '@sanity/client'
 import sanityConfig from '../../../client-config'
+import Code from './code'
 
 const client = sanityClient({ ...sanityConfig.sanity, useCdn: true })
 
@@ -12,6 +13,7 @@ const serializers = {
   types: {
     authorReference: ({ node }) => <span>{node.author.name}</span>,
     mainImage: Figure,
+    code: Code,
 
     // Youtube component could be replaced with ReactPlayer, removing 2 dependencies (YouTube and getYoutubeId)
     youtube: ({ node }) => {
@@ -55,13 +57,6 @@ const serializers = {
           // height={'auto'}
         />
       )
-    },
-    code: props => {
-      if (!props.node || !props.node.code) {
-        return null
-      }
-      const { code } = props.node
-      return { code }
     }
   }
 }

@@ -69,6 +69,7 @@
     "react-hls-player": "^1.1.0",
     "react-placeholder": "^4.0.3",
     "react-player": "^2.7.0",
+    "react-syntax-highlighter": "^15.3.0",
     "react-youtube": "^7.13.0",
     "sanity-mux-player": "^0.0.27",
     "swr": "^0.3.9",
