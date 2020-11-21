@@ -2,10 +2,28 @@ import React from 'react'
 // import { GatsbyImage as Img } from 'gatsby-plugin-image/compat'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import { imageUrlFor } from '../../utils/imageUrl'
+import { buildImageObj } from '../../utils/helpers'
 
 export default props => {
   if (!props.node || !props.node.asset || !props.node.asset._id) {
     return null
+  }
+
+  console.log(imageUrlFor(buildImageObj(props.asset)).url())
+
+  if (props.node.asset.extension === 'gif') {
+    return (
+      <figure>
+        <img
+          srcSet={props.node.asset.url}
+          alt={props.nodealt}
+          loading="lazy"
+          className="w-full"
+        />
+        <figcaption>{props.node.caption}</figcaption>
+      </figure>
+    )
   }
 
   const data = useStaticQuery(graphql`

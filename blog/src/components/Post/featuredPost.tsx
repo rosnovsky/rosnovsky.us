@@ -1,12 +1,13 @@
 import { Link } from 'gatsby'
-import { GatsbyImage as Img } from 'gatsby-plugin-image/compat'
+import Img from 'gatsby-image'
 import React from 'react'
 import { getBlogUrl } from '../../utils/helpers'
 import PortableText from '../PortableText/portableText'
 import { relativeDate } from '../../utils/helpers'
 
 function FeaturedPost({ post }) {
-  const { title, publishedAt, slug, _rawExcerpt, mainImage } = post[0]
+  const { title, publishedAt, slug, _rawExcerpt, mainImage } = post
+  console.log(post)
 
   return (
     <div className="flex flex-col xs:text-center md:w-xl lg:w-5xl xl:w-5xl h-full">

@@ -30,8 +30,11 @@ function BlogPost(props) {
         <div className="object-cover z-10 rounded-lg">
           <Image fluid={mainImage.asset.fluid} alt={mainImage.alt} />
         </div>
+        <aside className="w-full mt-10 mx-auto text-center text-2xl leading-relaxed font-semibold ">
+          <PortableText blocks={props._rawExcerpt} />
+        </aside>
       </div>
-      <article className="relative w-full py-16 overflow-hidden">
+      <article className="relative w-full overflow-hidden">
         <Container>
           <div className="relative h-full rounded-2xl bg-white px-4 sm:px-6 lg:px-8">
             <div className="text-lg max-w-prose mx-auto mb-6">

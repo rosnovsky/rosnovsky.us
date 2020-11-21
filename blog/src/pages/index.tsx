@@ -47,7 +47,43 @@ export const query = graphql`
     posts: allSanityPost(
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-      limit: 5
+      limit: 4
+    ) {
+      edges {
+        node {
+          id
+          publishedAt
+          mainImage {
+            ...SanityImage
+            asset {
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
+            }
+            alt
+          }
+          title
+          _rawExcerpt
+          slug {
+            current
+          }
+          categories {
+            title
+            slug {
+              current
+            }
+          }
+          featured
+        }
+      }
+    }
+    featuredPosts: allSanityPost(
+      sort: { fields: [publishedAt], order: DESC }
+      filter: {
+        slug: { current: { ne: null } }
+        publishedAt: { ne: null }
+        featured: { eq: true }
+      }
     ) {
       edges {
         node {
@@ -97,6 +133,7 @@ const IndexPage = props => {
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : []
+  const featuredPost = (data || {}).featuredPosts.edges[0].node
 
   if (!site) {
     throw new Error(
@@ -118,11 +155,12 @@ const IndexPage = props => {
         title={site.title}
       />
       <Container>
-        <Header />
+        <Header page={null} />
         {postNodes && (
           <BlogPostPreviewList
             title="Recent Updates"
             nodes={postNodes}
+            featured={featuredPost}
             browseMoreHref="/blog/"
           />
         )}

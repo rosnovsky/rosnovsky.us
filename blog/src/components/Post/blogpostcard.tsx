@@ -20,12 +20,8 @@ function BlogPostPreview(props) {
             className="block"
             to={getBlogUrl(props.publishedAt, props.slug.current)}
           >
-            <h3 className="mt-2 text-3xl xs:text-center font-semibold mb-2 text-gray-900">
-              <svg viewBox="0 0 464 35">
-                <text x="0" y="25">
-                  {props.title}
-                </text>
-              </svg>
+            <h3 className="mt-2 w-full text-3xl  xs:text-center font-black mb-2 text-gray-900">
+              {props.title}
             </h3>
             <h4 className="text-gray-500 text-sm mb-2">
               {relativeDate(props.publishedAt)}

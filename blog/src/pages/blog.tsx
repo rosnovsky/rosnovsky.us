@@ -68,7 +68,7 @@ const BlogPage = props => {
         image={null}
         title="Archive"
       />
-      <Header />
+      <Header page={null} />
       <Container>
         <div className="mx-auto">
           <h1 className="mt-6 font-black text-center text-6xl">Blog</h1>

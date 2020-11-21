@@ -4,7 +4,7 @@ import BlogPostPreview from '../Post/blogpostcard'
 import FeaturedPost from '../Post/featuredPost'
 
 function BlogPostPreviewGrid(props) {
-  const featuredPost = props.nodes.filter(node => node.featured === true)
+  const featuredPost = props.featured
 
   return (
     <>
@@ -16,9 +16,7 @@ function BlogPostPreviewGrid(props) {
             </h2>
           )}
           <div className="">
-            {featuredPost.length > 0 ? (
-              <FeaturedPost post={featuredPost} />
-            ) : null}
+            {featuredPost && <FeaturedPost post={featuredPost} />}
           </div>
           <div className="grid grid-cols-2 grid-flow-row md:grid-cols-1 md:grid-flow-row sm:grid-cols-1 sm:grid-flow-row xs:grid-cols-1 xs:grid-flow-row">
             {props.nodes &&

@@ -72,7 +72,7 @@ const CategoryPostTemplate = props => {
         title={title}
       />
       <Container>
-        <Header />
+        <Header page={null} />
         <h1>{title}</h1>
         <p>{description}</p>
         {posts && posts.length > 0 && (
