@@ -121,7 +121,7 @@ const IndexPage = props => {
         <Header />
         {postNodes && (
           <BlogPostPreviewList
-            title="Latest blog posts"
+            title="Recent Updates"
             nodes={postNodes}
             browseMoreHref="/blog/"
           />

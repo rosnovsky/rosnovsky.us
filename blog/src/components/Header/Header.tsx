@@ -11,12 +11,9 @@ const Header = () => {
         <h1 className="text-6xl md:text-6xl xs:text-5xl sm:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
           <Link to="/">Rosnovsky Park.</Link>
         </h1>
-        <h2 className="text-center md:text-left sm:text-md xs:text-sm xs:text-gray-600 text-lg mt-5 md:pl-8">
-          From Pacific Northwest to the World
+        <h2 className="text-center text-2xl md:text-xl xs:text-xl sm:text-xl tracking-tighter leading-tight mx-3">
+          Blog. Projects. Ideas.
         </h2>
-      </section>
-      <section className="text-center text-2xl md:text-xl xs:text-xl sm:text-xl tracking-tighter leading-tight mx-3">
-        Blog. Projects. Ideas.
       </section>
     </>
   )
