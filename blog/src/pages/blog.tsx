@@ -71,7 +71,7 @@ const BlogPage = props => {
       <Header />
       <Container>
         <div className="mx-auto">
-          <h1 className="mt-10 font-black text-center text-6xl">Blog</h1>
+          <h1 className="mt-6 font-black text-center text-6xl">Blog</h1>
           {postNodes && postNodes.length > 0 && (
             <BlogPostPreviewGrid nodes={postNodes} />
           )}

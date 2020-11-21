@@ -27,7 +27,7 @@ function FeaturedPost({ post }) {
               fluid={mainImage.asset.fluid}
               alt={mainImage.alt}
             />
-            <div className="mt-3 prose prose-2xl  leading-relaxed text-gray-800 xs:hidden">
+            <div className="mt-3 prose prose-2xl leading-relaxed text-gray-800 xs:hidden">
               {_rawExcerpt && (
                 <div>
                   <PortableText blocks={_rawExcerpt} />

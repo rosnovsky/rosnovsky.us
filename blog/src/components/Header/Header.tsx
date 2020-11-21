@@ -2,8 +2,23 @@ import { Link } from 'gatsby'
 import React from 'react'
 // import { useAuth0 } from '../../utils/auth'
 
-const Header = () => {
+const Header = ({ page }) => {
   // const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0()
+
+  if (page === 'post') {
+    return (
+      <>
+        <section className="flex-col flex items-left xl:justify-between mt-9 mb-16 xs:mb-6 md:mb-12 pl-5 xl:pl-0 lg:pl-0 xs:text-gray-600 sm:text-gray-600 md:text-gray-600">
+          <h1 className="text-4xl md:text-4xl xs:text-2xl sm:text-2xl font-bold tracking-tighter leading-tight md:pr-8">
+            <Link to="/">Rosnovsky Park.</Link>
+          </h1>
+          <h2 className="text-md md:text-md xs:text-md sm:text-md tracking-tighter leading-tight">
+            Blog. Projects. Ideas.
+          </h2>
+        </section>
+      </>
+    )
+  }
 
   return (
     <>
