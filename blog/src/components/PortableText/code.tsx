@@ -1,5 +1,6 @@
 import React from 'react'
-import SyntaxHighlighter from 'react-syntax-highlighter'
+import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 const Code = ({ node }) => {
   if (!node || !node.code) {
@@ -7,7 +8,9 @@ const Code = ({ node }) => {
   }
   const { language, code } = node
   return (
-    <SyntaxHighlighter language={language || 'text'}>{code}</SyntaxHighlighter>
+    <SyntaxHighlighter language={language || 'text'} style={nightOwl}>
+      {code}
+    </SyntaxHighlighter>
   )
 }
 
