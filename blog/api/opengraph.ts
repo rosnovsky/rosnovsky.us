@@ -1,8 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 
 export default (request: NowRequest, response: NowResponse) => {
-  // const { postId } = request.query
-
   // Fetch opengraph, title, date, excerpt and cover image from Sanity
 
   // If opengraph already exists and last updated date is not within the past 10 seconds, return 304 Not Modified and quit
