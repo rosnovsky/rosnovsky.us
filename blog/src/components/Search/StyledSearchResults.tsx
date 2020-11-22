@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import SearchResult from "./searchResult"
+import styled, { css } from 'styled-components'
+import SearchResult from './SearchResult'
 const Popover = css`
   max-height: 80vh;
   overflow: scroll;
