@@ -12,6 +12,8 @@ export default (request: NowRequest, response: NowResponse) => {
   // Feed this HTML to ML
 
   // Take results feed them to Algolia and to generatedDescription field in Sanity to be used as post metadata
+  console.log(JSON.stringify(request.body))
+  console.log(JSON.stringify(request.headers))
 
   response.status(200).send(JSON.stringify(request.headers))
 }
