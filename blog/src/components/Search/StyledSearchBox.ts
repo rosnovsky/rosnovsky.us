@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import SearchBox from './searchBox'
+import SearchBox from './SearchBox'
 const open = css`
   width: 10em;
   background: ${({ theme }) => theme.background};
