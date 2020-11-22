@@ -156,6 +156,7 @@ const IndexPage = props => {
       />
       <Container>
         <Header page={null} />
+
         {postNodes && (
           <BlogPostPreviewList
             title="Recent Updates"
