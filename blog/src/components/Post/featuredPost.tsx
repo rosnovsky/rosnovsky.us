@@ -7,7 +7,6 @@ import { relativeDate } from '../../utils/helpers'
 
 function FeaturedPost({ post }) {
   const { title, publishedAt, slug, _rawExcerpt, mainImage } = post
-  console.log(post)
 
   return (
     <div className="flex flex-col xs:text-center md:w-xl lg:w-5xl xl:w-5xl h-full">

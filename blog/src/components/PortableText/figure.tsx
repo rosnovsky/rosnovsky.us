@@ -10,8 +10,6 @@ export default props => {
     return null
   }
 
-  console.log(imageUrlFor(buildImageObj(props.asset)).url())
-
   if (props.node.asset.extension === 'gif') {
     return (
       <figure>

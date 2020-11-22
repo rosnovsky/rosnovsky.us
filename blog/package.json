@@ -59,6 +59,7 @@
     "start-server-and-test": "^1.11.5"
   },
   "dependencies": {
+    "gatsby-plugin-algolia": "^0.16.1",
     "gatsby-plugin-image": "^0.2.0-next.0",
     "gatsby-plugin-robots-txt": "^1.5.3",
     "gatsby-plugin-sitemap": "^2.7.0",
