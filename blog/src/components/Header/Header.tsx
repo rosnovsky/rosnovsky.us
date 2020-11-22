@@ -1,6 +1,8 @@
 import { Link } from 'gatsby'
 import React from 'react'
 // import { useAuth0 } from '../../utils/auth'
+import Search from '../Search'
+const searchIndices = [{ name: `blog_posts`, title: `title` }]
 
 const Header = ({ page }) => {
   // const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0()
@@ -14,6 +16,7 @@ const Header = ({ page }) => {
           </h1>
           <h2 className="text-md md:text-md xs:text-md sm:text-md tracking-tighter leading-tight">
             Blog. Projects. Ideas.
+            <Search indices={searchIndices} />
           </h2>
         </section>
       </>
@@ -29,6 +32,7 @@ const Header = ({ page }) => {
         <h2 className="text-center text-2xl md:text-xl xs:text-xl sm:text-xl tracking-tighter leading-tight mx-3">
           Blog. Projects. Ideas.
         </h2>
+        <Search indices={searchIndices} />
       </section>
     </>
   )

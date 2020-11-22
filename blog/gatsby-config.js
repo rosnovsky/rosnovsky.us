@@ -3,6 +3,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV || 'development'}`
 })
 
+const format = require('date-fns')
+
 const resolveConfig = require('tailwindcss/resolveConfig')
 const tailwindConfig = require('./tailwind.config.js')
 
@@ -46,12 +48,22 @@ const queries = [
   {
     query: myQuery,
     transformer: ({ data }) => {
+      function getBlogUrl(publishedAt, slug) {
+        return `/blog/${format.format(
+          Date.parse(publishedAt),
+          'yyyy/MM/dd'
+        )}/${slug.current || slug}/`
+      }
       const posts = data.allSanityPost.edges.map(({ node }) => ({
         objectID: node.objectID,
         title: node.title,
         excerpt: node._rawExcerpt[0].children[0].text,
         publishedAt: node.publishedAt,
-        slug: node.slug.current,
+        url: `https://next.rosnovsky.us${getBlogUrl(
+          node.publishedAt,
+          node.slug.current
+        )}`,
+        slug: `${getBlogUrl(node.publishedAt, node.slug.current)}`,
         coverImage: node.mainImage.asset.url,
         categories: node.categories.map(category => category.title)
       }))
@@ -61,7 +73,7 @@ const queries = [
     settings: {
       // optional, any index settings
     },
-    matchFields: ['slug', 'publishedAt'] // Array<String> overrides main match fields, optional
+    matchFields: ['url', 'publishedAt'] // Array<String> overrides main match fields, optional
   }
 ]
 
@@ -134,10 +146,10 @@ module.exports = {
         settings: {
           // optional, any index settings
         },
-        enablePartialUpdates: false, // default: false
+        enablePartialUpdates: true, // default: false
         matchFields: ['slug', 'publishedAt'], // Array<String> default: ['modified']
         concurrentQueries: true, // default: true
-        skipIndexing: false // default: false, useful for e.g. preview deploys or local development
+        skipIndexing: !isProd // default: false, useful for e.g. preview deploys or local development
       }
     }
   ]
