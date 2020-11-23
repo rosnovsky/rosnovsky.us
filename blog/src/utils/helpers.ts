@@ -34,7 +34,7 @@ export function buildImageObj(source = { asset: {} }) {
   if (source.crop) imageObj.crop = source.crop
   if (source.hotspot) imageObj.hotspot = source.hotspot
 
-  
+  return imageObj
 }
 
 export function buildGaleryImageObj(node) {

@@ -9,8 +9,20 @@
     }
   }
   mainImage: {
-    SanityImage: Record<string, any>
-    alt: string
+      alt: string
+      asset: {
+        _id: string
+        fluid: {
+          aspectRatio: number
+          base64: string
+          sizes: string
+          src: string
+          srcSet: string
+          srcSetWebp: string
+          srcWebp: string
+        }
+      crop: Record<string, unknown>
+    }
   }
   title: string
   slug: {
