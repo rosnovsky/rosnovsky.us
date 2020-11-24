@@ -28,7 +28,7 @@ export default props => {
           node {
             id
             fluid(maxWidth: 800) {
-              ...GatsbySanityImageFluid
+              ...GatsbySanityImageFluid_withWebp
             }
           }
         }
