@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Figure from './figure'
 import getYouTubeId from 'get-youtube-id'
 import YouTube from 'react-youtube'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/file'
 import sanityClient from '@sanity/client'
 import sanityConfig from '../../../client-config'
 import Code from './code'
@@ -43,15 +43,6 @@ const serializers = {
         <ReactPlayer
           url={`https://stream.mux.com/${asset}.m3u8`}
           autoplay={false}
-          light={`https://image.mux.com/${asset}/thumbnail.png?width=1280&height=720&fit_mode=pad`}
-          config={{
-            file: {
-              attributes: {
-                poster: `https://image.mux.com/${asset}/thumbnail.png?width=1280&height=720&fit_mode=pad`
-              }
-            }
-          }}
-          controls={true}
           pip={true}
           width={'100%'}
           // height={'auto'}
