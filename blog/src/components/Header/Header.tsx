@@ -16,7 +16,7 @@ const Header = ({ page }) => {
           </h1>
           <h2 className="text-md md:text-md xs:text-md sm:text-md tracking-tighter leading-tight">
             Blog. Projects. Ideas.
-            <Search indices={searchIndices} />
+            {/* <Search indices={searchIndices} /> */}
           </h2>
         </section>
       </>
@@ -32,7 +32,7 @@ const Header = ({ page }) => {
         <h2 className="text-center text-2xl md:text-xl xs:text-xl sm:text-xl tracking-tighter leading-tight mx-3">
           Blog. Projects. Ideas.
         </h2>
-        <Search indices={searchIndices} />
+        {/* <Search indices={searchIndices} /> */}
       </section>
     </>
   )
