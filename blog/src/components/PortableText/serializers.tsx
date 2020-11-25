@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Figure from './figure'
-import getYouTubeId from 'get-youtube-id'
-import YouTube from 'react-youtube'
+// import getYouTubeId from 'get-youtube-id'
+// import YouTube from 'react-youtube'
 import ReactPlayer from 'react-player/file'
+import Youtube from 'react-player/youtube'
 import sanityClient from '@sanity/client'
 import sanityConfig from '../../../client-config'
 import Code from './code'
@@ -18,10 +19,16 @@ const serializers = {
     // Youtube component could be replaced with ReactPlayer, removing 2 dependencies (YouTube and getYoutubeId)
     youtube: ({ node }) => {
       const { url } = node
-      const id = getYouTubeId(url)
+      // const id = getYouTubeId(url)
       return (
         <div className="w-full">
-          <YouTube containerClassName={'youtubeContainer'} videoId={id} />
+          <Youtube url={url} 
+          className="youtubeContainer"
+          autoplay={false}
+          pip={true}
+          width={'100%'} 
+          />
+          {/* <YouTube containerClassName={'youtubeContainer'} videoId={id} /> */}
         </div>
       )
     },
