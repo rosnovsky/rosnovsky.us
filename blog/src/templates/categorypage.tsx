@@ -1,11 +1,11 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Container from '../components/Containers/container'
-import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
-import SEO from '../components/SEO/seo'
-import Layout from '../containers/layout'
-import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardslist'
-import Header from '../components/Header/Header'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Container from '../components/Containers/container';
+import GraphQLErrorList from '../components/Errors/graphqlerrorlist';
+import SEO from '../components/SEO/seo';
+import Layout from '../containers/layout';
+import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardslist';
+import Header from '../components/Header/Header';
 
 // Add “posts” to the GraphQL query
 export const query = graphql`
@@ -43,22 +43,22 @@ export const query = graphql`
       }
     }
   }
-`
-const CategoryPostTemplate = props => {
-  const { data = {}, errors } = props
-  const { title, description = '', posts } = data.category || {}
+`;
+const CategoryPostTemplate = (props) => {
+  const { data = {}, errors } = props;
+  const { title, description = '', posts } = data.category || {};
 
   const visiblePosts =
     // process.env.NODE_ENV === 'production'
     // ? posts.filter(post => !post.publishedAt === null)
-    posts
+    posts;
 
   if (errors) {
     return (
       <Layout>
         <GraphQLErrorList errors={errors} />
       </Layout>
-    )
+    );
   }
 
   return (
@@ -66,7 +66,7 @@ const CategoryPostTemplate = props => {
       <SEO
         lang="en"
         tags={[]}
-        description={''}
+        description=""
         meta={[]}
         image={null}
         title={title}
@@ -80,7 +80,7 @@ const CategoryPostTemplate = props => {
         )}
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default CategoryPostTemplate
+export default CategoryPostTemplate;

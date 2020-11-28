@@ -1,25 +1,25 @@
-import React from 'react'
+import React from 'react';
 
 interface CovidData {
-  title: string
-  numbers: number
-  change: number
+  title: string;
+  numbers: number;
+  change: number;
 }
 
 export default function TotalCases(props: CovidData) {
-  const { title, numbers, change }: CovidData = props
+  const { title, numbers, change }: CovidData = props;
 
-  const formatCases: (cases: number) => String = function(cases) {
+  const formatCases: (cases: number) => String = function (cases) {
     if (cases <= 9999) {
-      return Intl.NumberFormat().format(cases)
-    } else if (cases >= 10000 && cases <= 1010000) {
-      return `${(cases / 1000).toFixed(2)} K`
-    } else {
-      return `${(cases / 1000000).toFixed(2)} M`
+      return Intl.NumberFormat().format(cases);
     }
-  }
+    if (cases >= 10000 && cases <= 1010000) {
+      return `${(cases / 1000).toFixed(2)} K`;
+    }
+    return `${(cases / 1000000).toFixed(2)} M`;
+  };
 
-  const changeStatus: (cases: number) => JSX.Element = function(cases) {
+  const changeStatus: (cases: number) => JSX.Element = function (cases) {
     return cases < 0 ? (
       <>
         <div className="ml-1 flex flex-start items-baseline text-sm leading-5 font-semibold text-green-600">
@@ -56,13 +56,13 @@ export default function TotalCases(props: CovidData) {
           {formatCases(change)}
         </div>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <div className="flex items-center text-center mx-auto">
       {title}:&nbsp; <span className="font-bold">{formatCases(numbers)}</span>
       {changeStatus(change)}
     </div>
-  )
+  );
 }

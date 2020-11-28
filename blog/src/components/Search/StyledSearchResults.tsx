@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components'
-import SearchResult from './SearchResult'
+import styled, { css } from 'styled-components';
+import SearchResult from './SearchResult';
+
 const Popover = css`
   max-height: 80vh;
   overflow: scroll;
@@ -15,9 +16,9 @@ const Popover = css`
   padding: 1em;
   border-radius: 2px;
   background: ${({ theme }) => theme.background};
-`
+`;
 export default styled(SearchResult)`
-  display: ${props => (props.show ? `block` : `none`)};
+  display: ${(props) => (props.show ? `block` : `none`)};
   ${Popover}
   .HitCount {
     display: flex;
@@ -46,4 +47,4 @@ export default styled(SearchResult)`
       width: 70px;
     }
   }
-`
+`;

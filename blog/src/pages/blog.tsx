@@ -1,12 +1,12 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { mapEdgesToNodes } from '../utils/helpers'
-import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardslist'
-import Container from '../components/Containers/container'
-import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
-import SEO from '../components/SEO/seo'
-import Layout from '../containers/layout'
-import Header from '../components/Header/Header'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { mapEdgesToNodes } from '../utils/helpers';
+import BlogPostPreviewGrid from '../components/PostGrid/blogpostcardslist';
+import Container from '../components/Containers/container';
+import GraphQLErrorList from '../components/Errors/graphqlerrorlist';
+import SEO from '../components/SEO/seo';
+import Layout from '../containers/layout';
+import Header from '../components/Header/Header';
 
 export const query = graphql`
   query ArchivePageQuery {
@@ -43,25 +43,25 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-const BlogPage = props => {
-  const { data, errors } = props
+const BlogPage = (props) => {
+  const { data, errors } = props;
 
   if (errors) {
     return (
       <Layout>
         <GraphQLErrorList errors={errors} />
       </Layout>
-    )
+    );
   }
 
-  const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
+  const postNodes = data && data.posts && mapEdgesToNodes(data.posts);
 
   return (
     <Layout>
       <SEO
-        description={''}
+        description=""
         lang="en"
         meta={[]}
         tags={[]}
@@ -78,7 +78,7 @@ const BlogPage = props => {
         </div>
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;

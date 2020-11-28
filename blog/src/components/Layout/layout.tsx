@@ -1,10 +1,10 @@
-import { Link } from 'gatsby'
-import React from 'react'
-import Alert from '../Alert/Alert'
-import '../../styles/style.css'
-import Covid from '../Covid/Covid'
+import { Link } from 'gatsby';
+import React from 'react';
+import Alert from '../Alert/Alert';
+import '../../styles/style.css';
+import Covid from '../Covid/Covid';
 
-const Layout = ({ children }) => (
+const Layout: React.FC<{ children: JSX.Element[] }> = ({ children }) => (
   <>
     <Alert />
     <Covid />
@@ -36,7 +36,7 @@ const Layout = ({ children }) => (
               >
                 About me
               </Link>
-              <div className="px-5 py-2"></div>
+              <div className="px-5 py-2" />
             </div>
           </nav>
           <div className="mt-8 flex justify-center space-x-6">
@@ -98,6 +98,6 @@ const Layout = ({ children }) => (
       </footer>
     </div>
   </>
-)
+);
 
-export default Layout
+export default Layout;

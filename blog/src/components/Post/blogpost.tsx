@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import PortableText from '../PortableText/portableText'
-import Container from '../Containers/container'
-import Image from 'gatsby-image'
-import Header from '../Header/Header'
+import React from 'react';
+import { Link } from 'gatsby';
+import Image from 'gatsby-image';
+import PortableText from '../PortableText/portableText';
+import Container from '../Containers/container';
+import Header from '../Header/Header';
 
 function BlogPost(props) {
-  const { _rawBody, categories, title, mainImage, publishedAt } = props
-  const categoryUrl = `/category/${categories[0].slug.current}`
+  const { _rawBody, categories, title, mainImage, publishedAt } = props;
+  const categoryUrl = `/category/${categories[0].slug.current}`;
 
   return (
     <>
@@ -23,7 +23,7 @@ function BlogPost(props) {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
-          day: 'numeric'
+          day: 'numeric',
         }).format(Date.parse(publishedAt))}
       </h4>
       <div className="w-screen-xl mx-auto my-10 px-4 sm:px-6">
@@ -46,7 +46,7 @@ function BlogPost(props) {
         </Container>
       </article>
     </>
-  )
+  );
 }
 
-export default BlogPost
+export default BlogPost;

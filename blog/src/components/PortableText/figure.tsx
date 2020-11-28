@@ -1,10 +1,10 @@
-import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 
-export default props => {
+export default (props) => {
   if (!props.node || !props.node.asset || !props.node.asset._id) {
-    return null
+    return null;
   }
 
   if (props.node.asset.extension === 'gif') {
@@ -18,7 +18,7 @@ export default props => {
         />
         <figcaption>{props.node.caption}</figcaption>
       </figure>
-    )
+    );
   }
 
   const data = useStaticQuery(graphql`
@@ -34,16 +34,16 @@ export default props => {
         }
       }
     }
-  `)
+  `);
 
   const gatsbyImage = data.allSanityImageAsset.edges.filter(
-    image => image.node.id === props.node.asset._id
-  )
+    (image) => image.node.id === props.node.asset._id
+  );
 
   return (
     <figure>
       <Img fluid={gatsbyImage[0].node.fluid} alt={props.node.alt} />
       <figcaption>{props.node.caption}</figcaption>
     </figure>
-  )
-}
+  );
+};

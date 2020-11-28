@@ -1,10 +1,10 @@
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link } from 'gatsby';
+import React from 'react';
 // import { useAuth0 } from '../../utils/auth'
-import Search from '../Search'
-const searchIndices = [{ name: `blog_posts`, title: `title` }]
+// import Search from '../Search'
+// const searchIndices = [{ name: `blog_posts`, title: `title` }]
 
-const Header = ({ page }) => {
+const Header: React.FC<{ page: string }> = ({ page }) => {
   // const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0()
 
   if (page === 'post') {
@@ -20,7 +20,7 @@ const Header = ({ page }) => {
           </h2>
         </section>
       </>
-    )
+    );
   }
 
   return (
@@ -35,7 +35,7 @@ const Header = ({ page }) => {
         {/* <Search indices={searchIndices} /> */}
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

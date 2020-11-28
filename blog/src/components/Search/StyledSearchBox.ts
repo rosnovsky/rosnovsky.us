@@ -1,19 +1,20 @@
-import styled, { css } from 'styled-components'
-import SearchBox from './SearchBox'
+import styled, { css } from 'styled-components';
+import SearchBox from './SearchBox';
+
 const open = css`
   width: 10em;
   background: ${({ theme }) => theme.background};
   cursor: text;
   margin-left: -1.6em;
   padding-left: 1.6em;
-`
+`;
 const closed = css`
   width: 0;
   background: transparent;
   cursor: pointer;
   margin-left: -1em;
   padding-left: 1em;
-`
+`;
 export default styled(SearchBox)`
   display: flex;
   flex-direction: row-reverse;
@@ -37,4 +38,4 @@ export default styled(SearchBox)`
     color: ${({ theme }) => theme.foreground};
     pointer-events: none;
   }
-`
+`;

@@ -1,40 +1,42 @@
-import { format, isFuture } from 'date-fns'
-import clientConfig from '../../client-config'
-import { getFluidGatsbyImage } from 'gatsby-source-sanity'
+// import { SanityAssetDocument, SanityImageAssetDocument } from '@sanity/client';
+import { SanityAsset, SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { format, isFuture } from 'date-fns';
+import { getFluidGatsbyImage } from 'gatsby-source-sanity';
+// import { SanityDocument } from 'gatsby-source-sanity/lib-es5/types/sanity';
+import clientConfig from '../../client-config';
 
 export function cn(...args) {
-  return args.filter(Boolean).join(' ')
+  return args.filter(Boolean).join(' ');
 }
 
 export function mapEdgesToNodes(data) {
-  if (!data.edges) return []
-  return data.edges.map(edge => edge.node)
+  if (!data.edges) return [];
+  return data.edges.map((edge) => edge.node);
 }
 
 export function filterOutDocsWithoutSlugs({ slug }) {
-  return (slug || {}).current
+  return (slug || {}).current;
 }
 
 export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
-  return !isFuture(Date.parse(publishedAt))
+  return !isFuture(Date.parse(publishedAt));
 }
 
 export function getBlogUrl(publishedAt, slug) {
-  return `/blog/${format(
-    Date.parse(publishedAt),
-    'yyyy/MM/dd'
-  )}/${slug.current || slug}/`
+  return `/blog/${format(Date.parse(publishedAt), 'yyyy/MM/dd')}/${
+    slug.current || slug
+  }/`;
 }
 
-export function buildImageObj(source = { asset: {} }) {
-  const imageObj = {
-    asset: { _ref: source.asset._ref || source.asset._id }
-  }
+export function buildImageObj(source: SanityImageObject) {
+  const imageObj: SanityAsset = {
+    asset: { _ref: source.asset._ref || source.asset._id },
+  };
 
-  if (source.crop) imageObj.crop = source.crop
-  if (source.hotspot) imageObj.hotspot = source.hotspot
+  if (source.crop) imageObj.crop = source.crop;
+  if (source.hotspot) imageObj.hotspot = source.hotspot;
 
-  return imageObj
+  return imageObj;
 }
 
 export function buildGaleryImageObj(node) {
@@ -42,58 +44,56 @@ export function buildGaleryImageObj(node) {
     node.asset._id,
     { maxWidth: 1024 },
     clientConfig.sanity
-  )
+  );
   const thumb = getFluidGatsbyImage(
     node.asset._id,
     { maxWidth: 360, maxHeight: 360 },
     clientConfig.sanity
-  )
+  );
 
-  return { thumb, full }
+  return { thumb, full };
 }
 
 export function toPlainText(blocks): string {
   if (!blocks) {
-    return ''
+    return '';
   }
   return blocks
-    .map(block => {
+    .map((block) => {
       if (block._type !== 'block' || !block.children) {
-        return ''
+        return '';
       }
-      return block.children.map(child => child.text).join('')
+      return block.children.map((child) => child.text).join('');
     })
-    .join('\n\n')
+    .join('\n\n');
 }
 
-export const relativeDate = publishedDate => {
+export const relativeDate = (publishedDate) => {
   const rtf1 = new Intl.RelativeTimeFormat('en', {
-    numeric: 'auto'
-  })
-  const today = Date.now()
-  const postDate = Date.parse(publishedDate)
-  const differenceInDays = Math.floor(
-    (postDate - today) / 1000 / 60 / 60 / 24
-  )
+    numeric: 'auto',
+  });
+  const today = Date.now();
+  const postDate = Date.parse(publishedDate);
+  const differenceInDays = Math.floor((postDate - today) / 1000 / 60 / 60 / 24);
 
   const realDifference = (days: number) => {
-    const absDays = Math.abs(days)
+    const absDays = Math.abs(days);
     if (absDays < 7) {
-      return { days, unit: 'day' }
+      return { days, unit: 'day' };
     }
     if (absDays >= 7 && absDays <= 30) {
-      return { days: Math.floor(days / 7), unit: 'week' }
+      return { days: Math.floor(days / 7), unit: 'week' };
     }
     if (absDays > 30 && absDays <= 365) {
-      return { days: Math.floor(days / 30), unit: 'month' }
+      return { days: Math.floor(days / 30), unit: 'month' };
     }
     if (absDays > 365) {
-      return { days: Math.floor(days / 365), unit: 'year' }
+      return { days: Math.floor(days / 365), unit: 'year' };
     }
-  }
+  };
 
   return rtf1.format(
     realDifference(differenceInDays).days,
     realDifference(differenceInDays).unit
-  )
-}
+  );
+};

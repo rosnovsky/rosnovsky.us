@@ -1,16 +1,16 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../utils/helpers'
-import BlogPostPreviewList from '../components/PostGrid/blogpostcardslist'
-import Container from '../components/Containers/container'
-import GraphQLErrorList from '../components/Errors/graphqlerrorlist'
-import SEO from '../components/SEO/seo'
-import Layout from '../containers/layout'
-import Header from '../components/Header/Header'
+  filterOutDocsPublishedInTheFuture,
+} from '../utils/helpers';
+import BlogPostPreviewList from '../components/PostGrid/blogpostcardslist';
+import Container from '../components/Containers/container';
+import GraphQLErrorList from '../components/Errors/graphqlerrorlist';
+import SEO from '../components/SEO/seo';
+import Layout from '../containers/layout';
+import Header from '../components/Header/Header';
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -114,35 +114,35 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-const IndexPage = props => {
-  const { data, errors } = props
+const IndexPage = (props) => {
+  const { data, errors } = props;
 
   if (errors) {
     return (
       <Layout>
         <GraphQLErrorList errors={errors} />
       </Layout>
-    )
+    );
   }
 
-  const site = (data || {}).site
+  const { site } = data || {};
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
-    : []
-  const featuredPost = (data || {}).featuredPosts.edges[0].node
+    : [];
+  const featuredPost = (data || {}).featuredPosts.edges[0].node;
 
   if (!site) {
     throw new Error(
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server'
-    )
+    );
   }
 
-  const tagsStrings = []
-  const tagValues = site.tags.forEach(tag => tagsStrings.push(tag.value))
+  const tagsStrings = [];
+  const tagValues = site.tags.forEach((tag) => tagsStrings.push(tag.value));
 
   return (
     <Layout className="container w-full">
@@ -167,7 +167,7 @@ const IndexPage = props => {
         )}
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

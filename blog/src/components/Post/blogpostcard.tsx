@@ -1,11 +1,11 @@
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import React from 'react'
-import { getBlogUrl, relativeDate } from '../../utils/helpers'
-import PortableText from '../PortableText/portableText'
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
+import React from 'react';
+import { getBlogUrl, relativeDate } from '../../utils/helpers';
+import PortableText from '../PortableText/portableText';
 
 function BlogPostPreview(props) {
-  const categoryUrl = `/category/${props.categories[0].slug.current}`
+  const categoryUrl = `/category/${props.categories[0].slug.current}`;
 
   return (
     <div className="flex flex-col xs:text-center md:max-w-lg lg:w-5xl xl:w-5xl h-full mb-3">
@@ -44,7 +44,7 @@ function BlogPostPreview(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default BlogPostPreview
+export default BlogPostPreview;

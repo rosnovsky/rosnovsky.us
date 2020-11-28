@@ -1,23 +1,23 @@
-import { Link } from 'gatsby'
-import React from 'react'
-import BlogPostPreview from '../Post/blogpostcard'
-import FeaturedPost from '../Post/featuredPost'
-import algoliasearch from 'algoliasearch/lite'
+import { Link } from 'gatsby';
+import React from 'react';
+import algoliasearch from 'algoliasearch/lite';
 import {
   InstantSearch,
   SearchBox,
   Hits,
-  connectHighlight
-} from 'react-instantsearch-dom'
-import '../../styles/algolia.css'
+  connectHighlight,
+} from 'react-instantsearch-dom';
+import BlogPostPreview from '../Post/blogpostcard';
+import FeaturedPost from '../Post/featuredPost';
+import '../../styles/algolia.css';
 
 function BlogPostPreviewGrid(props) {
-  const featuredPost = props.featured
+  const featuredPost = props.featured;
 
   const searchClient = algoliasearch(
     'MX9C0DBFF5',
     '7f731b4f232d7b9e557319bc45e709fb'
-  )
+  );
 
   return (
     <>
@@ -33,7 +33,7 @@ function BlogPostPreviewGrid(props) {
           </div>
           <div className="grid grid-cols-2 grid-flow-row md:grid-cols-1 md:grid-flow-row sm:grid-cols-1 sm:grid-flow-row xs:grid-cols-1 xs:grid-flow-row">
             {props.nodes &&
-              props.nodes.map(node =>
+              props.nodes.map((node) =>
                 node.featured ? null : (
                   <div key={node.id}>
                     <BlogPostPreview {...node} isInList />
@@ -49,7 +49,7 @@ function BlogPostPreviewGrid(props) {
         )}
       </div>
     </>
-  )
+  );
 }
 
-export default BlogPostPreviewGrid
+export default BlogPostPreviewGrid;
