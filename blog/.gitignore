@@ -60,7 +60,6 @@ public
 
 # Yarn
 yarn-error.log
-yarn.lock
 .pnp/
 .pnp.js
 
