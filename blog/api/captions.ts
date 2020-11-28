@@ -20,12 +20,23 @@ type Payload = {
   }
 }
 
+type failedValidations = {
+  failure: boolean
+  sanityPayload: boolean,
+  ids: boolean
+}
+
 export default async (request: NowRequest, response: NowResponse) => {
   // Triggered on publish from Sanity via a webhook
-  
-  // TODO: validate body
+
+  const validationStatus = payloadValidation(request)
+
+  if (validationStatus.failure === true) {
+    return response.status(400).send(JSON.stringify({error: "Bad Request", message: `Request payload is missing ${validationStatus.sanityPayload ? "Project ID or Dataset (or the entire request body)" : "document ids (created, updated, deleted, or all"}`}))
+  }
+
   const { ids }: Payload = request.body;
-  
+
   // @ts-ignore
   const image = await client.getDocument(ids.updated[0])
   .then(image => {
@@ -55,4 +66,19 @@ export default async (request: NowRequest, response: NowResponse) => {
   
   // Eventually, move to Cloudflare Timed functions: a cron job would run periodically and update image captions
 
+}
+
+const payloadValidation = (payload: NowRequest): failedValidations => {
+  // Payload Validation
+  if(payload.body === undefined) return {failure: true, sanityPayload: true, ids: false}
+
+  if(payload.body.ids === undefined || payload.body.projectId === undefined || payload.body.dataset === undefined) return {failure: true, ids: false, sanityPayload: true} 
+
+  const { ids }: Payload = payload.body;
+  
+  if (ids === undefined || !('created' in ids) || !('updated' in ids) || !('deleted' in ids) || !('all' in ids)) return {failure: true, ids: true, sanityPayload: false }
+
+  if(ids.all.length === 0 || (ids.created.length === 0 && ids.updated.length === 0 && ids.deleted.length === 0)) return {failure: true, ids: true, sanityPayload: false }
+
+  return {failure: false, sanityPayload: false, ids: false}
 }
