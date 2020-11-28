@@ -1,5 +1,5 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-import sanityClient from '@sanity/client'
+const sanityClient = require('@sanity/client')
 
 const client = sanityClient({
   projectId: 'n3o7a5dl',
