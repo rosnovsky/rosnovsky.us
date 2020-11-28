@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Container from '../Containers/Container';
+import Container from '../Containers/container';
 
 const Alert = () => (
   <div className="border-b border-accent-2 construction">

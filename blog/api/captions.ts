@@ -25,7 +25,8 @@ export default async (request: NowRequest, response: NowResponse) => {
   
   // TODO: validate body
   const { ids }: Payload = request.body;
-
+  
+  // @ts-ignore
   const image = await client.getDocument(ids.updated[0])
   .then(image => {
     response.status(200).send(JSON.stringify(image))
