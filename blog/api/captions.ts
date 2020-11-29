@@ -1,5 +1,8 @@
+import { SanityAssetDocument, SanityImageAssetDocument } from '@sanity/client'
+import { SanityAsset } from '@sanity/image-url/lib/types/types'
 import { NowRequest, NowResponse } from '@vercel/node'
 const sanityClient = require('@sanity/client')
+// import { SanityDocument } from '';
 
 const client = sanityClient({
   projectId: 'n3o7a5dl',
@@ -39,7 +42,7 @@ export default async (request: NowRequest, response: NowResponse) => {
 
   // @ts-ignore
   const image = await client.getDocument(ids.updated[0])
-  .then(image => {
+  .then((image: SanityImageAssetDocument) => {
     response.status(200).send(JSON.stringify(image))
   })
   

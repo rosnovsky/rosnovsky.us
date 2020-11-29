@@ -74,6 +74,7 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.7.0-next.1",
     "get-youtube-id": "^1.0.1",
+    "groq": "^2.0.9",
     "postcss": "^8.1.8",
     "react": "^17.0.1",
     "react-hls-player": "^1.1.0",

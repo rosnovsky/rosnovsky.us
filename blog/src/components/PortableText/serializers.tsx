@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import getYouTubeId from 'get-youtube-id'
 // import YouTube from 'react-youtube'
+import { Link } from 'gatsby';
+import { getBlogUrl } from '../../utils/helpers';
 import ReactPlayer from 'react-player/file';
 import Youtube from 'react-player/youtube';
 import sanityClient from '@sanity/client';
@@ -11,6 +13,30 @@ import Code from './code';
 const client = sanityClient({ ...sanityConfig.sanity, useCdn: true });
 
 const serializers = {
+  marks: {
+    internalLink: ({ mark, children }) => {
+      return (
+        <Link
+          to={getBlogUrl(
+            mark.reference.publishedAt,
+            mark.reference.slug.current
+          )}
+        >
+          {children}
+        </Link>
+      );
+    },
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
+      return blank ? (
+        <a href={href} target="_blank" rel="noopener">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    },
+  },
   types: {
     authorReference: ({ node }) => <span>{node.author.name}</span>,
     mainImage: Figure,

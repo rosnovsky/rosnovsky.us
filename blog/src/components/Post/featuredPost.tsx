@@ -11,14 +11,14 @@ function FeaturedPost({ post }) {
     <div className="flex flex-col xs:text-center md:w-xl lg:w-5xl xl:w-5xl h-full">
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-orange-100 text-orange-800">
+          {/* <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-orange-100 text-orange-800">
             Featured
-          </span>
+          </span> */}
           <Link className="block" to={getBlogUrl(publishedAt, slug.current)}>
             <h3 className="text-5xl leading-relaxed font-black text-orange-900">
               {title}
             </h3>
-            <h4 className="text-gray-500 text-sm mb-2">
+            <h4 className="text-gray-500 text-md mb-4">
               {relativeDate(publishedAt)}
             </h4>
             <Img

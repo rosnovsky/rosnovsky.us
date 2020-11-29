@@ -159,7 +159,7 @@ const IndexPage = (props) => {
 
         {postNodes && (
           <BlogPostPreviewList
-            title="Recent Updates"
+            // title="Recent Updates"
             nodes={postNodes}
             featured={featuredPost}
             browseMoreHref="/blog/"

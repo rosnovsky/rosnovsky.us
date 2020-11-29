@@ -1,3 +1,5 @@
+import {FaExternalLinkAlt, FaLink} from 'react-icons/fa'
+
 export default {
   name: 'bodyPortableText',
   type: 'array',
@@ -38,12 +40,42 @@ export default {
           {
             name: 'link',
             type: 'object',
-            title: 'URL',
+            title: 'External link',
+            icon: FaExternalLinkAlt,
             fields: [
               {
-                title: 'URL',
                 name: 'href',
-                type: 'url'
+                type: 'url',
+                title: 'URL'
+              },
+              {
+                title: 'Open in new tab',
+                name: 'blank',
+                description: 'Read https://css-tricks.com/use-target_blank/',
+                type: 'boolean'
+              }
+            ],
+            preview: {
+              select: {
+                href: 'fref',
+                title: 'object.title'
+              }
+
+            }
+          },
+          {
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal link',
+            icon: FaLink,
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  { type: 'post' },
+                ]
               }
             ]
           }

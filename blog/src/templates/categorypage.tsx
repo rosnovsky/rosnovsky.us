@@ -72,9 +72,13 @@ const CategoryPostTemplate = (props) => {
         title={title}
       />
       <Container>
-        <Header page={null} />
-        <h1>{title}</h1>
-        <p>{description}</p>
+        <Header page={'post'} />
+        <h1 className="text-2xl text-center leading-7 my-10 text-orange-600 font-black tracking-wide uppercase">
+          {title}
+        </h1>
+        <aside className="w-full mt-10 mx-auto px-5 text-center text-2xl leading-relaxed font-semibold ">
+          {description}
+        </aside>
         {posts && posts.length > 0 && (
           <BlogPostPreviewGrid nodes={visiblePosts} />
         )}

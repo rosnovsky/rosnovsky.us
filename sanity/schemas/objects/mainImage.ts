@@ -1,7 +1,9 @@
+import {FaFileImage} from 'react-icons/fa'
 export default {
   name: 'mainImage',
   type: 'image',
   title: 'Image',
+  icon: FaFileImage,
   options: {
     hotspot: true
   },

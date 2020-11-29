@@ -22,6 +22,6 @@
     "checkJs": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.tsx", "src"],
+  "include": ["src/**/*.tsx", "src", "api/**/*.ts"],
   "exclude": ["node_modules", "public"]
 }
