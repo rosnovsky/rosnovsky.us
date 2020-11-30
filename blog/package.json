@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "sanity-gatsby-blog-web",
-  "version": "1.0.5",
-  "author": "Sanity <hello@sanity.io>",
+  "name": "rosnovskyus",
+  "version": "4.0.0",
+  "author": "Art Rosnovsky <rosnovsky@hey.com>",
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "clean-cache": "gatsby clean",
