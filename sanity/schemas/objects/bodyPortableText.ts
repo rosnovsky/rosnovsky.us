@@ -1,4 +1,5 @@
-import {FaExternalLinkAlt, FaLink} from 'react-icons/fa'
+import {FaExternalLinkAlt, FaLink, FaRegAddressCard} from 'react-icons/fa'
+import { LinkCard } from '../../src/linkCard'
 
 export default {
   name: 'bodyPortableText',
@@ -57,7 +58,7 @@ export default {
             ],
             preview: {
               select: {
-                href: 'fref',
+                href: 'href',
                 title: 'object.title'
               }
 
@@ -100,29 +101,28 @@ export default {
       type: 'youtube'
     },
 
-    // TODO: Figure out better components for LinkCard and Gallery
-
-    // {
-    //   name: 'linkCard',
-    //   title: 'Link Preview Card',
-    //   description: 'Link Preview Card',
-    //   type: 'linkCard',
-    //   preview: {
-    //     select: {
-    //       title: 'linkCard.title'
-    //     }
-    //   }
-    // },
+    {
+      name: 'linkCard',
+      title: 'Link Preview Card',
+      description: 'Link Preview Card',
+      type: 'linkCard',
+      icon: FaRegAddressCard,
+      preview: {
+        select: {
+          title: 'linkCard.url',
+        }
+      }
+    },
     // {
     //   name: 'photoGallery',
     //   type: 'photoGallery',
     //   title: 'Photo Gallery',
     //   description: 'Add photo gallery to post'
     // },
-    {
-      name: 'mux',
-      title: 'MUX video',
-      type: 'mux'
-    }
+    // {
+    //   name: 'mux',
+    //   title: 'MUX video',
+    //   type: 'mux'
+    // }
   ]
 }

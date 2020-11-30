@@ -1,7 +1,9 @@
 // First, we must import the schema creator
+// @ts-ignore
 import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
+// @ts-ignore
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // document schemas
@@ -18,7 +20,7 @@ import mainImage from './objects/mainImage'
 import authorReference from './objects/authorReference'
 import youtube from './objects/youtube'
 import mux from './objects/mux'
-// import linkCard from './objects/linkCard'
+import linkCard from './objects/linkCard'
 // import photoGallery from './objects/photoGallery'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -40,8 +42,8 @@ export default createSchema({
     bioPortableText,
     excerptPortableText,
     youtube,
-    mux
-    // linkCard,
+    mux,
+    linkCard
     // photoGallery
 
     // When added to this list, object types can be used as

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import getYouTubeId from 'get-youtube-id'
-// import YouTube from 'react-youtube'
 import { Link } from 'gatsby';
 import { getBlogUrl } from '../../utils/helpers';
 import ReactPlayer from 'react-player/file';
@@ -9,6 +7,7 @@ import sanityClient from '@sanity/client';
 import Figure from './figure';
 import sanityConfig from '../../../client-config';
 import Code from './code';
+import { ReactTinyLink } from 'react-tiny-link';
 
 const client = sanityClient({ ...sanityConfig.sanity, useCdn: true });
 
@@ -80,6 +79,20 @@ const serializers = {
           pip
           width="100%"
           // height={'auto'}
+        />
+      );
+    },
+    linkCard: ({ node }) => {
+      return (
+        <ReactTinyLink
+          cardSize="small"
+          showGraphic={true}
+          maxLine={4}
+          minLine={1}
+          loadSecureUrl={false}
+          autoPlay={false}
+          url={node.href}
+          defaultMedia={'https://rosnovsky.us/favicon.png'}
         />
       );
     },
