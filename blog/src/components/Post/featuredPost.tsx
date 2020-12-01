@@ -15,7 +15,7 @@ function FeaturedPost({ post }) {
             Featured
           </span> */}
           <Link className="block" to={getBlogUrl(publishedAt, slug.current)}>
-            <h3 className="text-5xl leading-relaxed font-black text-orange-900">
+            <h3 className="text-5xl font-serif leading-relaxed font-black text-orange-900">
               {title}
             </h3>
             <h4 className="text-gray-500 text-md mb-4">

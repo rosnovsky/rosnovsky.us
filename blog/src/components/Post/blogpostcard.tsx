@@ -20,7 +20,7 @@ function BlogPostPreview(props) {
             className="block"
             to={getBlogUrl(props.publishedAt, props.slug.current)}
           >
-            <h3 className="mt-2 w-full text-3xl  xs:text-center font-black mb-2 text-gray-900">
+            <h3 className="mt-2 w-full text-4xl xs:text-center font-black mb-2 text-gray-900 font-serif">
               {props.title}
             </h3>
             <h4 className="text-gray-500 text-sm mb-2">

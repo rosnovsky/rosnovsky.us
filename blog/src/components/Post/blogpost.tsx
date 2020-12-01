@@ -15,7 +15,7 @@ function BlogPost(props) {
       <div className="text-base text-center leading-7 mb-7 text-orange-600 font-bold tracking-wide uppercase">
         <Link to={categoryUrl}>{categories[0].title}</Link>
       </div>
-      <h1 className="mt-2 mb-8 text-6xl text-center leading-20  tracking-tight text-gray-900 sm:leading-20 font-black">
+      <h1 className="mt-2 mb-8 text-6xl font-serif text-center leading-20  tracking-tight text-gray-900 sm:leading-20 font-black">
         {title}
       </h1>
       <h4 className="text-gray-400 text-base text-center leading-7 mb-5 font-semibold tracking-wide uppercase">
@@ -30,15 +30,15 @@ function BlogPost(props) {
         <div className="object-cover z-10 rounded-lg">
           <Image fluid={mainImage.asset.fluid} alt={mainImage.alt} />
         </div>
-        <aside className="w-full mt-10 mx-auto text-center text-2xl leading-relaxed font-semibold ">
+        <aside className="w-full mt-10 mx-auto text-center text-2xl leading-relaxed font-lead font-bold">
           <PortableText blocks={props._rawExcerpt} />
         </aside>
       </div>
       <article className="relative w-full overflow-hidden">
         <Container>
           <div className="relative h-full rounded-2xl bg-white px-4 sm:px-6 lg:px-8">
-            <div className="text-lg max-w-prose mx-auto mb-6">
-              <div className="prose prose-lg text-gray-700 mx-auto">
+            <div className="text-lg max-w-4xl mx-auto mb-6">
+              <div className="prose prose-2xl text-gray-700 mx-auto">
                 {_rawBody && <PortableText blocks={_rawBody} />}
               </div>
             </div>

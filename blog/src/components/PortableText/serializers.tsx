@@ -84,16 +84,18 @@ const serializers = {
     },
     linkCard: ({ node }) => {
       return (
-        <ReactTinyLink
-          cardSize="small"
-          showGraphic={true}
-          maxLine={4}
-          minLine={1}
-          loadSecureUrl={false}
-          autoPlay={false}
-          url={node.href}
-          defaultMedia={'https://rosnovsky.us/favicon.png'}
-        />
+        <div>
+          <ReactTinyLink
+            cardSize="small"
+            showGraphic={true}
+            maxLine={4}
+            minLine={1}
+            loadSecureUrl={false}
+            autoPlay={false}
+            url={node.href}
+            defaultMedia={'https://rosnovsky.us/favicon.png'}
+          />
+        </div>
       );
     },
   },

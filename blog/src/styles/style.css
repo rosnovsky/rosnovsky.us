@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Coustard:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@900&family=Heebo:wght@900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
