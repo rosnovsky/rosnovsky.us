@@ -7,7 +7,7 @@ import sanityClient from '@sanity/client';
 import Figure from './figure';
 import sanityConfig from '../../../client-config';
 import Code from './code';
-import { ReactTinyLink } from 'react-tiny-link';
+let ReactTinyLink = require('./code');
 
 const client = sanityClient({ ...sanityConfig.sanity, useCdn: true });
 
@@ -83,7 +83,7 @@ const serializers = {
       );
     },
     linkCard: ({ node }) => {
-      return (
+      return typeof window !== 'undefined' ? (
         <div>
           <ReactTinyLink
             cardSize="small"
@@ -96,7 +96,7 @@ const serializers = {
             defaultMedia={'https://rosnovsky.us/favicon.png'}
           />
         </div>
-      );
+      ) : null;
     },
   },
 };
