@@ -7,7 +7,7 @@ import sanityClient from '@sanity/client';
 import Figure from './figure';
 import sanityConfig from '../../../client-config';
 import Code from './code';
-let ReactTinyLink = require('./code');
+let ReactTinyLink = require('react-tiny-link');
 
 const client = sanityClient({ ...sanityConfig.sanity, useCdn: true });
 
