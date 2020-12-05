@@ -10,7 +10,7 @@ module.exports = {
     },
     fontFamily: {
       serif: [
-        'Coustard',
+        'Fira Sans',
         'ui-serif',
         'Georgia',
         'Cambria',

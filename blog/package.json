@@ -4,11 +4,11 @@
   "version": "4.0.0",
   "author": "Art Rosnovsky <rosnovsky@hey.com>",
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build": "gatsby build --log-pages",
     "clean-cache": "gatsby clean",
-    "dev": "GATSBY_EXPERIMENTAL_LAZY_DEVJS=true gatsby develop",
+    "dev": "gatsby develop",
     "lint": "eslint .",
-    "start": "serve public --no-clipboard --listen 8899",
+    "start": "gatsby serve",
     "format": "eslint './src/**/*.*' --fix"
   },
   "devDependencies": {
@@ -24,7 +24,6 @@
     "@vercel/node": "^1.8.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.1",
-    "date-fns": "^2.16.1",
     "dotenv": "^8.0.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",
@@ -63,6 +62,7 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
+    "date-fns": "^2.16.1",
     "@sanity/client": "^2.0.9",
     "@styled-icons/fa-solid": "^10.22.0",
     "algoliasearch": "^4.8.0",
