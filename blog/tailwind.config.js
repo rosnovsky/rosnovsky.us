@@ -9,15 +9,7 @@ module.exports = {
       xl: { min: '1280px' },
     },
     fontFamily: {
-      serif: [
-        'Fira Sans',
-        'ui-serif',
-        'Georgia',
-        'Cambria',
-        'Times New Roman',
-        'Times',
-        'serif',
-      ],
+      serif: ['Fira Sans'],
       sans:
         'PT Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
       lead:
