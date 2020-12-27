@@ -13,6 +13,7 @@ const LinkCard = ({ value }) => {
       showGraphic={true}
       maxLine={4}
       minLine={1}
+      proxyUrl={''}
       url={validateUrl(value?.url) ? value.url : 'https://twitter.com/rosnovsky'}
       defaultMedia={'https://rosnovsky.us/favicon.png'}
     />
