@@ -1,8 +1,8 @@
 import React from 'react'
-import { ReactTinyLink } from 'react-tiny-link'
+import ReactTinyLink from 'react-tiny-link'
 import validUrl from 'valid-url'
 
-export const LinkCard = ({ value }) => {
+const LinkCard = ({ value }) => {
   const validateUrl = url => {
     return validUrl.isUri(value.url) ? true : false
   }
@@ -13,8 +13,10 @@ export const LinkCard = ({ value }) => {
       showGraphic={true}
       maxLine={4}
       minLine={1}
-      url={validateUrl(value.url) ? value.url : 'https://twitter.com'}
+      url={validateUrl(value?.url) ? value.url : 'https://twitter.com/rosnovsky'}
       defaultMedia={'https://rosnovsky.us/favicon.png'}
     />
   )
 }
+
+export default LinkCard
