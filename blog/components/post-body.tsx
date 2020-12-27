@@ -1,5 +1,4 @@
 import { PortableText } from '../lib/sanity'
-import markdownStyles from './markdown-styles.module.css'
 
 type Props = {
   content: string
@@ -7,7 +6,7 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div className="max-w-3xl mx-auto prose prose-lg">
+    <div className="max-w-3xl font-proper mx-auto prose xl:prose-2xl lg:prose-xl md:prose-lg sm:prose-lg">
       <PortableText className="" blocks={content} />
     </div>
   )

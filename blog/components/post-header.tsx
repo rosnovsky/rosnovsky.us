@@ -10,9 +10,10 @@ type Props = {
   date: string
   author: Author
   excerpt: any
+  categories: Record<any, any>[]
 }
 
-const PostHeader = ({ title, mainImage, date, excerpt }: Props) => {
+const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
   const options = {
     year: 'numeric',
     month: 'long',
@@ -28,12 +29,13 @@ const PostHeader = ({ title, mainImage, date, excerpt }: Props) => {
         <MainImage slug="" preview={false} title={title} src={mainImage} />
       </div>
       <div className="max-w-4xl mx-auto">
-        {/* <div className="block md:hidden mb-6">
-          <Avatar name={author.name} picture={author.picture} />
-        </div> */}
         <div className="mb-6 text-lg">
           <div className="mb-4 font-mono font-semibold text-gray-500">
-            {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))}
+            {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))}{' '}
+            |{' '}
+            <span className="text-yellow-600">
+              {categories.map((category) => category.title + ' | ')}
+            </span>
           </div>
         </div>
         <div className="prose prose-2xl w-full font-black">

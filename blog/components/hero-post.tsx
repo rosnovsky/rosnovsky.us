@@ -3,8 +3,20 @@ import MainImage from './cover-image'
 import Link from 'next/link'
 import { PortableText, urlFor } from '../lib/sanity'
 
-const HeroPost = ({ title, mainImage, date, excerpt, slug }: any) => {
+const HeroPost = ({
+  title,
+  mainImage,
+  date,
+  excerpt,
+  slug,
+  categories,
+}: any) => {
   const postUrl = `${format(Date.parse(date), 'yyyy/MM/dd')}`
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
   return (
     <section>
       <div className="mb-8 md:mb-16 bg-local">
@@ -27,7 +39,12 @@ const HeroPost = ({ title, mainImage, date, excerpt, slug }: any) => {
             </Link>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
-            {/* <DateFormatter dateString={date} /> */}
+            <div className="mb-4 font-mono font-semibold text-gray-500">
+              {new Intl.DateTimeFormat('en-US', options).format(
+                Date.parse(date)
+              )}{' '}
+              | <span className="text-yellow-600">{categories[0].title}</span>
+            </div>
           </div>
         </div>
         <div>

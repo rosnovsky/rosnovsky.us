@@ -27,6 +27,7 @@ const Post = ({ data, preview }: Props) => {
     slug,
     author,
     excerpt,
+    categories,
   } = data.post
   const router = useRouter()
   if (!router.isFallback && !data?.post.slug) {
@@ -58,6 +59,7 @@ const Post = ({ data, preview }: Props) => {
                 date={publishedAt}
                 author={author}
                 excerpt={excerpt}
+                categories={categories}
               />
               <PostBody content={body} />
             </article>
@@ -73,6 +75,7 @@ export default Post
 const postQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     ...,
+    categories[]->,
     body[]{
       ...,
       markDefs[]{

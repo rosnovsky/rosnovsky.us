@@ -12,10 +12,18 @@ type Props = {
   excerpt: string
   author: Author
   slug: string
+  categories: Record<any, any>[]
   preview: boolean
 }
 
-const PostPreview = ({ title, mainImage, date, excerpt, slug }: Props) => {
+const PostPreview = ({
+  title,
+  mainImage,
+  date,
+  excerpt,
+  categories,
+  slug,
+}: Props) => {
   const postUrl = `${format(Date.parse(date), 'yyyy/MM/dd')}`
   const options = {
     year: 'numeric',
@@ -34,11 +42,14 @@ const PostPreview = ({ title, mainImage, date, excerpt, slug }: Props) => {
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link as={`/blog/${postUrl}/${slug}`} href="/blog/[slug]">
-          <a className="hover:underline text-3xl font-semibold">{title}</a>
+          <a className="hover:underline text-3xl font-black">{title}</a>
         </Link>
       </h3>
       <div className="text-sm mb-4 font-mono font-semibold text-gray-600">
-        {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))}
+        {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))} |{' '}
+        <span className="text-yellow-600">
+          {categories.map((category) => category.title + ' | ')}
+        </span>
       </div>
       <p className="text-lg leading-relaxed mb-4">
         <PortableText blocks={excerpt} />

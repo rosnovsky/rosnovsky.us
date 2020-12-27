@@ -6,6 +6,7 @@ type PostType = {
   publishedAt: string
   mainImage: string
   author: Author
+  categories: Record<any,any>[]
   excerpt: any
   ogImage: {
     url: string

@@ -17,10 +17,7 @@ const postQuery = groq`
     featured,
     publishedAt,
     mainImage,
-    categories[]->{
-      _id,
-      title
-    },
+    categories[]->,
     "slug": slug.current
   } | order(publishedAt desc)
 `
@@ -62,6 +59,7 @@ const Index = ({ data }: any) => {
               date={randomFeaturedPost.publishedAt}
               slug={randomFeaturedPost.slug}
               excerpt={randomFeaturedPost.excerpt}
+              categories={randomFeaturedPost.categories}
             />
           )}
           <MoreStories posts={notFeaturedPosts} />
