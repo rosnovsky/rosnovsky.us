@@ -87,7 +87,6 @@ const serializers = {
             showGraphic={true}
             maxLine={4}
             minLine={1}
-            proxyUrl={''}
             loadSecureUrl={true}
             autoPlay={false}
             url={node.href}
