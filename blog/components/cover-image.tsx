@@ -1,11 +1,10 @@
-import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const image = featured ? (
-    <div className="relative">
+    <div className="relative object-cover inner-shadow shadow-xl hover:shadow-2xl transition-shadow duration-200">
       <span className="absolute xl:top-10 xl:right-10 top-5 right-5 xs:text-lg xl:text-3xl lg:text-xl md:text-lg font-black z-50 inline-flex items-center px-3 py-1 lg:px-8 lg:py-3 rounded-full text-sm bg-red-100 text-red-800 transform rotate-6">
         FEATURED
       </span>
@@ -13,35 +12,36 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         src={
           urlFor(src.asset)
             .format('jpg')
-            .maxWidth(1860)
+            .maxWidth(1500)
             .maxHeight(1000)
             .url() || 'default.jpg'
         }
-        quality={100}
         priority
-        width={preview ? 840 : 1860}
+        quality={100}
+        width={preview ? 840 : 1500}
         height={preview ? 344 : 1000}
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
-        className={cn('object-cover shadow-small', {
-          'hover:shadow-medium object-cover transition-shadow duration-200': slug,
-        })}
+        className="object-cover inner-shadow shadow-xl hover:shadow-2xl transition-shadow duration-200"
       />
     </div>
   ) : (
-    <Image
-      src={
-        urlFor(src.asset).format('jpg').maxWidth(1860).maxHeight(1000).url() ||
-        'default.jpg'
-      }
-      width={preview ? 840 : 1860}
-      height={preview ? 344 : 1000}
-      alt={`Cover Image for ${title}`}
-      layout={'responsive'}
-      className={cn('object-cover shadow-small', {
-        'hover:shadow-medium object-cover transition-shadow duration-200': slug,
-      })}
-    />
+    <div className="object-cover inner-shadow shadow-sm transition-shadow duration-200">
+      <Image
+        src={
+          urlFor(src.asset)
+            .format('jpg')
+            .maxWidth(1500)
+            .maxHeight(1000)
+            .url() || 'default.jpg'
+        }
+        width={preview ? 840 : 1560}
+        height={preview ? 344 : 1000}
+        alt={`Cover Image for ${title}`}
+        layout={'responsive'}
+        className="object-cover shadow-inner hover:shadow-md transition-shadow duration-200"
+      />
+    </div>
   )
 
   return (

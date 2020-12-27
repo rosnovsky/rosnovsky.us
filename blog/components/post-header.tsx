@@ -22,15 +22,12 @@ const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      {/* <div className="hidden md:block md:mb-12">
-        <Avatar name={author.name} picture={author.picture} />
-      </div> */}
       <div className="object-cover mb-8 md:mb-16 sm:mx-0">
         <MainImage slug="" preview={false} title={title} src={mainImage} />
       </div>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="mb-6 text-lg">
-          <div className="mb-4 font-mono font-semibold text-gray-500">
+          <div className="mb-4 font-mono text-gray-500">
             {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))}{' '}
             |{' '}
             <span className="text-yellow-600">
@@ -38,7 +35,7 @@ const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
             </span>
           </div>
         </div>
-        <div className="prose prose-2xl w-full font-black">
+        <div className="prose prose-2xl w-full font-proper leading-relaxed font-bold">
           <PortableText blocks={excerpt} />
         </div>
       </div>

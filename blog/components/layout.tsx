@@ -11,7 +11,6 @@ type Props = {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <Meta />
       <div className="min-h-screen">
         {/* <Alert /> */}
         <Covid />

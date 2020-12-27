@@ -25,7 +25,14 @@ module.exports = {
         '8xl': '6.25rem',
       },
       fontFamily: {
-        proper: ['Arimo'],
+        proper: [
+          'Public Sans',
+          'PT Sans',
+          'Helvetica Neue',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
       },
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',

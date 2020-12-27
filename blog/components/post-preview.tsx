@@ -45,13 +45,13 @@ const PostPreview = ({
           <a className="hover:underline text-3xl font-black">{title}</a>
         </Link>
       </h3>
-      <div className="text-sm mb-4 font-mono font-semibold text-gray-600">
+      <div className="text-sm mb-4 font-mono text-gray-700">
         {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))} |{' '}
         <span className="text-yellow-600">
           {categories.map((category) => category.title + ' | ')}
         </span>
       </div>
-      <p className="text-lg leading-relaxed mb-4">
+      <p className="text-xl font-proper leading-relaxed mb-4">
         <PortableText blocks={excerpt} />
       </p>
     </div>
