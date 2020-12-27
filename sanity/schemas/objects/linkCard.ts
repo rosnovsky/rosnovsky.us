@@ -1,5 +1,3 @@
-import { LinkCard } from '../../src/linkCard'
-
 export default {
   title: 'Link Card',
   name: 'linkCard',
@@ -21,6 +19,5 @@ export default {
     select: {
       url: 'href'
     },
-    component: LinkCard
   },
 }

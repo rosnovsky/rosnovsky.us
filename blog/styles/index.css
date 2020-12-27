@@ -16,6 +16,20 @@
 
 /* Your own custom utilities */
 
+.microlink_card {
+  --microlink-max-width: 56rem;
+}
+
+a.microlink_card {
+  text-decoration: none;
+  color: black;
+}
+
+.microlink_card__content_description {
+  text-decoration: none;
+  color: black;
+}
+
 .youtubeContainer {
   position: relative;
   width: 100%;

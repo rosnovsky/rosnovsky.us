@@ -4,17 +4,15 @@ import Link from 'next/link'
 import ReactPlayer from 'react-player/file'
 import Youtube from 'react-player/youtube'
 import Figure from './figure'
-import { urlFor } from './sanity'
 import Code from './code'
-import { getClient, internalLink } from './sanity'
-import { groq } from 'next-sanity'
-import DateFormatter from '../components/date-formatter'
+import { getClient } from './sanity'
 import dynamic from 'next/dynamic'
+import Microlink from '@microlink/react'
 
-const ReactTinyLink = dynamic(
-  () => import('react-tiny-link').then((mod) => mod.ReactTinyLink),
-  { ssr: false }
-)
+// const Microlink = dynamic(
+//   () => import('@microlink/react').then((mod) => mod.Microlink),
+//   { ssr: false }
+// )
 
 const serializers = {
   marks: {
@@ -51,7 +49,6 @@ const serializers = {
             pip
             width="100%"
           />
-          {/* <YouTube containerClassName={'youtubeContainer'} videoId={id} /> */}
         </div>
       )
     },
@@ -81,16 +78,11 @@ const serializers = {
     },
     linkCard: ({ node }: any) => {
       return (
-        <div>
-          <ReactTinyLink
-            cardSize="small"
-            showGraphic={true}
-            maxLine={4}
-            minLine={1}
-            loadSecureUrl={true}
-            autoPlay={false}
+        <div className="text-black">
+          <Microlink
             url={node.href}
-            defaultMedia={'https://rosnovsky.us/favicon.png'}
+            size="normal"
+            media={['image', 'logo', 'audio', 'screenshot', 'video']}
           />
         </div>
       )
