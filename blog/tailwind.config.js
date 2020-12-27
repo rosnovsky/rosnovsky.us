@@ -1,29 +1,33 @@
 module.exports = {
-  purge: ['./src/**/*.tsx'],
+  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
-    screens: {
-      xs: { min: '200px', max: '639px' },
-      sm: { min: '640px', max: '767px' },
-      md: { min: '768px', max: '1023px' },
-      lg: { min: '1024px', max: '1279px' },
-      xl: { min: '1280px' },
-    },
-    fontFamily: {
-      serif: ['Fira Sans'],
-      sans:
-        'PT Sans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
-      lead:
-        'Heebo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
-    },
-    // fontSize: {
-    //   '5xl': '2.5rem',
-    //   '6xl': '2.75rem',
-    //   '7xl': '4.5rem',
-    //   '8xl': '6.25rem'
-    // },
-    boxShadow: {
-      small: '0 5px 10px rgba(0, 0, 0, 0.12)',
-      medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+    extend: {
+      colors: {
+        'accent-1': '#FAFAFA',
+        'accent-2': '#EAEAEA',
+        'accent-7': '#333',
+        success: '#0070f3',
+        cyan: '#79FFE1',
+      },
+      spacing: {
+        28: '7rem',
+      },
+      letterSpacing: {
+        tighter: '-.04em',
+      },
+      lineHeight: {
+        tight: 1.2,
+      },
+      fontSize: {
+        '5xl': '2.5rem',
+        '6xl': '2.75rem',
+        '7xl': '4.5rem',
+        '8xl': '6.25rem',
+      },
+      boxShadow: {
+        small: '0 5px 10px rgba(0, 0, 0, 0.12)',
+        medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+      },
     },
     typography: {
       default: {
@@ -39,17 +43,9 @@ module.exports = {
       },
     },
   },
-  variants: {},
-  // https://github.com/tailwindcss/custom-forms
   plugins: [
     require('@tailwindcss/ui'),
     require('@tailwindcss/custom-forms'),
     require('@tailwindcss/typography'),
   ],
-  future: {
-    purgeLayersByDefault: true,
-    defaultLineHeights: true,
-    standardFontWeights: true,
-    removeDeprecatedGapUtilities: true,
-  },
-};
+}
