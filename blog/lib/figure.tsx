@@ -9,6 +9,11 @@ export const Figure = (props: any) => {
     return null
   }
 
+  const orientation =
+    asset.metadata.dimensions.height / asset.metadata.dimensions.width > 1
+      ? 'portrait'
+      : 'landscape'
+
   if (asset.extension === 'gif') {
     return (
       <figure>
@@ -24,55 +29,39 @@ export const Figure = (props: any) => {
   }
 
   return (
-    <div className="w-5xl">
-      <figure>
-        <img
-          src={asset.metadata.lqip}
-          width={900}
-          height={Math.floor(
-            (asset.metadata.dimensions.height * 900) /
-              asset.metadata.dimensions.width
-          )}
-          className="absolute opacity-100 transition-opacity duration-1000"
+    <figure className="relative">
+      {/* <img
           style={{
-            width: 900,
-            height: Math.floor(
-              (asset.metadata.dimensions.height * 900) /
-                asset.metadata.dimensions.width
-            ),
-            filter: 'blur(2rem)',
+            width: '56rem',
           }}
-        />
+          src={asset.metadata.lqip}
+          className="absolute opacity-100 transition-opacity duration-1000"
+        /> */}
+      <div className="absolute overflow-hidden blur object-cover">
         <Image
-          placeholder={asset.metadata.lqip}
-          src={
-            urlFor(asset)
-              .width(900)
-              .maxHeight(
-                Math.floor(
-                  (asset.metadata.dimensions.height * 900) /
-                    asset.metadata.dimensions.width
-                )
-              )
-              .auto('format')
-              .quality(100)
-              .url() || 'https://rosnovsky.us/favicon.png'
-          }
-          width={900}
-          height={Math.floor(
-            (asset.metadata.dimensions.height * 900) /
-              asset.metadata.dimensions.width
-          )}
+          src={asset.metadata.lqip}
           alt={`Cover Image for ${asset.title}`}
-          layout={'responsive'}
-          quality={100}
-          objectFit="cover"
-          objectPosition="50% 50%"
-          className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
+          width={896}
+          height={896 / asset.metadata.dimensions.aspectRatio - 200}
+          objectFit="contain"
+          priority
         />
-        <figcaption>{props.alt}</figcaption>
-      </figure>
-    </div>
+      </div>
+      <Image
+        // placeholder={asset.metadata.lqip}
+        src={
+          urlFor(asset).width(896).format('jpg').quality(85).url() ||
+          'https://rosnovsky.us/favicon.png'
+        }
+        width={896}
+        height={896 / asset.metadata.dimensions.aspectRatio}
+        alt={`Cover Image for ${asset.title}`}
+        layout={'responsive'}
+        objectFit="cover"
+        className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
+      />
+      <figcaption>{props.alt}</figcaption>
+    </figure>
   )
 }
 

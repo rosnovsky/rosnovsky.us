@@ -10,17 +10,16 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         FEATURED
       </span>
       <div>
-        <img
-          src={src.asset.metadata.lqip}
-          width={preview ? 710 : 1560}
-          height={preview ? 455 : 1000}
-          className="absolute"
-          style={{
-            width: preview ? 710 : 1560,
-            height: preview ? 455 : 1000,
-            filter: 'blur(0.25rem)',
-          }}
-        />
+        <div className="absolute blur">
+          <Image
+            src={src.asset.metadata.lqip}
+            alt={`Cover Image for ${src.asset.title}`}
+            width={preview ? 710 : 1500}
+            height={preview ? 455 : 1000}
+            layout={'responsive'}
+            priority
+          />
+        </div>
         <Image
           src={
             urlFor(src.asset)
@@ -30,7 +29,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
               .crop('focalpoint')
               .url() || ''
           }
-          width={preview ? 710 : 1560}
+          width={preview ? 710 : 1500}
           height={preview ? 455 : 1000}
           alt={`Cover Image for ${title}`}
           layout={'responsive'}
@@ -42,24 +41,22 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
     </div>
   ) : (
     <div className="inner-shadow shadow-sm">
-      <img
-        src={src.asset.metadata.lqip}
-        width={preview ? 710 : 1500}
-        height={preview ? 455 : 1000}
-        className="absolute opacity-100 transition-opacity duration-1000"
-        style={{
-          width: preview ? 710 : 1500,
-          height: preview ? 455 : 1000,
-          filter: 'blur(0.25rem)',
-        }}
-      />
+      <div className="absolute blur">
+        <Image
+          src={src.asset.metadata.lqip}
+          alt={`Cover Image for ${src.asset.title}`}
+          width={preview ? 710 : 1500}
+          height={preview ? 455 : 1000}
+          layout={'intrinsic'}
+          priority
+        />
+      </div>
       <Image
         src={
           urlFor(src.asset)
             .width(preview ? 710 : 1500)
             .height(preview ? 455 : 1000)
             .format('jpg')
-            .crop('focalpoint')
             .url() || ''
         }
         width={preview ? 710 : 1500}
