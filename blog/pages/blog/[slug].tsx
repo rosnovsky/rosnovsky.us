@@ -75,9 +75,17 @@ export default Post
 const postQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     ...,
+    mainImage {
+      ...,
+      asset->
+    },
     categories[]->,
     body[]{
       ...,
+      _type == "mainImage" => {
+        ...,
+        asset->
+      },
       markDefs[]{
         ...,
         _type == "internalLink" => {

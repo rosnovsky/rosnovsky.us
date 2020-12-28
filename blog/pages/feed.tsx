@@ -13,7 +13,10 @@ const postQuery = groq`
     title,
     excerpt,
     publishedAt,
-    mainImage,
+    mainImage{
+      ...,
+      asset->
+    },
     categories[]->,
     "slug": slug.current
   } | order(publishedAt desc)

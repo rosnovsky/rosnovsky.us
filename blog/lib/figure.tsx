@@ -1,38 +1,23 @@
 import Image from 'next/image'
-import { isMainThread } from 'worker_threads'
-import { urlFor } from './sanity'
+import ProgressiveImage from 'react-progressive-image'
 
 export const Figure = (props: any) => {
   const { asset } = props.node
-  const demensions = asset._ref.split('-')[2]
-  const sizes = {
-    width: demensions.split('x')[0],
-    height: demensions.split('x')[1],
-    orientation:
-      demensions.split('x')[0] / demensions.split('x')[1] > 1
-        ? 'landscape'
-        : 'portrait',
-  }
-
-  const gif = asset._ref.split('-')[3] === 'gif'
 
   if (!asset) {
     return null
   }
 
-  if (gif) {
+  if (asset.extension === 'gif') {
     return (
       <figure>
         <img
-          src={
-            urlFor(asset).minWidth(760).height(sizes.height).url() ||
-            'https://rosnovsky.us/favicon.png'
-          }
+          src={asset.url}
           alt={props.alt}
           loading="lazy"
           className="w-full"
         />
-        <figcaption>{props.alt}</figcaption>
+        <figcaption>{props.node.alt}</figcaption>
       </figure>
     )
   }
@@ -40,25 +25,32 @@ export const Figure = (props: any) => {
   return (
     <div className="w-full">
       <figure>
-        <Image
-          src={
-            urlFor(asset)
-              .width(760)
-              .height(Math.floor((sizes.height * 760) / sizes.width))
-              .format('jpg')
-              .crop('focalpoint')
-              .url() || 'https://rosnovsky.us/favicon.png'
-          }
-          loading="lazy"
-          width={760}
-          height={Math.floor((sizes.height * 760) / sizes.width)}
-          quality={80}
-          objectFit="cover"
-          objectPosition="50% 50%"
-          layout="responsive"
-          alt={props.title}
-          className="w-full"
-        />
+        <ProgressiveImage
+          src={asset.url}
+          placeholder={asset.metadata.lqip}
+          delay={1000}
+        >
+          {(src: string, loading: boolean) => (
+            <div>
+              <Image
+                src={src}
+                width={760}
+                height={Math.floor(
+                  (asset.metadata.dimensions.height * 760) /
+                    asset.metadata.dimensions.width
+                )}
+                alt={`Cover Image for ${asset.title}`}
+                layout={'responsive'}
+                objectFit="cover"
+                priority
+                objectPosition="50% 50%"
+                className={`${
+                  loading ? 'opacity-0' : 'opacity-100'
+                } w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
+              />
+            </div>
+          )}
+        </ProgressiveImage>
         <figcaption>{props.alt}</figcaption>
       </figure>
     </div>

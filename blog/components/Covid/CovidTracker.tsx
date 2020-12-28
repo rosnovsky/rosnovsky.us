@@ -70,7 +70,7 @@ export default function Covid() {
   if (!data) return <Loading />
 
   return (
-    <div className="border-b-4 border-red-800 bg-gray-900 text-white">
+    <div className="border-b-4 border-red-800 bg-gray-900 text-white h-lg">
       <Container>
         <div className="flex py-2 text-center text-sm">
           <div className="w-full text-lg">
