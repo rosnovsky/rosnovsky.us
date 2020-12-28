@@ -26,14 +26,31 @@ export const Figure = (props: any) => {
   return (
     <div className="w-5xl">
       <figure>
+        <img
+          src={asset.metadata.lqip}
+          width={900}
+          height={Math.floor(
+            (asset.metadata.dimensions.height * 900) /
+              asset.metadata.dimensions.width
+          )}
+          className="absolute opacity-100 transition-opacity duration-1000"
+          style={{
+            width: 900,
+            height: Math.floor(
+              (asset.metadata.dimensions.height * 900) /
+                asset.metadata.dimensions.width
+            ),
+            filter: 'blur(2rem)',
+          }}
+        />
         <Image
           placeholder={asset.metadata.lqip}
           src={
             urlFor(asset)
-              .width(760)
+              .width(900)
               .maxHeight(
                 Math.floor(
-                  (asset.metadata.dimensions.height * 760) /
+                  (asset.metadata.dimensions.height * 900) /
                     asset.metadata.dimensions.width
                 )
               )
@@ -41,9 +58,9 @@ export const Figure = (props: any) => {
               .quality(100)
               .url() || 'https://rosnovsky.us/favicon.png'
           }
-          width={760}
+          width={900}
           height={Math.floor(
-            (asset.metadata.dimensions.height * 760) /
+            (asset.metadata.dimensions.height * 900) /
               asset.metadata.dimensions.width
           )}
           alt={`Cover Image for ${asset.title}`}

@@ -14,19 +14,23 @@ interface CovidFetchData {
 
 export const Loading = () => {
   return (
-    <div className="border-b border-accent-2 bg-red-900 text-white">
+    <div className="border-b-4 border-red-800 bg-gray-900 text-white h-lg">
       <Container>
         <div className="flex py-2 text-center text-sm">
           <div className="w-full text-lg">
             <div className="">
               <div className="flex flex-col xl:flex-row mx-auto lg:flex-row justify-between xs:mx-10 sm:mx-10 md:mx-10">
                 <CasesCard
-                  numbers={9000000}
-                  change={125000}
+                  numbers={20000000}
+                  change={200000}
                   title="🇺🇸 COVID Cases"
                 />
-                <CasesCard numbers={130000} change={1300} title="Dead" />
-                <CasesCard numbers={50000} change={3400} title="In Hospitals" />
+                <CasesCard numbers={350000} change={2000} title="Dead" />
+                <CasesCard
+                  numbers={120000}
+                  change={2000}
+                  title="In Hospitals"
+                />
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
+import ProgressiveImage from 'react-progressive-image'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const image = featured ? (
@@ -9,42 +10,63 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         FEATURED
       </span>
       <div>
+        <img
+          src={src.asset.metadata.lqip}
+          width={preview ? 710 : 1560}
+          height={preview ? 455 : 1000}
+          className="absolute"
+          style={{
+            width: preview ? 710 : 1560,
+            height: preview ? 455 : 1000,
+            filter: 'blur(0.25rem)',
+          }}
+        />
         <Image
-          placeholder={src.asset.metadata.lqip}
           src={
             urlFor(src.asset)
               .maxWidth(1560)
               .maxHeight(1000)
               .auto('format')
-              .quality(100)
-              .url() || 'https://rosnovsky.us/favicon.png'
+              .crop('focalpoint')
+              .url() || ''
           }
-          width={preview ? 840 : 1560}
-          height={preview ? 344 : 1000}
-          quality={100}
+          width={preview ? 710 : 1560}
+          height={preview ? 455 : 1000}
           alt={`Cover Image for ${title}`}
           layout={'responsive'}
-          priority={preview ? false : true}
+          loading="lazy"
+          // priority={preview ? false : true}
           className="object-cover shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500"
         />
       </div>
     </div>
   ) : (
     <div className="inner-shadow shadow-sm">
+      <img
+        src={src.asset.metadata.lqip}
+        width={preview ? 710 : 1500}
+        height={preview ? 455 : 1000}
+        className="absolute opacity-100 transition-opacity duration-1000"
+        style={{
+          width: preview ? 710 : 1500,
+          height: preview ? 455 : 1000,
+          filter: 'blur(0.25rem)',
+        }}
+      />
       <Image
-        placeholder={src.asset.metadata.lqip}
         src={
           urlFor(src.asset)
-            .width(preview ? 840 : 1560)
-            .height(preview ? 540 : 1000)
+            .width(preview ? 710 : 1500)
+            .height(preview ? 455 : 1000)
             .format('jpg')
-            .url() || 'https://rosnovsky.us/favicon.png'
+            .crop('focalpoint')
+            .url() || ''
         }
-        width={preview ? 840 : 1560}
-        height={preview ? 540 : 1000}
+        width={preview ? 710 : 1500}
+        height={preview ? 455 : 1000}
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
-        priority={preview ? false : true}
+        loading="lazy"
         className="object-cover shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500"
       />
     </div>
