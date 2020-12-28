@@ -10,14 +10,14 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         FEATURED
       </span>
       <div>
-        <div className="absolute blur">
+        <div className="absolute">
           <Image
             src={src.asset.metadata.lqip}
             alt={`Cover Image for ${src.asset.title}`}
             width={preview ? 710 : 1500}
             height={preview ? 455 : 1000}
             layout={'responsive'}
-            priority
+            loading="eager"
           />
         </div>
         <Image
@@ -41,7 +41,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
     </div>
   ) : (
     <div className="inner-shadow shadow-sm">
-      <div className="absolute blur">
+      <div className="absolute">
         <Image
           src={src.asset.metadata.lqip}
           alt={`Cover Image for ${src.asset.title}`}

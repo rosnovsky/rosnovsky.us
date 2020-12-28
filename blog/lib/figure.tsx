@@ -37,14 +37,14 @@ export const Figure = (props: any) => {
           src={asset.metadata.lqip}
           className="absolute opacity-100 transition-opacity duration-1000"
         /> */}
-      <div className="absolute overflow-hidden blur object-cover">
+      <div className="absolute overflow-hidden object-cover">
         <Image
           src={asset.metadata.lqip}
           alt={`Cover Image for ${asset.title}`}
           width={896}
           height={896 / asset.metadata.dimensions.aspectRatio - 200}
           objectFit="contain"
-          priority
+          loading="eager"
         />
       </div>
       <Image
@@ -56,6 +56,7 @@ export const Figure = (props: any) => {
         width={896}
         height={896 / asset.metadata.dimensions.aspectRatio}
         alt={`Cover Image for ${asset.title}`}
+        loading="lazy"
         layout={'responsive'}
         objectFit="cover"
         className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
