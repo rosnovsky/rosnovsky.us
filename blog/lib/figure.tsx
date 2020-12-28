@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import ProgressiveImage from 'react-progressive-image'
+import { urlFor } from './sanity'
 
 export const Figure = (props: any) => {
   const { asset } = props.node
@@ -23,33 +24,35 @@ export const Figure = (props: any) => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-5xl">
       <figure>
-        <ProgressiveImage
-          src={asset.url}
+        <Image
           placeholder={asset.metadata.lqip}
-          delay={3000}
-        >
-          {(src: string, loading: boolean) => (
-            <div>
-              <Image
-                src={src}
-                width={760}
-                height={Math.floor(
+          src={
+            urlFor(asset)
+              .width(760)
+              .maxHeight(
+                Math.floor(
                   (asset.metadata.dimensions.height * 760) /
                     asset.metadata.dimensions.width
-                )}
-                alt={`Cover Image for ${asset.title}`}
-                layout={'responsive'}
-                objectFit="cover"
-                objectPosition="50% 50%"
-                className={`${
-                  loading ? 'opacity-0' : 'opacity-100'
-                } w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
-              />
-            </div>
+                )
+              )
+              .auto('format')
+              .quality(100)
+              .url() || 'https://rosnovsky.us/favicon.png'
+          }
+          width={760}
+          height={Math.floor(
+            (asset.metadata.dimensions.height * 760) /
+              asset.metadata.dimensions.width
           )}
-        </ProgressiveImage>
+          alt={`Cover Image for ${asset.title}`}
+          layout={'responsive'}
+          quality={100}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
+        />
         <figcaption>{props.alt}</figcaption>
       </figure>
     </div>

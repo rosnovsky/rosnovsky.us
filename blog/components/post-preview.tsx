@@ -1,5 +1,4 @@
 import { format } from 'date-fns'
-import DateFormatter from './date-formatter'
 import MainImage from './cover-image'
 import Link from 'next/link'
 import Author from '../types/author'
@@ -34,7 +33,7 @@ const PostPreview = ({
     <div className="mx-5 my-10">
       <div className="mb-5">
         <MainImage
-          preview={false}
+          preview={true}
           slug={`${postUrl}/${slug}`}
           title={title}
           src={mainImage}
