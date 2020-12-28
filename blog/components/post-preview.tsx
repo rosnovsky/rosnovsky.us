@@ -3,7 +3,7 @@ import DateFormatter from './date-formatter'
 import MainImage from './cover-image'
 import Link from 'next/link'
 import Author from '../types/author'
-import { usePreviewSubscription, urlFor, PortableText } from '../lib/sanity'
+import { PortableText } from '../lib/sanity'
 
 type Props = {
   title: string

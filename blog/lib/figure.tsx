@@ -28,7 +28,7 @@ export const Figure = (props: any) => {
         <ProgressiveImage
           src={asset.url}
           placeholder={asset.metadata.lqip}
-          delay={1000}
+          delay={3000}
         >
           {(src: string, loading: boolean) => (
             <div>
@@ -42,7 +42,6 @@ export const Figure = (props: any) => {
                 alt={`Cover Image for ${asset.title}`}
                 layout={'responsive'}
                 objectFit="cover"
-                priority
                 objectPosition="50% 50%"
                 className={`${
                   loading ? 'opacity-0' : 'opacity-100'

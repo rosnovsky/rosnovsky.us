@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import MainImage from './cover-image'
 import Link from 'next/link'
-import { PortableText, urlFor } from '../lib/sanity'
+import { PortableText } from '../lib/sanity'
 
 const HeroPost = ({
   title,

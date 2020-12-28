@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { urlFor } from '../lib/sanity'
 import ProgressiveImage from 'react-progressive-image'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
@@ -10,14 +9,8 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         FEATURED
       </span>
       <ProgressiveImage
-        delay={1000}
-        src={
-          urlFor(src.asset)
-            .format('jpg')
-            .maxWidth(1500)
-            .maxHeight(1000)
-            .url() || 'default.jpg'
-        }
+        delay={3000}
+        src={src.url}
         placeholder={src.asset.metadata.lqip}
       >
         {(src: string) => (
@@ -28,6 +21,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
               height={preview ? 344 : 1000}
               alt={`Cover Image for ${title}`}
               layout={'responsive'}
+              priority
               className="object-cover shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500"
             />
           </div>
@@ -37,19 +31,14 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
   ) : (
     <div className="inner-shadow shadow-sm">
       <ProgressiveImage
-        delay={1000}
-        src={
-          urlFor(src.asset)
-            .format('jpg')
-            .maxWidth(1500)
-            .maxHeight(1000)
-            .url() || 'default.jpg'
-        }
+        delay={2000}
+        src={src.url}
         placeholder={src.asset.metadata.lqip}
       >
         {(src: string) => (
           <Image
             src={src}
+            loading="lazy"
             width={preview ? 840 : 1560}
             height={preview ? 344 : 1000}
             alt={`Cover Image for ${title}`}
