@@ -8,17 +8,14 @@ import Layout from '../../components/layout'
 import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import PostType from '../../types/post'
-import { groq } from 'next-sanity'
-import { getClient, usePreviewSubscription } from '../../lib/sanity'
+import { request } from 'graphql-request'
 
 type Props = {
-  data: {
-    post: PostType
-  }
+  post: PostType
   preview?: boolean
 }
 
-const Post = ({ data, preview }: Props) => {
+const Post = ({ post, preview }: Props) => {
   const {
     title,
     mainImage,
@@ -28,17 +25,11 @@ const Post = ({ data, preview }: Props) => {
     author,
     excerpt,
     categories,
-  } = data.post
+  } = post
   const router = useRouter()
-  if (!router.isFallback && !data?.post.slug) {
+  if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-
-  const { data: post } = usePreviewSubscription(postQuery, {
-    params: { slug: slug },
-    initialData: data,
-    enabled: preview,
-  })
 
   return (
     <Layout preview={preview}>
@@ -72,30 +63,6 @@ const Post = ({ data, preview }: Props) => {
 
 export default Post
 
-const postQuery = groq`
-  *[_type == "post" && slug.current == $slug][0] {
-    ...,
-    mainImage {
-      ...,
-      asset->
-    },
-    categories[]->,
-    body[]{
-      ...,
-      _type == "mainImage" => {
-        ...,
-        asset->
-      },
-      markDefs[]{
-        ...,
-        _type == "internalLink" => {
-          "slug": @.reference->slug
-        }
-      }
-    }
-  }
-`
-
 export async function getStaticProps({
   params,
   preview = false,
@@ -103,25 +70,68 @@ export async function getStaticProps({
   params: any
   preview: boolean
 }) {
-  const post = await getClient(preview).fetch(postQuery, {
-    slug: `${params.slug}`,
-  })
+  console.log(params)
+  const data = await request(
+    'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
+    `{
+      allPost(where: {slug: {current: {eq: "${params.slug}"}}}) {
+        _id
+        title
+        body: bodyRaw
+        slug {
+          current
+        }
+        categories {
+          title
+          slug {
+            current
+          }
+        }
+        publishedAt
+        exerpt: excerptRaw
+        featured
+        mainImage {
+          alt
+          caption
+          asset {
+            metadata{
+              dimensions {
+                aspectRatio
+                width
+                height
+              }
+              lqip
+            }
+            url
+          }
+        }
+      }
+    }`
+  )
 
   return {
     props: {
       preview,
-      data: { post },
+      post: data.allPost[0],
     },
   }
 }
 
 export async function getStaticPaths() {
-  const paths = await getClient(false).fetch(
-    groq`*[_type == "post" && defined(slug.current)][]{ slug, publishedAt}`
+  const paths = await request(
+    'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
+    `{
+    allPost{
+      publishedAt
+      slug {
+        current
+      }
+    }
+  }`
   )
 
   return {
-    paths: paths.map(
+    paths: paths.allPost.map(
       (slug: { slug: { current: string }; publishedAt: string }) => {
         return {
           params: { slug: `${slug.slug.current}`, date: slug.publishedAt },

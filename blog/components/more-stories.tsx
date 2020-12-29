@@ -16,12 +16,12 @@ const MoreStories = ({ posts }: Props) => {
           return (
             <PostPreview
               preview
-              key={post.slug}
+              key={post.slug.current}
               title={post.title}
               mainImage={post.mainImage}
               date={post.publishedAt}
               author={post.author}
-              slug={post.slug}
+              slug={post.slug.current}
               excerpt={post.excerpt}
               categories={post.categories}
             />

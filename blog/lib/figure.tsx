@@ -1,18 +1,23 @@
 import Image from 'next/image'
-import ProgressiveImage from 'react-progressive-image'
 import { urlFor } from './sanity'
 
 export const Figure = (props: any) => {
   const { asset } = props.node
+  const lqip =
+    urlFor(asset._ref).format('jpg').width(20).quality(10).url() ||
+    'https://rosnovsky.us/favicon.png'
+
+  const dimensions = {
+    width: asset._ref.split('-')[2].split('x')[0],
+    height: asset._ref.split('-')[2].split('x')[1],
+    aspectRatio:
+      asset._ref.split('-')[2].split('x')[0] /
+      asset._ref.split('-')[2].split('x')[1],
+  }
 
   if (!asset) {
     return null
   }
-
-  const orientation =
-    asset.metadata.dimensions.height / asset.metadata.dimensions.width > 1
-      ? 'portrait'
-      : 'landscape'
 
   if (asset.extension === 'gif') {
     return (
@@ -39,22 +44,21 @@ export const Figure = (props: any) => {
         /> */}
       <div className="absolute overflow-hidden object-cover">
         <Image
-          src={asset.metadata.lqip}
+          src={lqip}
           alt={`Cover Image for ${asset.title}`}
           width={896}
-          height={896 / asset.metadata.dimensions.aspectRatio - 200}
+          height={896 / dimensions.aspectRatio - 200}
           objectFit="contain"
           loading="eager"
         />
       </div>
       <Image
-        // placeholder={asset.metadata.lqip}
         src={
           urlFor(asset).width(896).format('jpg').quality(85).url() ||
           'https://rosnovsky.us/favicon.png'
         }
         width={896}
-        height={896 / asset.metadata.dimensions.aspectRatio}
+        height={896 / dimensions.aspectRatio}
         alt={`Cover Image for ${asset.title}`}
         loading="lazy"
         layout={'responsive'}

@@ -2,7 +2,8 @@ import DateFormatter from './date-formatter'
 import MainImage from './cover-image'
 import PostTitle from './post-title'
 import Author from '../types/author'
-import { PortableText } from '../lib/sanity'
+// @ts-expect-error
+import PortableText from '@sanity/block-content-to-react'
 
 type Props = {
   title: string

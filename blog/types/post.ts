@@ -1,17 +1,19 @@
 import Author from './author'
 
 type PostType = {
-  slug: string
+  slug: {
+    current: string
+  }
   title: string
   publishedAt: string
   mainImage: string
   author: Author
-  categories: Record<any,any>[]
-  excerpt: any
+  categories: { title: string, slug: string}[]
+  excerpt: Record<any, any>[]
   ogImage: {
     url: string
   }
-  body: any
+  body: Record<any, any>[]
   preview: boolean
 }
 

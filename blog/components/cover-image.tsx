@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
-import ProgressiveImage from 'react-progressive-image'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const image = featured ? (
@@ -14,15 +13,15 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
           <Image
             src={src.asset.metadata.lqip}
             alt={`Cover Image for ${src.asset.title}`}
-            width={preview ? 710 : 1500}
-            height={preview ? 455 : 1000}
-            layout={'responsive'}
+            width={preview ? 710 : 1300}
+            height={preview ? 455 : 1300}
+            layout={'intrinsic'}
             loading="eager"
           />
         </div>
         <Image
           src={
-            urlFor(src.asset)
+            urlFor(src.asset.url)
               .maxWidth(1560)
               .maxHeight(1000)
               .auto('format')
@@ -41,19 +40,21 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
     </div>
   ) : (
     <div className="inner-shadow shadow-sm">
-      <div className="absolute">
+      <div className="absolute overflow-hidden">
         <Image
           src={src.asset.metadata.lqip}
-          alt={`Cover Image for ${src.asset.title}`}
-          width={preview ? 710 : 1500}
-          height={preview ? 455 : 1000}
-          layout={'intrinsic'}
-          priority
+          alt={`Cover Image for ${src.asset.caption}`}
+          width={preview ? 710 : 1496}
+          height={preview ? 455 : 997}
+          objectFit="contain"
+          loading="eager"
+          layout="intrinsic"
+          // objectPosition="50% 50%"
         />
       </div>
       <Image
         src={
-          urlFor(src.asset)
+          urlFor(src.asset.url)
             .width(preview ? 710 : 1500)
             .height(preview ? 455 : 1000)
             .format('jpg')

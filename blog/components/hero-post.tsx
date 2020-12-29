@@ -1,7 +1,9 @@
 import { format } from 'date-fns'
 import MainImage from './cover-image'
 import Link from 'next/link'
-import { PortableText } from '../lib/sanity'
+// @ts-expect-error
+import PortableText from '@sanity/block-content-to-react'
+import serializers from '../lib/serializers'
 
 const HeroPost = ({
   title,
@@ -11,12 +13,14 @@ const HeroPost = ({
   slug,
   categories,
 }: any) => {
-  const postUrl = `${format(Date.parse(date), 'yyyy/MM/dd')}`
+  const postDate = new Date(date)
+  const postUrl = `${format(postDate, 'MM/dd/yyyy')}`
   const options = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   }
+
   return (
     <section>
       <div className="mb-8 md:mb-16 bg-local">
@@ -49,7 +53,7 @@ const HeroPost = ({
         </div>
         <div>
           <p className="text-xl leading-relaxed mb-4 prose prose-lg">
-            <PortableText blocks={excerpt} />
+            <PortableText blocks={excerpt} serializers={serializers} />
           </p>
         </div>
       </div>

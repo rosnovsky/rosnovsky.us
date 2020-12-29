@@ -4,34 +4,23 @@ import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
 import Head from 'next/head'
-import Post from '../types/post'
-import { groq } from 'next-sanity'
-import { getClient } from '../lib/sanity'
+import { request } from 'graphql-request'
+// import useSWR from 'swr'
 
-const postQuery = groq`
-  *[_type == "post"] {
-    _id,
-    title,
-    body,
-    excerpt,
-    featured,
-    publishedAt,
-    mainImage {
-      ...,
-      asset->
-    },
-    categories[]->,
-    "slug": slug.current
-  } | order(publishedAt desc)
-`
+const fetcher = async (query: any) => {
+  const result = await request(
+    'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
+    query
+  ).then((response) => {
+    return response
+  })
+  return result
+}
 
-const Index = ({ data }: any) => {
-  const featuredPost = data.posts.filter((post: any) => post.featured === true)
-  const notFeaturedPosts = data.posts.filter(
-    (post: any) =>
-      post.featured !== true &&
-      post.slug.current === featuredPost[0].slug.current
-  )
+const Index = ({ posts }: any) => {
+  const featuredPost = posts.filter((post: any) => post.featured === true)
+  const notFeaturedPosts = posts.filter((post: any) => post.featured !== true)
+  // && post.slug.current === featuredPost[0].slug.current
 
   const randomFeaturedPost = featuredPost && featuredPost[0]
   return (
@@ -60,7 +49,7 @@ const Index = ({ data }: any) => {
               title={randomFeaturedPost.title}
               mainImage={randomFeaturedPost.mainImage}
               date={randomFeaturedPost.publishedAt}
-              slug={randomFeaturedPost.slug}
+              slug={randomFeaturedPost.slug.current}
               excerpt={randomFeaturedPost.excerpt}
               categories={randomFeaturedPost.categories}
             />
@@ -75,11 +64,47 @@ const Index = ({ data }: any) => {
 export default Index
 
 export async function getStaticProps({ preview = false }) {
-  const posts = await getClient(preview).fetch(postQuery)
+  const posts = await request(
+    'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
+    `{
+      allPost(offset: 0, limit: 10){
+      _id
+      title
+      body: bodyRaw
+      slug {
+        current
+      }
+      categories {
+        title
+        slug {
+          current
+        }
+      }
+      publishedAt
+      exerpt: excerptRaw
+      featured
+      mainImage {
+        alt
+        caption
+        asset {
+          metadata{
+            dimensions {
+              aspectRatio
+              width
+              height
+            }
+            lqip
+          }
+          url
+        }
+      }
+    }
+  }`
+  )
   return {
     props: {
       preview,
-      data: { posts },
+      posts: posts.allPost,
     },
   }
 }

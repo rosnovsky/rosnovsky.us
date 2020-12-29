@@ -1,12 +1,8 @@
 // @ts-nocheck
-import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import ReactPlayer from 'react-player/file'
 import Youtube from 'react-player/youtube'
 import Figure from './figure'
 import Code from './code'
-import { getClient } from './sanity'
-import dynamic from 'next/dynamic'
 import Microlink from '@microlink/react'
 
 // const Microlink = dynamic(
@@ -36,7 +32,6 @@ const serializers = {
     mainImage: Figure,
     code: Code,
 
-    // Youtube component could be replaced with ReactPlayer, removing 2 dependencies (YouTube and getYoutubeId)
     youtube: ({ node }: any) => {
       const { url } = node
       // const id = getYouTubeId(url)
@@ -50,30 +45,6 @@ const serializers = {
             width="100%"
           />
         </div>
-      )
-    },
-    mux: (props: any) => {
-      // TODO: Fix this bullshit
-      const [asset, setAsset] = useState()
-
-      const query = `*[_type == "post" && body[]._type =="mux" ]{
-        "asset": *[asset._id == "${props.node.asset._ref}"]{...}
-      }`
-
-      useEffect(() => {
-        getClient(false)
-          .fetch(query)
-          .then((video) => setAsset(video[0].asset[0].playbackId))
-      }, [])
-
-      return (
-        <ReactPlayer
-          url={`https://stream.mux.com/${asset}.m3u8`}
-          autoPlay={false}
-          pip
-          width="100%"
-          // height={'auto'}
-        />
       )
     },
     linkCard: ({ node }: any) => {

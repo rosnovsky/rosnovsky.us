@@ -2,13 +2,15 @@ import { format } from 'date-fns'
 import MainImage from './cover-image'
 import Link from 'next/link'
 import Author from '../types/author'
-import { PortableText } from '../lib/sanity'
+// @ts-expect-error
+import PortableText from '@sanity/block-content-to-react'
+import serializers from '../lib/serializers'
 
 type Props = {
   title: string
   mainImage: string
   date: string
-  excerpt: string
+  excerpt: Record<any, any>[]
   author: Author
   slug: string
   categories: Record<any, any>[]
@@ -51,7 +53,7 @@ const PostPreview = ({
         </span>
       </div>
       <p className="text-xl font-proper leading-relaxed mb-4">
-        <PortableText blocks={excerpt} />
+        <PortableText blocks={excerpt} serializers={serializers} />
       </p>
     </div>
   )
