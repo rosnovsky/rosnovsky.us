@@ -9,14 +9,14 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         FEATURED
       </span>
       <div>
-        <div className="absolute">
+        <div className="absolute overflow-hidden object-cover mx-auto my-auto">
           <Image
             src={src.asset.metadata.lqip}
             alt={`Cover Image for ${src.asset.title}`}
-            width={preview ? 710 : 1300}
-            height={preview ? 455 : 1300}
-            layout={'intrinsic'}
+            width={1500}
+            height={1000}
             loading="eager"
+            objectFit="contain"
           />
         </div>
         <Image
@@ -25,7 +25,6 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
               .maxWidth(1560)
               .maxHeight(1000)
               .auto('format')
-              .crop('focalpoint')
               .url() || ''
           }
           width={preview ? 710 : 1500}
@@ -39,18 +38,28 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
       </div>
     </div>
   ) : (
-    <div className="inner-shadow shadow-sm">
-      <div className="absolute overflow-hidden">
-        <Image
-          src={src.asset.metadata.lqip}
-          alt={`Cover Image for ${src.asset.caption}`}
-          width={preview ? 710 : 1496}
-          height={preview ? 455 : 997}
-          objectFit="contain"
-          loading="eager"
-          layout="intrinsic"
-          // objectPosition="50% 50%"
-        />
+    <div className="relative overflow-hidden inner-shadow shadow-xl hover:shadow-2xl transition-shadow duration-200">
+      <div>
+        <div className="absolute overflow-hidden object-cover mx-auto my-auto">
+          <Image
+            src={src.asset.metadata.lqip}
+            alt={`Cover Image for ${src.asset.caption}`}
+            // width={preview ? 710 : 1496}
+            // height={
+            //   preview
+            //     ? 710 / src.asset.metadata.dimensions.aspectRatio - 100
+            //     : 1496 / src.asset.metadata.dimensions.aspectRatio - 200
+            // }
+            width={preview ? 1000 : 1560}
+            height={
+              preview
+                ? 1000 / src.asset.metadata.dimensions.aspectRatio - 100
+                : 1000
+            }
+            loading="eager"
+            objectFit="contain"
+          />
+        </div>
       </div>
       <Image
         src={

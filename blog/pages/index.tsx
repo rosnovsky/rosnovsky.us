@@ -67,7 +67,7 @@ export async function getStaticProps({ preview = false }) {
   const posts = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
-      allPost(offset: 0, limit: 10){
+      allPost(offset: 0, limit: 20){
       _id
       title
       body: bodyRaw
