@@ -49,7 +49,6 @@ export const Figure = (props: any) => {
           width={896}
           height={896 / dimensions.aspectRatio - 200}
           objectFit="contain"
-          loading="eager"
         />
       </div>
       <Image

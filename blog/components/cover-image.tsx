@@ -3,6 +3,13 @@ import Image from 'next/image'
 import { urlFor } from '../lib/sanity'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
+  const imageFile =
+    urlFor(src.asset.url)
+      .width(preview ? 710 : 1560)
+      .height(preview ? 455 : 1000)
+      .format('jpg')
+      .url() || ''
+
   const image = featured ? (
     <div className="relative overflow-hidden inner-shadow shadow-xl hover:shadow-2xl transition-shadow duration-200">
       <span className="absolute xl:top-10 xl:right-10 top-5 right-5 xs:text-lg xl:text-3xl lg:text-xl md:text-lg font-black z-50 inline-flex items-center px-3 py-1 lg:px-8 lg:py-3 rounded-full text-sm bg-red-100 text-red-800 transform rotate-6">
@@ -20,13 +27,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
           />
         </div>
         <Image
-          src={
-            urlFor(src.asset.url)
-              .maxWidth(1560)
-              .maxHeight(1000)
-              .auto('format')
-              .url() || ''
-          }
+          src={imageFile}
           width={preview ? 710 : 1500}
           height={preview ? 455 : 1000}
           alt={`Cover Image for ${title}`}
@@ -62,13 +63,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         </div>
       </div>
       <Image
-        src={
-          urlFor(src.asset.url)
-            .width(preview ? 710 : 1500)
-            .height(preview ? 455 : 1000)
-            .format('jpg')
-            .url() || ''
-        }
+        src={imageFile}
         width={preview ? 710 : 1500}
         height={preview ? 455 : 1000}
         alt={`Cover Image for ${title}`}
