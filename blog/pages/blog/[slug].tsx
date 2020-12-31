@@ -70,7 +70,6 @@ export async function getStaticProps({
   params: any
   preview: boolean
 }) {
-  console.log(params)
   const data = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
@@ -88,7 +87,7 @@ export async function getStaticProps({
           }
         }
         publishedAt
-        exerpt: excerptRaw
+        excerpt: excerptRaw
         featured
         mainImage {
           alt
