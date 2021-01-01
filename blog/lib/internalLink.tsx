@@ -6,7 +6,7 @@ import { setDate } from 'date-fns/esm'
 
 const InternalLink = ({ mark, children }: any) => {
   const [slug, setSlug] = useState([
-    { slug: { current: '' }, publishedAt: '2019-12-26T08:00:00.000Z' },
+    { slug: { current: 'blog' }, publishedAt: '2000-01-01T00:00:00.001Z' },
   ])
 
   const query = '*[_type == "post" && _id == $_ref ] {publishedAt, slug}'
