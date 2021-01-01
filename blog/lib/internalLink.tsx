@@ -5,9 +5,7 @@ import Link from 'next/link'
 import { setDate } from 'date-fns/esm'
 
 const InternalLink = ({ mark, children }: any) => {
-  const [slug, setSlug] = useState([
-    { slug: { current: 'blog' }, publishedAt: '2000-01-01T00:00:00.001Z' },
-  ])
+  const [slug, setSlug] = useState([{ publishedAt: '', slug: { current: '' } }])
 
   const query = '*[_type == "post" && _id == $_ref ] {publishedAt, slug}'
   const sanityClient = client({
@@ -26,9 +24,13 @@ const InternalLink = ({ mark, children }: any) => {
     getSlug()
   }, [])
 
-  const postUrl = format(Date.parse(slug[0].publishedAt), 'yyyy/MM/dd')
+  const postUrl = slug[0].publishedAt
+    ? format(Date.parse(slug[0].publishedAt), 'yyyy/MM/dd')
+    : 'wait...'
 
-  const href = `/blog/${postUrl}/${slug[0].slug.current}`
+  const href = slug[0].slug
+    ? `/blog/${postUrl}/${slug[0].slug.current}`
+    : 'wait...'
 
   return <Link href={href}>{children[0]}</Link>
 }
