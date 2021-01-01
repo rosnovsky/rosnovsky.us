@@ -4,7 +4,7 @@ import Youtube from 'react-player/youtube'
 import Figure from './figure'
 import Code from './code'
 import Microlink from '@microlink/react'
-
+import InternalLink from './internalLink'
 // const Microlink = dynamic(
 //   () => import('@microlink/react').then((mod) => mod.Microlink),
 //   { ssr: false }
@@ -12,11 +12,7 @@ import Microlink from '@microlink/react'
 
 const serializers = {
   marks: {
-    internalLink: ({ mark, children }) => {
-      const { slug = {} } = mark
-      const href = `/blog/${slug.current}`
-      return <Link href={href}>{children[0]}</Link>
-    },
+    internalLink: InternalLink,
     link: ({ mark, children }: { mark: any; children: any }) => {
       const { blank, href } = mark
       return blank ? (
