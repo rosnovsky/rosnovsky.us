@@ -6,6 +6,7 @@ import { setDate } from 'date-fns/esm'
 
 const InternalLink = ({ mark, children }: any) => {
   const [slug, setSlug] = useState([{ publishedAt: '', slug: { current: '' } }])
+  const [postUrl, setPostUrl] = useState('')
 
   const query = '*[_type == "post" && _id == $_ref ] {publishedAt, slug}'
   const sanityClient = client({
@@ -20,19 +21,16 @@ const InternalLink = ({ mark, children }: any) => {
       })
       const slug = await querySlug
       setSlug(slug)
+      setPostUrl(
+        `/blog/${format(Date.parse(slug[0].publishedAt), 'yyyy/MM/dd')}/${
+          slug[0].slug.current
+        }`
+      )
     }
     getSlug()
   }, [])
 
-  const postUrl = slug[0].publishedAt
-    ? format(Date.parse(slug[0].publishedAt), 'yyyy/MM/dd')
-    : 'wait...'
-
-  const href = slug[0].slug
-    ? `/blog/${postUrl}/${slug[0].slug.current}`
-    : 'wait...'
-
-  return <Link href={href}>{children[0]}</Link>
+  return <Link href={postUrl}>{children[0]}</Link>
 }
 
 export default InternalLink
