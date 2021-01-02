@@ -22,7 +22,7 @@ const HeroPost = ({
   }
 
   return (
-    <section className="xl:flex shadow-md mb-24">
+    <section className="xl:flex mb-24">
       <div className="my-8 mx-3 xl:w-2/3">
         <MainImage
           featured

@@ -11,8 +11,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
       <span className="absolute xl:top-10 xl:right-10 top-5 right-5 xs:text-lg xl:text-3xl lg:text-xl md:text-lg font-black z-50 inline-flex items-center px-3 py-1 lg:px-8 lg:py-3 rounded-full text-sm bg-red-100 text-red-800 transform rotate-6">
         FEATURED
       </span>
-      <div>
-        <div className="absolute overflow-hidden object-cover mx-auto my-auto">
+      {/* <div className="absolute overflow-hidden object-cover mx-auto my-auto">
           <Image
             src={src.asset.metadata.lqip}
             alt={`Cover Image for ${src.asset.title}`}
@@ -21,23 +20,21 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
             loading="eager"
             objectFit="contain"
           />
-        </div>
-        <Image
-          src={imageFile}
-          width={710}
-          height={455}
-          alt={`Cover Image for ${title}`}
-          layout={'responsive'}
-          loading="lazy"
-          // priority={preview ? false : true}
-          className="object-cover shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500"
-        />
-      </div>
+        </div> */}
+      <Image
+        src={imageFile}
+        width={710}
+        height={455}
+        alt={`Cover Image for ${title}`}
+        layout={'responsive'}
+        loading="lazy"
+        // priority={preview ? false : true}
+        className="object-cover shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500"
+      />
     </div>
   ) : (
     <div className="relative overflow-hidden inner-shadow shadow-xl hover:shadow-2xl transition-shadow duration-200">
-      <div>
-        <div className="absolute overflow-hidden object-cover mx-auto my-auto">
+      {/* <div className="absolute overflow-hidden object-cover mx-auto my-auto">
           <Image
             src={src.asset.metadata.lqip}
             alt={`Cover Image for ${src.asset.caption}`}
@@ -57,7 +54,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
             objectFit="contain"
           />
         </div>
-      </div>
+      </div> */}
       <Image
         src={
           urlFor(src.asset.url)

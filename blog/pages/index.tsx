@@ -5,6 +5,7 @@ import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import Head from 'next/head'
 import { request } from 'graphql-request'
+import Meta from '../components/Header/PageMeta'
 
 const Index = ({ posts, menuItems, alert }: any) => {
   const featuredPost = posts.filter((post: any) => post.featured === true)
@@ -13,12 +14,31 @@ const Index = ({ posts, menuItems, alert }: any) => {
   const randomFeaturedPost = featuredPost && featuredPost[0]
   return (
     <>
+      <Meta title="Rosnovsky Park" />
       <Layout menuItems={menuItems} alert={alert}>
         <Head>
           <title>Rosnovsky Park</title>
           <link
-            rel="preload"
+            rel="preconnect"
             href="https://api.covidtracking.com/v1/us/current.json"
+            as="fetch"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://vitals.vercel-insights.com"
+            as="fetch"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://cdn.usefathom.com"
+            as="fetch"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://img3.usefathom.com"
             as="fetch"
             crossOrigin="anonymous"
           />

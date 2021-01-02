@@ -9,9 +9,10 @@ import PostTitle from '../components/Pages/PageTitle'
 import Head from 'next/head'
 import { request } from 'graphql-request'
 import { urlFor } from '../utils/sanity'
+import Meta from '../components/Header/PageMeta'
 
 const Page = ({ page, menuItems, preview }: any) => {
-  const { title, mainImage, body, slug, excerpt }: any = page
+  const { title, mainImage, body, slug }: any = page
   const router = useRouter()
   if (!router.isFallback && !page?.slug) {
     return <ErrorPage statusCode={404} />
@@ -19,6 +20,7 @@ const Page = ({ page, menuItems, preview }: any) => {
 
   return (
     <>
+      <Meta title={title} />
       <Layout preview={preview} menuItems={menuItems}>
         <div className="mx-auto"></div>
         <Container>

@@ -42,7 +42,7 @@ export const Figure = (props: any) => {
           src={asset.metadata.lqip}
           className="absolute opacity-100 transition-opacity duration-1000"
         /> */}
-      <div className="absolute overflow-hidden object-cover">
+      {/* <div className="absolute overflow-hidden object-cover">
         <Image
           src={lqip}
           alt={`Cover Image for ${asset.title}`}
@@ -50,7 +50,7 @@ export const Figure = (props: any) => {
           height={896 / dimensions.aspectRatio - 200}
           objectFit="contain"
         />
-      </div>
+      </div> */}
       <Image
         src={
           urlFor(asset).width(896).format('jpg').quality(85).url() ||

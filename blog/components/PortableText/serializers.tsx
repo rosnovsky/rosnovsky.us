@@ -1,13 +1,11 @@
 // @ts-nocheck
-import Youtube from 'react-player/youtube'
-import Figure from './Figure'
-import Code from './Code'
-import Microlink from '@microlink/react'
 import InternalLink from './InternalLink'
-// const Microlink = dynamic(
-//   () => import('@microlink/react').then((mod) => mod.Microlink),
-//   { ssr: false }
-// )
+import dynamic from 'next/dynamic'
+
+const Figure = dynamic(import('./Figure'))
+const Code = dynamic(import('./Code'))
+const Microlink = dynamic(import('@microlink/react'))
+const Youtube = dynamic(import('react-player/youtube'))
 
 const serializers = {
   marks: {

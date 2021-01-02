@@ -1,6 +1,7 @@
 import Footer from '../Footer/footer'
 import Covid from '../Covid/CovidTracker'
-import Alert from '../Alert/alert'
+import dynamic from 'next/dynamic'
+const Alert = dynamic(import('../Alert/alert'))
 
 type Props = {
   preview?: boolean

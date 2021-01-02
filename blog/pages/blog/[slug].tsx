@@ -8,8 +8,8 @@ import Layout from '../../components/Layout/layout'
 import PostTitle from '../../components/Posts/PostTitle'
 import Head from 'next/head'
 import { request } from 'graphql-request'
-import { urlFor } from '../../utils/sanity'
 import { format } from 'date-fns'
+import Meta from '../../components/Header/PageMeta'
 
 type Props = {
   post: Post
@@ -43,50 +43,53 @@ const Post = ({ post, preview, menuItems }: Props) => {
   }
 
   return (
-    <Layout menuItems={menuItems} preview={preview}>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{title} | Rosnovsky Park</title>
-                <meta
-                  property="og:image"
-                  content={`https://res.cloudinary.com/rosnovsky/image/upload/c_fill,w_1200,e_blur:400/c_fit,l_og_template,w_1000/w_200,c_fit,l_text:mono.ttf_24_bold:${format(
-                    Date.parse(publishedAt),
-                    'dd MMM yyyy'
-                  )},g_north_west,x_160,y_523,co_rgb:A6A6A6FF/w_300,c_fit,l_text:mono.ttf_24_bold:${
-                    categories[0].title
-                  },g_north_west,x_150,y_130,co_rgb:D03801FF/w_700,c_fit,l_text:fira.ttf_76_bold:${cloudinaryTitleCleanup(
-                    title
-                  )},g_north_west,x_150,y_190/v1607201491/b920c2fab2f915bd9a11f621ce40002c157293d2-1800x1013_napjjt.png`}
+    <>
+      <Meta title={title} />
+      <Layout menuItems={menuItems} preview={preview}>
+        <Container>
+          <Header />
+          {router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <article className="mb-32">
+                <Head>
+                  <title>{title} | Rosnovsky Park</title>
+                  <meta
+                    property="og:image"
+                    content={`https://res.cloudinary.com/rosnovsky/image/upload/c_fill,w_1200,e_blur:400/c_fit,l_og_template,w_1000/w_200,c_fit,l_text:mono.ttf_24_bold:${format(
+                      Date.parse(publishedAt),
+                      'dd MMM yyyy'
+                    )},g_north_west,x_160,y_523,co_rgb:A6A6A6FF/w_300,c_fit,l_text:mono.ttf_24_bold:${
+                      categories[0].title
+                    },g_north_west,x_150,y_130,co_rgb:D03801FF/w_700,c_fit,l_text:fira.ttf_76_bold:${cloudinaryTitleCleanup(
+                      title
+                    )},g_north_west,x_150,y_190/v1607201491/b920c2fab2f915bd9a11f621ce40002c157293d2-1800x1013_napjjt.png`}
+                  />
+                  <meta property="og:title" content={title} />
+                  <meta property="og:type" content="article" />
+                  <meta
+                    property="og:url"
+                    content={`https://rosnovsky.us/blog/${format(
+                      Date.parse(publishedAt),
+                      'yyyy/MM/dd'
+                    )}/${slug.current}`}
+                  />
+                </Head>
+                <PostHeader
+                  title={title}
+                  mainImage={mainImage}
+                  date={publishedAt}
+                  excerpt={excerpt}
+                  categories={categories}
                 />
-                <meta property="og:title" content={title} />
-                <meta property="og:type" content="article" />
-                <meta
-                  property="og:url"
-                  content={`https://rosnovsky.us/blog/${format(
-                    Date.parse(publishedAt),
-                    'yyyy/MM/dd'
-                  )}/${slug.current}`}
-                />
-              </Head>
-              <PostHeader
-                title={title}
-                mainImage={mainImage}
-                date={publishedAt}
-                excerpt={excerpt}
-                categories={categories}
-              />
-              <PostBody content={body} />
-            </article>
-          </>
-        )}
-      </Container>
-    </Layout>
+                <PostBody content={body} />
+              </article>
+            </>
+          )}
+        </Container>
+      </Layout>
+    </>
   )
 }
 

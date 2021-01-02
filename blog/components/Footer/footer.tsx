@@ -56,7 +56,7 @@ const Footer = ({ menuItems }: any) => {
               </svg>
             </a>
           </div>
-          <p className="mt-8 text-center text-base text-gray-400">
+          <p className="mt-8 text-center text-base text-gray-600">
             Made with love and gratitude on{' '}
             <a
               href="https://snohomishtribe.org"
@@ -86,7 +86,7 @@ const Footer = ({ menuItems }: any) => {
             </a>{' '}
             native lands in 2020.
           </p>
-          <p className="mt-8 text-center text-base text-gray-400">
+          <p className="mt-8 text-center text-base text-gray-600">
             © 2003-{new Date().getFullYear()} Art Rosnovsky
           </p>
         </div>
