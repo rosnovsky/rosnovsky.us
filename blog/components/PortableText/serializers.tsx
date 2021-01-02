@@ -1,10 +1,9 @@
 // @ts-nocheck
-import Link from 'next/link'
 import Youtube from 'react-player/youtube'
-import Figure from './figure'
-import Code from './code'
+import Figure from './Figure'
+import Code from './Code'
 import Microlink from '@microlink/react'
-import InternalLink from './internalLink'
+import InternalLink from './InternalLink'
 // const Microlink = dynamic(
 //   () => import('@microlink/react').then((mod) => mod.Microlink),
 //   { ssr: false }

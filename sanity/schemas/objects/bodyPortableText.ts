@@ -1,5 +1,4 @@
 import {FaExternalLinkAlt, FaLink, FaRegAddressCard} from 'react-icons/fa'
-import { LinkCard } from '../../src/linkCard'
 
 export default {
   name: 'bodyPortableText',
@@ -113,16 +112,5 @@ export default {
         }
       }
     },
-    // {
-    //   name: 'photoGallery',
-    //   type: 'photoGallery',
-    //   title: 'Photo Gallery',
-    //   description: 'Add photo gallery to post'
-    // },
-    // {
-    //   name: 'mux',
-    //   title: 'MUX video',
-    //   type: 'mux'
-    // }
   ]
 }

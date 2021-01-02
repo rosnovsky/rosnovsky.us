@@ -1,6 +1,6 @@
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
-import serializers from '../lib/serializers'
+import serializers from '../PortableText/serializers'
 
 type Props = {
   content: Record<any, any>[]

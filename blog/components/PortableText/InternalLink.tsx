@@ -2,10 +2,8 @@ import { format } from 'date-fns'
 import client from '@sanity/client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { setDate } from 'date-fns/esm'
 
 const InternalLink = ({ mark, children }: any) => {
-  const [slug, setSlug] = useState([{ publishedAt: '', slug: { current: '' } }])
   const [postUrl, setPostUrl] = useState('')
 
   const query = '*[_type == "post" && _id == $_ref ] {publishedAt, slug}'
@@ -20,7 +18,7 @@ const InternalLink = ({ mark, children }: any) => {
         _ref: mark.reference._ref,
       })
       const slug = await querySlug
-      setSlug(slug)
+
       setPostUrl(
         `/blog/${format(Date.parse(slug[0].publishedAt), 'yyyy/MM/dd')}/${
           slug[0].slug.current
@@ -30,7 +28,11 @@ const InternalLink = ({ mark, children }: any) => {
     getSlug()
   }, [])
 
-  return <Link href={postUrl}>{children[0]}</Link>
+  return (
+    <Link href={postUrl} as={postUrl}>
+      {children[0]}
+    </Link>
+  )
 }
 
 export default InternalLink

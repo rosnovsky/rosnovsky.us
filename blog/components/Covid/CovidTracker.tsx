@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CasesCard from './CovidCard'
-import Container from '../container'
+import Container from '../Layout/container'
 import useSWR from 'swr'
 
 interface CovidFetchData {

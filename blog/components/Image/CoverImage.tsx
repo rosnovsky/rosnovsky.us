@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { urlFor } from '../lib/sanity'
+import { urlFor } from '../../utils/sanity'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const imageFile =

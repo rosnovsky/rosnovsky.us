@@ -1,9 +1,9 @@
 import { format } from 'date-fns'
-import MainImage from './cover-image'
+import MainImage from '../Image/CoverImage'
 import Link from 'next/link'
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
-import serializers from '../lib/serializers'
+import serializers from '../PortableText/serializers'
 
 const HeroPost = ({
   title,

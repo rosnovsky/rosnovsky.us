@@ -1,5 +1,4 @@
-import PostPreview from './post-preview'
-import Post from '../types/post'
+import PostPreview from './PostPreview'
 
 type Props = {
   posts: Post[]
@@ -19,9 +18,8 @@ const MoreStories = ({ posts }: Props) => {
               key={post.slug.current}
               title={post.title}
               mainImage={post.mainImage}
-              date={post.publishedAt}
-              author={post.author}
-              slug={post.slug.current}
+              publishedAt={post.publishedAt}
+              slug={post.slug}
               excerpt={post.excerpt}
               categories={post.categories}
             />

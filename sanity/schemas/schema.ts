@@ -10,7 +10,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import author from './documents/author'
 import category from './documents/category'
 import post from './documents/post'
+import page from './documents/page'
 import siteSettings from './documents/siteSettings'
+import alert from './documents/alert'
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText'
@@ -43,7 +45,9 @@ export default createSchema({
     excerptPortableText,
     youtube,
     mux,
-    linkCard
+    linkCard,
+    page,
+    alert
     // photoGallery
 
     // When added to this list, object types can be used as

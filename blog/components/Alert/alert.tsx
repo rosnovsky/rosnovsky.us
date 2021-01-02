@@ -1,17 +1,20 @@
-import Container from './container'
+import Container from '../Layout/container'
 import Link from 'next/link'
 
-const Alert = () => {
+const Alert = ({ message, alertLink, internal }: any) => {
+  console.log(message, alertLink, internal)
   return (
     <div className="border-b border-accent-2 construction">
       <Container>
         <div className="flex py-2 text-center text-sm">
           <div className="bg-white px-4 font-semibold text-lg mx-auto">
-            Work in progress.{' '}
+            {message}{' '}
             <span className="underline hover:text-success duration-200 transition-colors">
-              <Link href="/blog/2020/10/26/building-this-website">
-                Learn More &rarr;
-              </Link>
+              {internal ? (
+                <Link href={alertLink}>Learn More &rarr;</Link>
+              ) : (
+                <a href={alertLink}>Learn More &rarr;</a>
+              )}
             </span>
           </div>
           )

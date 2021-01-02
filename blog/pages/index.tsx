@@ -1,77 +1,19 @@
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
+import Container from '../components/Layout/container'
+import MoreStories from '../components/Posts/MorePosts'
+import HeroPost from '../components/Posts/HeroPost'
+import Intro from '../components/Header/intro'
+import Layout from '../components/Layout/layout'
 import Head from 'next/head'
 import { request } from 'graphql-request'
-// import { useState } from 'react'
-// import { useSWRInfinite } from 'swr'
 
-// const fetcher = async (query: any) => {
-//   const result = await request(
-//     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
-//     query
-//   ).then((response) => {
-//     return response
-//   })
-//   return result
-// }
-
-const Index = ({ posts }: any) => {
-  // const [morePosts, setMorePosts] = useState([])
-  // const { data, error, mutate, size, setSize, isValidating } = useSWRInfinite(
-  //   (index) => `{
-  //     allPost(offset: 5 + ${index * 10}, limit: 5){
-  //     _id
-  //     title
-  //     body: bodyRaw
-  //     slug {
-  //       current
-  //     }
-  //     categories {
-  //       title
-  //       slug {
-  //         current
-  //       }
-  //     }
-  //     publishedAt
-  //     exerpt: excerptRaw
-  //     featured
-  //     mainImage {
-  //       alt
-  //       caption
-  //       asset {
-  //         metadata{
-  //           dimensions {
-  //             aspectRatio
-  //             width
-  //             height
-  //           }
-  //           lqip
-  //         }
-  //         url
-  //       }
-  //     }
-  //   }
-  // }`,
-  //   fetcher
-  // )
-  // setMorePosts(data[0])
-  // const isLoadingInitialData = !data && !error
-  // const isLoadingMore =
-  //   isLoadingInitialData ||
-  //   (size > 0 && data && typeof data[size - 1] === 'undefined')
-  // const isEmpty = data?.[0]?.length === 0
-  // const isReachingEnd = isEmpty || (data && data[data.length - 1]?.length < 10)
-
+const Index = ({ posts, menuItems, alert }: any) => {
   const featuredPost = posts.filter((post: any) => post.featured === true)
   const notFeaturedPosts = posts.filter((post: any) => post.featured !== true)
 
   const randomFeaturedPost = featuredPost && featuredPost[0]
   return (
     <>
-      <Layout>
+      <Layout menuItems={menuItems} alert={alert}>
         <Head>
           <title>Rosnovsky Park</title>
           <link
@@ -80,13 +22,6 @@ const Index = ({ posts }: any) => {
             as="fetch"
             crossOrigin="anonymous"
           />
-          <script
-            src="https://llama.rosnovsky.us/script.js"
-            data-site="UHVHKTPD"
-            honor-dnt="true"
-            excluded-domains="rosnovskyus.vercel.app,localhost"
-            defer
-          ></script>
         </Head>
         <Container>
           <Intro />
@@ -101,22 +36,6 @@ const Index = ({ posts }: any) => {
             />
           )}
           <MoreStories posts={notFeaturedPosts} />
-          {/* {console.log(morePosts, size)}
-          {isEmpty ? (
-            <p>Yay, no issues found.</p>
-          ) : morePosts.length < 2 ? null : (
-            <MoreStories posts={morePosts[size + 1].allPost} />
-          )}
-          <button
-            disabled={isLoadingMore || isReachingEnd}
-            onClick={() => setSize(size + 1)}
-          >
-            {isLoadingMore
-              ? 'loading...'
-              : isReachingEnd
-              ? 'no more issues'
-              : 'load more'}
-          </button> */}
         </Container>
       </Layout>
     </>
@@ -126,10 +45,22 @@ const Index = ({ posts }: any) => {
 export default Index
 
 export async function getStaticProps({ preview = false }) {
-  const posts = await request(
+  const data = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
-      allPost(sort: [ { publishedAt: DESC } ]){
+      alert: allAlert {
+        message
+        alertLink
+        internal
+        active
+      }
+      menuItems: allPage(where: {menuItem: {eq: true}}){
+        title
+        slug {
+          current
+        }
+      }
+      posts: allPost(sort: [ { publishedAt: DESC } ]){
       _id
       title
       body: bodyRaw
@@ -166,7 +97,9 @@ export async function getStaticProps({ preview = false }) {
   return {
     props: {
       preview,
-      posts: posts.allPost,
+      posts: data.posts,
+      menuItems: data.menuItems,
+      alert: data.alert[0],
     },
   }
 }

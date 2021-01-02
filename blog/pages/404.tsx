@@ -1,6 +1,6 @@
 import Covid from '../components/Covid/CovidTracker'
-import Footer from '../components/footer'
-import Meta from '../components/meta'
+import Footer from '../components/Footer/footer'
+import Meta from '../components/Header/PageMeta'
 
 const NotFound = () => {
   return (

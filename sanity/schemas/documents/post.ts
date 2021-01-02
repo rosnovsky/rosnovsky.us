@@ -46,16 +46,6 @@ export default {
         'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
-      name: 'authors',
-      title: 'Authors',
-      type: 'array',
-      of: [
-        {
-          type: 'authorReference'
-        }
-      ]
-    },
-    {
       name: 'categories',
       type: 'array',
       title: 'Categories',
@@ -82,22 +72,8 @@ export default {
   ],
   orderings: [
     {
-      name: 'publishingDateAsc',
-      title: 'Publishing date new–>old',
-      by: [
-        {
-          field: 'publishedAt',
-          direction: 'asc'
-        },
-        {
-          field: 'title',
-          direction: 'asc'
-        }
-      ]
-    },
-    {
       name: 'publishingDateDesc',
-      title: 'Publishing date old->new',
+      title: 'New to Old',
       by: [
         {
           field: 'publishedAt',
@@ -113,17 +89,14 @@ export default {
   preview: {
     select: {
       title: 'title',
-      publishedAt: 'publishedAt',
-      slug: 'slug',
+      subtitle: 'publishedAt',
       media: 'mainImage'
     },
-    prepare({ title = 'No title', publishedAt, slug = {}, media }) {
-      const dateSegment = format(Date.parse(publishedAt), 'yyyy/MM/dd')
-      const path = `/${dateSegment}/${slug.current}/`
+    prepare({ title = 'No title', subtitle, media }) {
       return {
         title,
         media,
-        subtitle: path ? format(Date.parse(publishedAt), 'MMMM do, yyyy') : '⚠️ No Published Date'
+        subtitle: subtitle ? format(Date.parse(subtitle), 'MMMM do, yyyy') : '⚠️ No Published Date'
       }
     }
   }

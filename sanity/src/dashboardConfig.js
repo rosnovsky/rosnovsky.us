@@ -10,7 +10,7 @@ export default {
             value: 'https://github.com/rosnovsky/sanity-gatsby-blog',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://next.rosnovsky.us', category: 'apps' }
+          { title: 'Frontend', value: 'https://rosnovsky.us', category: 'apps' }
         ]
       }
     },
@@ -22,7 +22,7 @@ export default {
     },
     {
       name: 'document-chart',
-      options: { types: ['post', 'author', 'sanity.imageAsset'] },
+      options: { types: ['post', 'page', 'sanity.imageAsset'] },
       layout: { width: 'full' }
     }
   ]

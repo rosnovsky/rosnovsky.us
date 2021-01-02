@@ -1,31 +1,19 @@
 import { format } from 'date-fns'
-import MainImage from './cover-image'
+import MainImage from '../Image/CoverImage'
 import Link from 'next/link'
-import Author from '../types/author'
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
-import serializers from '../lib/serializers'
-
-type Props = {
-  title: string
-  mainImage: string
-  date: string
-  excerpt: Record<any, any>[]
-  author: Author
-  slug: string
-  categories: Record<any, any>[]
-  preview: boolean
-}
+import serializers from '../PortableText/serializers'
 
 const PostPreview = ({
   title,
   mainImage,
-  date,
+  publishedAt,
   excerpt,
   categories,
   slug,
-}: Props) => {
-  const postUrl = `${format(Date.parse(date), 'yyyy/MM/dd')}`
+}: Post) => {
+  const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
   const options = {
     year: 'numeric',
     month: 'long',
@@ -36,18 +24,21 @@ const PostPreview = ({
       <div className="mb-5">
         <MainImage
           preview={true}
-          slug={`${postUrl}/${slug}`}
+          slug={`${postUrl}/${slug.current}`}
           title={title}
           src={mainImage}
         />
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/blog/${postUrl}/${slug}`} href="/blog/[slug]">
+        <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
           <a className="hover:underline text-3xl font-black">{title}</a>
         </Link>
       </h3>
       <div className="text-sm mb-4 font-mono text-gray-700">
-        {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))} |{' '}
+        {new Intl.DateTimeFormat('en-US', options).format(
+          Date.parse(publishedAt)
+        )}{' '}
+        |{' '}
         <span className="text-yellow-600">
           {categories.map((category) => category.title + ' | ')}
         </span>
