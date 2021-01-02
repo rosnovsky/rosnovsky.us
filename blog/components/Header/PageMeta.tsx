@@ -29,6 +29,11 @@ const Meta = ({ title }: { title: string }) => {
         color="#000000"
       />
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
+      <script
+        src="https://llama.rosnovsky.us/script.js"
+        data-site="IMKYNEVQ"
+        defer
+      ></script>
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />

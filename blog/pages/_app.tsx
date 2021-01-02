@@ -10,7 +10,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Initialize Fathom when the app loads
     Fathom.load('IMKYNEVQ', {
-      includedDomains: ['https://rosnovsky.us'],
+      includedDomains: ['rosnovsky.us'],
     })
 
     function onRouteChangeComplete() {
