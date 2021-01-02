@@ -5,7 +5,14 @@ import Meta from '../components/Header/PageMeta'
 const NotFound = () => {
   return (
     <>
-      <Meta title="404, damn it!" />
+      <Meta
+        title="404, damn it!"
+        pageType="article"
+        description="404: Page not found. Let's not point fingers, ok? Ok."
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/c_fill,w_1200,e_blur:400/c_fit,l_og_template,w_1000/w_500,c_fit,l_text:mono.ttf_24_bold:From Pacific Northwest to the World,g_north_west,x_160,y_523,co_rgb:A6A6A6FF/w_300,c_fit,l_text:mono.ttf_36_bold:Visit,g_north_west,x_150,y_130,co_rgb:D03801FF/w_700,c_fit,l_text:fira.ttf_96_bold:Rosnovsky Park,g_north_west,x_150,y_290/v1607201491/b920c2fab2f915bd9a11f621ce40002c157293d2-1800x1013_napjjt.png`}
+        canonicalUrl="https://rosnovsky.us/"
+        coverAlt="Rosnovsky Park"
+      />
       <div className="">
         <Covid />
         <div className="bg-white h-auto ">

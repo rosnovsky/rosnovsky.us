@@ -1,6 +1,21 @@
 import Head from 'next/head'
 
-const Meta = ({ title }: { title: string }) => {
+const Meta = ({
+  title,
+  coverImage,
+  coverAlt,
+  canonicalUrl,
+  description,
+  pageType,
+}: {
+  title: string
+  siteSettings?: Record<any, any>
+  coverImage: string
+  coverAlt: string
+  canonicalUrl: string
+  description: string
+  pageType: 'article'
+}) => {
   return (
     <Head>
       <meta charSet="utf-8" />
@@ -29,16 +44,45 @@ const Meta = ({ title }: { title: string }) => {
         color="#000000"
       />
       <link rel="shortcut icon" href="/favicon.ico" />
-      {/* <script
-        src="https://llama.rosnovsky.us/script.js"
-        data-site="IMKYNEVQ"
-        defer
-      ></script> */}
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
-      <meta name="description" content={`Rosnovsky Park.`} />
-      {/* <meta property="og:image" content={HOME_OG_IMAGE_URL} /> */}
+      <meta
+        name="description"
+        content={`Rosnovsky Park. From Pacific Northwest to the World.`}
+      />
+      <meta name="author" content="Art Rosnovsky" />
+      <meta
+        name="keywords"
+        content="Web development, typescript, javascript, react, hiking, next.js, sanity.io"
+      />
+
+      {/* OPEN GRAPH */}
+      <meta property="og:type" content={pageType || 'website'} />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:site_name" content={title || 'Rosnovsky Park'} />
+      <meta property="og:title" content={title || 'Rosnovsky Park'} />
+      <meta
+        property="og:description"
+        content={
+          description || 'Rosnovsky Park. From Pacific Northwest to the World.'
+        }
+      />
+      <meta property="og:url" content="https://rosnovsky.us" />
+      <meta property="og:image" content={coverImage || 'default.jpg'} />
+      <meta property="og:image:alt" content={coverAlt} />
+
+      {/* TWITTER */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="https://rosnovsky.us" />
+      <meta name="twitter:creator" content="Art Rosnovsky" />
+      <meta name="twitter:url" content={canonicalUrl} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={coverImage} />
+      <meta name="twitter:image:alt" content={title} />
     </Head>
   )
 }
