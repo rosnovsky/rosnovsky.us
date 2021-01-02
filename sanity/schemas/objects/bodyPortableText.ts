@@ -53,6 +53,25 @@ export default {
                 name: 'blank',
                 description: 'Read https://css-tricks.com/use-target_blank/',
                 type: 'boolean'
+              },
+              {
+                title: 'Fathom Goal',
+                name: 'fathom',
+                description: 'Fathom goal tracking code',
+                type: 'object',
+                fields: [
+                  {
+                    title: 'Goal ID',
+                    type: 'string',
+                    name: 'goalId',
+                    description: 'Default is X9Y2BWVS'
+                  },
+                  {
+                    title: 'Goal value in $$$',
+                    type: 'number',
+                    name: 'goalValue',
+                  }
+                ]
               }
             ],
             preview: {

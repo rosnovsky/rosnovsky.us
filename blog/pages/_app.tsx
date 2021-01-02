@@ -3,11 +3,6 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
 import '../styles/index.css'
-import type { NextWebVitalsMetric } from 'next/app'
-
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-  console.log(metric)
-}
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -20,6 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
     function onRouteChangeComplete() {
       Fathom.trackPageview()
+      // Fathom.trackGoal('X9Y2BWVS', 1000)
     }
     // Record a pageview when route changes
     router.events.on('routeChangeComplete', onRouteChangeComplete)

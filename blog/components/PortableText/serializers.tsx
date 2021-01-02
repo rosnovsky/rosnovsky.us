@@ -6,14 +6,21 @@ const Figure = dynamic(import('./Figure'))
 const Code = dynamic(import('./Code'))
 const Microlink = dynamic(import('@microlink/react'))
 const Youtube = dynamic(import('react-player/youtube'))
+// import { trackGoal } from 'fathom-client'
 
 const serializers = {
   marks: {
     internalLink: InternalLink,
     link: ({ mark, children }: { mark: any; children: any }) => {
-      const { blank, href } = mark
+      // TODO: implement Fathom goal tracking
+      const { blank, href /* fathom */ } = mark
       return blank ? (
-        <a href={href} target="_blank" rel="noopener">
+        <a
+          href={href}
+          // onClick={trackGoal(fathom.goalID, fathom.goalValue)}
+          target="_blank"
+          rel="noopener"
+        >
           {children}
         </a>
       ) : (
