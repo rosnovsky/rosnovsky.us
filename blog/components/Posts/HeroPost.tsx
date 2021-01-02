@@ -14,7 +14,7 @@ const HeroPost = ({
   categories,
 }: any) => {
   const postDate = new Date(date)
-  const postUrl = `${format(postDate, 'MM/dd/yyyy')}`
+  const postUrl = `${format(postDate, 'yyyy/MM/dd')}`
   const options = {
     year: 'numeric',
     month: 'long',
