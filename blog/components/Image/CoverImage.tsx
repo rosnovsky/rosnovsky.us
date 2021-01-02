@@ -4,11 +4,7 @@ import { urlFor } from '../../utils/sanity'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const imageFile =
-    urlFor(src.asset.url)
-      .width(preview ? 710 : 1560)
-      .height(preview ? 455 : 1000)
-      .format('jpg')
-      .url() || ''
+    urlFor(src.asset.url).width(710).height(455).format('jpg').url() || ''
 
   const image = featured ? (
     <div className="relative overflow-hidden inner-shadow shadow-xl hover:shadow-2xl transition-shadow duration-200">
@@ -20,16 +16,16 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
           <Image
             src={src.asset.metadata.lqip}
             alt={`Cover Image for ${src.asset.title}`}
-            width={1500}
-            height={1000}
+            width={710}
+            height={455}
             loading="eager"
             objectFit="contain"
           />
         </div>
         <Image
           src={imageFile}
-          width={preview ? 710 : 1500}
-          height={preview ? 455 : 1000}
+          width={710}
+          height={455}
           alt={`Cover Image for ${title}`}
           layout={'responsive'}
           loading="lazy"
@@ -51,11 +47,11 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
             //     ? 710 / src.asset.metadata.dimensions.aspectRatio - 100
             //     : 1496 / src.asset.metadata.dimensions.aspectRatio - 200
             // }
-            width={preview ? 1000 : 1560}
+            width={preview ? 710 : 1560}
             height={
               preview
-                ? 1000 / src.asset.metadata.dimensions.aspectRatio - 100
-                : 1000
+                ? 710 / src.asset.metadata.dimensions.aspectRatio - 100
+                : 710
             }
             loading="eager"
             objectFit="contain"
@@ -63,7 +59,13 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         </div>
       </div>
       <Image
-        src={imageFile}
+        src={
+          urlFor(src.asset.url)
+            .width(preview ? 710 : 1500)
+            .height(preview ? 455 : 1000)
+            .format('jpg')
+            .url() || ''
+        }
         width={preview ? 710 : 1500}
         height={preview ? 455 : 1000}
         alt={`Cover Image for ${title}`}

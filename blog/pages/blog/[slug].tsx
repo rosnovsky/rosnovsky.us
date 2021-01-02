@@ -35,6 +35,13 @@ const Post = ({ post, preview, menuItems }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
+  const cloudinaryTitleCleanup = (title: string) => {
+    const commas = title.split(',').join('%252C')
+    const colons = commas.split(':').join('%253A')
+    const questionMarks = colons.split('?').join('%253F')
+    return questionMarks
+  }
+
   return (
     <Layout menuItems={menuItems} preview={preview}>
       <Container>
@@ -48,13 +55,14 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 <title>{title} | Rosnovsky Park</title>
                 <meta
                   property="og:image"
-                  content={
-                    urlFor(mainImage.asset.url)
-                      .width(1010)
-                      .height(655)
-                      .format('jpg')
-                      .url() || ''
-                  }
+                  content={`https://res.cloudinary.com/rosnovsky/image/upload/c_fill,w_1200,e_blur:400/c_fit,l_og_template,w_1000/w_200,c_fit,l_text:mono.ttf_24_bold:${format(
+                    Date.parse(publishedAt),
+                    'dd MMM yyyy'
+                  )},g_north_west,x_160,y_523,co_rgb:A6A6A6FF/w_300,c_fit,l_text:mono.ttf_24_bold:${
+                    categories[0].title
+                  },g_north_west,x_150,y_130,co_rgb:D03801FF/w_700,c_fit,l_text:fira.ttf_76_bold:${cloudinaryTitleCleanup(
+                    title
+                  )},g_north_west,x_150,y_190/v1607201491/b920c2fab2f915bd9a11f621ce40002c157293d2-1800x1013_napjjt.png`}
                 />
                 <meta property="og:title" content={title} />
                 <meta property="og:type" content="article" />
