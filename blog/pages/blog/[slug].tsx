@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import slugify from 'slugify'
 import ErrorPage from 'next/error'
 import Container from '../../components/Layout/container'
 import PostBody from '../../components/Posts/PostBody'
@@ -35,12 +37,22 @@ const Post = ({ post, preview, menuItems }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
-  const cloudinaryTitleCleanup = (title: string) => {
-    const commas = title.split(',').join('%252C')
-    const colons = commas.split(':').join('%253A')
-    const questionMarks = colons.split('?').join('%253F')
-    return questionMarks
-  }
+  useEffect(() => {
+    const fetchImageUrl = async () => {
+      const fetchUrl = await fetch(
+        `/api/generateOgImage?title=${title}&date=${format(
+          Date.parse(publishedAt),
+          'dd MMM yyyy'
+        )}&category=${categories[0].title}&coverImage=${encodeURIComponent(
+          mainImage.asset.url
+        )}`
+      )
+      const urlJSON = await fetchUrl
+      const url = await urlJSON.json()
+      return url
+    }
+    fetchImageUrl()
+  }, [])
 
   return (
     <>
@@ -48,14 +60,9 @@ const Post = ({ post, preview, menuItems }: Props) => {
         title={title}
         pageType="article"
         description=""
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/c_fill,w_1200,e_blur:400/c_fit,l_og_template,w_1000/w_200,c_fit,l_text:mono.ttf_24_bold:${format(
-          Date.parse(publishedAt),
-          'dd MMM yyyy'
-        )},g_north_west,x_160,y_523,co_rgb:A6A6A6FF/w_300,c_fit,l_text:mono.ttf_24_bold:${
-          categories[0].title
-        },g_north_west,x_150,y_130,co_rgb:D03801FF/w_700,c_fit,l_text:fira.ttf_76_bold:${cloudinaryTitleCleanup(
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/v1609648082/social-images/${slugify(
           title
-        )},g_north_west,x_150,y_190/v1607201491/b920c2fab2f915bd9a11f621ce40002c157293d2-1800x1013_napjjt.png`}
+        )}.png`}
         canonicalUrl={`https://rosnovsky.us/blog/${format(
           Date.parse(publishedAt),
           'yyyy/MM/dd'

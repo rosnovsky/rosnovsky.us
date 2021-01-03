@@ -28,11 +28,7 @@ const InternalLink = ({ mark, children }: any) => {
     getSlug()
   }, [])
 
-  return (
-    <Link href={postUrl} as={postUrl}>
-      {children[0]}
-    </Link>
-  )
+  return <Link href={postUrl}>{children[0]}</Link>
 }
 
 export default InternalLink
