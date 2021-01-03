@@ -30,7 +30,7 @@ const NotFound = () => {
         title="404, damn it!"
         pageType="article"
         description="404: Page not found. Let's not point fingers, ok? Ok."
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/v1609648082/social-images/${slugify(
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
           '404: Page Not Found, damn it!'
         )}.png`}
         canonicalUrl="https://rosnovsky.us/"

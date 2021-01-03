@@ -65,7 +65,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
         title={title}
         pageType="article"
         description=""
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/v1609648082/social-images/${slugify(
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
           title
         )}.png`}
         canonicalUrl={`https://rosnovsky.us/blog/${format(

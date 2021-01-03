@@ -14,7 +14,7 @@ const Meta = ({
   coverAlt: string
   canonicalUrl: string
   description: string
-  pageType: 'article'
+  pageType: string
 }) => {
   return (
     <Head>

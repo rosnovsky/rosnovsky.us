@@ -46,7 +46,7 @@ const Page = ({ page, menuItems, preview }: any) => {
         title={title}
         pageType="article"
         description={title}
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/v1609648082/social-images/${slugify(
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
           socialCard?.title || title
         )}.png`}
         canonicalUrl={`https://rosnovsky.us/${slug}`}
