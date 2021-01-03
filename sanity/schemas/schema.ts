@@ -23,6 +23,7 @@ import authorReference from './objects/authorReference'
 import youtube from './objects/youtube'
 import mux from './objects/mux'
 import linkCard from './objects/linkCard'
+import socialCard from './objects/socialCard'
 // import photoGallery from './objects/photoGallery'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -47,7 +48,8 @@ export default createSchema({
     mux,
     linkCard,
     page,
-    alert
+    alert,
+    socialCard
     // photoGallery
 
     // When added to this list, object types can be used as

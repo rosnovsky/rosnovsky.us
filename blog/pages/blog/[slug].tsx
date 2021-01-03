@@ -31,6 +31,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
     slug,
     excerpt,
     categories,
+    socialCard,
   }: any = post
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
@@ -39,11 +40,15 @@ const Post = ({ post, preview, menuItems }: Props) => {
 
   useEffect(() => {
     const fetchImageUrl = async () => {
+      const socialTitle = socialCard?.title || title
+      const socialSubtitle = socialCard?.subtitle || 'Read More...'
       const fetchUrl = await fetch(
-        `/api/generateOgImage?title=${title}&date=${format(
+        `/api/generateOgImage?title=${socialTitle}&date=${format(
           Date.parse(publishedAt),
           'dd MMM yyyy'
-        )}&category=${categories[0].title}&coverImage=${encodeURIComponent(
+        )}&category=${
+          categories[0].title
+        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
           mainImage.asset.url
         )}`
       )
@@ -119,6 +124,10 @@ export async function getStaticProps({
         _id
         title
         body: bodyRaw
+        socialCard {
+          title
+          subtitle
+        }
         slug {
           current
         }

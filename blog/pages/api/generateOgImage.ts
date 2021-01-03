@@ -8,8 +8,8 @@ export default async (req: NowRequest, res: NowResponse) => {
   const local = process.env.NODE_ENV === 'development'
   cloudinary.config({
     cloud_name: "rosnovsky",
-    api_key: "361781174966398",
-    api_secret: "qqlNOlEcTHDGeeTQXEgKHzgsh2c"
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
   const putImage = async function(title, buffer) {
@@ -75,6 +75,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 
   function objectToParams(object: any) {
     const params = new URLSearchParams()
+    console.log(params)
     Object.entries(object).map((entry) => {
       let [key, value]: [key: any, value: any] = entry
       params.set(key, value)

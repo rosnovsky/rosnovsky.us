@@ -60,8 +60,8 @@ const Meta = ({
       {/* OPEN GRAPH */}
       <meta property="og:type" content={pageType || 'website'} />
       <meta property="og:locale" content="en_US" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="420" />
+      <meta property="og:image:width" content="780" />
       <meta property="og:site_name" content={title || 'Rosnovsky Park'} />
       <meta property="og:title" content={title || 'Rosnovsky Park'} />
       <meta
