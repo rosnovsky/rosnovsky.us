@@ -46,6 +46,11 @@ export default {
         'This ends up on summary pages, on Google, when people share your post in social media.'
     },
     {
+      name: 'socialCard',
+      type: 'socialCard',
+      title: 'Social Card Information'
+    },
+    {
       name: 'categories',
       type: 'array',
       title: 'Categories',

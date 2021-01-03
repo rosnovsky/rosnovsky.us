@@ -31,6 +31,11 @@ export default {
       title: 'Main image'
     },
     {
+      name: 'socialCard',
+      type: 'socialCard',
+      title: 'Social Card Information'
+    },
+    {
       name: 'excerpt',
       type: 'excerptPortableText',
       title: 'Excerpt',
