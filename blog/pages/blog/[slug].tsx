@@ -38,26 +38,32 @@ const Post = ({ post, preview, menuItems }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
-  useEffect(() => {
-    const fetchImageUrl = async () => {
-      const socialTitle = socialCard?.title || title
-      const socialSubtitle = socialCard?.subtitle || 'Read More...'
-      const fetchUrl = await fetch(
-        `/api/generateOgImage?title=${socialTitle}&date=${format(
-          Date.parse(publishedAt),
-          'dd MMM yyyy'
-        )}&category=${
-          categories[0].title
-        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
-          mainImage.asset.url
-        )}`
-      )
-      const urlJSON = await fetchUrl
-      const url = await urlJSON.json()
-      return url
-    }
-    fetchImageUrl()
-  }, [])
+  // useEffect(() => {
+  //   const fetchImageUrl = async () => {
+  //     const socialTitle = socialCard?.title || title
+  //     const socialSubtitle = socialCard?.subtitle || 'Read More...'
+  //     const fetchUrl = await fetch(
+  //       `/api/generateOgImage?title=${socialTitle}&date=${format(
+  //         Date.parse(publishedAt),
+  //         'dd MMM yyyy'
+  //       )}&category=${
+  //         categories[0].title
+  //       }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
+  //         mainImage.asset.url
+  //       )}`,
+  //       {
+  //         mode: 'cors',
+  //       }
+  //     )
+  //     const url = await fetchUrl
+  //     console.info(url)
+  //     return url
+  //   }
+  //   fetchImageUrl()
+  // }, [])
+
+  const socialTitle = socialCard?.title || title
+  const socialSubtitle = socialCard?.subtitle || 'Read More...'
 
   return (
     <>
@@ -65,9 +71,14 @@ const Post = ({ post, preview, menuItems }: Props) => {
         title={title}
         pageType="article"
         description=""
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
-          title
-        )}.png`}
+        coverImage={`https://rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
+          Date.parse(publishedAt),
+          'dd MMM yyyy'
+        )}&category=${
+          categories[0].title
+        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
+          mainImage.asset.url
+        )}`}
         canonicalUrl={`https://rosnovsky.us/blog/${format(
           Date.parse(publishedAt),
           'yyyy/MM/dd'

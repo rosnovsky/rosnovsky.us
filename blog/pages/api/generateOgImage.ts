@@ -5,12 +5,28 @@ const chromium = require('chrome-aws-lambda');
 const cloudinary = require('cloudinary').v2
 
 export default async (req: NowRequest, res: NowResponse) => {
+  if (!req.query) {
+    res.status(400).send({ status: 'No query params provided' })
+    return;
+  }
+
+  const title = slugify(req.query.title)
+
+  const forwardResponse = imageUrl => {
+    console.log(imageUrl)
+    res.redirect(308, imageUrl
+    )
+  }
   const local = process.env.NODE_ENV === 'development'
   cloudinary.config({
     cloud_name: "rosnovsky",
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
+
+  const url = local ? `http://${req.headers.host}` : `https://${req.headers.host}`
+  const imageParams = objectToParams(req.query)
+
 
   const putImage = async function(title, buffer) {
     const cloudinaryOptions = {
@@ -37,11 +53,6 @@ export default async (req: NowRequest, res: NowResponse) => {
     return `data:image/png;base64,${buffer.toString('base64')}`
   }
 
-  if (!req.query) {
-    res.status(400).send({ status: 'No query params provided' })
-    return;
-  }
-
   const getImage = async function(title: string) {
     const url = `https://res.cloudinary.com/rosnovsky/image/upload/social-images/${title}.png`
     return await fetch(url)
@@ -54,22 +65,12 @@ export default async (req: NowRequest, res: NowResponse) => {
       })
   }
 
-  const title = slugify(req.query.title)
-
-  const forwardResponse = imageUrl => {
-    res.redirect(308, imageUrl
-    )
-  }
-
-
   const existingImage = await getImage(title)
   if (existingImage) {
     console.log(`yay, ${title} already existed`)
-    return forwardResponse(existingImage)
+    return forwardResponse(await getImage(title))
   }
 
-  const url = local ? `http://${req.headers.host}` : `https://${req.headers.host}`
-  const imageParams = objectToParams(req.query)
   const screenshotBuffer = await takeScreenshot(`${url}/generateOgImage?${imageParams}`)
   const newImage = await putImage(title, screenshotBuffer)
 

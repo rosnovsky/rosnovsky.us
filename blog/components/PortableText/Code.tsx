@@ -9,7 +9,7 @@ const Code: React.FC<{ node: { language: string; code: string } }> = ({
   }
   const { language, code } = node
   return (
-    <SyntaxHighlighter language={language || 'text'} style={nightOwl}>
+    <SyntaxHighlighter language={language || 'typescript'} style={nightOwl}>
       {code}
     </SyntaxHighlighter>
   )

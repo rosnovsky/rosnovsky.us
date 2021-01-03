@@ -58,11 +58,11 @@ const Meta = ({
       />
 
       {/* OPEN GRAPH */}
-      <meta property="og:type" content={pageType || 'website'} />
+      <meta property="og:type" content="article" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:image:height" content="420" />
       <meta property="og:image:width" content="780" />
-      <meta property="og:site_name" content={title || 'Rosnovsky Park'} />
+      <meta property="og:site_name" content="Rosnovsky Park" />
       <meta property="og:title" content={title || 'Rosnovsky Park'} />
       <meta
         property="og:description"
@@ -70,17 +70,17 @@ const Meta = ({
           description || 'Rosnovsky Park. From Pacific Northwest to the World.'
         }
       />
-      <meta property="og:url" content="https://rosnovsky.us" />
-      <meta property="og:image" content={coverImage || 'default.jpg'} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:image" content={coverImage} />
       <meta property="og:image:alt" content={coverAlt} />
 
       {/* TWITTER */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="https://rosnovsky.us" />
-      <meta name="twitter:creator" content="Art Rosnovsky" />
-      <meta name="twitter:url" content={canonicalUrl} />
+      <meta name="twitter:creator" content="@rosnovsky" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:image" content={coverImage} />
       <meta name="twitter:image:alt" content={title} />
     </Head>

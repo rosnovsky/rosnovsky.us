@@ -61,32 +61,6 @@ const Page = ({ page, menuItems, preview }: any) => {
           ) : (
             <>
               <article className="mb-32">
-                <Head>
-                  <title>{title} | Rosnovsky Park</title>
-                  {mainImage ? (
-                    <meta
-                      property="og:image"
-                      content={
-                        urlFor(mainImage.asset.url)
-                          .width(1010)
-                          .height(655)
-                          .format('jpg')
-                          .url() || ''
-                      }
-                    />
-                  ) : (
-                    <meta
-                      property="og:image"
-                      content="https://rosnovsky.us/favicon.png"
-                    />
-                  )}
-                  <meta property="og:title" content={title} />
-                  <meta property="og:type" content="article" />
-                  <meta
-                    property="og:url"
-                    content={`https://rosnovsky.us/${slug.current}`}
-                  />
-                </Head>
                 <PageHeader title={title} mainImage={mainImage} />
                 <PageBody content={body} />
               </article>
