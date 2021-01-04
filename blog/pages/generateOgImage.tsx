@@ -16,7 +16,7 @@ const OpenGraph = ({
   return (
     <div className="m-0 flex w-full">
       <div
-        className="relative border-1 bg-transparent w-full border-red-900 p-6"
+        className="relative border-1 bg-white bg-opacity-40 bg-transparent w-full"
         style={{
           backgroundImage: bgUrl,
           backgroundRepeat: 'no-repat',
@@ -24,19 +24,21 @@ const OpenGraph = ({
           backgroundBlendMode: 'overlay',
         }}
       >
-        <main className="flex-col p-5 bg-opacity-80 bg-white border-2 border-black">
+        <main className="flex-col bg-opacity-70 w-full p-20 bg-white">
           <h3 className="text-red-900 font-bold font-mono text-xl w-96">
             {category || 'No category'}
           </h3>
-          <h1 className="text-6xl leading-tight font-black mt-7">
+          <h1 className="text-7xl leading-tight font-black h-32  mt-7">
             {title || 'No Title'}
           </h1>
-          <p className="prose prose-2xl mt-8 mb-10 h-32">{subtitle}</p>
-          <div className="flex justify-between">
-            <p className="prose prose-lg text-2xl text-red-900 font-semibold font-mono">
+          <p className="prose text-3xl leading-relaxed mt-16 mb-10  h-32">
+            {subtitle}
+          </p>
+          <div className="flex mt-18 justify-between">
+            <p className="prose text-3xl text-red-900 font-semibold font-mono">
               {date || 'No date'}
             </p>
-            <p className="font-mono text-2xl font-bold underline text-red-900 ">
+            <p className="font-mono text-3xl font-bold underline text-red-900 ">
               rosnovsky.us
             </p>
           </div>

@@ -20,7 +20,6 @@ export async function GenerateSocialCards(posts: Post[]) {
       }
     )
     const url = fetchUrl
-    console.info(url)
     return url
   })
 }
