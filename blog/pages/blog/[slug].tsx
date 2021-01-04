@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import slugify from 'slugify'
 import ErrorPage from 'next/error'
 import Container from '../../components/Layout/container'
@@ -39,7 +38,6 @@ const Post = ({ post, preview, menuItems }: Props) => {
   }
 
   const socialTitle = socialCard?.title || title
-  const socialSubtitle = socialCard?.subtitle || 'Read More...'
 
   return (
     <>
@@ -47,14 +45,9 @@ const Post = ({ post, preview, menuItems }: Props) => {
         title={title}
         pageType="article"
         description=""
-        coverImage={`https://rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
-          Date.parse(publishedAt),
-          'dd MMM yyyy'
-        )}&category=${
-          categories[0].title
-        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
-          mainImage.asset.url
-        )}`}
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
+          socialTitle
+        )}.png`}
         canonicalUrl={`https://rosnovsky.us/blog/${format(
           Date.parse(publishedAt),
           'yyyy/MM/dd'
