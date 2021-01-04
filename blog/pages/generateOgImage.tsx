@@ -31,7 +31,7 @@ const OpenGraph = ({
           <h1 className="text-6xl leading-tight font-black mt-7">
             {title || 'No Title'}
           </h1>
-          <p className="prose prose-2xl mt-8 mb-10">{subtitle}</p>
+          <p className="prose prose-2xl mt-8 mb-10 h-32">{subtitle}</p>
           <div className="flex justify-between">
             <p className="prose prose-lg text-2xl text-red-900 font-semibold font-mono">
               {date || 'No date'}
