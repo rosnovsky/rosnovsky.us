@@ -9,9 +9,6 @@ import { Post } from '..'
 import { GenerateSocialCards } from '../utils/generateSocialCards'
 
 const Index = ({ posts, menuItems, alert }: any) => {
-  const isFirstOfTheMonth = new Date().getDate() === 4
-  if (isFirstOfTheMonth) GenerateSocialCards(posts)
-
   const featuredPost: Post[] = posts.filter(
     (post: any) => post.featured === true
   )
@@ -127,6 +124,8 @@ export async function getStaticProps({ preview = false }) {
     }
   }`
   )
+
+  GenerateSocialCards(data.posts)
   return {
     props: {
       preview,
