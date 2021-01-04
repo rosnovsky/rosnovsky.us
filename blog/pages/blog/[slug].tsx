@@ -14,7 +14,7 @@ import { format } from 'date-fns'
 import Meta from '../../components/Header/PageMeta'
 
 type Props = {
-  post: Post
+  post: any
   preview?: boolean
   menuItems: {
     title: string
@@ -37,30 +37,6 @@ const Post = ({ post, preview, menuItems }: Props) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-
-  // useEffect(() => {
-  //   const fetchImageUrl = async () => {
-  //     const socialTitle = socialCard?.title || title
-  //     const socialSubtitle = socialCard?.subtitle || 'Read More...'
-  //     const fetchUrl = await fetch(
-  //       `/api/generateOgImage?title=${socialTitle}&date=${format(
-  //         Date.parse(publishedAt),
-  //         'dd MMM yyyy'
-  //       )}&category=${
-  //         categories[0].title
-  //       }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
-  //         mainImage.asset.url
-  //       )}`,
-  //       {
-  //         mode: 'cors',
-  //       }
-  //     )
-  //     const url = await fetchUrl
-  //     console.info(url)
-  //     return url
-  //   }
-  //   fetchImageUrl()
-  // }, [])
 
   const socialTitle = socialCard?.title || title
   const socialSubtitle = socialCard?.subtitle || 'Read More...'

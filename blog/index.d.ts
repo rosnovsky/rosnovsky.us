@@ -1,3 +1,4 @@
+import Sanity from '@sanity/types'
 declare module 'react-player/file'
 declare module 'react-player/youtube'
 declare module 'react-tiny-link'
@@ -8,13 +9,17 @@ type Post = {
     current: string
   }
   publishedAt: string
-  mainImage?: Record<any, any>[]
+  socialCard: {
+    title: string
+    subtitle: string
+  }
+  mainImage?: Record<any, any>
   categories: { title: string, slug: string}[]
-  excerpt?: Record<any, any>[]
+  excerpt?: Sanity.Block[]
   ogImage?: {
     url: string
   }
-  body?: Record<any, any>[]
+  body?: Sanity.Block[]
   preview?: boolean
 }
 

@@ -1,3 +1,4 @@
+import { Post } from '../..'
 import PostPreview from './PostPreview'
 
 type Props = {
@@ -16,6 +17,7 @@ const MoreStories = ({ posts }: Props) => {
             <PostPreview
               preview
               key={post.slug.current}
+              socialCard={post.socialCard}
               title={post.title}
               mainImage={post.mainImage}
               publishedAt={post.publishedAt}

@@ -5,14 +5,22 @@ import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import Head from 'next/head'
 import { request } from 'graphql-request'
-import Meta from '../components/Header/PageMeta'
-import { format } from 'date-fns'
+import { Post } from '..'
+import { GenerateSocialCards } from '../utils/generateSocialCards'
 
 const Index = ({ posts, menuItems, alert }: any) => {
-  const featuredPost = posts.filter((post: any) => post.featured === true)
-  const notFeaturedPosts = posts.filter((post: any) => post.featured !== true)
+  const isFirstOfTheMonth = new Date().getDate() === 4
+  if (isFirstOfTheMonth) GenerateSocialCards(posts)
+
+  const featuredPost: Post[] = posts.filter(
+    (post: any) => post.featured === true
+  )
+  const notFeaturedPosts: Post[] = posts.filter(
+    (post: any) => post.featured !== true
+  )
 
   const randomFeaturedPost = featuredPost && featuredPost[0]
+
   return (
     <>
       <Layout menuItems={menuItems} alert={alert}>
@@ -53,6 +61,7 @@ const Index = ({ posts, menuItems, alert }: any) => {
               slug={randomFeaturedPost.slug.current}
               excerpt={randomFeaturedPost.excerpt}
               categories={randomFeaturedPost.categories}
+              socialCard={randomFeaturedPost.socialCard}
             />
           )}
           <MoreStories posts={notFeaturedPosts} />
@@ -94,6 +103,10 @@ export async function getStaticProps({ preview = false }) {
         }
       }
       publishedAt
+      socialCard {
+        title
+        subtitle
+      }
       excerpt: excerptRaw
       featured
       mainImage {

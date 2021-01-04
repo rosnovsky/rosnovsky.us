@@ -28,7 +28,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   const imageParams = objectToParams(req.query)
 
 
-  const putImage = async function(title, buffer) {
+  const uploadImage = async function(title, buffer) {
     const cloudinaryOptions = {
       public_id: `social-images/${title}`,
       unique_filename: false
@@ -57,6 +57,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     const url = `https://res.cloudinary.com/rosnovsky/image/upload/social-images/${title}.png`
     return await fetch(url)
       .then(result => {
+        console.log(`Checked if ${title} exists in Cloudinary, got ${result.status} in return`)
         if (result.status !== 404) {
           return url
         } else {
@@ -72,11 +73,10 @@ export default async (req: NowRequest, res: NowResponse) => {
   }
 
   const screenshotBuffer = await takeScreenshot(`${url}/generateOgImage?${imageParams}`)
-  const newImage = await putImage(title, screenshotBuffer)
+  const newImage = await uploadImage(title, screenshotBuffer)
 
   function objectToParams(object: any) {
     const params = new URLSearchParams()
-    console.log(params)
     Object.entries(object).map((entry) => {
       let [key, value]: [key: any, value: any] = entry
       params.set(key, value)

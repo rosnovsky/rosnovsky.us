@@ -1,9 +1,11 @@
 import { format } from 'date-fns'
 import MainImage from '../Image/CoverImage'
 import Link from 'next/link'
+import { useEffect } from 'react'
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
 import serializers from '../PortableText/serializers'
+import { Post } from '../..'
 
 const PostPreview = ({
   title,
@@ -12,6 +14,7 @@ const PostPreview = ({
   excerpt,
   categories,
   slug,
+  socialCard,
 }: Post) => {
   const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
   const options = {
@@ -19,6 +22,7 @@ const PostPreview = ({
     month: 'long',
     day: 'numeric',
   }
+
   return (
     <div className="mx-5 my-10">
       <div className="mb-5">
