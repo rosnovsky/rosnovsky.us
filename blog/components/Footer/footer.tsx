@@ -1,6 +1,7 @@
 import Container from '../Layout/container'
 import Link from 'next/link'
 import { request } from 'graphql-request'
+import { Page } from '../..'
 
 const Footer = ({ menuItems }: any) => {
   return (
