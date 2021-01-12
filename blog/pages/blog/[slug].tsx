@@ -11,6 +11,7 @@ import Head from 'next/head'
 import { request } from 'graphql-request'
 import { format } from 'date-fns'
 import Meta from '../../components/Header/PageMeta'
+import CommentSection from '../../components/Comments/CommentSection'
 
 type Props = {
   post: any
@@ -74,6 +75,9 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 />
                 <PostBody content={body} />
               </article>
+              <section>
+                <CommentSection />
+              </section>
             </>
           )}
         </Container>
