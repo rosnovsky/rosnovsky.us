@@ -11,7 +11,7 @@ const MoreStories = ({ posts }: Props) => {
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
         More Posts
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 mb-32">
+      <div className="mt-12 max-w-7xl mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         {posts.map((post) => {
           return (
             <PostPreview
