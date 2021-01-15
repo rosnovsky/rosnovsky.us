@@ -5,7 +5,7 @@ const Alert = dynamic(import('../Alert/alert'))
 
 type Props = {
   preview?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
   menuItems: {
     title: string
     slug: { current: string }

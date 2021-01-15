@@ -1,7 +1,6 @@
 import { format } from 'date-fns'
 import MainImage from '../Image/CoverImage'
 import Link from 'next/link'
-import { useEffect } from 'react'
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
 import serializers from '../PortableText/serializers'
@@ -24,8 +23,8 @@ const PostPreview = ({
   }
 
   return (
-    <div className="mx-5 my-10">
-      <div className="mb-5">
+    <div className="flex flex-col rounded-lg shadow-lg my-8 overflow-hidden">
+      <div className="flex-shrink-0">
         <MainImage
           preview={true}
           slug={`${postUrl}/${slug.current}`}
@@ -33,23 +32,41 @@ const PostPreview = ({
           src={mainImage}
         />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
-          <a className="hover:underline text-3xl font-black">{title}</a>
-        </Link>
-      </h3>
-      <div className="text-sm mb-4 font-mono text-gray-700">
-        {new Intl.DateTimeFormat('en-US', options).format(
-          Date.parse(publishedAt)
-        )}{' '}
-        |{' '}
-        <span className="text-yellow-600">
-          {categories.map((category) => category.title + ' | ')}
-        </span>
+      <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+        <div className="flex-1">
+          <p className="text-sm font-medium text-indigo-600">
+            <span className="text-red-900">
+              {categories.map((category) => category.title + ' | ')}
+            </span>
+          </p>
+          <a href="#" className="block mt-2">
+            <p className="text-xl font-semibold text-gray-900">
+              <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
+                <a className="hover:underline text-3xl font-black">{title}</a>
+              </Link>
+            </p>
+            <p className="mt-3 text-base text-gray-500">
+              <PortableText blocks={excerpt} serializers={serializers} />
+            </p>
+          </a>
+        </div>
+        <div className="mt-6 flex items-center">
+          <div className="flex space-x-1 text-sm text-gray-500">
+            <time
+              dateTime={new Intl.DateTimeFormat('en-US', options).format(
+                Date.parse(publishedAt)
+              )}
+            >
+              {new Intl.DateTimeFormat('en-US', options).format(
+                Date.parse(publishedAt)
+              )}{' '}
+              |{' '}
+            </time>
+            <span aria-hidden="true">&middot;</span>
+            <span>6 min read</span>
+          </div>
+        </div>
       </div>
-      <p className="text-xl font-proper leading-relaxed mb-4">
-        <PortableText blocks={excerpt} serializers={serializers} />
-      </p>
     </div>
   )
 }

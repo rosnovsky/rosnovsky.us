@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
 import '../styles/index.css'
+import 'react-syntax-highlighter/dist/cjs/styles/hljs/a11y-dark'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()

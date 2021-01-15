@@ -11,6 +11,7 @@ import Head from 'next/head'
 import { request } from 'graphql-request'
 import { format } from 'date-fns'
 import Meta from '../../components/Header/PageMeta'
+import CommentSection from '../../components/Comments/CommentSection'
 
 type Props = {
   post: any
@@ -34,7 +35,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
   }: any = post
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage menuItems={menuItems} statusCode={404} />
   }
 
   const socialTitle = socialCard?.title || title
@@ -74,6 +75,9 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 />
                 <PostBody content={body} />
               </article>
+              {/* <section>
+                <CommentSection />
+              </section> */}
             </>
           )}
         </Container>
