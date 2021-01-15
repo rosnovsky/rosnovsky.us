@@ -75,9 +75,9 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 />
                 <PostBody content={body} />
               </article>
-              <section>
+              {/* <section>
                 <CommentSection />
-              </section>
+              </section> */}
             </>
           )}
         </Container>
