@@ -1,11 +1,12 @@
 import Covid from '../components/Covid/CovidTracker'
 import Footer from '../components/Footer/footer'
 import Meta from '../components/Header/PageMeta'
+import Layout from '../components/Layout/layout'
 import { useEffect } from 'react'
 import { format } from 'date-fns'
 import slugify from 'slugify'
 
-const NotFound = () => {
+const NotFound = ({ menuItems }: any) => {
   useEffect(() => {
     const fetchImageUrl = async () => {
       const socialTitle = '404: Page Not Found, damn it!'
@@ -36,6 +37,7 @@ const NotFound = () => {
         canonicalUrl="https://rosnovsky.us/"
         coverAlt="Rosnovsky Park"
       />
+      <Layout menuItems={menuItems}></Layout>
       <div className="">
         <Covid />
         <div className="bg-white h-auto ">

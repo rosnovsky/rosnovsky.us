@@ -35,7 +35,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
   }: any = post
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage menuItems={menuItems} statusCode={404} />
   }
 
   const socialTitle = socialCard?.title || title

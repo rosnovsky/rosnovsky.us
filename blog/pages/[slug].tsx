@@ -18,7 +18,7 @@ const Page = ({ page, menuItems, preview }: any) => {
   const { title, mainImage, body, slug, socialCard }: any = page
   const router = useRouter()
   if (!router.isFallback && !page?.slug) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage menuItems={menuItems} statusCode={404} />
   }
 
   useEffect(() => {
