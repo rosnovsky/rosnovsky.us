@@ -41,6 +41,8 @@ export const Loading = () => {
 }
 
 export default function Covid() {
+  const [yesterdayHospitalizations, setYesterdayHospitalizations] = useState(0)
+
   const fetcher = async (url: string) => {
     const data = await fetch(url, {
       method: 'GET',
@@ -50,6 +52,7 @@ export default function Covid() {
       })
       .then((data) => {
         const massagedData = {
+          date: data[0].date,
           positive: data[0].positive,
           positiveIncrease: data[0].positiveIncrease,
           death: data[0].death,
@@ -72,6 +75,32 @@ export default function Covid() {
 
   if (error) return <span>over 220,000</span>
   if (!data) return <Loading />
+  const date = data.date.toString()
+
+  const todayArray = [date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)]
+  console.log(todayArray)
+  const yesterdayDate = new Date(
+    todayArray[0],
+    todayArray[1] - 1,
+    todayArray[2]
+  )
+  yesterdayDate.setDate(yesterdayDate.getDate() - 1)
+
+  const yesterday = `${yesterdayDate.getFullYear().toString()}${
+    yesterdayDate.getMonth() > 9
+      ? yesterdayDate.getMonth().toString()
+      : `0${yesterdayDate.getMonth() + 1}`
+  }${yesterdayDate.getDate().toString()}`
+
+  const yesterdayUrl = `https://api.covidtracking.com/v1/us/${yesterday}.json`
+
+  const yesterdayData = fetch(yesterdayUrl)
+    .then((response) => response.json())
+    .then((data) => data.hospitalizedCurrently)
+    .then((data) => {
+      setYesterdayHospitalizations(data)
+    })
+  console.log(yesterdayHospitalizations)
 
   return (
     <div className="border-b-4 border-red-800 bg-gray-900 text-white h-lg">
@@ -92,7 +121,9 @@ export default function Covid() {
                 />
                 <CasesCard
                   numbers={data.hospitalizedCurrently}
-                  change={data.hospitalizedIncrease}
+                  change={
+                    -yesterdayHospitalizations + data.hospitalizedCurrently
+                  }
                   title="In Hospitals"
                 />
               </div>
