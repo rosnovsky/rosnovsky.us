@@ -34,7 +34,7 @@ const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
             </span>
           </div>
         </div>
-        <div className="prose prose-2xl w-full font-proper leading-relaxed font-bold">
+        <div className="prose w-full">
           <PortableText blocks={excerpt} />
         </div>
       </div>

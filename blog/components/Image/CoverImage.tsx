@@ -14,7 +14,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         height={455}
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
-        loading="lazy"
+        priority
         // priority={preview ? false : true}
         className="object-cover shadow-inner"
       />

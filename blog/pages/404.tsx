@@ -7,7 +7,6 @@ import Header from '../components/Header/header'
 import Container from '../components/Layout/container'
 
 const NotFound = ({ menuItems }: any) => {
-  console.log(menuItems)
   return (
     <>
       <Meta

@@ -78,7 +78,6 @@ export default function Covid() {
   const date = data.date.toString()
 
   const todayArray = [date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)]
-  console.log(todayArray)
   const yesterdayDate = new Date(
     todayArray[0],
     todayArray[1] - 1,
@@ -100,7 +99,6 @@ export default function Covid() {
     .then((data) => {
       setYesterdayHospitalizations(data)
     })
-  console.log(yesterdayHospitalizations)
 
   return (
     <div className="border-b-4 border-red-800 bg-gray-900 text-white h-lg">

@@ -6,7 +6,8 @@ import Layout from '../components/Layout/layout'
 import Head from 'next/head'
 import { request } from 'graphql-request'
 import { Post } from '..'
-import { GenerateSocialCards } from '../utils/generateSocialCards'
+// import { GenerateSocialCards } from '../utils/generateSocialCards'
+import Meta from '../components/Header/PageMeta'
 
 const Index = ({ posts, menuItems, alert }: any) => {
   const featuredPost: Post[] = posts.filter(
@@ -20,6 +21,14 @@ const Index = ({ posts, menuItems, alert }: any) => {
 
   return (
     <>
+      <Meta
+        title="Rosnovsky Park™"
+        pageType="website"
+        description="A blog and a website of Art Rosnovsky"
+        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/v1609810012/social-images/About-Me.png`}
+        canonicalUrl={`https://rosnovsky.us`}
+        coverAlt="Rosnovsky Park™"
+      />
       <Layout menuItems={menuItems} alert={alert}>
         <Head>
           <title>Rosnovsky Park</title>
@@ -61,7 +70,15 @@ const Index = ({ posts, menuItems, alert }: any) => {
               socialCard={randomFeaturedPost.socialCard}
             />
           )}
+          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+            More Posts
+          </h2>
           <MoreStories posts={notFeaturedPosts} />
+          <div className="text-center my-20">
+            <button className="font-bold text-xl ring-cool-gray-200 ring-4 px-10 py-5 hover:bg-gray-100">
+              Load More
+            </button>
+          </div>
         </Container>
       </Layout>
     </>
@@ -86,7 +103,7 @@ export async function getStaticProps({ preview = false }) {
           current
         }
       }
-      posts: allPost(sort: [ { publishedAt: DESC } ]){
+      posts: allPost(limit: 7, sort: [ { publishedAt: DESC } ]){
       _id
       title
       body: bodyRaw
@@ -125,7 +142,7 @@ export async function getStaticProps({ preview = false }) {
   }`
   )
 
-  GenerateSocialCards(data.posts)
+  // GenerateSocialCards(data.posts)
   return {
     props: {
       preview,

@@ -14,7 +14,10 @@ const Footer = ({ menuItems }: any) => {
           >
             {menuItems
               ? menuItems.map((menuItem: Page) => (
-                  <div className="px-5 py-2 text-xl text-gray-800 hover:text-gray-900">
+                  <div
+                    className="px-5 py-2 text-xl text-gray-800 hover:text-gray-900"
+                    key={menuItem.slug.current}
+                  >
                     <Link href={`/${menuItem.slug.current}/`}>
                       {menuItem.title}
                     </Link>

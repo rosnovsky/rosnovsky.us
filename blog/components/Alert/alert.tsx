@@ -2,7 +2,6 @@ import Container from '../Layout/container'
 import Link from 'next/link'
 
 const Alert = ({ message, alertLink, internal }: any) => {
-  console.log(message, alertLink, internal)
   return (
     <div className="border-b border-accent-2 construction">
       <Container>
