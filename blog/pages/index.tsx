@@ -5,19 +5,77 @@ import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import Head from 'next/head'
 import { request } from 'graphql-request'
+import {useState, useEffect} from 'react'
 import { Post } from '..'
 // import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
 
-const Index = ({ posts, menuItems, alert }: any) => {
-  const featuredPost: Post[] = posts.filter(
-    (post: any) => post.featured === true
-  )
+const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
+  const [allPosts, setAllPosts] = useState([])
+  const [index, setIndex] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [noMorePosts, setNoMorePosts] = useState(false)
+  useEffect(()=> {
+    setAllPosts(posts)
+  }, [])
+
   const notFeaturedPosts: Post[] = posts.filter(
     (post: any) => post.featured !== true
   )
-
-  const randomFeaturedPost = featuredPost && featuredPost[0]
+  const randomFeaturedPost = featuredPosts && featuredPosts[0]
+  
+  const loadMore = async () => {
+    setLoading(true)
+    const morePosts = await request('https://n3o7a5dl.api.sanity.io/v1/graphql/production/default', `{
+      posts: allPost(limit: 6, offset: ${6*index}, sort: [ { publishedAt: DESC } ], where: { featured: { neq: true }}){
+        _id
+        title
+        body: bodyRaw
+        slug {
+          current
+        }
+        categories {
+          title
+          slug {
+            current
+          }
+        }
+        publishedAt
+        socialCard {
+          title
+          subtitle
+        }
+        excerpt: excerptRaw
+        featured
+        mainImage {
+          alt
+          caption
+          asset {
+            metadata{
+              dimensions {
+                aspectRatio
+                width
+                height
+              }
+              lqip
+            }
+            url
+          }
+        }
+      }
+    }`).then(morePosts => {
+      if(morePosts.posts.length < 6){
+        setNoMorePosts(true)
+        setAllPosts(allPosts => [...allPosts, ...morePosts.posts])
+        setLoading(false)
+        return
+      }
+        setAllPosts(allPosts => [...allPosts, ...morePosts.posts])
+        setLoading(false)
+        setIndex(index+1)
+        return
+      })
+    }
 
   return (
     <>
@@ -59,7 +117,7 @@ const Index = ({ posts, menuItems, alert }: any) => {
         </Head>
         <Container>
           <Intro />
-          {featuredPost && (
+          {featuredPosts && (
             <HeroPost
               title={randomFeaturedPost.title}
               mainImage={randomFeaturedPost.mainImage}
@@ -73,11 +131,12 @@ const Index = ({ posts, menuItems, alert }: any) => {
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
             More Posts
           </h2>
-          <MoreStories posts={notFeaturedPosts} />
+          <MoreStories posts={allPosts} />
           <div className="text-center my-20">
-            <button className="font-bold text-xl ring-cool-gray-200 ring-4 px-10 py-5 hover:bg-gray-100">
-              Load More
+          {noMorePosts ? "You've reached the end of the internet." : <button onClick={loadMore} className="font-bold text-xl ring-cool-gray-200 ring-4 px-10 py-5 hover:bg-gray-100">
+              {loading ? "Loading..." : "Load More"}
             </button>
+          }
           </div>
         </Container>
       </Layout>
@@ -103,7 +162,43 @@ export async function getStaticProps({ preview = false }) {
           current
         }
       }
-      posts: allPost(limit: 7, sort: [ { publishedAt: DESC } ]){
+      featuredPosts: allPost(where: {featured: {eq: true}}){
+          _id
+          title
+          body: bodyRaw
+          slug {
+            current
+          }
+          categories {
+            title
+            slug {
+              current
+            }
+          }
+          publishedAt
+          socialCard {
+            title
+            subtitle
+          }
+          excerpt: excerptRaw
+          featured
+          mainImage {
+            alt
+            caption
+            asset {
+              metadata{
+                dimensions {
+                  aspectRatio
+                  width
+                  height
+                }
+                lqip
+              }
+              url
+            }
+          }
+        }
+      posts: allPost(limit: 6, sort: [ { publishedAt: DESC } ], where: { featured: { neq: true }}){
       _id
       title
       body: bodyRaw
@@ -147,8 +242,17 @@ export async function getStaticProps({ preview = false }) {
     props: {
       preview,
       posts: data.posts,
+      featuredPosts: data.featuredPosts,
       menuItems: data.menuItems,
       alert: data.alert[0],
     },
   }
 }
+
+
+/*
+
+
+
+
+*/
