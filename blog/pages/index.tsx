@@ -5,7 +5,7 @@ import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import Head from 'next/head'
 import { request } from 'graphql-request'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Post } from '..'
 // import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
@@ -15,7 +15,7 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
   const [index, setIndex] = useState(1)
   const [loading, setLoading] = useState(false)
   const [noMorePosts, setNoMorePosts] = useState(false)
-  useEffect(()=> {
+  useEffect(() => {
     setAllPosts(posts)
   }, [])
 
@@ -23,11 +23,15 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
     (post: any) => post.featured !== true
   )
   const randomFeaturedPost = featuredPosts && featuredPosts[0]
-  
+
   const loadMore = async () => {
     setLoading(true)
-    const morePosts = await request('https://n3o7a5dl.api.sanity.io/v1/graphql/production/default', `{
-      posts: allPost(limit: 6, offset: ${6*index}, sort: [ { publishedAt: DESC } ], where: { featured: { neq: true }}){
+    const morePosts = await request(
+      'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
+      `{
+      posts: allPost(limit: 6, offset: ${
+        6 * index
+      }, sort: [ { publishedAt: DESC } ], where: { featured: { neq: true }}){
         _id
         title
         body: bodyRaw
@@ -63,19 +67,22 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
           }
         }
       }
-    }`).then(morePosts => {
-      if(morePosts.posts.length < 6){
+    }`
+    ).then((morePosts): void => {
+      if (morePosts.posts.length < 6) {
         setNoMorePosts(true)
-        setAllPosts(allPosts => [...allPosts, ...morePosts.posts])
+        // @ts-ignore
+        setAllPosts((allPosts) => [...allPosts, ...morePosts.posts])
         setLoading(false)
         return
       }
-        setAllPosts(allPosts => [...allPosts, ...morePosts.posts])
-        setLoading(false)
-        setIndex(index+1)
-        return
-      })
-    }
+      // @ts-ignore
+      setAllPosts((allPosts) => [...allPosts, ...morePosts.posts])
+      setLoading(false)
+      setIndex(index + 1)
+      return
+    })
+  }
 
   return (
     <>
@@ -133,10 +140,16 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
           </h2>
           <MoreStories posts={allPosts} />
           <div className="text-center my-20">
-          {noMorePosts ? "You've reached the end of the internet." : <button onClick={loadMore} className="font-bold text-xl ring-cool-gray-200 ring-4 px-10 py-5 hover:bg-gray-100">
-              {loading ? "Loading..." : "Load More"}
-            </button>
-          }
+            {noMorePosts ? (
+              "You've reached the end of the internet."
+            ) : (
+              <button
+                onClick={loadMore}
+                className="font-bold text-xl ring-cool-gray-200 ring-4 px-10 py-5 hover:bg-gray-100"
+              >
+                {loading ? 'Loading...' : 'Load More'}
+              </button>
+            )}
           </div>
         </Container>
       </Layout>
@@ -248,7 +261,6 @@ export async function getStaticProps({ preview = false }) {
     },
   }
 }
-
 
 /*
 
