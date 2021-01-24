@@ -39,16 +39,18 @@ const PostPreview = ({
               {categories.map((category) => category.title + ' | ')}
             </span>
           </p>
-          <a href="#" className="block mt-2">
+          <div className="block mt-2">
             <p className="text-xl font-semibold text-gray-900">
               <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
-                <a className="hover:underline text-3xl font-black">{title}</a>
+                <span className="hover:underline text-3xl font-black cursor-pointer">
+                  {title}
+                </span>
               </Link>
             </p>
-            <p className="mt-3 text-base text-gray-500">
-              <PortableText blocks={excerpt} serializers={serializers} />
-            </p>
-          </a>
+          </div>
+          <p className="mt-3 text-base text-gray-500">
+            <PortableText blocks={excerpt} serializers={serializers} />
+          </p>
         </div>
         <div className="mt-6 flex items-center">
           <div className="flex space-x-1 text-sm text-gray-500">

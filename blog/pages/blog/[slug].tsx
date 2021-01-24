@@ -11,6 +11,8 @@ import Head from 'next/head'
 import { request } from 'graphql-request'
 import { format } from 'date-fns'
 import Meta from '../../components/Header/PageMeta'
+// import MoreStories from '../../components/Posts/MorePosts'
+// import { useState, useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
 
 type Props = {
@@ -23,6 +25,7 @@ type Props = {
 }
 
 const Post = ({ post, preview, menuItems }: Props) => {
+  // const [relatedPosts, setRelatedPosts] = useState([])
   const {
     title,
     mainImage,
@@ -30,6 +33,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
     body,
     slug,
     excerpt,
+    tags,
     categories,
     socialCard,
   }: any = post
@@ -75,9 +79,15 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 />
                 <PostBody content={body} />
               </article>
-              {/* <section>
+              <section>
+                {/* <h2 className="text-center prose xl:prose-3xl lg:prose-2xl md:prose-2xl sm:prose-2xl xs:prose-2xl prose-xl mx-auto fond-black prose text-4xl">
+                  Related Posts
+                </h2> */}
+                {/* <MoreStories posts={allPosts} /> */}
+              </section>
+              <section>
                 <CommentSection />
-              </section> */}
+              </section>
             </>
           )}
         </Container>
@@ -120,6 +130,9 @@ export async function getStaticProps({
           slug {
             current
           }
+        }
+        tags {
+          value
         }
         publishedAt
         excerpt: excerptRaw
