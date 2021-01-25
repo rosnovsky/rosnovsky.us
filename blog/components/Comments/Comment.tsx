@@ -1,6 +1,6 @@
 import { VscVerified } from 'react-icons/vsc'
 
-const Comment = () => {
+const Comment = ({ postId }: any) => {
   return (
     <section className="bg-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
@@ -29,6 +29,7 @@ const Comment = () => {
             <blockquote className="relative">
               <div className="text-2xl leading-9 font-medium text-gray-900">
                 <p>Крутой пост!</p>
+                <p>postId: {postId}</p>
               </div>
               <footer className="mt-8">
                 <div className="flex">

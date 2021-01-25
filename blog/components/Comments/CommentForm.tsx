@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import DOMPurify from 'dompurify'
 
-const CommentForm = ({ user }: any) => {
+const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
   const [comment, setComment] = useState('')
   const [posting, setPosting] = useState(false)
 
@@ -23,6 +23,7 @@ const CommentForm = ({ user }: any) => {
     const commentMetadata = {
       timestamp: Date.now(),
       author: user,
+      postId: postId,
     }
     const commentObject = {
       meta: commentMetadata,

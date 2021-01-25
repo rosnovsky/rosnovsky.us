@@ -27,6 +27,7 @@ type Props = {
 const Post = ({ post, preview, menuItems }: Props) => {
   // const [relatedPosts, setRelatedPosts] = useState([])
   const {
+    _id,
     title,
     mainImage,
     publishedAt,
@@ -86,7 +87,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 {/* <MoreStories posts={allPosts} /> */}
               </section>
               <section>
-                <CommentSection />
+                <CommentSection postId={_id} />
               </section>
             </>
           )}

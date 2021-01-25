@@ -1,24 +1,36 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-const mongoose = require('mongoose')
-
-const { Schema } = mongoose
+import mongoose from 'mongoose'
+const Schema = mongoose.Schema
 
 const CommentSchema = new Schema({
-  id: { type: mongoose.ObjectId, required: true },
   author: { type: String, required: true },
+  postId: { type: String, requires: true },
   content: { type: String, required: true },
-  timestamp: { type: String, required: true },
+  commentTimestamp: { type: Date, required: true },
+  savedTimestamp: { type: Date, default: Date.now() },
 })
-// CommentSchema.index({ id: 1, author: 1 }, { unique: true })
-const CommentModel = mongoose.model('comments', CommentSchema)
+
+const Comment = mongoose.model('comments', CommentSchema)
 
 export default async (req: NowRequest, res: NowResponse) => {
   const body = JSON.parse(req.body)
-  console.log(body)
-  const Comment = new CommentModel({
+
+  const NewComment = new Comment({
     author: body.meta.author,
     content: body.content,
-    timestamp: body.meta.timestamp,
+    commentTimestamp: body.meta.timestamp,
+    postId: body.meta.postId,
   })
-  res.status(200).send({ status: 'ok', Comment })
+
+  await mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
+
+  NewComment.save({ checkKeys: false }, (err) => {
+    if (err) return console.error(err)
+    res.status(200).send(NewComment)
+  })
 }
