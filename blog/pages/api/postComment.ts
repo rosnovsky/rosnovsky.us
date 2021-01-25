@@ -22,7 +22,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     postId: body.meta.postId,
   })
 
-  await mongoose.connect(process.env.DB_URL, {
+  await mongoose.connect(process.env.DB_URL || "default", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
