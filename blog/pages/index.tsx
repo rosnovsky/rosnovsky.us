@@ -19,9 +19,6 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
     setAllPosts(posts)
   }, [])
 
-  const notFeaturedPosts: Post[] = posts.filter(
-    (post: any) => post.featured !== true
-  )
   const randomFeaturedPost = featuredPosts && featuredPosts[0]
 
   const loadMore = async () => {
@@ -259,6 +256,7 @@ export async function getStaticProps({ preview = false }) {
       menuItems: data.menuItems,
       alert: data.alert[0],
     },
+    revalidate: 10,
   }
 }
 

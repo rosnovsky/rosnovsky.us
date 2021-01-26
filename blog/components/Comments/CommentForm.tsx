@@ -7,7 +7,6 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
 
   const updateComment = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = JSON.stringify(event.target.value)
-    console.log(localStorage.getItem('post'))
     localStorage.setItem('post', value)
     setComment(event.target.value)
   }
@@ -22,11 +21,17 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
 
     const commentMetadata = {
       timestamp: Date.now(),
-      author: user,
       postId: postId,
     }
+
+    const author = {
+      id: user.id,
+      membership: user.membership,
+    }
+
     const commentObject = {
       meta: commentMetadata,
+      author,
       content: cleanComment,
     }
 
