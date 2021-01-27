@@ -34,7 +34,7 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
       content: cleanComment,
     }
 
-    const commentPosting = await fetch('/api/comments/post', {
+    const commentPosting = await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify(commentObject),
     })

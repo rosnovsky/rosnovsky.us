@@ -1,6 +1,6 @@
-import { NowRequest, NowResponse } from '@vercel/node'
+// import { NowRequest, NowResponse } from '@vercel/node'
 import mongoose from 'mongoose'
-import auth from '../../../utils/auth'
+import auth from '../../utils/auth'
 const Schema = mongoose.Schema
 mongoose.set('debug', true)
 

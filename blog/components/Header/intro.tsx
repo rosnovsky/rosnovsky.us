@@ -12,7 +12,7 @@ const Intro = () => {
         <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
           {user && !loading ? (
             <>
-              <Link href="/api/auth/logout">
+              <Link href="/api/logout">
                 <a>Logout</a>
               </Link>
               <Link href="/profile">
@@ -21,7 +21,7 @@ const Intro = () => {
             </>
           ) : null}
           {!user && !loading ? (
-            <Link href="/api/auth/login">
+            <Link href="/api/login">
               <a>Login</a>
             </Link>
           ) : null}

@@ -11,7 +11,7 @@ export const fetchUser = async () => {
     return userState
   }
 
-  const res = await fetch('/api/auth/me')
+  const res = await fetch('/api/me')
   userState = res.ok ? await res.json() : null
   return userState
 }

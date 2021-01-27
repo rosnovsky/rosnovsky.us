@@ -1,4 +1,4 @@
-import auth from '../../../utils/auth'
+import auth from '../../utils/auth'
 // import { NowRequest, NowResponse } from '@vercel/node'
 
 export default async function login(req: any, res: any) {
