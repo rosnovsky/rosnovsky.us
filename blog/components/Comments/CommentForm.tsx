@@ -25,8 +25,7 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
     }
 
     const author = {
-      id: user.id,
-      membership: user.membership,
+      id: user.sub.split('|')[1],
     }
 
     const commentObject = {
@@ -35,7 +34,7 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
       content: cleanComment,
     }
 
-    const commentPosting = await fetch('/api/postComment', {
+    const commentPosting = await fetch('/api/comments/post', {
       method: 'POST',
       body: JSON.stringify(commentObject),
     })
@@ -63,7 +62,7 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
                 rows={4}
                 className="block w-full shadow-lg py-3 px-4 placeholder-gray-500 ring-red-500 border-gray-300 rounded-lg border-2"
                 placeholder={`What's on your mind${
-                  user ? ', ' + user + '?' : '?'
+                  user ? ', ' + user.nickname + '?' : '?'
                 }`}
               ></textarea>
               <div className="flex justify-end py-6">
