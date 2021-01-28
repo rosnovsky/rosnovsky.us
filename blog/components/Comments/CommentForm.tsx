@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import DOMPurify from 'dompurify'
+import { useFetchUser } from '../../utils/user'
+import Link from 'next/link'
 
-const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
+const CommentForm = ({ postId }: { user: any; postId: string }) => {
+  const { user, loading } = useFetchUser()
   const [comment, setComment] = useState('')
   const [posting, setPosting] = useState(false)
 
@@ -66,14 +69,29 @@ const CommentForm = ({ user, postId }: { user: any; postId: string }) => {
                 }`}
               ></textarea>
               <div className="flex justify-end py-6">
-                <button
-                  onClick={postComment}
-                  type="submit"
-                  disabled={posting}
-                  className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  {user ? 'Post Comment' : 'Login to Comment'}
-                </button>
+                {user && !loading ? (
+                  <>
+                    <button
+                      onClick={postComment}
+                      type="submit"
+                      disabled={posting}
+                      className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                      Post Comment
+                    </button>
+                    <Link href="/api/logout">
+                      <a>Logout</a>
+                    </Link>
+                    <Link href="/profile">
+                      <a>Profile</a>
+                    </Link>
+                  </>
+                ) : null}
+                {!user && !loading ? (
+                  <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Link href="/api/login">Login</Link>
+                  </div>
+                ) : null}
               </div>
             </form>
           </div>

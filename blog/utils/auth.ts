@@ -4,9 +4,9 @@ export default initAuth0({
   domain: process.env.AUTH0_DOMAIN!,
   clientId: process.env.CLIENT_ID!,
   clientSecret: process.env.CLIENT_SECRET,
-  scope: 'openid profile read:comments post:comments update:comments',
-  redirectUri:
-    process.env.REDIRECT_URI || 'https://rosnovsky.us/api/auth/callback',
+  scope:
+    'openid profile read:comments post:comments update:comments delete:comments',
+  redirectUri: process.env.REDIRECT_URI || 'https://rosnovsky.us/api/callback',
   postLogoutRedirectUri: process.env.LOGOUT_URI || 'https://rosnovsky.us',
   audience: '/blog/',
   session: {

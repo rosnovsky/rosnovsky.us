@@ -5,7 +5,12 @@ export default async function me(req: any, res: any) {
     const session = await auth.getSession(req)
     const tokenCache = auth.tokenCache(req, res)
     const { accessToken } = await tokenCache.getAccessToken({
-      scopes: ['create:comments'],
+      scopes: [
+        'post:comments',
+        'update:comments',
+        'delete:comments',
+        'read:comments',
+      ],
     })
     console.log(accessToken)
     await auth.handleProfile(req, res, {})
