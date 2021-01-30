@@ -7,6 +7,7 @@ import Head from 'next/head'
 import { request } from 'graphql-request'
 import { useState, useEffect } from 'react'
 import { Post } from '..'
+import Covid from '../components/Covid/CovidTracker'
 // import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
 
@@ -121,21 +122,10 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
         </Head>
         <Container>
           <Intro />
-          {featuredPosts && (
-            <HeroPost
-              title={randomFeaturedPost.title}
-              mainImage={randomFeaturedPost.mainImage}
-              date={randomFeaturedPost.publishedAt}
-              slug={randomFeaturedPost.slug.current}
-              excerpt={randomFeaturedPost.excerpt}
-              categories={randomFeaturedPost.categories}
-              socialCard={randomFeaturedPost.socialCard}
-            />
-          )}
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            More Posts
-          </h2>
-          <MoreStories posts={allPosts} />
+          <Covid />
+          <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+            <MoreStories posts={allPosts} />
+          </div>
           <div className="text-center my-20">
             {noMorePosts ? (
               "You've reached the end of the internet."
@@ -256,7 +246,6 @@ export async function getStaticProps({ preview = false }) {
       menuItems: data.menuItems,
       alert: data.alert[0],
     },
-    revalidate: 10,
   }
 }
 

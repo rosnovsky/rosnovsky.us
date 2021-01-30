@@ -1,5 +1,4 @@
 import Footer from '../Footer/footer'
-import Covid from '../Covid/CovidTracker'
 import dynamic from 'next/dynamic'
 import { UserProvider, useFetchUser } from '../../utils/user'
 const Alert = dynamic(import('../Alert/alert'))
@@ -31,7 +30,6 @@ const Layout = ({ children, menuItems, alert }: Props) => {
             internal={alert.internal}
           />
         ) : null}
-        <Covid />
         <main>{children}</main>
       </div>
       <Footer menuItems={menuItems} />

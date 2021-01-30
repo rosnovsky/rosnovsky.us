@@ -23,7 +23,7 @@ const PostPreview = ({
   }
 
   return (
-    <div className="flex flex-col rounded-lg shadow-lg my-8 overflow-hidden">
+    <div className="flex flex-col rounded-lg shadow-lg mb-10 overflow-hidden">
       <div className="flex-shrink-0">
         <MainImage
           preview={true}

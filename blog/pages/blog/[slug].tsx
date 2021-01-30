@@ -163,7 +163,6 @@ export async function getStaticProps({
       post: data.posts[0],
       menuItems: data.menuItems,
     },
-    revalidate: 60
   }
 }
 

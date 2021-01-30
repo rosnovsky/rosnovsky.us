@@ -60,9 +60,22 @@ export default function TotalCases(props: CovidData) {
   }
 
   return (
-    <div className="flex items-center text-center mx-auto">
-      {title}:&nbsp; <span className="font-bold">{formatCases(numbers)}</span>
-      {changeStatus(change)}
+    <div className="border-t border-gray-200 md:border-0 md:border-l">
+      <div className="px-4 py-5 sm:p-6">
+        <dl>
+          <dt className="text-base leading-6 font-normal text-gray-900">
+            {title}
+          </dt>
+          <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
+            <div className="flex items-baseline text-2xl leading-8 font-semibold text-red-600">
+              <span>{formatCases(numbers)}</span>
+            </div>
+            <div className="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-red-800 md:mt-2 lg:mt-0">
+              <span className="ml-1">{changeStatus(change)}</span>
+            </div>
+          </dd>
+        </dl>
+      </div>
     </div>
   )
 }
