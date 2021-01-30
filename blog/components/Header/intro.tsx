@@ -1,4 +1,5 @@
-const Intro = () => {
+import Link from 'next/link'
+const Intro = ({ menuItems }: any) => {
   return (
     <>
       <div className="relative overflow-hidden">
@@ -74,69 +75,30 @@ const Intro = () => {
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
             <nav className="relative flex items-center justify-between sm:h-10 md:justify-center">
               <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-                <div className="flex items-center justify-between w-full md:w-auto">
-                  <a href="#" aria-label="Home">
-                    <img
-                      className="h-8 w-auto sm:h-10 hidden"
-                      src="https://tailwindui.com/img/logos/v1/workflow-mark-on-white.svg"
-                      alt=""
-                    />
-                  </a>
-                  <div className="-mr-2 flex items-center md:hidden">
-                    <button
-                      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                      id="main-menu"
-                      type="button"
-                      aria-label="Main menu"
-                      aria-haspopup="true"
-                    >
-                      <svg
-                        className="h-6 w-6"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 6h16M4 12h16M4 18h16"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
+                <div className="flex items-center justify-between w-full md:w-auto font-bold text-xl text-red-900">
+                  <Link href="/" aria-label="Home">
+                    Rosnovsky Park
+                  </Link>
                 </div>
               </div>
               <div className="hidden md:flex md:space-x-10">
-                <a
-                  className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-                  href="#"
-                >
-                  Projects
-                </a>
-                <a
-                  className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-                  href="#"
-                >
-                  About Me
-                </a>
-                <a
-                  className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-                  href="#"
-                >
-                  PGP Public Key
-                </a>
-                <a
-                  className="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out"
-                  href="#"
-                >
-                  Github
-                </a>
+                {menuItems
+                  ? menuItems.map((menuItem: any) => (
+                      <div
+                        className="px-5 py-2 text-md text-gray-800 hover:text-gray-900"
+                        key={menuItem.slug.current}
+                      >
+                        <Link href={`/${menuItem.slug.current}/`}>
+                          {menuItem.title}
+                        </Link>
+                      </div>
+                    ))
+                  : null}
               </div>
-              <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+              <div className="md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                 <span className="inline-flex rounded-md shadow">
                   <a
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-red-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-gray-50 active:text-indigo-700 transition duration-150 ease-in-out"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-red-600 bg-white hover:text-red-500 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-gray-50 active:text-red-700 transition duration-150 ease-in-out"
                     href="#"
                   >
                     Log in
@@ -144,86 +106,6 @@ const Intro = () => {
                 </span>
               </div>
             </nav>
-          </div>
-          <div className="hidden absolute top-0 inset-x-0 p-2 transition transform origin-top-right">
-            <div className="rounded-lg shadow-md">
-              <div
-                className="rounded-lg bg-white shadow-xs overflow-hidden"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="main-menu"
-              >
-                <div className="px-5 pt-4 flex items-center justify-between">
-                  <div>
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/v1/workflow-mark-on-white.svg"
-                      alt=""
-                    />
-                  </div>
-                  <div className="-mr-2">
-                    <button
-                      className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                      type="button"
-                      aria-label="Close menu"
-                    >
-                      <svg
-                        className="h-6 w-6"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div className="px-2 pt-2 pb-3">
-                  <a
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                    href="#"
-                    role="menuitem"
-                  >
-                    Projects
-                  </a>
-                  <a
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                    href="#"
-                    role="menuitem"
-                  >
-                    About Me
-                  </a>
-                  <a
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                    href="#"
-                    role="menuitem"
-                  >
-                    PGP Public Key
-                  </a>
-                  <a
-                    className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
-                    href="#"
-                    role="menuitem"
-                  >
-                    Github
-                  </a>
-                </div>
-                <div>
-                  <a
-                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out"
-                    href="#"
-                    role="menuitem"
-                  >
-                    Log in
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
           <main className="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
             <div className="text-center">
