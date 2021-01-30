@@ -43,7 +43,7 @@ const CommentForm = ({ postId }: { user: any; postId: string }) => {
     })
       .then((result) => result.json())
       .then((status) => {
-        console.log(status)
+        console.info(status)
       })
     setPosting(false)
     return commentPosting

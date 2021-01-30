@@ -48,7 +48,7 @@ export default function Covid() {
       refreshWhenOffline: true,
       errorRetryInterval: 600000,
       onError: (err) => {
-        console.info(Date.now(), `Failed to fetch Covid Data 🦠`, err)
+        console.error(Date.now(), `Failed to fetch Covid Data 🦠`, err)
       },
       shouldRetryOnError: true,
       refreshWhenHidden: true,
@@ -84,7 +84,6 @@ export default function Covid() {
             setYesterdayHospitalizations(data)
             setLoading(false)
           })
-        console.info(Date.now(), `Covid Data fetched 🦠`)
       },
     }
   )
@@ -116,12 +115,13 @@ export default function Covid() {
             title="🇺🇸 In Hospitals with Covid now"
           />
         </div>
-        <p className="text-sm text-gray-400 mt-2 text-right">
+        <p className="text-sm text-gray-600 mt-2 text-right">
           Data by{' '}
           <a
             className="underline"
             href="https://covidtracking.com"
             target="_blank"
+            rel="noopener"
           >
             CovidTracking
           </a>{' '}
