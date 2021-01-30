@@ -14,7 +14,7 @@ export default async function me(req: any, res: any) {
     })
     await auth.handleProfile(req, res, {})
   } catch (error) {
-    res.status(error.status || 500).end(error.message)
+    res.status(200).end(error.message)
   }
   // if (typeof window === 'undefined') {
   //   const session = await auth.getSession(req)

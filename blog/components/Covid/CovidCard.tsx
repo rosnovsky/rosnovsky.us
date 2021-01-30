@@ -22,7 +22,7 @@ export default function TotalCases(props: CovidData) {
   const changeStatus: (cases: number) => JSX.Element = function (cases) {
     return cases < 0 ? (
       <>
-        <div className="ml-1 flex flex-start items-baseline text-sm leading-5 font-bold text-green-500">
+        <div className="ml-1 flex flex-start items-baseline text-sm leading-5 font-bold text-green-600">
           <svg
             className="self-center flex-shrink-0 h-5 w-5 text-green-500"
             fill="currentColor"
