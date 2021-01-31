@@ -22,6 +22,7 @@ const Layout = ({ children, menuItems, alert }: Props) => {
   const { user, loading } = useFetchUser()
   return (
     <UserProvider value={{ user, loading }}>
+      {/* <> */}
       <div className="min-h-screen">
         {alert?.active ? (
           <Alert
@@ -33,6 +34,7 @@ const Layout = ({ children, menuItems, alert }: Props) => {
         <main>{children}</main>
       </div>
       <Footer menuItems={menuItems} />
+      {/* </> */}
     </UserProvider>
   )
 }
