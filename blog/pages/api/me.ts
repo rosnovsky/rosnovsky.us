@@ -3,6 +3,13 @@ import auth from '../../utils/auth'
 export default async function me(req: any, res: any) {
   try {
     const session = await auth.getSession(req)
+    if (!session || !session.user) {
+      res.writeHead(302, {
+        Location: '/api/login',
+      })
+      res.end()
+      return
+    }
     const tokenCache = auth.tokenCache(req, res)
     const { accessToken } = await tokenCache.getAccessToken({
       scopes: [
@@ -16,16 +23,16 @@ export default async function me(req: any, res: any) {
   } catch (error) {
     res.status(200).end(error.message)
   }
-  // if (typeof window === 'undefined') {
-  //   const session = await auth.getSession(req)
-  //   if (!session || !session.user) {
-  //     res.writeHead(302, {
-  //       Location: '/api/login',
-  //     })
-  //     res.end()
-  //     return
-  //   }
-  //   return { user: session.user }
-  // }
-  // res.status(400)
+  if (typeof window === 'undefined') {
+    const session = await auth.getSession(req)
+    if (!session || !session.user) {
+      res.writeHead(302, {
+        Location: '/api/login',
+      })
+      res.end()
+      return
+    }
+    return { user: session.user }
+  }
+  res.status(400)
 }

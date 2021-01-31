@@ -34,12 +34,31 @@ const PostPreview = ({
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-indigo-600">
-            <span className="text-red-900">
-              {categories.map((category) => category.title + ' | ')}
+          <p className="text-md font-mono text-indigo-600">
+            <span className="text-red-800">
+              {categories.map((category) =>
+                categories.length > 1
+                  ? ` * ${category.title}`
+                  : `${category.title}`
+              )}
+            </span>
+            <span className="flex mt-2 items-center">
+              <div className="flex space-x-1 text-sm text-gray-500">
+                <time
+                  dateTime={new Intl.DateTimeFormat('en-US', options).format(
+                    Date.parse(publishedAt)
+                  )}
+                >
+                  {new Intl.DateTimeFormat('en-US', options).format(
+                    Date.parse(publishedAt)
+                  )}{' '}
+                </time>
+                {/* <span aria-hidden="true">&middot;</span>
+            <span>6 min read</span> */}
+              </div>
             </span>
           </p>
-          <div className="block mt-2">
+          <div className="block mt-5">
             <p className="text-xl font-semibold text-gray-900">
               <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
                 <span className="hover:underline text-3xl font-black cursor-pointer">
@@ -51,22 +70,6 @@ const PostPreview = ({
           <p className="mt-3 text-base text-gray-500">
             <PortableText blocks={excerpt} serializers={serializers} />
           </p>
-        </div>
-        <div className="mt-6 flex items-center">
-          <div className="flex space-x-1 text-sm text-gray-500">
-            <time
-              dateTime={new Intl.DateTimeFormat('en-US', options).format(
-                Date.parse(publishedAt)
-              )}
-            >
-              {new Intl.DateTimeFormat('en-US', options).format(
-                Date.parse(publishedAt)
-              )}{' '}
-              |{' '}
-            </time>
-            <span aria-hidden="true">&middot;</span>
-            <span>6 min read</span>
-          </div>
         </div>
       </div>
     </div>

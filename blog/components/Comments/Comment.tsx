@@ -1,17 +1,17 @@
 import { VscVerified } from 'react-icons/vsc'
 
-const Comment = ({ postId }: any) => {
+const Comment = ({ comment }: any) => {
   return (
     <section className="bg-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
         <div className="relative lg:flex lg:items-center">
-          <div className="hidden lg:block lg:flex-shrink-0">
+          {/* <div className="hidden lg:block lg:flex-shrink-0">
             <img
               className="h-64 w-64 rounded-full xl:h-80 xl:w-80"
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
             />
-          </div>
+          </div> */}
 
           <div className="relative lg:ml-10">
             <svg
@@ -28,8 +28,7 @@ const Comment = ({ postId }: any) => {
             </svg>
             <blockquote className="relative">
               <div className="text-2xl leading-9 font-medium text-gray-900">
-                <p>Крутой пост!</p>
-                <p>postId: {postId}</p>
+                <p>{comment.content}</p>
               </div>
               <footer className="mt-8">
                 <div className="flex">
@@ -42,11 +41,12 @@ const Comment = ({ postId }: any) => {
                   </div>
                   <div className="ml-4 lg:ml-0">
                     <div className="flex flex-inline text-base font-medium text-gray-900">
-                      Артём Росновский&nbsp;
+                      {comment.userId}
+                      {/* Артём Росновский&nbsp; */}
                       <VscVerified className="text-2xl font-black text-green-600" />
                     </div>
                     <div className="text-base font-medium text-red-600">
-                      Jan 22, 2021
+                      {comment.savedTimestamp}
                     </div>
                   </div>
                 </div>

@@ -19,7 +19,7 @@ const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
     day: 'numeric',
   }
   return (
-    <>
+    <div className="max-w-7xl mx-auto">
       <PostTitle>{title}</PostTitle>
       <div className="object-cover mb-8 md:mb-16 sm:mx-0">
         <MainImage slug="" preview={false} title={title} src={mainImage} />
@@ -28,9 +28,13 @@ const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
         <div className="mb-6 text-lg">
           <div className="mb-4 font-mono text-gray-500">
             {new Intl.DateTimeFormat('en-US', options).format(Date.parse(date))}{' '}
-            |{' '}
-            <span className="text-yellow-600">
-              {categories.map((category) => category.title + ' | ')}
+            *{' '}
+            <span className="text-red-800">
+              {categories.map((category) =>
+                categories.length > 1
+                  ? `${category.title} * `
+                  : `${category.title}`
+              )}
             </span>
           </div>
         </div>
@@ -38,7 +42,7 @@ const PostHeader = ({ title, mainImage, date, excerpt, categories }: Props) => {
           <PortableText blocks={excerpt} />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,6 +1,5 @@
 import Container from '../components/Layout/container'
 import MoreStories from '../components/Posts/MorePosts'
-import HeroPost from '../components/Posts/HeroPost'
 import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import Head from 'next/head'
@@ -19,8 +18,6 @@ const Index = ({ posts, featuredPosts, menuItems, alert }: any) => {
   useEffect(() => {
     setAllPosts(posts)
   }, [])
-
-  const randomFeaturedPost = featuredPosts && featuredPosts[0]
 
   const loadMore = async () => {
     setLoading(true)
