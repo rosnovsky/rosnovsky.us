@@ -14,6 +14,7 @@ import Meta from '../../components/Header/PageMeta'
 // import MoreStories from '../../components/Posts/MorePosts'
 // import { useState, useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
+import { PostComment } from '../..'
 
 type Props = {
   post: any
@@ -22,9 +23,10 @@ type Props = {
     title: string
     slug: { current: string }
   }[]
+  comments: PostComment[]
 }
 
-const Post = ({ post, preview, menuItems }: Props) => {
+const Post = ({ post, preview, menuItems, comments }: Props) => {
   // const [relatedPosts, setRelatedPosts] = useState([])
   const {
     _id,
@@ -87,7 +89,7 @@ const Post = ({ post, preview, menuItems }: Props) => {
                 {/* <MoreStories posts={allPosts} /> */}
               </section>
               <section>
-                <CommentSection postId={_id} />
+                <CommentSection comments={comments} postId={_id} />
               </section>
             </>
           )}
@@ -157,12 +159,19 @@ export async function getStaticProps({
     }`
   )
 
+  const fetchComments = await fetch(
+    `https://rosnovsky.us/api/get?postId=${data.posts[0]._id}`
+  )
+  const comments: PostComment[] = await fetchComments.json()
+
   return {
     props: {
       preview,
       post: data.posts[0],
       menuItems: data.menuItems,
+      comments,
     },
+    revalidate: 60,
   }
 }
 

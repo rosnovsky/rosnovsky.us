@@ -1,11 +1,16 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import mongoose from 'mongoose'
-import Comment from './commentSchema'
 const Schema = mongoose.Schema
 mongoose.set('debug', true)
 
+const UserSchema = new Schema({
+  id: { type: String },
+})
+
+const User = mongoose.model('users') || mongoose.model('users', UserSchema)
+
 export default async (req: NowRequest, res: NowResponse) => {
-  const postId = req.query.postId
+  const authorId = req.query.authorId
 
   await mongoose.connect(process.env.DB_URL || 'default', {
     useNewUrlParser: true,
@@ -14,6 +19,6 @@ export default async (req: NowRequest, res: NowResponse) => {
     useCreateIndex: true,
   })
 
-  const comments = await Comment.find({ postId: postId })
-  res.status(200).send({ comments: comments })
+  const author = await User.findOne({ id: authorId })
+  res.status(200).send({ author: author })
 }
