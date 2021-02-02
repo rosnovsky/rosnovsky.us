@@ -8,7 +8,7 @@ const Comment = ({ comment }: { comment: PostComment }) => {
       <div className="border-2 border-gray-100 my-3" key={comment._id}>
         <div>
           <span className="font-mono font-semibold">Author ID: </span>
-          {/* {authors.map((author: any) => author.id === comment.authorId)} */}
+          {comment.author?.profile.name || comment.author?.profile.email}
         </div>
         <div>
           <span className="font-mono font-semibold">Comment content: </span>
@@ -16,7 +16,11 @@ const Comment = ({ comment }: { comment: PostComment }) => {
         </div>
         <div>
           <span className="font-mono font-semibold">Comment timestamp: </span>
-          {comment.commentTimestamp}
+          {comment.commentTimestamp.toLocaleString('en_US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'long',
+          })}
         </div>
       </div>
     </div>

@@ -25,19 +25,19 @@ const CommentSchema = new Schema({
   savedTimestamp: { type: Date, default: Date.now() },
 })
 
+const UserSchema = new Schema({
+  id: String,
+  profile: {
+    type: Object,
+  },
+  stats: { type: Object },
+  lastUpdated: { type: Date, default: Date.now() },
+})
+
+const Comment =
+  mongoose.models.Comment || mongoose.model('comments', CommentSchema)
+const User = mongoose.models.User || mongoose.model('users', UserSchema)
 export default async (req: any, res: any) => {
-  const Comment = mongoose.model('comments', CommentSchema)
-  const UserSchema = new Schema({
-    id: String,
-    profile: {
-      type: Object,
-    },
-    stats: { type: Object },
-    lastUpdated: { type: Date, default: Date.now() },
-  })
-
-  const User = mongoose.model('users', UserSchema)
-
   try {
     const session = await auth.getSession(req)
     const tokenCache = auth.tokenCache(req, res)

@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   id: { type: String },
 })
 
-const User = mongoose.model('users', UserSchema)
+const User = mongoose.models.User || mongoose.model('users', UserSchema)
 
 export default async (req: NowRequest, res: NowResponse) => {
   const authorId = req.query.userId
