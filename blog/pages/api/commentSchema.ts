@@ -22,5 +22,4 @@ const CommentSchema = new Schema({
   savedTimestamp: { type: Date, default: Date.now() },
 })
 
-export default mongoose.model('comments') ||
-  mongoose.model('comments', CommentSchema)
+export default mongoose.model('comments', CommentSchema)

@@ -15,7 +15,7 @@ export default async (req: any, res: any) => {
     lastUpdated: { type: Date, default: Date.now() },
   })
 
-  const User = mongoose.model('users') || mongoose.model('users', UserSchema)
+  const User = mongoose.model('users', UserSchema)
 
   try {
     const session = await auth.getSession(req)
