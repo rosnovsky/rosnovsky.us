@@ -2,10 +2,31 @@
 import mongoose from 'mongoose'
 import auth from '../../utils/auth'
 const Schema = mongoose.Schema
-import Comment from './commentSchema'
 mongoose.set('debug', true)
 
+const CommentSchema = new Schema({
+  author: {
+    id: String,
+    profile: {
+      name: String,
+      email: String,
+    },
+    stats: {
+      comments: Number,
+      pending: Number,
+    },
+  },
+  postId: { type: String, requires: true },
+  content: { type: String, required: true },
+  commentTimestamp: { type: Date, required: true },
+  sentiment: { type: Number, default: 50 },
+  status: { type: String, default: 'new' },
+  likes: { type: Number, default: 0 },
+  savedTimestamp: { type: Date, default: Date.now() },
+})
+
 export default async (req: any, res: any) => {
+  const Comment = mongoose.model('comments', CommentSchema)
   const UserSchema = new Schema({
     id: String,
     profile: {
