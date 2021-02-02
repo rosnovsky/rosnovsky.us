@@ -1,6 +1,5 @@
 import CommentForm from './CommentForm'
 import Comments from './Comments'
-import { useState, useEffect } from 'react'
 import { useFetchUser } from '../../utils/user'
 import { PostComment } from '../..'
 

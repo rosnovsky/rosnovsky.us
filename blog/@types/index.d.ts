@@ -8,7 +8,17 @@ declare module 'react-player/youtube'
 declare module 'react-tiny-link'
 
 export type PostComment = {
-  authorId: string
+  author: {
+    id: string
+    profile: {
+      name?: string
+      email: string
+    }
+    stats: {
+      comments: number
+      pending: number
+    }
+  }
   postId: string
   content: string
   commentTimestamp: Date

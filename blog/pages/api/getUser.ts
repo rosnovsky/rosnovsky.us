@@ -7,10 +7,10 @@ const UserSchema = new Schema({
   id: { type: String },
 })
 
-const User = mongoose.model('users') || mongoose.model('users', UserSchema)
+const User = mongoose.model('users', UserSchema)
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const authorId = req.query.authorId
+  const authorId = req.query.userId
 
   await mongoose.connect(process.env.DB_URL || 'default', {
     useNewUrlParser: true,
@@ -20,5 +20,6 @@ export default async (req: NowRequest, res: NowResponse) => {
   })
 
   const author = await User.findOne({ id: authorId })
+
   res.status(200).send({ author: author })
 }

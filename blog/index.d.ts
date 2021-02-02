@@ -9,7 +9,17 @@ declare module 'react-tiny-link'
 
 export type PostComment = {
   _id: string
-  authorId: string
+  author: {
+    id: string
+    profile: {
+      name?: string
+      email: string
+    }
+    stats: {
+      comments: number
+      pending: number
+    }
+  }
   postId: string
   content: string
   commentTimestamp: Date
@@ -17,6 +27,7 @@ export type PostComment = {
   status: string
   likes: number
   savedTimestamp: Date
+  length: number
 }
 
 export type Post = {

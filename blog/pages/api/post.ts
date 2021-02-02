@@ -7,11 +7,15 @@ mongoose.set('debug', true)
 
 export default async (req: any, res: any) => {
   const UserSchema = new Schema({
+    id: String,
+    profile: {
+      type: Object,
+    },
     stats: { type: Object },
     lastUpdated: { type: Date, default: Date.now() },
   })
 
-  const User = mongoose.model('users', UserSchema)
+  const User = mongoose.model('users') || mongoose.model('users', UserSchema)
 
   try {
     const session = await auth.getSession(req)
@@ -29,15 +33,6 @@ export default async (req: any, res: any) => {
   }
   const body = JSON.parse(req.body)
 
-  const NewComment = new Comment({
-    authorId: body.author.id,
-    content: body.content,
-    commentTimestamp: body.meta.timestamp,
-    postId: body.meta.postId,
-    status: 'new',
-    likes: 0,
-  })
-
   await mongoose.connect(process.env.DB_URL || 'default', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -52,6 +47,15 @@ export default async (req: any, res: any) => {
   }
   await user.updateOne(update)
   const updatedDoc = await User.findOne({ id: body.author.id })
+
+  const NewComment = new Comment({
+    author: updatedDoc,
+    content: body.content,
+    commentTimestamp: body.meta.timestamp,
+    postId: body.meta.postId,
+    status: 'new',
+    likes: 0,
+  })
 
   NewComment.save({ checkKeys: false }, (err) => {
     if (err) return console.error(err)

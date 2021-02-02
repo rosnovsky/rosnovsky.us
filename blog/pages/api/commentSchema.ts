@@ -2,7 +2,17 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const CommentSchema = new Schema({
-  authorId: { type: String, required: true },
+  author: {
+    id: String,
+    profile: {
+      name: String,
+      email: String,
+    },
+    stats: {
+      comments: Number,
+      pending: Number,
+    },
+  },
   postId: { type: String, requires: true },
   content: { type: String, required: true },
   commentTimestamp: { type: Date, required: true },

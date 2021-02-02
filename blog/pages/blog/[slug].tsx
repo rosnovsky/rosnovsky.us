@@ -162,7 +162,7 @@ export async function getStaticProps({
   const fetchComments = await fetch(
     `https://rosnovsky.us/api/get?postId=${data.posts[0]._id}`
   )
-  const comments: PostComment[] = await fetchComments.json()
+  const comments = await fetchComments.json()
 
   return {
     props: {
