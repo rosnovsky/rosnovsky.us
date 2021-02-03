@@ -116,7 +116,11 @@ export default function Covid() {
           yesterdayDate.getMonth() > 9
             ? yesterdayDate.getMonth().toString()
             : `0${yesterdayDate.getMonth() + 1}`
-        }${yesterdayDate.getDate().toString()}`
+        }${
+          yesterdayDate.getDate() > 9
+            ? yesterdayDate.getDate().toString()
+            : `0${yesterdayDate.getDate()}`
+        }`
 
         const yesterdayUrl = `https://api.covidtracking.com/v1/us/${yesterday}.json`
 

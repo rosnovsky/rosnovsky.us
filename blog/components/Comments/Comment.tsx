@@ -16,10 +16,10 @@ const Comment = ({ comment }: { comment: PostComment }) => {
         </div>
         <div>
           <span className="font-mono font-semibold">Comment timestamp: </span>
-          {comment.commentTimestamp.toLocaleString('en_US', {
-            day: 'numeric',
+          {new Date(comment.commentTimestamp).toLocaleString('en-US', {
+            year: 'numeric',
             month: 'long',
-            year: 'long',
+            day: 'numeric',
           })}
         </div>
       </div>

@@ -2,28 +2,15 @@
 import mongoose from 'mongoose'
 import auth from '../../utils/auth'
 const Schema = mongoose.Schema
+import { CommentSchema } from './commentSchema'
 mongoose.set('debug', true)
 
-const CommentSchema = new Schema({
-  author: {
-    id: String,
-    profile: {
-      name: String,
-      email: String,
-    },
-    stats: {
-      comments: Number,
-      pending: Number,
-    },
-  },
-  postId: { type: String, requires: true },
-  content: { type: String, required: true },
-  commentTimestamp: { type: Date, required: true },
-  sentiment: { type: Number, default: 50 },
-  status: { type: String, default: 'new' },
-  likes: { type: Number, default: 0 },
-  savedTimestamp: { type: Date, default: Date.now() },
-})
+let Comment
+try {
+  Comment = mongoose.model('comments')
+} catch (error) {
+  Comment = mongoose.model('comments', CommentSchema)
+}
 
 const UserSchema = new Schema({
   id: String,
@@ -34,9 +21,9 @@ const UserSchema = new Schema({
   lastUpdated: { type: Date, default: Date.now() },
 })
 
-const Comment =
-  mongoose.models.Comment || mongoose.model('comments', CommentSchema)
-const User = mongoose.models.User || mongoose.model('users', UserSchema)
+const User = mongoose.models.User
+  ? mongoose.models.User
+  : mongoose.model('users', UserSchema)
 export default async (req: any, res: any) => {
   try {
     const session = await auth.getSession(req)

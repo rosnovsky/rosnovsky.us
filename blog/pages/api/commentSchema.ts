@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const CommentSchema = new Schema({
+export const CommentSchema = new Schema({
   author: {
     id: String,
     profile: {
@@ -21,5 +21,3 @@ const CommentSchema = new Schema({
   likes: { type: Number, default: 0 },
   savedTimestamp: { type: Date, default: Date.now() },
 })
-
-export default mongoose.model('comments', CommentSchema)
