@@ -28,7 +28,7 @@ const CommentForm = ({ postId }: { user: any; postId: string }) => {
     }
 
     const author = {
-      id: user.sub.split('|')[1],
+      id: user.sub,
     }
 
     const commentObject = {

@@ -14,16 +14,25 @@ try {
 
 const UserSchema = new Schema({
   id: String,
-  profile: {
-    type: Object,
-  },
+  created_at: Date,
+  email: String,
+  email_verified: Boolean,
+  family_name: String,
+  given_name: String,
+  name: String,
+  nickname: String,
+  picture: String,
+  updated_at: Date,
+  user_metadata: Object,
+  app_metadata: Object,
   stats: { type: Object },
   lastUpdated: { type: Date, default: Date.now() },
 })
 
-const User = mongoose.models.User
+const User: mongoose.Model<mongoose.Document<any>> = mongoose.models.User
   ? mongoose.models.User
   : mongoose.model('users', UserSchema)
+
 export default async (req: any, res: any) => {
   try {
     const session = await auth.getSession(req)
@@ -48,13 +57,21 @@ export default async (req: any, res: any) => {
     useCreateIndex: true,
   })
 
-  const user = User.findOne({ id: body.author.id })
-  const update = {
-    $inc: { 'stats.comments': 1, 'stats.pending': 1 },
-    lastUpdated: Date.now(),
+  try {
+    User.findOneAndUpdate(
+      { id: body.author.id },
+      {
+        $inc: { 'stats.comments': 1, 'stats.pending': 1 },
+        lastUpdated: Date.now(),
+      }
+    )
+  } catch (err) {
+    console.log(err)
   }
-  await user.updateOne(update)
+
   const updatedDoc = await User.findOne({ id: body.author.id })
+
+  console.log(updatedDoc)
 
   const NewComment = new Comment({
     author: updatedDoc,
