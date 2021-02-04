@@ -11,10 +11,10 @@ export type PostComment = {
   _id: string
   author: {
     id: string
-    profile: {
-      name?: string
-      email: string
-    }
+    name?: string
+    email: string
+    picture: string
+    nickname: string
     stats: {
       comments: number
       pending: number
