@@ -1,9 +1,7 @@
-import Container from '../Layout/container'
 import Link from 'next/link'
-import { request } from 'graphql-request'
-import { Page } from '../..'
+import { BlogPage } from '../..'
 
-const Footer = ({ menuItems }: any) => {
+const Footer = ({ menuItems }: { menuItems: BlogPage[] }) => {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <footer className="bg-white">
@@ -13,7 +11,7 @@ const Footer = ({ menuItems }: any) => {
             aria-label="Footer"
           >
             {menuItems
-              ? menuItems.map((menuItem: Page) => (
+              ? menuItems.map((menuItem: BlogPage) => (
                   <div
                     className="px-5 py-2 text-xl text-gray-800 hover:text-gray-900"
                     key={menuItem.slug.current}

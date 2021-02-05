@@ -5,8 +5,15 @@ import { request } from 'graphql-request'
 import slugify from 'slugify'
 import Header from '../components/Header/header'
 import Container from '../components/Layout/container'
+import { BlogAlert, BlogProps } from '..'
 
-const NotFound = ({ menuItems }: any) => {
+const NotFound = ({
+  menuItems,
+  alert,
+}: {
+  menuItems: BlogProps['menuItems']
+  alert: BlogAlert
+}) => {
   return (
     <>
       <Meta
@@ -19,7 +26,7 @@ const NotFound = ({ menuItems }: any) => {
         canonicalUrl="https://rosnovsky.us/"
         coverAlt="Rosnovsky Park"
       />
-      <Layout menuItems={menuItems}>
+      <Layout alert={alert} menuItems={menuItems}>
         <Container>
           <Header />
           <div className="">

@@ -93,7 +93,7 @@ export type BlogPost = {
   comments?: PostComment
 }
 
-export type Page = {
+export type BlogPage = {
   title: string
   slug: {
     current: string

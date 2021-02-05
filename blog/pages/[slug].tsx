@@ -11,8 +11,17 @@ import Meta from '../components/Header/PageMeta'
 import { useEffect } from 'react'
 import { format } from 'date-fns'
 import slugify from 'slugify'
+import { BlogAlert, BlogProps, BlogPage } from '..'
 
-const Page = ({ page, menuItems, preview }: any) => {
+const Page = ({
+  page,
+  menuItems,
+  alert,
+}: {
+  page: BlogPage
+  menuItems: BlogProps['menuItems']
+  alert: BlogAlert
+}) => {
   const { title, mainImage, body, slug, socialCard }: any = page
   const router = useRouter()
   if (!router.isFallback && !page?.slug) {
@@ -50,7 +59,7 @@ const Page = ({ page, menuItems, preview }: any) => {
         canonicalUrl={`https://rosnovsky.us/${slug}`}
         coverAlt={title}
       />
-      <Layout preview={preview} menuItems={menuItems}>
+      <Layout alert={alert} menuItems={menuItems}>
         <div className="mx-auto"></div>
         <Container>
           <Header />
@@ -82,6 +91,12 @@ export async function getStaticProps({
   const data = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
+      alert: allAlert {
+        message
+        alertLink
+        internal
+        active
+      }
       menuItems: allPage(where: {menuItem: {eq: true}}) {
         title
         slug {
@@ -124,6 +139,7 @@ export async function getStaticProps({
       preview,
       page: data.pages[0],
       menuItems: data.menuItems,
+      alert: data.alert[0],
     },
   }
 }
