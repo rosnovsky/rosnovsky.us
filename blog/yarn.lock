@@ -532,9 +532,9 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tailwindcss/custom-forms@0.2.1", "@tailwindcss/custom-forms@^0.2.1":
+"@tailwindcss/custom-forms@^0.2.1":
   version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/custom-forms/-/custom-forms-0.2.1.tgz"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/custom-forms/-/custom-forms-0.2.1.tgz#40e5ed1fff6d29d8ed1c508a0b2aaf8da96962e0"
   integrity sha512-XdP5XY6kxo3x5o50mWUyoYWxOPV16baagLoZ5uM41gh6IhXzhz/vJYzqrTb/lN58maGIKlpkxgVsQUNSsbAS3Q==
   dependencies:
     lodash "^4.17.11"
@@ -556,9 +556,9 @@
     lodash.merge "^4.6.2"
     lodash.uniq "^4.5.0"
 
-"@tailwindcss/ui@0.7.2":
+"@tailwindcss/ui@^0.7.2":
   version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/ui/-/ui-0.7.2.tgz"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/ui/-/ui-0.7.2.tgz#1f0a5ddf47b75b6f892553e6741764d351782a12"
   integrity sha512-7HuFoWUMfVdY8EWEIS2FSJBCj+iEWL4JfljVE6Wd5qLrQrCzH10tuE0S6697jPm7dt8ZUEslFWlJtAsU76A5Nw==
   dependencies:
     "@tailwindcss/custom-forms" "^0.2.1"

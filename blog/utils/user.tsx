@@ -11,7 +11,10 @@ export const fetchUser = async () => {
     return userState
   }
 
-  const res = await fetch('/api/me')
+  const res = await fetch('/api/me', {
+    mode: 'cors',
+    headers: { 'Access-Control-Allow-Origin': 'https://rosnovsky.us' },
+  })
   userState = res.ok ? await res.json() : null
   return userState
 }
