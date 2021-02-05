@@ -4,7 +4,7 @@ import Link from 'next/link'
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
 import serializers from '../PortableText/serializers'
-import { Post } from '../..'
+import { BlogPost } from '../..'
 
 const PostPreview = ({
   title,
@@ -14,7 +14,7 @@ const PostPreview = ({
   categories,
   slug,
   socialCard,
-}: Post) => {
+}: BlogPost) => {
   const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
   const options = {
     year: 'numeric',
@@ -34,8 +34,8 @@ const PostPreview = ({
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <p className="text-md font-mono text-indigo-600">
-            <span className="text-red-800">
+          <p className="text-md font-mono text-green-900">
+            <span className="text-green-900">
               {categories.map((category) =>
                 categories.length > 1
                   ? ` * ${category.title}`
@@ -43,7 +43,7 @@ const PostPreview = ({
               )}
             </span>
             <span className="flex mt-2 items-center">
-              <div className="flex space-x-1 text-sm text-gray-500">
+              <div className="flex space-x-1 text-sm text-gray-700">
                 <time
                   dateTime={new Intl.DateTimeFormat('en-US', options).format(
                     Date.parse(publishedAt)
@@ -58,16 +58,16 @@ const PostPreview = ({
               </div>
             </span>
           </p>
-          <div className="block mt-5">
+          <div className="block my-10">
             <p className="text-xl font-semibold text-gray-900">
               <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
-                <span className="hover:underline text-3xl font-black cursor-pointer">
+                <span className="hover:underline text-3xl text-green-900 font-black cursor-pointer">
                   {title}
                 </span>
               </Link>
             </p>
           </div>
-          <p className="mt-3 text-base text-gray-500">
+          <p className="mt-3 prose prose-lg text-gray-600">
             <PortableText blocks={excerpt} serializers={serializers} />
           </p>
         </div>

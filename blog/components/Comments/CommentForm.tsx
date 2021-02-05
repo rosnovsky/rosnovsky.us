@@ -2,8 +2,9 @@ import { useState } from 'react'
 import DOMPurify from 'dompurify'
 import { useFetchUser } from '../../utils/user'
 import Link from 'next/link'
+import { BlogPost } from '../..'
 
-const CommentForm = ({ postId }: { user: any; postId: string }) => {
+const CommentForm = ({ postId }: { user: any; postId: BlogPost['_id'] }) => {
   const { user, loading } = useFetchUser()
   const [comment, setComment] = useState('')
   const [posting, setPosting] = useState(false)
@@ -51,7 +52,7 @@ const CommentForm = ({ postId }: { user: any; postId: string }) => {
 
   return (
     <div className="w-full mx-auto">
-      <div className="bg-white pt-6 px-4 pb-4 sm:px-6 lg:col-span-3 lg:pt-6  xl:pl-12">
+      <div className="pt-6 px-4 pb-4 sm:px-6 lg:col-span-3 lg:pt-6  xl:pl-12">
         <div className="max-w-full mx-auto lg:max-w-none">
           <div className="">
             <label htmlFor="message" className="sr-only">

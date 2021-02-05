@@ -14,19 +14,19 @@ import Meta from '../../components/Header/PageMeta'
 // import MoreStories from '../../components/Posts/MorePosts'
 // import { useState, useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
-import { PostComment } from '../..'
+import { BlogProps, BlogPost, PostComment, BlogAlert } from '../..'
 
-type Props = {
-  post: any
-  preview?: boolean
-  menuItems: {
-    title: string
-    slug: { current: string }
-  }[]
-  comments: PostComment[]
-}
-
-const Post = ({ post, preview, menuItems, comments }: Props) => {
+const Post = ({
+  post,
+  menuItems,
+  comments,
+  alert,
+}: {
+  post: BlogPost
+  menuItems: BlogProps['menuItems']
+  comments: BlogProps['comments']
+  alert: BlogAlert
+}) => {
   // const [relatedPosts, setRelatedPosts] = useState([])
   const {
     _id,
@@ -36,10 +36,9 @@ const Post = ({ post, preview, menuItems, comments }: Props) => {
     body,
     slug,
     excerpt,
-    tags,
     categories,
     socialCard,
-  }: any = post
+  }: BlogPost = post
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage menuItems={menuItems} statusCode={404} />
@@ -62,7 +61,7 @@ const Post = ({ post, preview, menuItems, comments }: Props) => {
         )}/${slug.current}`}
         coverAlt={title}
       />
-      <Layout menuItems={menuItems} preview={preview}>
+      <Layout menuItems={menuItems} alert={alert}>
         <Container>
           <Header />
           {router.isFallback ? (
@@ -73,14 +72,16 @@ const Post = ({ post, preview, menuItems, comments }: Props) => {
                 <Head>
                   <title>{title} | Rosnovsky Park</title>
                 </Head>
-                <PostHeader
-                  title={title}
-                  mainImage={mainImage}
-                  date={publishedAt}
-                  excerpt={excerpt}
-                  categories={categories}
-                />
-                <PostBody content={body} />
+                <div className="relative py-16 overflow-hidden">
+                  <PostHeader
+                    title={title}
+                    mainImage={mainImage}
+                    publishedAt={publishedAt}
+                    excerpt={excerpt}
+                    categories={categories}
+                  />
+                  <PostBody content={body} />
+                </div>
               </article>
               <section>
                 {/* <h2 className="text-center prose xl:prose-3xl lg:prose-2xl md:prose-2xl sm:prose-2xl xs:prose-2xl prose-xl mx-auto fond-black prose text-4xl">
@@ -108,9 +109,15 @@ export async function getStaticProps({
   params: any
   preview: boolean
 }) {
-  const data = await request(
+  const data: BlogProps = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
+      alert: allAlert {
+        message
+        alertLink
+        internal
+        active
+      }
       menuItems: allPage(where: {menuItem: {eq: true }}){
         title
         slug {
@@ -162,10 +169,11 @@ export async function getStaticProps({
   const fetchComments = await fetch(
     `https://rosnovsky.us/api/get?postId=${data.posts[0]._id}`
   )
-  const comments = await fetchComments.json()
+  const comments: PostComment[] = await fetchComments.json()
 
   return {
     props: {
+      alert: data.alert[0],
       preview,
       post: data.posts[0],
       menuItems: data.menuItems,

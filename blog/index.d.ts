@@ -7,6 +7,28 @@ declare module 'react-player/file'
 declare module 'react-player/youtube'
 declare module 'react-tiny-link'
 
+export type BlogAlert = {
+  message: string
+  alertLink: string
+  internal: boolean
+  active: boolean
+}
+
+export type MenuItem = {
+  title: string
+  slug: {
+    current
+  }
+}
+
+export type BlogProps = {
+  posts: Post[]
+  alert: BlogAlert[]
+  preview: boolean
+  menuItems: MenuItem[]
+  comments: PostComment[]
+}
+
 export type PostComment = {
   _id: string
   author: {
@@ -30,24 +52,45 @@ export type PostComment = {
   length: number
 }
 
-export type Post = {
+export type BlogPost = {
+  _id?: string
   title: string
+  body?: Sanity.Block[]
   slug: {
     current: string
   }
+  categories: [
+    {
+      title: string
+      slug: {
+        current: string
+      }
+    }
+  ]
   publishedAt: string
   socialCard: {
     title: string
     subtitle: string
   }
-  mainImage?: Record<any, any>
-  categories: { title: string; slug: string }[]
-  excerpt?: Sanity.Block[]
+  excerpt: Sanity.Block[]
+  featured?: boolean
+  mainImage?: {
+    alt: string
+    caption: string
+    asset: {
+      metadata: Sanity.ImageMetadata
+      url: string
+    }
+  }
+  socialCard: {
+    title: string
+    subtitle: string
+  }
   ogImage?: {
     url: string
   }
-  body?: Sanity.Block[]
   preview?: boolean
+  comments?: PostComment
 }
 
 export type Page = {

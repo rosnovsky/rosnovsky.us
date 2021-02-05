@@ -3,6 +3,7 @@ import { urlFor } from '../../utils/sanity'
 
 export const Figure = (props: any) => {
   const { asset } = props.node
+  console.log(asset)
   const lqip =
     urlFor(asset._ref).format('jpg').width(20).quality(10).url() ||
     'https://rosnovsky.us/favicon.png'
@@ -62,7 +63,7 @@ export const Figure = (props: any) => {
         loading="lazy"
         layout={'responsive'}
         objectFit="cover"
-        className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
+        className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500 rounded-lg`}
       />
       <figcaption>{props.alt}</figcaption>
     </figure>

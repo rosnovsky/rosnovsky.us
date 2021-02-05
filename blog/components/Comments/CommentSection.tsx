@@ -1,14 +1,14 @@
 import CommentForm from './CommentForm'
 import Comments from './Comments'
 import { useFetchUser } from '../../utils/user'
-import { PostComment } from '../..'
+import { BlogPost, PostComment } from '../..'
 
 const CommentSection = ({
   comments,
   postId,
 }: {
   comments: PostComment[]
-  postId: string
+  postId: BlogPost['_id']
 }) => {
   const { user, loading } = useFetchUser()
   return (

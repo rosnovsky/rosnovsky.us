@@ -14,19 +14,20 @@ const Comment = ({ comment }: { comment: PostComment }) => {
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium text-gray-900">
-            <a href="#" className="hover:underline">
+            <div className="hover:underline">
               {comment.author?.name || comment.author?.nickname}
-            </a>
+            </div>
           </p>
           <p className="text-sm text-gray-500">
-            <a href="#" className="hover:underline">
+            <div className="hover:underline">
               {new Date(comment.commentTimestamp).toLocaleString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
               })}
-            </a>
+            </div>
           </p>
+          <div>{comment.content}</div>
         </div>
       </div>
     </div>
