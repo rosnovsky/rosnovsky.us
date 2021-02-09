@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState, useContext } from 'react'
-import fetch from 'isomorphic-unfetch'
+// import fetch from 'isomorphic-fetch'
 
 // Use a global to save the user, so we don't have to fetch it again after page navigations
 let userState: any
@@ -11,10 +11,8 @@ export const fetchUser = async () => {
     return userState
   }
 
-  const res = await fetch('/api/me', {
-    mode: 'cors',
-    headers: { 'Access-Control-Allow-Origin': '*' },
-  })
+  const res = await fetch('/api/me')
+  console.log(await res.json())
   userState = res.ok ? await res.json() : null
   return userState
 }

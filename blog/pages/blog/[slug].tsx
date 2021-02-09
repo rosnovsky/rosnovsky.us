@@ -15,6 +15,7 @@ import Meta from '../../components/Header/PageMeta'
 // import { useState, useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
 import { BlogProps, BlogPost, PostComment, BlogAlert } from '../..'
+import { UserProvider, useFetchUser } from '../../utils/user'
 
 const Post = ({
   post,
@@ -27,6 +28,7 @@ const Post = ({
   comments: BlogProps['comments']
   alert: BlogAlert
 }) => {
+  const { user, loading } = useFetchUser()
   // const [relatedPosts, setRelatedPosts] = useState([])
   const {
     _id,
@@ -62,39 +64,41 @@ const Post = ({
         coverAlt={title}
       />
       <Layout menuItems={menuItems} alert={alert}>
-        <Container>
-          <Header />
-          {router.isFallback ? (
-            <PostTitle>Loading…</PostTitle>
-          ) : (
-            <>
-              <article className="mb-32">
-                <Head>
-                  <title>{title} | Rosnovsky Park</title>
-                </Head>
-                <div className="relative py-16 overflow-hidden">
-                  <PostHeader
-                    title={title}
-                    mainImage={mainImage}
-                    publishedAt={publishedAt}
-                    excerpt={excerpt}
-                    categories={categories}
-                  />
-                  <PostBody content={body} />
-                </div>
-              </article>
-              <section>
-                {/* <h2 className="text-center prose xl:prose-3xl lg:prose-2xl md:prose-2xl sm:prose-2xl xs:prose-2xl prose-xl mx-auto fond-black prose text-4xl">
+        <UserProvider value={{ user, loading }}>
+          <Container>
+            <Header />
+            {router.isFallback ? (
+              <PostTitle>Loading…</PostTitle>
+            ) : (
+              <>
+                <article className="mb-32">
+                  <Head>
+                    <title>{title} | Rosnovsky Park</title>
+                  </Head>
+                  <div className="relative py-16 overflow-hidden">
+                    <PostHeader
+                      title={title}
+                      mainImage={mainImage}
+                      publishedAt={publishedAt}
+                      excerpt={excerpt}
+                      categories={categories}
+                    />
+                    <PostBody content={body} />
+                  </div>
+                </article>
+                <section>
+                  {/* <h2 className="text-center prose xl:prose-3xl lg:prose-2xl md:prose-2xl sm:prose-2xl xs:prose-2xl prose-xl mx-auto fond-black prose text-4xl">
                   Related Posts
                 </h2> */}
-                {/* <MoreStories posts={allPosts} /> */}
-              </section>
-              <section>
-                <CommentSection comments={comments} postId={_id} />
-              </section>
-            </>
-          )}
-        </Container>
+                  {/* <MoreStories posts={allPosts} /> */}
+                </section>
+                <section>
+                  <CommentSection comments={comments} postId={_id} />
+                </section>
+              </>
+            )}
+          </Container>
+        </UserProvider>
       </Layout>
     </>
   )

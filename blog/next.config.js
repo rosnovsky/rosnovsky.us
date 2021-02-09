@@ -12,10 +12,6 @@ module.exports = {
         source: '/blog/:year/:month/:day/:slug',
         destination: '/blog/:slug', // Matched parameters can be used in the destination
       },
-      {
-        source: '/api/:path*',
-        destination: 'https://rosnovsky.us/:path*',
-      },
     ]
   },
 }

@@ -9,7 +9,7 @@ export default initAuth0({
   postLogoutRedirectUri: process.env.LOGOUT_URI || 'https://rosnovsky.us',
   audience: '/blog/',
   session: {
-    cookieSecret: process.env.COOKIE_SECRET!,
+    cookieSecret: process.env.COOKIE_SECRET,
     cookieLifetime: 60 * 60 * 8,
     storeIdToken: true,
     storeAccessToken: true,

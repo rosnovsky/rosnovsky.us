@@ -6,6 +6,7 @@ export default async function login(req: any, res: any) {
     await auth.handleLogin(req, res, {})
   } catch (error) {
     console.error(error)
-    res.status(error.status || 500).end(error.message)
+    // res.status(error.status || 500).end(error.message)
+    return
   }
 }

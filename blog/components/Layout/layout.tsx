@@ -1,6 +1,5 @@
 import Footer from '../Footer/footer'
 import dynamic from 'next/dynamic'
-import { UserProvider, useFetchUser } from '../../utils/user'
 import { BlogAlert, BlogProps } from '../..'
 const Alert = dynamic(import('../Alert/alert'))
 import Link from 'next/link'
@@ -12,9 +11,8 @@ type Props = {
 }
 
 const Layout = ({ children, menuItems, alert }: Props) => {
-  const { user, loading } = useFetchUser()
   return (
-    <UserProvider value={{ user, loading }}>
+    <>
       <div className="bg-gray-50 bg-opacity-50">
         <div className="min-h-screen">
           {alert?.active ? (
@@ -51,7 +49,7 @@ const Layout = ({ children, menuItems, alert }: Props) => {
       </div>
       <Footer menuItems={menuItems} />
       {/* </> */}
-    </UserProvider>
+    </>
   )
 }
 
