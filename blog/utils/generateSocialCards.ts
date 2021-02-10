@@ -1,7 +1,7 @@
-import { Post } from '..'
+import { BlogPost } from '..'
 import { format } from 'date-fns'
 
-export async function GenerateSocialCards(posts: Post[]) {
+export async function GenerateSocialCards(posts: BlogPost[]) {
   posts.map((post) => {
     const { socialCard, publishedAt, categories, mainImage, title } = post
     const socialTitle = socialCard?.title || title
