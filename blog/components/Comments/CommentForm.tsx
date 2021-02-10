@@ -88,14 +88,18 @@ const CommentForm = ({
                     <Link href="/api/auth/logout">
                       <a>Logout</a>
                     </Link>
-                    <Link href="/profile">
+                    <Link href="/api/auth/me">
                       <a>Profile</a>
                     </Link>
                   </>
                 )}
                 {!user && (
-                  <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <Link href="/api/auth/login">Login</Link>
+                  <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-200 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <Link href="/api/auth/login">
+                      <span className="no-underline text-green-900 font-mono cursor-pointer">
+                        Login and post
+                      </span>
+                    </Link>
                   </div>
                 )}
               </div>
