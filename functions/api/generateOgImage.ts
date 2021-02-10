@@ -10,7 +10,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     return;
   }
 
-  const title = slugify(req.query.title)
+  const title = req.query.title ? slugify(req.query.title) : "test-title"
 
   const forwardResponse = imageUrl => {
     console.log(imageUrl)
