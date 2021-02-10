@@ -34,20 +34,20 @@ const User: mongoose.Model<mongoose.Document<any>> = mongoose.models.User
   : mongoose.model('users', UserSchema)
 
 export default async (req: any, res: any) => {
-  try {
-    const session = await auth.getSession(req)
-    const tokenCache = auth.tokenCache(req, res)
-    const { accessToken } = await tokenCache.getAccessToken({
-      scopes: ['post:comments'],
-    })
-    if (!accessToken) {
-      throw new Error('Insufficient scope')
-    }
-  } catch (error) {
-    console.error(error)
-    res.status(error.status || 403).end(error.message)
-    return
-  }
+  // try {
+  //   const session = await auth.getSession(req)
+  //   const tokenCache = auth.tokenCache(req, res)
+  //   const { accessToken } = await tokenCache.getAccessToken({
+  //     scopes: ['post:comments'],
+  //   })
+  //   if (!accessToken) {
+  //     throw new Error('Insufficient scope')
+  //   }
+  // } catch (error) {
+  //   console.error(error)
+  //   res.status(error.status || 403).end(error.message)
+  //   return
+  // }
   const body = JSON.parse(req.body)
 
   await mongoose.connect(process.env.DB_URL || 'default', {

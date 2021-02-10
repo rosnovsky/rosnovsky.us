@@ -1,11 +1,16 @@
 import { useState } from 'react'
 import DOMPurify from 'dompurify'
-import { useFetchUser } from '../../utils/user'
 import Link from 'next/link'
 import { BlogPost } from '../..'
 
-const CommentForm = ({ postId }: { user: any; postId: BlogPost['_id'] }) => {
-  const { user, loading } = useFetchUser()
+const CommentForm = ({
+  postId,
+  user,
+}: {
+  user: any
+  postId: BlogPost['_id']
+}) => {
+  // const { user, loading } = useFetchUser()
   const [comment, setComment] = useState('')
   const [posting, setPosting] = useState(false)
 
@@ -70,7 +75,7 @@ const CommentForm = ({ postId }: { user: any; postId: BlogPost['_id'] }) => {
                 }`}
               ></textarea>
               <div className="flex justify-end py-6">
-                {user && !loading ? (
+                {user && (
                   <>
                     <button
                       onClick={postComment}
@@ -80,19 +85,19 @@ const CommentForm = ({ postId }: { user: any; postId: BlogPost['_id'] }) => {
                     >
                       Post Comment
                     </button>
-                    <Link href="/api/logout">
+                    <Link href="/api/auth/logout">
                       <a>Logout</a>
                     </Link>
                     <Link href="/profile">
                       <a>Profile</a>
                     </Link>
                   </>
-                ) : null}
-                {!user && !loading ? (
+                )}
+                {!user && (
                   <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <Link href="/api/login">Login</Link>
+                    <Link href="/api/auth/login">Login</Link>
                   </div>
-                ) : null}
+                )}
               </div>
             </form>
           </div>

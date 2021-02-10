@@ -48,7 +48,6 @@ const Layout = ({ children, menuItems, alert }: Props) => {
         </div>
       </div>
       <Footer menuItems={menuItems} />
-      {/* </> */}
     </>
   )
 }
