@@ -71,6 +71,7 @@ const CommentForm = ({
                 onChange={updateComment}
                 id="message"
                 name="message"
+                value={comment}
                 rows={4}
                 className="block w-full shadow-lg py-3 px-4 placeholder-gray-500 ring-red-500 border-gray-300 rounded-lg border-2"
                 placeholder={
