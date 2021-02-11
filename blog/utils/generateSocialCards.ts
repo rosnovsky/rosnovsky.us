@@ -7,7 +7,7 @@ export async function GenerateSocialCards(posts: BlogPost[]) {
     const socialTitle = socialCard?.title || title
     const socialSubtitle = socialCard?.subtitle || 'Read More...'
     const fetchUrl = fetch(
-      `https://rosnovsky.us/api/generateOgImage?title=${encodeURIComponent(
+      `https://api.rosnovsky.us/api/generateOgImage?title=${encodeURIComponent(
         socialTitle
       )}&date=${format(Date.parse(publishedAt), 'dd MMM yyyy')}&category=${
         categories[0].title

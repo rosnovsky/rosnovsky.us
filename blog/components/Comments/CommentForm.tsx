@@ -51,6 +51,8 @@ const CommentForm = ({
       .then((status) => {
         console.info(status)
       })
+    localStorage.setItem('post', '')
+    setComment('')
     setPosting(false)
     return commentPosting
   }
@@ -65,14 +67,19 @@ const CommentForm = ({
             </label>
             <form>
               <textarea
+                disabled={posting}
                 onChange={updateComment}
                 id="message"
                 name="message"
                 rows={4}
                 className="block w-full shadow-lg py-3 px-4 placeholder-gray-500 ring-red-500 border-gray-300 rounded-lg border-2"
-                placeholder={`What's on your mind${
-                  user ? ', ' + user.nickname + '?' : '?'
-                }`}
+                placeholder={
+                  !posting
+                    ? `What's on your mind${
+                        user ? ', ' + user.nickname + '?' : '?'
+                      }`
+                    : 'Posting...'
+                }
               ></textarea>
               <div className="flex justify-end py-6">
                 {user && (
@@ -81,7 +88,7 @@ const CommentForm = ({
                       onClick={postComment}
                       type="submit"
                       disabled={posting}
-                      className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300"
                     >
                       Post Comment
                     </button>
@@ -94,9 +101,9 @@ const CommentForm = ({
                   </>
                 )}
                 {!user && (
-                  <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-green-200 hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md bg-green-200 hover:bg-green-800 hover:text-green-200 text-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer transition duration-300">
                     <Link href="/api/auth/login">
-                      <span className="no-underline text-green-900 font-mono cursor-pointer">
+                      <span className="no-underline font-mono ">
                         Login and post
                       </span>
                     </Link>

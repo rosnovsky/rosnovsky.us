@@ -33,7 +33,7 @@ const Page = ({
       const socialTitle = socialCard?.title || title
       const socialSubtitle = socialCard?.subtitle || 'Read More...'
       const fetchUrl = await fetch(
-        `/api/generateOgImage?title=${socialTitle}&date=${format(
+        `https://api.rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
           Date.now(),
           'dd MMM yyyy'
         )}&category=Page&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
