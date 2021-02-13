@@ -22,11 +22,10 @@ const CommentForm = ({
 
   const postComment = async (event: React.FormEvent) => {
     event.preventDefault()
+    setPosting(true)
 
     if (!comment) return
     const cleanComment = DOMPurify.sanitize(comment)
-
-    setPosting(true)
 
     const commentMetadata = {
       timestamp: Date.now(),
@@ -43,6 +42,9 @@ const CommentForm = ({
       content: cleanComment,
     }
 
+    localStorage.setItem('post', '')
+    setComment('')
+
     const commentPosting = await fetch('/api/post', {
       method: 'POST',
       body: JSON.stringify(commentObject),
@@ -51,9 +53,8 @@ const CommentForm = ({
       .then((status) => {
         console.info(status)
       })
-    localStorage.setItem('post', '')
-    setComment('')
     setPosting(false)
+    setComment('')
     return commentPosting
   }
 
@@ -82,32 +83,43 @@ const CommentForm = ({
                     : 'Posting...'
                 }
               ></textarea>
-              <div className="flex justify-end py-6">
+              <div className="py-6">
                 {user && (
-                  <>
-                    <button
-                      onClick={postComment}
-                      type="submit"
-                      disabled={posting}
-                      className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300"
-                    >
-                      Post Comment
-                    </button>
-                    <Link href="/api/auth/logout">
-                      <a>Logout</a>
-                    </Link>
-                    <Link href="/api/auth/me">
-                      <a>Profile</a>
-                    </Link>
-                  </>
+                  <div className="flex justify-between">
+                    <div className="font-mono text-green-700 text-sm">
+                      <Link href="/api/auth/me">
+                        <span className="text-gray-400 hover:underline cursor-pointer">
+                          Profile
+                        </span>
+                      </Link>
+                      &nbsp;&nbsp;&nbsp;
+                      <Link href="/api/auth/logout">
+                        <span className="text-gray-400 hover:underline cursor-pointer">
+                          Logout
+                        </span>
+                      </Link>
+                    </div>
+                    <div className="justify-end">
+                      <button
+                        onClick={postComment}
+                        type="submit"
+                        disabled={posting}
+                        className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300"
+                      >
+                        Post Comment
+                      </button>
+                    </div>
+                  </div>
                 )}
                 {!user && (
-                  <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md bg-green-200 hover:bg-green-800 hover:text-green-200 text-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer transition duration-300">
-                    <Link href="/api/auth/login">
-                      <span className="no-underline font-mono ">
-                        Login and post
-                      </span>
-                    </Link>
+                  <div className="flex justify-end">
+                    <div className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md bg-green-200 hover:bg-green-800 hover:text-green-200 text-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer transition duration-300">
+                      <Link href="/api/auth/login">
+                        <span className="no-underline font-mono ">
+                          Login and post
+                        </span>
+                      </Link>
+                    </div>
                   </div>
                 )}
               </div>
