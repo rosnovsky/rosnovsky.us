@@ -42,13 +42,14 @@ export type PostComment = {
       pending: number
     }
   }
+  sort: any
   postId: string
   content: string
-  commentTimestamp: Date
+  commentTimestamp: string
   sentiment: number
   status: string
   likes: number
-  savedTimestamp: Date
+  savedTimestamp: string
   length: number
 }
 

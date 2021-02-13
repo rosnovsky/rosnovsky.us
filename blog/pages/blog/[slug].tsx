@@ -68,7 +68,7 @@ const Post = ({
             <PostTitle>Loading…</PostTitle>
           ) : (
             <>
-              <article className="mb-32">
+              <article className="mb-10">
                 <Head>
                   <title>{title} | Rosnovsky Park</title>
                 </Head>
