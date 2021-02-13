@@ -8,13 +8,13 @@ const Comments = ({ comments, postId }: any) => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
   const { data, error }: any = useSWR(
-    `http://localhost:3000/api/get?postId=${postId}`,
+    `https://rosnovsky.us/api/get?postId=${postId}`,
     fetcher,
     {
       revalidateOnFocus: true,
       refreshInterval: 60000,
       revalidateOnReconnect: true,
-      errorRetryInterval: 10,
+      errorRetryInterval: 10000,
     }
   )
 
