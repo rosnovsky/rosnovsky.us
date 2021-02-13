@@ -24,7 +24,7 @@ const CommentSection = ({
         <div className="w-full">
           <CommentForm user={user} postId={postId} />
         </div>
-        <Comments comments={comments} />
+        <Comments comments={comments} postId={postId} />
       </div>
     </div>
   )
