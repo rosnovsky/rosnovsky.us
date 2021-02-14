@@ -30,7 +30,19 @@ export type BlogProps = {
 }
 
 export type PostComment = {
-  _id: string
+  comment: {
+    _id: string
+    authorId: string
+    sort: any
+    postId: string
+    content: string
+    commentTimestamp: string
+    sentiment: number
+    status: string
+    likes: number
+    savedTimestamp: string
+    length: number
+  }
   author: {
     id: string
     name?: string
@@ -42,15 +54,6 @@ export type PostComment = {
       pending: number
     }
   }
-  sort: any
-  postId: string
-  content: string
-  commentTimestamp: string
-  sentiment: number
-  status: string
-  likes: number
-  savedTimestamp: string
-  length: number
 }
 
 export type BlogPost = {
