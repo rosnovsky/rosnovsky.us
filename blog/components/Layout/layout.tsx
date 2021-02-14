@@ -23,7 +23,7 @@ const Layout = ({ children, menuItems, alert }: Props) => {
             />
           ) : null}
           <div className="relative overflow-hidden">
-            <div className="relative pt-6 md:pb-12 sm:pb-4 lg:pb-28 xl:pb-32">
+            <div className="relative pt-6 md:pb-4 sm:pb-4 lg:pb-10 xl:pb-16">
               <div className="max-w-screen-2xl mx-auto ">
                 <nav className="relative flex sm:h-10 justify-center ">
                   <div className="flex xs:hidden md:visible">

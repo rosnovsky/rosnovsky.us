@@ -23,6 +23,21 @@ const Index = ({
   const [index, setIndex] = useState<number>(1)
   const [loading, setLoading] = useState<boolean>(false)
   const [noMorePosts, setNoMorePosts] = useState<boolean>(false)
+
+  // Infinite Scroll, pretty rudimentary
+  if (typeof window !== 'undefined') {
+    window.onscroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        if (!noMorePosts && !loading) {
+          loadMore()
+        }
+      }
+    }
+  }
+
   useEffect(() => {
     setAllPosts(posts)
   }, [])
@@ -131,24 +146,19 @@ const Index = ({
           <div className="bg-red-700 rounded-t-xl bg-opacity-10 py-5">
             <Covid />
           </div>
-          <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+          <div className="relative bg-gray-50 pt-10 pb-5 px-4 sm:px-6 lg:pt-14 lg:pb-8 lg:px-8">
             {allPosts !== undefined ? (
               <MoreStories posts={allPosts} />
             ) : (
               'Nothing here'
             )}
 
-            <div className="text-center mt-20">
-              {noMorePosts ? (
-                "You've reached the end of the internet."
-              ) : (
-                <button
-                  onClick={loadMore}
-                  className="font-bold text-xl ring-cool-gray-300 ring-4 px-10 py-5 hover:bg-green-100 text-green-900"
-                >
-                  {loading ? 'Loading...' : 'Load More'}
-                </button>
-              )}
+            <div className="text-center font-semibold font-mono text-lg mt-5">
+              {noMorePosts
+                ? "You've reached the end of the internet."
+                : loading
+                ? 'Loading More Posts...'
+                : ''}
             </div>
           </div>
         </Container>

@@ -16,12 +16,6 @@ const PostPreview = ({
   socialCard,
 }: BlogPost) => {
   const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
-  const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-
   return (
     <div className="flex flex-col rounded-lg shadow-lg mb-10 overflow-hidden">
       <div className="flex-shrink-0">
@@ -45,13 +39,17 @@ const PostPreview = ({
             <span className="flex mt-2 items-center">
               <div className="flex space-x-1 text-sm text-gray-700">
                 <time
-                  dateTime={new Intl.DateTimeFormat('en-US', options).format(
-                    Date.parse(publishedAt)
-                  )}
+                  dateTime={new Intl.DateTimeFormat('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  }).format(Date.parse(publishedAt))}
                 >
-                  {new Intl.DateTimeFormat('en-US', options).format(
-                    Date.parse(publishedAt)
-                  )}{' '}
+                  {new Intl.DateTimeFormat('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  }).format(Date.parse(publishedAt))}{' '}
                 </time>
                 {/* <span aria-hidden="true">&middot;</span>
             <span>6 min read</span> */}

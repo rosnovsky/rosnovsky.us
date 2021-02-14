@@ -4,7 +4,7 @@ import PostPreview from './PostPreview'
 const MoreStories = ({ posts }: { posts: BlogProps['posts'] }) => {
   return (
     <section>
-      <div className="text-center mt-10">
+      <div className="text-center mt-5">
         <h2 className="text-3xl leading-9 tracking-tight font-extrabold text-green-900 sm:text-4xl sm:leading-10">
           From the Pacific Northwest to the World
         </h2>
