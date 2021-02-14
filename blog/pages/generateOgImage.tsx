@@ -16,7 +16,7 @@ const OpenGraph = ({
   return (
     <div className="m-0 flex w-full">
       <div
-        className="relative border-1 bg-white bg-opacity-40 bg-transparent w-full"
+        className="relative border-1 bg-green-600 bg-opacity-40 bg-transparent w-full"
         style={{
           backgroundImage: bgUrl,
           backgroundRepeat: 'no-repat',
@@ -24,7 +24,7 @@ const OpenGraph = ({
           backgroundBlendMode: 'overlay',
         }}
       >
-        <main className="flex-col bg-opacity-70 w-full p-20 bg-white">
+        <main className="flex-col bg-opacity-70 w-full p-20 border-8 border-green-700 bg-white">
           <h3 className="text-red-900 font-bold font-mono text-xl w-96">
             {category || 'No category'}
           </h3>

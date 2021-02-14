@@ -11,35 +11,41 @@ export default async (req: NowRequest, res: NowResponse) => {
     return;
   }
 
+  console.info("==== Query ====", req.query)
+
   const title = req.query.title ? slugify(req.query.title) : "test-title"
 
-  const forwardResponse = imageUrl => {
-    console.log(imageUrl)
+  const forwardResponse = (imageUrl: string) => {
+    console.info("=== Forward response ===", imageUrl)
     res.redirect(308, imageUrl
     )
   }
   const local = process.env.NODE_ENV === 'development'
+
   cloudinary.config({
     cloud_name: "rosnovsky",
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
-  const url = local ? `http://${req.headers.host}` : `https://${req.headers.host}`
+  
+  const url = `https://rosnovsky.us`
   const imageParams = objectToParams(req.query)
+  console.log("==== Image Params ====", imageParams)
 
 
-  const uploadImage = async function(title, buffer) {
+  const uploadImage = async function(title: string, buffer: Buffer) {
     const cloudinaryOptions = {
-      public_id: `social-images/${title}`,
+      public_id: `social-images/${title.toLowerCase()}`,
       unique_filename: false
     }
-    console.log(`uploading ${title} to cloudinary`)
+    console.log(`=== Uploading ${title} to Cloudinary ===`)
     return await cloudinary.uploader.upload(buffer, cloudinaryOptions)
-      .then(response => response.url)
+      .then((response: Response) => response.url)
   }
 
-  const takeScreenshot = async function(url) {
+  const takeScreenshot = async function(url: string) {
+    console.info("==== Taking screenshot of this page ====", url)
     const browser = await chromium.puppeteer.launch({executablePath: local 
       ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
       : await chromium.executablePath,
@@ -47,9 +53,9 @@ export default async (req: NowRequest, res: NowResponse) => {
     defaultViewport: chromium.defaultViewport,
     headless: chromium.headless,})
     const page = await browser.newPage()
-    await page.setViewport({ height: 630, width: 1200 })
+    await page.setViewport({ height: 612, width: 1200 })
     await page.goto(url)
-    const buffer = await page.screenshot()
+    const buffer: Buffer = await page.screenshot()
     await browser.close()
     return `data:image/png;base64,${buffer.toString('base64')}`
   }
@@ -57,9 +63,9 @@ export default async (req: NowRequest, res: NowResponse) => {
   const getImage = async function(title: string) {
     const url = `https://res.cloudinary.com/rosnovsky/image/upload/social-images/${title}.png`
     return await fetch(url)
-      .then(result => {
-        console.log(`Checked if ${title} exists in Cloudinary, got ${result.status} in return`)
+      .then((result: Response) => {
         if (result.status !== 404) {
+          console.info(`Checked if ${title} exists in Cloudinary. It does, returning url: ${url}`)
           return url
         } else {
           return null
@@ -67,14 +73,15 @@ export default async (req: NowRequest, res: NowResponse) => {
       })
   }
 
-  const existingImage = await getImage(title)
+  const existingImage: string = await getImage(title)
   if (existingImage) {
     console.log(`yay, ${title} already existed`)
     return forwardResponse(await getImage(title))
   }
 
   const screenshotBuffer = await takeScreenshot(`${url}/generateOgImage?${imageParams}`)
-  const newImage = await uploadImage(title, screenshotBuffer)
+
+  const newImage: string = await uploadImage(title, screenshotBuffer)
 
   function objectToParams(object: any) {
     const params = new URLSearchParams()

@@ -12,7 +12,7 @@ import { request } from 'graphql-request'
 import { format } from 'date-fns'
 import Meta from '../../components/Header/PageMeta'
 // import MoreStories from '../../components/Posts/MorePosts'
-// import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
 import { BlogProps, BlogPost, PostComment, BlogAlert } from '../..'
 
@@ -46,6 +46,27 @@ const Post = ({
 
   const socialTitle = socialCard?.title || title
 
+  useEffect(() => {
+    const fetchImageUrl = async () => {
+      const socialTitle = socialCard?.title || title
+      const socialSubtitle = socialCard?.subtitle || 'Read More...'
+      const fetchUrl = await fetch(
+        `https://api.rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
+          Date.now(),
+          'dd MMM yyyy'
+        )}&category=${
+          categories[0].title
+        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
+          mainImage!.asset.url
+        )}`
+      )
+      const urlJSON = await fetchUrl
+      const url = await urlJSON.json()
+      return url
+    }
+    fetchImageUrl()
+  }, [])
+
   return (
     <>
       <Meta
@@ -54,7 +75,7 @@ const Post = ({
         description=""
         coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
           socialTitle
-        )}.png`}
+        ).toLowerCase()}.png`}
         canonicalUrl={`https://rosnovsky.us/blog/${format(
           Date.parse(publishedAt),
           'yyyy/MM/dd'
