@@ -1,5 +1,4 @@
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/hljs/night-owl'
+import SyntaxHighlighter from 'react-syntax-highlighter'
 
 const Code: React.FC<{ node: { language: string; code: string } }> = ({
   node,
@@ -9,9 +8,7 @@ const Code: React.FC<{ node: { language: string; code: string } }> = ({
   }
   const { language, code } = node
   return (
-    <SyntaxHighlighter language={language || 'text'} style={nightOwl}>
-      {code}
-    </SyntaxHighlighter>
+    <SyntaxHighlighter language={language || 'text'}>{code}</SyntaxHighlighter>
   )
 }
 

@@ -71,7 +71,7 @@ const HeroPost = ({
                 | <span className="text-red-800">{categories[0].title}</span>
               </div>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                <p className="text-xl mx-5 font-proper leading-relaxed mb-4 prose prose-lg">
+                <p className="text-xl mx-5 leading-relaxed mb-4 prose prose-lg">
                   <PortableText blocks={excerpt} serializers={serializers} />
                 </p>
               </p>

@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app'
 import { useEffect } from 'react'
+import { UserProvider } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
 import '../styles/index.css'
@@ -26,5 +27,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeComplete', onRouteChangeComplete)
     }
   }, [])
-  return <Component {...pageProps} />
+  return (
+    <UserProvider>
+      <Component {...pageProps} />
+    </UserProvider>
+  )
 }

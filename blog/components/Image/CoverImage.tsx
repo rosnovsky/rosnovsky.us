@@ -7,16 +7,16 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
     urlFor(src.asset.url).width(710).height(455).format('jpg').url() || ''
 
   const image = featured ? (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden rounded-lg">
       <Image
         src={imageFile}
         width={710}
         height={455}
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
-        loading="lazy"
+        priority
         // priority={preview ? false : true}
-        className="object-cover shadow-inner"
+        className="object-cover shadow-inner rounded-lg"
       />
     </div>
   ) : (
@@ -34,7 +34,9 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
         loading="lazy"
-        className="object-cover shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500"
+        className={`shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500 ${
+          preview ? '' : 'rounded-lg'
+        }`}
       />
     </div>
   )

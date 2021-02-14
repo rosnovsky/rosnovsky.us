@@ -62,7 +62,7 @@ export const Figure = (props: any) => {
         loading="lazy"
         layout={'responsive'}
         objectFit="cover"
-        className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500`}
+        className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500 rounded-lg`}
       />
       <figcaption>{props.alt}</figcaption>
     </figure>

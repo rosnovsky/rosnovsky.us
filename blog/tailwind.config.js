@@ -24,16 +24,6 @@ module.exports = {
         '7xl': '4.5rem',
         '8xl': '6.25rem',
       },
-      fontFamily: {
-        proper: [
-          'Public Sans',
-          'PT Sans',
-          'Helvetica Neue',
-          'Helvetica',
-          'Arial',
-          'sans-serif',
-        ],
-      },
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
@@ -43,10 +33,10 @@ module.exports = {
       default: {
         css: {
           a: {
-            color: '#CF7D32',
+            color: 'rgba(1, 71, 55, 1)',
             fontWeight: 'bold',
             '&:hover': {
-              color: '#a34604',
+              color: 'rgba(14, 159, 110, 1)',
             },
           },
         },

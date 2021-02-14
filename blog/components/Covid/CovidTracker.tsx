@@ -12,36 +12,53 @@ interface CovidFetchData {
   hospitalizedIncrease: number
 }
 
-export const Loading = () => {
+const Loading = () => {
   return (
-    <div className="border-b-4 border-red-800 bg-gray-900 text-white h-lg">
-      <Container>
-        <div className="flex py-2 text-center text-sm">
-          <div className="w-full text-lg">
-            <div className="">
-              <div className="flex flex-col xl:flex-row mx-auto lg:flex-row justify-between xs:mx-10 sm:mx-10 md:mx-10">
-                <CasesCard
-                  numbers={20000000}
-                  change={200000}
-                  title="🇺🇸 COVID Cases"
-                />
-                <CasesCard numbers={350000} change={2000} title="Dead" />
-                <CasesCard
-                  numbers={120000}
-                  change={2000}
-                  title="In Hospitals"
-                />
-              </div>
-            </div>
-          </div>
+    <Container>
+      <div className="relative max-w-7xl mx-auto pt-5 pb-10">
+        <div className="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow md:grid-cols-3">
+          <CasesCard
+            numbers={30000000}
+            change={100000}
+            title="🇺🇸 Total COVID-19 Cases"
+          />
+          <CasesCard
+            numbers={450000}
+            change={4000}
+            title="🇺🇸 Died of Covid-19"
+          />
+          <CasesCard
+            numbers={100000}
+            change={-1000}
+            title="🇺🇸 In Hospitals with Covid now"
+          />
         </div>
-      </Container>
-    </div>
+        <p className="text-sm text-gray-600 mt-2 text-right">
+          Data by{' '}
+          <a
+            className="underline"
+            href="https://covidtracking.com"
+            target="_blank"
+            rel="noopener"
+          >
+            CovidTracking
+          </a>{' '}
+          Project as of{' '}
+          {new Date(Date.now()).toLocaleString('us', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </p>
+      </div>
+    </Container>
   )
 }
 
 export default function Covid() {
   const [yesterdayHospitalizations, setYesterdayHospitalizations] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [today, setToday] = useState([2021, 0, 28])
 
   const fetcher = async (url: string) => {
     const data = await fetch(url, {
@@ -70,67 +87,99 @@ export default function Covid() {
     fetcher,
     {
       refreshInterval: 60000,
+      revalidateOnFocus: true,
+      refreshWhenOffline: true,
+      errorRetryInterval: 600000,
+      onError: (err) => {
+        console.error(Date.now(), `Failed to fetch Covid Data 🦠`, err)
+      },
+      shouldRetryOnError: true,
+      refreshWhenHidden: true,
+      onSuccess: (data) => {
+        const date = data.date.toString()
+
+        const todayArray: number[] = [
+          date.slice(0, 4),
+          date.slice(4, 6),
+          date.slice(6, 8),
+        ]
+
+        setToday(todayArray)
+        const yesterdayDate = new Date(
+          todayArray[0],
+          todayArray[1] - 1,
+          todayArray[2]
+        )
+        yesterdayDate.setDate(yesterdayDate.getDate() - 1)
+
+        const yesterday = `${yesterdayDate.getFullYear().toString()}${
+          yesterdayDate.getMonth() > 9
+            ? yesterdayDate.getMonth().toString()
+            : `0${yesterdayDate.getMonth() + 1}`
+        }${
+          yesterdayDate.getDate() > 9
+            ? yesterdayDate.getDate().toString()
+            : `0${yesterdayDate.getDate()}`
+        }`
+
+        const yesterdayUrl = `https://api.covidtracking.com/v1/us/${yesterday}.json`
+
+        const yesterdayData = fetch(yesterdayUrl)
+          .then((response) => response.json())
+          .then((data) => data.hospitalizedCurrently)
+          .then((data) => {
+            setYesterdayHospitalizations(data)
+            setLoading(false)
+          })
+      },
     }
   )
 
   if (error) return <span>over 220,000</span>
   if (!data) return <Loading />
-  const date = data.date.toString()
-
-  const todayArray = [date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)]
-  console.log(todayArray)
-  const yesterdayDate = new Date(
-    todayArray[0],
-    todayArray[1] - 1,
-    todayArray[2]
-  )
-  yesterdayDate.setDate(yesterdayDate.getDate() - 1)
-
-  const yesterday = `${yesterdayDate.getFullYear().toString()}${
-    yesterdayDate.getMonth() > 9
-      ? yesterdayDate.getMonth().toString()
-      : `0${yesterdayDate.getMonth() + 1}`
-  }${yesterdayDate.getDate().toString()}`
-
-  const yesterdayUrl = `https://api.covidtracking.com/v1/us/${yesterday}.json`
-
-  const yesterdayData = fetch(yesterdayUrl)
-    .then((response) => response.json())
-    .then((data) => data.hospitalizedCurrently)
-    .then((data) => {
-      setYesterdayHospitalizations(data)
-    })
-  console.log(yesterdayHospitalizations)
 
   return (
-    <div className="border-b-4 border-red-800 bg-gray-900 text-white h-lg">
-      <Container>
-        <div className="flex py-2 text-center text-sm">
-          <div className="w-full text-lg">
-            <div className="">
-              <div className="flex flex-col xl:flex-row mx-auto lg:flex-row justify-between xs:mx-10 sm:mx-10 md:mx-10">
-                <CasesCard
-                  numbers={data.positive}
-                  change={data.positiveIncrease}
-                  title="🇺🇸 COVID Cases"
-                />
-                <CasesCard
-                  numbers={data.death}
-                  change={data.deathIncrease}
-                  title="Dead"
-                />
-                <CasesCard
-                  numbers={data.hospitalizedCurrently}
-                  change={
-                    -yesterdayHospitalizations + data.hospitalizedCurrently
-                  }
-                  title="In Hospitals"
-                />
-              </div>
-            </div>
-          </div>
+    <Container>
+      <div className="relative max-w-7xl mx-auto pt-5 pb-10">
+        <div className="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow md:grid-cols-3">
+          <CasesCard
+            numbers={loading ? 30000000 : data.positive}
+            change={loading ? 100000 : data.positiveIncrease}
+            title="🇺🇸 Total COVID-19 Cases"
+          />
+          <CasesCard
+            numbers={loading ? 450000 : data.death}
+            change={loading ? 4000 : data.deathIncrease}
+            title="🇺🇸 Died of Covid-19"
+          />
+          <CasesCard
+            numbers={loading ? 100000 : data.hospitalizedCurrently}
+            change={
+              loading
+                ? -1000
+                : -yesterdayHospitalizations + data.hospitalizedCurrently
+            }
+            title="🇺🇸 In Hospitals with Covid now"
+          />
         </div>
-      </Container>
-    </div>
+        <p className="text-sm text-gray-600 mt-2 text-right">
+          Data by{' '}
+          <a
+            className="underline"
+            href="https://covidtracking.com"
+            target="_blank"
+            rel="noopener"
+          >
+            CovidTracking
+          </a>{' '}
+          Project as of{' '}
+          {new Date(today[0], today[1] - 1, today[2]).toLocaleString('us', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </p>
+      </div>
+    </Container>
   )
 }

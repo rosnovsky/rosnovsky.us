@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { NowRequest, NowResponse } from '@vercel/node'
 import slugify from 'slugify'
+const fetch = require('node-fetch');
 const chromium = require('chrome-aws-lambda');
 const cloudinary = require('cloudinary').v2
 
@@ -10,7 +11,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     return;
   }
 
-  const title = slugify(req.query.title)
+  const title = req.query.title ? slugify(req.query.title) : "test-title"
 
   const forwardResponse = imageUrl => {
     console.log(imageUrl)
@@ -78,7 +79,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   function objectToParams(object: any) {
     const params = new URLSearchParams()
     Object.entries(object).map((entry) => {
-      let [key, value]: [key: any, value: any] = entry
+      let [key, value]: [key, value] = entry
       params.set(key, value)
     })
     return params.toString()

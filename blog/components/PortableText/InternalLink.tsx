@@ -24,7 +24,6 @@ const InternalLink = ({ mark, children }: any) => {
           slug[0].slug.current
         }`
       )
-      console.log(postUrl)
     }
     getSlug()
   }, [])
