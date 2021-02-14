@@ -25,7 +25,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
-  const url = local ? `http://${req.headers.host}` : `https://${req.headers.host}`
+  const url = local ? `http://localhost:3000` : `https://rosnovsky.us`
   const imageParams = objectToParams(req.query)
 
 
