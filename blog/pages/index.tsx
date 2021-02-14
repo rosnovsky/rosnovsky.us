@@ -154,11 +154,13 @@ const Index = ({
             )}
 
             <div className="text-center font-semibold font-mono text-lg mt-5">
-              {noMorePosts
-                ? "You've reached the end of the internet."
-                : loading
-                ? 'Loading More Posts...'
-                : ''}
+              {noMorePosts ? (
+                <img className="mx-auto" src="the-end.png" />
+              ) : loading ? (
+                'Loading More Posts...'
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </Container>

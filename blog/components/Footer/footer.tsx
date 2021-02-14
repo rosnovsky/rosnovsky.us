@@ -4,7 +4,7 @@ import { BlogPage } from '../..'
 const Footer = ({ menuItems }: { menuItems: BlogPage[] }) => {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
-      <footer className="bg-white">
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
           <nav
             className="-mx-5 -my-2 flex flex-wrap justify-center"
@@ -92,7 +92,7 @@ const Footer = ({ menuItems }: { menuItems: BlogPage[] }) => {
             © 2003-{new Date().getFullYear()} Art Rosnovsky
           </p>
         </div>
-      </footer>
+      </div>
     </footer>
   )
 }
