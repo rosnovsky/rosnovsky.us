@@ -41,7 +41,7 @@ const NotFound = ({
                   <div className="text-gray-400 prose-2xl my-10">
                     <p>It's probably you.</p>
                     <p>Or maybe it's me.</p>
-                    <img src="404.gif" className="mx-auto" />
+                    <img src="/404.gif" className="mx-auto" />
                     <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
                       Let's not point fingers, ok? Ok.
                     </p>
