@@ -167,9 +167,12 @@ export async function getStaticProps({
   )
 
   const fetchComments = await fetch(
-    `https://rosnovsky.us/api/get?postId=${data.posts[0]._id}`
+    process.env.NODE_ENV === 'production'
+      ? `https://rosnovsky.us/api/get?postId=${data.posts[0]._id}`
+      : `http://localhost:3000/api/get?postId=${data.posts[0]._id}`
   )
   const comments: PostComment[] = await fetchComments.json()
+  // console.info(comments)
 
   return {
     props: {

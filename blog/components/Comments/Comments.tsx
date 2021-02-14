@@ -4,15 +4,18 @@ import useSWR from 'swr'
 
 const Comments = ({ comments, postId }: any) => {
   const allComments: { comments: PostComment[] } = comments
+  console.info(allComments)
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
   const { data, error }: any = useSWR(
-    `https://rosnovsky.us/api/get?postId=${postId}`,
+    process.env.NODE_ENV === 'production'
+      ? `https://rosnovsky.us/api/get?postId=${postId}`
+      : `http://localhost:3000/api/get?postId=${postId}`,
     fetcher,
     {
       revalidateOnFocus: true,
-      refreshInterval: 60000,
+      refreshInterval: 20000,
       revalidateOnReconnect: true,
       errorRetryInterval: 10000,
     }
@@ -21,20 +24,20 @@ const Comments = ({ comments, postId }: any) => {
   const sortedComments = data
     ? data.comments.sort(
         (comment1: PostComment, comment2: PostComment) =>
-          Date.parse(comment2.commentTimestamp) -
-          Date.parse(comment1.commentTimestamp)
+          Date.parse(comment2.comment.commentTimestamp) -
+          Date.parse(comment1.comment.commentTimestamp)
       )
     : allComments.comments.sort(
         (comment1: PostComment, comment2: PostComment) =>
-          Date.parse(comment2.commentTimestamp) -
-          Date.parse(comment1.commentTimestamp)
+          Date.parse(comment2.comment.commentTimestamp) -
+          Date.parse(comment1.comment.commentTimestamp)
       )
 
   return (
     <div className="flex flex-col w-full">
       {allComments &&
         sortedComments.map((comment: PostComment) => (
-          <Comment key={comment._id} comment={comment} />
+          <Comment key={comment.comment._id} comment={comment} />
         ))}
     </div>
   )
