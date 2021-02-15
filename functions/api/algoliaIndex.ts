@@ -52,13 +52,11 @@ export default async (req: NowRequest, res: NowResponse) => {
           objectID: post[0]._id,
           title: post[0].title,
           category: post[0].categories.map(category => category.title),
-          publishedAt: post[0].publishedAt,
-          updatedAt: post[0]._updatedAt,
-          createdAt: post[0]._createdAt,
-          slug: post[0].slug.current,
-          body: post[0].body.map(item => item.children ? item.chidren.map(child => child.text) : "").flat().toString(),
+          publishTimestamp: Date.parse(post[0].publishedAt),
+          updateTimestamp: Date.parse(post[0]._updatedAt),
+          body: post[0].body.map(item => item.children ? item.children.map(child => child.text) : "").flat().filter(item => item !== "").toString(),
           mainImage: post[0].mainImage.asset.url,
-          excerpt: post[0].excerpt[0].children ? post[0].excerpt[0].children.map(child => child.text) : "",
+          excerpt: post[0].excerpt[0].children ? post[0].excerpt[0].children.map(child => child.text).flat().filter(item => item !== "").toString() : "",
           tags: post[0].tags ? post[0].tags.map(tag => tag.value): ""
         }
         
