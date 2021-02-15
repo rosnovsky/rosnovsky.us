@@ -23,6 +23,9 @@ const query = `*[_type == "post" && _id == $id] {
 	mainImage{
     asset->{url}
   }
+  tags[]{
+    value
+  }
 }`
 
 // Sanity Config
@@ -49,7 +52,8 @@ export default async (req: NowRequest, res: NowResponse) => {
           createdAt: post[0]._createdAt,
           slug: post[0].slug.current,
           mainImage: post[0].mainImage.asset.url,
-          excerpt: post[0].excerpt[0].children[0].text
+          excerpt: post[0].excerpt[0].children[0].text,
+          tags: post[0].tags ? post[0].tags.value : ''
         }
         
 
