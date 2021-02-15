@@ -56,10 +56,10 @@ export default async (req: NowRequest, res: NowResponse) => {
           updatedAt: post[0]._updatedAt,
           createdAt: post[0]._createdAt,
           slug: post[0].slug.current,
-          body: post[0].body.map(item => item.children?.map(child => child.text)).flat().toString(),
+          body: post[0].body.map(item => item.children ? item.chidren.map(child => child.text) : "").flat().toString(),
           mainImage: post[0].mainImage.asset.url,
-          excerpt: post[0].excerpt[0].children?.map(child => child.text),
-          tags: post[0].tags?.tags.map(tag => tag.value)
+          excerpt: post[0].excerpt[0].children ? post[0].excerpt[0].children.map(child => child.text) : "",
+          tags: post[0].tags ? post[0].tags.map(tag => tag.value): ""
         }
         
 
