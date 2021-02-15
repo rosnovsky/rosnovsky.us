@@ -15,6 +15,7 @@ const query = `*[_type == "post" && _id == $id] {
   _id, 
 	categories[]->{title}, 
   body[]{
+    _key,
     children[]{
       text
     }
@@ -54,15 +55,33 @@ export default async (req: NowRequest, res: NowResponse) => {
           category: post[0].categories.map(category => category.title),
           publishTimestamp: Date.parse(post[0].publishedAt),
           updateTimestamp: Date.parse(post[0]._updatedAt),
-          body: post[0].body.map(item => item.children ? item.children.map(child => child.text) : "").flat().filter(item => item !== "").toString(),
+          slug: post[0].slug.current,
           mainImage: post[0].mainImage.asset.url,
           excerpt: post[0].excerpt[0].children ? post[0].excerpt[0].children.map(child => child.text).flat().filter(item => item !== "").toString() : "",
           tags: post[0].tags ? post[0].tags.map(tag => tag.value): ""
         }
+        const body = post[0].body.map(item => item.children ? item.children.map(child => { return { text: child.text, _key: item._key}}) : "").flat().filter(item => item !== "")
         
+        const bodyParts = []
+
+        body.forEach(bodyPart => { 
+          const part = {
+          objectID: bodyPart._key,
+          title: post[0].title,
+          slug: post[0].slug.current,
+          bodyPart: bodyPart.text,
+          excerpt: post[0].excerpt[0].children ? post[0].excerpt[0].children.map(child => child.text).flat().filter(item => item !== "").toString() : "",
+          category: post[0].categories.map(category => category.title),
+          tags: post[0].tags ? post[0].tags.map(tag => tag.value): "",
+          mainImage: post[0].mainImage.asset.url,
+        }
+        bodyParts.push(part)
+      })
+
+      bodyParts.push(blogPost)
 
         const indexing = index
-        .saveObject(blogPost)
+        .saveObjects(bodyParts)
         .then(result => {
           if(!result) throw new Error("Unable to save to index")
           return result
