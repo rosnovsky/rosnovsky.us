@@ -22,7 +22,7 @@ const query = `*[_type == "post" && _id == $id] {
 	},
 	mainImage{
     asset->{url}
-  }
+  },
   tags[]{
     value
   }
