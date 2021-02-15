@@ -14,6 +14,11 @@ const query = `*[_type == "post" && _id == $id] {
   title, 
   _id, 
 	categories[]->{title}, 
+  body[]{
+    children[]{
+      text
+    }
+  },
 	slug{current}, 
 	excerpt[]{
     children[]{
@@ -46,14 +51,15 @@ export default async (req: NowRequest, res: NowResponse) => {
         const blogPost = {
           objectID: post[0]._id,
           title: post[0].title,
-          category: post[0].categories[0].title,
+          category: post[0].categories.map(category => category.title),
           publishedAt: post[0].publishedAt,
           updatedAt: post[0]._updatedAt,
           createdAt: post[0]._createdAt,
           slug: post[0].slug.current,
+          body: post[0].body.map(item => item.children?.map(child => child.text)).flat().toString(),
           mainImage: post[0].mainImage.asset.url,
-          excerpt: post[0].excerpt[0].children[0].text,
-          tags: post[0].tags ? post[0].tags.value : ''
+          excerpt: post[0].excerpt[0].children?.map(child => child.text),
+          tags: post[0].tags?.tags.map(tag => tag.value)
         }
         
 
