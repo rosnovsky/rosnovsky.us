@@ -9,6 +9,8 @@ import { BlogAlert, BlogProps } from '..'
 import Covid from '../components/Covid/CovidTracker'
 // import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
+import ReactPlaceholder from 'react-placeholder'
+import 'react-placeholder/lib/reactPlaceholder.css'
 
 const Index = ({
   posts,
@@ -147,11 +149,16 @@ const Index = ({
             <Covid />
           </div>
           <div className="relative bg-gray-50 pt-10 pb-5 px-4 sm:px-6 lg:pt-14 lg:pb-8 lg:px-8">
-            {allPosts !== undefined ? (
-              <MoreStories posts={allPosts} />
-            ) : (
-              'Nothing here'
-            )}
+            <ReactPlaceholder
+              showLoadingAnimation
+              ready={allPosts !== undefined}
+              delay={300}
+              type="rect"
+              rows={5}
+              firstLaunchOnly
+            >
+              <MoreStories posts={allPosts!} />
+            </ReactPlaceholder>
 
             <div className="text-center font-semibold font-mono text-lg mt-5">
               {noMorePosts ? (
