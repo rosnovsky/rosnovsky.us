@@ -10,7 +10,7 @@ type Props = {
 const PostBody = ({ content }: { content: BlogPost['body'] }) => {
   return (
     <>
-      <div className="max-w-4xl font-body prose prose-xl text-gray-700 mx-auto leading-9 z-0">
+      <div className="max-w-4xl font-body prose font-thin prose-xl text-gray-700 mx-auto leading-9 z-0">
         <PortableText className="" blocks={content} serializers={serializers} />
       </div>
       {/*  */}

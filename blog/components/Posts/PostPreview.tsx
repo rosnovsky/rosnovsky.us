@@ -65,7 +65,7 @@ const PostPreview = ({
               </Link>
             </p>
           </div>
-          <p className="mt-3 prose prose-lg font-body text-gray-600">
+          <p className="mt-3 prose prose-lg font-body font-thin text-gray-600">
             <PortableText blocks={excerpt} serializers={serializers} />
           </p>
         </div>
