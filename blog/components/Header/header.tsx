@@ -28,7 +28,7 @@ const Header = () => {
         <div className="max-w-screen-xl mx-auto">
           <nav className="relative flex items-center sm:h-10">
             <div className="flex items-center flex-1 ">
-              <div className="mx-auto font-black text-4xl text-green-900">
+              <div className="mx-auto font-black font-heading text-4xl text-green-900">
                 <Link href="/" aria-label="Home">
                   Rosnovsky Park
                 </Link>

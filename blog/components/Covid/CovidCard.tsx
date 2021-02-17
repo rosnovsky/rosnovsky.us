@@ -63,7 +63,7 @@ export default function TotalCases(props: CovidData) {
     <div className="border-t border-gray-200 md:border-0 md:border-l">
       <div className="px-4 py-5 sm:p-6">
         <dl>
-          <dt className="text-base leading-6 font-normal text-gray-900">
+          <dt className="text-base leading-6 font-body font-normal text-gray-900">
             {title}
           </dt>
           <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">

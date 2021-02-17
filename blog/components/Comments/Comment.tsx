@@ -13,7 +13,10 @@ const Comment = ({ comment }: { comment: PostComment }) => {
         />
         <div className="flex-1 text-2xl">
           <div className="text-sm">
-            <a href="#" className="font-medium text-lg text-gray-900">
+            <a
+              href="#"
+              className="font-medium font-heading text-lg text-gray-900"
+            >
               {comment.author?.name || comment.author?.nickname}
             </a>
           </div>

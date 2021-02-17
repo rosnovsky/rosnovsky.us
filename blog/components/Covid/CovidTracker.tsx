@@ -140,7 +140,7 @@ export default function Covid() {
 
   return (
     <Container>
-      <div className="relative max-w-7xl mx-auto pt-5 pb-10">
+      <div className="relative max-w-7xl font-body mx-auto pt-5 pb-10">
         <div className="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow md:grid-cols-3">
           <CasesCard
             numbers={loading ? 30000000 : data.positive}
@@ -162,7 +162,7 @@ export default function Covid() {
             title="🇺🇸 In Hospitals with Covid now"
           />
         </div>
-        <p className="text-sm text-gray-600 mt-2 text-right">
+        <p className="text-sm  text-gray-600 mt-2 text-right">
           Data by{' '}
           <a
             className="underline"

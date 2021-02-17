@@ -16,8 +16,11 @@ const CommentSection = ({
   if (error) return <div>{error.message}</div>
 
   return (
-    <div className="container max-w-5xl mx-auto">
-      <h3 className="text-center text-4xl font-black my-10" id="comments">
+    <div className="container font-body max-w-5xl mx-auto">
+      <h3
+        className="text-center font-heading text-4xl font-black my-10"
+        id="comments"
+      >
         Comments
       </h3>
       <div className="flex w-full flex-wrap">

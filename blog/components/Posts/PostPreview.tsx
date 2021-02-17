@@ -17,7 +17,7 @@ const PostPreview = ({
 }: BlogPost) => {
   const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
   return (
-    <div className="flex flex-col rounded-lg shadow-lg mb-10 overflow-hidden">
+    <div className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden">
       <div className="flex-shrink-0">
         <MainImage
           preview={true}
@@ -59,13 +59,13 @@ const PostPreview = ({
           <div className="block my-10">
             <p className="text-xl font-semibold text-gray-900">
               <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
-                <span className="hover:underline text-3xl text-green-900 font-black cursor-pointer">
+                <span className="hover:underline text-3xl text-green-900 font-black font-heading cursor-pointer">
                   {title}
                 </span>
               </Link>
             </p>
           </div>
-          <p className="mt-3 prose prose-lg text-gray-600">
+          <p className="mt-3 prose prose-lg font-body text-gray-600">
             <PortableText blocks={excerpt} serializers={serializers} />
           </p>
         </div>

@@ -26,7 +26,7 @@ const Layout = ({ children, menuItems, alert }: Props) => {
             <div className="relative pt-6 md:pb-2 sm:pb-2 lg:pb-3 xl:pb-6">
               <div className="max-w-screen-2xl mx-auto ">
                 <nav className="relative flex sm:h-10 justify-center ">
-                  <div className="flex xs:hidden md:visible">
+                  <div className="flex font-body xs:hidden md:visible">
                     {menuItems
                       ? menuItems.map((menuItem: any) => (
                           <div

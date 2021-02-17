@@ -25,8 +25,8 @@ const PostHeader = ({
         <MainImage preview={false} title={title} src={mainImage} />
       </div>
       <div className="max-w-5xl mx-auto">
-        <div className="mb-6 text-lg">
-          <div className="mb-4 font-mono text-gray-700">
+        <div className="mb-6 text-lg font-body">
+          <div className="mb-4 text-gray-700">
             {new Intl.DateTimeFormat('en-US', {
               year: 'numeric',
               month: 'long',
@@ -42,7 +42,7 @@ const PostHeader = ({
             </span>
           </div>
         </div>
-        <div className="text-2xl text-gray-600 font-medium leading-8">
+        <div className="text-2xl text-gray-600 font-heading font-medium leading-8">
           <PortableText blocks={excerpt} />
         </div>
       </div>
