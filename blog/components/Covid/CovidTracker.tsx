@@ -2,15 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CasesCard from './CovidCard'
 import Container from '../Layout/container'
 import useSWR from 'swr'
-
-interface CovidFetchData {
-  positive: number
-  positiveIncrease: number
-  death: number
-  deathIncrease: number
-  hospitalizedCurrently: number
-  hospitalizedIncrease: number
-}
+import { CovidFetchData } from '../..'
 
 const Loading = () => {
   return (
@@ -68,7 +60,7 @@ export default function Covid() {
         return result.json()
       })
       .then((data) => {
-        const massagedData = {
+        const massagedData: CovidFetchData = {
           date: data[0].date,
           positive: data[0].positive,
           positiveIncrease: data[0].positiveIncrease,
@@ -99,9 +91,9 @@ export default function Covid() {
         const date = data.date.toString()
 
         const todayArray: number[] = [
-          date.slice(0, 4),
-          date.slice(4, 6),
-          date.slice(6, 8),
+          Number(date.slice(0, 4)),
+          Number(date.slice(4, 6)),
+          Number(date.slice(6, 8)),
         ]
 
         setToday(todayArray)

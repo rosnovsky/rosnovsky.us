@@ -1,7 +1,8 @@
 import Container from '../Layout/container'
 import Link from 'next/link'
+import { AlertProp } from '../..'
 
-const Alert = ({ message, alertLink, internal }: any) => {
+const Alert = ({ message, alertLink, internal }: AlertProp) => {
   return (
     <div className="border-b border-accent-2 construction">
       <Container>

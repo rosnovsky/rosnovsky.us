@@ -1,12 +1,7 @@
 import React from 'react'
+import { CovidData } from '../..'
 
-interface CovidData {
-  title: string
-  numbers: number
-  change: number
-}
-
-export default function TotalCases(props: CovidData) {
+export default function CovidCard(props: CovidData) {
   const { title, numbers, change }: CovidData = props
 
   const formatCases: (cases: number) => String = function (cases) {

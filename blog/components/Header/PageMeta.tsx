@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { PageMeta } from '../..'
 
 const Meta = ({
   title,
@@ -6,16 +7,7 @@ const Meta = ({
   coverAlt,
   canonicalUrl,
   description,
-  pageType,
-}: {
-  title: string
-  siteSettings?: Record<any, any>
-  coverImage: string
-  coverAlt: string
-  canonicalUrl: string
-  description: string
-  pageType: string
-}) => {
+}: PageMeta) => {
   return (
     <Head>
       <meta charSet="utf-8" />

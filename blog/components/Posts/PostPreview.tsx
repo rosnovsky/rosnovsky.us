@@ -19,25 +19,21 @@ const PostPreview = ({
   return (
     <div className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden">
       <div className="flex-shrink-0">
-        <MainImage
-          preview={true}
-          slug={`${postUrl}/${slug.current}`}
-          title={title}
-          src={mainImage}
-        />
+        <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
+          <MainImage
+            preview={true}
+            slug={`${postUrl}/${slug.current}`}
+            title={title}
+            src={mainImage}
+          />
+        </Link>
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <p className="text-md font-mono text-green-900">
-            <span className="text-green-900">
-              {categories.map((category) =>
-                categories.length > 1
-                  ? ` * ${category.title}`
-                  : `${category.title}`
-              )}
-            </span>
-            <span className="flex mt-2 items-center">
-              <div className="flex space-x-1 text-sm text-gray-700">
+          <p className="flex justify-between text-md font-mono text-green-900">
+            <span className="text-green-900">{categories[0].title}</span>
+            <span className="flex items-center">
+              <div className="text-gray-700">
                 <time
                   dateTime={new Intl.DateTimeFormat('en-US', {
                     year: 'numeric',
@@ -51,8 +47,6 @@ const PostPreview = ({
                     day: 'numeric',
                   }).format(Date.parse(publishedAt))}{' '}
                 </time>
-                {/* <span aria-hidden="true">&middot;</span>
-            <span>6 min read</span> */}
               </div>
             </span>
           </p>

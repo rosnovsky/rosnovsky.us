@@ -103,3 +103,35 @@ export type BlogPage = {
     current: string
   }
 }
+
+export type AlertProp = {
+  message: string
+  alertLink: string
+  internal: boolean
+}
+
+export type CovidData = {
+  title: string
+  numbers: number
+  change: number
+}
+
+export type CovidFetchData = {
+  date: string | number
+  positive: number
+  positiveIncrease: number
+  death: number
+  deathIncrease: number
+  hospitalizedCurrently: number
+  hospitalizedIncrease: number
+}
+
+export type PageMeta = {
+  title: string
+  siteSettings?: Record<any, any>
+  coverImage: string
+  coverAlt: string
+  canonicalUrl: string
+  description: string
+  pageType: string
+}

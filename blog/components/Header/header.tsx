@@ -24,7 +24,7 @@ const Header = () => {
           crossOrigin="anonymous"
         />
       </Head>
-      <h2 className="text-lg font-semibold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
+      <h2 className="text-lg font-semibold tracking-tight md:tracking-tighter leading-tight mb-2 mt-8">
         <div className="max-w-screen-xl mx-auto">
           <nav className="relative flex items-center sm:h-10">
             <div className="flex items-center flex-1 ">
