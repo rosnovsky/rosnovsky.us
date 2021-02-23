@@ -15,7 +15,7 @@ const Comments = ({ comments, postId }: any) => {
     fetcher,
     {
       revalidateOnFocus: true,
-      refreshInterval: 20000,
+      refreshInterval: 1000,
       revalidateOnReconnect: true,
       errorRetryInterval: 10000,
     }
