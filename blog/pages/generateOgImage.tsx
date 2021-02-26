@@ -14,9 +14,9 @@ const OpenGraph = ({
 }) => {
   const bgUrl = `url('${coverImage}?blur=80')`
   return (
-    <div className="m-0 flex w-full">
+    <div className="m-10 flex max-w-screen font-body">
       <div
-        className="relative border-1 bg-green-600 bg-opacity-40 bg-transparent w-full"
+        className="relative border-1 bg-cool-gray-50 bg-opacity-90 bg-transparent w-full"
         style={{
           backgroundImage: bgUrl,
           backgroundRepeat: 'no-repat',
@@ -24,14 +24,14 @@ const OpenGraph = ({
           backgroundBlendMode: 'overlay',
         }}
       >
-        <main className="flex-col bg-opacity-70 w-full p-20 border-8 border-green-700 bg-white">
-          <h3 className="text-red-900 font-bold font-mono text-xl w-96">
+        <main className="flex-col bg-opacity-70 w-full p-20 border-8 border-green-100 bg-gray-50">
+          <h3 className="text-red-900 font-bold text-xl w-96">
             {category || 'No category'}
           </h3>
-          <h1 className="text-7xl leading-tight font-black h-32  mt-7">
+          <h1 className="text-7xl leading-tight font-black font-heading h-32  mt-7">
             {title || 'No Title'}
           </h1>
-          <p className="prose text-3xl leading-relaxed mt-16 mb-10  h-32">
+          <p className="prose text-4xl font-body leading-relaxed mt-16 mb-10  h-32">
             {subtitle}
           </p>
           <div className="flex mt-18 justify-between">

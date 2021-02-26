@@ -53,7 +53,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     defaultViewport: chromium.defaultViewport,
     headless: chromium.headless,})
     const page = await browser.newPage()
-    await page.setViewport({ height: 612, width: 1200 })
+    await page.setViewport({ height: 650, width: 1200 })
     await page.goto(url)
     const buffer: Buffer = await page.screenshot()
     await browser.close()
