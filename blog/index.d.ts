@@ -1,68 +1,55 @@
-// <reference types="next" />
-// <reference types="next/types/global" />
-// <reference types="sanity/types" />
+/// <reference types="next" />
+/// <reference types="next/types/global" />
+/// <reference types="sanity/types" />
 
 import Sanity from '@sanity/types'
 declare module 'react-player/file'
 declare module 'react-player/youtube'
 declare module 'react-tiny-link'
 
-export type BlogAlert = {
+interface BlogAlert {
   message: string
-  alertLink: string
-  internal: boolean
+  alertLink?: string
+  internal?: boolean
   active: boolean
 }
 
-export type MenuItem = {
+interface Page {
   title: string
-  slug: {
+  slug?: {
     current
   }
 }
 
-export type BlogProps = {
-  posts: Post[]
-  alert: BlogAlert[]
-  preview: boolean
-  menuItems: MenuItem[]
-  comments: PostComment[]
-}
-
 export type PostComment = {
   comment: {
-    _id: string
+    _id?: string
     authorId: string
-    sort: any
+    sort?: any
     postId: string
     content: string
-    commentTimestamp: string
-    sentiment: number
-    status: string
-    likes: number
-    savedTimestamp: string
-    length: number
+    commentTimestamp: number
+    sentiment?: number
+    status?: string
+    likes?: number
+    length?: number
   }
   author: {
     id: string
     name?: string
-    email: string
-    picture: string
-    nickname: string
-    stats: {
+    email?: string
+    picture?: string
+    nickname?: string
+    stats?: {
       comments: number
       pending: number
     }
   }
 }
 
-export type BlogPost = {
+interface BlogPost extends Page {
   _id?: string
-  title: string
   body?: Sanity.Block[]
-  slug: {
-    current: string
-  }
   categories: [
     {
       title: string
@@ -72,7 +59,7 @@ export type BlogPost = {
     }
   ]
   publishedAt: string
-  socialCard: {
+  socialCard?: {
     title: string
     subtitle: string
   }
@@ -97,17 +84,18 @@ export type BlogPost = {
   comments?: PostComment
 }
 
-export type BlogPage = {
-  title: string
-  slug: {
-    current: string
-  }
+interface BlogPage extends Page {
+  content?: Sanity.Block[]
+  mainImage?: Sanity.ImageAsset
 }
 
-export type AlertProp = {
-  message: string
-  alertLink: string
-  internal: boolean
+interface BlogPageMeta extends BlogPage {
+  siteSettings?: Record<any, any>
+  coverImage?: string
+  coverAlt?: string
+  canonicalUrl?: string
+  description?: string
+  pageType?: string
 }
 
 export type CovidData = {
@@ -126,12 +114,10 @@ export type CovidFetchData = {
   hospitalizedIncrease: number
 }
 
-export type PageMeta = {
+interface BlogPageOg {
   title: string
-  siteSettings?: Record<any, any>
+  subtitle: string
+  category: string
+  date: string
   coverImage: string
-  coverAlt: string
-  canonicalUrl: string
-  description: string
-  pageType: string
 }

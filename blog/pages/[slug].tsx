@@ -11,7 +11,7 @@ import Meta from '../components/Header/PageMeta'
 import { useEffect } from 'react'
 import { format } from 'date-fns'
 import slugify from 'slugify'
-import { BlogAlert, BlogProps, BlogPage } from '..'
+import { BlogAlert, Page, BlogPage } from '..'
 
 const Page = ({
   page,
@@ -19,7 +19,7 @@ const Page = ({
   alert,
 }: {
   page: BlogPage
-  menuItems: BlogProps['menuItems']
+  menuItems: Page[]
   alert: BlogAlert
 }) => {
   const { title, mainImage, body, slug, socialCard }: any = page
@@ -58,6 +58,7 @@ const Page = ({
         )}.png`}
         canonicalUrl={`https://rosnovsky.us/${slug}`}
         coverAlt={title}
+        slug={slug}
       />
       <Layout alert={alert} menuItems={menuItems}>
         <div className="mx-auto"></div>
@@ -68,8 +69,8 @@ const Page = ({
           ) : (
             <>
               <article className="mb-32">
-                <PageHeader title={title} mainImage={mainImage} />
-                <PageBody content={body} />
+                <PageHeader title={title} mainImage={mainImage} slug={slug} />
+                <PageBody content={body} title={title} slug={slug} />
               </article>
             </>
           )}

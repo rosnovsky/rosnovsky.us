@@ -4,22 +4,18 @@ import Link from 'next/link'
 // @ts-expect-error
 import PortableText from '@sanity/block-content-to-react'
 import serializers from '../PortableText/serializers'
+import { BlogPost } from '../..'
 
 const HeroPost = ({
   title,
   mainImage,
-  date,
+  publishedAt,
   excerpt,
   slug,
   categories,
-}: any) => {
-  const postDate = new Date(date)
+}: BlogPost) => {
+  const postDate = new Date(publishedAt)
   const postUrl = `${format(postDate, 'yyyy/MM/dd')}`
-  const options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
 
   return (
     <div className="relative bg-white overflow-hidden shadow-2xl rounded-xl my-20 border-4 border-blue-900">
@@ -65,9 +61,11 @@ const HeroPost = ({
                 </h3>
               </span>
               <div className="mb-4 mx-5 font-mono font-semibold text-gray-500">
-                {new Intl.DateTimeFormat('en-US', options).format(
-                  Date.parse(date)
-                )}{' '}
+                {new Intl.DateTimeFormat('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                }).format(Date.parse(publishedAt))}{' '}
                 | <span className="text-red-800">{categories[0].title}</span>
               </div>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">

@@ -14,7 +14,7 @@ import Meta from '../../components/Header/PageMeta'
 // import MoreStories from '../../components/Posts/MorePosts'
 import { useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
-import { BlogProps, BlogPost, PostComment, BlogAlert } from '../..'
+import { BlogPost, PostComment, BlogAlert, Page } from '../..'
 
 const Post = ({
   post,
@@ -23,8 +23,8 @@ const Post = ({
   alert,
 }: {
   post: BlogPost
-  menuItems: BlogProps['menuItems']
-  comments: BlogProps['comments']
+  menuItems: Page[]
+  comments: BlogPost['comments']
   alert: BlogAlert
 }) => {
   // const [relatedPosts, setRelatedPosts] = useState([])
@@ -79,8 +79,9 @@ const Post = ({
         canonicalUrl={`https://rosnovsky.us/blog/${format(
           Date.parse(publishedAt),
           'yyyy/MM/dd'
-        )}/${slug.current}`}
+        )}/${slug!.current}`}
         coverAlt={title}
+        slug={slug}
       />
       <Layout menuItems={menuItems} alert={alert}>
         <Container>
@@ -100,8 +101,9 @@ const Post = ({
                     publishedAt={publishedAt}
                     excerpt={excerpt}
                     categories={categories}
+                    slug={slug}
                   />
-                  <PostBody content={body} />
+                  <PostBody body={body!} />
                 </div>
               </article>
               <section>
@@ -111,7 +113,7 @@ const Post = ({
                 {/* <MoreStories posts={allPosts} /> */}
               </section>
               <section>
-                <CommentSection comments={comments} postId={_id} />
+                <CommentSection comments={comments} _id={_id} />
               </section>
             </>
           )}
@@ -130,7 +132,11 @@ export async function getStaticProps({
   params: any
   preview: boolean
 }) {
-  const data: BlogProps = await request(
+  const data: {
+    alert: BlogAlert[]
+    menuItems: Page
+    posts: BlogPost[]
+  } = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
       alert: allAlert {

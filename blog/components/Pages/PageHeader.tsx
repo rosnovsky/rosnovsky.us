@@ -1,12 +1,8 @@
+import { BlogPage } from '../..'
 import MainImage from '../Image/CoverImage'
 import PostTitle from './PageTitle'
 
-type Props = {
-  title: string
-  mainImage: string
-}
-
-const PostHeader = ({ title, mainImage }: Props) => {
+const PostHeader = ({ title, mainImage }: BlogPage) => {
   return (
     <div className="mx-auto max-w-4xl">
       <PostTitle>{title}</PostTitle>

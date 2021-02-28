@@ -4,13 +4,13 @@ import { request } from 'graphql-request'
 import slugify from 'slugify'
 import Header from '../components/Header/header'
 import Container from '../components/Layout/container'
-import { BlogAlert, BlogProps } from '..'
+import { BlogAlert, Page } from '..'
 
 const NotFound = ({
   menuItems,
   alert,
 }: {
-  menuItems: BlogProps['menuItems']
+  menuItems: Page[]
   alert: BlogAlert
 }) => {
   return (

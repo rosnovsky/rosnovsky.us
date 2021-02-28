@@ -1,17 +1,12 @@
+import { BlogPageMeta, BlogPageOg } from '..'
+
 const OpenGraph = ({
   title,
   subtitle,
   category,
   date,
   coverImage,
-}: {
-  title: string
-  subtitle: string
-  category: string
-  date: string
-  url?: string
-  coverImage: string
-}) => {
+}: BlogPageOg) => {
   const bgUrl = `url('${coverImage}?blur=80')`
   return (
     <div className="m-10 flex max-w-screen font-body">
@@ -57,7 +52,7 @@ export async function getServerSideProps(params: any) {
     date = 'No Date',
     coverImage = 'No Cover',
     subtitle = 'No Subtitle',
-  } = params.query
+  }: BlogPageOg = params.query
   return {
     props: {
       title,

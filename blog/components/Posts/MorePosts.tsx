@@ -1,7 +1,7 @@
-import { BlogProps } from '../..'
+import { BlogPost } from '../..'
 import PostPreview from './PostPreview'
 
-const MoreStories = ({ posts }: { posts: BlogProps['posts'] }) => {
+const MoreStories = ({ posts }: { posts: BlogPost[] }) => {
   return (
     <section>
       <div className="text-center mt-5">
@@ -17,7 +17,7 @@ const MoreStories = ({ posts }: { posts: BlogProps['posts'] }) => {
           return (
             <PostPreview
               preview
-              key={post.slug.current}
+              key={post.slug!.current}
               socialCard={post.socialCard}
               title={post.title}
               mainImage={post.mainImage}

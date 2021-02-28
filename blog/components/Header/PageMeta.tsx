@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { PageMeta } from '../..'
+import { BlogPageMeta } from '../..'
 
 const Meta = ({
   title,
@@ -7,7 +7,7 @@ const Meta = ({
   coverAlt,
   canonicalUrl,
   description,
-}: PageMeta) => {
+}: BlogPageMeta) => {
   return (
     <Head>
       <meta charSet="utf-8" />

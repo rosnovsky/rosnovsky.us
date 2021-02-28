@@ -1,16 +1,16 @@
 import Footer from '../Footer/footer'
 import dynamic from 'next/dynamic'
-import { BlogAlert, BlogProps } from '../..'
+import { BlogAlert, Page } from '../..'
 const Alert = dynamic(import('../Alert/alert'))
 import Link from 'next/link'
 
-type Props = {
+interface LayoutProps {
   children?: React.ReactNode
-  menuItems: BlogProps['menuItems']
+  menuItems: Page[]
   alert: BlogAlert
 }
 
-const Layout = ({ children, menuItems, alert }: Props) => {
+const Layout = ({ children, menuItems, alert }: LayoutProps) => {
   return (
     <>
       <div className="bg-gray-50 bg-opacity-50">
@@ -20,6 +20,7 @@ const Layout = ({ children, menuItems, alert }: Props) => {
               message={alert.message}
               alertLink={alert.alertLink}
               internal={alert.internal}
+              active={alert.active}
             />
           ) : null}
           <div className="relative overflow-hidden">
