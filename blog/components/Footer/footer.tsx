@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { BlogPage, MenuItem } from '../..'
+import { BlogPage, Page } from '../..'
 
-const Footer = ({ menuItems }: { menuItems: MenuItem[] }) => {
+const Footer = ({ menuItems }: { menuItems: Page[] }) => {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <div className="bg-white">
@@ -11,12 +11,12 @@ const Footer = ({ menuItems }: { menuItems: MenuItem[] }) => {
             aria-label="Footer"
           >
             {menuItems
-              ? menuItems.map((menuItem: MenuItem) => (
+              ? menuItems.map((menuItem: Page) => (
                   <div
                     className="px-5 py-2 text-xl text-gray-800 hover:text-gray-900"
-                    key={menuItem.slug.current}
+                    key={menuItem.slug!.current}
                   >
-                    <Link href={`/${menuItem.slug.current}/`}>
+                    <Link href={`/${menuItem.slug!.current}/`}>
                       {menuItem.title}
                     </Link>
                   </div>

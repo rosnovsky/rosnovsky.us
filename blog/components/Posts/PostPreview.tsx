@@ -19,10 +19,10 @@ const PostPreview = ({
   return (
     <div className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden">
       <div className="flex-shrink-0">
-        <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
+        <Link as={`/blog/${postUrl}/${slug!.current}`} href="/blog/[slug]">
           <MainImage
             preview={true}
-            slug={`${postUrl}/${slug.current}`}
+            slug={`${postUrl}/${slug!.current}`}
             title={title}
             src={mainImage}
           />
@@ -52,7 +52,10 @@ const PostPreview = ({
           </p>
           <div className="block my-10">
             <p className="text-xl font-semibold text-gray-900">
-              <Link as={`/blog/${postUrl}/${slug.current}`} href="/blog/[slug]">
+              <Link
+                as={`/blog/${postUrl}/${slug!.current}`}
+                href="/blog/[slug]"
+              >
                 <span className="hover:underline text-3xl text-green-900 font-black font-heading cursor-pointer">
                   {title}
                 </span>

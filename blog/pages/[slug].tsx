@@ -11,9 +11,9 @@ import Meta from '../components/Header/PageMeta'
 import { useEffect } from 'react'
 import { format } from 'date-fns'
 import slugify from 'slugify'
-import { BlogAlert, Page, BlogPage } from '..'
+import type { BlogAlert, Page, BlogPage } from '..'
 
-const Page = ({
+const PublishedPage = ({
   page,
   menuItems,
   alert,
@@ -80,7 +80,7 @@ const Page = ({
   )
 }
 
-export default Page
+export default PublishedPage
 
 export async function getStaticProps({
   params,
