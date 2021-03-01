@@ -38,8 +38,14 @@ export type PostComment = {
     id: string
     name?: string
     email?: string
+    email_verified?: boolean
     picture?: string
     nickname?: string
+    family_name: string
+    given_name: string
+    name: string
+    nickname: string
+    picture: string
     stats?: {
       comments: number
       pending: number

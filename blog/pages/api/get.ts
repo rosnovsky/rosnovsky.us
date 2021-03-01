@@ -1,5 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import mongoose from 'mongoose'
+import { PostComment } from '../../index'
 import { CommentSchema } from './commentSchema'
 // mongoose.set('debug', true)
 
@@ -37,21 +38,9 @@ export default async (req: NowRequest, res: NowResponse) => {
     useCreateIndex: true,
   })
 
-  const comments = await Comment.find({ postId: postId })
-  const fetchAuthor = async (authorId) => {
-    const author = await Author.findOne({ id: authorId })
-    return author
-  }
-  const commentsWithAuthors = []
-  for (let i = 0; i < comments.length; i++) {
-    const currentComment = comments[i]
-    const currentAuthor = fetchAuthor(currentComment.authorId)
-    const commentWithAuthor = {
-      comment: currentComment,
-      author: await currentAuthor,
-    }
-    commentsWithAuthors.push(commentWithAuthor)
-  }
+  const comments: PostComment[] = await Comment.find({
+    'comment.postId': postId,
+  })
 
-  res.status(200).send({ comments: commentsWithAuthors })
+  res.status(200).send({ comments })
 }
