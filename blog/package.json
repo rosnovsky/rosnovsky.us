@@ -22,7 +22,7 @@
     "babel-plugin-transform-dynamic-import": "^2.1.0",
     "chrome-aws-lambda": "^7.0.0",
     "chromium": "^3.0.2",
-    "cloudinary": "^1.24.0",
+    "cloudinary": "^1.25.0",
     "dompurify": "^2.2.6",
     "fathom-client": "3.0.0",
     "graphql": "^15.5.0",
