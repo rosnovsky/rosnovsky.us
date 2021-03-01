@@ -1,4 +1,5 @@
 // import { NowRequest, NowResponse } from '@vercel/node'
+import { PostComment } from '../../index'
 import mongoose from 'mongoose'
 import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0'
 
@@ -6,7 +7,7 @@ const Schema = mongoose.Schema
 import { CommentSchema } from './commentSchema'
 // mongoose.set('debug', true)
 
-let Comment: mongoose.Model<mongoose.Document<any>>
+let Comment
 try {
   Comment = mongoose.model('comments')
 } catch (error) {
@@ -27,7 +28,7 @@ try {
 }
 
 export default withApiAuthRequired(async (req: any, res: any) => {
-  const body = JSON.parse(req.body)
+  const body: PostComment = JSON.parse(req.body)
   const session = getSession(req, res)
   if (!session) res(401).send('Nope.')
   const { user } = session
@@ -52,14 +53,27 @@ export default withApiAuthRequired(async (req: any, res: any) => {
     console.log(err)
   }
 
-  const NewComment = new Comment({
-    authorId: user.sub,
-    content: body.content,
-    commentTimestamp: body.meta.timestamp,
-    postId: body.meta.postId,
-    status: 'new',
-    likes: 0,
-  })
+  const saveComment: PostComment = {
+    author: {
+      id: user.sub,
+      email_verified: user.email_verified,
+      family_name: user.family_name,
+      given_name: user.given_name,
+      name: user.name,
+      nickname: user.nickname,
+      picture: user.picture,
+    },
+    comment: {
+      authorId: user.sub,
+      content: body.comment.content,
+      commentTimestamp: body.comment.commentTimestamp,
+      postId: body.comment.postId,
+      status: 'new',
+      likes: 0,
+    },
+  }
+
+  const NewComment = new Comment(saveComment)
 
   NewComment.save({ checkKeys: false }, (err) => {
     if (err) return console.error(err)
