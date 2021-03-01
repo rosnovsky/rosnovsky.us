@@ -9,7 +9,7 @@ import Covid from '../components/Covid/CovidTracker'
 // import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
 import ReactPlaceholder from 'react-placeholder'
-import 'react-placeholder/lib/reactPlaceholder.css'
+import 'react-placeholder/lib/reactPlaceholder'
 
 const Index = ({
   posts,

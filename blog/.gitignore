@@ -8,9 +8,6 @@
 .env.production
 .env.local
 
-# testing
-/coverage
-
 # next.js
 /.next/
 /out/
