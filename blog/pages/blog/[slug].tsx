@@ -202,7 +202,6 @@ export async function getStaticProps({
   const indexPost = await fetch(
     `https://api.rosnovsky.us/api/algoliaIndex?blogPostId=${data.posts[0]._id}`
   )
-  console.info(indexPost)
 
   return {
     props: {

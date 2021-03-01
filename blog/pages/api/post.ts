@@ -31,7 +31,6 @@ export default withApiAuthRequired(async (req: any, res: any) => {
   const session = getSession(req, res)
   if (!session) res(401).send('Nope.')
   const { user } = session
-  console.assert(user.sub === body.author.id)
   if (body.author.id !== user.sub) res(403).send('You sneaky bastard!')
 
   await mongoose.connect(process.env.DB_URL || 'default', {
