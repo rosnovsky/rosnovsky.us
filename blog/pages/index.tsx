@@ -4,7 +4,7 @@ import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import { request } from 'graphql-request'
 import { useState, useEffect } from 'react'
-import { BlogAlert, BlogProps } from '..'
+import { BlogAlert, BlogPost, Page } from '..'
 import Covid from '../components/Covid/CovidTracker'
 // import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
@@ -16,11 +16,11 @@ const Index = ({
   menuItems,
   alert,
 }: {
-  posts: BlogProps['posts']
-  menuItems: BlogProps['menuItems']
+  posts: BlogPost[]
+  menuItems: Page[]
   alert: BlogAlert
 }) => {
-  const [allPosts, setAllPosts] = useState<BlogProps['posts']>()!
+  const [allPosts, setAllPosts] = useState<BlogPost[]>()!
   const [index, setIndex] = useState<number>(1)
   const [loading, setLoading] = useState<boolean>(false)
   const [noMorePosts, setNoMorePosts] = useState<boolean>(false)
@@ -88,7 +88,7 @@ const Index = ({
         }
       }
     }`
-    ).then((morePosts: { posts: BlogProps['posts'] }): void => {
+    ).then((morePosts: { posts: BlogPost[] }): void => {
       if (morePosts.posts.length < 6) {
         setNoMorePosts(true)
         // @ts-ignore
@@ -151,7 +151,11 @@ const Index = ({
 export default Index
 
 export async function getStaticProps({ preview = false }) {
-  const data: BlogProps = await request(
+  const data: {
+    alert: BlogAlert[]
+    posts: BlogPost[]
+    menuItems: Page[]
+  } = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
     `{
       alert: allAlert {
@@ -216,10 +220,3 @@ export async function getStaticProps({ preview = false }) {
     },
   }
 }
-
-/*
-
-
-
-
-*/

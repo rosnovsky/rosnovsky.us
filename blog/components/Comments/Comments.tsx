@@ -24,13 +24,11 @@ const Comments = ({ comments, postId }: any) => {
   const sortedComments = data
     ? data.comments.sort(
         (comment1: PostComment, comment2: PostComment) =>
-          Date.parse(comment2.comment.commentTimestamp) -
-          Date.parse(comment1.comment.commentTimestamp)
+          comment2.comment.commentTimestamp - comment1.comment.commentTimestamp
       )
     : allComments.comments.sort(
         (comment1: PostComment, comment2: PostComment) =>
-          Date.parse(comment2.comment.commentTimestamp) -
-          Date.parse(comment1.comment.commentTimestamp)
+          comment2.comment.commentTimestamp - comment1.comment.commentTimestamp
       )
 
   return (

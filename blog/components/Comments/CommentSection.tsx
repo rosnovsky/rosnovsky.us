@@ -5,10 +5,10 @@ import { useUser } from '@auth0/nextjs-auth0'
 
 const CommentSection = ({
   comments,
-  postId,
+  _id,
 }: {
-  comments: PostComment[]
-  postId: BlogPost['_id']
+  comments: BlogPost['comments']
+  _id: PostComment['comment']['_id']
 }) => {
   const { user, error, isLoading } = useUser()
 
@@ -25,9 +25,9 @@ const CommentSection = ({
       </h3>
       <div className="flex w-full flex-wrap">
         <div className="w-full">
-          <CommentForm user={user} postId={postId} />
+          <CommentForm user={user} postId={_id} />
         </div>
-        <Comments comments={comments} postId={postId} />
+        <Comments comments={comments} postId={_id} />
       </div>
     </div>
   )

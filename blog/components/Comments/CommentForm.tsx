@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import DOMPurify from 'dompurify'
 import Link from 'next/link'
-import { BlogPost } from '../..'
+import { BlogPost, PostComment } from '../..'
 
 const CommentForm = ({
   postId,
@@ -30,19 +30,20 @@ const CommentForm = ({
     if (!comment) return
     const cleanComment = DOMPurify.sanitize(comment)
 
-    const commentMetadata = {
-      timestamp: Date.now(),
-      postId: postId,
-    }
-
-    const author = {
-      id: user.sub,
-    }
-
-    const commentObject = {
-      meta: commentMetadata,
-      author,
-      content: cleanComment,
+    const commentObject: PostComment = {
+      comment: {
+        authorId: user.sub,
+        postId: postId!,
+        content: cleanComment,
+        commentTimestamp: Date.now(),
+      },
+      author: {
+        id: user.sub,
+        name: user.name,
+        email: user.email,
+        picture: user.picture,
+        nickname: user.nickname,
+      },
     }
 
     localStorage.setItem('post', '')

@@ -11,13 +11,7 @@ const PostHeader = ({
   publishedAt,
   excerpt,
   categories,
-}: {
-  title: BlogPost['title']
-  mainImage: BlogPost['mainImage']
-  publishedAt: BlogPost['publishedAt']
-  excerpt: BlogPost['excerpt']
-  categories: BlogPost['categories']
-}) => {
+}: BlogPost) => {
   return (
     <div className="relative py-16 overflow-hidden">
       <PostTitle>{title}</PostTitle>
