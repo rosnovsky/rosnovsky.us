@@ -43,6 +43,8 @@ const CommentForm = ({
         email: user.email,
         picture: user.picture,
         nickname: user.nickname,
+        family_name: user.family_name,
+        given_name: user.given_name,
       },
     }
 

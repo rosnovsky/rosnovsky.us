@@ -1,4 +1,8 @@
 {
   "presets": ["next/babel"],
-  "plugins": ["transform-dynamic-import"]
+  "env": {
+    "test": {
+      "plugins": ["transform-dynamic-import"]
+    }
+  }
 }
