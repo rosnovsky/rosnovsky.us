@@ -33,7 +33,7 @@
     "mongoose": "^5.11.17",
     "next": "^10.0.8-canary.5",
     "next-sanity": "^0.1.10",
-    "puppeteer-core": "^7.1.0",
+    "puppeteer-core": "^8.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
