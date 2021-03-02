@@ -4,6 +4,8 @@ import { UserProvider } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
 import '../styles/index.css'
+import LogRocket from 'logrocket'
+LogRocket.init('sajfyt/rosnovsky-park')
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
