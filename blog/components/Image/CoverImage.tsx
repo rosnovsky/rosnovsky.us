@@ -5,6 +5,13 @@ import { urlFor } from '../../utils/sanity'
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const imageFile =
     urlFor(src.asset.url).width(710).height(455).format('jpg').url() || ''
+  const lqip =
+    urlFor(src.asset.url)
+      .format('jpg')
+      .width(45)
+      .height(30)
+      .quality(10)
+      .url() || 'https://rosnovsky.us/favicon.png'
 
   const image = featured ? (
     <div className="relative overflow-hidden rounded-lg">
@@ -21,6 +28,16 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
     </div>
   ) : (
     <div className="relative overflow-hidden inner-shadow">
+      <div className="absolute overflow-hidden object-cover">
+        <Image
+          src={lqip}
+          alt={`Cover Image for ${src.asset.title}`}
+          width={1500}
+          height={1000}
+          objectFit="contain"
+          priority
+        />
+      </div>
       <Image
         src={
           urlFor(src.asset.url)

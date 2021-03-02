@@ -35,22 +35,22 @@ export const Figure = (props: any) => {
 
   return (
     <figure className="relative">
-      {/* <img
-          style={{
-            width: '56rem',
-          }}
-          src={asset.metadata.lqip}
-          className="absolute opacity-100 transition-opacity duration-1000"
-        /> */}
-      {/* <div className="absolute overflow-hidden object-cover">
+      <img
+        style={{
+          width: '56rem',
+        }}
+        src={lqip}
+        className="absolute opacity-100 transition-opacity duration-1000"
+      />
+      <div className="absolute overflow-hidden object-cover">
         <Image
           src={lqip}
           alt={`Cover Image for ${asset.title}`}
           width={896}
-          height={896 / dimensions.aspectRatio - 200}
+          height={896 / dimensions.aspectRatio}
           objectFit="contain"
         />
-      </div> */}
+      </div>
       <Image
         src={
           urlFor(asset).width(896).format('jpg').quality(85).url() ||
