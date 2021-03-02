@@ -4,7 +4,6 @@ import useSWR from 'swr'
 
 const Comments = ({ comments, postId }: any) => {
   const allComments: { comments: PostComment[] } = comments
-  console.info(allComments)
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
