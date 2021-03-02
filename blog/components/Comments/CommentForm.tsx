@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import DOMPurify from 'dompurify'
 import Link from 'next/link'
 import { BlogPost, PostComment } from '../..'
-import LogRocket from 'logRocket'
+import LogRocket from 'logrocket'
 
 const CommentForm = ({
   postId,
