@@ -17,7 +17,10 @@ const PostPreview = ({
 }: BlogPost) => {
   const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
   return (
-    <div className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden">
+    <div
+      role="article"
+      className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden"
+    >
       <div className="flex-shrink-0">
         <Link as={`/blog/${postUrl}/${slug!.current}`} href="/blog/[slug]">
           <MainImage

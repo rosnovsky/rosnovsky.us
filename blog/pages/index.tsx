@@ -20,7 +20,7 @@ const Index = ({
   menuItems: Page[]
   alert: BlogAlert
 }) => {
-  const [allPosts, setAllPosts] = useState<BlogPost[]>()!
+  const [allPosts, setAllPosts] = useState<BlogPost[]>(posts)
   const [index, setIndex] = useState<number>(1)
   const [loading, setLoading] = useState<boolean>(false)
   const [noMorePosts, setNoMorePosts] = useState<boolean>(false)
@@ -121,20 +121,24 @@ const Index = ({
             <Covid />
           </div>
           <div className="relative bg-gray-50 pt-10 pb-5 px-4 sm:px-6 lg:pt-14 lg:pb-8 lg:px-8">
-            <ReactPlaceholder
-              showLoadingAnimation
-              ready={allPosts !== undefined}
-              delay={300}
-              type="rect"
-              rows={5}
-              firstLaunchOnly
-            >
+            {allPosts && allPosts.length > 0 ? (
               <MoreStories posts={allPosts!} />
-            </ReactPlaceholder>
+            ) : (
+              <div className="text-center font-mono text-lg mt-5">
+                <p className="text-3xl font-semibold">No Posts.</p>
+                <br /> This quite likely is an error. I mean, it's a blog, there
+                must be something here, right?
+              </div>
+            )}
 
             <div className="text-center font-semibold font-mono text-lg mt-5">
               {noMorePosts ? (
-                <img className="mx-auto" src="the-end.png" />
+                <img
+                  className="mx-auto"
+                  src="the-end.png"
+                  role="img"
+                  alt="No more internet"
+                />
               ) : loading ? (
                 'Loading More Posts...'
               ) : (
