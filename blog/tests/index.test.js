@@ -10,6 +10,8 @@ jest.mock('next/dynamic', () => {
   return jest.fn(() => 'Dynamic')
 })
 
+jest.mock('next/image', () => ({ src, alt }) => <img src={src} alt={alt} />)
+
 const post = {
   _id: '1',
   title: 'Test',
@@ -49,7 +51,7 @@ const post = {
 }
 
 describe('Home Page', () => {
-  it('renders a Test post crashing', async () => {
+  it('renders a Test post without crashing', async () => {
     render(<Index posts={[post]} />)
     expect(screen.getByRole('link', { name: 'Test' })).toBeInTheDocument()
   })
