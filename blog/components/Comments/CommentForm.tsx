@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import DOMPurify from 'dompurify'
 import Link from 'next/link'
 import { BlogPost, PostComment } from '../..'
+import LogRocket from 'logRocket'
 
 const CommentForm = ({
   postId,
@@ -16,6 +17,15 @@ const CommentForm = ({
   const [success, setSuccess] = useState(false)
 
   // const returnToState = btoa(window.location.pathname)
+
+  useEffect(() => {
+    user
+      ? LogRocket.identify(user.sub, {
+          name: user.name,
+          email: user.email,
+        })
+      : console.warn("What's up, Anon! ;)")
+  }, [])
 
   const updateComment = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.target.value
