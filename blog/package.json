@@ -24,6 +24,8 @@
     "chromium": "^3.0.2",
     "cloudinary": "^1.25.0",
     "dompurify": "^2.2.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "fathom-client": "3.0.0",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
