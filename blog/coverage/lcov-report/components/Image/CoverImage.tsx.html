@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>9/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -118,11 +118,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,7 +157,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,12 +175,12 @@
 import Image from 'next/image'
 import { urlFor } from '../../utils/sanity'
 &nbsp;
-const MainImage = <span class="fstat-no" title="function not covered" >({</span> title, src, slug, preview, featured }: any) =&gt; {
+const MainImage = ({ title, src, slug, preview, featured }: any) =&gt; {
   const imageFile =
-<span class="cstat-no" title="statement not covered" >    urlFor(src.asset.url).width(710).height(455).format('jpg').url() || ''</span>
+    urlFor(src.asset.url).width(710).height(455).format('jpg').url() || <span class="branch-1 cbranch-no" title="branch not covered" >''</span>
 &nbsp;
-  const image = <span class="cstat-no" title="statement not covered" >featured ? (</span>
-    &lt;div className="relative overflow-hidden rounded-lg"&gt;
+  const image = featured ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >    &lt;div className="relative overflow-hidden rounded-lg"&gt;</span>
       &lt;Image
         src={imageFile}
         width={710}
@@ -197,31 +197,31 @@ const MainImage = <span class="fstat-no" title="function not covered" >({</span>
       &lt;Image
         src={
           urlFor(src.asset.url)
-            .width(preview ? 710 : 1500)
-            .height(preview ? 455 : 1000)
+            .width(preview ? 710 : <span class="branch-1 cbranch-no" title="branch not covered" >1500)</span>
+            .height(preview ? 455 : <span class="branch-1 cbranch-no" title="branch not covered" >1000)</span>
             .format('jpg')
-            .url() || ''
+            .url() || <span class="branch-1 cbranch-no" title="branch not covered" >''</span>
         }
-        width={preview ? 710 : 1500}
-        height={preview ? 455 : 1000}
+        width={preview ? 710 : <span class="branch-1 cbranch-no" title="branch not covered" >1500}</span>
+        height={preview ? 455 : <span class="branch-1 cbranch-no" title="branch not covered" >1000}</span>
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
         loading="lazy"
         className={`shadow-inner hover:shadow-md transition-opacity ease-out opacity-100 duration-500 ${
-          preview ? '' : 'rounded-lg'
+          preview ? '' : <span class="branch-1 cbranch-no" title="branch not covered" >'rounded-lg'</span>
         }`}
       /&gt;
     &lt;/div&gt;
   )
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className="sm:mx-0 z-0"&gt;
       {slug ? (
         &lt;Link as={`/blog/${slug}`} href="/blog/[slug]"&gt;
           &lt;a aria-label={title}&gt;{image}&lt;/a&gt;
         &lt;/Link&gt;
       ) : (
-        image
+<span class="branch-1 cbranch-no" title="branch not covered" >        image</span>
       )}
     &lt;/div&gt;
   )
@@ -235,7 +235,7 @@ export default MainImage
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Feb 28 2021 16:54:42 GMT-0800 (Pacific Standard Time)
+                at Tue Mar 02 2021 12:58:26 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">26.32% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/15</span>
+                <span class='fraction'>5/19</span>
             </div>
         
             
@@ -279,7 +279,11 @@
 <a name='L220'></a><a href='#L220'>220</a>
 <a name='L221'></a><a href='#L221'>221</a>
 <a name='L222'></a><a href='#L222'>222</a>
-<a name='L223'></a><a href='#L223'>223</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -301,14 +305,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -320,11 +324,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -385,7 +389,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -523,7 +531,7 @@ const Index = ({
   menuItems: Page[]
   alert: BlogAlert
 }) =&gt; {
-  const [allPosts, setAllPosts] = useState&lt;BlogPost[]&gt;()!
+  const [allPosts, setAllPosts] = useState&lt;BlogPost[]&gt;(posts)
   const [index, setIndex] = useState&lt;number&gt;(1)
   const [loading, setLoading] = useState&lt;boolean&gt;(false)
   const [noMorePosts, setNoMorePosts] = useState&lt;boolean&gt;(false)
@@ -624,20 +632,24 @@ const Index = ({
             &lt;Covid /&gt;
           &lt;/div&gt;
           &lt;div className="relative bg-gray-50 pt-10 pb-5 px-4 sm:px-6 lg:pt-14 lg:pb-8 lg:px-8"&gt;
-            &lt;ReactPlaceholder
-              showLoadingAnimation
-              ready={allPosts !== undefined}
-              delay={300}
-              type="rect"
-              rows={5}
-              firstLaunchOnly
-            &gt;
-              &lt;MoreStories posts={allPosts!} /&gt;
-            &lt;/ReactPlaceholder&gt;
+            {allPosts &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >allPosts.length &gt; 0 </span>? (
+<span class="branch-0 cbranch-no" title="branch not covered" >              &lt;MoreStories posts={allPosts!} /&gt;</span>
+            ) : (
+              &lt;div className="text-center font-mono text-lg mt-5"&gt;
+                &lt;p className="text-3xl font-semibold"&gt;No Posts.&lt;/p&gt;
+                &lt;br /&gt; This quite likely is an error. I mean, it's a blog, there
+                must be something here, right?
+              &lt;/div&gt;
+            )}
 &nbsp;
             &lt;div className="text-center font-semibold font-mono text-lg mt-5"&gt;
               {noMorePosts ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >                &lt;img className="mx-auto" src="the-end.png" /&gt;</span>
+<span class="branch-0 cbranch-no" title="branch not covered" >                &lt;img</span>
+                  className="mx-auto"
+                  src="the-end.png"
+                  role="img"
+                  alt="No more internet"
+                /&gt;
               ) : loading ? (
 <span class="branch-0 cbranch-no" title="branch not covered" >                'Loading More Posts...'</span>
               ) : (
@@ -730,7 +742,7 @@ export async function <span class="fstat-no" title="function not covered" >getSt
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Feb 28 2021 16:54:42 GMT-0800 (Pacific Standard Time)
+                at Tue Mar 02 2021 12:58:26 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

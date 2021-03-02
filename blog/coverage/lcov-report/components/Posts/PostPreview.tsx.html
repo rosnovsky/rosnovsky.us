@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -131,7 +131,19 @@
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,16 +152,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,7 +219,7 @@ import PortableText from '@sanity/block-content-to-react'
 import serializers from '../PortableText/serializers'
 import { BlogPost } from '../..'
 &nbsp;
-const PostPreview = <span class="fstat-no" title="function not covered" >({</span>
+const PostPreview = ({
   title,
   mainImage,
   publishedAt,
@@ -222,9 +228,12 @@ const PostPreview = <span class="fstat-no" title="function not covered" >({</spa
   slug,
   socialCard,
 }: BlogPost) =&gt; {
-  const postUrl = <span class="cstat-no" title="statement not covered" >`${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden"&gt;
+  const postUrl = `${format(Date.parse(publishedAt), 'yyyy/MM/dd')}`
+  return (
+    &lt;div
+      role="article"
+      className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden"
+    &gt;
       &lt;div className="flex-shrink-0"&gt;
         &lt;Link as={`/blog/${postUrl}/${slug!.current}`} href="/blog/[slug]"&gt;
           &lt;MainImage
@@ -237,7 +246,7 @@ const PostPreview = <span class="fstat-no" title="function not covered" >({</spa
       &lt;/div&gt;
       &lt;div className="flex-1 bg-white p-6 flex flex-col justify-between"&gt;
         &lt;div className="flex-1"&gt;
-          &lt;p className="flex justify-between text-md font-mono text-green-900"&gt;
+          &lt;div className="flex justify-between text-md font-mono text-green-900"&gt;
             &lt;span className="text-green-900"&gt;{categories[0].title}&lt;/span&gt;
             &lt;span className="flex items-center"&gt;
               &lt;div className="text-gray-700"&gt;
@@ -256,7 +265,7 @@ const PostPreview = <span class="fstat-no" title="function not covered" >({</spa
                 &lt;/time&gt;
               &lt;/div&gt;
             &lt;/span&gt;
-          &lt;/p&gt;
+          &lt;/div&gt;
           &lt;div className="block my-10"&gt;
             &lt;p className="text-xl font-semibold text-gray-900"&gt;
               &lt;Link
@@ -269,9 +278,9 @@ const PostPreview = <span class="fstat-no" title="function not covered" >({</spa
               &lt;/Link&gt;
             &lt;/p&gt;
           &lt;/div&gt;
-          &lt;p className="mt-3 prose prose-lg font-body font-thin text-gray-600"&gt;
+          &lt;div className="mt-3 prose prose-lg font-body font-thin text-gray-600"&gt;
             &lt;PortableText blocks={excerpt} serializers={serializers} /&gt;
-          &lt;/p&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -286,7 +295,7 @@ export default PostPreview
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Feb 28 2021 16:54:42 GMT-0800 (Pacific Standard Time)
+                at Tue Mar 02 2021 12:58:26 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

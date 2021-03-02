@@ -29,4 +29,10 @@ describe('Home Page', () => {
       await screen.getByText(`© 2003-${new Date().getFullYear()} Art Rosnovsky`)
     ).toBeInTheDocument
   })
+
+  it('has COVID component', async () => {
+    render(<Index />)
+    expect(await screen.getByRole(`link`, { name: 'CovidTracking' }))
+      .toBeInTheDocument
+  })
 })
