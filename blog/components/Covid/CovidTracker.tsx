@@ -52,6 +52,10 @@ export default function Covid() {
   const [loading, setLoading] = useState(true)
   const [today, setToday] = useState([2021, 0, 28])
 
+  useEffect(() => {
+    setLoading(false)
+  }, [today])
+
   const fetcher = async (url: string) => {
     const data = await fetch(url, {
       method: 'GET',
