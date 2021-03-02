@@ -3,9 +3,6 @@ import { urlFor } from '../../utils/sanity'
 
 export const Figure = (props: any) => {
   const { asset } = props.node
-  const lqip =
-    urlFor(asset._ref).format('jpg').width(20).quality(10).url() ||
-    'https://rosnovsky.us/favicon.png'
 
   const dimensions = {
     width: asset._ref.split('-')[2].split('x')[0],
@@ -14,6 +11,12 @@ export const Figure = (props: any) => {
       asset._ref.split('-')[2].split('x')[0] /
       asset._ref.split('-')[2].split('x')[1],
   }
+  const lqip =
+    urlFor(asset._ref)
+      .format('jpg')
+      .width(dimensions.aspectRatio > 1 ? 20 : 10)
+      .quality(dimensions.aspectRatio > 1 ? 10 : 20)
+      .url() || 'https://rosnovsky.us/favicon.png'
 
   if (!asset) {
     return null
@@ -34,21 +37,15 @@ export const Figure = (props: any) => {
   }
 
   return (
-    <figure className="relative">
-      <img
-        style={{
-          width: '56rem',
-        }}
-        src={lqip}
-        className="absolute opacity-100 transition-opacity duration-1000"
-      />
-      <div className="absolute overflow-hidden object-cover">
+    <figure className="relative rounded-lg">
+      <div className="absolute overflow-hidden object-cover rounded-lg">
         <Image
           src={lqip}
           alt={`Cover Image for ${asset.title}`}
           width={896}
           height={896 / dimensions.aspectRatio}
           objectFit="contain"
+          className={'rounded-lg'}
         />
       </div>
       <Image
