@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import Alert from '../components/Alert/alert'
 
-describe('More Stories', () => {
-  it('renders without crashing', () => {
+describe('Alert', () => {
+  it('renders when active', () => {
     render(
       <Alert
         message="Alert Message"

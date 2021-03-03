@@ -6,10 +6,9 @@ import { request } from 'graphql-request'
 import { useState, useEffect } from 'react'
 import { BlogAlert, BlogPost, Page } from '..'
 import Covid from '../components/Covid/CovidTracker'
-// import { GenerateSocialCards } from '../utils/generateSocialCards'
 import Meta from '../components/Header/PageMeta'
-import ReactPlaceholder from 'react-placeholder'
 import 'react-placeholder/lib/reactPlaceholder.css'
+import { postsQuery, morePostsQuery } from '../utils/queries'
 
 const Index = ({
   posts,
@@ -46,48 +45,9 @@ const Index = ({
   const loadMore = async () => {
     setLoading(true)
 
-    const morePosts = await request(
+    await request(
       'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
-      `{
-      posts: allPost(limit: 6, offset: ${
-        6 * index
-      }, sort: [ { publishedAt: DESC } ], where: { featured: { neq: true }}){
-        _id
-        title
-        body: bodyRaw
-        slug {
-          current
-        }
-        categories {
-          title
-          slug {
-            current
-          }
-        }
-        publishedAt
-        socialCard {
-          title
-          subtitle
-        }
-        excerpt: excerptRaw
-        featured
-        mainImage {
-          alt
-          caption
-          asset {
-            metadata{
-              dimensions {
-                aspectRatio
-                width
-                height
-              }
-              lqip
-            }
-            url
-          }
-        }
-      }
-    }`
+      morePostsQuery(index)
     ).then((morePosts: { posts: BlogPost[] }): void => {
       if (morePosts.posts.length < 6) {
         setNoMorePosts(true)
@@ -161,57 +121,7 @@ export async function getStaticProps({ preview = false }) {
     menuItems: Page[]
   } = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
-    `{
-      alert: allAlert {
-        message
-        alertLink
-        internal
-        active
-      }
-      menuItems: allPage(where: {menuItem: {eq: true}}){
-        title
-        slug {
-          current
-        }
-      }
-      posts: allPost(limit: 6, sort: [ { publishedAt: DESC } ]){
-      _id
-      title
-      body: bodyRaw
-      featured
-      slug {
-        current
-      }
-      categories {
-        title
-        slug {
-          current
-        }
-      }
-      publishedAt
-      socialCard {
-        title
-        subtitle
-      }
-      excerpt: excerptRaw
-      featured
-      mainImage {
-        alt
-        caption
-        asset {
-          metadata{
-            dimensions {
-              aspectRatio
-              width
-              height
-            }
-            lqip
-          }
-          url
-        }
-      }
-    }
-  }`
+    postsQuery
   )
 
   // GenerateSocialCards(data.posts)

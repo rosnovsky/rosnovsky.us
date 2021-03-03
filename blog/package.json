@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
-    "test": "jest --watchAll --coverage"
+    "test": "jest --watchAll --coverage --silent --verbose"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.1.0",

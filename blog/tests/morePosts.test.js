@@ -45,7 +45,7 @@ const post = {
   },
 }
 
-describe('More Stories', () => {
+describe('More Posts', () => {
   it('renders without crashing', () => {
     render(<MorePosts posts={[post]} />)
     expect(
