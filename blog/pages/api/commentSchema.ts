@@ -13,7 +13,7 @@ const commentFormat = {
   },
   author: {
     id: { type: String, required: true },
-    email_verified: { type: Boolean, required: true },
+    email_verified: { type: Boolean, required: false },
     family_name: { type: String, required: false },
     given_name: { type: String, required: false },
     name: { type: String, required: false },
