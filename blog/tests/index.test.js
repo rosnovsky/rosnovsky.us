@@ -50,9 +50,22 @@ const post = {
   },
 }
 
+const menuItems = [{ title: 'Test Page', slug: { current: 'test' } }]
+
 describe('Home Page', () => {
   it('renders a Test post without crashing', async () => {
-    render(<Index posts={[post]} />)
+    render(
+      <Index
+        posts={[post]}
+        alert={{
+          active: true,
+          message: 'Alert Message',
+          alertLink: 'https://cnn.com',
+          internal: true,
+        }}
+        menuItems={menuItems}
+      />
+    )
     expect(screen.getByRole('link', { name: 'Test' })).toBeInTheDocument()
   })
 

@@ -15,7 +15,12 @@ const internalLinkBlock = {
 describe('Portable Text', () => {
   it('Code Serializer', async () => {
     render(<Code node={codeBlock} />)
-    expect(screen.getByText('<div>Test Code</div>')).toBeInTheDocument
+    expect(screen.queryByText('<div>Test Code</div>')).toBeInTheDocument
+  })
+
+  it('Code Serializer with null values', async () => {
+    render(<Code node={null} />)
+    expect(screen.queryByText('<div>Test Code</div>')).not.toBeInTheDocument()
   })
 
   it('Internal Link', async () => {
