@@ -8,6 +8,7 @@ describe('Alert', () => {
         message="Alert Message"
         alertLink="https://cnn.com"
         internal={true}
+        active={true}
       />
     )
     expect(screen.getByRole('link', { name: 'Learn More →' })).toHaveAttribute(

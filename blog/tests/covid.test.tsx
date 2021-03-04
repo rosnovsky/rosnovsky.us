@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Covid from '../components/Covid/CovidTracker'
 import useSWR from 'swr'
 import React from 'react'
@@ -11,6 +11,7 @@ jest.mock('next/dynamic', () => {
 
 describe('Covid Component', () => {
   it('renders without crashing', async () => {
+    // @ts-expect-error
     useSWR.mockReturnValue({
       data: {
         date: '20210111',
@@ -28,6 +29,7 @@ describe('Covid Component', () => {
   })
 
   it('handles errors', async () => {
+    // @ts-expect-error
     useSWR.mockReturnValue({
       data: {
         date: '20210111',
@@ -45,6 +47,7 @@ describe('Covid Component', () => {
   })
 
   it('handles empty data', async () => {
+    // @ts-expect-error
     useSWR.mockReturnValue({
       data: null,
       error: null,
@@ -54,6 +57,7 @@ describe('Covid Component', () => {
   })
 
   it('handles empty data', async () => {
+    // @ts-expect-error
     useSWR.mockReturnValue({ data: null, error: 'test' })
     render(<Covid />)
     expect(screen.queryByText('450000')).toBeInTheDocument
