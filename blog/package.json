@@ -33,7 +33,7 @@
     "isomorphic-unfetch": "^3.1.0",
     "jest-next-dynamic": "^1.0.1",
     "mongoose": "^5.11.18",
-    "next": "^10.0.8-canary.9",
+    "next": "^10.0.8-canary.15",
     "next-sanity": "^0.1.10",
     "puppeteer-core": "^8.0.0",
     "react": "17.0.1",
