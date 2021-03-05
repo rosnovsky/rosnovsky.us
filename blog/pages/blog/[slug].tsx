@@ -1,5 +1,9 @@
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { request } from 'graphql-request'
+import { format } from 'date-fns'
 import slugify from 'slugify'
+import { postQuery } from '../../utils/queries'
 import ErrorPage from 'next/error'
 import Container from '../../components/Layout/container'
 import PostBody from '../../components/Posts/PostBody'
@@ -8,13 +12,10 @@ import PostHeader from '../../components/Posts/PostHeader'
 import Layout from '../../components/Layout/layout'
 import PostTitle from '../../components/Posts/PostTitle'
 import Head from 'next/head'
-import { request } from 'graphql-request'
-import { format } from 'date-fns'
 import Meta from '../../components/Header/PageMeta'
 // import MoreStories from '../../components/Posts/MorePosts'
-import { useEffect } from 'react'
 import CommentSection from '../../components/Comments/CommentSection'
-import { BlogPost, PostComment, BlogAlert, Page } from '../..'
+import type { BlogPost, PostComment, BlogAlert, Page } from '../..'
 
 const Post = ({
   post,
@@ -138,59 +139,7 @@ export async function getStaticProps({
     posts: BlogPost[]
   } = await request(
     'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
-    `{
-      alert: allAlert {
-        message
-        alertLink
-        internal
-        active
-      }
-      menuItems: allPage(where: {menuItem: {eq: true }}){
-        title
-        slug {
-          current
-        }
-      }
-      posts: allPost(where: {slug: {current: {eq: "${params.slug}"}}}) {
-        _id
-        title
-        body: bodyRaw
-        socialCard {
-          title
-          subtitle
-        }
-        slug {
-          current
-        }
-        categories {
-          title
-          slug {
-            current
-          }
-        }
-        tags {
-          value
-        }
-        publishedAt
-        excerpt: excerptRaw
-        featured
-        mainImage {
-          alt
-          caption
-          asset {
-            metadata{
-              dimensions {
-                aspectRatio
-                width
-                height
-              }
-              lqip
-            }
-            url
-          }
-        }
-      }
-    }`
+    postQuery(params.slug)
   )
 
   const fetchComments = await fetch(
