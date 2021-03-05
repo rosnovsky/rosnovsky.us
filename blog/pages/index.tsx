@@ -1,14 +1,13 @@
+import { request } from 'graphql-request'
+import useLoadMore from '../utils/useLoadMore'
 import Container from '../components/Layout/container'
 import MoreStories from '../components/Posts/MorePosts'
 import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
-import { request } from 'graphql-request'
-import { useState, useEffect } from 'react'
-import { BlogAlert, BlogPost, Page } from '..'
 import Covid from '../components/Covid/CovidTracker'
 import Meta from '../components/Header/PageMeta'
-import 'react-placeholder/lib/reactPlaceholder.css'
-import { postsQuery, morePostsQuery } from '../utils/queries'
+import { postsQuery } from '../utils/queries'
+import type { BlogAlert, BlogPost, Page } from '..'
 
 const Index = ({
   posts,
@@ -19,12 +18,8 @@ const Index = ({
   menuItems: Page[]
   alert: BlogAlert
 }) => {
-  const [allPosts, setAllPosts] = useState<BlogPost[]>(posts)
-  const [index, setIndex] = useState<number>(1)
-  const [loading, setLoading] = useState<boolean>(false)
-  const [noMorePosts, setNoMorePosts] = useState<boolean>(false)
+  const { loading, noMorePosts, allPosts, loadMore } = useLoadMore(posts)
 
-  // Infinite Scroll, pretty rudimentary
   if (typeof window !== 'undefined') {
     window.onscroll = () => {
       if (
@@ -36,32 +31,6 @@ const Index = ({
         }
       }
     }
-  }
-
-  useEffect(() => {
-    setAllPosts(posts)
-  }, [])
-
-  const loadMore = async () => {
-    setLoading(true)
-
-    await request(
-      'https://n3o7a5dl.api.sanity.io/v1/graphql/production/default',
-      morePostsQuery(index)
-    ).then((morePosts: { posts: BlogPost[] }): void => {
-      if (morePosts.posts.length < 6) {
-        setNoMorePosts(true)
-        // @ts-ignore
-        setAllPosts((allPosts) => [...allPosts, ...morePosts.posts])
-        setLoading(false)
-        return
-      }
-      // @ts-ignore
-      setAllPosts((allPosts) => [...allPosts, ...morePosts.posts])
-      setIndex(index + 1)
-      setLoading(false)
-      return
-    })
   }
 
   return (
@@ -124,7 +93,6 @@ export async function getStaticProps({ preview = false }) {
     postsQuery
   )
 
-  // GenerateSocialCards(data.posts)
   return {
     props: {
       preview,
