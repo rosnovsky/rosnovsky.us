@@ -1,7 +1,7 @@
 import Container from '../Layout/container'
 import CasesCard from './CovidCard'
 
-const Loading = () => {
+const Loading = ({ loading }: any) => {
   return (
     <Container>
       <div className="relative max-w-7xl mx-auto pt-5 pb-10">
@@ -10,16 +10,19 @@ const Loading = () => {
             numbers={30000000}
             change={100000}
             title="🇺🇸 Total COVID-19 Cases"
+            loading={loading}
           />
           <CasesCard
             numbers={450000}
             change={4000}
             title="🇺🇸 Died of Covid-19"
+            loading={loading}
           />
           <CasesCard
             numbers={600}
             change={0}
             title="🇺🇸 Died in Snohomish county"
+            loading={loading}
           />
         </div>
         <p className="text-sm text-gray-600 mt-2 text-right">

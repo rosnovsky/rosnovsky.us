@@ -1,9 +1,9 @@
 import React from 'react'
+import ReactPlaceholder from 'react-placeholder/lib/ReactPlaceholder'
+import 'react-placeholder/lib/reactPlaceholder.css'
 import { CovidData } from '../..'
 
-export default function CovidCard(props: CovidData) {
-  const { title, numbers, change }: CovidData = props
-
+export default function CovidCard({ title, numbers, change, loading }: any) {
   const formatCases: (cases: number) => String = function (cases) {
     if (cases <= 9999) {
       return Intl.NumberFormat().format(cases)
@@ -13,6 +13,8 @@ export default function CovidCard(props: CovidData) {
       return `${(cases / 1000000).toFixed(2)} M`
     }
   }
+
+  console.log(loading)
 
   const changeStatus: (cases: number) => JSX.Element = function (cases) {
     return cases <= 0 ? (
@@ -51,12 +53,35 @@ export default function CovidCard(props: CovidData) {
             {title}
           </dt>
           <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
-            <div className="flex items-baseline text-2xl leading-8 font-semibold text-red-900">
-              <span>{formatCases(numbers)}</span>
-            </div>
-            <div className="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-red-800 md:mt-2 lg:mt-0">
-              <span className="ml-1">{changeStatus(change)}</span>
-            </div>
+            <ReactPlaceholder
+              firstLaunchOnly
+              showLoadingAnimation
+              type="textRow"
+              color={'rgba(119, 29, 29, 0.5'}
+              style={{ height: '2rem', width: 75, margin: 0, borderRadius: 5 }}
+              ready={!loading}
+            >
+              <div className="flex items-baseline text-2xl leading-8 font-semibold text-red-900">
+                <span>{formatCases(numbers)}</span>
+              </div>
+            </ReactPlaceholder>
+            <ReactPlaceholder
+              showLoadingAnimation
+              firstLaunchOnly
+              type="textRow"
+              color={'rgba(119, 29, 29, 0.5'}
+              style={{
+                height: '1.5rem',
+                width: 80,
+                margin: 0,
+                borderRadius: 10,
+              }}
+              ready={!loading}
+            >
+              <div className="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-red-800 md:mt-2 lg:mt-0">
+                <span className="ml-1">{changeStatus(change)}</span>
+              </div>
+            </ReactPlaceholder>
           </dd>
         </dl>
       </div>

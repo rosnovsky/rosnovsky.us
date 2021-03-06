@@ -17,7 +17,6 @@ const useCovidData = () => {
         return result.json()
       })
       .then((result) => {
-        console.info(result)
         const covidData: CovidFetchData = {
           date: result.covidData[0].date,
           positive: result.covidData[0].confirmed,
@@ -27,7 +26,6 @@ const useCovidData = () => {
           snoDeaths: result.snoData[0].deaths,
           snoDeathsIncrease: result.snoData[0].deaths_daily,
         }
-        console.log(covidData)
         return covidData
       })
     return data
