@@ -63,6 +63,7 @@ export default async (req: NowRequest, res: NowResponse) => {
       $lt: new Date(),
     },
   })
+  mongoose.disconnect()
 
   res.status(200).send({ covidData, snoData })
 }
