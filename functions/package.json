@@ -14,7 +14,7 @@
     "chrome-aws-lambda": "^7.0.0",
     "cloudinary": "^1.24.0",
     "node-fetch": "^2.6.1",
-    "puppeteer-core": "^7.0.4",
+    "puppeteer-core": "^7.1.0",
     "request": "^2.88.2",
     "slugify": "^1.4.6"
   },
