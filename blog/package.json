@@ -64,7 +64,7 @@
     "postcss": "^8.2.6",
     "postcss-preset-env": "6.7.0",
     "tailwindcss": "2.0.3",
-    "ts-jest": "^26.5.2"
+    "ts-jest": "^26.5.3"
   },
   "license": "MIT"
 }
