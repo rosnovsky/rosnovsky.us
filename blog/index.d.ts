@@ -111,13 +111,13 @@ export type CovidData = {
 }
 
 export type CovidFetchData = {
-  date: string | number
+  date: string
   positive: number
   positiveIncrease: number
   death: number
   deathIncrease: number
-  hospitalizedCurrently: number
-  hospitalizedIncrease: number
+  snoDeaths: number
+  snoDeathsIncrease: number
 }
 
 interface BlogPageOg {

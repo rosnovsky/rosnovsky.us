@@ -119,7 +119,7 @@ describe('Home Page', () => {
     ).toBeInTheDocument
   })
 
-  it('has COVID component', async () => {
+  it('Shows COVID component', async () => {
     render(
       <Index
         posts={[]}
@@ -132,7 +132,7 @@ describe('Home Page', () => {
         menuItems={menuItems}
       />
     )
-    expect(await screen.getByRole(`link`, { name: 'CovidTracking' }))
+    expect(await screen.getByRole(`link`, { name: 'John Hopkins University' }))
       .toBeInTheDocument
   })
 })

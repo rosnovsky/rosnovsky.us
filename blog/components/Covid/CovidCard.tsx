@@ -15,22 +15,11 @@ export default function CovidCard(props: CovidData) {
   }
 
   const changeStatus: (cases: number) => JSX.Element = function (cases) {
-    return cases < 0 ? (
+    return cases <= 0 ? (
       <>
         <div className="ml-1 flex flex-start items-baseline text-sm leading-5 font-bold text-green-800">
-          <svg
-            className="self-center flex-shrink-0 h-5 w-5 text-green-800"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <span className="sr-only">Decreased by</span>
-          {formatCases(change)}
+          <span className="sr-only">No change</span>
+          🎉 {formatCases(change)}
         </div>
       </>
     ) : (
