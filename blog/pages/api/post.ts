@@ -34,7 +34,7 @@ export default withApiAuthRequired(async (req: any, res: any) => {
   const { user } = session
   if (body.author.id !== user.sub) res(403).send('You sneaky bastard!')
 
-  await mongoose.connect(process.env.DB_URL || 'default', {
+  await mongoose.createConnection(process.env.DB_URL || 'default', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -78,8 +78,6 @@ export default withApiAuthRequired(async (req: any, res: any) => {
   NewComment.save({ checkKeys: false }, (err) => {
     if (err) return console.error(err)
   })
-
-  mongoose.disconnect()
 
   res.status(200).send({ comment: NewComment })
   // } catch (error) {

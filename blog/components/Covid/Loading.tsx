@@ -25,22 +25,15 @@ const Loading = ({ loading }: any) => {
             loading={loading}
           />
         </div>
-        <p className="text-sm text-gray-600 mt-2 text-right">
+        <p className="text-sm  text-gray-600 mt-2 text-right">
           Data by{' '}
           <a
-            className="underline"
-            href="https://covidtracking.com"
-            target="_blank"
-            rel="noopener"
+            href="https://coronavirus.jhu.edu/map.html"
+            title="John Hopkins University"
           >
-            CovidTracking
+            JHU
           </a>{' '}
-          Project as of{' '}
-          {new Date(Date.now()).toLocaleString('us', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-          })}
+          as of {new Date().toLocaleString('en-US')}
         </p>
       </div>
     </Container>

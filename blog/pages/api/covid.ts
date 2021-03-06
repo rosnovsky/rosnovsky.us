@@ -36,34 +36,34 @@ try {
   WaData = mongoose.model('us_only', WaDataSchema)
 }
 
-mongoose.connect(
-  'mongodb+srv://readonly:readonly@covid-19.hip2i.mongodb.net/covid19',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  }
-)
-
 export default async (req: NowRequest, res: NowResponse) => {
-  const covidData = await CovidData.find({
-    country: 'US',
-    date: {
-      $gt: new Date(yesterdayDate),
-      $lt: new Date(),
-    },
-  })
+  await mongoose
+    .connect(
+      'mongodb+srv://readonly:readonly@covid-19.hip2i.mongodb.net/covid19',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
+    .then(async () => {
+      const covidData = await CovidData.find({
+        country: 'US',
+        date: {
+          $gt: new Date(yesterdayDate),
+          $lt: new Date(),
+        },
+      })
 
-  const snoData = await WaData.find({
-    state: 'Washington',
-    county: 'Snohomish',
-    date: {
-      $gt: new Date(yesterdayDate),
-      $lt: new Date(),
-    },
-  })
-  mongoose.disconnect()
+      const snoData = await WaData.find({
+        state: 'Washington',
+        county: 'Snohomish',
+        date: {
+          $gt: new Date(yesterdayDate),
+          $lt: new Date(),
+        },
+      })
 
-  res.status(200).send({ covidData, snoData })
+      res.status(200).send({ covidData, snoData })
+      mongoose.disconnect()
+    })
 }

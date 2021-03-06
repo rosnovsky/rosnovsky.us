@@ -15,7 +15,8 @@ export const Figure = (props: any) => {
     urlFor(asset._ref)
       .format('jpg')
       .width(dimensions.aspectRatio > 1 ? 20 : 10)
-      .quality(dimensions.aspectRatio > 1 ? 10 : 20)
+      .height(dimensions.aspectRatio > 1 ? 10 : 20)
+      .quality(5)
       .url() || 'https://rosnovsky.us/favicon.png'
 
   if (!asset) {
@@ -50,7 +51,7 @@ export const Figure = (props: any) => {
       </div>
       <Image
         src={
-          urlFor(asset).width(896).format('jpg').quality(85).url() ||
+          urlFor(asset).width(896).format('jpg').quality(95).url() ||
           'https://rosnovsky.us/favicon.png'
         }
         width={896}
