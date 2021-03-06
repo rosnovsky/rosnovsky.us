@@ -33,27 +33,33 @@ const useCovidData = () => {
     return data
   }
 
-  const { data, error } = useSWR('http://localhost:3000/api/covid', fetcher, {
-    refreshInterval: 60000,
-    revalidateOnFocus: true,
-    refreshWhenOffline: true,
-    errorRetryInterval: 600000,
-    onError: (err) => {
-      console.error(Date.now(), `Failed to fetch Covid Data 🦠`, err)
-    },
-    shouldRetryOnError: true,
-    refreshWhenHidden: true,
-    onSuccess: (data) => {
-      setToday(
-        new Date(data.date).toLocaleString('en-US', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-          timeZoneName: 'short',
-        })
-      )
-    },
-  })
+  const { data, error } = useSWR(
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000/api/covid'
+      : 'https://rosnovsky.us/api/covid',
+    fetcher,
+    {
+      refreshInterval: 60000,
+      revalidateOnFocus: true,
+      refreshWhenOffline: true,
+      errorRetryInterval: 600000,
+      onError: (err) => {
+        console.error(Date.now(), `Failed to fetch Covid Data 🦠`, err)
+      },
+      shouldRetryOnError: true,
+      refreshWhenHidden: true,
+      onSuccess: (data) => {
+        setToday(
+          new Date(data.date).toLocaleString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            timeZoneName: 'short',
+          })
+        )
+      },
+    }
+  )
   return { data, error, loading, today }
 }
 
