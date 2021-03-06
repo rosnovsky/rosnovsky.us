@@ -24,8 +24,8 @@ const useCovidData = () => {
           positiveIncrease: result.covidData[0].confirmed_daily,
           death: result.covidData[0].deaths,
           deathIncrease: result.covidData[0].deaths_daily,
-          snoDeaths: result.waData[0].deaths,
-          snoDeathsIncrease: result.waData[0].deaths_daily,
+          snoDeaths: result.snoData[0].deaths,
+          snoDeathsIncrease: result.snoData[0].deaths_daily,
         }
         console.log(covidData)
         return covidData

@@ -36,17 +36,17 @@ try {
   WaData = mongoose.model('us_only', WaDataSchema)
 }
 
-export default async (req: NowRequest, res: NowResponse) => {
-  await mongoose.connect(
-    'mongodb+srv://readonly:readonly@covid-19.hip2i.mongodb.net/covid19',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-    }
-  )
+mongoose.connect(
+  'mongodb+srv://readonly:readonly@covid-19.hip2i.mongodb.net/covid19',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
+)
 
+export default async (req: NowRequest, res: NowResponse) => {
   const covidData = await CovidData.find({
     country: 'US',
     date: {
