@@ -16,17 +16,10 @@ const AuthorSchema = new mongoose.Schema({
 })
 
 let Comment
-let Author
 try {
   Comment = mongoose.model('comments')
 } catch (error) {
   Comment = mongoose.model('comments', CommentSchema)
-}
-
-try {
-  Author = mongoose.model('users')
-} catch (error) {
-  Author = mongoose.model('users', AuthorSchema)
 }
 
 export default async (req: NowRequest, res: NowResponse) => {
@@ -41,6 +34,6 @@ export default async (req: NowRequest, res: NowResponse) => {
   const comments: PostComment[] = await Comment.find({
     'comment.postId': postId,
   })
-
+  mongoose.disconnect()
   res.status(200).send({ comments })
 }

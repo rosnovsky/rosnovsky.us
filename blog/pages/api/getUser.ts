@@ -21,5 +21,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 
   const author = await User.findOne({ id: authorId })
 
+  mongoose.disconnect()
+
   res.status(200).send({ author: author })
 }

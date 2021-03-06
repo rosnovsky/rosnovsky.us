@@ -79,6 +79,8 @@ export default withApiAuthRequired(async (req: any, res: any) => {
     if (err) return console.error(err)
   })
 
+  mongoose.disconnect()
+
   res.status(200).send({ comment: NewComment })
   // } catch (error) {
   //   console.error(error)
