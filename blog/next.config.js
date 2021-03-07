@@ -1,6 +1,15 @@
 const withPWA = require('next-pwa')
 
 module.exports = withPWA({
+  pwa: {
+    disable: process.env.NODE_ENV === 'production',
+    register: true,
+    scope: '/',
+    sw: 'sw.js',
+  },
+})
+
+module.exports = {
   reactStrictMode: true,
   preventAssignment: true,
   images: {
@@ -29,4 +38,4 @@ module.exports = withPWA({
     })
     return config
   },
-})
+}
