@@ -2,17 +2,12 @@ import useCovidData from './useCovidData'
 import Container from '../Layout/container'
 import CasesCard from './CovidCard'
 import Loading from './Loading'
-import ReactPlaceholder from 'react-placeholder'
 
 export default function Covid() {
   const { data, error, loading, today } = useCovidData()
 
-  if (error || (!data && loading))
-    return (
-      <div className="text-center font-bold text-red-800 mx-auto">
-        Oops...Something's broken
-      </div>
-    )
+  if (error) return <Loading error={error} />
+
   if (!data) return <Loading loading={!data} />
 
   return (
@@ -24,18 +19,21 @@ export default function Covid() {
             change={data.positiveIncrease}
             title="🇺🇸 Total COVID-19 Cases"
             loading={loading}
+            error={error}
           />
           <CasesCard
             numbers={data.death}
             change={data.deathIncrease}
             title="🇺🇸 Died of Covid-19"
             loading={loading}
+            error={error}
           />
           <CasesCard
             numbers={data.snoDeaths}
             change={data.snoDeathsIncrease}
             title="🇺🇸 Died in Snohomish County"
             loading={loading}
+            error={error}
           />
         </div>
         <p className="text-sm  text-gray-600 mt-2 text-right">

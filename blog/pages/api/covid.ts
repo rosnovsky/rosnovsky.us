@@ -20,7 +20,7 @@ const WaDataSchema = new mongoose.Schema(
 )
 
 const yesterday = new Date()
-const yesterdayDate = yesterday.setDate(yesterday.getDate() - 2)
+const yesterdayDate = yesterday.setDate(yesterday.getDate() - 3)
 
 let CovidData
 let WaData
