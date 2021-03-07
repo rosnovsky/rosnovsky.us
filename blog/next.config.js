@@ -1,5 +1,8 @@
-module.exports = {
+const withPWA = require('next-pwa')
+
+module.exports = withPWA({
   reactStrictMode: true,
+  preventAssignment: true,
   images: {
     domains: [
       'images.unsplash.com',
@@ -26,4 +29,4 @@ module.exports = {
     })
     return config
   },
-}
+})
