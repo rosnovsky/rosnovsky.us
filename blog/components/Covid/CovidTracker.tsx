@@ -1,39 +1,25 @@
-import useCovidData from './useCovidData'
 import Container from '../Layout/container'
-import CasesCard from './CovidCard'
-import Loading from './Loading'
+import CovidCard from './CovidCard'
 
-export default function Covid() {
-  const { data, error, loading, today } = useCovidData()
-
-  if (error) return <Loading error={error} />
-
-  if (!data) return <Loading loading={!data} />
-
+export default function Covid({ data }: any) {
   return (
     <Container>
       <div className="relative max-w-7xl font-body mx-auto pt-5 pb-10">
         <div className="mt-5 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow md:grid-cols-3">
-          <CasesCard
+          <CovidCard
             numbers={data.positive}
             change={data.positiveIncrease}
             title="🇺🇸 Total COVID-19 Cases"
-            loading={loading}
-            error={error}
           />
-          <CasesCard
+          <CovidCard
             numbers={data.death}
             change={data.deathIncrease}
             title="🇺🇸 Died of Covid-19"
-            loading={loading}
-            error={error}
           />
-          <CasesCard
+          <CovidCard
             numbers={data.snoDeaths}
             change={data.snoDeathsIncrease}
             title="🇺🇸 Died in Snohomish County"
-            loading={loading}
-            error={error}
           />
         </div>
         <p className="text-sm  text-gray-600 mt-2 text-right">
@@ -44,7 +30,13 @@ export default function Covid() {
           >
             JHU
           </a>{' '}
-          as of {today}
+          as of{' '}
+          {new Date(data.date).toLocaleString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            timeZoneName: 'short',
+          })}
         </p>
       </div>
     </Container>

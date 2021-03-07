@@ -16,7 +16,6 @@ export const postsQuery = `{
   posts: allPost(limit: 6, sort: [ { publishedAt: DESC } ]){
   _id
   title
-  body: bodyRaw
   featured
   slug {
     current

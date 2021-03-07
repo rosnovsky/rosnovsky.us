@@ -2,13 +2,7 @@ import React from 'react'
 import ReactPlaceholder from 'react-placeholder/lib/ReactPlaceholder'
 import 'react-placeholder/lib/reactPlaceholder.css'
 
-export default function CovidCard({
-  title,
-  numbers,
-  change,
-  loading,
-  error,
-}: any) {
+export default function CovidCard({ title, numbers, change }: any) {
   const formatCases: (cases: number) => String = function (cases) {
     if (cases <= 9999) {
       return Intl.NumberFormat().format(cases)
@@ -47,7 +41,7 @@ export default function CovidCard({
       </>
     )
   }
-  console.log(loading, error)
+
   return (
     <div className="border-t border-gray-200 md:border-0 md:border-l">
       <div className="px-4 py-5 sm:p-6">
@@ -56,39 +50,12 @@ export default function CovidCard({
             {title}
           </dt>
           <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
-            <ReactPlaceholder
-              firstLaunchOnly
-              showLoadingAnimation
-              type="textRow"
-              color={'rgba(119, 29, 29, 0.3)'}
-              style={{ height: '2rem', width: 75, margin: 0, borderRadius: 5 }}
-              ready={!loading}
-            >
-              <div className="flex items-baseline text-2xl leading-8 font-semibold text-red-900">
-                <span>
-                  {!loading && error ? 'Error' : formatCases(numbers)}
-                </span>
-              </div>
-            </ReactPlaceholder>
-            <ReactPlaceholder
-              showLoadingAnimation
-              firstLaunchOnly
-              type="textRow"
-              color={'rgba(119, 29, 29, 0.3)'}
-              style={{
-                height: '1.5rem',
-                width: 80,
-                margin: 0,
-                borderRadius: 10,
-              }}
-              ready={!loading}
-            >
-              <div className="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-red-800 md:mt-2 lg:mt-0">
-                <span className="ml-1">
-                  {!loading && error ? 'Error' : changeStatus(change)}
-                </span>
-              </div>
-            </ReactPlaceholder>
+            <div className="flex items-baseline text-2xl leading-8 font-semibold text-red-900">
+              <span>{formatCases(numbers)}</span>
+            </div>
+            <div className="inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-red-800 md:mt-2 lg:mt-0">
+              <span className="ml-1">{changeStatus(change)}</span>
+            </div>
           </dd>
         </dl>
       </div>

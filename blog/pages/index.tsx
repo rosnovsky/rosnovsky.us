@@ -4,21 +4,24 @@ import Container from '../components/Layout/container'
 import MoreStories from '../components/Posts/MorePosts'
 import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
-import Covid from '../components/Covid/CovidTracker'
+import CovidTracker from '../components/Covid/CovidTracker'
 import Meta from '../components/Header/PageMeta'
 import { postsQuery } from '../utils/queries'
-import type { BlogAlert, BlogPost, Page } from '..'
+import type { BlogAlert, BlogPost, CovidFetchData, Page } from '..'
 
 const Index = ({
   posts,
   menuItems,
   alert,
+  covidData,
 }: {
   posts: BlogPost[]
   menuItems: Page[]
   alert: BlogAlert
+  covidData: CovidFetchData
 }) => {
-  const { loading, noMorePosts, allPosts, loadMore } = useLoadMore(posts)
+  const { isLoading, noMorePosts, allPosts, loadMore } = useLoadMore(posts)
+  // const { data, error, loading, today } = useCovidData()
 
   if (typeof window !== 'undefined') {
     window.onscroll = () => {
@@ -26,7 +29,7 @@ const Index = ({
         window.innerHeight + document.documentElement.scrollTop ===
         document.documentElement.offsetHeight
       ) {
-        if (!noMorePosts && !loading) {
+        if (!noMorePosts && !isLoading) {
           loadMore()
         }
       }
@@ -47,7 +50,7 @@ const Index = ({
         <Container>
           <Intro />
           <div className="bg-red-700 rounded-t-xl bg-opacity-10 py-5">
-            <Covid />
+            <CovidTracker data={covidData} />
           </div>
           <div className="relative bg-gray-50 pt-10 pb-5 px-4 sm:px-6 lg:pt-14 lg:pb-8 lg:px-8">
             {allPosts && allPosts.length > 0 ? (
@@ -68,7 +71,7 @@ const Index = ({
                   role="img"
                   alt="No more internet"
                 />
-              ) : loading ? (
+              ) : isLoading ? (
                 'Loading More Posts...'
               ) : (
                 ''
@@ -93,12 +96,32 @@ export async function getStaticProps({ preview = false }) {
     postsQuery
   )
 
+  const fetchCovidData = await fetch(
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000/api/covid'
+      : 'https://rosnovsky.us/api/covid'
+  )
+
+  const covidDataJSON = await fetchCovidData.json()
+
+  const covidData: CovidFetchData = {
+    date: covidDataJSON.covidData[0].date,
+    positive: covidDataJSON.covidData[0].confirmed,
+    positiveIncrease: covidDataJSON.covidData[0].confirmed_daily,
+    death: covidDataJSON.covidData[0].deaths,
+    deathIncrease: covidDataJSON.covidData[0].deaths_daily,
+    snoDeaths: covidDataJSON.snoData[0].deaths,
+    snoDeathsIncrease: covidDataJSON.snoData[0].deaths_daily,
+  }
+
   return {
     props: {
       preview,
       posts: data.posts,
       menuItems: data.menuItems,
       alert: data.alert[0],
+      covidData,
     },
+    revalidate: 1,
   }
 }

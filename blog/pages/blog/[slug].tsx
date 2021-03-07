@@ -148,11 +148,11 @@ export async function getStaticProps({
       : `http://localhost:3000/api/get?postId=${data.posts[0]._id}`
   )
   const comments: PostComment[] = await fetchComments.json()
-  process.env.CI
+  process.env.VERCEL === '1'
     ? await fetch(
         `https://api.rosnovsky.us/api/algoliaIndex?blogPostId=${data.posts[0]._id}`
       )
-    : console.log('Not in Vercel Build step, skipping Algolia indexing')
+    : console.log('Not in Vercel step, skipping Algolia indexing')
 
   return {
     props: {
