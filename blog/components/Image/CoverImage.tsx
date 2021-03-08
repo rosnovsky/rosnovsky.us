@@ -61,7 +61,12 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
   return (
     <div className="sm:mx-0 z-0">
       {slug ? (
-        <Link as={`/blog/${slug}`} href="/blog/[slug]">
+        <Link
+          href={{
+            pathname: '/blog/[post]/',
+            query: { post: slug },
+          }}
+        >
           <a aria-label={title}>{image}</a>
         </Link>
       ) : (

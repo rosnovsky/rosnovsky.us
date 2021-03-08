@@ -22,7 +22,12 @@ const PostPreview = ({
       className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden"
     >
       <div className="flex-shrink-0">
-        <Link as={`/blog/${postUrl}/${slug!.current}`} href="/blog/[slug]">
+        <Link
+          href={{
+            pathname: '/blog/[postUrl]/[slug]/',
+            query: { postUrl: postUrl, slug: slug!.current },
+          }}
+        >
           <MainImage
             preview={true}
             slug={`${postUrl}/${slug!.current}`}

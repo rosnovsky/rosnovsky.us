@@ -20,7 +20,8 @@
   ],
   "theme_color": "#FFFFFF",
   "background_color": "#FFFFFF",
-  "start_url": "/",
+  "start_url": "https://rosnovsky.us/",
+  "scope": "https://rosnovsky.us/",
   "display": "standalone",
   "orientation": "portrait"
 }
