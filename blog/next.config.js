@@ -8,6 +8,16 @@ module.exports = withPWA({
     dest: 'public',
     runtimeCaching: [
       {
+        urlPattern: 'https://rosnovsky.us/',
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'start-url',
+          expiration: {
+            maxEntries: 200,
+          },
+        },
+      },
+      {
         urlPattern: /^https?.*/,
         handler: 'NetworkFirst',
         options: {
