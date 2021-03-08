@@ -148,7 +148,7 @@ export async function getStaticProps({
       : `http://localhost:3000/api/get?postId=${data.posts[0]._id}`
   )
   const comments: PostComment[] = await fetchComments.json()
-  process.env.CI === '1'
+  process.env.NODE_ENV === 'production'
     ? await fetch(
         `https://api.rosnovsky.us/api/algoliaIndex?blogPostId=${data.posts[0]._id}`
       )
