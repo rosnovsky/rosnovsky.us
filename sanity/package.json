@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@microlink/react": "^5.5.3",
-    "@sanity/base": "^2.3.6",
+    "@sanity/base": "^2.3.7",
     "@sanity/cli": "^2.2.6",
     "@sanity/code-input": "^2.2.6",
     "@sanity/components": "^2.2.6",
