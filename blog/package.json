@@ -32,7 +32,7 @@
     "identity-obj-proxy": "^3.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "jest-next-dynamic": "^1.0.1",
-    "mongoose": "^5.11.19",
+    "mongoose": "^5.12.0",
     "next": "^10.0.8",
     "next-pwa": "^5.0.6",
     "next-sanity": "^0.1.10",
