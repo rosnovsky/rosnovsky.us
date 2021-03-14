@@ -61,6 +61,16 @@ const Post = ({
           mainImage!.asset.url
         )}`
       )
+      console.log(
+        `https://api.rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
+          Date.now(),
+          'dd MMM yyyy'
+        )}&category=${
+          categories[0].title
+        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
+          mainImage!.asset.url
+        )}`
+      )
       const urlJSON = await fetchUrl
       const url = await urlJSON.json()
       return url

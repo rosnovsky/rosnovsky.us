@@ -47,6 +47,7 @@ export const Figure = (props: any) => {
           height={896 / dimensions.aspectRatio}
           objectFit="contain"
           className={'rounded-lg'}
+          quality={100}
         />
       </div>
       <Image
@@ -58,6 +59,7 @@ export const Figure = (props: any) => {
         height={896 / dimensions.aspectRatio}
         alt={`Cover Image for ${asset.title}`}
         loading="lazy"
+        quality={100}
         layout={'responsive'}
         objectFit="cover"
         className={`w-full object-cover shadow-inner hover:shadow-md transition-opacity ease-out duration-500 rounded-lg`}

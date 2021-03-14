@@ -36,6 +36,7 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
           width={1500}
           height={1000}
           objectFit="contain"
+          quality={100}
           priority
         />
       </div>
