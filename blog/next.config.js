@@ -1,5 +1,36 @@
-module.exports = {
+const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
+
+module.exports = withPWA({
+  pwa: {
+    disable: process.env.NODE_ENV === 'development',
+    register: true,
+    dest: 'public',
+    runtimeCaching: [
+      {
+        urlPattern: 'https://rosnovsky.us/',
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'start-url',
+          expiration: {
+            maxEntries: 200,
+          },
+        },
+      },
+      {
+        urlPattern: /^https?.*/,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'offlineCache',
+          expiration: {
+            maxEntries: 200,
+          },
+        },
+      },
+    ],
+  },
   reactStrictMode: true,
+  preventAssignment: true,
   images: {
     domains: [
       'images.unsplash.com',
@@ -26,4 +57,4 @@ module.exports = {
     })
     return config
   },
-}
+})

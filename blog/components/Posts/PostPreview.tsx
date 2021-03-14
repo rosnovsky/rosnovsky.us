@@ -22,14 +22,13 @@ const PostPreview = ({
       className="flex flex-col font-body rounded-lg shadow-lg mb-10 overflow-hidden"
     >
       <div className="flex-shrink-0">
-        <Link as={`/blog/${postUrl}/${slug!.current}`} href="/blog/[slug]">
-          <MainImage
-            preview={true}
-            slug={`${postUrl}/${slug!.current}`}
-            title={title}
-            src={mainImage}
-          />
-        </Link>
+        <MainImage
+          preview={true}
+          slug={`${postUrl}/${slug!.current}`}
+          publishedAt={publishedAt}
+          title={title}
+          src={mainImage}
+        />
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
         <div className="flex-1">
@@ -57,7 +56,7 @@ const PostPreview = ({
             <p className="text-xl font-semibold text-gray-900">
               <Link
                 as={`/blog/${postUrl}/${slug!.current}`}
-                href="/blog/[slug]"
+                href="/blog/[postUrl]/[slug]"
               >
                 <span className="hover:underline text-3xl text-green-900 font-black font-heading cursor-pointer">
                   {title}

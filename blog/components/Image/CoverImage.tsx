@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { format } from 'date-fns'
 import { urlFor } from '../../utils/sanity'
 
 const MainImage = ({ title, src, slug, preview, featured }: any) => {
   const imageFile =
     urlFor(src.asset.url).width(710).height(455).format('jpg').url() || ''
+
   const lqip =
     urlFor(src.asset.url)
       .format('jpg')
@@ -22,7 +24,6 @@ const MainImage = ({ title, src, slug, preview, featured }: any) => {
         alt={`Cover Image for ${title}`}
         layout={'responsive'}
         priority
-        // priority={preview ? false : true}
         className="object-cover shadow-inner rounded-lg"
       />
     </div>

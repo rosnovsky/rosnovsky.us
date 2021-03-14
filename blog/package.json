@@ -12,7 +12,7 @@
     "@auth0/nextjs-auth0": "^1.1.0",
     "@microlink/react": "^5.5.4",
     "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/types": "^2.4.0",
+    "@sanity/types": "^2.6.0",
     "@tailwindcss/custom-forms": "^0.2.1",
     "@tailwindcss/typography": "^0.4.0",
     "@tailwindcss/ui": "^0.7.2",
@@ -32,8 +32,9 @@
     "identity-obj-proxy": "^3.0.0",
     "isomorphic-unfetch": "^3.1.0",
     "jest-next-dynamic": "^1.0.1",
-    "mongoose": "^5.11.18",
-    "next": "^10.0.8-canary.17",
+    "mongoose": "^5.11.19",
+    "next": "^10.0.8",
+    "next-pwa": "^5.0.6",
     "next-sanity": "^0.1.10",
     "puppeteer-core": "^8.0.0",
     "react": "17.0.1",
@@ -58,14 +59,13 @@
     "@types/react-dom": "17.0.1",
     "@types/react-syntax-highlighter": "^13.5.0",
     "babel-jest": "^26.6.3",
-    "date-fns": "2.17.0",
+    "date-fns": "2.19.0",
     "jest": "^26.6.3",
     "jest-dom": "^4.0.0",
-    "logrocket": "^1.0.14",
-    "postcss": "^8.2.6",
+    "postcss": "^8.2.7",
     "postcss-preset-env": "6.7.0",
     "tailwindcss": "2.0.3",
-    "ts-jest": "^26.5.2"
+    "ts-jest": "^26.5.3"
   },
   "license": "MIT"
 }

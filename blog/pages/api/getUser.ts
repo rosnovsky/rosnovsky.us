@@ -12,7 +12,7 @@ const User = mongoose.models.User || mongoose.model('users', UserSchema)
 export default async (req: NowRequest, res: NowResponse) => {
   const authorId = req.query.userId
 
-  await mongoose.connect(process.env.DB_URL || 'default', {
+  await mongoose.createConnection(process.env.DB_URL || 'default', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

@@ -37,8 +37,8 @@ describe('Covid Component', () => {
         positiveIncrease: 20000,
         death: 300,
         deathIncrease: 400,
-        hospitalizedCurrently: 500,
-        hospitalizedIncrease: -600,
+        snoDeaths: 600,
+        snoDeathsIncrease: 0,
       },
       error: 'null',
     })
