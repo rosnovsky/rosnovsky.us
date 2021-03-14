@@ -73,7 +73,7 @@ const Post = ({
       <Meta
         title={title}
         pageType="article"
-        description=""
+        description={socialCard?.subtitle || 'Read More...'}
         coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
           socialTitle
         ).toLowerCase()}.png`}

@@ -6,7 +6,6 @@ const Figure = dynamic(import('./Figure'))
 const Code = dynamic(import('./Code'))
 const Microlink = dynamic(import('@microlink/react'))
 const Youtube = dynamic(import('react-player/youtube'))
-// import { trackGoal } from 'fathom-client'
 
 const serializers = {
   marks: {

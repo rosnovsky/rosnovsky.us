@@ -7,12 +7,6 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="preconnect"
-            href="https://api.covidtracking.com/v1/us/current.json"
-            as="fetch"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preconnect"
             href="https://vitals.vercel-insights.com"
             as="fetch"
             crossOrigin="anonymous"
@@ -72,24 +66,8 @@ export default class MyDocument extends Document {
           />
           <link rel="shortcut icon" href="/static/icons/favicon.ico" />
 
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:url" content="https://rosnovsky.us" />
-          <meta name="twitter:title" content="Rosnovsky Park™" />
-          <meta
-            name="twitter:description"
-            content="From the Pacific Northwest to the World"
-          />
-          <meta
-            name="twitter:image"
-            content="https://rosnovsky.us/static/icons/android-chrome-192x192.png"
-          />
-          <meta name="twitter:creator" content="@rosnovsky" />
           <meta property="og:site_name" content="Rosnovsky Park™" />
           <meta property="og:url" content="https://rosnovsky.us" />
-          <meta
-            property="og:image"
-            content="https://rosnovsky.us/static/icons/apple-touch-icon.png"
-          />
         </Head>
         <body>
           <Main />
