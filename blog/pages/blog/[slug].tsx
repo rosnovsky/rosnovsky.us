@@ -172,7 +172,7 @@ export async function getStaticProps({
       menuItems: data.menuItems,
       comments,
     },
-    revalidate: 60,
+    revalidate: 600,
   }
 }
 

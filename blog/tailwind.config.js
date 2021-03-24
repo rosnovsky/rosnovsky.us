@@ -1,10 +1,10 @@
 module.exports = {
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
   theme: {
-    fontFamily: {
-      body: ['Space Grotesk', 'Helvetica', 'sans-serif'],
-      heading: ['Inter', 'Roboto', 'Helvetica', 'sans-serif'],
-    },
+    // fontFamily: {
+    //   body: ['Space Grotesk', 'Helvetica', 'sans-serif'],
+    //   heading: ['Inter', 'Roboto', 'Helvetica', 'sans-serif'],
+    // },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',

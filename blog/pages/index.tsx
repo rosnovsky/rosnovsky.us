@@ -1,7 +1,7 @@
 import { request } from 'graphql-request'
 import useLoadMore from '../utils/useLoadMore'
 import Container from '../components/Layout/container'
-import MoreStories from '../components/Posts/MorePosts'
+import MorePosts from '../components/Posts/MorePosts'
 import Intro from '../components/Header/intro'
 import Layout from '../components/Layout/layout'
 import CovidTracker from '../components/Covid/CovidTracker'
@@ -54,7 +54,7 @@ const Index = ({
           </div>
           <div className="relative bg-gray-50 pt-10 pb-5 px-4 sm:px-6 lg:pt-14 lg:pb-8 lg:px-8">
             {allPosts && allPosts.length > 0 ? (
-              <MoreStories posts={allPosts!} />
+              <MorePosts posts={allPosts!} />
             ) : (
               <div className="text-center font-mono text-lg mt-5">
                 <p className="text-3xl font-semibold">No Posts.</p>
@@ -122,6 +122,6 @@ export async function getStaticProps({ preview = false }) {
       alert: data.alert[0],
       covidData,
     },
-    revalidate: 1,
+    revalidate: 600,
   }
 }
