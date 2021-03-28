@@ -13,7 +13,7 @@ export const postsQuery = `{
       current
     }
   }
-  posts: allPost(limit: 6, sort: [ { publishedAt: DESC } ]){
+  posts: allPost(limit: 9, sort: [ { publishedAt: DESC } ]){
   _id
   title
   featured
@@ -52,8 +52,8 @@ export const postsQuery = `{
 }`
 
 export const morePostsQuery = (index: number) => `{
-  posts: allPost(limit: 6, offset: ${
-    6 * index
+  posts: allPost(limit: 9, offset: ${
+    9 * index
   }, sort: [ { publishedAt: DESC } ], where: { featured: { neq: true }}){
     _id
     title
