@@ -8,9 +8,7 @@ import Layout from '../components/Layout/layout'
 import PostTitle from '../components/Pages/PageTitle'
 import { request } from 'graphql-request'
 import Meta from '../components/Header/PageMeta'
-import { useEffect } from 'react'
-import { format } from 'date-fns'
-import slugify from 'slugify'
+import generateSocialImage from '../utils/generateSocialCards'
 import type { BlogAlert, Page, BlogPage } from '..'
 
 const PublishedPage = ({
@@ -28,34 +26,22 @@ const PublishedPage = ({
     return <ErrorPage menuItems={menuItems} statusCode={404} />
   }
 
-  useEffect(() => {
-    const fetchImageUrl = async () => {
-      const socialTitle = socialCard?.title || title
-      const socialSubtitle = socialCard?.subtitle || 'Read More...'
-      const fetchUrl = await fetch(
-        `https://api.rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
-          Date.now(),
-          'dd MMM yyyy'
-        )}&category=Page&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
-          mainImage.asset.url
-        )}`
-      )
-      const urlJSON = await fetchUrl
-      const url = await urlJSON.json()
-      return url
-    }
-    fetchImageUrl()
-  }, [])
-
   return (
     <>
       <Meta
         title={title}
         pageType="article"
         description={title}
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
-          socialCard?.title || title
-        )}.png`}
+        coverImage={generateSocialImage({
+          title,
+          cloudName: 'rosnovsky',
+          date: new Date().getFullYear.toString(),
+          postTag: 'rosnovsky.us',
+          cloudinaryUrlBase: 'https://res.cloudinary.com',
+          imagePublicID: 'socialCard.png',
+          // titleExtraConfig: '_line_spacing_-10',
+          textColor: '232129',
+        })}
         canonicalUrl={`https://rosnovsky.us/${slug}`}
         coverAlt={title}
         slug={slug}
