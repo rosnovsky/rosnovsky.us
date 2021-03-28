@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { request } from 'graphql-request'
 import { format } from 'date-fns'
-import slugify from 'slugify'
+import generateSocialImage from '../../utils/generateSocialCards'
 import { postQuery } from '../../utils/queries'
 import ErrorPage from 'next/error'
 import Container from '../../components/Layout/container'
@@ -45,48 +44,22 @@ const Post = ({
     return <ErrorPage menuItems={menuItems} statusCode={404} />
   }
 
-  const socialTitle = socialCard?.title || title
-
-  useEffect(() => {
-    const fetchImageUrl = async () => {
-      const socialTitle = socialCard?.title || title
-      const socialSubtitle = socialCard?.subtitle || 'Read More...'
-      const fetchUrl = await fetch(
-        `https://api.rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
-          Date.now(),
-          'dd MMM yyyy'
-        )}&category=${
-          categories[0].title
-        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
-          mainImage!.asset.url
-        )}`
-      )
-      console.log(
-        `https://api.rosnovsky.us/api/generateOgImage?title=${socialTitle}&date=${format(
-          Date.now(),
-          'dd MMM yyyy'
-        )}&category=${
-          categories[0].title
-        }&subtitle=${socialSubtitle}&coverImage=${encodeURIComponent(
-          mainImage!.asset.url
-        )}`
-      )
-      const urlJSON = await fetchUrl
-      const url = await urlJSON.json()
-      return url
-    }
-    fetchImageUrl()
-  }, [])
-
   return (
     <>
       <Meta
         title={title}
         pageType="article"
         description={socialCard?.subtitle || 'Read More...'}
-        coverImage={`https://res.cloudinary.com/rosnovsky/image/upload/social-images/${slugify(
-          socialTitle
-        ).toLowerCase()}.png`}
+        coverImage={generateSocialImage({
+          title,
+          date: format(Date.parse(publishedAt), 'dd MMM yyyy'),
+          postTag: categories[0].title,
+          cloudName: 'rosnovsky',
+          cloudinaryUrlBase: 'https://res.cloudinary.com',
+          imagePublicID: 'socialCard.png',
+          // titleExtraConfig: '_line_spacing_-10',
+          textColor: '232129',
+        })}
         canonicalUrl={`https://rosnovsky.us/blog/${format(
           Date.parse(publishedAt),
           'yyyy/MM/dd'

@@ -17,5 +17,5 @@
     "sourceMap": true
   },
   "exclude": ["node_modules"],
-  "include": ["/index.d.ts", "**/*.tsx"]
+  "include": ["/index.d.ts", "**/*.tsx", "pages/generateOgImage.ts"]
 }
