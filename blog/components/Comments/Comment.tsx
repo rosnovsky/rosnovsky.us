@@ -1,11 +1,16 @@
 import { PostComment } from '../..'
 
 const Comment = ({ comment }: { comment: PostComment }) => {
+  console.log(comment.author)
   return (
     <div className="p-10 flex space-x-10 my-6 bg-gray-100 rounded-lg">
       <div className="flex flex-col w-1/5 items-center space-y-5">
         <img
-          className="w-20 rounded-full bg-gray-400 flex ring-8 ring-white"
+          className={`w-20 rounded-full ${
+            comment.author?.id === 'linkedin|p3Jdh3f0W5'
+              ? 'ring-red-500'
+              : 'ring-white'
+          } flex ring-8 `}
           src={comment.author.picture}
           alt=""
         />
