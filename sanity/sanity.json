@@ -24,8 +24,7 @@
     "dashboard-widget-document-chart",
     "@sanity/vision",
     "mux-input",
-    "autocomplete-tags",
-    "content-calendar"
+    "autocomplete-tags"
   ],
   "parts": [
     {
