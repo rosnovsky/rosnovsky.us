@@ -8,14 +8,25 @@ export const Figure = (props: any) => {
     width: asset._ref.split('-')[2].split('x')[0],
     height: asset._ref.split('-')[2].split('x')[1],
     aspectRatio:
-      asset._ref.split('-')[2].split('x')[0] /
-      asset._ref.split('-')[2].split('x')[1],
+      Math.round(
+        (asset._ref.split('-')[2].split('x')[0] /
+          asset._ref.split('-')[2].split('x')[1]) *
+          100
+      ) / 100,
   }
   const lqip =
     urlFor(asset._ref)
       .format('jpg')
-      .width(dimensions.aspectRatio > 1 ? 20 : 10)
-      .height(dimensions.aspectRatio > 1 ? 10 : 20)
+      .width(
+        dimensions.aspectRatio > 1
+          ? Math.round(10 * dimensions.aspectRatio)
+          : 10
+      )
+      .height(
+        dimensions.aspectRatio > 1
+          ? 10
+          : Math.round(10 * dimensions.aspectRatio)
+      )
       .quality(5)
       .url() || 'https://rosnovsky.us/favicon.png'
 
