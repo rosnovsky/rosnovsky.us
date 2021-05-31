@@ -50,9 +50,9 @@ export default function BlogLayout({ children, frontMatter }) {
           {children}
         </div>
         <div className="mt-8">
-          <Subscribe />
         </div>
-        <div className="text-sm text-gray-700 dark:text-gray-300">
+          <Subscribe />
+        {/* <div className="text-sm text-gray-700 dark:text-gray-300">
           <a
             href={discussUrl(frontMatter.slug)}
             target="_blank"
@@ -68,7 +68,7 @@ export default function BlogLayout({ children, frontMatter }) {
           >
             {'Edit on GitHub'}
           </a>
-        </div>
+        </div> */}
       </article>
     </Container>
   );

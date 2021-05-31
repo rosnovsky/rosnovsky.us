@@ -34,6 +34,12 @@ export default function Footer() {
             </a>
           </Link> */}
         </div>
+        
+          {/* <ExternalLink href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw">
+            YouTube
+          </ExternalLink> */}
+        </div>
+        <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-4">
           <ExternalLink href="https://twitter.com/rosnovsky">
             Twitter
@@ -41,11 +47,6 @@ export default function Footer() {
           <ExternalLink href="https://github.com/rosnovsky">
             GitHub
           </ExternalLink>
-          {/* <ExternalLink href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw">
-            YouTube
-          </ExternalLink> */}
-        </div>
-        <div className="flex flex-col space-y-4">
           {/* <Link href="/uses">
             <a className="text-gray-500 hover:text-gray-600 transition">Uses</a>
           </Link> */}
@@ -54,11 +55,11 @@ export default function Footer() {
               Snippets
             </a>
           </Link> */}
-          <Link href="/tweets">
+          {/* <Link href="/tweets">
             <a className="text-gray-500 hover:text-gray-600 transition">
               Tweets
             </a>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
