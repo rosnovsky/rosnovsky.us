@@ -43,7 +43,7 @@ export default function Home() {
         <BlogPost
           title="Weekly Update #3"
           summary="This one is a bit late and shorter than usual."
-          slug="weekly-update-3"
+          slug="2021-04-20-weekly-update-3"
           publishedAt="2021/04/19"
         />
         {/* <BlogPost
