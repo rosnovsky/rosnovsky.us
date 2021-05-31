@@ -16,8 +16,8 @@ export default function Container(props) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Art Rosnovsky – Developer, writer, creator.',
-    description: `Front-end developer, JavaScript enthusiast, and course creator.`,
+    title: 'Art Rosnovsky – Web Developer, podcaster, human.',
+    description: `Software Engineer, web developer, podcaster, human. He/him.`,
     image: 'https://rosnovsky.us/static/images/banner.png',
     type: 'website',
     ...customMeta
