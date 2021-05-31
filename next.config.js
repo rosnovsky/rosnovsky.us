@@ -49,10 +49,10 @@ module.exports = withPWA({
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
-  child-src *.youtube.com *.google.com *.twitter.com localhost *.vercel.app;
+  child-src *.youtube.com *.google.com *.twitter.com localhost rosnovsky.us *.vercel.app;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
-  worker-src *.vercel.app localhost:3000;
+  worker-src *.vercel.app localhost:3000 rosnovsky.us;
   media-src 'none';
   connect-src *;
   font-src 'self';

@@ -64,7 +64,7 @@ export default function Subscribe() {
         <input
           ref={inputEl}
           aria-label="Email for newsletter"
-          placeholder="tim@apple.com"
+          placeholder="art@rosnovsky.us"
           type="email"
           autoComplete="email"
           required
@@ -85,7 +85,7 @@ export default function Subscribe() {
         <p className="text-sm text-gray-800 dark:text-gray-200">
           {`${subscriberCount || '-'} subscribers – `}
           {/* <Link href="/newsletter"> */}
-            <a>{issuesCount || 'no'} issues</a>
+            {issuesCount || 'no'} issues
           {/* </Link> */}
         </p>
       )}

@@ -35,7 +35,7 @@ export default function Container(props) {
         />
         <link
           rel="canonical"
-          href={`https://rosnovskyus-alt-rosnovsky.vercel.app${router.asPath}`}
+          href={`https://rosnovsky.us${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Art Rosnovsky" />

@@ -18,7 +18,6 @@ export default async (_, res) => {
 
   const issues = await issuesRes.json();
   const subscribers = await subscribersRes.json();
-  console.log(issues)
   
   res.setHeader(
     'Cache-Control',
