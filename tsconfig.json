@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "noImplicitAny": false
+  },
+  "exclude": ["node_modules"],
+  "include": ["/index.d.ts", "**/*.tsx", "pages/generateOgImage.ts"]
+}

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://rosnovsky.us/sitemap.xml
