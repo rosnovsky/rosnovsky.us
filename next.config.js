@@ -28,8 +28,8 @@ module.exports = withPWA({
   },
   webpack: (config, { dev, isServer }) => {
     if (isServer) {
-      require('./scripts/generate-sitemap');
-      require('./scripts/generate-rss');
+      require('./scripts/generate-sitemap.ts');
+      require('./scripts/generate-rss.ts');
     }
 
     // Replace React with Preact only in client production build

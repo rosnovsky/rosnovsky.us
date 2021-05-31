@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leerob/rosnovsky.us.git"
+    "url": "git+https://github.com/rosnovsky/rosnovsky-alt.git"
   },
   "scripts": {
     "build": "next build",

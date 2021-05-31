@@ -43,7 +43,7 @@ export default function Subscribe() {
       return;
     }
 
-    trackGoal('JYFUFMSF', 0);
+    trackGoal('VDNNZGJ4', 0);
     // @ts-ignore
     inputEl.current.value = '';
     setForm({
@@ -58,8 +58,7 @@ export default function Subscribe() {
         Subscribe to the newsletter
       </p>
       <p className="my-1 text-gray-800 dark:text-gray-200">
-        Get emails from me about web development, tech, and early access to new
-        articles.
+        Get updates, new posts, photos, projects, ideas, and more!
       </p>
       <form className="relative my-4" onSubmit={subscribe}>
         <input
@@ -85,9 +84,9 @@ export default function Subscribe() {
       ) : (
         <p className="text-sm text-gray-800 dark:text-gray-200">
           {`${subscriberCount || '-'} subscribers – `}
-          <Link href="/newsletter">
+          {/* <Link href="/newsletter"> */}
             <a>{issuesCount || 'no'} issues</a>
-          </Link>
+          {/* </Link> */}
         </p>
       )}
     </div>

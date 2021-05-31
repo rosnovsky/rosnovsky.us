@@ -41,10 +41,10 @@ export default function Home() {
           Featured Posts
         </h3>
         <BlogPost
-          title="Building this website: Part 3"
-          summary="In this installment, let’s talk about what it takes to start over and why perfect is indeed the enemy of good."
-          slug="building-this-website-part-3"
-          publishedAt="2021/02/23"
+          title="Weekly Update #3"
+          summary="This one is a bit late and shorter than usual."
+          slug="weekly-update-3"
+          publishedAt="2021/04/19"
         />
         {/* <BlogPost
           title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
