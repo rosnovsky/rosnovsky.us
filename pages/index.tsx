@@ -35,7 +35,7 @@ export default function Home() {
           Rosnovsky Park™
         </h1>
         <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
-          Hi! I’m Art, Software Engineer from <a href="https://www.google.com/maps/place/Arlington,+WA/@48.1741806,-122.1844234,13z/" target="_blank" rel="noreferrer noopener" className="text-blue-700 dark:text-blue-400 underline hover:cursor-pointer">Arlington, WA</a>. I work as a Customer Onboarding Engineer @ Auth0. <Link href="/about"><span className="text-blue-700 dark:text-blue-400  underline hover:cursor-pointer">AMA</span></Link>!
+          Hi! I’m Art, Software Engineer from <a href="https://www.google.com/maps/place/Arlington,+WA/@48.1741806,-122.1844234,13z/" target="_blank" rel="noreferrer noopener" ><span className="text-blue-700 font-semibold hover:text-blue-900 dark:hover:text-blue-200 dark:text-blue-400 underline hover:cursor-pointer">Arlington, WA</span></a>. I work as a Customer Onboarding Engineer @ Auth0. <Link href="/about"><span className="text-blue-700 dark:text-blue-400  underline hover:cursor-pointer font-semibold hover:text-blue-900 dark:hover:text-blue-200">AMA</span></Link>!
         </h2>
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
           Featured Posts
