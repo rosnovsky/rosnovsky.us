@@ -33,11 +33,16 @@ export async function getFileBySlug(type, slug) {
 
   return {
     mdxSource,
+    content,
     tweetIDs: tweetIDs || [],
     frontMatter: {
       wordCount: content.split(/\s+/gu).length,
       readingTime: readingTime(content),
       slug: slug || null,
+      title: data.title,
+      cover: data.cover ? data.cover : "/static/favicons/favicon.ico",
+      summary: data.summary,
+      publishedAt: data.publishedAt,
       ...data
     }
   };

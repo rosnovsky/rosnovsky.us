@@ -3,7 +3,7 @@ import { parseISO, format } from 'date-fns';
 
 import Container from '../components/Container';
 import Subscribe from '../components/Cards/SubscribeCard';
-import ViewCounter from '../components/ViewCounter';
+// import ViewCounter from '../components/ViewCounter';
 
 const editUrl = (slug) =>
   `https://github.com/rosnovsky/rosnovsky.us/edit/main/data/blog/${slug}.mdx`;
