@@ -42,7 +42,7 @@ export default function Home() {
         </h3>
         <BlogPost
           title="Loowit Trail"
-          summary="This hike report is long overdue. I've taken a whole week off work to do this hike and apparently it took me over a week to come up with a sensible story about it. This is a long one, so bear with me."
+          summary="It was a terrible mistake and I shouldn't have done this trail. Sheer luck and generosity of other hikers are the only two reasons I'm not a hero of an article about local Search and Rescue trying to airlift an unconscious hiker from Mt. St. Helens."
           slug="loowit-trail"
           publishedAt="20/09/18"
         />
