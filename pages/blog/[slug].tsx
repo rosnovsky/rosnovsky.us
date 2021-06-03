@@ -8,12 +8,15 @@ import BlogLayout from '../../layouts/blog';
 import Tweet from '../../components/Tweet';
 import MDXComponents from '../../components/Utils/MDXComponents';
 
+import { useUser } from '@auth0/nextjs-auth0';
+
 const markdownToHtml = async (markdown: string) => {
   const result = await remark().use(html).process(markdown)
   return result.toString()
 }
 
 export default function Blog({ mdxSource, tweets, frontMatter }) {
+  const { user, error, isLoading } = useUser();
   const StaticTweet = ({ id }) => {
     const tweet = tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
@@ -28,6 +31,7 @@ export default function Blog({ mdxSource, tweets, frontMatter }) {
           StaticTweet
         }}
       />
+      {user ? <span id="comments" className="font-bold">Comments comming soon. But thanks for logging in ;)</span> : <span className="text-black"><a href="/api/auth/login">Signup or Login</a> to comment</span>}
     </BlogLayout>
   );
 }

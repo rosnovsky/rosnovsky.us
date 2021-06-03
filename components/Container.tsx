@@ -3,13 +3,16 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import NextLink from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0';
 
 import Footer from './Footer';
 
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const { user, error, isLoading } = useUser();
 
+  
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
@@ -18,10 +21,11 @@ export default function Container(props) {
   const meta = {
     title: 'Art Rosnovsky – Web Developer, podcaster, human.',
     description: `Software Engineer, web developer, podcaster, human. He/him.`,
-    image: 'https://rosnovsky.us/static/images/banner.png',
+    image: 'https://rosnovsky.us/static/images/banner.jpg',
     type: 'website',
     ...customMeta
   };
+  
 
   return (
     <div className="bg-white dark:bg-black">
@@ -89,6 +93,7 @@ export default function Container(props) {
         </button>
         <div>
           <NextLink href="/">
+          
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Home</a>
           </NextLink>
           <NextLink href="/blog">
@@ -102,6 +107,7 @@ export default function Container(props) {
           <NextLink href="/about">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">About</a>
           </NextLink>
+            {user ? <a href="/api/auth/logout" className="p-1 sm:p-4 text-black dark:text-red-100">Logout</a> : <a href="/api/auth/login" className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Login</a>}
         </div>
       </nav>
       <main
