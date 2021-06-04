@@ -31,7 +31,7 @@ export default function Blog({ mdxSource, tweets, frontMatter }) {
           StaticTweet
         }}
       />
-      {user ? <span id="comments" className="font-bold">Comments comming soon. But thanks for logging in, {user.name} ;)</span> : <span className="text-black"><a href="/api/auth/login"><span className="text-blue-700 dark:text-blue-400  underline hover:cursor-pointer font-semibold hover:text-blue-900 dark:hover:text-blue-200">Signup or Login</span></a> to comment</span>}
+      {user ? <span id="comments" className="font-bold">Comments comming soon. But thanks for logging in, {user.name} ;)</span> : <span className="text-black"><a href="/api/auth/login"><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></a> to comment</span>}
     </BlogLayout>
   );
 }

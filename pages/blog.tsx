@@ -24,7 +24,7 @@ export default function Blog({ posts }) {
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <SearchIcon className="h-10 w-10 text-gray-600" />
           </div>
-          <input onChange={event => refine(event.currentTarget.value)}type="search" name="search" id="search" autoComplete="false" className="h-16 text-black dark:text-white text-xl block w-full pl-16 border-gray-600" placeholder="Find a post..." />
+          <input onChange={event => refine(event.currentTarget.value)}type="search" name="search" id="search" autoComplete="false" className="h-16 rounded-md text-black dark:text-white text-xl block w-full pl-16 border-gray-600" placeholder="Find a post..." />
         </div>
       </div>
     );
@@ -42,7 +42,7 @@ export default function Blog({ posts }) {
           Blog
         </h1>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          {`My first blog on Livejournal was istablished in 2003. I've started this one in 2019, posting ${posts.length} blog posts.`}
+          {`My first blog on Livejournal was istablished in 2003. I've started this one in 2019, posting ${posts.length} blog posts. You can find interesting posts with this Algolia-powered full-text search.`}
         </p>
         <div className="relative w-full mb-4">
           <InstantSearch

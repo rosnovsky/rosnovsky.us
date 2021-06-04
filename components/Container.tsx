@@ -62,7 +62,7 @@ export default function Container(props) {
         <button
           aria-label="Toggle Dark Mode"
           type="button"
-          className="bg-gray-200 dark:bg-gray-800 rounded p-3 h-10 w-10"
+          className="bg-green-100 dark:bg-green-opaque rounded p-3 h-10 w-10"
           onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
         >
           {mounted && (
@@ -99,9 +99,9 @@ export default function Container(props) {
           <NextLink href="/blog">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Blog</a>
           </NextLink>
-          <NextLink href="/dashboard">
+          <NextLink href="/stats">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">
-              Dashboard
+              Stats
             </a>
           </NextLink>
           <NextLink href="/about">

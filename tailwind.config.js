@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-opaque': 'rgb(13 42 148 / 18%)'
+        'blue-opaque': 'rgb(13 42 148 / 18%)',
+        'green-opaque': 'rgb(6 78 59 / 24%)'
       },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans]
@@ -17,11 +18,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.blue.500'),
+              color: theme('colors.green.700'),
               '&:hover': {
-                color: theme('colors.blue.700')
+                color: theme('colors.green.900')
               },
-              code: { color: theme('colors.blue.400') }
+              code: { color: theme('colors.green.400') }
             },
             'h2,h3,h4': {
               'scroll-margin-top': spacing[32]
@@ -35,11 +36,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.blue.400'),
+              color: theme('colors.green.400'),
               '&:hover': {
-                color: theme('colors.blue.600')
+                color: theme('colors.green.600')
               },
-              code: { color: theme('colors.blue.400') }
+              code: { color: theme('colors.green.400') }
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.700'),
