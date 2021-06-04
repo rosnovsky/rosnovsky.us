@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
+import generateSocialImage from '../utils/generateSocialCard'
 
 import Container from '../components/Container';
 import Subscribe from '../components/Cards/SubscribeCard';
@@ -7,17 +8,22 @@ import Subscribe from '../components/Cards/SubscribeCard';
 
 const editUrl = (slug) =>
   `https://github.com/rosnovsky/rosnovsky.us/edit/main/data/blog/${slug}.mdx`;
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://rosnovsky.us/blog/${slug}`
-  )}`;
 
 export default function BlogLayout({ children, frontMatter }) {
   return (
     <Container
       title={`${frontMatter.title} – Art Rosnovsky`}
       description={frontMatter.summary}
-      image={`https://rosnovsky.us${frontMatter.image}`}
+      image={generateSocialImage({
+        title: frontMatter.title,
+        cloudName: 'rosnovsky',
+        publishedAt: format(parseISO(frontMatter.publishedAt), 'dd MMMM yyyy'),
+        postTag: 'rosnovsky.us',
+        cloudinaryUrlBase: 'https://res.cloudinary.com',
+        imagePublicID: 'greenSocialCard.jpg',
+        // titleExtraConfig: '_line_spacing_-10',
+        textColor: 'fff',
+      })}
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >
