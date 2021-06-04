@@ -50,8 +50,8 @@ export default function Blog({ posts }) {
             searchClient={searchClient}
           >
             {/* Widgets */}
-            <CustomSearchBox className="w-full text-black dark:text-white border-2 border-black" />
-            <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
+            <CustomSearchBox className="w-full text-black dark:text-white border-2 border-black rounded-md focus:ring-green-500 focus:border-green-500" />
+            <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">Blog Posts
         </h3>
           <Hits hitComponent={Hit} />
           </InstantSearch>
