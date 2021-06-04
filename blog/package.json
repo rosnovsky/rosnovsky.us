@@ -9,7 +9,7 @@
     "test": "jest --watchAll --coverage --silent --verbose"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.1.0",
+    "@auth0/nextjs-auth0": "^1.4.0",
     "@microlink/react": "^5.5.4",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/types": "^2.6.0",
