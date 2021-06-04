@@ -10,7 +10,7 @@ import Footer from './Footer';
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
 
   
   // After mounting, we have access to the theme

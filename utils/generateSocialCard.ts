@@ -118,5 +118,4 @@ export default function generateSocialImage({
   const validParts = urlParts.filter(Boolean)
 
   // join all the parts into a valid URL to the generated image
-  console.log(validParts.join('/'))
   return validParts.join('/')}

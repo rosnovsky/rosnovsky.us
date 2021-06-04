@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
   useAnalytics();
 
   return (
-    <UserProvider>
+    <UserProvider profileUrl={""}>
       <ThemeProvider attribute="class">
         <MDXProvider components={MDXComponents}>
           <Component {...pageProps} />
