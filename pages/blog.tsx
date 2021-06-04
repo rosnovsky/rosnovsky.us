@@ -42,7 +42,7 @@ export default function Blog({ posts }) {
           Blog
         </h1>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          {`My first blog on Livejournal was istablished in 2003. I've started this one in 2019, posting ${posts.length} blog posts. You can find interesting posts with this Algolia-powered full-text search.`}
+          {`My first blog on Livejournal was established in 2003. I've started this one in 2019, posting ${posts.length} blog posts. You can find interesting posts with this Algolia-powered full-text search.`}
         </p>
         <div className="relative w-full mb-4">
           <InstantSearch
