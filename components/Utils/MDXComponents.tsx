@@ -1,12 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-// import ProsCard from '../Cards/ProsCard';
-// import ConsCard from '../Cards/ConsCard';
-// import Gumroad from '../metrics/Gumroad';
-// import Unsplash from '../metrics/Unsplash';
-// import Analytics from '../metrics/Analytics';
-// import YouTube from '../metrics/Youtube';
 import Step from '../Step';
 
 const CustomLink = (props) => {

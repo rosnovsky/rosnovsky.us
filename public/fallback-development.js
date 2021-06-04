@@ -33,4 +33,3 @@ self.fallback = async request => {
   ;
 };
 /******/ })()
-;

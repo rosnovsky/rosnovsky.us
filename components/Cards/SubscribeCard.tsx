@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import Link from 'next/link';
 import useSWR from 'swr';
 import format from 'comma-number';
 import { trackGoal } from 'fathom-client';
@@ -9,7 +8,7 @@ import SuccessMessage from '../Utils/SuccessMessage';
 import ErrorMessage from '../ErrorMessage';
 import LoadingSpinner from '../Utils/LoadingSpinner';
 
-export default function Subscribe() {
+export default function SubscribeCard() {
   const [form, setForm] = useState({
     state: '',
     message: ''
@@ -52,10 +51,30 @@ export default function Subscribe() {
     });
   };
 
+  const formStatus = (form) => {
+    if(form.state === 'loading'){
+      return <LoadingSpinner />
+    }
+    return 'Subscribe'
+  }
+
+  const formHasErrors = form => {
+    if(form.state === 'error'){
+        return <ErrorMessage>{form.message}</ErrorMessage>
+      }
+      else if(form.state === 'success'){
+        return <SuccessMessage>{form.message}</SuccessMessage>
+      }
+    return <p className="text-sm text-gray-800 dark:text-gray-200">
+      {`${subscriberCount || '-'} subscribers – `}
+        {issuesCount || 'no'} issues
+    </p>
+    }
+
   return (
     <div className="border border-green-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-green-50 dark:bg-green-opaque">
       <p className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
-        Subscribe to the newsletter
+        SubscribeCard to the newsletter
       </p>
       <p className="my-1 text-gray-800 dark:text-gray-200">
         Get updates, new posts, photos, projects, ideas, and more!
@@ -74,21 +93,10 @@ export default function Subscribe() {
           className="flex items-center justify-center absolute right-1 top-1 px-4 font-bold h-8 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
           type="submit"
         >
-          {form.state === 'loading' ? <LoadingSpinner /> : 'Subscribe'}
+          {formStatus(form)}
         </button>
       </form>
-      {form.state === 'error' ? (
-        <ErrorMessage>{form.message}</ErrorMessage>
-      ) : form.state === 'success' ? (
-        <SuccessMessage>{form.message}</SuccessMessage>
-      ) : (
-        <p className="text-sm text-gray-800 dark:text-gray-200">
-          {`${subscriberCount || '-'} subscribers – `}
-          {/* <Link href="/newsletter"> */}
-            {issuesCount || 'no'} issues
-          {/* </Link> */}
-        </p>
-      )}
+      {formHasErrors(form)}
     </div>
   );
 }

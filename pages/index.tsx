@@ -1,31 +1,9 @@
 import Link from 'next/link';
 
-// import Timeline from '../components/Timeline';
 import Container from '../components/Container';
 import BlogPost from '../components/Blog/BlogPost';
-import Subscribe from '../components/Cards/SubscribeCard';
+import SubscribeCard from '../components/Cards/SubscribeCard';
 import ProjectCard from '../components/Cards/ProjectCard';
-// import VideoCard from '../components/VideoCard';
-
-// export async function getStaticProps() {
-//   const auth = await googleAuth.getClient();
-//   const youtube = google.youtube({
-//     auth,
-//     version: 'v3'
-//   });
-
-//   const response = await youtube.videos.list({
-//     id: 'Pd2tVxhFnO4,FytxaSVQROc,u_o09PD_qAs',
-//     part: 'snippet,statistics'
-//   });
-
-//   return {
-//     props: {
-//       videos: response.data.items
-//     },
-//     revalidate: 60 * 60 // 1 hour
-//   };
-// }
 
 export default function Home() {
   return (
@@ -80,14 +58,7 @@ export default function Home() {
           href="https://native-stories.vercel.app"
           icon="css"
         />
-        {/* <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-12 text-black dark:text-white">
-          Recent Tweets
-        </h3> */}
-        {/* {videos.map((video) => (
-          <VideoCard key={video.id} {...video} />
-        ))} */}
-        {/* <Timeline /> */}
-        <Subscribe />
+        <SubscribeCard />
       </div>
     </Container>
   );

@@ -4,7 +4,7 @@ import html from 'remark-html'
 
 import { getFiles, getFileBySlug } from '../../lib/mdx';
 import { getTweets } from '../../lib/twitter';
-import BlogLayout from '../../layouts/blog';
+import BlogLayout from '../../layouts/blogLayout';
 import Tweet from '../../components/Tweet';
 import MDXComponents from '../../components/Utils/MDXComponents';
 
@@ -16,10 +16,10 @@ const markdownToHtml = async (markdown: string) => {
 }
 
 export default function Blog({ mdxSource, tweets, frontMatter }) {
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
   const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...tweet} />;
+    const renderTweet = tweets.find((tweet) => tweet.id === id);
+    return <Tweet {...renderTweet} />;
   };
 
   return (

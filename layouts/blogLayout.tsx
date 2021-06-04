@@ -3,8 +3,7 @@ import { parseISO, format } from 'date-fns';
 import generateSocialImage from '../utils/generateSocialCard'
 
 import Container from '../components/Container';
-import Subscribe from '../components/Cards/SubscribeCard';
-// import ViewCounter from '../components/ViewCounter';
+import SubscribeCard from '../components/Cards/SubscribeCard';
 
 const editUrl = (slug) =>
   `https://github.com/rosnovsky/rosnovsky.us/edit/main/data/blog/${slug}.mdx`;
@@ -21,7 +20,6 @@ export default function BlogLayout({ children, frontMatter }) {
         postTag: 'rosnovsky.us',
         cloudinaryUrlBase: 'https://res.cloudinary.com',
         imagePublicID: 'greenSocialCard.jpg',
-        // titleExtraConfig: '_line_spacing_-10',
         textColor: 'fff',
       })}
       date={new Date(frontMatter.publishedAt).toISOString()}
@@ -48,8 +46,6 @@ export default function BlogLayout({ children, frontMatter }) {
           </div>
           <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">
             {frontMatter.readingTime.text}
-            {/* {` • `} */}
-            {/* <ViewCounter slug={frontMatter.slug} /> */}
           </p>
         </div>
         <div className="prose dark:prose-dark max-w-none w-full">
@@ -57,16 +53,8 @@ export default function BlogLayout({ children, frontMatter }) {
         </div>
         <div className="mt-8">
         </div>
-          <Subscribe />
-        {/* <div className="text-sm text-gray-700 dark:text-gray-300">
-          <a
-            href={discussUrl(frontMatter.slug)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {'Discuss on Twitter'}
-          </a>
-          {` • `}
+          <SubscribeCard />
+        <div className="text-sm text-gray-700 dark:text-gray-300">
           <a
             href={editUrl(frontMatter.slug)}
             target="_blank"
@@ -74,7 +62,7 @@ export default function BlogLayout({ children, frontMatter }) {
           >
             {'Edit on GitHub'}
           </a>
-        </div> */}
+        </div>
       </article>
     </Container>
   );

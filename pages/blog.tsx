@@ -4,7 +4,7 @@ import { SearchIcon } from '@heroicons/react/outline'
 
 import Container from '../components/Container';
 import BlogPost from '../components/Blog/BlogPost';
-import Subscribe from '../components/Cards/SubscribeCard';
+import SubscribeCard from '../components/Cards/SubscribeCard';
 import { getAllFilesFrontMatter } from '../lib/mdx';
 
 const searchClient = algoliasearch(
@@ -57,7 +57,7 @@ export default function Blog({ posts }) {
           </InstantSearch>
           
         </div>
-        <Subscribe />
+        <SubscribeCard />
       </div>
     </Container>
   );

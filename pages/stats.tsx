@@ -1,13 +1,8 @@
-import Link from 'next/link';
-
-// import Analytics from '@/components/metrics/Analytics';
-import Subscribe from '../components/Cards/SubscribeCard';
+import SubscribeCard from '../components/Cards/SubscribeCard';
 import Container from '../components/Container';
 import GitHub from '../components/metrics/Github';
 import Buttondown from '../components/metrics/Buttondown';
 import Gumroad from '../components/metrics/Gumroad';
-// import Unsplash from '@/components/metrics/Unsplash';
-// import YouTube from '@/components/metrics/Youtube';
 import TopTracks from '../components/TopTracks';
 
 export default function Stats() {
@@ -26,12 +21,7 @@ export default function Stats() {
           </p>
         </div>
         <div className="flex flex-col w-full">
-          {/* <Unsplash />
-          <YouTube />
-        </div>
-        */}
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
-            {/* <Analytics /> */}
             <GitHub />
             <Gumroad />
           </div>
@@ -46,7 +36,7 @@ export default function Stats() {
           These are my Top Tracks on Spotify. I listen to Apple Music and Spotify interchangebly, leaning towards Spotify in recent months. 
         </p>
         <TopTracks />
-        <Subscribe />
+        <SubscribeCard />
       </div>
       </div>
     </Container>

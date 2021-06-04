@@ -1,7 +1,4 @@
 import Link from 'next/link';
-import useSWR from 'swr';
-
-import fetcher from '../../lib/fetcher';
 
 const BlogPost = ({
   title,
@@ -13,11 +10,7 @@ const BlogPost = ({
   summary: string;
   slug: string;
   publishedAt: string;
-}) => {
-  // const { data } = useSWR(`/api/views/${slug}`, fetcher);
-  // const views = data?.total;
-
-  return (
+}) => (
     <Link href={`/blog/${slug}`}>
       <a className="w-full">
         <div className="mb-8 w-full">
@@ -34,6 +27,5 @@ const BlogPost = ({
       </a>
     </Link>
   );
-};
 
 export default BlogPost;
