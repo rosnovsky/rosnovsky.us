@@ -10,23 +10,29 @@ async function generate() {
     feed_url: 'https://rosnovsky.us/feed.xml'
   });
 
-  const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'));
+  const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'))
+  const parsedPosts = posts.map(async (name) => {
+    const content = await fs.readFile(
+      path.join(__dirname, '..', 'data', 'blog', name)
+    );
+    return {post: await matter(content), slug: name};
+  })
 
   await Promise.all(
-    posts.map(async (name) => {
-      const content = await fs.readFile(
-        path.join(__dirname, '..', 'data', 'blog', name)
-      );
-      const frontmatter = matter(content);
-
+    parsedPosts.map(async (post) => {
+      const actualPost = await post;
+    
       feed.item({
-        title: frontmatter.data.title,
-        url: 'https://rosnovsky.us/blog/' + name.replace(/\.mdx?/, ''),
-        date: frontmatter.data.publishedAt,
-        description: frontmatter.data.summary
+        title: actualPost.post.data.title,
+        url: 'https://rosnovsky.us/blog/' + actualPost.slug.replace(/\.mdx?/, ''),
+        date: actualPost.post.data.publishedAt,
+        description: actualPost.post.data.summary
       });
     })
   );
+
+    feed.items = feed.items.sort((postA,postB) => {
+      return Date.parse(postB.date) < Date.parse(postA.date) ? -1 : 1});
 
   await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }));
 }

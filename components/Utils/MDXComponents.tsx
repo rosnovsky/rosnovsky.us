@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import Step from '../Step';
-
 const CustomLink = (props) => {
   const href = props.href;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
@@ -20,8 +18,7 @@ const CustomLink = (props) => {
 
 const MDXComponents = {
   Image,
-  a: CustomLink,
-  Step
+  a: CustomLink
 };
 
 export default MDXComponents;

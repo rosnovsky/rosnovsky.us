@@ -10,8 +10,9 @@ const BlogPost = ({
   summary: string;
   slug: string;
   publishedAt: string;
-}) => (
-    <Link href={`/blog/${slug}`}>
+}) => {
+
+  return  <Link href={`/blog/${slug}`}>
       <a className="w-full">
         <div className="mb-8 w-full">
           <div className="flex flex-col md:flex-row justify-between">
@@ -26,6 +27,6 @@ const BlogPost = ({
         </div>
       </a>
     </Link>
-  );
+};
 
 export default BlogPost;
