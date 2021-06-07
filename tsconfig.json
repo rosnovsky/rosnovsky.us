@@ -18,5 +18,5 @@
     "noImplicitAny": false
   },
   "exclude": ["node_modules"],
-  "include": ["/index.d.ts", "**/*.tsx", "pages/generateOgImage.ts"]
+  "include": ["/index.d.ts", "**/*.tsx"]
 }

@@ -15,7 +15,7 @@ export default async (_, res) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=2, stale-while-revalidate=1'
+    'public, s-maxage=2, stale-while-revalidate=1',
   );
 
   return res.status(200).json({
@@ -23,6 +23,6 @@ export default async (_, res) => {
     albumImageUrl,
     artist,
     songUrl,
-    title
+    title,
   });
 };

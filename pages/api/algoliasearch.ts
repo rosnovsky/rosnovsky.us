@@ -2,7 +2,7 @@ import algoliasearch from 'algoliasearch';
 import { VercelRequest, VercelResponse } from '@vercel/node'
 
 // Algolia Config
-const algoliaClient = algoliasearch(process.env.ALGOLIA_ID, process.env.ALGOLIA_KEY);
+const algoliaClient = algoliasearch(process.env.ALGOLIA_ID, process.env.ALGOLIA_API_KEY);
 const index = algoliaClient.initIndex('prod_BLOG');
 
 export default async (req: VercelRequest, res: VercelResponse) => {

@@ -1,6 +1,7 @@
 const { promisify } = require('util');
 const { resolve } = require('path');
 const fs = require('fs');
+
 const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
 const unified = require('unified');
@@ -17,7 +18,7 @@ async function getFiles(dir) {
     subdirs.map(async (subdir) => {
       const res = resolve(dir, subdir);
       return (await stat(res)).isDirectory() ? getFiles(res) : res;
-    })
+    }),
   );
   return files.reduce((a, f) => a.concat(f), []);
 }
@@ -47,7 +48,7 @@ async function getImageSizes(dir) {
 
     const formatted = prettier.format(contents, {
       ...prettierConfig,
-      parser: 'markdown'
+      parser: 'markdown',
     });
 
     fs.writeFileSync(`${outputDir}/${slug}`, formatted);

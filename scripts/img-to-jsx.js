@@ -5,9 +5,8 @@ module.exports = (options) => (tree) => {
   visit(
     tree,
     // only visit p tags that contain an img element
-    (node) =>
-      node.type === 'paragraph' &&
-      node.children.some((n) => n.type === 'image'),
+    (node) => node.type === 'paragraph'
+      && node.children.some((n) => n.type === 'image'),
     (node) => {
       const imageNode = node.children.find((n) => n.type === 'image');
       console.log(imageNode);
@@ -24,6 +23,6 @@ module.exports = (options) => (tree) => {
 />`;
 
       node.children = [imageNode];
-    }
+    },
   );
 };

@@ -68,9 +68,9 @@ export async function getStaticProps({ params }) {
     publishedAt: post.frontMatter.publishedAt,
     cover: post.frontMatter.cover ? post.frontMatter.cover : "https://rosnovsky.us/static/favicons/favicon.ico" }
 
-  fetch(process.env.NODE_ENV === "development" ? "http://localhost:3000/api/algoliasearch" : "https://rosnovsky.us/api/algoliasearch", {
+  fetch(process.env.NODE_ENV !== "production" ? "http://localhost:3000/api/algoliasearch" : "https://rosnovsky.us/api/algoliasearch", {
     method: 'POST',
-    body: JSON.stringify(index)
+    body: JSON.stringify(index),
   })
 
   return { props: { ...post, tweets } };
