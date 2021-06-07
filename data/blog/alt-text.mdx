@@ -1,0 +1,164 @@
+---
+title: "Using AI vision to generate alt text for images"
+publishedAt: "2021-06-07"
+summary: "Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision."
+---
+
+I'm not proud of it, but sometimes I forget to add `alt` text to the images I post. This flaw makes these images invisible for people who access the web using screen readers. So I decided to fix this using AI, computer vision, and serverless functions.
+
+## Concept
+
+Whenever I add an image to a [blog post](/blog), I want this image to be analyzed by an AI. I want the AI to describe an image and append `alt` text to it if none exists. Since I use [Next.js](https://nextjs.org) and [MDX](https://mdxjs.com), and I don't want to spend too much on this operation, I want this analysis to happen only at build time. 
+
+## Tools
+
+There's a while variety of accessible cloud-base computer vision tools:
+  - [Google Vision AI](https://cloud.google.com/vision/)
+  - [AWS Computer Vision](https://aws.amazon.com/computer-vision/)
+  - [Azure Cognitive Services](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/)
+
+None of these services is perfect; in my tests, though, Azure came on top as the most accurate when it comes to image descriptions.
+
+Since, again, I'm using Next.js, I don't have to do anything extra to deploy a serverless function that would request image analysis. I can do this right from within Next.js by just adding a file to `/pages/api/` folder. The function will be available at `https://rosnovsky.us/api/`.
+
+That's it. All we need is a cloud-based computer vision service and a way to deploy a serverless function.
+
+## Bringing it all together
+
+### Serverless function
+
+First, let's create a serverelss function called `pictureDescription`. This function will accept image URL, reach out to Azure with this URL, and return `alt` text it recieves in response from Azure.
+
+```typescript
+import {VercelRequest, VercelResponse} from '@vercel/node'
+
+export default async (req: VercelRequest, res: VercelResponse) => {
+  const ML_LINK = "https://westus.api.cognitive.microsoft.com/vision/v3.2/describe?maxCandidates=1&language=en&model-version=latest"
+
+  if(req.query.image === undefined || req.query.image === "") return res.status(400).send({error: 400, message: `Image path not provided`, hint: `You need to provide a publically accessible image URL. Images could be JPG, PNG, GIF, or BMP (don't even ask). The function expects something like 'weekly-update-4/home.jpg' and prepends it with your site URL and path to the image folder, https://rosnovsky.us/static/images/ in my case. Resulting URL looks like this: https://rosnovsky.us/static/images/weekly-update-4/home.jpg.`})
+
+  try{
+    const result: PictureDescription = await fetch(ML_LINK, {
+      method: "POST", 
+      body: JSON.stringify({url:`https://rosnovsky.us/static/images/${req.query.image}`}), 
+      headers: [["Ocp-Apim-Subscription-Key", process.env.AZURE_VISION_KEY],['Content-Type', 'application/json']]})
+    .then(result => result.status === 200 ? result.json() : new Error (result.status.toString()))
+    res.status(200).send({result})
+  }
+  catch(error){
+    res.status(400).end({error})
+  }
+}
+
+```
+
+This function will return something like this:
+
+```json
+{
+  "result": {
+    "description": {
+      "tags": [
+        "outdoor",
+        "different",
+        "highway",
+        "several"
+      ],
+      "captions": [
+        {
+          "text": "aerial view of a neighborhood",
+          "confidence": 0.4914514720439911
+        }
+      ]
+    },
+    "requestId": "3be5918b-01c8-4067-9677-21b442d6d1aa",
+    "metadata": {
+      "height": 666,
+      "width": 1000,
+      "format": "Jpeg"
+    },
+    "modelVersion": "2021-05-01"
+  }
+}
+```
+
+### MDX Component
+
+Now, to the MDX Component. This component allows you to use React components right in your MDX. Let's create a funtion that would take image path, width, height and (optionally) alt text. If `alt` text is supplied, the component will just return Next.js' [`Image` component](https://nextjs.org/docs/api-reference/next/image) with existing `alt`. However, if I forgot to supply alt text, the function will call our API, fetch alt text, and add it to the `Image` component. If there was an error fetching alt text, an "I'm sorry" text will populate alt text. 
+
+```typescript
+import Image from 'next/image';
+import {useState, useEffect} from 'react'
+
+const ImageWithAlt = ({ 
+  path, 
+  width, 
+  height, 
+  altText }: { 
+  path: string, 
+  width: number, 
+  height: number, 
+  altText?: string}) => {
+    const [alt, setAlt] = useState("Image description is missing. I'm sorry!")
+
+    useEffect(() => {
+      const fetchAlt = async () => {
+        if(!path){
+          return
+        }
+        try{
+          const text = await fetch(`${process.env.NODE_ENV !== 'production' ? "http://localhost:3000/api/pictureDescription?image=" + path : "https://rosnovsky.us/api/pictureDescription?image=" + path}`).then(result => result.json()).then((final: {result: PictureDescription}) => (final.result.description.captions[0].text))
+          setAlt(text)
+          return
+        }
+        catch(error){
+          setAlt("Image description is missing. I'm sorry!")
+          return
+        }
+    }
+    fetchAlt()
+  }, [])
+
+  return <Image
+    alt={alt}
+    src={`/static/images/${path}`}
+    width={width ? width : 4028 / 2}
+    height={height ? height : 2268 / 2}
+  />
+}
+
+const MDXComponents = {
+  ImageWithAlt,
+  a: CustomLink
+};
+
+export default MDXComponents;
+```
+
+That's it. Now, whenever I include `ImageWithAlt` component in my MDX, it gets an alt text in case there were none.
+
+Check this out: 
+
+```javascript
+<ImageWithAlt
+path={"alt-text/test-image.jpg"}
+width={2268}
+height={4042} />
+```
+
+<ImageWithAlt
+path={"alt-text/test-image.jpg"}
+width={2268}
+height={4042} />
+
+This image had no alt text so Azure generated one for us:
+
+```html
+<img alt="a bridge over a river" src="/_next/image?url=%2Fstatic%2Fimages%2Falt-text%2Ftest-image.jpg&amp;w=3840&amp;q=75" decoding="async" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" srcset="/_next/image?url=%2Fstatic%2Fimages%2Falt-text%2Ftest-image.jpg&amp;w=3840&amp;q=75 1x">
+```
+
+## Final thoughts
+
+There are a few caveats with this approach. First, obviously, its inaccuracy. While a generic description is better than no description, it certainly lacks accuracy. I hope that with time AI vision and analysis algorithms will get better at it. Second, an image has to be publically available on the web at build time. This requires me to first deploy the site with just images for an upcoming post and then redeploy it when I actually publish the post. Arguably, one could just deploy both images and the post at the same time and then just redeploy it again, but neither is great. Something to think about.
+
+P.S. Always incude `alt` text with your images!
