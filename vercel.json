@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
-    "api/*.ts": {
+    "pages/api/**/*.ts": {
       "excludeFiles": "**/*.(jpg|png)"
     }
   },
