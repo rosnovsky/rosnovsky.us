@@ -58,6 +58,8 @@
     "unsplash-js": "7.0.11"
   },
   "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-next": "^11.0.0",
     "express": "^4.17.1",
     "firebase-admin": "^9.8.0",
     "globby": "11.0.3",
