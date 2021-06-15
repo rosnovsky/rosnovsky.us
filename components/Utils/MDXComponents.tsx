@@ -19,7 +19,8 @@ const CustomLink = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-const ImageWithAlt = ({ path, width, height }: {path: string, width: number, height: number}) => {
+const ImageWithAlt = ({ path, width, height }: {path, width: number, height: number}) => {
+  const img = require(`../../public/static/images/${path}`)
   const [alt, setAlt] = useState("Image description is missing. I'm sorry!")
   useEffect(() => {
     const fetchAlt = async () => {
@@ -41,9 +42,10 @@ const ImageWithAlt = ({ path, width, height }: {path: string, width: number, hei
 
   return <Image
     alt={alt}
-    src={`/static/images/${path}`}
+    src={img}
     width={width ? width : 4028 / 2}
     height={height ? height : 2268 / 2}
+    placeholder="blur"
   />
 }
 
