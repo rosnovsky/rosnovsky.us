@@ -40,17 +40,18 @@ const ImageWithAlt = ({ path, width, height }: {path, width: number, height: num
   fetchAlt()
 }, [])
 
-  return <Image
+  return <div className="my-5"><Image
+  
     alt={alt}
     src={img}
-    width={width ? width : 4028 / 2}
-    height={height ? height : 2268 / 2}
+    layout="responsive"
     placeholder="blur"
-  />
+  /></div>
 }
 
 const MDXComponents = {
   ImageWithAlt,
+  Image,
   a: CustomLink
 };
 
