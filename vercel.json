@@ -15,7 +15,7 @@
   "redirects": [
     {
       "source": "/podtema-com",
-      "destination": "/"
+      "destination": "/about"
     }
   ],
   "rewrites": [
