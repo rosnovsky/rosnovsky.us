@@ -15,7 +15,8 @@ const searchClient = algoliasearch(
 export default function Blog({ posts }) {
     const Hit = ({ hit }) => {
       const hitPost = posts.filter(post => hit.title === post.title);
-      return <BlogPost key={hitPost[0].title} {...hitPost[0]} />
+      console.log(hitPost)
+      return hitPost.length > 0 ? <BlogPost key={hitPost[0].title} {...hitPost[0]} /> : null
     }
 
     const SearchBox = ({refine}) => (
