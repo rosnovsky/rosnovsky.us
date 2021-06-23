@@ -16,6 +16,7 @@ module.exports = withPWA({
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
     ],
+      disableStaticImages: false
   },
   async headers() {
     return [
@@ -39,7 +40,6 @@ module.exports = withPWA({
         'react-dom': 'preact/compat',
       });
     }
-
     return config;
   },
 });

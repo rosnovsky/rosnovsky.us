@@ -1,11 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "pages/api/**/*.ts": {
-      "excludeFiles": "**/*.(jpg|png)"
-    }
-  },
   "headers": [
     {
       "source": "/fonts/inter-var-latin.woff2",
