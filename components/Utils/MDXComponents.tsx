@@ -39,7 +39,7 @@ const CustomLink = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-const ImageWithAlt = ({ path, width, height }: {path: string, width: number, height: number }) => {
+const ImageWithAlt = ({ path, width, height, caption }: {path: string, width: number, height: number, caption?: string }) => {
   const [alt, setAlt] = useState("Image description is missing. I'm sorry!")
   
   useEffect(() => {
@@ -61,7 +61,7 @@ const ImageWithAlt = ({ path, width, height }: {path: string, width: number, hei
   
 }, [])
 
-    return <div className="my-5">
+    return <div className="my-5 shadow-lg bg-white dark:bg-gray-700 p-1">
     <Image 
       src={`/static/images/${path}`} 
       alt={alt} 
@@ -70,7 +70,9 @@ const ImageWithAlt = ({ path, width, height }: {path: string, width: number, hei
       height={(672*height)/width}
       width={672}
       placeholder="blur"
+      className="p-3"
       />
+      {caption ? <div className="pt-5 pb-5 text-center bg-gray-100 text-gray-700 dark:bg-gray-500 dark:text-white">{caption}</div> : null}
   </div>
   }
 
