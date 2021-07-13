@@ -19,7 +19,7 @@
     "server": "next build && NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.4.0",
+    "@auth0/nextjs-auth0": "^1.4.2",
     "@heroicons/react": "^1.0.1",
     "@plaiceholder/next": "^2.1.0",
     "@tailwindcss/typography": "^0.4.0",
