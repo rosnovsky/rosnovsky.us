@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2021",
     "module": "esnext",
     "jsx": "preserve",
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
@@ -17,6 +21,11 @@
     "sourceMap": true,
     "noImplicitAny": false
   },
-  "exclude": ["node_modules"],
-  "include": ["/index.d.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "/index.d.ts",
+    "**/*.tsx"
+  ]
 }
