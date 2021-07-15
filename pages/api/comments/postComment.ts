@@ -15,7 +15,7 @@ export default withApiAuthRequired(async function (req: NextApiRequest, res: Nex
   // TODO: Handle errors, validation, etc.
   const session = getSession(req, res);
   console.log(session)
-  
+
   return res.status(200).send(await postComment(req.query.postId, req.query.content, session.user.sub));
 })
 
