@@ -32,7 +32,7 @@ const postComment = async (postId, content, user) => {
   const { data, error } = await supabase
   .from('comments')
   .upsert(
-    { user_id: userId, post_id: postId, comment: content, hash: md5(content)}, { onConflict: 'user_id', ignoreDuplicates: true } 
+    { user_id: userId, post_id: postId, comment: content, hash: md5(content)}, { ignoreDuplicates: true } 
   )
   console.log("🚀 ~ file: postComment.ts ~ line 34 ~ postComment ~ data", data)
   return error ? error : data;
