@@ -15,7 +15,7 @@ export default withApiAuthRequired(async function (req: NextApiRequest, res: Nex
   const session = getSession(req, res);
   console.log(session)
   try {
-  return res.status(200).send(await updateCommentMetadata(req.query.id, req.query.deleted, req.query.edited, req.query.flagged, session.user.sub));
+    return res.status(200).send(await updateCommentMetadata(req.query.id, req.query.deleted, req.query.edited, req.query.flagged, session.user.sub));
   } catch (error) {
     return res.status(400).send({ error: error.message || 'Invalid operation', hint: 'Valid operations: getComments(postID), getComment(commentID), getCommentsByUserId(userID), getCommentsByDate(date), postComment(userID, postID, comment), updateComment(commentID, comment), updateCommentMetadata(metadata)' });
   }
