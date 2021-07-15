@@ -18,13 +18,11 @@ const userProfile = async (user) => {
   return error ? error : data;
 }
 
-const checkProfile = withApiAuthRequired(async function (req: NextApiRequest, res: NextApiResponse) {
+export default withApiAuthRequired(async function (req: NextApiRequest, res: NextApiResponse) {
   // TODO: Handle errors, validation, etc.
   const session = getSession(req, res);
   console.log(session)
   
   return res.status(200).send(await userProfile(session.user));
 })
-
-export default checkProfile;
 
