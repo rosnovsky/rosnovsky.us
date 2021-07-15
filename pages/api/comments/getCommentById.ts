@@ -1,5 +1,6 @@
 import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { validateQueryData } from './validate';
 
 const getComment = async (commentId) => {
   const { data: comment, error } = await supabase
@@ -10,8 +11,6 @@ const getComment = async (commentId) => {
 }
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  // TODO: Handle errors, validation, etc.
-
-  return res.status(200).send(await getComment(req.query.commentId))
+  return validateQueryData(req.query, "getCommentById") ? res.status(200).send(await getComment(req.query.commentId)) : res.status(400).send('Invalid get comment by ID data');
 }
 

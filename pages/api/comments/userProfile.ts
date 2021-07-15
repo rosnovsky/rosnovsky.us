@@ -2,6 +2,7 @@ import { supabase } from '../../../lib/supabase';
 import { UserProfile } from '@auth0/nextjs-auth0';
 
 export const userProfile = async (user: UserProfile) => {
+  if(!user) {throw new Error('user profile not found');}
   const {given_name, nickname, sub, family_name, name, picture, email, email_verified} = user
   
   const { data, error } = await supabase

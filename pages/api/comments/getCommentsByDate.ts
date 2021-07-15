@@ -1,5 +1,6 @@
 import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { validateQueryData } from './validate';
 
 const getCommentsByDate = async(date) => {
   const { data: comments, error } = await supabase
@@ -10,8 +11,6 @@ const getCommentsByDate = async(date) => {
 }
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  // TODO: Handle errors, validation, etc.
-
-  return res.status(200).send(await getCommentsByDate(req.query.date));
+  return validateQueryData(req.query, 'getCommentsByDate') ? res.status(200).send(await getCommentsByDate(req.query.date)) : res.status(400).send('Invalid get comments by date data');
 }
 
