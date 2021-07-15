@@ -1,5 +1,6 @@
 import { supabase } from '../../../lib/supabase';
-import { UserProfile } from '@auth0/nextjs-auth0';
+import { getSession, UserProfile, withApiAuthRequired } from '@auth0/nextjs-auth0';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export const userProfile = async (user: UserProfile) => {
   if(!user) {throw new Error('user profile not found');}
@@ -20,3 +21,7 @@ export const userProfile = async (user: UserProfile) => {
   return error ? error : data;
 }
 
+export default withApiAuthRequired(async function (req: NextApiRequest, res: NextApiResponse) {
+  const session = getSession(req, res);
+  return res.status(200).send(session)
+})
