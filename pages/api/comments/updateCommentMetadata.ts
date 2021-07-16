@@ -2,12 +2,14 @@ import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 import { validateQueryData } from './validate';
+import {userProfile} from './userProfile';
 
-const updateCommentMetadata = async(commentId, deleted, edited, flagged, userId) => {
+const updateCommentMetadata = async(commentId, deleted, edited, flagged, user) => {
+  await userProfile(user)
 const { data: comment, error } = await supabase
 .from('comments')
 .update({ flagged: flagged, deleted: deleted, edited: edited})
-.match({ 'id': commentId, 'user_id': userId })
+.match({ 'id': commentId, 'user_id': user.sub })
 return error ? error : comment;
 }
 

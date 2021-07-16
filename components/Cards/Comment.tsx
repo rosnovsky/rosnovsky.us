@@ -1,13 +1,17 @@
 import { PostComment } from "../..";
+import {useUser} from "@auth0/nextjs-auth0"
 
 
-export default function Comment({ author, postedAt, content, status }: PostComment) {
+export default function Comment(comment) {
+  const { user } = useUser();
   return (
-    <div>
-      <div>{author.user!.name}</div>
-      <div>{postedAt.date}</div> 
-      <div>{content}</div> 
-      <div>{status.flagged === "other" ? "Flagged" : "Flag"}</div>
+    <div className="my-10">
+      <div>{comment.user_id}</div>
+      <div>{comment.published_at}</div> 
+      <div>{comment.comment}</div> 
+      <div>{comment.flagged ? "Flagged" : "Flag"}</div>
+      {user?.sub === comment.user_id ? <div>Delete</div> : null}
+      {user?.sub === comment.user_id ? <div>Edit</div> : null}
     </div>
   )
 }

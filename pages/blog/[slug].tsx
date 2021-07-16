@@ -7,16 +7,17 @@ import { getTweets } from '../../lib/twitter';
 import BlogLayout from '../../layouts/blogLayout';
 import Tweet from '../../components/Tweet';
 import MDXComponents from '../../components/Utils/MDXComponents';
-import  Comment from '../../components/Cards/Comment';
+import  Comments from '../../components/Cards/Comments';
 
 import { useUser } from '@auth0/nextjs-auth0';
+import { PostComment } from '../..';
 
 const markdownToHtml = async (markdown: string) => {
   const result = await remark().use(html).process(markdown)
   return result.toString()
 }
 
-export default function Blog({ mdxSource, tweets, frontMatter }) {
+export default function Blog({ mdxSource, tweets, frontMatter, comments }: {mdxSource: any, tweets: any, frontMatter: any, comments: PostComment[]}) {
   const { user } = useUser();
   const StaticTweet = ({ id }) => {
     const renderTweet = tweets.find((tweet) => tweet.id === id);
@@ -33,6 +34,7 @@ export default function Blog({ mdxSource, tweets, frontMatter }) {
         }}
       />
       {user ? <span id="comments" className="font-bold">Comments comming soon. But thanks for logging in, {user.name} ;)</span> : <span className="text-black"><a href="/api/auth/login"><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></a> to comment</span>}
+      <Comments comments={comments} />
     </BlogLayout>
   );
 }
@@ -74,5 +76,9 @@ export async function getStaticProps({ params }) {
     body: JSON.stringify(index),
   })
 
-  return { props: { ...post, tweets } };
+  const comments: PostComment[] = await fetch(process.env.NODE_ENV !== "production" ? `http://localhost:3000/api/comments/getComments?id=${params.slug}` : `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
+    method: 'GET',
+  }).then(res => res.json())
+
+  return { props: { ...post, tweets, comments } };
 }

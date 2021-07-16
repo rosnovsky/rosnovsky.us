@@ -20,9 +20,9 @@
 
 type CommentAuthor = {
   user?: UserProfile,
-  verified: boolean,
-  regular: boolean,
-  comments: number
+  verified?: boolean,
+  regular?: boolean,
+  comments?: number
 }
 
 type CommentDate = {
@@ -38,8 +38,13 @@ type CommentStatus = {
 }
 
 type PostComment = {
-  author: CommentAuthor 
-  postedAt: CommentDate
-  content: string
-  status: CommentStatus 
+  id: string,
+  user_id: string
+  published_at: CommentDate
+  comment: string
+  deleted: boolean
+  flagged: boolean
+  edited: boolean
+  post_id: string
+  hash: string
 }

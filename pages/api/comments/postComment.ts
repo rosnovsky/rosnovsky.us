@@ -36,6 +36,7 @@ const postComment = async (postId, content, user) => {
 export default withApiAuthRequired(async function (req: NextApiRequest, res: NextApiResponse) {
   const session = getSession(req, res);
   if(!session) res.status(401).end({"error": "You are not authenticated"});
+  if(!session.user.email_verified) res.status(401).end({"error": "Please verify your email first."});
 
   return validateQueryData(req.query, 'postComment') ? 
   await isCommentUnique(req.query.postId, req.query.content, session.user) ? res.status(200).send(await postComment(req.query.postId, req.query.content, session.user)) : res.status(400).send({"error": 'Comment already exists'}) : res.status(400).send({"error": 'Invalid post comment data'});
