@@ -1,6 +1,4 @@
-import  isUuid  from 'validator/lib/isUUID';
-import isDate from 'validator/lib/isDate';
-import { NextApiRequest } from 'next';
+import validator from 'validator';
 /**
  * Validates whether a value is a UUID.
  * @param uuid The value to validate.
@@ -9,10 +7,10 @@ export const validateUUID = (uuid: string) => {
   if(!uuid || uuid.length < 1) {
     return false;
   }
-  return isUuid(uuid);
+  return validator.isUUID(uuid);
 }
 
-export const validateQueryData = (data: NextApiRequest['body'], operation: string) => {
+export const validateQueryData = (data: any, operation: string) => {
   if(data?.length < 1 || !operation) {
     throw new Error('A valid query is required. Must have a query AND operation.');
   }
@@ -23,7 +21,7 @@ export const validateQueryData = (data: NextApiRequest['body'], operation: strin
     case 'getCommentById':
       return !data.commentId ? false : validateUUID(data.commentId)
     case 'getCommentsByDate':
-      return !data.date ? false : isDate(data.date)
+      return !data.date ? false : validator.isDate(data.date)
     case 'getCommentsByUserId':
       return !data.userId ? false : true
     case 'postComment':
