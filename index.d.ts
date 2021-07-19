@@ -40,7 +40,7 @@ type CommentStatus = {
 type PostComment = {
   id: string,
   user_id: string
-  published_at: CommentDate
+  published_at: string
   comment: string
   deleted: boolean
   flagged: boolean
