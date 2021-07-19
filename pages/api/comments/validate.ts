@@ -1,6 +1,5 @@
-import  isUuid  from 'validator/lib/isuuid';
-import isDate from 'validator/lib/isdate';
-import isSlug from 'validator/lib/isslug';
+import  isUuid  from 'validator/lib/isUUID';
+import isDate from 'validator/lib/isDate';
 import { NextApiRequest } from 'next';
 /**
  * Validates whether a value is a UUID.
