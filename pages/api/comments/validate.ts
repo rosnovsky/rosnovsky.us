@@ -1,23 +1,38 @@
-export const validateQueryData: any = (data, operation) => {
+import  isUuid  from 'validator/lib/isuuid';
+import isDate from 'validator/lib/isdate';
+import isSlug from 'validator/lib/isslug';
+import { NextApiRequest } from 'next';
+/**
+ * Validates whether a value is a UUID.
+ * @param uuid The value to validate.
+**/
+export const validateUUID = (uuid: string) => {
+  if(!uuid || uuid.length < 1) {
+    return false;
+  }
+  return isUuid(uuid);
+}
+
+export const validateQueryData = (data: NextApiRequest['body'], operation: string) => {
   if(data?.length < 1 || !operation) {
     throw new Error('A valid query is required. Must have a query AND operation.');
   }
 
   switch (operation) {
     case 'getComments':
-      return (!data.id || data.id === undefined) ? false : true
+      return (!data.id || data.id === undefined) ? false : true;
     case 'getCommentById':
-      return !data.commentId ? false : true
+      return !data.commentId ? false : validateUUID(data.commentId)
     case 'getCommentsByDate':
-      return !data.date ? false :true
+      return !data.date ? false : isDate(data.date)
     case 'getCommentsByUserId':
       return !data.userId ? false : true
     case 'postComment':
       return (!data.postId || !data.content) ? false : true
     case 'updateCommentMetadata':
-      return (!data.id || !data.deleted || !data.edited || !data.flagged) ? false : true
+      return (!data.id || !data.deleted || !data.edited || !data.flagged) ? false : validateUUID(data.id)
     case 'updateComment':
-      return (!data.id || !data.content) ? false : true
+      return (!data.id || !data.content) ? false : validateUUID(data.id)
     default:
       return false
   }

@@ -15,6 +15,8 @@ module.exports = withPWA({
     domains: [
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
+      's.gravatar.com', // Gravatar
+      'media-exp1.licdn.com' // Linkedin Profile Picture
     ],
       disableStaticImages: false
   },

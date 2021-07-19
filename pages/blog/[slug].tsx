@@ -33,7 +33,23 @@ export default function Blog({ mdxSource, tweets, frontMatter, comments }: {mdxS
           StaticTweet
         }}
       />
-      {user ? <span id="comments" className="font-bold">Comments comming soon. But thanks for logging in, {user.name} ;)</span> : <span className="text-black"><a href="/api/auth/login"><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></a> to comment</span>}
+      {user ? <span id="comments" className="font-bold">
+<div className="flex mx-auto items-center justify-center shadow-lg mb-4 w-full">
+  <form className="w-full max-w-xl bg-white rounded-lg px-4 pt-2">
+    <div className="flex flex-wrap -mx-3 mb-6">
+        <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+        <div className="w-full md:w-full px-3 mb-2 mt-2">
+          <textarea className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
+        </div>
+        <div className="w-full flex px-3">
+          <div className="w-full mx-auto">
+              <input type='submit' disabled className="bg-white text-gray-700 font-medium py-1 px-4 mx-auto border border-gray-400 rounded-lg tracking-wide mx-auto hover:bg-gray-100" value='Post Comment' />
+          </div>
+        </div>
+        </div>
+    </form>
+  </div></span>
+: <span className="text-black"><a href="/api/auth/login"><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></a> to comment</span>}
       <Comments comments={comments} />
     </BlogLayout>
   );
