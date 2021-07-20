@@ -1,13 +1,13 @@
 import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { validateQueryData } from './validate';
-import toDate from 'validator/lib/todate';
+import validator from 'validator';
 
 const getCommentsByDate = async(date: string) => {
   const { data: comments, error } = await supabase
   .from('comments')
   .select('*')
-  .eq('published_at', toDate(date).toUTCString())
+  .eq('published_at', validator.toDate(date).toUTCString())
   return error ? error : comments;
 }
 
