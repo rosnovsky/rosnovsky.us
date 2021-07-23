@@ -64,8 +64,8 @@ export default function Footer() {
       <div className="text-center text-gray-600 text-sm">
         <p className="mb-2">© 2003-{new Date().getFullYear()} Art Rosnovsky</p>
         <p>
-          Built with ❤️ and 🙇‍♂️ on Snohomish, Sauk-Suiattle, Tulalip, Duwamish,
-          and other Puget Salish ancestral lands.
+          Built with ❤️ and 🙇‍♂️ on Snohomish, Stillaguamish
+          and other Puget Salish ancestral lands. <p><Link href="/acknowledgment"><span className="underline hover:cursor-pointer">Land Acknowledgment</span></Link></p>
         </p>
       </div>
     </footer>
