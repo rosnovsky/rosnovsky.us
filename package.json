@@ -33,7 +33,7 @@
     "fs": "^0.0.1-security",
     "jsx-to-html": "^1.1.0",
     "lqip-modern-loader": "^0.1.2",
-    "next": "^11.0.1",
+    "next": "11.0.2-canary.5",
     "next-pwa": "^5.2.21",
     "next-themes": "^0.0.14",
     "plaiceholder": "^2.0.1",

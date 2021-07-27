@@ -39,7 +39,7 @@ const CustomLink = (props) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-const ImageWithAlt = ({ path, width, height, caption }: {path: string, width: number, height: number, caption?: string }) => {
+const ImageWithAlt = ({ path, width, height, caption }: {path: string, width?: number, height?: number, caption?: string }) => {
   const [alt, setAlt] = useState("Image description is missing. I'm sorry!")
   
   useEffect(() => {
@@ -63,12 +63,10 @@ const ImageWithAlt = ({ path, width, height, caption }: {path: string, width: nu
 
     return <div className="my-5 shadow-lg bg-white dark:bg-gray-700 p-1">
     <Image 
-      src={`/static/images/${path}`} 
+      src={require(`../../public/static/images/${path}`)} 
       alt={alt} 
-      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(672, (672*height)/width))}`}
       layout="responsive"
-      height={(672*height)/width}
-      width={672}
+      blurDataURL={path.split('.').includes('gif') ? `data:image/svg+xml;base64,${toBase64(shimmer(672, (672*height)/width))}` : null}
       placeholder="blur"
       className="p-3"
       />
