@@ -22,7 +22,7 @@
     "@sanity/dashboard": "^2.7.0",
     "@sanity/default-layout": "^2.7.4",
     "@sanity/default-login": "^2.7.0",
-    "@sanity/desk-tool": "^2.7.4",
+    "@sanity/desk-tool": "^2.12.2",
     "@sanity/studio-hints": "^2.7.0",
     "@sanity/vision": "^2.7.4",
     "date-fns": "^2.16.1",
