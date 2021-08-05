@@ -20,7 +20,7 @@
     "@sanity/components": "^2.2.6",
     "@sanity/core": "^2.7.4",
     "@sanity/dashboard": "^2.7.0",
-    "@sanity/default-layout": "^2.7.4",
+    "@sanity/default-layout": "^2.12.2",
     "@sanity/default-login": "^2.7.0",
     "@sanity/desk-tool": "^2.7.4",
     "@sanity/studio-hints": "^2.7.0",
