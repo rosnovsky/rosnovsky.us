@@ -19,7 +19,13 @@
     "downlevelIteration": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@pages/*": ["pages/*"],
+  }
   },
   "exclude": [
     "node_modules"

@@ -107,7 +107,7 @@ export default function Container(props) {
           <NextLink href="/about">
             <a className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">About</a>
           </NextLink>
-            {user ? <a href="/api/auth/logout" className="p-1 sm:p-4 text-black dark:text-red-100">Logout</a> : <a href="/api/auth/login" className="p-1 sm:p-4 text-gray-900 dark:text-gray-100">Login</a>}
+            {user ? <span className="p-1 sm:p-4 text-black dark:text-red-100" ><NextLink href="/api/auth/logout">Logout</NextLink></span> : <span className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"><NextLink href="/api/auth/login">Login</NextLink></span>}
         </div>
       </nav>
       <main

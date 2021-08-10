@@ -11,6 +11,7 @@ import  Comments from '../../components/Cards/Comments';
 
 import { useUser } from '@auth0/nextjs-auth0';
 import { PostComment } from '../..';
+import Link from 'next/link'
 
 const markdownToHtml = async (markdown: string) => {
   const result = await remark().use(html).process(markdown)
@@ -43,13 +44,13 @@ export default function Blog({ mdxSource, tweets, frontMatter, comments }: {mdxS
         </div>
         <div className="w-full flex px-3">
           <div className="w-full mx-auto">
-              <input type='submit' disabled className="bg-white text-gray-700 font-medium py-1 px-4 mx-auto border border-gray-400 rounded-lg tracking-wide mx-auto hover:bg-gray-100" value='Post Comment' />
+              <input type='submit' disabled className="bg-white text-gray-700 font-medium py-1 px-4 mx-auto border border-gray-400 rounded-lg tracking-wide hover:bg-gray-100" value='Post Comment' />
           </div>
         </div>
         </div>
     </form>
   </div></span>
-: <span className="text-black"><a href="/api/auth/login"><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></a> to comment</span>}
+: <span className="text-black"><Link href="/api/auth/login" passHref><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></Link> to comment</span>}
       <Comments comments={comments} />
     </BlogLayout>
   );

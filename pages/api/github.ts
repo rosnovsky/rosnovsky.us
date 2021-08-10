@@ -1,4 +1,4 @@
-export default async (_, res) => {
+const github = async (_, res) => {
   const userResponse = await fetch('https://api.github.com/users/rosnovsky');
   const userReposResponse = await fetch(
     'https://api.github.com/users/rosnovsky/repos?per_page=100'
@@ -22,3 +22,5 @@ export default async (_, res) => {
     stars
   });
 };
+
+export default github;
