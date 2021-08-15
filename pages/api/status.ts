@@ -8,6 +8,6 @@ const getStatus = async () => {
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const result = await getStatus();
-  return res.status(200).send({result})
+  return res.status(200).send({result: result.json()})
 }
 
