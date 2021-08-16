@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 import NowPlaying from './Utils/NowPlaying';
 
@@ -14,6 +15,14 @@ const ExternalLink = ({ href, children }) => (
 );
 
 export default function Footer() {
+  const [status, setStatus] = useState(null);
+  useEffect(() => {
+    const getStatus = async () => {
+      const status = fetch(`https://rosnovsky.us/api/status`).then(res => res.json()).then(result => { setStatus(result); return result }).catch(err => { console.error(err); });
+      return status
+    }
+    getStatus();
+  }, []);
   return (
     <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
@@ -34,10 +43,6 @@ export default function Footer() {
             </a>
           </Link> */}
         </div>
-        
-          {/* <ExternalLink href="https://www.youtube.com/channel/UCZMli3czZnd1uoc1ShTouQw">
-            YouTube
-          </ExternalLink> */}
         <div className="flex flex-col space-y-4">
           <ExternalLink href="https://twitter.com/rosnovsky">
             Twitter
@@ -58,6 +63,16 @@ export default function Footer() {
               Tweets
             </a>
           </Link> */}
+          !!!
+        </div>
+        <div className="flex flex-col space-y-4">
+
+          <ExternalLink href="https://status.rosnovsky.us">
+            <svg className="inline-block mr-2" height="10" width="10">
+              <circle cx="5" cy="5" r="5" fill={status === "up" ? "green" : "red"} />
+            </svg>
+            Status
+          </ExternalLink>
         </div>
       </div>
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
