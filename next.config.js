@@ -16,7 +16,8 @@ module.exports = withPWA({
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
       's.gravatar.com', // Gravatar
-      'media-exp1.licdn.com' // Linkedin Profile Picture
+      'media-exp1.licdn.com',  // Linkedin Profile Picture
+      'image.mux.com'
     ],
       disableStaticImages: false
   },
@@ -54,7 +55,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
   worker-src *.vercel.app localhost:3000 rosnovsky.us;
-  media-src 'none';
+  media-src  *.mux.com;
   connect-src *;
   font-src 'self';
 `;
