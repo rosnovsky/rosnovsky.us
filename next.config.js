@@ -55,7 +55,7 @@ const ContentSecurityPolicy = `
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
   worker-src *.vercel.app localhost:3000 rosnovsky.us;
-  media-src  *.mux.com;
+  media-src  *;
   connect-src *;
   font-src 'self';
 `;
