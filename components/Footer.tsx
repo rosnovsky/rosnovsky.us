@@ -18,8 +18,8 @@ export default function Footer() {
   const fetcher = (url: string) => fetch(url).then(res => res.json())
   const { data, error } = useSWR('/api/status', fetcher)
 
-  if (error) return "Error"
-  if (!data) return "No data"
+  if (error) return <p>Error</p>
+  if (!data) return <p>No data</p>
   return (
     <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
