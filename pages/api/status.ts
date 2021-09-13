@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Status } from '../..';
 
 const getStatus = async () => {
   const status = fetch('https://betteruptime.com/api/v2/monitors/395442', {
     headers: {'Authorization': `Bearer ${process.env.STATUS}`}
   }).then(result => result.json())
-  console.log(status)
+
   return status
 }
 

@@ -48,3 +48,6 @@ type PostComment = {
   post_id: string
   hash: string
 }
+
+type Status = {
+  data: {attributes: {status: 'string' }}}

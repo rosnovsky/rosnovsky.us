@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
 import NowPlaying from './Utils/NowPlaying';
 
@@ -15,14 +15,11 @@ const ExternalLink = ({ href, children }) => (
 );
 
 export default function Footer() {
-  const [status, setStatus] = useState(null);
-  useEffect(() => {
-    const getStatus = async () => {
-      const status = fetch(`https://rosnovsky.us/api/status`).then(res => res.json()).then(result => { setStatus(result); return result }).catch(err => { console.error(err); });
-      return status
-    }
-    getStatus();
-  }, []);
+  const fetcher = (url: string) => fetch(url).then(res => res.json())
+  const { data, error } = useSWR('/api/status', fetcher)
+
+  if (error) return "Error"
+  if (!data) return "No data"
   return (
     <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
@@ -69,7 +66,7 @@ export default function Footer() {
 
           <ExternalLink href="https://status.rosnovsky.us">
             <svg className="inline-block mr-2" height="10" width="10">
-              <circle cx="5" cy="5" r="5" fill={status === "up" ? "green" : "red"} />
+              <circle cx="5" cy="5" r="5" fill={data?.status === "up" ? "green" : "red"} />
             </svg>
             Status
           </ExternalLink>
