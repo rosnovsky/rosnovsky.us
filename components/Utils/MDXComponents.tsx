@@ -1,9 +1,10 @@
 // @ts-nocheck
 import Link from 'next/link';
 import Image from 'next/image';
-import Hls from 'hls.js';
+import dynamic from 'next/dynamic'
+const Hls = dynamic(() => import('hls.js'))
 import { useState, useEffect, useRef } from 'react'
-import mux from "mux-embed";
+import mux from 'mux-embed'
 
 import type { PictureDescription } from '../../index'
 

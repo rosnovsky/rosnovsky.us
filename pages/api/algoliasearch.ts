@@ -3,14 +3,13 @@ import { VercelRequest, VercelResponse } from '@vercel/node'
 
 // Algolia Config
 const algoliaClient = algoliasearch(process.env.ALGOLIA_ID, process.env.ALGOLIA_API_KEY);
-const index = algoliaClient.initIndex('prod_BLOG');
+const index = algoliaClient.initIndex('prod_BLOG')
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  // if(!req.body) res.status(400).send({error: "400", message: "No slug found"})
+  if(!req.body) res.status(400).send({error: "400", message: "No slug found"})
   
 
   const post = JSON.parse(req.body)
-
   const objectID = require('crypto').createHash('sha256').update(post.title + post.publishedAt, 'utf8').digest('hex');
 
 
@@ -32,13 +31,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       index.saveObject(postToIndex)
       .then(result => {
         console.log(`Indexed "${postToIndex.title}"`)
-        if(!result) throw new Error("Unable to save to index")
+        if(!result) throw new Error("Unable to save to index :(")
         return result
       })});
     res.status(200).send(result);
   }
   catch(err){
     console.error(err)
-    return res.status(400).send({message: "Unable to index", error: err})
+    return res.status(400).send({message: "Unable to index", error: err, req, res})
   }
 }

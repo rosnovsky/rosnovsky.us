@@ -5,7 +5,6 @@ import html from 'remark-html'
 import { getFiles, getFileBySlug } from '../../lib/mdx';
 import { getTweets } from '../../lib/twitter';
 import BlogLayout from '../../layouts/blogLayout';
-import Tweet from '../../components/Tweet';
 import MDXComponents from '../../components/Utils/MDXComponents';
 import Comments from '../../components/Cards/Comments';
 
@@ -20,18 +19,13 @@ const markdownToHtml = async (markdown: string) => {
 
 export default function Blog({ mdxSource, tweets, frontMatter, comments }: { mdxSource: any, tweets: any, frontMatter: any, comments: PostComment[] }) {
   const { user } = useUser();
-  const StaticTweet = ({ id }) => {
-    const renderTweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...renderTweet} />;
-  };
 
   return (
     <BlogLayout frontMatter={frontMatter}>
       <MDXRemote
         {...mdxSource}
         components={{
-          ...MDXComponents,
-          StaticTweet
+          ...MDXComponents
         }}
       />
       {user ? <span id="comments" className="font-bold">
@@ -89,10 +83,11 @@ export async function getStaticProps({ params }) {
     cover: post.frontMatter.cover ? post.frontMatter.cover : "https://rosnovsky.us/static/favicons/favicon.ico"
   }
 
-  fetch("https://rosnovsky.us/api/algoliasearch", {
+  await fetch("https://rosnovsky.us/api/algoliasearch", {
     method: 'POST',
     body: JSON.stringify(index),
   })
+
 
   const comments: PostComment[] = await fetch(process.env.NODE_ENV !== "production" ? `http://localhost:3000/api/comments/getComments?id=${params.slug}` : `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
     method: 'GET',
