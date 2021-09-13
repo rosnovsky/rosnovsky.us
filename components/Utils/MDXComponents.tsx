@@ -51,7 +51,7 @@ const ImageWithAlt = ({ path, width, height, caption }: { path: string, width?: 
         return
       }
       try {
-        const text = await fetch(`${process.env.NODE_ENV !== 'production' ? "http://localhost:3000/api/pictureDescription?image=" + path : "https://rosnovsky.us/api/pictureDescription?image=" + path}`).then(result => result.json()).then((final: { result: PictureDescription }) => (final.result.description.captions[0].text))
+        const text = await fetch(`https://rosnovsky.us/api/pictureDescription?image=${path}`).then(result => result.json()).then((final: { result: PictureDescription }) => (final.result.description.captions[0].text))
         setAlt(text)
         return
       }
