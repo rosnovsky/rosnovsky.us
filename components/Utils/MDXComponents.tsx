@@ -72,6 +72,7 @@ const ImageWithAlt = ({ path, width, height, caption }: { path: string, width?: 
       blurDataURL={path.split('.').includes('gif') ? `data:image/svg+xml;base64,${toBase64(shimmer(672, (672 * height) / width))}` : null}
       placeholder="blur"
       className="p-3"
+      quality={95}
     />
     {caption ? <div className="pt-5 pb-5 text-center bg-gray-100 text-gray-700 dark:bg-gray-500 dark:text-white">{caption}</div> : null}
   </div>
