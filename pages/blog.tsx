@@ -13,24 +13,24 @@ const searchClient = algoliasearch(
 );
 
 export default function Blog({ posts }) {
-    const Hit = ({ hit }) => {
-      const hitPost = posts.filter(post => hit.title === post.title);
-      console.log(hitPost)
-      return hitPost.length > 0 ? <BlogPost key={hitPost[0].title} {...hitPost[0]} /> : null
-    }
+  const Hit = ({ hit }) => {
+    const hitPost = posts.filter(post => hit.title === post.title);
+    console.log(hitPost)
+    return hitPost.length > 0 ? <BlogPost key={hitPost[0].title} {...hitPost[0]} /> : null
+  }
 
-    const SearchBox = ({refine}) => (
-      <div>
-        <div className="mt-1 relative shadow-sm">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <SearchIcon className="h-10 w-10 text-gray-600" />
-          </div>
-          <input onChange={event => refine(event.currentTarget.value)}type="search" name="search" id="search" autoComplete="false" className="h-16 rounded-md text-black dark:text-white text-xl block w-full pl-16 border-gray-600" placeholder="Find a post..." />
+  const SearchBox = ({ refine }) => (
+    <div>
+      <div className="mt-1 relative shadow-sm">
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <SearchIcon className="h-10 w-10 text-gray-600" />
         </div>
+        <input onChange={event => refine(event.currentTarget.value)} type="search" name="search" id="search" autoComplete="false" className="h-16 rounded-md text-black dark:text-white text-xl block w-full pl-16 border-gray-600" placeholder="Find a post..." />
       </div>
-    );
+    </div>
+  );
 
-    const CustomSearchBox = connectSearchBox(SearchBox);
+  const CustomSearchBox = connectSearchBox(SearchBox);
 
 
   return (
@@ -46,6 +46,7 @@ export default function Blog({ posts }) {
           {`My first blog on Livejournal was established in 2003. I've started this one in 2019, posting ${posts.length} blog posts. You can find interesting posts with this Algolia-powered full-text search.`}
         </p>
         <div className="relative w-full mb-4">
+          {/* TODO: Load static posts here, with intersection observer for more, unless the search has been initiated AND has results. */}
           <InstantSearch
             indexName="prod_BLOG"
             searchClient={searchClient}
@@ -53,10 +54,10 @@ export default function Blog({ posts }) {
             {/* Widgets */}
             <CustomSearchBox className="w-full text-black dark:text-white border-2 border-black rounded-md focus:ring-green-500 focus:border-green-500" />
             <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">Blog Posts
-        </h3>
-          <Hits hitComponent={Hit} />
+            </h3>
+            <Hits hitComponent={Hit} />
           </InstantSearch>
-          
+
         </div>
         <SubscribeCard />
       </div>
