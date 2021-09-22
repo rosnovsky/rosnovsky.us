@@ -19,33 +19,33 @@ export default function Home() {
           Featured Posts
         </h3>
         <BlogPost
-          title="Loowit Trail"
-          summary="It was a terrible mistake and I shouldn't have done this trail. Sheer luck and generosity of other hikers are the only two reasons I'm not a hero of an article about local Search and Rescue trying to airlift an unconscious hiker from Mt. St. Helens."
-          slug="loowit-trail"
-          publishedAt="20/09/18"
+          title="Moonlander Keyboard"
+          summary="I've updated my keyboarded recently. It's been a frustraring, fullfilling, and invigorating experience so far."
+          slug="moonlander-keyboard"
+          publishedAt="2021/09/17"
         />
         <BlogPost
-          title="Developer Support Observations"
-          summary={`It's been just over 6 months since I joined Auth0 as their newest Developer Support Engineer. A bunch of my highbrow friends was very condescending. "Oh, tech support. Good for you. With time, you'll become a real engineer". I shrugged these comments off back then, but now I think it was cute of them to say things like this. As in "Aww, honey. You have no idea what you're talking about" :)`}
-          slug="developer-support-observations"
-          publishedAt="2020/05/24"
+          title="Using AI vision to generate alt text for images"
+          summary="Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision."
+          slug="alt-text"
+          publishedAt="2021/06/21"
         />
         <BlogPost
-          title="You don't have to follow a passion"
-          summary="I was driving to work this morning, looking forward to a weekly Q&A with Nico (deep dive into HAR files this week), when I realized that it’s my day off. Whenever we work on weekends, we can then take a day off during the week. Well, today was the day, and I forgot about it."
-          slug="you-don-t-have-to-follow-a-passion"
-          publishedAt="2020/01/23"
+          title="2020, you won't be missed"
+          summary="This by far the worst year in generations is coming to a close. It won't be missed, yet it will remain in our memory, history books, and our shared trauma will take decades to heal. Here's to 2021, hopefully, a better year."
+          slug="2020-you-won-t-be-missed"
+          publishedAt="2020/12/31"
         />
         <BlogPost
-          title="30 Best Tech and Dev Podcasts"
-          summary="Here’s a list of my favorite podcasts. Some of them are in their second decade of running, some are pretty new, but all of them are a tremendous source of knowledge, news, and human experience as it relates to hitech industry in general, and software development in particular."
-          slug="tech-podcasts-in-2019"
-          publishedAt="2019/06/19"
+          title="Dynamic comments for a static website"
+          summary="For the past couple of months, I've been working on a comment feature for this blog. Now that it's almost finished, I invite you to check it out along with some implementation details."
+          slug="dynamic-comments-for-a-static-website"
+          publishedAt="2021/01/13"
         />
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           Projects
         </h3>
-        
+
         <ProjectCard
           title="Sanity.io Autocomplete Tags plugin"
           description="This plugin creates a custom tags input field for Sanity Studio. This custom input field allows users to type tags, select existing ones from the dropdown or create new ones. This is handy if you want to offer authors an experience of 'type, hit Enter, repeat' for adding tags."
