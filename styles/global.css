@@ -174,3 +174,15 @@ table {
   display: block;
   overflow-y: scroll;
 }
+
+.stylistic-quote-mark {
+  font-size: 5rem;
+  right: 100%;
+  @apply mr-2 hidden font-mono text-gray-600 dark:text-gray-400 absolute top-0 leading-none;
+}
+
+@screen sm {
+  .stylistic-quote-mark {
+    @apply block;
+  }
+}
