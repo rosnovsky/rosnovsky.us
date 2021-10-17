@@ -43,7 +43,7 @@ export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: 
       }
     }
     catch (error) {
-      console.log(commentError)
+      console.error(commentError)
     }
     setCommentStatus(false)
     setComment('')

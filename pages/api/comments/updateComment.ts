@@ -46,11 +46,9 @@ const updateComment = async (commentId: PostComment['id'], content: PostComment[
 }
 
 const updateFlags = async (id: PostComment['id'], user: UserProfile) => {
-  console.log('updating flags', id, user)
   const { data, error } = await supabase
       .from('flags')
       .insert({ comment_id: id, user_id: user.sub })
-        console.log(data, error)
       return error ? error : data;
 }
 
@@ -65,7 +63,6 @@ export default withApiAuthRequired(async function (req: NextApiRequest, res: Nex
       .from('comments')
       .update({ edited: true, deleted: true })
       .match({ 'id': id, 'user_id': session.user.sub })
-    console.log(id, data, error)
     return error ? res.status(400).send(data) : res.status(200).send(data);
   }
 
