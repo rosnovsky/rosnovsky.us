@@ -125,5 +125,6 @@ export async function getStaticProps({ params }) {
     method: 'GET',
   }).then(res => res.json())
 
-  return { props: { ...post, comments } };
+
+  return { props: { ...post, comments }, revalidate: 1 };
 }
