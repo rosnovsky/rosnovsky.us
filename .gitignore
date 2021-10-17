@@ -8,3 +8,4 @@ public/feed.xml
 .vercel
 .env.*
 public/sw.js.map
+*/sw.js.map

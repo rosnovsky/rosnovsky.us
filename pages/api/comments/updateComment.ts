@@ -15,12 +15,12 @@ import escape from 'validator/lib/escape';
 const isCommentUnique = async (commentId: PostComment['id'], content: PostComment['comment']) => {
   const commentHash = md5(escape(content));
   const { data: comment, error } = await supabase
-  .from('comments')
-  .select('*')
-  .eq('id', commentId)
+    .from('comments')
+    .select('*')
+    .eq('id', commentId)
 
   const isUnique = comment[0].hash !== commentHash;
-  
+
   return isUnique
 }
 
@@ -30,27 +30,53 @@ const isCommentUnique = async (commentId: PostComment['id'], content: PostCommen
   @param content comment content in text format
   @param user user data returned from Auth0's `getSession()`
 **/
-const updateComment= async(commentId: PostComment['id'], content: PostComment['comment'], user: UserProfile) => {
+const updateComment = async (commentId: PostComment['id'], content: PostComment['comment'], user: UserProfile) => {
   // Creating or updating user profile. Since comments rely on a user and we don't want to sync user profiles explicitly, we'll just update the user profile here if it exists, or create it if it doesn't. In theory, by this point (user attempts to update comment) we should have a user profile.
   await userProfile(user)
 
   // We are using comment content hash to validate comment's uniqueness.
   const hash = md5(escape(content));
-  
+
   const { data: comment, error } = await supabase
-  .from('comments')
-  .update({ comment: escape(content), edited: true, hash})
-  .match({ 'id': commentId, 'user_id': user.sub })
-  if(comment === null) return { error: 'You can only edit your own comments' }
+    .from('comments')
+    .update({ comment: escape(content), edited: true, hash })
+    .match({ 'id': commentId, 'user_id': user.sub })
+  if (comment === null) return { error: 'You can only edit your own comments' }
   return error ? error : comment;
 }
 
+const updateFlags = async (id: PostComment['id'], user: UserProfile) => {
+  const { data, error } = await supabase
+      .from('flags')
+      .insert({ comment_id: id, user_id: user.sub })
+      return error ? error : data;
+}
+
 export default withApiAuthRequired(async function (req: NextApiRequest, res: NextApiResponse) {
-  
+
   const session = getSession(req, res);
-  if(!session) res.status(401).end({"error": "You are not authenticated"});
-  
-  return validateQueryData(req.body, 'updateComment') ? await isCommentUnique(req.body.id, req.body.content) ? res.status(200).send(await updateComment(req.body.id, req.body.content, session.user)) : res.status(400).send({"error": 'This exact comment, posted by you, already exists. You sneaky, you!'}) : res.status(400).send({"error": "Invalid comment update data"})
+  if (!session) res.status(401).end({ "error": "You are not authenticated" });
+  const { id, operation } = JSON.parse(req.body)
+
+  if (operation === 'delete') {
+    const { data, error } = await supabase
+      .from('comments')
+      .update({ edited: true, deleted: true })
+      .match({ 'id': id, 'user_id': session.user.sub })
+    return error ? res.status(400).send(data) : res.status(200).send(data);
+  }
+
+  if (operation === 'flag') {
+    const { data, error } = await supabase
+      .from('comments')
+      .update({ edited: true, flagged: true})
+      .match({ 'id': id })
+    updateFlags(id, session.user)
+      
+    return error ? res.status(400).send(data) : res.status(200).send(data);
+  }
+
+  return validateQueryData(req.body, 'updateComment') ? await isCommentUnique(id, req.body.content) ? res.status(200).send(await updateComment(id, req.body.content, session.user)) : res.status(400).send({ "error": 'This exact comment, posted by you, already exists. You sneaky, you!' }) : res.status(400).send({ "error": "Invalid comment update data" })
 })
 
 

@@ -4,14 +4,14 @@ import validator from 'validator';
  * @param uuid The value to validate.
 **/
 export const validateUUID = (uuid: string) => {
-  if(!uuid || uuid.length < 1) {
+  if (!uuid || uuid.length < 1) {
     return false;
   }
   return validator.isUUID(uuid);
 }
 
 export const validateQueryData = (data: any, operation: string) => {
-  if(data?.length < 1 || !operation) {
+  if (data?.length < 1 || !operation) {
     throw new Error('A valid query is required. Must have a query AND operation.');
   }
 
