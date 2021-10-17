@@ -15,8 +15,6 @@ export const validateQueryData = (data: any, operation: string) => {
     throw new Error('A valid query is required. Must have a query AND operation.');
   }
 
-  console.log(data);
-
   switch (operation) {
     case 'getComments':
       return (!data.id || data.id === undefined) ? false : true;
@@ -27,7 +25,6 @@ export const validateQueryData = (data: any, operation: string) => {
     case 'getCommentsByUserId':
       return !data.userId ? false : true
     case 'postComment':
-      console.log(data.postId, data.content)
       return (!data.postId || !data.content) ? false : true
     case 'updateCommentMetadata':
       return (!data.id || !data.deleted || !data.edited || !data.flagged) ? false : validateUUID(data.id)
