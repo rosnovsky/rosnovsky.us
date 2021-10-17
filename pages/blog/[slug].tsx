@@ -2,9 +2,9 @@ import { MDXRemote } from 'next-mdx-remote';
 import remark from 'remark'
 import html from 'remark-html'
 import { useState } from 'react';
+import useSWR from 'swr';
 
 import { getFiles, getFileBySlug } from '../../lib/mdx';
-import { getTweets } from '../../lib/twitter';
 import BlogLayout from '../../layouts/blogLayout';
 import MDXComponents from '../../components/Utils/MDXComponents';
 import Comments from '../../components/Cards/Comments';
@@ -19,10 +19,11 @@ const markdownToHtml = async (markdown: string) => {
   return result.toString()
 }
 
-export default function Blog({ mdxSource, tweets, frontMatter, comments }: { mdxSource: any, tweets: any, frontMatter: { cover: string, published_at: string, readingTime: Record<any, any>, slug: string, summary: string, title: string, wordCount: number }, comments: PostComment[] }) {
+export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: any, tweets: any, frontMatter: { cover: string, published_at: string, readingTime: Record<any, any>, slug: string, summary: string, title: string, wordCount: number }, comments: PostComment[] }) {
   const { user } = useUser();
   const [commentStatus, setCommentStatus] = useState(false)
   const [comment, setComment] = useState('')
+  const [updatedComments, setUpdatedComments] = useState(comments)
   const [commentError, setCommentError] = useState('')
 
   const postCommentRequest = async (e: FormEvent) => {
@@ -48,16 +49,21 @@ export default function Blog({ mdxSource, tweets, frontMatter, comments }: { mdx
     setComment('')
     return null
   }
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR(`/api/comments/getComments?id=${frontMatter.slug}`, fetcher, { refreshInterval: 1000 })
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   return (
-    <BlogLayout frontMatter={frontMatter}>
+    <BlogLayout frontMatter={frontMatter} >
       <MDXRemote
         {...mdxSource}
         components={{
           ...MDXComponents
         }}
       />
-      {user ? <span id="comments" className="font-bold">
+      {user ? <span id="comments" className="font-bold" >
         <div className="flex mx-auto items-center justify-center shadow-lg mb-4 w-full">
           <form className="w-full max-w-xl bg-white dark:bg-gray-900 rounded-lg px-4 pt-2" onSubmit={e => postCommentRequest(e)} >
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -73,14 +79,12 @@ export default function Blog({ mdxSource, tweets, frontMatter, comments }: { mdx
             </div>
           </form>
         </div></span>
-        : <span className="text-black"><Link href="/api/auth/login" passHref><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></Link> to comment</span>}
-      <Comments comments={comments} />
-    </BlogLayout>
+        : <span className="text-black"><Link href="/api/auth/login" passHref><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></Link> to comment</span>
+      }
+      <Comments comments={data ? data : comments} />
+    </BlogLayout >
   );
 }
-
-
-
 
 export async function getStaticPaths() {
   const posts = await getFiles('blog');
@@ -97,7 +101,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug('blog', params.slug);
-  const tweets = await getTweets(post.tweetIDs);
 
   const htmlContent = await markdownToHtml(post.content || '')
   const records = htmlContent.split('<p>').filter(string => string != '');
@@ -122,5 +125,5 @@ export async function getStaticProps({ params }) {
     method: 'GET',
   }).then(res => res.json())
 
-  return { props: { ...post, tweets, comments } };
+  return { props: { ...post, comments } };
 }

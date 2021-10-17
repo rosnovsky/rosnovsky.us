@@ -21,12 +21,14 @@ const isCommentUnique = async (postId: string, content: string, user) => {
   return isUnique
 }
 
+const published_at = new Date().toISOString();
+
 const postComment = async (postId: string, content: string, user: UserProfile) => {
   await userProfile(user)
   const { data, error }: { data: PostComment[], error: any } = await supabase
     .from('comments')
     .upsert(
-      { user_id: user.sub, post_id: escape(postId), comment: content, hash: md5(escape(content)) }, { ignoreDuplicates: true }
+      { published_at, user_id: user.sub, post_id: escape(postId), comment: content, hash: md5(escape(content)) }, { ignoreDuplicates: true }
     )
   return error ? error : data;
 }
