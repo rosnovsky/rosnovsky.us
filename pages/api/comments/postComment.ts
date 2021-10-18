@@ -30,6 +30,12 @@ const postComment = async (postId: string, content: string, user: UserProfile) =
     .upsert(
       { published_at, user_id: user.sub, post_id: escape(postId), comment: content, hash: md5(escape(content)) }, { ignoreDuplicates: true }
     )
+    const response = await supabase
+    .from('users')
+    .upsert(
+      { user_id: user.sub, name: user.name, email: user.email, email_verified: user.email_verified, picture: user.picture, nickname: user.nickname }, { ignoreDuplicates: true }
+    )
+    console.log(response)
   return error ? error : data;
 }
 
