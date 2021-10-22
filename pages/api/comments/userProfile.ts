@@ -68,10 +68,10 @@ export const userProfile = async (user: UserProfile) => {
 }
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const session = getSession(req, res);
+//const session = getSession(req, res);
 
-  if(session) {await userProfile(session.user); return res.status(200).send(session)}
-  if(!session && !req.query.user_id) return res.status(400).send({error: "400", message: 'Neither current session nor user_id were found'})
+ // if(session) {await userProfile(session.user); return res.status(200).send(session)}
+  if(!req.query.user_id) return res.status(400).send({error: "400", message: 'Neither current session nor user_id were found'})
 
   const {data, error} = await supabase
   .from('users')
@@ -79,5 +79,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   .eq('user_id', req.query.user_id)
   .single()
 
-  return res.status(200).send({"user": {name: data.name, given_name: data.given_name, family_name: data.family_name, email_verified: data.email_verified, picture: data.picture, nickname: data.nickname}});
+  return error ? res.status(400).send({"oops": error}) : res.status(200).send({"user": {name: data.name, given_name: data.given_name, family_name: data.family_name, email_verified: data.email_verified, picture: data.picture, nickname: data.nickname}});
 }

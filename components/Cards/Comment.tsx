@@ -7,7 +7,7 @@ export default function Comment(comment: PostComment) {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      return fetch(`https://rosnovsky.us/api/comments/userProfile?user_id=${comment.user_id}`).then(result => result.json()).then((user) => setUserProfile(user.user))
+        return fetch(process.env.NODE_ENV =="production" ? `https://rosnovsky.us/api/comments/userProfile?user_id=${comment.user_id}` : `http://localhost:3000/api/comments/userProfile?user_id=${comment.user_id}`).then(result => result.json()).then((user) => setUserProfile(user.user))
     };
     fetchUserProfile();
   }, []);
