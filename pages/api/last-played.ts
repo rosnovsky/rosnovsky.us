@@ -19,12 +19,12 @@ export default async (_, res) => {
     'Cache-Control',
     'public, s-maxage=2, stale-while-revalidate=1',
   );
-
+// temp artwork url instead of song URL (need to find this first)
   return res.status(200).json({
       album: albumName,
       albumImageUrl: artwork.url,
       artist: artistName,
-      songUrl: appleSong.href,
+      songUrl: artwork.url,
       title: name,
   });
 };
