@@ -4,6 +4,7 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
   },
+  swcMinify: true,
   future: {
     strictPostcssConfiguration: true,
   },
