@@ -16,7 +16,7 @@ const TOKEN_ENDPOINT_SPOTIFY = `https://accounts.spotify.com/api/token`;
 const APPLE_USER_TOKEN = process.env.APPLE_USER_TOKEN
 const APPLE_DEV_TOKEN = process.env.APPLE_DEV_TOKEN
 const TOP_TRACKS_APPLE = ''
-const LAST_PLAYED_APPLE = 'https://api.music.apple.com/v1/me/recent/played/tracks?limit=1&types=library-songs'
+const LAST_PLAYED_APPLE = 'https://api.music.apple.com/v1/me/recent/played/tracks?types=songs'
 
 type AppleMusicTrack = {
     "data": 
