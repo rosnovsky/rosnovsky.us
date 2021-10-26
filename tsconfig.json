@@ -22,10 +22,17 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@styles/*": ["styles/*"],
-      "@pages/*": ["pages/*"],
-  }
+      "@components/*": [
+        "components/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ]
+    },
+    "incremental": true
   },
   "exclude": [
     "node_modules"

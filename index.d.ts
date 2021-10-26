@@ -1,5 +1,51 @@
 import { UserProfile } from "@auth0/nextjs-auth0"
 
+export type AppleMusicTrack = {
+  "data": {
+    "id": string,
+    "type": string,
+    "href": string
+    "attributes": {
+
+      "previews": {
+        "url": string
+      },
+
+      "artwork": {
+        "width": number,
+        "height": number,
+        "url": string,
+        "bgColor": string,
+        "textColor1": string,
+        "textColor2": string,
+        "textColor3": string,
+        "textColor4": string
+
+
+      },
+      "artistName": string,
+      "url": string,
+      "isrc": string,
+      "releaseDate": string
+      "discNumber": number,
+      "genreNames": string[],
+      "durationInMillis": number,
+      "name": string,
+      "hasLyrics": boolean,
+      "albumName": string,
+      "playParams": {
+        "id": string,
+        "kind": string,
+        "isLibrary": boolean,
+        "reporting": boolean
+      },
+      "trackNumber": number,
+      "composerName": string
+    }
+  }[]
+
+}
+
 export type PictureDescription = {
   description: {
     tags: string[]

@@ -1,12 +1,13 @@
-export default function MetricCard({ header, link, metric }) {
+export default function MetricCard({ header, link, metric }: {header: string, link?: string, metric: any}) {
+
   return (
     <div className="metric-card border border-gray-200 dark:border-gray-800 rounded p-4 max-w-72 w-full">
-      <a
+      {link ? <><a
         aria-label={header}
         target="_blank"
         rel="noopener noreferrer"
         href={link}
-      >
+      > 
         <div className="flex items-center text-gray-900 dark:text-gray-100">
           {header}
           <svg
@@ -27,7 +28,12 @@ export default function MetricCard({ header, link, metric }) {
       </a>
       <p className="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white">
         {metric || '-'}
-      </p>
+      </p></>
+      : <><div className="flex items-center text-gray-900 dark:text-gray-100">
+      {header}
+    </div><p className="mt-2 text-3xl font-bold spacing-sm text-black dark:text-white">
+        {metric || '-'}
+      </p></>}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { validateQueryData } from './validate';
 
-const getCommentsByUserId = async (userId: string) => {
+export const getCommentsByUserId = async (userId: string) => {
   const { data: userComments, error } = await supabase
   .from('comments')
   .select('*')

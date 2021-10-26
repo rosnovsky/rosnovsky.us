@@ -2,8 +2,9 @@ import SubscribeCard from '../components/Cards/SubscribeCard';
 import Container from '../components/Container';
 import GitHub from '../components/metrics/Github';
 import Buttondown from '../components/metrics/Buttondown';
-import Gumroad from '../components/metrics/Gumroad';
+import Gumroad from '../components/metrics/CommentsCount';
 import TopTracks from '../components/TopTracks';
+import CommentsPosted from '../components/metrics/CommentsCount';
 
 export default function Stats() {
   return (
@@ -23,17 +24,17 @@ export default function Stats() {
         <div className="flex flex-col w-full">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
             <GitHub />
-            <Gumroad />
+            <CommentsPosted />
           </div>
           
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
           <Buttondown />
         </div>
         <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
-          Top Tracks
+          Last Played Tracks
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          These are my Top Tracks on Spotify. I listen to Apple Music and Spotify interchangebly, leaning towards Spotify in recent months. 
+          These are the last 10 tracks I've listened to on Apple Music. Don't judge! 
         </p>
         <TopTracks />
         <SubscribeCard />
