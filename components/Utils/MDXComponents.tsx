@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic'
 const Hls = dynamic(() => import('hls.js'))
 import { useState, useEffect, useRef } from 'react'
 import mux from 'mux-embed'
-import { SRLWrapper } from "simple-react-lightbox";
 
 
 import type { PictureDescription } from '../../index'
@@ -67,7 +66,7 @@ const ImageWithAlt = ({ path, width, height, caption }: { path: string, width?: 
   }, [])
 
   return <div className="my-5 shadow-lg bg-white dark:bg-gray-700 p-1">
-    <SRLWrapper><Image
+    <Image
       src={require(`../../public/static/images/${path}`)}
       alt={alt}
       layout="responsive"
@@ -76,7 +75,7 @@ const ImageWithAlt = ({ path, width, height, caption }: { path: string, width?: 
       className="p-3"
       quality={95}
     />
-      {caption ? <div className="pt-5 pb-5 text-center bg-gray-100 text-gray-700 dark:bg-gray-500 dark:text-white">{caption}</div> : null}</SRLWrapper>
+      {caption ? <div className="pt-5 pb-5 text-center bg-gray-100 text-gray-700 dark:bg-gray-500 dark:text-white">{caption}</div> : null}
   </div>
 }
 

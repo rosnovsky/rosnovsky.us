@@ -1,7 +1,7 @@
 import Quote from '@components/Utils/Quote';
-import SubscribeCard from '../components/Cards/SubscribeCard';
+import SubscribeCard from '@components/Cards/SubscribeCard';
 
-import Container from '../components/Container';
+import Container from '@components/Container';
 
 const ExternalLink = ({ href, children }) => (
   <a

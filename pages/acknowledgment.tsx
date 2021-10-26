@@ -1,7 +1,3 @@
-import SubscribeCard from '../components/Cards/SubscribeCard';
-
-import Container from '../components/Container';
-
 import { MDXRemote } from 'next-mdx-remote';
 
 import { getFileBySlug } from '../lib/mdx';

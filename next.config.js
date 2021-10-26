@@ -7,12 +7,14 @@ module.exports = withPWA({
   swcMinify: true,
   future: {
     strictPostcssConfiguration: true,
+    concurrentFeatures: true
   },
   reactStrictMode: true,
   experimental: {
     turboMode: true,
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: [
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
