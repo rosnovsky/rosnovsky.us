@@ -81,7 +81,7 @@ export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: 
         </div></span>
         : <span className="text-black"><Link href="/api/auth/login" passHref><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></Link> to comment</span>
       }
-      <Comments comments={data ? data : comments} />
+      <Comments comments={data ? data : comments} postId={frontMatter.slug} postTitle={frontMatter.title} />
     </BlogLayout >
   );
 }

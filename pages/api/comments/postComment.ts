@@ -1,35 +1,13 @@
 import { supabase } from '../../../lib/supabase';
-import formData from 'form-data';
-import Mailgun from 'mailgun.js';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired, getSession, UserProfile } from '@auth0/nextjs-auth0';
 import md5 from 'md5'
 import { userProfile } from './userProfile'
+import { notify } from '../../../lib/notify'
 import { validateQueryData } from './validate';
 import { PostComment } from '../../../index'
 
-// TODO: extract into a separate utility function with methods for visitor notifications, deleted/flagged comments, etc.
-const notify = async (content: string, postId: string, postTitle: string, userName: string) => {
-  const mailgun = new Mailgun(formData);
-  const mg = mailgun.client({username: 'api', key: process.env.MAILGUN_KEY});
-  const DOMAIN = "rosnovsky.us";
 
-  const data = {
-    from: "Rosnovsky Park™ <artem@rosnovsky.us>",
-    to: "artem@rosnovsky.us",
-    subject: "New comment!",
-    template: "new-comment-notification",
-    'h:X-Mailgun-Variables': JSON.stringify({
-      "user": userName,
-      "url": `https://rosnovsky.us/blog/${postId}`,
-      "postTitle": postTitle,
-      "content": content
-    })
-  }
-
-  return await mg.messages.create(DOMAIN, data);
-
-}
 
 const isCommentUnique = async (postId: string, content: string, user) => {
   const commentHash = md5(content);
@@ -60,7 +38,7 @@ const postComment = async (postId: string, postTitle: string, content: string, u
     .upsert(
       { user_id: user.sub, name: user.name, email: user.email, email_verified: user.email_verified, picture: user.picture, nickname: user.nickname }, { ignoreDuplicates: true }
     )
-  console.log("Mailgun", await notify(content, postId, postTitle, user.name))
+  await notify("new-comment-notification", content, postId, postTitle, user)
   return error ? error : data;
 }
 
