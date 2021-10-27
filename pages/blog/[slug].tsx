@@ -35,7 +35,7 @@ export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: 
     try {
       const result = await fetch('/api/comments/postComment', {
         method: 'POST',
-        body: JSON.stringify({ postId: frontMatter.slug, content: comment })
+        body: JSON.stringify({ postId: frontMatter.slug, postTitle: frontMatter.title, content: comment })
       }).then(res => res.json())
       if (!result.ok) {
         setCommentError(result.error)

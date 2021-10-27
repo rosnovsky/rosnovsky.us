@@ -42,7 +42,7 @@ export default function Comment(comment: PostComment) {
       <div className="w-full p-3 flex items-center justify-center">
         <div className={comment.flagged ? "bg-gray-200 border border-red-800 dark:bg-gray-700  shadow-sm mx-auto px-4 py-3 rounded-lg w-full" : "bg-white dark:bg-gray-900 border shadow-sm mx-auto px-4 py-3 rounded-lg w-full"}>
           <div className="flex items-center">
-            <Image className="h-12 w-12 rounded-full" alt={`${userProfile?.nickname}'s avatar`} src={userProfile?.picture!} />
+            <img className="h-12 w-12 rounded-full" alt={`${userProfile?.nickname}'s avatar`} src={userProfile?.picture!} />
             <div className="ml-2">
               <div className="text-sm ">
                 <span className="font-semibold">

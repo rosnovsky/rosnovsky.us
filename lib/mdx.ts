@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import readingTime from 'reading-time';
 import { serialize } from 'next-mdx-remote/serialize';
-// import mdxPrism from 'mdx-prism';
+import mdxPrism from 'mdx-prism';
 
 const root = process.cwd();
 
@@ -24,7 +24,7 @@ export async function getFileBySlug(type, slug) {
         require('remark-slug'),
         require('remark-code-titles')
       ],
-      // rehypePlugins: [mdxPrism]
+      rehypePlugins: [mdxPrism]
     }
   });
 
