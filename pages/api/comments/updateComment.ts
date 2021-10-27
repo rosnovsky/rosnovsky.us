@@ -69,7 +69,7 @@ export default withApiAuthRequired(async function (req: NextApiRequest, res: Nex
   if (operation === 'flag') {
     const { data, error } = await supabase
       .from('comments')
-      .update({ edited: true, flagged: true})
+      .update({ edited: false, flagged: true})
       .match({ 'id': id })
     updateFlags(id, session.user)
       
