@@ -1,13 +1,11 @@
 import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { withApiAuthRequired, getSession, UserProfile } from '@auth0/nextjs-auth0';
-import userProfile from './userProfile';
-
 
 const getCommentsCount = async () => {
   const { data: comments, error } = await supabase
   .from('comments')
   .select('*')
+  .eq('deleted', false)
   return error ? error : comments.length
 }
 

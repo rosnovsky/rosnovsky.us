@@ -6,6 +6,7 @@ import { validateQueryData } from './validate';
 import { userProfile } from './userProfile';
 import { PostComment } from '../../..';
 import escape from 'validator/lib/escape';
+import { notify } from '../../../lib/notify';
 
 /**
  * Checks whether an updated comment is unique. Compares comment hash with those stored in the database
@@ -56,22 +57,24 @@ export default withApiAuthRequired(async function (req: NextApiRequest, res: Nex
 
   const session = getSession(req, res);
   if (!session) res.status(401).end({ "error": "You are not authenticated" });
-  const { id, operation } = JSON.parse(req.body)
+  const { id, operation, content, postId, postTitle } = JSON.parse(req.body)
 
   if (operation === 'delete') {
     const { data, error } = await supabase
       .from('comments')
       .update({ edited: true, deleted: true })
       .match({ 'id': id, 'user_id': session.user.sub })
+      await notify("deleted_comment", content, postId, postTitle, session.user)
     return error ? res.status(400).send(data) : res.status(200).send(data);
   }
 
   if (operation === 'flag') {
     const { data, error } = await supabase
       .from('comments')
-      .update({ edited: true, flagged: true})
+      .update({ edited: false, flagged: true})
       .match({ 'id': id })
     updateFlags(id, session.user)
+    await notify("flagged_comment", content, postId, postTitle, session.user)
       
     return error ? res.status(400).send(data) : res.status(200).send(data);
   }
