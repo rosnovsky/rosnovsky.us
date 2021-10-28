@@ -9,3 +9,5 @@ public/feed.xml
 .env.*
 public/sw.js.map
 */sw.js.map
+*/sw.js
+/coverage
