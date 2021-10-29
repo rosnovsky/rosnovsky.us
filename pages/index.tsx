@@ -19,6 +19,12 @@ export default function Home() {
           Featured Posts
         </h3>
         <BlogPost
+          title="Journaling"
+          summary="I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a gamechanger in the past few months."
+          slug="journaling"
+          publishedAt="2021-10-14"
+        />
+        <BlogPost
           title="Moonlander Keyboard"
           summary="I've updated my keyboarded recently. It's been a frustraring, fullfilling, and invigorating experience so far."
           slug="moonlander-keyboard"
@@ -30,12 +36,7 @@ export default function Home() {
           slug="alt-text"
           publishedAt="2021/06/21"
         />
-        <BlogPost
-          title="2020, you won't be missed"
-          summary="This by far the worst year in generations is coming to a close. It won't be missed, yet it will remain in our memory, history books, and our shared trauma will take decades to heal. Here's to 2021, hopefully, a better year."
-          slug="2020-you-won-t-be-missed"
-          publishedAt="2020/12/31"
-        />
+        
         <BlogPost
           title="Dynamic comments for a static website"
           summary="For the past couple of months, I've been working on a comment feature for this blog. Now that it's almost finished, I invite you to check it out along with some implementation details."
