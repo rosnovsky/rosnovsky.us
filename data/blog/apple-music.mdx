@@ -16,4 +16,10 @@ This endpoint requires two different authorization tokens: `Developer token` & `
 
 ## Getting tokens
 
+Now, the deal with the two tokens is that they are totally different, unrelated, yet somewhat connected: You need _both_ in order to fetch music history.
 
+The developer token is a JWT that you build yourself, and sign with a private key you get at the Apple deloper portal. [More on this here](https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens).
+
+The user music token appears to be some kind of opaque token, which you can only get after a user explicitly logs into their Apple Music account and grants your app access to their Apple Music account. So far, I was unable to find a way to generate or obtain this token programmatically. What's worse, this token expires after 6 months (fixed) and there's no way to renew it.
+
+This last bit matters because in this whole equasion, you can generate the developer token yourself. You can obtain the user music token. But from here, you cannot update the user token, so in 6 months you'll *have to* generate a new one, in the browser, by logging in, manually, as some sort of animal.
