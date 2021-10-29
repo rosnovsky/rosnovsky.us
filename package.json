@@ -81,6 +81,7 @@
     "mailgun-js": "^0.22.0",
     "mailgun.js": "^3.7.0",
     "md5": "^2.3.0",
+    "mdx-embed": "^0.0.22",
     "mdx-prism": "0.3.4",
     "next-mdx-remote": "^3.0.6",
     "next-offline": "^5.0.5",

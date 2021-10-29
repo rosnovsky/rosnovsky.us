@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 const Hls = dynamic(() => import('hls.js'))
 import { useState, useEffect, useRef } from 'react'
 import mux from 'mux-embed'
+import { Tweet, YouTube, Gist } from 'mdx-embed';
 
 
 import type { PictureDescription } from '../../index'
@@ -151,6 +152,9 @@ const Video = ({ playbackId }) => {
 const MDXComponents = {
   ImageWithAlt,
   Image,
+  Tweet,
+  YouTube,
+  Gist,
   Video,
   a: CustomLink
 };
