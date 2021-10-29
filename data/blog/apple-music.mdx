@@ -18,7 +18,7 @@ This endpoint requires two different authorization tokens: `Developer token` & `
 
 Now, the deal with the two tokens is that they are totally different, unrelated, yet somewhat connected: You need _both_ in order to fetch music history.
 
-The developer token is a JWT that you build yourself, and sign with a private key you get at the Apple deloper portal. :qqq[More on this here](https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens).
+The developer token is a JWT that you build yourself, and sign with a private key you get at the Apple deloper portal. [More on this here](https://developer.apple.com/documentation/applemusicapi/getting_keys_and_creating_tokens).
 
 The user music token appears to be some kind of opaque token, which you can only get after a user explicitly logs into their Apple Music account and grants your app access to their Apple Music account. So far, I was unable to find a way to generate or obtain this token programmatically. What's worse, this token expires after 6 months (fixed) and there's no way to renew it.
 
@@ -30,7 +30,7 @@ FInally, it's a quest to figure out _how_ to get this user token, and crappy doc
 - Add "Sign in with Apple" button to the page (here's how)
 - Deploy the app (to Vercel or Netlify, or wherever, otherwise you'd have to work around a bunch of issues)
 - Login on this newly deployed page, grant it access to your Apple Music account
-- Open Developer Tools, and in "Storage" section find the token OR add `<script>console.log(response)</script>` to the page and just copy the token from console
+- Open Developer Tools, and in "Storage" section find the token OR add `<script>console.log(response)</script>` to the page and just copy the token from console. Feel free to try it out [here]()
 
 Not very intuitive, but it works. Now you have 6 months to use this token, and after that you'd need to do the same thing again.
 
@@ -39,18 +39,22 @@ As for the Developer token, I used Auth0's `jsonwebtoken` library. It allows you
 ```typescript
 import jwt from 'jsonwebtoken'
 
-const generateToken = async () => {
+const generateToken = async (): string => {
   const privateKey = process.env.PRIVATE_KEY
-  const teamId = process.env.TEAM_ID
   const keyId = process.env.KEY_ID
+  const teamId = process.env.TEAM_ID
 
-  const token = jwt.sign({}, privateKey, {
-    algorithm: 'ES256',
-    expiresIn: '6 months',
-    issuer: teamId,
-    keyId,
-  })
-  return token
+  const developerToken = jwt.sign({}, 
+    `-----BEGIN PRIVATE KEY-----\n` + 
+    privateKey + 
+    `\n-----END PRIVATE KEY-----`, { 
+      algorithm: 'ES256', 
+      keyid: keyId, 
+      issuer: teamId, 
+      expiresIn: '5s'
+    });
+
+  return developerToken;
 }
 ```
 

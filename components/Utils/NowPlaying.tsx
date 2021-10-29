@@ -9,41 +9,15 @@ export default function NowPlaying() {
     revalidateOnFocus: true,
     focusThrottleInterval: 9000
   });
-console.info(data)
   return (
-    <div className="flex flex-row sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
-      <span className="text-gray-800 dark:text-gray-200">Last&nbsp;Played:</span>
-      
-
-      <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
-        {data?.isPlaying ? (
-          <a
-            className="text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
-            href={data.songUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {data.title}
-          </a>
-        ) : (
-          <p className="text-gray-800 dark:text-gray-200 font-medium">
-            <a
-              className="text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
-              href={data?.songUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {data?.title}
-            </a>
-          </p>
-        )}
-        <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-          {' – '}
-        </span>
-        <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
-          {data?.artist ?? 'Apple Music'}
-        </p>
+    <>
+      <div className="flex justify-items-center flex-row w-full mt-3 mb-10">
+        <span className="text-gray-800 -rotate-90 font-bold font-mono text-xs dark:text-gray-200">Last&nbsp;Played<div><img className="mx-auto" src="../static/images/backend/apple-music-logo.png" alt="Apple Music Logo" width="50" /></div></span>
+        
+        <img src="https://current-music.vercel.app/last-played" alt="Last Played" className="w-full h-full object-cover rounded-lg shadow-lg" />
       </div>
-    </div>
+      <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
+    </>
+
   );
 }
