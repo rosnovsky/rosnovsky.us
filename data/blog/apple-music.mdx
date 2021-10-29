@@ -1,0 +1,19 @@
+---
+title: "Listening now: Apple Music"
+publishedAt: "2021-10-29"
+summary: "At the bottom of this page you can find the latest song I've listened to on Apple Music. Here's how I made it works."
+---
+
+Apple Music is my primary music service. I do listen to Spotify every now and again (their recomendation engine is unmatched), but being an Apple household, it makes sense to mostly use Apple Music. 
+
+When I started working on this blog, I took a lot of inspiration from Lee Robinson. He has this little Spotify widget displaying the current song, and while it was easy to adapt and use it, it was not what I wanted. What I wanted was a widget displaying the last song I listened to on Apple Music. Which, apparently, is not trivial.
+
+## Apple Music API
+
+For the longest time I couldn't find a way to use Apple's MusicKit or Music API on the web. Their developer documentation is pretty poor, especially when it comes to the web stuff. At last, I figured that I'm looking for the user listening history, and there's an API endpoint for that.
+
+This endpoint requires two different authorization tokens: `Developer token` & `user music token`. With the `Developer token`, one could query and perform actions within the Music store. And with the `user music token`, one could query and perform actions within the user's music library. So, how do you get those?
+
+## Getting tokens
+
+
