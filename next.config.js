@@ -20,7 +20,14 @@ module.exports = withPWA({
       'pbs.twimg.com', // Twitter Profile Picture
       's.gravatar.com', // Gravatar
       'media-exp1.licdn.com',  // Linkedin Profile Picture
-      'image.mux.com'
+      'image.mux.com',
+      'current-music.vercel.app',
+      'is4-ssl.mzstatic.com',
+      'is5-ssl.mzstatic.com',
+      'mzstatic.com',
+      'is3-ssl.mzstatic.com',
+      'is2-ssl.mzstatic.com',
+      'is1-ssl.mzstatic.com'
     ],
       disableStaticImages: false
   },

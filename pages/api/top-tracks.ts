@@ -1,16 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { AppleMusicTrack } from '../..';
 import { getLastPlayedAppleMusicTracks } from '../../lib/music';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await getLastPlayedAppleMusicTracks();
-  const { data }: AppleMusicTrack = await response.json();
+  const { data } = await response.json();
 
-  const tracks = data.map((track) => ({
-    artist: track.attributes.artistName,
-    songUrl: track.attributes.url,
-    title: track.attributes.name
-  }));
+  const tracks = data.map((track) => ({ title: track.attributes.name, album: track.attributes.albumName, artist: track.attributes.artistName, albumImageUrl: track.attributes.artwork.url.replace("{w}x{h}", "300x300") , songUrl: track.attributes.url }));
 
   res.setHeader(
     'Cache-Control',

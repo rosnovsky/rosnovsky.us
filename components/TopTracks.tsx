@@ -10,7 +10,7 @@ export default function TopTracks() {
     return null;
   }
 
-  return data.tracks.map((track, index) => (
-    <Track ranking={index + 1} key={track.songUrl} {...track} />
+  return data.tracks.map((track) => (
+    <div key={track.songUrl} className="dark:border-gray-800 border-b border-gray-100"><Track track={track} /></div>
   ));
 }
