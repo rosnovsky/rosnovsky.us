@@ -6,7 +6,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const appleResponse = await getLastPlayedAppleMusicTrack();
   const appleTrack: AppleMusicTrack = await appleResponse.json();
-  console.log(JSON.stringify(appleTrack.data[0]));
 
   const { name, albumName, artistName, artwork, url } = appleTrack.data[0].attributes
 

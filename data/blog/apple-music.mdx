@@ -60,7 +60,7 @@ const generateToken = async (): string => {
 
 That's about it. Now, that you've got both tokens, everything else is pretty straightforward.
 
-## Music API
+## Fetching Last Played songs
 
 The API itself is fairly conventional. The only specific thing about is is that it's poorly docimented (you don't know for sure what shape the response object will be for different resources) and the fact that you need to supply both Bearer token for Authorization header and a `user-music-token` as a different header. With both tokens in hand, it might look something like this:
 

@@ -18,8 +18,8 @@ export default function NowPlaying() {
   return (
     <>
       <div className="flex justify-items-center flex-row w-full mt-2 mb-10">
-        <span className="text-gray-800 -rotate-90 font-bold font-mono text-xs dark:text-gray-200">Last&nbsp;Played<div className="justify-items-center flex flex-col"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 84.3 20.7" className="text-black fill-current dark:text-white">
-          <path className="text-black fill-current dark:text-white" d="M35.4,20.1V6.6h-0.1l-5.4,13.5h-2.1L22.4,6.6h-0.1v13.5h-2.5V1.8H23l5.8,14.6h0.1l5.8-14.6H38v18.3L35.4,20.1L35.4,20.1z
+        <span className="text-gray-800 -rotate-90 mt-3 font-bold font-mono text-xs dark:text-gray-200">Last&nbsp;Played<div className="justify-items-center h-3  flex flex-col"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 84.3 20.7" className="text-black h-3 fill-current dark:text-white">
+          <path className="text-black h-3 fill-current dark:text-white" d="M35.4,20.1V6.6h-0.1l-5.4,13.5h-2.1L22.4,6.6h-0.1v13.5h-2.5V1.8H23l5.8,14.6h0.1l5.8-14.6H38v18.3L35.4,20.1L35.4,20.1z
           M52.1,20.1h-2.6v-2.3h-0.1c-0.7,1.6-2.1,2.5-4.1,2.5c-2.9,0-4.6-1.9-4.6-5V6.7h2.7v8.1c0,2,1,3.1,2.8,3.1c2,0,3.1-1.4,3.1-3.5V6.7
           h2.7L52.1,20.1L52.1,20.1z M59.5,6.5c3.1,0,5,1.7,5.1,4.2h-2.5c-0.2-1.3-1.1-2.1-2.6-2.1C58,8.6,57,9.3,57,10.4c0,0.8,0.6,1.4,2,1.7
           l2.1,0.5c2.7,0.6,3.7,1.7,3.7,3.6c0,2.4-2.2,4.1-5.3,4.1c-3.3,0-5.3-1.6-5.5-4.2h2.7c0.2,1.4,1.2,2.1,2.8,2.1c1.6,0,2.6-0.7,2.6-1.8
