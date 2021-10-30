@@ -62,4 +62,62 @@ That's about it. Now, that you've got both tokens, everything else is pretty str
 
 ## Music API
 
+The API itself is fairly conventional. The only specific thing about is is that it's poorly docimented (you don't know for sure what shape the response object will be for different resources) and the fact that you need to supply both Bearer token for Authorization header and a `user-music-token` as a different header. With both tokens in hand, it might look something like this:
+
+```typescript
+const getLastPlayedAppleMusicTrack = async () => {
+
+  return fetch('https://api.music.apple.com/v1/me/recent/played/tracks?types=songs' {
+    headers: {
+        Authorization: `Bearer ${APPLE_DEV_TOKEN}`,
+        'Music-User-Token': `${APPLE_USER_TOKEN}`
+    }
+  });
+}
+```
+
+In response you'll get something like this:
+
+```json
+{
+  "id": "994724222",
+  "type": "songs",
+  "href": "/v1/catalog/us/songs/994724222",
+  "attributes": {
+    "previews": [
+      {
+        "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/10/fd/80/10fd8022-fcc4-682b-f987-3f56a35de1a5/mzaf_6476922705197379324.plus.aac.p.m4a"
+      }
+    ],
+    "artwork": {
+      "width": 1412,
+      "height": 1412,
+      "url": "https://is5-ssl.mzstatic.com/image/thumb/Music124/v4/65/07/df/6507dfce-ca4f-254e-3eae-6fc2ad4e255b/5nizza.jpg/{w}x{h}bb.jpg",
+      "bgColor": "ffffff",
+      "textColor1": "1a0c06",
+      "textColor2": "023c17",
+      "textColor3": "483c38",
+      "textColor4": "356346"
+    },
+    "artistName": "5'nizza",
+    "url": "https://music.apple.com/us/album/%D1%8F-%D0%BD%D0%B5-%D1%82%D0%BE%D0%B9/994724217?i=994724222",
+    "discNumber": 1,
+    "genreNames": [
+      "Reggae",
+      "Music"
+    ],
+    "durationInMillis": 166640,
+    "releaseDate": "2003-11-07",
+    "name": "Я не той…",
+    "isrc": "UALA11500030",
+    "hasLyrics": true,
+    "albumName": "Пятница",
+    "playParams": {
+      "id": "994724222",
+      "kind": "song"
+    },
+    "trackNumber": 2
+  }
+}
+```
 
