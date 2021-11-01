@@ -1,8 +1,10 @@
 ---
 title: "Listening now: Apple Music"
-publishedAt: "2021-10-29"
+publishedAt: "2021-11-01"
 summary: "At the bottom of this page you can find the latest song I've listened to on Apple Music. Here's how I made it works."
 ---
+
+> This whole thing requires that you have an active paid Apple Developer account. It's $100/yr and is not worth it unless you plan on using it for something else besides "current music"
 
 Apple Music is my primary music service. I do listen to Spotify every now and again (their recomendation engine is unmatched), but being an Apple household, it makes sense to mostly use Apple Music. 
 
@@ -120,4 +122,93 @@ In response you'll get something like this:
   }
 }
 ```
+Keep in mind that this shape is not set in stone, and some songs will have all these attributes, some will not (at least that was the case for me).
 
+## Showing off
+
+Finally, you'd want to show visitors what you've got. This is the easy part (haha).
+
+I'm a huge fan of [SWR](https://swr.vercel.app) - Stale While Revalidate. It's a great way to cache data, refetch stale data, and just generally have a robust way of updating things every now and then without reloading the page or requiring a user action.
+
+Here's the most basic example:
+
+```typescript
+import useSWR from 'swr';
+
+import fetcher from '../../lib/fetcher';
+import Track from '@components/Track';
+
+export default function NowPlaying() {
+  const { data, error } = useSWR('/api/last-played', 
+    fetcher, {
+      refreshInterval: 18000,
+      revalidateOnReconnect: true,
+      revalidateOnFocus: true,
+      focusThrottleInterval: 9000
+  });
+
+  if (!data) return <div>Loading...</div>;
+  if (error) return <div>Something went terribly wrong...</div>;
+
+  return data ? <Track track={data} /> : null
+```
+
+Here I request that SWR refetches new data regularly, refetches it on focus (if a user scrolles away from the Now Playing component, or switches to a different tab and comes back), and refetches data on reconnect (if the user's connection is lost, and reconnects).
+
+The `fetcher` function is a simple wrapper around `fetch` that returns a promise:
+
+```typescript
+export default async function Fetcher(...args) {
+  const res = await fetch(...args);
+
+  return res.json();
+}
+```
+
+I pass the `data` to the Track component for rendering:
+
+```typescript
+import Image from "next/image";
+import { shimmer, toBase64 } from "./Utils/MDXComponents";
+
+export default function Track({track}) {
+  return (
+    <div className="flex flex-row max-w-3xl pl-2 pt-1 mt-8">
+      <div>
+      // This is wonky. Since Next.js Static Image 
+      // component doesn't support static imports 
+      // of remote images (duh), I have to use a workaround 
+      // for blur placeholder. It's a simple shimmer that 
+      // takes exact space of an image white it's lazy-loading
+        <Image className="w-full" width="50" height="50" 
+        src={track.albumImageUrl} placeholder="blur" 
+        blurDataURL={`data:image/svg+xml;base64, 
+        ${toBase64(shimmer(50, 50))}`} alt={track.title} 
+        layout="intrinsic" />
+        </div>
+      <div className="flex flex-col pl-5">
+        <a
+          className="font-medium xl:w-96 text-gray-900 dark:text-gray-100 truncate sm:w-96 md:w-full"
+          href={track.songUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {track.title}
+        </a>
+        <p
+          className="text-gray-500 mb-4 truncate w-60 sm:w-96 md:w-full"
+          color="gray.500"
+        >
+          {track.artist}
+        </p>
+      </div>
+    </div>
+  );
+}
+```
+
+That's about it. The result looks like this:
+
+<ImageWithAlt path="apple-music/song.png" />
+
+That's about it. Oh, I've also went ahead and spun up a repo for this specific thing, feel free to check it out: [current-apple-music](https://github.com/rosnovsky/current-apple-music). This one generates an image of the current song playing on Apple Music that you can use in your website or in your Github profile's README ;)

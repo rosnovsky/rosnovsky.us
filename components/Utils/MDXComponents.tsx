@@ -10,7 +10,7 @@ import { Tweet, YouTube, Gist } from 'mdx-embed';
 
 import type { PictureDescription } from '../../index'
 
-export const shimmer = (w, h) => `
+export const shimmer = (w: number, h: number): string => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="g">
