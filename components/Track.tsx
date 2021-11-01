@@ -1,12 +1,15 @@
-export default function Track(track) {
+import Image from "next/image";
+import { shimmer, toBase64 } from "./Utils/MDXComponents";
+
+export default function Track({track}) {
   return (
-    <div className="flex flex-row items-baseline border-b border-gray-100 dark:border-gray-800 max-w-3xl w-full mt-8">
-      <p className="text-sm font-bold text-gray-400 dark:text-gray-600">
-        {track.ranking}
-      </p>
-      <div className="flex flex-col pl-3">
+    <div className="flex flex-row max-w-3xl pl-2 pt-1 mt-8">
+      <div>
+        <Image className="w-full" width="50" height="50" src={track.albumImageUrl} placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(50, 50))}`} alt={track.title} layout="intrinsic" />
+        </div>
+      <div className="flex flex-col pl-5">
         <a
-          className="font-medium text-gray-900 dark:text-gray-100 truncate w-60 sm:w-96 md:w-full"
+          className="font-medium xl:w-96 text-gray-900 dark:text-gray-100 truncate sm:w-96 md:w-full"
           href={track.songUrl}
           target="_blank"
           rel="noopener noreferrer"

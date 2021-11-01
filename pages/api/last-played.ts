@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   return res.status(200).json({
       album: albumName,
-      albumImageUrl: artwork.url,
+      albumImageUrl: artwork.url.replace('{w}x{h}', '300x300'),
       artist: artistName,
       songUrl: url,
       title: name,

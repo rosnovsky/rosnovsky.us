@@ -20,7 +20,14 @@ module.exports = withPWA({
       'pbs.twimg.com', // Twitter Profile Picture
       's.gravatar.com', // Gravatar
       'media-exp1.licdn.com',  // Linkedin Profile Picture
-      'image.mux.com'
+      'image.mux.com',
+      'current-music.vercel.app',
+      'is4-ssl.mzstatic.com',
+      'is5-ssl.mzstatic.com',
+      'mzstatic.com',
+      'is3-ssl.mzstatic.com',
+      'is2-ssl.mzstatic.com',
+      'is1-ssl.mzstatic.com'
     ],
       disableStaticImages: false
   },
@@ -53,7 +60,7 @@ module.exports = withPWA({
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.github.com cdn.usefathom.com;
   child-src *.youtube.com *.google.com *.twitter.com localhost rosnovsky.us *.vercel.app;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
