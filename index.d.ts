@@ -41,7 +41,8 @@ export type AppleMusicTrack = {
       },
       "trackNumber": number,
       "composerName": string
-    }
+    },
+    "url": string
   }[]
 
 }

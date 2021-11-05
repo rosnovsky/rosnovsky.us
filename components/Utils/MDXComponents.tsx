@@ -10,7 +10,7 @@ import { Tweet, YouTube, Gist } from 'mdx-embed';
 
 import type { PictureDescription } from '../../index'
 
-const shimmer = (w, h) => `
+export const shimmer = (w: number, h: number): string => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="g">
@@ -24,7 +24,7 @@ const shimmer = (w, h) => `
   <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="2s" repeatCount="indefinite"  />
 </svg>`
 
-const toBase64 = (str) =>
+export const toBase64 = (str) =>
   typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
