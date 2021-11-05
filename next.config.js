@@ -14,13 +14,14 @@ module.exports = withPWA({
     turboMode: true,
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/avif', 'image/webp', 'image/jpeg', 'image/png'],
     domains: [
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
       's.gravatar.com', // Gravatar
       'media-exp1.licdn.com',  // Linkedin Profile Picture
       'image.mux.com',
+      'lh3.googleusercontent.com',
       'current-music.vercel.app',
       'is4-ssl.mzstatic.com',
       'is5-ssl.mzstatic.com',
