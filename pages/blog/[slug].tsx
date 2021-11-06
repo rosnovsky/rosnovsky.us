@@ -121,10 +121,10 @@ export async function getStaticProps({ params }) {
   })
 
 
-  const comments: PostComment[] = await fetch(process.env.NODE_ENV !== "production" ? `http://localhost:3000/api/comments/getComments?id=${params.slug}` : `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
-    method: 'GET',
-  }).then(res => res.json())
+  // const comments: PostComment[] = await fetch(process.env.NODE_ENV !== "production" ? `http://localhost:3000/api/comments/getComments?id=${params.slug}` : `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
+  //   method: 'GET',
+  // }).then(res => res.json())
 
 
-  return { props: { ...post, comments }, revalidate: 1 };
+  return { props: { ...post, comments: [] }, revalidate: 1 };
 }

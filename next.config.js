@@ -21,6 +21,7 @@ module.exports = withPWA({
       's.gravatar.com', // Gravatar
       'media-exp1.licdn.com',  // Linkedin Profile Picture
       'image.mux.com',
+      'lh3.googleusercontent.com',
       'current-music.vercel.app',
       'is4-ssl.mzstatic.com',
       'is5-ssl.mzstatic.com',
