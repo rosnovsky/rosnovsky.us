@@ -14,7 +14,7 @@ module.exports = withPWA({
     turboMode: true,
   },
   images: {
-    formats: ['image/avif', 'image/webp', 'image/jpeg', 'image/png'],
+    formats: ['image/avif', 'image/webp'],
     domains: [
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
