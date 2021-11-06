@@ -1,13 +1,11 @@
-const withPWA = require('next-pwa');
-
-module.exports = withPWA({
+module.exports = {
   pwa: {
     dest: 'public',
   },
-  swcMinify: true,
+  swcMinify: false,
   future: {
     strictPostcssConfiguration: true,
-    concurrentFeatures: true
+    concurrentFeatures: false
   },
   reactStrictMode: true,
   experimental: {
@@ -56,7 +54,7 @@ module.exports = withPWA({
     }
     return config;
   },
-});
+}
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `

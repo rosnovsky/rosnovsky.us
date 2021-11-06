@@ -102,29 +102,10 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug('blog', params.slug);
 
-  const htmlContent = await markdownToHtml(post.content || '')
-  const records = htmlContent.split('<p>').filter(string => string != '');
-  const indexContent = records.map(string => string.replace(/<[^>]*>?/gm, '').replace('\n', ''))
-
-  const index = {
-    title: post.frontMatter.title,
-    slug: post.frontMatter.slug,
-    body: indexContent.filter(item => item !== '').map(item => ({ "paragraph": item })),
-    summary: post.frontMatter.summary,
-    publishedAt: post.frontMatter.publishedAt,
-    cover: post.frontMatter.cover ? post.frontMatter.cover : "https://rosnovsky.us/static/favicons/favicon.ico"
-  }
-
-  await fetch("https://rosnovsky.us/api/algoliasearch", {
-    method: 'POST',
-    body: JSON.stringify(index),
-  })
+  const comments: PostComment[] = await fetch(`https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
+    method: 'GET',
+  }).then(res => { console.log(res.status); return res.json()})
 
 
-  // const comments: PostComment[] = await fetch(process.env.NODE_ENV !== "production" ? `http://localhost:3000/api/comments/getComments?id=${params.slug}` : `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
-  //   method: 'GET',
-  // }).then(res => res.json())
-
-
-  return { props: { ...post, comments: [] }, revalidate: 1 };
+  return { props: { ...post, comments }, revalidate: 1 };
 }
