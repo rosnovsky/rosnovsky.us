@@ -44,10 +44,10 @@ export async function getFileBySlug(type, slug) {
   };
 }
 
-export async function getAllFilesFrontMatter(type) {
+export async function getFilesFrontMatter(type) {
   const files = fs.readdirSync(path.join(root, 'data', type));
 
-  return files.reduce((allPosts: Record<any, any>[], postSlug: string) => {
+  const InitialPosts = files.reduce((allPosts: Record<any, any>[], postSlug: string) => {
     const source = fs.readFileSync(
       path.join(root, 'data', type, postSlug),
       'utf8'
@@ -61,5 +61,8 @@ export async function getAllFilesFrontMatter(type) {
       },
       ...allPosts
     ];
-  }, []);
+  }, [])
+
+
+  return InitialPosts.sort((a, b) => (Date.parse(b.publishedAt) > Date.parse(a.publishedAt) ? 1 : -1));
 }
