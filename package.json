@@ -50,6 +50,7 @@
     "unsplash-js": "7.0.15"
   },
   "devDependencies": {
+    "@azure/ai-text-analytics": "^5.1.0",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "@next/mdx": "11.1.2",

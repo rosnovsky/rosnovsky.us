@@ -4,6 +4,7 @@ import path from 'path';
 import readingTime from 'reading-time';
 import { serialize } from 'next-mdx-remote/serialize';
 import mdxPrism from 'mdx-prism';
+import { SummarizeContent } from '../lib/summarizeContent'
 
 const root = process.cwd();
 
@@ -44,25 +45,35 @@ export async function getFileBySlug(type, slug) {
   };
 }
 
-export async function getFilesFrontMatter(type) {
-  const files = fs.readdirSync(path.join(root, 'data', type));
+const summarizeContent = async (content, slug) => {
+  const keyPhrases = SummarizeContent([content.substring(0,1000)], slug).then((value) => value);
+  return keyPhrases;
+  }
 
-  const InitialPosts = files.reduce((allPosts: Record<any, any>[], postSlug: string) => {
+export async function getFilesFrontMatter(type) {
+  const files = await fs.readdirSync(path.join(root, 'data', type));
+  let posts: any[] = [];
+
+  for (const file of files) {
     const source = fs.readFileSync(
-      path.join(root, 'data', type, postSlug),
+      path.join(root, 'data', type, file),
       'utf8'
     );
-    const { data } = matter(source);
+    const { data, content } = matter(source);
+    if(content.length < 1) {console.log('No content: ', file, content)}
 
-    return [
-      {
-        ...data,
-        slug: postSlug.replace('.mdx', '')
-      },
-      ...allPosts
-    ];
-  }, [])
+    const keyPhrasesSource = await summarizeContent(content, file.replace('.mdx', ''));
+    // @ts-ignore
+    const keyPhrases = await keyPhrasesSource[0].keyPhrases;
+    if(keyPhrases === undefined) {console.log('No key phrases: ',file)}
+    const post = {
+      ...data,
+      slug: file.replace('.mdx', ''),
+      keyPhrases: await keyPhrases.join(', ')
+    }
 
+    posts.push(post);
+  }
 
-  return InitialPosts.sort((a, b) => (Date.parse(b.publishedAt) > Date.parse(a.publishedAt) ? 1 : -1));
+    return  posts.sort((a, b) => (Date.parse(b.publishedAt) > Date.parse(a.publishedAt) ? 1 : -1))
 }
