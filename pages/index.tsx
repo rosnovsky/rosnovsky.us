@@ -19,6 +19,12 @@ export default function Home() {
           Featured Posts
         </h3>
         <BlogPost
+          title="CascadiaJS 2021"
+          summary="I wanted to attend CascadiaJS for a few years and it finally happened. I've got a few takeaways I want to share with you here."
+          slug="cascadiajs-2021"
+          publishedAt="2021/11/04"
+        />
+        <BlogPost
           title="Journaling"
           summary="I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a gamechanger in the past few months."
           slug="journaling"
@@ -36,29 +42,28 @@ export default function Home() {
           slug="alt-text"
           publishedAt="2021/06/21"
         />
-        
-        <BlogPost
-          title="Dynamic comments for a static website"
-          summary="For the past couple of months, I've been working on a comment feature for this blog. Now that it's almost finished, I invite you to check it out along with some implementation details."
-          slug="dynamic-comments-for-a-static-website"
-          publishedAt="2021/01/13"
-        />
+
         <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
           Projects
         </h3>
-
-        <ProjectCard
-          title="Sanity.io Autocomplete Tags plugin"
-          description="This plugin creates a custom tags input field for Sanity Studio. This custom input field allows users to type tags, select existing ones from the dropdown or create new ones. This is handy if you want to offer authors an experience of 'type, hit Enter, repeat' for adding tags."
-          href="https://www.sanity.io/plugins/autocomplete-tags"
-          icon="react"
+        <div className="mb-5 flex flex-col justify-center items-start max-w-2xl mx-auto"><ProjectCard
+          title="Current Music: Apple Music"
+          description="This project generates an SVG image featuring the last song you listened to on Apple Music."
+          href="https://github.com/rosnovsky/current-apple-music"
+          icon="ts"
         />
-        <ProjectCard
-          title="Indian Stories and Legends of the Stillaguamish and Allied Tribes"
-          description="Amateur painter, anthropologist, photographer, botanist, geologist, and musician, in 1926, Nels Bruseth published a small book, Indian Stories and Legends of the Stillagaumish and Allied Tribes."
-          href="https://native-stories.vercel.app"
-          icon="css"
-        />
+          <ProjectCard
+            title="Sanity.io Autocomplete Tags plugin"
+            description="This plugin creates a custom tags input field for Sanity Studio. This custom input field allows users to type tags, select existing ones from the dropdown or create new ones. This is handy if you want to offer authors an experience of 'type, hit Enter, repeat' for adding tags."
+            href="https://www.sanity.io/plugins/autocomplete-tags"
+            icon="react"
+          />
+          <ProjectCard
+            title="Indian Stories and Legends of the Stillaguamish and Allied Tribes"
+            description="Amateur painter, anthropologist, photographer, botanist, geologist, and musician, in 1926, Nels Bruseth published a small book, Indian Stories and Legends of the Stillagaumish and Allied Tribes."
+            href="https://native-stories.vercel.app"
+            icon="site"
+          /></div>
         <SubscribeCard />
       </div>
     </Container>
