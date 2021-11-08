@@ -5,6 +5,8 @@ import Buttondown from '../components/metrics/Buttondown';
 import Gumroad from '../components/metrics/CommentsCount';
 import TopTracks from '../components/TopTracks';
 import CommentsPosted from '../components/metrics/CommentsCount';
+import Link from 'next/link';
+import Fathom from '@components/metrics/Fathom';
 
 export default function Stats() {
   return (
@@ -29,12 +31,13 @@ export default function Stats() {
           
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
           <Buttondown />
+          <Fathom />
         </div>
         <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
           Last Played Tracks
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          These are the last 10 tracks I've listened to on Apple Music. Don't judge! 
+          These are the last 10 tracks I've listened to on Apple Music. Don't judge!
         </p>
         <TopTracks />
         <SubscribeCard />
