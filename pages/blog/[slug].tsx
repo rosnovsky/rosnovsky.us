@@ -104,7 +104,7 @@ export async function getStaticProps({ params }) {
 
   const comments: PostComment[] = await fetch(`https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
     method: 'GET',
-  }).then(res => { console.log(res.status); return res.json()})
+  }).then(res => res.json())
 
 
   return { props: { ...post, comments }, revalidate: 1 };

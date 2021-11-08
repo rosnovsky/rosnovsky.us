@@ -43,12 +43,14 @@
     "preact-render-to-string": "^5.1.19",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-intersection-observer": "^8.32.2",
     "reading-time": "1.5.0",
     "swr": "^1.0.1",
     "tailwindcss": "^2.2.19",
     "unsplash-js": "7.0.15"
   },
   "devDependencies": {
+    "@azure/ai-text-analytics": "^5.1.0",
     "@mdx-js/loader": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "@next/mdx": "11.1.2",
