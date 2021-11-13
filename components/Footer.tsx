@@ -1,25 +1,11 @@
 import Link from 'next/link';
-import useSWR from 'swr';
+import StatusIndicator from './StatusIndicator'
+import ExternalLink from './ExternalLink'
 
 import NowPlaying from './Utils/NowPlaying';
 
-const ExternalLink = ({ href, children }) => (
-  <a
-    className="text-gray-500 hover:text-gray-600 transition"
-    target="_blank"
-    rel="noopener noreferrer"
-    href={href}
-  >
-    {children}
-  </a>
-);
 
 export default function Footer() {
-  const fetcher = (url: string) => fetch(url).then(res => res.json())
-  const { data, error } = useSWR('/api/status', fetcher)
-
-  if (error) return <p>Error</p>
-  if (!data) return <p>No data</p>
   return (
     <footer className="flex flex-col justify-center items-start max-w-2xl mx-auto w-full mb-8">
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
@@ -34,11 +20,6 @@ export default function Footer() {
               About
             </a>
           </Link>
-          {/* <Link href="/newsletter">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Newsletter
-            </a>
-          </Link> */}
         </div>
         <div className="flex flex-col space-y-4">
           <ExternalLink href="https://twitter.com/rosnovsky">
@@ -47,29 +28,9 @@ export default function Footer() {
           <ExternalLink href="https://github.com/rosnovsky">
             GitHub
           </ExternalLink>
-          {/* <Link href="/uses">
-            <a className="text-gray-500 hover:text-gray-600 transition">Uses</a>
-          </Link> */}
-          {/* <Link href="/snippets">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Snippets
-            </a>
-          </Link> */}
-          {/* <Link href="/tweets">
-            <a className="text-gray-500 hover:text-gray-600 transition">
-              Tweets
-            </a>
-          </Link> */}
-          !!!
         </div>
         <div className="flex flex-col space-y-4">
-
-          <ExternalLink href="https://status.rosnovsky.us">
-            <svg className="inline-block mr-2" height="10" width="10">
-              <circle cx="5" cy="5" r="5" fill={data?.status === "up" ? "green" : "red"} />
-            </svg>
-            Status
-          </ExternalLink>
+          <StatusIndicator />
         </div>
       </div>
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
