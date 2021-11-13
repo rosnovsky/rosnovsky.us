@@ -33,6 +33,7 @@
     "dompurify": "^2.3.3",
     "fathom-client": "3.2.0",
     "hls.js": "^1.0.12",
+    "isomorphic-fetch": "^3.0.0",
     "jest": "^27.3.1",
     "jsx-to-html": "^1.1.0",
     "lqip-modern-loader": "^0.1.2",

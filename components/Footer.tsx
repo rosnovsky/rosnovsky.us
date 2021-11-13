@@ -12,18 +12,18 @@ export default function Footer() {
       <NowPlaying />
       <div className="w-full max-w-2xl grid grid-cols-1 gap-4 pb-16 sm:grid-cols-3">
         <div className="flex flex-col space-y-4">
-          <Link href="/">
-            <a className="text-gray-500 hover:text-gray-600 transition">Home</a>
-          </Link>
-          <Link href="/about">
-            <a className="text-gray-500 hover:text-gray-600 transition">
+          <span className="text-gray-500 hover:text-gray-600 transition" ><Link href="/" passHref>
+            Home
+          </Link></span>
+          <Link href="/about" passHref>
+            <span tabIndex={0} className="text-gray-500 hover:text-gray-600 transition">
               About
-            </a>
+            </span>
           </Link>
         </div>
         <div className="flex flex-col space-y-4">
           <ExternalLink href="https://twitter.com/rosnovsky">
-            <span>Twitter</span>
+            Twitter
           </ExternalLink>
           <ExternalLink href="https://github.com/rosnovsky">
             GitHub
@@ -38,7 +38,7 @@ export default function Footer() {
         <p className="mb-2">© 2003-{new Date().getFullYear()} Art Rosnovsky</p>
         <p>
           Built with ❤️ and 🙇‍♂️ on Snohomish, Stillaguamish
-          and other Puget Salish ancestral lands. <span><Link href="/acknowledgment" passHref><span className="underline hover:cursor-pointer">Land Acknowledgment</span></Link></span>
+          and other Puget Salish ancestral lands. <span className="underline hover:cursor-pointer"><Link href="/acknowledgment">Land Acknowledgment</Link></span>
         </p>
       </div>
     </footer>

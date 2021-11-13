@@ -4,15 +4,17 @@ import Image from 'next/image';
 import fetcher from '../../lib/fetcher';
 import Track from '@components/Track';
 
+const url = process.env.NOVE_ENV === 'test' ? 'https://rosnovsky.us/api/last-played' : '/api/last-played'
+
 export default function NowPlaying() {
-  const { data, error } = useSWR('/api/last-played', fetcher, {
+  const { data, error } = useSWR(url, fetcher, {
     refreshInterval: 18000,
     revalidateOnReconnect: true,
     revalidateOnFocus: true,
     focusThrottleInterval: 9000
   });
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <div>Loading Song...</div>;
   if (error) return <div>Something went terribly wrong...</div>;
 
   return (
