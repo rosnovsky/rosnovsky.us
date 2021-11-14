@@ -10,4 +10,5 @@ public/feed.xml
 public/sw.js.map
 */sw.js.map
 */sw.js
+coverage/
 
