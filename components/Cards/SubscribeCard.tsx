@@ -2,11 +2,17 @@ import { useState, useRef } from 'react';
 import useSWR from 'swr';
 import format from 'comma-number';
 import { trackGoal } from 'fathom-client';
+import fetch from 'isomorphic-fetch'
 
-import fetcher from '../../lib/fetcher';
 import SuccessMessage from '../Utils/SuccessMessage';
 import ErrorMessage from '../ErrorMessage';
 import LoadingSpinner from '../Utils/LoadingSpinner';
+
+const fetcher = async (url: string) => await fetch(url).then(res => res.json())
+
+const url = process.env.NODE_ENV === "test" ? "https://rosnovsky.us/api/stats" : "/api/stats"
+
+
 
 export default function SubscribeCard() {
   const [form, setForm] = useState({
@@ -14,7 +20,12 @@ export default function SubscribeCard() {
     message: ''
   });
   const inputEl = useRef(null);
-  const { data } = useSWR('/api/stats', fetcher);
+
+  const { data, error } = useSWR(url, fetcher);
+
+  if (error) return <div>failed to load- {error.message}</div>
+  if (!data) return <div>Subscribers Loading...</div>
+
   const subscriberCount = format(data?.subscribers);
   const issuesCount = format(data?.issues);
 
@@ -52,24 +63,24 @@ export default function SubscribeCard() {
   };
 
   const formStatus = (form) => {
-    if(form.state === 'loading'){
+    if (form.state === 'loading') {
       return <LoadingSpinner />
     }
     return 'Subscribe'
   }
 
   const formHasErrors = form => {
-    if(form.state === 'error'){
-        return <ErrorMessage>{form.message}</ErrorMessage>
-      }
-      else if(form.state === 'success'){
-        return <SuccessMessage>{form.message}</SuccessMessage>
-      }
-    return <p className="text-sm text-gray-800 dark:text-gray-200">
-      {`${subscriberCount || '-'} subscribers – `}
-        {issuesCount || 'no'} issues
-    </p>
+    if (form.state === 'error') {
+      return <ErrorMessage>{form.message}</ErrorMessage>
     }
+    else if (form.state === 'success') {
+      return <SuccessMessage>{form.message}</SuccessMessage>
+    }
+    return <p className="text-sm text-gray-800 dark:text-gray-200">
+      {`${subscriberCount || ''} subscribers – `}
+      {issuesCount || 'no'} issues
+    </p>
+  }
 
   return (
     <div className="border border-green-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-green-50 dark:bg-green-opaque">

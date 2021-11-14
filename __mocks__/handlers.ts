@@ -10,6 +10,15 @@ export const handlers = [
       })
     )
   }),
+  rest.get('https://rosnovsky.us/api/stats', (req, res, ctx) => {
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        "subscribers": "666"
+      })
+    )
+  }),
 
   rest.get('https://rosnovsky.us/api/last-played', (req, res, ctx) => {
 
