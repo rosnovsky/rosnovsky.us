@@ -1,7 +1,7 @@
 name: 'Run tests and upload coverage'
 on: [push]
 jobs:
-  Run Tests:
+  Tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
