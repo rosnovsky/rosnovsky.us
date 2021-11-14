@@ -14,9 +14,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: 
-          if: steps.cache.outputs.cache-hit != 'true'
-          npm install
+      - name: Install Dependencies 
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
       - run: npm test
       - uses: codecov/codecov-action@v2
         with:
