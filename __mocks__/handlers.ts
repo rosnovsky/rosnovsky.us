@@ -21,6 +21,16 @@ export const handlers = [
     )
   }),
 
+  rest.get('https://rosnovsky.us/api/comments/getCommentsCount', (req, res, ctx) => {
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        "totalComments": 666
+      })
+    )
+  }),
+
   rest.get(`https://rosnovsky.us/api/comments/getComments`, (req, res, ctx) => {
     return res(
       ctx.status(200),
