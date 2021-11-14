@@ -15,12 +15,12 @@ export const handlers = [
 
     return res(
       ctx.status(200),
-      ctx.json({
+      ctx.json([{
         albumImageUrl: "https://i.scdn.co/image/ab67616d0000b273f8f9c9f9d8f9c9f9c9f9c9f9",
         title: "The Best of The Doors",
         artist: "The Doors",
         songUrl: "https://open.spotify.com/track/3wY7lqYqQZ7QZqQZqQZqQ",
-      })
+      }])
     )
   }),
 ]

@@ -7,12 +7,7 @@ import Track from '@components/Track';
 const url = process.env.NOVE_ENV === 'test' ? 'https://rosnovsky.us/api/last-played' : '/api/last-played'
 
 export default function NowPlaying() {
-  const { data, error } = useSWR(url, fetcher, {
-    refreshInterval: 18000,
-    revalidateOnReconnect: true,
-    revalidateOnFocus: true,
-    focusThrottleInterval: 9000
-  });
+  const { data, error } = useSWR(url, fetcher);
 
   if (!data) return <div>Loading Song...</div>;
   if (error) return <div>Something went terribly wrong...</div>;
@@ -35,7 +30,7 @@ export default function NowPlaying() {
 	C9.5,6.1,10.9,5.1,12.5,5.2L12.5,5.2z"/>
         </svg>
         </div></span>
-        {data ? <Track track={data} /> : null}
+        <Track track={data} />
       </div>
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
     </>
