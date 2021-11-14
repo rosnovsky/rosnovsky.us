@@ -10,7 +10,7 @@ import {
 import '@testing-library/jest-dom'
 import BlogPostCard from '@components/Blog/BlogPost';
 
-describe('Blog Post', () => {
+describe('Blog Post Card', () => {
 
   it('renders Blog Post card without crashing', async () => {
     const fixture = {

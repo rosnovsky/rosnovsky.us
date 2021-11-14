@@ -35,9 +35,9 @@ const comments: PostComment[] = [{
   hash: "@@@"
 }]
 
-describe('Blog Post', () => {
+describe('Comments', () => {
 
-  it('renders Blog Post card without crashing', async () => {
+  it('renders blog comments card without crashing', async () => {
 
 
     render(

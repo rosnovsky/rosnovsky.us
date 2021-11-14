@@ -32,7 +32,7 @@ const mdxSource = {
 
 describe('Blog Post', () => {
 
-  it('renders Blog Post card without crashing', async () => {
+  it('renders Blog Post without crashing', async () => {
 
 
     render(
