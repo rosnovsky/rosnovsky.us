@@ -5,7 +5,7 @@ import React from 'react'
 
 import {
   render,
-  screen, waitForElementToBeRemoved
+  screen, waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
 import Footer from '@components/Footer';
@@ -17,6 +17,7 @@ describe('Footer', () => {
     render(
       <Footer />
     )
+
     await waitForElementToBeRemoved(() => screen.getByText('Status Loading...')
     )
 
