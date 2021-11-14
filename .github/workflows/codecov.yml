@@ -1,6 +1,4 @@
 name: 'Run tests and upload coverage'
-description: 'Run all tests and upload coverage to Codecov'
-author: 'Rosnovsky'
 on: [push]
 jobs:
   Tests:
