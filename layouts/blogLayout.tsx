@@ -18,13 +18,13 @@ export default function BlogLayout({ children, frontMatter }: { children: React.
       image={generateSocialImage({
         title: frontMatter.title,
         cloudName: 'rosnovsky',
-        publishedAt: format(parseISO(frontMatter.published_at), 'dd MMMM yyyy'),
+        publishedAt: format(parseISO(frontMatter.publishedAt), 'dd MMMM yyyy'),
         postTag: 'rosnovsky.us',
         cloudinaryUrlBase: 'https://res.cloudinary.com',
         imagePublicID: 'greenSocialCard.jpg',
         textColor: 'fff',
       })}
-      date={new Date(frontMatter.published_at).toISOString()}
+      date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >
       <article className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
@@ -43,7 +43,7 @@ export default function BlogLayout({ children, frontMatter }: { children: React.
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
               by
               {'Art Rosnovsky / '}
-              {format(parseISO(frontMatter.published_at), 'MMMM dd, yyyy')}
+              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
           <p className="text-sm text-gray-500 min-w-32 mt-2 md:mt-0">

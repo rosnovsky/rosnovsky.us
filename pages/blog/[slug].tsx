@@ -28,7 +28,6 @@ export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: 
   const [updatedComments, setUpdatedComments] = useState(comments)
   const [commentError, setCommentError] = useState('')
 
-  console.log(mdxSource, frontMatter, comments)
 
   const postCommentRequest = async (e: FormEvent) => {
     e.preventDefault()
@@ -54,7 +53,7 @@ export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: 
     return null
   }
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const url = process.env.NODE_ENV === 'test' ? 'https://rosnovsky.us/api/comments/getComments?id=test' : `/api/comments / getComments ? id = ${frontMatter.slug}`
+  const url = process.env.NODE_ENV === 'test' ? 'https://rosnovsky.us/api/comments/getComments?id=test' : `/api/comments/getComments?id=${frontMatter.slug}`
   const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 })
 
   if (error) return <div>failed to load</div>

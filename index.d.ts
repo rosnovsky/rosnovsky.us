@@ -67,7 +67,7 @@ export type PictureDescription = {
 
 interface FrontMatter {
   cover: string;
-  published_at: string;
+  publishedAt: string;
   readingTime: { text: string };
   slug: string;
   summary: string;

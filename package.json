@@ -18,7 +18,7 @@
     "start": "next start",
     "server": "next build && NODE_ENV=production node server.js",
     "lint": "next lint",
-    "test": "jest --coverage"
+    "test": "jest --coverage --silent"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.6.1",
