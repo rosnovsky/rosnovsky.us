@@ -4,6 +4,7 @@ import Container from '../components/Container';
 import BlogPost from '../components/Blog/BlogPost';
 import SubscribeCard from '../components/Cards/SubscribeCard';
 import ProjectCard from '../components/Cards/ProjectCard';
+import NowPlaying from '@components/Utils/NowPlaying';
 
 export default function Home() {
   return (

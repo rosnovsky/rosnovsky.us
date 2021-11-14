@@ -1,18 +1,17 @@
 import useSWR from 'swr';
 import Image from 'next/image';
-
-import fetcher from '../../lib/fetcher';
 import Track from '@components/Track';
+import fetch from 'isomorphic-fetch'
+
+const fetcher = async (url: string) => await fetch(url).then(res => res.json())
+
+
+const url = process.env.NOVE_ENV === 'test' ? 'https://rosnovsky.us/api/last-played' : '/api/last-played'
 
 export default function NowPlaying() {
-  const { data, error } = useSWR('/api/last-played', fetcher, {
-    refreshInterval: 18000,
-    revalidateOnReconnect: true,
-    revalidateOnFocus: true,
-    focusThrottleInterval: 9000
-  });
+  const { data, error } = useSWR(url, fetcher);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <div>Loading Song...</div>;
   if (error) return <div>Something went terribly wrong...</div>;
 
   return (
@@ -33,7 +32,7 @@ export default function NowPlaying() {
 	C9.5,6.1,10.9,5.1,12.5,5.2L12.5,5.2z"/>
         </svg>
         </div></span>
-        {data ? <Track track={data} /> : null}
+        {error ? <div>Error</div> : <Track track={data} />}
       </div>
       <hr className="w-full border-1 border-gray-200 dark:border-gray-800 mb-8" />
     </>
