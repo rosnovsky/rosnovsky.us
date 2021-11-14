@@ -21,6 +21,6 @@ describe('Subscribe Card', () => {
 
     await waitForElementToBeRemoved(() => screen.getByText('Subscribers Loading...'))
 
-    expect(screen.getByText('666 subscribers – no issues')).toBeInTheDocument();
+    expect(screen.getByText('666 subscribers – 13 issues')).toBeInTheDocument();
   });
 })

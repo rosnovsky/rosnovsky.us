@@ -65,6 +65,16 @@ export type PictureDescription = {
   modelVersion: string
 }
 
+interface FrontMatter {
+  cover: string;
+  published_at: string;
+  readingTime: { text: string };
+  slug: string;
+  summary: string;
+  title: string;
+  wordCount: number;
+}
+
 type CommentAuthor = {
   user?: UserProfile,
   verified?: boolean,
