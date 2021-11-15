@@ -2,11 +2,7 @@ import Container from '../components/Container';
 import BlogPost from '../components/Blog/BlogPost';
 import SubscribeCard from '../components/Cards/SubscribeCard';
 import { getFilesFrontMatter } from '../lib/mdx';
-import { InView } from 'react-intersection-observer';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link'
-const error = require('../public/static/images/backend/error.png')
+import { InstantSearch } from '@components/InstantSearch';
 
 type BlogPost = {
   slug: string;
@@ -17,19 +13,6 @@ type BlogPost = {
 }
 
 export default function Blog({ posts }: { posts: BlogPost[] }) {
-  const [page, setPage] = useState(1);
-  const [loadedPosts, setLoadedPosts] = useState([] as BlogPost[]);
-
-  const [searchResults, setSearchResults] = useState([] as BlogPost[]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    const loadedPosts = posts.slice(0, page * 10);
-    const searchResults = posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.summary.toLowerCase().includes(searchTerm.toLowerCase()) || post.keyPhrases.includes(searchTerm.toLowerCase()));
-    setLoadedPosts(loadedPosts);
-    setSearchResults(searchResults);
-  }, [page, searchTerm]);
-
   return (
     <Container
       title="Blog – Art Rosnovsky"
@@ -42,13 +25,7 @@ export default function Blog({ posts }: { posts: BlogPost[] }) {
         <p className="text-gray-600 dark:text-gray-400 mb-6">
           {`My first blog on Livejournal was established in 2003. I've started this one in 2019, posting ${posts.length} blog posts.`}
         </p>
-        <div className="w-full mb-10 "><input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 dark:border-gray-600 rounded-lg py-2 px-4 block w-full appearance-none text-black leading-normal" type="text" placeholder="Instant search" onChange={(e) => setSearchTerm(e.target.value)} /><div className="text-xs text-right text-black mt-1 dark:text-white">ℹ <Link href="/about" passHref><span className="hover:underline text-black cursor-point dark:text-white">How it works</span></Link></div></div>
-        <div className="relative w-full mb-4">
-          {!searchTerm ? loadedPosts.map(post => (<div key={post.slug}><BlogPost  {...post} /> </div>)) : searchResults.map(post => (<div key={post.slug}><BlogPost  {...post} /> </div>))}
-          <InView className="text-black text-center mx-auto" as="div" onChange={(inView) => inView ? setPage(page + 1) : null}>
-            {!searchTerm ? <Image src={error} alt="The End Of The Internet" /> : searchResults.length < 1 ? "Nothing found" : null}
-          </InView>
-        </div>
+        <InstantSearch posts={posts} />
         <SubscribeCard />
       </div>
     </Container>

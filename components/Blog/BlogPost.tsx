@@ -12,11 +12,11 @@ const BlogPost = ({
   publishedAt: string;
 }) => {
 
-  return <Link href={`/blog/${slug}`}>
-    <span className="w-full">
+  return <Link href={`/blog/${slug}`} passHref>
+    <span className="w-full cursor-pointer ">
       <div className="mb-8 w-full">
         <div className="flex flex-col md:flex-row justify-between">
-          <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100">
+          <h4 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100 hover:underline">
             {title}
           </h4>
         </div>

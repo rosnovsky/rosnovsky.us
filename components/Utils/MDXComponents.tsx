@@ -68,15 +68,15 @@ const ImageWithAlt = ({ path, width, height, caption }: { path: string, width?: 
 
   return <div className="my-5 shadow-lg bg-white dark:bg-gray-700 p-1">
     <Image
-      src={require(`../../public/static/images/${path}`)}
+      src={process.env.NODE_ENV === 'test' ? '/public/static/images/art.jpg' : require(`../../public/static/images/${path}`)}
       alt={alt}
-      layout="responsive"
+      layout={process.env.NODE_ENV === 'test' ? 'fill' : 'responsive'}
       blurDataURL={path.split('.').includes('gif') ? `data:image/svg+xml;base64,${toBase64(shimmer(672, (672 * height) / width))}` : null}
-      placeholder="blur"
+      placeholder={process.env.NODE_ENV === 'test' ? 'none' : 'blur'}
       className="p-3"
       quality={95}
     />
-      {caption ? <div className="pt-5 pb-5 text-center bg-gray-100 text-gray-700 dark:bg-gray-500 dark:text-white">{caption}</div> : null}
+    {caption ? <div className="pt-5 pb-5 text-center bg-gray-100 text-gray-700 dark:bg-gray-500 dark:text-white">{caption}</div> : null}
   </div>
 }
 

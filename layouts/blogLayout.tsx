@@ -4,11 +4,13 @@ import generateSocialImage from '../utils/generateSocialCard'
 
 import Container from '../components/Container';
 import SubscribeCard from '../components/Cards/SubscribeCard';
+import React from 'react';
+import { FrontMatter } from 'index';
 
 const editUrl = (slug) =>
   `https://github.com/rosnovsky/rosnovsky.us/edit/main/data/blog/${slug}.mdx`;
 
-export default function BlogLayout({ children, frontMatter }) {
+export default function BlogLayout({ children, frontMatter }: { children: React.ReactNode, frontMatter: FrontMatter }) {
   return (
     <Container
       title={`${frontMatter.title} – Art Rosnovsky`}
@@ -39,7 +41,7 @@ export default function BlogLayout({ children, frontMatter }) {
               className="rounded-full"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
-              {frontMatter.by}
+              by
               {'Art Rosnovsky / '}
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
@@ -53,7 +55,7 @@ export default function BlogLayout({ children, frontMatter }) {
         </div>
         <div className="mt-8">
         </div>
-          <SubscribeCard />
+        <SubscribeCard />
         <div className="text-sm text-gray-700 dark:text-gray-300">
           <a
             href={editUrl(frontMatter.slug)}

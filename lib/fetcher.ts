@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch'
+
 export default async function Fetcher(...args) {
   // @ts-ignore
   const res = await fetch(...args);
