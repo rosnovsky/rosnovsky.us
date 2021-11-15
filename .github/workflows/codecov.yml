@@ -1,6 +1,5 @@
 name: 'Run tests and upload coverage'
-on: [push, pull_request]
-
+on: [push]
 jobs:
   Tests:
     runs-on: ubuntu-latest
@@ -10,16 +9,12 @@ jobs:
         with:
           node-version: '14'
       - uses: actions/cache@v2
-        id: cache
         with:
-          path: ~/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install Dependencies 
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
-
+      - run: npm install
       - run: npm test
       - uses: codecov/codecov-action@v2
         with:
