@@ -5,7 +5,7 @@ import React from 'react'
 import { render, screen, getByText, getByTestId, getByLabelText } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
-import Navigation from '@components/Navigation';
+import Navigation from '../../components/Navigation';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 

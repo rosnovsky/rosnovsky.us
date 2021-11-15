@@ -4,7 +4,7 @@
 import React from 'react'
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import TopTracks from '@components/TopTracks';
+import TopTracks from '../../components/TopTracks';
 import userEvent from '@testing-library/user-event';
 
 

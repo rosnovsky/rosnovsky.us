@@ -9,7 +9,7 @@ import {
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import CommentsCount from '../components/metrics/CommentsCount';
+import CommentsCount from '../../components/metrics/CommentsCount';
 
 describe('Metric Card', () => {
 

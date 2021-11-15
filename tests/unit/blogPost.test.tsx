@@ -9,11 +9,11 @@ import {
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import BlogLayout from '../layouts/blogLayout'
-import { FrontMatter, PostComment } from 'index';
+import BlogLayout from '../../layouts/blogLayout'
+import { FrontMatter, PostComment } from '../../index';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { MDXRemote } from 'next-mdx-remote';
-import MDXComponents from '@components/Utils/MDXComponents'
+import MDXComponents from '../../components/Utils/MDXComponents'
 
 const frontMatter: FrontMatter = {
   title: 'test title',

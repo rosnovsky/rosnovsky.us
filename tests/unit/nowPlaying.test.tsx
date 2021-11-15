@@ -4,7 +4,7 @@
 import React from 'react'
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Track from '@components/Track';
+import Track from '../../components/Track';
 
 
 describe('Now Playing', () => {

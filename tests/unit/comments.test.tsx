@@ -8,8 +8,8 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import Comments from '../components/Cards/Comments'
-import { PostComment } from '..';
+import Comments from '../../components/Cards/Comments'
+import { PostComment } from '../..';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 const comments: PostComment[] = [{

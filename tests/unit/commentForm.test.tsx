@@ -10,7 +10,7 @@ import {
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { CommentForm } from '../components/Utils/CommentForm'
+import { CommentForm } from '../../components/Utils/CommentForm'
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 describe('Comment Form', () => {

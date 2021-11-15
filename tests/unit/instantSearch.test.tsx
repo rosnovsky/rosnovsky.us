@@ -8,7 +8,7 @@ import {
   screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import { InstantSearch } from '@components/InstantSearch';
+import { InstantSearch } from '../../components/InstantSearch';
 
 
 interface BlogPost {

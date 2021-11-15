@@ -8,7 +8,7 @@ import {
   screen, waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import Footer from '@components/Footer';
+import Footer from '../../components/Footer';
 import userEvent from '@testing-library/user-event';
 
 describe('Footer', () => {

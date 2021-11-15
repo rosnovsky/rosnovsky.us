@@ -8,20 +8,20 @@ import {
   screen
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import ProjectCard from '../components/Cards/ProjectCard';
+import BlogPostCard from '../../components/Blog/BlogPost';
 
-describe('Project Card', () => {
+describe('Blog Post Card', () => {
 
-  it('renders Project Card card without crashing', async () => {
+  it('renders Blog Post card without crashing', async () => {
     const fixture = {
       title: 'test',
-      description: 'summary',
-      icon: 'react',
-      href: '/test',
+      summary: 'summary',
+      slug: 'test',
+      publishedAt: '2020-01-01',
 
     }
     render(
-      <ProjectCard {...fixture} />
+      <BlogPostCard {...fixture} />
     )
 
     expect(screen.getByText('summary')).toBeInTheDocument();

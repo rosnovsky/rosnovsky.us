@@ -9,7 +9,7 @@ import {
   waitForElementToBeRemoved
 } from '@testing-library/react';
 import '@testing-library/jest-dom'
-import SubscribeCard from '../components/Cards/SubscribeCard';
+import SubscribeCard from '../../components/Cards/SubscribeCard';
 
 describe('Subscribe Card', () => {
 
