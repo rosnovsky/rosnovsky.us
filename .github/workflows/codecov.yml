@@ -26,4 +26,5 @@ jobs:
         uses: paambaati/codeclimate-action@v3.0.0
         env: 
           CC_TEST_REPORTER_ID: 95eb076c1f357422f8ac333691cd4be0aec6471f43936b49381565f10af63655
+        coverageCommand: npm run test:jest
 
