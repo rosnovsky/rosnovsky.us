@@ -1,10 +1,6 @@
 import { MDXRemote } from 'next-mdx-remote';
-import remark from 'remark'
-import html from 'remark-html'
-import { useState } from 'react';
 import useSWR from 'swr';
-import fetch from 'isomorphic-fetch'
-
+import fetch from 'isomorphic-fetch';
 
 import { getFiles, getFileBySlug } from '../../lib/mdx';
 import BlogLayout from '../../layouts/blogLayout';
@@ -14,55 +10,31 @@ import { CommentForm } from '@components/Utils/CommentForm';
 
 import { useUser } from '@auth0/nextjs-auth0';
 import { FrontMatter, PostComment } from '../..';
-import Link from 'next/link'
-import { FormEvent } from 'react';
+import Link from 'next/link';
 
-const markdownToHtml = async (markdown: string) => {
-  const result = await remark().use(html).process(markdown)
-  return result.toString()
-}
-
-export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: any, frontMatter: FrontMatter, comments: PostComment[] }) {
+export default function Blog({
+  mdxSource,
+  frontMatter,
+  comments
+}: {
+  mdxSource: any;
+  frontMatter: FrontMatter;
+  comments: PostComment[];
+}) {
   const { user } = useUser();
-  const [commentStatus, setCommentStatus] = useState(false)
-  const [comment, setComment] = useState('')
-  const [updatedComments, setUpdatedComments] = useState(comments)
-  const [commentError, setCommentError] = useState('')
 
-
-  const postCommentRequest = async (e: FormEvent) => {
-    e.preventDefault()
-
-    setCommentStatus(true)
-    setCommentError('')
-
-    try {
-      const result = await fetch('/api/comments/postComment', {
-        method: 'POST',
-        body: JSON.stringify({ postId: frontMatter.slug, postTitle: frontMatter.title, content: comment })
-      }).then(res => res.json())
-      if (!result.ok) {
-        setCommentError(result.error)
-        throw new Error(result.error)
-      }
-    }
-    catch (error) {
-      console.error(commentError)
-    }
-    setCommentStatus(false)
-    setComment('')
-    return null
-  }
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const url = process.env.NODE_ENV === 'test' ? 'https://rosnovsky.us/api/comments/getComments?id=test' : `/api/comments/getComments?id=${frontMatter.slug}`
-  const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 })
+  const url =
+    process.env.NODE_ENV === 'test'
+      ? 'https://rosnovsky.us/api/comments/getComments?id=test'
+      : `/api/comments/getComments?id=${frontMatter.slug}`;
+  const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 });
 
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
   return (
-
-    <BlogLayout frontMatter={frontMatter} >
+    <BlogLayout frontMatter={frontMatter}>
       <MDXRemote
         {...mdxSource}
         components={{
@@ -70,11 +42,24 @@ export default function Blog({ mdxSource, frontMatter, comments }: { mdxSource: 
         }}
       />
 
-      {user ? <CommentForm postId={frontMatter.slug} postTitle={frontMatter.title} />
-        : <span className="text-black"><Link href="/api/auth/login" passHref><span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">Signup or Login</span></Link> to comment</span>
-      }
-      <Comments comments={data ? data : comments} postId={frontMatter.slug} postTitle={frontMatter.title} />
-    </BlogLayout >
+      {user ? (
+        <CommentForm postId={frontMatter.slug} postTitle={frontMatter.title} />
+      ) : (
+        <span className="text-black">
+          <Link href="/api/auth/login" passHref>
+            <span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">
+              Signup or Login
+            </span>
+          </Link>{' '}
+          to comment
+        </span>
+      )}
+      <Comments
+        comments={data ? data : comments}
+        postId={frontMatter.slug}
+        postTitle={frontMatter.title}
+      />
+    </BlogLayout>
   );
 }
 
@@ -94,10 +79,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const post = await getFileBySlug('blog', params.slug);
 
-  const comments: PostComment[] = await fetch(`https://rosnovsky.us/api/comments/getComments?id=${params.slug}`, {
-    method: 'GET',
-  }).then(res => res.json())
-
+  const comments: PostComment[] = await fetch(
+    `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`,
+    {
+      method: 'GET'
+    }
+  ).then((res) => res.json());
 
   return { props: { ...post, comments }, revalidate: 1 };
 }

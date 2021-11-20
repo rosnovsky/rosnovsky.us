@@ -17,9 +17,11 @@
     "dev": "next",
     "start": "next start",
     "server": "next build && NODE_ENV=production node server.js",
-    "lint": "next lint",
-    "test": "jest --coverage --silent",
-    "test:e2e": "cypress:run"
+    "lint": "eslint --ext .ts,.tsx,.js,.json . --fix",
+    "test:jest": "jest --coverage --silent",
+    "test:cypress": "start-server-and-test start http://localhost:3000 cypress run",
+    "test": "rm -rf .next yarn test:jest && yarn test:cypress",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.6.1",
@@ -69,6 +71,8 @@
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
+    "@types/tailwindcss": "^2.2.4",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@vercel/node": "^1.12.1",
     "axe-core": "^4.3.5",
     "babel-jest": "^27.3.1",
@@ -76,6 +80,8 @@
     "cypress-axe": "^0.13.0",
     "eslint": "^8.2.0",
     "eslint-config-next": "^12.0.3",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.1",
     "form-data": "^4.0.0",
     "globby": "11.0.4",
@@ -112,12 +118,15 @@
     "unified": "^9.2.1",
     "unist-util-visit": "3.1.0",
     "validator": "^13.7.0",
-    "video.js": "^7.15.4"
+    "video.js": "^7.15.4",
+    "husky": "^7.0.0"
   },
-  "prettier": {
-    "arrowParens": "always",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "none"
+  "lint-staged": {
+    "./**/*.{ts,tsx}": "yarn lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

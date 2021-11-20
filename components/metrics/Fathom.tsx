@@ -10,5 +10,11 @@ export default function Fathom() {
   const stars = format(data?.uniques);
   const link = 'https://usefathom.com/ref/NB77IT';
 
-  return <MetricCard header="Unique Visitors this month" link={link} metric={stars} />;
+  return (
+    <MetricCard
+      header="Unique Visitors this month"
+      link={link}
+      metric={stars}
+    />
+  );
 }

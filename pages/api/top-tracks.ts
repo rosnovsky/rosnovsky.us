@@ -5,7 +5,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await getLastPlayedAppleMusicTracks();
   const { data } = await response.json();
 
-  const tracks = data.map((track) => ({ title: track.attributes.name, album: track.attributes.albumName, artist: track.attributes.artistName, albumImageUrl: track.attributes.artwork.url.replace("{w}x{h}", "300x300") , songUrl: track.attributes.url }));
+  const tracks = data.map((track) => ({
+    title: track.attributes.name,
+    album: track.attributes.albumName,
+    artist: track.attributes.artistName,
+    albumImageUrl: track.attributes.artwork.url.replace('{w}x{h}', '300x300'),
+    songUrl: track.attributes.url
+  }));
 
   res.setHeader(
     'Cache-Control',

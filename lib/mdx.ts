@@ -4,7 +4,7 @@ import path from 'path';
 import readingTime from 'reading-time';
 import { serialize } from 'next-mdx-remote/serialize';
 import mdxPrism from 'mdx-prism';
-import { SummarizeContent } from '../lib/summarizeContent'
+import { SummarizeContent } from '../lib/summarizeContent';
 
 const root = process.cwd();
 
@@ -37,7 +37,7 @@ export async function getFileBySlug(type, slug) {
       readingTime: readingTime(content),
       slug: slug || null,
       title: data.title,
-      cover: data.cover ? data.cover : "/static/favicons/favicon.ico",
+      cover: data.cover ? data.cover : '/static/favicons/favicon.ico',
       summary: data.summary,
       publishedAt: data.publishedAt,
       ...data
@@ -46,34 +46,41 @@ export async function getFileBySlug(type, slug) {
 }
 
 const summarizeContent = async (content, slug) => {
-  const keyPhrases = SummarizeContent([content.substring(0,1000)], slug).then((value) => value);
+  const keyPhrases = SummarizeContent([content.substring(0, 1000)], slug).then(
+    (value) => value
+  );
   return keyPhrases;
-  }
+};
 
 export async function getFilesFrontMatter(type) {
   const files = await fs.readdirSync(path.join(root, 'data', type));
-  let posts: any[] = [];
+  const posts: any[] = [];
 
   for (const file of files) {
-    const source = fs.readFileSync(
-      path.join(root, 'data', type, file),
-      'utf8'
-    );
+    const source = fs.readFileSync(path.join(root, 'data', type, file), 'utf8');
     const { data, content } = matter(source);
-    if(content.length < 1) {console.log('No content: ', file, content)}
+    if (content.length < 1) {
+      console.log('No content: ', file, content);
+    }
 
-    const keyPhrasesSource = await summarizeContent(content, file.replace('.mdx', ''));
-    // @ts-ignore
+    const keyPhrasesSource = await summarizeContent(
+      content,
+      file.replace('.mdx', '')
+    );
     const keyPhrases = await keyPhrasesSource[0].keyPhrases;
-    if(keyPhrases === undefined) {console.log('No key phrases: ',file)}
+    if (keyPhrases === undefined) {
+      console.log('No key phrases: ', file);
+    }
     const post = {
       ...data,
       slug: file.replace('.mdx', ''),
       keyPhrases: await keyPhrases.join(', ')
-    }
+    };
 
     posts.push(post);
   }
 
-    return  posts.sort((a, b) => (Date.parse(b.publishedAt) > Date.parse(a.publishedAt) ? 1 : -1))
+  return posts.sort((a, b) =>
+    Date.parse(b.publishedAt) > Date.parse(a.publishedAt) ? 1 : -1
+  );
 }
