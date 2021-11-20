@@ -35,16 +35,6 @@ export const userProfile = async (user: UserProfile) => {
    **/
   async function updateUser() {
     console.log('UPDATING USER: ' + user.sub);
-    const {
-      given_name,
-      nickname,
-      sub,
-      family_name,
-      name,
-      picture,
-      email,
-      email_verified,
-    } = user;
     const { data, error } = await supabase
       .from('users')
       .update({
