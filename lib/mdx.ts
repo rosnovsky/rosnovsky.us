@@ -67,6 +67,8 @@ export async function getFilesFrontMatter(type) {
       content,
       file.replace('.mdx', '')
     );
+    // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
+    // @ts-expect-error
     const keyPhrases = await keyPhrasesSource[0].keyPhrases;
     if (keyPhrases === undefined) {
       console.log('No key phrases: ', file);
