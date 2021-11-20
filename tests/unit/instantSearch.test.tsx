@@ -21,15 +21,15 @@ const posts: BlogPost[] = [
     summary: 'summary',
     slug: 'test',
     publishedAt: '2020-01-01',
-    keyPhrases: '1'
+    keyPhrases: '1',
   },
   {
     title: 'test',
     summary: 'summary',
     slug: 'test',
     publishedAt: '2020-01-01',
-    keyPhrases: '2'
-  }
+    keyPhrases: '2',
+  },
 ];
 
 describe('Instant Search', () => {

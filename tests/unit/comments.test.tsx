@@ -19,7 +19,7 @@ const comments: PostComment[] = [
     deleted: false,
     published_at: '',
     user_id: '1',
-    hash: '@@@'
+    hash: '@@@',
   },
   {
     id: '2',
@@ -30,8 +30,8 @@ const comments: PostComment[] = [
     deleted: false,
     published_at: '',
     user_id: '1',
-    hash: '@@@'
-  }
+    hash: '@@@',
+  },
 ];
 
 describe('Comments', () => {

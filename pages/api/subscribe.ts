@@ -12,13 +12,13 @@ export default async (req, res) => {
       {
         body: JSON.stringify({
           email,
-          tags: ['rosnovsky.us']
+          tags: ['rosnovsky.us'],
         }),
         headers: {
           Authorization: `Token ${API_KEY}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        method: 'POST'
+        method: 'POST',
       }
     );
 
@@ -27,12 +27,12 @@ export default async (req, res) => {
 
       if (text.includes('already subscribed')) {
         return res.status(400).json({
-          error: `You're already subscribed to my mailing list.`
+          error: `You're already subscribed to my mailing list.`,
         });
       }
 
       return res.status(400).json({
-        error: text
+        error: text,
       });
     }
 

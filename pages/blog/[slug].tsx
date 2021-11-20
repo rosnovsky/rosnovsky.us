@@ -15,7 +15,7 @@ import Link from 'next/link';
 export default function Blog({
   mdxSource,
   frontMatter,
-  comments
+  comments,
 }: {
   mdxSource: any;
   frontMatter: FrontMatter;
@@ -38,7 +38,7 @@ export default function Blog({
       <MDXRemote
         {...mdxSource}
         components={{
-          ...MDXComponents
+          ...MDXComponents,
         }}
       />
 
@@ -69,10 +69,10 @@ export async function getStaticPaths() {
   return {
     paths: posts.map((p) => ({
       params: {
-        slug: p.replace(/\.mdx/, '')
-      }
+        slug: p.replace(/\.mdx/, ''),
+      },
     })),
-    fallback: false
+    fallback: false,
   };
 }
 
@@ -82,7 +82,7 @@ export async function getStaticProps({ params }) {
   const comments: PostComment[] = await fetch(
     `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`,
     {
-      method: 'GET'
+      method: 'GET',
     }
   ).then((res) => res.json());
 

@@ -12,7 +12,7 @@ export default function Container(props) {
     description: `Software Engineer, web developer, podcaster, human. He/him.`,
     image: 'https://rosnovsky.us/static/images/banner.jpg',
     type: 'website',
-    ...customMeta
+    ...customMeta,
   };
 
   return (

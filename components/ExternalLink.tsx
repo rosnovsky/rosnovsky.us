@@ -3,7 +3,7 @@ import React from 'react';
 const ExternalLink = ({
   href,
   children,
-  testid
+  testid,
 }: {
   href: string;
   children: React.ReactNode;

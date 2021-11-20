@@ -6,7 +6,7 @@ type Provider = { provider?: (cache: Readonly<Cache<any>>) => Cache<any> };
 
 export function MySwrConfig({
   children,
-  swrConfig
+  swrConfig,
 }: {
   children?: ReactNode;
   // eslint-disable-next-line

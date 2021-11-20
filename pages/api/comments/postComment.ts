@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import {
   withApiAuthRequired,
   getSession,
-  UserProfile
+  UserProfile,
 } from '@auth0/nextjs-auth0';
 import md5 from 'md5';
 import { userProfile } from './userProfile';
@@ -27,7 +27,7 @@ const isCommentUnique = async (postId: string, content: string, user) => {
     (comment) => comment.hash !== commentHash
   );
 
-  return isUnique;
+  return error ? error : isUnique;
 };
 
 const published_at = new Date().toISOString();
@@ -47,10 +47,11 @@ const postComment = async (
         user_id: user.sub,
         post_id: escape(postId),
         comment: content,
-        hash: md5(escape(content))
+        hash: md5(escape(content)),
       },
       { ignoreDuplicates: true }
     );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const response = await supabase.from('users').upsert(
     {
       user_id: user.sub,
@@ -58,7 +59,7 @@ const postComment = async (
       email: user.email,
       email_verified: user.email_verified,
       picture: user.picture,
-      nickname: user.nickname
+      nickname: user.nickname,
     },
     { ignoreDuplicates: true }
   );
@@ -78,11 +79,18 @@ export default withApiAuthRequired(async function (
 
   const { postId, content, postTitle } = JSON.parse(req.body);
 
-  return validateQueryData(JSON.parse(req.body), 'postComment')
-    ? (await isCommentUnique(postId, content, session.user))
-      ? res
-          .status(200)
-          .send(await postComment(postId, postTitle, content, session.user))
-      : res.status(400).send({ error: 'Comment already exists' })
-    : res.status(400).send({ error: 'Invalid post comment data?' });
+  if (validateQueryData(JSON.parse(req.body), 'postComment')) {
+    try {
+      const isUnique = await isCommentUnique(postId, content, session.user);
+      if (!isUnique)
+        return res.status(400).send({ error: 'Comment already exists' });
+      return res
+        .status(200)
+        .send(await postComment(postId, postTitle, content, session.user));
+    } catch (e) {
+      res
+        .status(400)
+        .send({ error: 'Invalid post comment data?', message: e.message });
+    }
+  }
 });

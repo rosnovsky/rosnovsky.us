@@ -3,7 +3,7 @@ import { Status } from '../..';
 
 const getStatus = async () => {
   const status = fetch('https://betteruptime.com/api/v2/monitors/395442', {
-    headers: { Authorization: `Bearer ${process.env.STATUS}` }
+    headers: { Authorization: `Bearer ${process.env.STATUS}` },
   }).then((result) => result.json());
 
   return status;

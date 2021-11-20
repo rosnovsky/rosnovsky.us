@@ -1,15 +1,15 @@
 module.exports = {
   pwa: {
-    dest: 'public'
+    dest: 'public',
   },
   swcMinify: false,
   future: {
     strictPostcssConfiguration: true,
-    concurrentFeatures: false
+    concurrentFeatures: false,
   },
   reactStrictMode: true,
   experimental: {
-    turboMode: true
+    turboMode: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -26,16 +26,16 @@ module.exports = {
       'mzstatic.com',
       'is3-ssl.mzstatic.com',
       'is2-ssl.mzstatic.com',
-      'is1-ssl.mzstatic.com'
+      'is1-ssl.mzstatic.com',
     ],
-    disableStaticImages: false
+    disableStaticImages: false,
   },
   async headers() {
     return [
       {
         source: '/(.*)',
-        headers: securityHeaders
-      }
+        headers: securityHeaders,
+      },
     ];
   },
   webpack: (config, { dev, isServer }) => {
@@ -49,11 +49,11 @@ module.exports = {
       Object.assign(config.resolve.alias, {
         react: 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat'
+        'react-dom': 'preact/compat',
       });
     }
     return config;
-  }
+  },
 };
 
 // https://securityheaders.com
@@ -73,37 +73,37 @@ const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, '')
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin'
+    value: 'origin-when-cross-origin',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
   {
     key: 'X-Frame-Options',
-    value: 'DENY'
+    value: 'DENY',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
   {
     key: 'X-Content-Type-Options',
-    value: 'nosniff'
+    value: 'nosniff',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
   {
     key: 'X-DNS-Prefetch-Control',
-    value: 'on'
+    value: 'on',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
   {
     key: 'Strict-Transport-Security',
-    value: 'max-age=31536000; includeSubDomains; preload'
+    value: 'max-age=31536000; includeSubDomains; preload',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
   // Opt-out of Google FLoC: https://amifloced.org/
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
-  }
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+  },
 ];

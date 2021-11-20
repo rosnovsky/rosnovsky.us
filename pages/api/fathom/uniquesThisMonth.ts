@@ -3,7 +3,7 @@ const fathom = async (req, res) => {
     'https://api.usefathom.com/v1/aggregations?entity=pageview&entity_id=IMKYNEVQ&aggregates=uniques&date_grouping=month&sort_by=timestamp:desc',
     {
       method: 'GET',
-      headers: { Authorization: `Bearer ${process.env.FATHOM_TOKEN}` }
+      headers: { Authorization: `Bearer ${process.env.FATHOM_TOKEN}` },
     }
   );
 
@@ -14,7 +14,7 @@ const fathom = async (req, res) => {
   );
 
   return res.status(200).json({
-    uniques: uniques[0].uniques
+    uniques: uniques[0].uniques,
   });
 };
 

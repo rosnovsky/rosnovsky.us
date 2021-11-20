@@ -3,9 +3,9 @@ const stats = async (req: any, res: any) => {
   const issuesRes = await fetch('https://api.buttondown.email/v1/emails', {
     headers: {
       Authorization: `Token ${API_KEY}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    method: 'GET'
+    method: 'GET',
   });
 
   const subscribersRes = await fetch(
@@ -13,9 +13,9 @@ const stats = async (req: any, res: any) => {
     {
       headers: {
         Authorization: `Token ${API_KEY}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      method: 'GET'
+      method: 'GET',
     }
   );
 

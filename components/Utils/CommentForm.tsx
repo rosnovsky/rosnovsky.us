@@ -1,4 +1,3 @@
-import { useUser } from '@auth0/nextjs-auth0';
 import { FormEvent, useState } from 'react';
 
 export const CommentForm = ({ postId, postTitle }) => {
@@ -15,7 +14,7 @@ export const CommentForm = ({ postId, postTitle }) => {
     try {
       const result = await fetch('/api/comments/postComment', {
         method: 'POST',
-        body: JSON.stringify({ postId, postTitle, content: comment })
+        body: JSON.stringify({ postId, postTitle, content: comment }),
       }).then((res) => res.json());
       if (!result.ok) {
         setCommentError(result.error);

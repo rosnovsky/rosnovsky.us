@@ -3,9 +3,9 @@ const subscribers = async (_, res) => {
   const response = await fetch('https://api.buttondown.email/v1/subscribers', {
     headers: {
       Authorization: `Token ${API_KEY}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    method: 'GET'
+    method: 'GET',
   });
 
   const { count } = await response.json();

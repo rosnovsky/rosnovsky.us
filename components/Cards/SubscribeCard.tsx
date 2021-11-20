@@ -19,7 +19,7 @@ const url =
 export default function SubscribeCard() {
   const [form, setForm] = useState({
     state: '',
-    message: ''
+    message: '',
   });
   const inputEl = useRef<HTMLInputElement>(null);
 
@@ -37,19 +37,19 @@ export default function SubscribeCard() {
     if (!inputEl.current) return;
     const res = await fetch('/api/subscribe', {
       body: JSON.stringify({
-        email: inputEl.current.value
+        email: inputEl.current.value,
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
+      method: 'POST',
     });
 
     const { error } = await res.json();
     if (error) {
       setForm({
         state: 'error',
-        message: error
+        message: error,
       });
       return;
     }
@@ -58,7 +58,7 @@ export default function SubscribeCard() {
     inputEl.current.value = '';
     setForm({
       state: 'success',
-      message: `Hooray! You're now on the list.`
+      message: `Hooray! You're now on the list.`,
     });
   };
 

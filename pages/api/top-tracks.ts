@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     album: track.attributes.albumName,
     artist: track.attributes.artistName,
     albumImageUrl: track.attributes.artwork.url.replace('{w}x{h}', '300x300'),
-    songUrl: track.attributes.url
+    songUrl: track.attributes.url,
   }));
 
   res.setHeader(

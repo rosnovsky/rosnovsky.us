@@ -4,9 +4,9 @@ const getProductSales = async (id) => {
   const response = await fetch(`https://api.gumroad.com/v2/products/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.GUMROAD_API_KEY}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    method: 'GET'
+    method: 'GET',
   });
 
   const { product } = await response.json();
@@ -25,6 +25,6 @@ export default async (_, res) => {
   );
 
   return res.status(200).json({
-    sales: ric.plus(rpw).plus(evergreen).toFixed(0)
+    sales: ric.plus(rpw).plus(evergreen).toFixed(0),
   });
 };

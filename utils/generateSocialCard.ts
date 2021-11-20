@@ -54,7 +54,7 @@ export default function generateSocialImage({
   dateRightOffset = 420,
   titleFontSize = 96,
   dateFont = 'pt%20mono',
-  dateFontSize = 28
+  dateFontSize = 28,
 }: Config): string {
   // configure social media image dimensions, quality, and format
   const imageConfig = [
@@ -62,7 +62,7 @@ export default function generateSocialImage({
     `h_${imageHeight}`,
     'c_fill',
     'q_auto',
-    'f_auto'
+    'f_auto',
   ].join(',');
 
   // configure the title text
@@ -75,7 +75,7 @@ export default function generateSocialImage({
     `y_${titleBottomOffset}`,
     `l_text:${titleFont}_${titleFontSize}_black${titleExtraConfig}:${encodeURIComponent(
       title
-    )}`
+    )}`,
   ].join(',');
 
   // configure the tagline text
@@ -86,7 +86,9 @@ export default function generateSocialImage({
     'g_north_west',
     `x_${dateRightOffset}`,
     `y_${dateTopOffset}`,
-    `l_text:${dateFont}_${dateFontSize}_bold:${encodeURIComponent(publishedAt)}`
+    `l_text:${dateFont}_${dateFontSize}_bold:${encodeURIComponent(
+      publishedAt
+    )}`,
   ].join(',');
 
   const bottomLineConfig = [
@@ -96,7 +98,7 @@ export default function generateSocialImage({
     'g_north_east',
     `x_${postTagRightOffset}`,
     `y_${postTagTopOffset}`,
-    `l_text:${dateFont}_${dateFontSize}_bold:${encodeURIComponent(postTag)}`
+    `l_text:${dateFont}_${dateFontSize}_bold:${encodeURIComponent(postTag)}`,
   ].join(',');
 
   // combine all the pieces required to generate a Cloudinary URL
@@ -111,7 +113,7 @@ export default function generateSocialImage({
     bottomLineConfig,
     // urlConfig,
     version,
-    imagePublicID
+    imagePublicID,
   ];
 
   // remove any falsy sections of the URL (e.g. an undefined version)

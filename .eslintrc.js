@@ -2,11 +2,11 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: { jsx: true }
+    ecmaFeatures: { jsx: true },
   },
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -16,7 +16,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     // Prettier plugin and recommended rules
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   rules: {
     // Include .prettierrc.js rules
@@ -32,14 +32,14 @@ module.exports = {
         labelAttributes: [],
         controlComponents: [],
         assert: 'either',
-        depth: 25
-      }
+        depth: 25,
+      },
     ],
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 };

@@ -6,7 +6,7 @@ import React from 'react';
 import {
   render,
   screen,
-  waitForElementToBeRemoved
+  waitForElementToBeRemoved,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SubscribeCard from '../../components/Cards/SubscribeCard';

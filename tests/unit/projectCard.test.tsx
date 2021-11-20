@@ -13,7 +13,7 @@ describe('Project Card', () => {
       title: 'test',
       description: 'summary',
       icon: 'react',
-      href: '/test'
+      href: '/test',
     };
     render(<ProjectCard {...fixture} />);
 

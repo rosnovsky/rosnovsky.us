@@ -19,7 +19,7 @@ export const userProfile = async (user: UserProfile) => {
     name,
     picture,
     email,
-    email_verified
+    email_verified,
   } = user;
 
   /**
@@ -43,7 +43,7 @@ export const userProfile = async (user: UserProfile) => {
       name,
       picture,
       email,
-      email_verified
+      email_verified,
     } = user;
     const { data, error } = await supabase
       .from('users')
@@ -54,7 +54,7 @@ export const userProfile = async (user: UserProfile) => {
         name,
         picture,
         email,
-        email_verified
+        email_verified,
       })
       .match({ user_id: sub });
 
@@ -74,11 +74,11 @@ export const userProfile = async (user: UserProfile) => {
         name,
         picture,
         email,
-        email_verified
+        email_verified,
       },
       {
         onConflict: 'user_id',
-        ignoreDuplicates: true
+        ignoreDuplicates: true,
       }
     );
 
@@ -95,7 +95,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (!req.query.user_id)
     return res.status(400).send({
       error: '400',
-      message: 'Neither current session nor user_id were found'
+      message: 'Neither current session nor user_id were found',
     });
 
   const { data, error } = await supabase
@@ -114,7 +114,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       family_name: data.family_name,
       email_verified: data.email_verified,
       picture: data.picture,
-      nickname: data.nickname
-    }
+      nickname: data.nickname,
+    },
   });
 }

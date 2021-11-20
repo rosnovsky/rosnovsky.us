@@ -5,7 +5,7 @@ import Comment from './Comment';
 export default function Comments({
   comments,
   postId,
-  postTitle
+  postTitle,
 }: {
   postId: string;
   postTitle: string;

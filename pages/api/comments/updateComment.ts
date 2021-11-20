@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import {
   withApiAuthRequired,
   getSession,
-  UserProfile
+  UserProfile,
 } from '@auth0/nextjs-auth0';
 import md5 from 'md5';
 import { validateQueryData } from './validate';
@@ -100,7 +100,7 @@ export default withApiAuthRequired(async function (
     }
     return res.status(400).send({
       error:
-        'This exact comment, posted by you, already exists. You sneaky, you!'
+        'This exact comment, posted by you, already exists. You sneaky, you!',
     });
   }
   return res.status(400).send({ error: 'Invalid comment update data' });

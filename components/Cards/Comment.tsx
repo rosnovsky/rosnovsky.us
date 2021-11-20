@@ -6,7 +6,7 @@ import fetch from 'isomorphic-fetch';
 export default function Comment({
   postComment,
   postId,
-  postTitle
+  postTitle,
 }: {
   postComment: PostComment;
   postId: string;
@@ -25,6 +25,7 @@ export default function Comment({
         .then((user) => setUserProfile(user.user));
     };
     fetchUserProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const deleteComment = () => {
@@ -35,8 +36,8 @@ export default function Comment({
         content: postComment.comment,
         postId,
         postTitle,
-        operation: 'delete'
-      })
+        operation: 'delete',
+      }),
     });
     return undefined;
   };
@@ -49,8 +50,8 @@ export default function Comment({
         content: postComment.comment,
         postId,
         postTitle,
-        operation: 'flag'
-      })
+        operation: 'flag',
+      }),
     });
     return undefined;
   };
@@ -108,7 +109,7 @@ export default function Comment({
                   {new Date(postComment.published_at).toLocaleString('en-US', {
                     day: 'numeric',
                     month: 'long',
-                    year: 'numeric'
+                    year: 'numeric',
                   })}
                 </span>
               </div>

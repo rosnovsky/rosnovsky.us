@@ -3,7 +3,7 @@ import Link from 'next/link';
 const BlogPost = ({
   title,
   summary,
-  slug
+  slug,
 }: {
   title: string;
   summary: string;

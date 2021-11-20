@@ -17,7 +17,7 @@
     "dev": "next",
     "start": "next start",
     "server": "next build && NODE_ENV=production node server.js",
-    "lint": "eslint --ext .ts,.tsx,.js,.json . --fix",
+    "lint": "eslint --ext .ts,.tsx,.json . --fix",
     "test:jest": "jest --coverage --silent",
     "test:cypress": "start-server-and-test start http://localhost:3000 cypress run",
     "test": "rm -rf .next yarn test:jest && yarn test:cypress",

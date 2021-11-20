@@ -5,7 +5,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        status: 'up'
+        status: 'up',
       })
     );
   }),
@@ -14,7 +14,7 @@ export const handlers = [
       ctx.status(200),
       ctx.json({
         subscribers: '666',
-        issues: '13'
+        issues: '13',
       })
     );
   }),
@@ -25,7 +25,7 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          totalComments: 666
+          totalComments: 666,
         })
       );
     }
@@ -44,8 +44,8 @@ export const handlers = [
           deleted: false,
           edited: false,
           post_id: 'test',
-          hash: '@@@'
-        }
+          hash: '@@@',
+        },
       ])
     );
   }),
@@ -59,8 +59,8 @@ export const handlers = [
             'https://i.scdn.co/image/ab67616d0000b273f8f9c9f9d8f9c9f9c9f9c9f9',
           title: 'The Best of The Doors',
           artist: 'The Doors',
-          songUrl: 'https://open.spotify.com/track/3wY7lqYqQZ7QZqQZqQZqQ'
-        }
+          songUrl: 'https://open.spotify.com/track/3wY7lqYqQZ7QZqQZqQZqQ',
+        },
       ])
     );
   }),
@@ -77,7 +77,7 @@ export const handlers = [
             albumImageUrl:
               'https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/75/fa/96/75fa96de-a780-4cc2-f9ee-ad1c88e3f742/886445831344.jpg/300x300bb.jpg',
             songUrl:
-              'https://music.apple.com/us/album/just-like-fire-from-alice-through-the-looking-glass/1101931648?i=1101931754'
+              'https://music.apple.com/us/album/just-like-fire-from-alice-through-the-looking-glass/1101931648?i=1101931754',
           },
           {
             title: 'Go Big or Go Home',
@@ -86,9 +86,9 @@ export const handlers = [
             albumImageUrl:
               'https://is4-ssl.mzstatic.com/image/thumb/Music125/v4/03/79/dc/0379dc08-7dfc-99a5-f9d5-230226487457/00602547860187.rgb.jpg/300x300bb.jpg',
             songUrl:
-              'https://music.apple.com/us/album/go-big-or-go-home/1440844649?i=1440845165'
-          }
-        ]
+              'https://music.apple.com/us/album/go-big-or-go-home/1440844649?i=1440845165',
+          },
+        ],
       })
     );
   }),
@@ -102,5 +102,5 @@ export const handlers = [
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({}));
     }
-  )
+  ),
 ];

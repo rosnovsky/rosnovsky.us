@@ -13,7 +13,7 @@ describe('Blog Post Card', () => {
       title: 'test',
       summary: 'summary',
       slug: 'test',
-      publishedAt: '2020-01-01'
+      publishedAt: '2020-01-01',
     };
     render(<BlogPostCard {...fixture} />);
 

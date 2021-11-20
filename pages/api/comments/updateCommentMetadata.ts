@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import {
   withApiAuthRequired,
   getSession,
-  UserProfile
+  UserProfile,
 } from '@auth0/nextjs-auth0';
 import { validateQueryData } from './validate';
 import { userProfile } from './userProfile';
@@ -48,7 +48,7 @@ export default withApiAuthRequired(async function (
   } catch (error) {
     return res.status(400).send({
       error: error.message || 'Invalid operation',
-      hint: 'Valid operations: getComments(postID), getComment(commentID), getCommentsByUserId(userID), getCommentsByDate(date), postComment(userID, postID, comment), updateComment(commentID, comment), updateCommentMetadata(metadata)'
+      hint: 'Valid operations: getComments(postID), getComment(commentID), getCommentsByUserId(userID), getCommentsByDate(date), postComment(userID, postID, comment), updateComment(commentID, comment), updateCommentMetadata(metadata)',
     });
   }
 });

@@ -12,7 +12,7 @@ const editUrl = (slug) =>
 
 export default function BlogLayout({
   children,
-  frontMatter
+  frontMatter,
 }: {
   children: React.ReactNode;
   frontMatter: FrontMatter;
@@ -28,7 +28,7 @@ export default function BlogLayout({
         postTag: 'rosnovsky.us',
         cloudinaryUrlBase: 'https://res.cloudinary.com',
         imagePublicID: 'greenSocialCard.jpg',
-        textColor: 'fff'
+        textColor: 'fff',
       })}
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"

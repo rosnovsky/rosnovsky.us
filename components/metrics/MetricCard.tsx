@@ -1,7 +1,7 @@
 export default function MetricCard({
   header,
   link,
-  metric
+  metric,
 }: {
   header: string;
   link?: string;

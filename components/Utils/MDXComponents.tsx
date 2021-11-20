@@ -48,7 +48,7 @@ const ImageWithAlt = ({
   path,
   width,
   height,
-  caption
+  caption,
 }: {
   path: string;
   width?: number;
@@ -170,7 +170,7 @@ const MDXComponents = {
   YouTube,
   Gist,
   Video,
-  a: CustomLink
+  a: CustomLink,
 };
 
 export default MDXComponents;
