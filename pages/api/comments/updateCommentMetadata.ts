@@ -40,12 +40,12 @@ export default withApiAuthRequired(async function (
             req.query.deleted as string,
             req.query.edited as string,
             req.query.flagged as string,
-            session.user
+            session!.user
           )
         );
     }
     return res.status(400).send({ error: 'Invalid update comment metadata' });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(400).send({
       error: error.message || 'Invalid operation',
       hint: 'Valid operations: getComments(postID), getComment(commentID), getCommentsByUserId(userID), getCommentsByDate(date), postComment(userID, postID, comment), updateComment(commentID, comment), updateCommentMetadata(metadata)',

@@ -19,29 +19,29 @@ export const notify = async (
 
   // Setting up Mailgun
   const mailgun = new Mailgun(formData);
-  const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_KEY });
+  const mg = mailgun.client({ username: 'api', key: process.env.MAILGUN_KEY! });
   const DOMAIN = 'rosnovsky.us';
 
   // Selecting the correct subject and recipient based on the type of notification
   switch (type) {
     case 'new-comment-notification':
-      recipient.push(process.env.NOTIFY_ME_EMAIL);
+      recipient.push(process.env.NOTIFY_ME_EMAIL!);
       subject = `New comment on ${postTitle}`;
       break;
     case 'notify_subscriber':
-      recipient.push(user.email, process.env.NOTIFY_ME_EMAIL);
+      recipient.push(user.email!, process.env.NOTIFY_ME_EMAIL!);
       subject = `New comment on ${postTitle}`;
       break;
     case 'flagged_comment':
-      recipient.push(user.email, process.env.NOTIFY_ME_EMAIL);
+      recipient.push(user.email!, process.env.NOTIFY_ME_EMAIL!);
       subject = `You flagged a comment on ${postTitle}`;
       break;
     case 'deleted_comment':
-      recipient.push(user.email, process.env.NOTIFY_ME_EMAIL);
+      recipient.push(user.email!, process.env.NOTIFY_ME_EMAIL!);
       subject = `Your comment on ${postTitle} has been deleted`;
       break;
     default:
-      recipient.push(process.env.NOTIFY_ME_EMAIL);
+      recipient.push(process.env.NOTIFY_ME_EMAIL!);
       subject = `Rosnovsky Park™ notification`;
   }
 

@@ -15,13 +15,13 @@ async function generate() {
     const content = await fs.readFile(
       path.join(__dirname, '..', 'data', 'blog', name)
     );
-    return {post: await matter(content), slug: name};
+    return { post: await matter(content), slug: name };
   })
 
   await Promise.all(
     parsedPosts.map(async (post) => {
       const actualPost = await post;
-    
+
       feed.item({
         title: actualPost.post.data.title,
         url: 'https://rosnovsky.us/blog/' + actualPost.slug.replace(/\.mdx?/, ''),
@@ -31,8 +31,9 @@ async function generate() {
     })
   );
 
-    feed.items = feed.items.sort((postA,postB) => {
-      return Date.parse(postB.date) < Date.parse(postA.date) ? -1 : 1});
+  feed.items = feed.items.sort((postA, postB) => {
+    return Date.parse(postB.date) < Date.parse(postA.date) ? -1 : 1
+  });
 
   await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }));
 }

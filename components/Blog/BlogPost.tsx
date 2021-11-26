@@ -1,4 +1,12 @@
-import Link from 'next/link';
+import * as Fathom from 'fathom-client';
+
+const trackGoal = (title) => {
+  const goalCodes = {
+    [title]: 'WSO7SGLK',
+  };
+
+  Fathom.trackGoal(goalCodes[title], 0);
+};
 
 const BlogPost = ({
   title,
@@ -11,7 +19,12 @@ const BlogPost = ({
   publishedAt: string;
 }) => {
   return (
-    <Link href={`/blog/${slug}`} passHref>
+    <a
+      href={`/blog/${slug}`}
+      aria-label={title}
+      onClick={() => trackGoal(title)}
+      tabIndex={-1}
+    >
       <span className="w-full cursor-pointer ">
         <div className="mb-8 w-full">
           <div className="flex flex-col md:flex-row justify-between">
@@ -22,7 +35,7 @@ const BlogPost = ({
           <p className="text-gray-600 dark:text-gray-400">{summary}</p>
         </div>
       </span>
-    </Link>
+    </a>
   );
 };
 

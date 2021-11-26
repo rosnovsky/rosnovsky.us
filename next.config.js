@@ -2,7 +2,7 @@ module.exports = {
   pwa: {
     dest: 'public',
   },
-  swcMinify: false,
+  swcMinify: true,
   future: {
     strictPostcssConfiguration: true,
     concurrentFeatures: false,

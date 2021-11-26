@@ -1,6 +1,8 @@
+import userEvent from '@testing-library/user-event';
+
 export { }
 
-context('App page', () => {
+context('Home Page', () => {
     it('has no accessibility violations on load', () => {
         cy.visit(`http://localhost:3000`);
         cy.injectAxe();
@@ -37,13 +39,38 @@ context('App page', () => {
         // cy.go('back');
 
     })
-    it('dark mode works', () => {
-        cy.get('html').should('have.class', 'light');
-        cy.get('[data-testid="toggle-btn"]').click();
+    it('has dark mode toggle working', () => {
         cy.get('html').should('have.class', 'dark');
         cy.get('[data-testid="toggle-btn"]').click();
         cy.get('html').should('have.class', 'light');
+        cy.get('[data-testid="toggle-btn"]').click();
+        cy.get('html').should('have.class', 'dark');
     })
+
+    it('has Featured Posts', () => {
+        cy.get('[aria-label="Featured Posts"]').should('have.length', 1);
+        userEvent.tab()
+    })
+
+    it('has Featured Projects', () => { })
+
+    it('has Subscribe card', () => { })
+
+    it('has Last Played widget', () => { })
+
+
+    it('has correct footer', () => { })
+    it('has Status indicator', () => { })
+
+    it('has correct copyright', () => { })
+
+    it('has correct social media links', () => { })
+
+    it('has Stillaguamish Land acknowledgement', () => { })
+
+
+
+
 });
 
 

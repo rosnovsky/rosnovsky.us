@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Hls from 'hls.js';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Tweet, YouTube, Gist } from 'mdx-embed';
 
 import type { PictureDescription } from '../../index';
@@ -115,53 +114,53 @@ const ImageWithAlt = ({
   );
 };
 
-const Video = ({ playbackId }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const src = `https://stream.mux.com/${playbackId}.m3u8`;
-  const poster = `https://image.mux.com/${playbackId}/animated.gif?start=378&end=387&fps=5`;
+// const Video = ({ playbackId }) => {
+//   const videoRef = useRef<HTMLVideoElement>(null);
+//   const src = `https://stream.mux.com/${playbackId}.m3u8`;
+//   const poster = `https://image.mux.com/${playbackId}/animated.gif?start=378&end=387&fps=5`;
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (!Hls) return;
+//   useEffect(() => {
+//     const video = videoRef.current;
+//     if (!video) return;
+//     if (!Hls) return;
 
-    video.controls = true;
-    let hls;
+//     video.controls = true;
+//     let hls;
 
-    if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      // This will run in safari, where HLS is supported natively
-      video.src = src;
-    } else if (Hls.isSupported()) {
-      // This will run in all other modern browsers
-      hls = new Hls();
-      hls.loadSource(src);
-      hls.attachMedia(video);
-    } else {
-      console.error(
-        'This is an old browser that does not support MSE https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API'
-      );
-    }
+//     if (video.canPlayType('application/vnd.apple.mpegurl')) {
+//       // This will run in safari, where HLS is supported natively
+//       video.src = src;
+//     } else if (Hls.isSupported()) {
+//       // This will run in all other modern browsers
+//       hls = new Hls();
+//       hls.loadSource(src);
+//       hls.attachMedia(video);
+//     } else {
+//       console.error(
+//         'This is an old browser that does not support MSE https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API'
+//       );
+//     }
 
-    return () => {
-      if (hls) {
-        hls.destroy();
-      }
-    };
-  }, [src, videoRef]);
+//     return () => {
+//       if (hls) {
+//         hls.destroy();
+//       }
+//     };
+//   }, [src, videoRef]);
 
-  return (
-    <video
-      controls
-      preload="auto"
-      playsInline
-      ref={videoRef}
-      poster={poster}
-      style={{ width: '100%', maxWidth: '900px' }}
-    >
-      <track kind="captions" />
-    </video>
-  );
-};
+//   return (
+//     <video
+//       controls
+//       preload="auto"
+//       playsInline
+//       ref={videoRef}
+//       poster={poster}
+//       style={{ width: '100%', maxWidth: '900px' }}
+//     >
+//       <track kind="captions" />
+//     </video>
+//   );
+// };
 
 const MDXComponents = {
   ImageWithAlt,
@@ -169,7 +168,7 @@ const MDXComponents = {
   Tweet,
   YouTube,
   Gist,
-  Video,
+  // Video,
   a: CustomLink,
 };
 

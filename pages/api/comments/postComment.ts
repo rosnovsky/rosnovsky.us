@@ -13,13 +13,13 @@ import { PostComment } from '../../../index';
 
 const isCommentUnique = async (postId: string, content: string, user) => {
   const commentHash = md5(content);
-  const { data, error }: { data: PostComment[]; error: any } = await supabase
+  const { data, error } = await supabase
     .from('comments')
     .select('*')
     .eq('post_id', postId);
 
   // check if the comment is unique (matching comment content hash, userId and postId)
-  const commentsByUserId = data.filter(
+  const commentsByUserId = data!.filter(
     (comment) => comment.user_id === user.sub
   );
 
@@ -39,30 +39,29 @@ const postComment = async (
   user: UserProfile
 ) => {
   await userProfile(user);
-  const { data, error }: { data: PostComment[]; error: any } = await supabase
-    .from('comments')
-    .upsert(
-      {
-        published_at,
-        user_id: user.sub,
-        post_id: escape(postId),
-        comment: content,
-        hash: md5(escape(content)),
-      },
-      { ignoreDuplicates: true }
-    );
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const response = await supabase.from('users').upsert(
+  const { data, error } = await supabase.from('comments').upsert(
     {
+      published_at,
       user_id: user.sub,
-      name: user.name,
-      email: user.email,
-      email_verified: user.email_verified,
-      picture: user.picture,
-      nickname: user.nickname,
+      post_id: escape(postId),
+      comment: content,
+      hash: md5(escape(content)),
     },
     { ignoreDuplicates: true }
   );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // FIXME: I honestly can't recall why this is here.
+  // const response = await supabase.from('users').upsert(
+  //   {
+  //     user_id: user.sub,
+  //     name: user.name,
+  //     email: user.email,
+  //     email_verified: user.email_verified,
+  //     picture: user.picture,
+  //     nickname: user.nickname,
+  //   },
+  //   { ignoreDuplicates: true }
+  // );
   await notify('new-comment-notification', content, postId, postTitle, user);
   return error ? error : data;
 };
@@ -74,20 +73,20 @@ export default withApiAuthRequired(async function (
   const session = getSession(req, res);
 
   if (!session) res.status(401).end({ error: 'You are not authenticated' });
-  if (!session.user.email_verified)
+  if (!session!.user.email_verified)
     res.status(401).end({ error: 'Please verify your email first.' });
 
   const { postId, content, postTitle } = JSON.parse(req.body);
 
   if (validateQueryData(JSON.parse(req.body), 'postComment')) {
     try {
-      const isUnique = await isCommentUnique(postId, content, session.user);
+      const isUnique = await isCommentUnique(postId, content, session!.user);
       if (!isUnique)
         return res.status(400).send({ error: 'Comment already exists' });
       return res
         .status(200)
-        .send(await postComment(postId, postTitle, content, session.user));
-    } catch (e) {
+        .send(await postComment(postId, postTitle, content, session!.user));
+    } catch (e: any) {
       res
         .status(400)
         .send({ error: 'Invalid post comment data?', message: e.message });

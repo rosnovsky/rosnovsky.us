@@ -27,7 +27,7 @@ const isCommentUnique = async (
     .select('*')
     .eq('id', commentId);
 
-  const isUnique = comment[0].hash !== commentHash;
+  const isUnique = comment![0].hash !== commentHash;
 
   return error ? error : isUnique;
 };
@@ -76,8 +76,8 @@ export default withApiAuthRequired(async function (
     const { data, error } = await supabase
       .from('comments')
       .update({ edited: true, deleted: true })
-      .match({ id: id, user_id: session.user.sub });
-    await notify('deleted_comment', content, postId, postTitle, session.user);
+      .match({ id: id, user_id: session!.user.sub });
+    await notify('deleted_comment', content, postId, postTitle, session!.user);
     return error ? res.status(400).send(data) : res.status(200).send(data);
   }
 
@@ -86,8 +86,8 @@ export default withApiAuthRequired(async function (
       .from('comments')
       .update({ edited: false, flagged: true })
       .match({ id: id });
-    updateFlags(id, session.user);
-    await notify('flagged_comment', content, postId, postTitle, session.user);
+    updateFlags(id, session!.user);
+    await notify('flagged_comment', content, postId, postTitle, session!.user);
 
     return error ? res.status(400).send(data) : res.status(200).send(data);
   }
@@ -96,7 +96,7 @@ export default withApiAuthRequired(async function (
     if (await isCommentUnique(id, req.body.content)) {
       return res
         .status(200)
-        .send(await updateComment(id, req.body.content, session.user));
+        .send(await updateComment(id, req.body.content, session!.user));
     }
     return res.status(400).send({
       error:

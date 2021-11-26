@@ -113,9 +113,9 @@ const Navigation = () => {
         ) : (
           <span
             title="Login"
-              className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
-              data-test="menu-item"
-              aria-label="Login"
+            className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+            data-test="menu-item"
+            aria-label="Login"
           >
             <Link href="/api/auth/login">Login</Link>
           </span>

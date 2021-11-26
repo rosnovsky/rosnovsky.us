@@ -6,7 +6,7 @@ const getCommentsCount = async () => {
     .from('comments')
     .select('*')
     .eq('deleted', false);
-  return error ? error : comments.length;
+  return error ? error : comments!.length;
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
