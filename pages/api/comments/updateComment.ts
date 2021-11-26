@@ -1,4 +1,3 @@
-import { supabase } from '@lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 import { validateQueryData } from '../../../lib/comments/validate';

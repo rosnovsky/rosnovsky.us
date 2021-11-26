@@ -33,17 +33,20 @@ export default function SubscribeCard() {
     e.preventDefault();
     setForm({ state: 'loading', message: '' });
     if (!inputEl.current) return;
-    const res = await fetch(process.env.NODE_ENV === 'test'
-    ? 'https://rosnovsky.us/api/subscribe'
-    : '/api/subscribe', {
-      body: JSON.stringify({
-        email: inputEl.current.value,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    });
+    const res = await fetch(
+      process.env.NODE_ENV === 'test'
+        ? 'https://rosnovsky.us/api/subscribe'
+        : '/api/subscribe',
+      {
+        body: JSON.stringify({
+          email: inputEl.current.value,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      }
+    );
 
     const { error } = await res.json();
     if (error) {
@@ -83,6 +86,7 @@ export default function SubscribeCard() {
         <button
           className="flex items-center justify-center absolute right-1 top-1 px-4 font-bold h-8 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
           type="submit"
+          data-testid="subscribe-button"
         >
           {formStatus(form)}
         </button>

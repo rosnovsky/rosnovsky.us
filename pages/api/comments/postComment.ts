@@ -9,7 +9,6 @@ import md5 from 'md5';
 import { userProfile } from './userProfile';
 import { notify } from '../../../lib/notifications/notify';
 import { validateQueryData } from '../../../lib/comments/validate';
-import { PostComment } from '../../../index';
 
 const isCommentUnique = async (postId: string, content: string, user) => {
   const commentHash = md5(content);

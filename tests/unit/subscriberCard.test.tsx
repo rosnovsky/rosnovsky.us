@@ -4,13 +4,14 @@
 import React from 'react';
 
 import {
+  fireEvent,
   render,
   screen,
   waitForElementToBeRemoved,
+  waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SubscribeCard from '../../components/Cards/SubscribeCard';
-import userEvent from '@testing-library/user-event';
 
 describe('Subscribe Card', () => {
   it('renders Subscribe Card card without crashing', async () => {
@@ -24,13 +25,20 @@ describe('Subscribe Card', () => {
   });
 
   it('renders Error message', async () => {
-    render(<SubscribeCard />);
-    const form = screen.getByPlaceholderText('art@rosnovsky.us');
-    console.log(userEvent.click(form))
+    const { getByPlaceholderText, getByTestId } = render(<SubscribeCard />);
+    const inputField = getByPlaceholderText('art@rosnovsky.us');
+    fireEvent.change(inputField, { target: { value: 'aaa@bbbb.cccc' } });
+    fireEvent.click(getByTestId('subscribe-button'));
 
-    userEvent.type(form, 'aaa@3333.dsddsd');
-    userEvent.click(screen.getByText('Subscribe'));
+    await waitFor(() => getByTestId('error'));
+  });
 
-    // expect(screen.getByTestId('error')).toBeInTheDocument();
+  it('renders Success message', async () => {
+    const { getByPlaceholderText, getByTestId } = render(<SubscribeCard />);
+    const inputField = getByPlaceholderText('art@rosnovsky.us');
+    fireEvent.change(inputField, { target: { value: 'artem@rosnovsky.us' } });
+    fireEvent.click(getByTestId('subscribe-button'));
+
+    await waitFor(() => getByTestId('success'));
   });
 });

@@ -104,12 +104,11 @@ export const handlers = [
     }
   ),
 
-  rest.get(
-    'https://rosnovsky.us/api/subscribe',
-    (req, res, ctx) => {
-      return res(ctx.status(400), ctx.json({ "error": "error" }));
-    }
-  ),
+  rest.post('https://rosnovsky.us/api/subscribe', (req, res, ctx) => {
+    return res.once(ctx.status(400), ctx.json({ error: 'error' }));
+  }),
 
-
+  rest.post('https://rosnovsky.us/api/subscribe', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({}));
+  }),
 ];

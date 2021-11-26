@@ -42,7 +42,12 @@ export const InstantSearch = ({ posts }: { posts: BlogPost[] }) => {
               ? 'Instant search'
               : 'Disabled in dev, may fix later'
           }
-          disabled={process.env.NODE_ENV !== 'production'}
+          disabled={
+            process.env.NODE_ENV === 'production' ||
+            process.env.NODE_ENV === 'test'
+              ? false
+              : true
+          }
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <div className="text-xs text-right text-black mt-1 dark:text-white">
