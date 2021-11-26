@@ -4,9 +4,6 @@
 
 [![wakatime](https://wakatime.com/badge/user/cf21e19f-d389-41d8-9423-5b2890e4831b/project/cf8bfc6a-ad96-454f-8bfb-adbcc47b9e54.svg)](https://wakatime.com/badge/user/cf21e19f-d389-41d8-9423-5b2890e4831b/project/cf8bfc6a-ad96-454f-8bfb-adbcc47b9e54)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/rosnovsky/rosnovsky.us/badge.svg)](https://snyk.io/test/github/rosnovsky/rosnovsky.us/badge.svg)
-
-
 
 ## How to run
 
