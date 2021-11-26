@@ -1,8 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import {
-  withApiAuthRequired,
-  getSession
-} from '@auth0/nextjs-auth0';
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 import { validateQueryData } from './validate';
 import { deleteComment } from '@lib/comments/deleteComment';
 
@@ -20,13 +17,19 @@ export default withApiAuthRequired(async function (
 
   if (validateQueryData(JSON.parse(req.body), 'deleteComment')) {
     try {
-      return res
-        .status(200)
-        .send(await deleteComment({ commentId: id, postId, user: session!.user, content, postTitle }));
+      return res.status(200).send(
+        await deleteComment({
+          commentId: id,
+          postId,
+          user: session!.user,
+          content,
+          postTitle,
+        })
+      );
     } catch (error: any) {
       res
         .status(400)
-        .send({ error: 'Couldn\'t delete :(', message: error.message });
+        .send({ error: "Couldn't delete :(", message: error.message });
     }
   }
 });

@@ -10,7 +10,10 @@ export const validateUUID: IValidateQueryData['validateUUID'] = (uuid) => {
   return validator.isUUID(uuid);
 };
 
-export const validateQueryData = (data: IValidateQueryData['data'], operation: Operations): boolean => {
+export const validateQueryData = (
+  data: IValidateQueryData['data'],
+  operation: Operations
+): boolean => {
   if (!data || !operation) {
     throw new Error(
       'A valid query is required. Must have a query AND operation.'

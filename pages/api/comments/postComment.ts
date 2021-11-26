@@ -62,7 +62,13 @@ const postComment = async (
   //   },
   //   { ignoreDuplicates: true }
   // );
-  await notify({ type: 'new-comment-notification', content, postId, postTitle, user });
+  await notify({
+    type: 'new-comment-notification',
+    content,
+    postId,
+    postTitle,
+    user,
+  });
   return error ? error : data;
 };
 

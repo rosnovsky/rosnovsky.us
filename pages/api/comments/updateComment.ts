@@ -1,11 +1,8 @@
 import { supabase } from '@lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
-import {
-  withApiAuthRequired,
-  getSession,
-} from '@auth0/nextjs-auth0';
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 import { validateQueryData } from './validate';
-import { isCommentUnique } from '@lib/comments/isCommentUnique'
+import { isCommentUnique } from '@lib/comments/isCommentUnique';
 import { updateComment } from '@lib/comments/updateComment';
 
 export default withApiAuthRequired(async function (
