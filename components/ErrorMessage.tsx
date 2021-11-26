@@ -1,6 +1,10 @@
 export default function ErrorMessage({ children }) {
   return (
-    <p className="flex items-center text-sm font-bold text-red-800 dark:text-red-400">
+    <p
+      className="flex items-center text-sm font-bold text-red-800 dark:text-red-400"
+      aria-label="Error Message"
+      data-testid="error"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"

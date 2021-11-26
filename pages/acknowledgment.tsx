@@ -3,9 +3,9 @@ import { MDXRemote } from 'next-mdx-remote';
 import { getFileBySlug } from '../lib/mdx';
 import AcknowledgmentLayout from '../layouts/acknowledgment';
 
-export default function Acknowledgment({ mdxSource, frontMatter }) {
+export default function Acknowledgment({ mdxSource }) {
   return (
-    <AcknowledgmentLayout frontMatter={frontMatter}>
+    <AcknowledgmentLayout>
       <MDXRemote {...mdxSource} />
     </AcknowledgmentLayout>
   );
@@ -17,7 +17,7 @@ export async function getStaticProps() {
   return { props: acknowledgment };
 }
 
-const Talk = ({ title, link, children }) => (
+export const Acknowledgement = ({ title, link, children }) => (
   <>
     <h3 className="font-medium mb-2 text-lg">
       <a
