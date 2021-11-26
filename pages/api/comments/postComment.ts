@@ -7,7 +7,7 @@ import {
 } from '@auth0/nextjs-auth0';
 import md5 from 'md5';
 import { userProfile } from './userProfile';
-import { notify } from '../../../lib/notify';
+import { notify } from '../../../lib/notifications/notify';
 import { validateQueryData } from './validate';
 import { PostComment } from '../../../index';
 
@@ -62,7 +62,7 @@ const postComment = async (
   //   },
   //   { ignoreDuplicates: true }
   // );
-  await notify('new-comment-notification', content, postId, postTitle, user);
+  await notify({ type: 'new-comment-notification', content, postId, postTitle, user });
   return error ? error : data;
 };
 

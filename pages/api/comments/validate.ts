@@ -3,15 +3,15 @@ import validator from 'validator';
  * Validates whether a value is a UUID.
  * @param uuid The value to validate.
  **/
-export const validateUUID = (uuid: string) => {
+export const validateUUID: IValidateQueryData['validateUUID'] = (uuid) => {
   if (!uuid || uuid.length < 1) {
     return false;
   }
   return validator.isUUID(uuid);
 };
 
-export const validateQueryData = (data: any, operation: string) => {
-  if (data?.length < 1 || !operation) {
+export const validateQueryData = (data: IValidateQueryData['data'], operation: Operations): boolean => {
+  if (!data || !operation) {
     throw new Error(
       'A valid query is required. Must have a query AND operation.'
     );
@@ -34,6 +34,10 @@ export const validateQueryData = (data: any, operation: string) => {
         : validateUUID(data.id);
     case 'updateComment':
       return !data.id || !data.content ? false : validateUUID(data.id);
+    case 'deleteComment':
+      return !data.id || data.id === undefined ? false : true;
+    case 'flagComment':
+      return !data.id || data.id === undefined ? false : true;
     default:
       return false;
   }
