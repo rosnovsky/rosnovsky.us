@@ -103,4 +103,13 @@ export const handlers = [
       return res(ctx.status(200), ctx.json({}));
     }
   ),
+
+  rest.get(
+    'https://rosnovsky.us/api/subscribe',
+    (req, res, ctx) => {
+      return res(ctx.status(400), ctx.json({ "error": "error" }));
+    }
+  ),
+
+
 ];

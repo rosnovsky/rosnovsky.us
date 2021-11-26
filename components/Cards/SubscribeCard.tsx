@@ -4,9 +4,6 @@ import format from 'comma-number';
 import { trackGoal } from 'fathom-client';
 import fetch from 'isomorphic-fetch';
 
-import SuccessMessage from '../Utils/SuccessMessage';
-import ErrorMessage from '../ErrorMessage';
-import LoadingSpinner from '../Utils/LoadingSpinner';
 import { formHasErrors, formStatus } from '@components/Utils/FormUtils';
 
 const fetcher = async (url: string) =>
@@ -36,7 +33,9 @@ export default function SubscribeCard() {
     e.preventDefault();
     setForm({ state: 'loading', message: '' });
     if (!inputEl.current) return;
-    const res = await fetch('/api/subscribe', {
+    const res = await fetch(process.env.NODE_ENV === 'test'
+    ? 'https://rosnovsky.us/api/subscribe'
+    : '/api/subscribe', {
       body: JSON.stringify({
         email: inputEl.current.value,
       }),
