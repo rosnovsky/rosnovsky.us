@@ -11,4 +11,5 @@ public/sw.js.map
 */sw.js.map
 */sw.js
 coverage/
-
+.svelte-kit/
+build/

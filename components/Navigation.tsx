@@ -69,6 +69,8 @@ const Navigation = () => {
         <span
           title="Home"
           className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+          data-test="menu-item"
+          aria-label="Home"
         >
           <Link href="/">Home</Link>
         </span>
@@ -76,6 +78,8 @@ const Navigation = () => {
         <span
           title="Blog"
           className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+          data-test="menu-item"
+          aria-label="Blog"
         >
           <Link href="/blog">Blog</Link>
         </span>
@@ -83,6 +87,8 @@ const Navigation = () => {
         <span
           title="Stats"
           className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+          data-test="menu-item"
+          aria-label="Stats"
         >
           <Link href="/stats">Stats </Link>
         </span>
@@ -90,6 +96,8 @@ const Navigation = () => {
         <span
           title="About"
           className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+          data-test="menu-item"
+          aria-label="About"
         >
           <Link href="/about">About</Link>
         </span>
@@ -98,13 +106,16 @@ const Navigation = () => {
           <span
             className="p-1 sm:p-4 text-black dark:text-red-100"
             title="Logout"
+            aria-label="Logout"
           >
             <Link href="/api/auth/logout">Logout</Link>
           </span>
         ) : (
           <span
             title="Login"
-            className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+              className="p-1 sm:p-4 text-gray-900 dark:text-gray-100"
+              data-test="menu-item"
+              aria-label="Login"
           >
             <Link href="/api/auth/login">Login</Link>
           </span>

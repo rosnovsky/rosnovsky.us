@@ -63,23 +63,39 @@ export async function getFilesFrontMatter(type) {
       console.log('No content: ', file, content);
     }
 
-    const keyPhrasesSource = await summarizeContent(
-      content,
-      file.replace('.mdx', '')
-    );
-    // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
-    // @ts-expect-error
-    const keyPhrases = await keyPhrasesSource[0].keyPhrases;
-    if (keyPhrases === undefined) {
-      console.log('No key phrases: ', file);
-    }
-    const post = {
-      ...data,
-      slug: file.replace('.mdx', ''),
-      keyPhrases: await keyPhrases.join(', ')
-    };
+    if (process.env.NODE_ENV === 'production') {
+      try {
+        const keyPhrasesSource = await summarizeContent(
+          content,
+          file.replace('.mdx', '')
+        );
+        // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
+        // @ts-expect-error
+        const keyPhrases = await keyPhrasesSource[0].keyPhrases;
+        if (keyPhrases === undefined) {
+          console.log('No key phrases: ', file);
+        }
+        const post = {
+          ...data,
+          slug: file.replace('.mdx', ''),
+          keyPhrases: await keyPhrases.join(', ')
+        };
 
-    posts.push(post);
+        posts.push(post);
+      } catch (error) {
+        const post = {
+          ...data,
+          slug: file.replace('.mdx', ''),
+        };
+        posts.push(post);
+      }
+    } else {
+      const post = {
+        ...data,
+        slug: file.replace('.mdx', ''),
+      };
+      posts.push(post);
+    }
   }
 
   return posts.sort((a, b) =>

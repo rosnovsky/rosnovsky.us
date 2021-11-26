@@ -8,12 +8,18 @@ const endpoint = 'https://blog-summary.cognitiveservices.azure.com/';
 const apiKey = process.env.AZURE_TEXT_ANALYTICS_SUBSCRIPTION_KEY!;
 
 export async function SummarizeContent(post: string[], slug: string) {
-  const client = new TextAnalyticsClient(
-    endpoint,
-    new AzureKeyCredential(apiKey)
-  );
+  try {
+    const client = new TextAnalyticsClient(
+      endpoint,
+      new AzureKeyCredential(apiKey)
+    );
 
-  const results = await client.extractKeyPhrases(post);
+    const results = await client.extractKeyPhrases(post);
 
-  return results;
+    return results;
+  }
+  catch (err) {
+    return err
+  }
+
 }
