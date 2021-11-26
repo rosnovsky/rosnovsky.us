@@ -5,7 +5,7 @@ import {
   getSession,
   UserProfile,
 } from '@auth0/nextjs-auth0';
-import { validateQueryData } from './validate';
+import { validateQueryData } from '../../../lib/comments/validate';
 import { userProfile } from './userProfile';
 
 const updateCommentMetadata = async (

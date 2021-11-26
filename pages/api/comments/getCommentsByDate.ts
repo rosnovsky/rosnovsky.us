@@ -1,6 +1,6 @@
 import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { validateQueryData } from './validate';
+import { validateQueryData } from '../../../lib/comments/validate';
 import validator from 'validator';
 
 const getCommentsByDate = async (date: string) => {

@@ -1,6 +1,6 @@
 import { supabase } from '../../../lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { validateQueryData } from './validate';
+import { validateQueryData } from '../../../lib/comments/validate';
 
 const getComments = async (postId) => {
   const { data: comments, error } = await supabase

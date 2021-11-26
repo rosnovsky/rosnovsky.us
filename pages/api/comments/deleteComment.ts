@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
-import { validateQueryData } from './validate';
+import { validateQueryData } from '../../../lib/comments/validate';
 import { deleteComment } from '@lib/comments/deleteComment';
 
 export default withApiAuthRequired(async function (

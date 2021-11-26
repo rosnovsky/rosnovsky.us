@@ -7,6 +7,7 @@ import fetch from 'isomorphic-fetch';
 import SuccessMessage from '../Utils/SuccessMessage';
 import ErrorMessage from '../ErrorMessage';
 import LoadingSpinner from '../Utils/LoadingSpinner';
+import { formHasErrors, formStatus } from '@components/Utils/FormUtils';
 
 const fetcher = async (url: string) =>
   await fetch(url).then((res) => res.json());
@@ -62,27 +63,6 @@ export default function SubscribeCard() {
     });
   };
 
-  const formStatus = (form) => {
-    if (form.state === 'loading') {
-      return <LoadingSpinner />;
-    }
-    return 'Subscribe';
-  };
-
-  const formHasErrors = (form) => {
-    if (form.state === 'error') {
-      return <ErrorMessage>{form.message}</ErrorMessage>;
-    } else if (form.state === 'success') {
-      return <SuccessMessage>{form.message}</SuccessMessage>;
-    }
-    return (
-      <p className="text-sm text-gray-800 dark:text-gray-200">
-        {`${subscriberCount || ''} subscribers – `}
-        {issuesCount || 'no'} issues
-      </p>
-    );
-  };
-
   return (
     <div className="border border-green-200 rounded p-6 my-4 w-full dark:border-gray-800 bg-green-50 dark:bg-green-opaque">
       <p className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100">
@@ -109,6 +89,10 @@ export default function SubscribeCard() {
         </button>
       </form>
       {formHasErrors(form)}
+      <p className="text-sm text-gray-800 dark:text-gray-200">
+        {`${subscriberCount || ''} subscribers – `}
+        {issuesCount || 'no'} issues
+      </p>
     </div>
   );
 }
