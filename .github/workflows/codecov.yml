@@ -11,10 +11,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Install Dependencies
+      - name: Install Dependencies 
         run: npm install
-      - name: Run Tests
-        run: npm run test:jest
+      - name: Run Tests 
+        run: npm test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
@@ -22,9 +22,3 @@ jobs:
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
-#       - name: Upload coverage to Code Climate
-#         uses: paambaati/codeclimate-action@v3.0.0
-#         env: 
-#           CC_TEST_REPORTER_ID: 95eb076c1f357422f8ac333691cd4be0aec6471f43936b49381565f10af63655
-#           coverageCommand: npm run test:jest
-

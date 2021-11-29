@@ -54,40 +54,17 @@ export default function About() {
           About Me
         </h1>
 
-        <p className="text-gray-600 dark:text-gray-400 mt-5 mb-8">
-          Hey, my name is Art.
-        </p>
+        <p className="text-gray-600 dark:text-gray-400 mt-5 mb-8">Hey, my name is Art.</p>
 
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          I&apos;m a web developer based off Western Washington. I live about 50
-          miles north of Seattle in a small town called Arlington.
-        </p>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">I'm a web developer based off Western Washington. I live about 50 miles north of Seattle in a small town called Arlington.</p>
 
         <Quote
-          quote={
-            'For a while, I lived in London (not that one, but the one in Ontario, Canada) before moving to Vancouver (not that one, but the one in Washington; not that Washington, but Washington state). Now I live in Arlington (and not the one in Virgina, mind you!)'
-          }
+          quote={"For a while, I lived in London (not that one, but the one in Ontario, Canada) before moving to Vancouver (not that one, but the one in Washington; not that Washington, but Washington state). Now I live in Arlington (and not the one in Virgina, mind you!)"}
         />
 
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          After short gigs at Intel, AT&T, and Microsoft, I ended up at{' '}
-          <ExternalLink href="https://auth0.com">Auth0</ExternalLink> (aquired
-          by <ExternalLink href="https://okta.com">Okta</ExternalLink> in May
-          2021). Here I work as a Customer Onboarding Engineer, building out
-          Auth0&apos;s enterprise customer onboarding program and tooling.
-        </p>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">After short gigs at Intel, AT&T, and Microsoft, I ended up at <ExternalLink href="https://auth0.com">Auth0</ExternalLink> (aquired by <ExternalLink href="https://okta.com">Okta</ExternalLink> in May 2021). Here I work as a Customer Onboarding Engineer, building out Auth0's enterprise customer onboarding program and tooling.</p>
 
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Feel free to connect with me on{' '}
-          <ExternalLink href="https://www.linkedin.com/in/rosnovsky/">
-            LinkedIn
-          </ExternalLink>{' '}
-          or follow me on{' '}
-          <ExternalLink href="https://www.twitter.com/rosnovsky/">
-            Twitter
-          </ExternalLink>
-          .
-        </p>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">Feel free to connect with me on <ExternalLink href="https://www.linkedin.com/in/rosnovsky/">LinkedIn</ExternalLink> or follow me on <ExternalLink href="https://www.twitter.com/rosnovsky/">Twitter</ExternalLink>.</p>
 
         <Quote quote="For the longest time, I'd been a podcaster. In my previous life, I even was a minor radio celebrity, worked as a television producer and correspondent, and have done a bunch of front-line reporting from terrorist attacks, riots, and hostage situations. Yet here we are." />
 
@@ -98,17 +75,13 @@ export default function About() {
           title="Rosnovsky Park™ Weekly"
           link="https://gumroad.com/rosnovsky#gdTD"
         >
-          Все доступные эпизоды подкаста Rosnovsky Park™ Weekly, одного из
-          старейших подкастов на русском языке.
+          Все доступные эпизоды подкаста Rosnovsky Park™ Weekly, одного из старейших подкастов на русском языке.
         </Podcast>
         <Podcast
           title="Rosnovsky In Canada"
           link="https://gumroad.com/rosnovsky#iYQx"
         >
-          Все 39 эпизодов подкаста Rosnovsky in Canada. Как получить визу в
-          Канаду, как приехать учиться и остаться, на что похожа учеба и жизнь
-          семьи в Канаде, где и как может учиться ребенок, на что посмотреть,
-          куда съездить и так далее.
+          Все 39 эпизодов подкаста Rosnovsky in Canada. Как получить визу в Канаду, как приехать учиться и остаться, на что похожа учеба и жизнь семьи в Канаде, где и как может учиться ребенок, на что посмотреть, куда съездить и так далее.
         </Podcast>
         <Podcast
           title="Evergreen Podcast"
@@ -116,13 +89,7 @@ export default function About() {
         >
           <p>Самый аутентичный подкаст на русском языке!</p>
 
-          <p>
-            Легендарный ведущий старейших подкастов на русском языке
-            представляет третью серию подкастов — Вечнозелёный подкаст из
-            вечнозеленого штата Вашингтон, что на Тихоокеанском Северо-Западе
-            США 🇺🇸. Путешествия, походы, природа, работа, технологии, семья,
-            дети, деньги — всё, что волнует интересует!
-          </p>
+          <p>Легендарный ведущий старейших подкастов на русском языке представляет третью серию подкастов — Вечнозелёный подкаст из вечнозеленого штата Вашингтон, что на Тихоокеанском Северо-Западе США 🇺🇸. Путешествия, походы, природа, работа, технологии, семья, дети, деньги — всё, что волнует интересует!</p>
         </Podcast>
         <SubscribeCard />
       </div>
