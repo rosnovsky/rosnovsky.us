@@ -7,14 +7,17 @@ import { InstantSearch } from '@components/InstantSearch';
 type BlogPost = {
   slug: string;
   title: string;
-  summary: string;
+  summary: string,
   publishedAt: string;
   keyPhrases: string;
-};
+}
 
 export default function Blog({ posts }: { posts: BlogPost[] }) {
   return (
-    <Container title="Blog – Art Rosnovsky" description="A bunch of nonsense.">
+    <Container
+      title="Blog – Art Rosnovsky"
+      description="A bunch of nonsense."
+    >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Blog
@@ -31,6 +34,7 @@ export default function Blog({ posts }: { posts: BlogPost[] }) {
 
 export async function getStaticProps() {
   const posts = await getFilesFrontMatter('blog');
+
 
   return { props: { posts } };
 }
