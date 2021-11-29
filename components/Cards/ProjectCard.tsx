@@ -5,7 +5,7 @@ import { GoBrowser } from 'react-icons/go';
 const trackGoal = (title) => {
   const goalCodes = {
     'Sanity Tags': 'WSO7SGLK',
-    'Native Stories': 'XKB3X00J'
+    'Native Stories': 'XKB3X00J',
   };
 
   Fathom.trackGoal(goalCodes[title], 0);
@@ -16,6 +16,7 @@ export default function ProjectCard({ title, description, href, icon }) {
     <a
       className="mb-4 hover:shadow"
       href={href}
+      data-testid="project-card"
       onClick={() => trackGoal(title)}
       aria-label={title}
       target="_blank"

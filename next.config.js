@@ -2,10 +2,10 @@ module.exports = {
   pwa: {
     dest: 'public',
   },
-  swcMinify: false,
+  swcMinify: true,
   future: {
     strictPostcssConfiguration: true,
-    concurrentFeatures: false
+    concurrentFeatures: false,
   },
   reactStrictMode: true,
   experimental: {
@@ -17,7 +17,7 @@ module.exports = {
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Profile Picture
       's.gravatar.com', // Gravatar
-      'media-exp1.licdn.com',  // Linkedin Profile Picture
+      'media-exp1.licdn.com', // Linkedin Profile Picture
       'image.mux.com',
       'lh3.googleusercontent.com',
       'current-music.vercel.app',
@@ -26,9 +26,9 @@ module.exports = {
       'mzstatic.com',
       'is3-ssl.mzstatic.com',
       'is2-ssl.mzstatic.com',
-      'is1-ssl.mzstatic.com'
+      'is1-ssl.mzstatic.com',
     ],
-      disableStaticImages: false
+    disableStaticImages: false,
   },
   async headers() {
     return [
@@ -54,7 +54,7 @@ module.exports = {
     }
     return config;
   },
-}
+};
 
 // https://securityheaders.com
 const ContentSecurityPolicy = `

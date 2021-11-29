@@ -5,6 +5,6 @@ const Quote = ({ quote }) => (
     </div>
     <p className="mb-4 text-gray-800 dark:text-gray-400">{quote}</p>
   </blockquote>
-)
+);
 
-export default Quote
+export default Quote;

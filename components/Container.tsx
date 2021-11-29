@@ -5,8 +5,6 @@ import Navigation from '../components/Navigation';
 import Footer from './Footer';
 
 export default function Container(props) {
-
-
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
@@ -14,7 +12,7 @@ export default function Container(props) {
     description: `Software Engineer, web developer, podcaster, human. He/him.`,
     image: 'https://rosnovsky.us/static/images/banner.jpg',
     type: 'website',
-    ...customMeta
+    ...customMeta,
   };
 
   return (
@@ -25,11 +23,19 @@ export default function Container(props) {
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
-          content={process.env.NODE_ENV !== 'test' ? `https://rosnovsky.us${router.asPath}` : 'https://rosnovsky.us/'}
+          content={
+            process.env.NODE_ENV !== 'test'
+              ? `https://rosnovsky.us${router.asPath}`
+              : 'https://rosnovsky.us/'
+          }
         />
         <link
           rel="canonical"
-          href={process.env.NODE_ENV !== 'test' ? `https://rosnovsky.us${router.asPath}` : 'https://rosnovsky.us/'}
+          href={
+            process.env.NODE_ENV !== 'test'
+              ? `https://rosnovsky.us${router.asPath}`
+              : 'https://rosnovsky.us/'
+          }
         />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Art Rosnovsky" />

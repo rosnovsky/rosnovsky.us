@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
-import generateSocialImage from '../utils/generateSocialCard'
+import generateSocialImage from '../utils/generateSocialCard';
 
 import Container from '../components/Container';
 import SubscribeCard from '../components/Cards/SubscribeCard';
@@ -10,7 +10,13 @@ import { FrontMatter } from 'index';
 const editUrl = (slug) =>
   `https://github.com/rosnovsky/rosnovsky.us/edit/main/data/blog/${slug}.mdx`;
 
-export default function BlogLayout({ children, frontMatter }: { children: React.ReactNode, frontMatter: FrontMatter }) {
+export default function BlogLayout({
+  children,
+  frontMatter,
+}: {
+  children: React.ReactNode;
+  frontMatter: FrontMatter;
+}) {
   return (
     <Container
       title={`${frontMatter.title} – Art Rosnovsky`}
@@ -53,8 +59,7 @@ export default function BlogLayout({ children, frontMatter }: { children: React.
         <div className="prose dark:prose-dark max-w-none w-full">
           {children}
         </div>
-        <div className="mt-8">
-        </div>
+        <div className="mt-8"></div>
         <SubscribeCard />
         <div className="text-sm text-gray-700 dark:text-gray-300">
           <a
