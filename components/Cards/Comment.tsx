@@ -28,8 +28,8 @@ export default function Comment({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const deleteComment = () => {
-    fetch(`/api/comments/updateComment`, {
+  const deleteComment = (): void => {
+    fetch(`/api/comments/deleteComment`, {
       method: 'POST',
       body: JSON.stringify({
         id: postComment.id,
@@ -39,11 +39,11 @@ export default function Comment({
         operation: 'delete',
       }),
     });
-    return undefined;
+    return;
   };
 
-  const flagComment = () => {
-    fetch(`/api/comments/updateComment`, {
+  const flagComment = (): void => {
+    fetch(`/api/comments/flagComment`, {
       method: 'POST',
       body: JSON.stringify({
         id: postComment.id,
@@ -53,7 +53,7 @@ export default function Comment({
         operation: 'flag',
       }),
     });
-    return undefined;
+    return;
   };
 
   const { user } = useUser();
