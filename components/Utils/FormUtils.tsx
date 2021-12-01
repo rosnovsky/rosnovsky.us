@@ -1,4 +1,4 @@
-import ErrorMessage from '@components/ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 import React from 'react';
 import LoadingSpinner from './LoadingSpinner';
 import SuccessMessage from './SuccessMessage';

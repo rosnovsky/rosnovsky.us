@@ -4,7 +4,7 @@ import format from 'comma-number';
 import { trackGoal } from 'fathom-client';
 import fetch from 'isomorphic-fetch';
 
-import { formHasErrors, formStatus } from '@components/Utils/FormUtils';
+import { formHasErrors, formStatus } from '../Utils/FormUtils';
 
 const fetcher = async (url: string) =>
   await fetch(url).then((res) => res.json());
@@ -77,7 +77,7 @@ export default function SubscribeCard() {
         <input
           ref={inputEl}
           aria-label="Email for newsletter"
-          placeholder="art@rosnovsky.us"
+          placeholder="art@art0.us"
           type="email"
           autoComplete="email"
           required
@@ -93,7 +93,7 @@ export default function SubscribeCard() {
       </form>
       {formHasErrors(form)}
       <p className="text-sm text-gray-800 dark:text-gray-200">
-        {`${subscriberCount || ''} subscribers – `}
+        {`${subscriberCount || ''} subscribers - `}
         {issuesCount || 'no'} issues
       </p>
     </div>
