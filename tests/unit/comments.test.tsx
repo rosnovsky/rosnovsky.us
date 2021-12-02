@@ -45,4 +45,39 @@ describe('Comments', () => {
 
     expect(screen.getByText('Test comment 2')).toBeInTheDocument();
   });
+
+  // Gotta be logged in for these... HOW?!
+
+  // it('posts a blog comment correctly', async () => {
+  //   render(
+  //     <UserProvider>
+  //       <Comments postId="test" postTitle="Test Title" comments={comments} />
+  //     </UserProvider>
+  //   );
+  //   screen.debug();
+
+  //   expect(screen.getByText('Test comment 2')).toBeInTheDocument();
+  // });
+
+  //   it('flags a blog comment correctly', async () => {
+  //   render(
+  //     <UserProvider>
+  //       <Comments postId="test" postTitle="Test Title" comments={comments} />
+  //     </UserProvider>
+  //   );
+  //   screen.debug();
+
+  //   expect(screen.getByText('Test comment 2')).toBeInTheDocument();
+  //   });
+  
+  //   it('deletes a blog comment correctly', async () => {
+  //   render(
+  //     <UserProvider>
+  //       <Comments postId="test" postTitle="Test Title" comments={comments} />
+  //     </UserProvider>
+  //   );
+  //   screen.debug();
+
+  //   expect(screen.getByText('Test comment 2')).toBeInTheDocument();
+  // });
 });

@@ -9,6 +9,7 @@ export const handlers = [
       })
     );
   }),
+
   rest.get('https://rosnovsky.us/api/stats', (req, res, ctx) => {
     return res(
       ctx.status(200),

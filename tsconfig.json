@@ -6,15 +6,8 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "types": [
-      "cypress",
-      "cypress-axe"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["cypress", "cypress-axe"],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
@@ -26,31 +19,14 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@api/*": [
-        "pages/api/*"
-      ]
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@pages/*": ["pages/*"],
+      "@lib/*": ["lib/*"],
+      "@api/*": ["pages/api/*"]
     },
     "incremental": true
   },
-  "exclude": [
-    "node_modules",
-    "scripts"
-  ],
-  "include": [
-    "/index.d.ts",
-    "**/*.tsx",
-    "**/*.ts"
-  ]
+  "exclude": ["node_modules", "scripts"],
+  "include": ["/index.d.ts", "**/*.tsx", "**/*.ts", "stories/**/*.stories.tsx"]
 }

@@ -21,12 +21,12 @@ describe('Subscribe Card', () => {
       screen.getByText('Subscribers Loading...')
     );
 
-    expect(screen.getByText('666 subscribers – 13 issues')).toBeInTheDocument();
+    expect(screen.getByText('666 subscribers - 13 issues')).toBeInTheDocument();
   });
 
   it('renders Error message', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SubscribeCard />);
-    const inputField = getByPlaceholderText('art@rosnovsky.us');
+    const inputField = getByPlaceholderText('art@art0.us');
     fireEvent.change(inputField, { target: { value: 'aaa@bbbb.cccc' } });
     fireEvent.click(getByTestId('subscribe-button'));
 
@@ -35,8 +35,8 @@ describe('Subscribe Card', () => {
 
   it('renders Success message', async () => {
     const { getByPlaceholderText, getByTestId } = render(<SubscribeCard />);
-    const inputField = getByPlaceholderText('art@rosnovsky.us');
-    fireEvent.change(inputField, { target: { value: 'artem@rosnovsky.us' } });
+    const inputField = getByPlaceholderText('art@art0.us');
+    fireEvent.change(inputField, { target: { value: 'art@art0.us' } });
     fireEvent.click(getByTestId('subscribe-button'));
 
     await waitFor(() => getByTestId('success'));
