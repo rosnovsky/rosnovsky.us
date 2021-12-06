@@ -39,21 +39,13 @@ context('Home Page', () => {
     // cy.url().should('include', 'https://auth.rosnovsky.us/u/login/identifier');
     // cy.go('back');
   });
-  // it('has dark mode toggle working', () => {
-  //   if (cy.get('html').contains('dark')) {
-  //     cy.get('html').should('have.class', 'dark');
-  //     cy.get('[data-testid="toggle-btn"]').click();
-  //     cy.get('html').should('have.class', 'light');
-  //     cy.get('[data-testid="toggle-btn"]').click();
-  //     cy.get('html').should('have.class', 'dark');
-  //   } else if (cy.get('html').contains('light')) {
-  //     cy.get('html').should('have.class', 'light');
-  //     cy.get('[data-testid="toggle-btn"]').click();
-  //     cy.get('html').should('have.class', 'dark');
-  //     cy.get('[data-testid="toggle-btn"]').click();
-  //     cy.get('html').should('have.class', 'light');
-  //   }
-  // });
+  it('has dark mode toggle working', () => {
+    cy.get('html').should('have.class', 'dark');
+    cy.get('[data-testid="toggle-btn"]').click();
+    cy.get('html').should('have.class', 'light');
+    cy.get('[data-testid="toggle-btn"]').click();
+    cy.get('html').should('have.class', 'dark');
+  });
 
   // it('has Featured Posts', () => {
   //   cy.get('[aria-label="Featured Posts"]').should('have.length', 1);

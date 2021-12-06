@@ -9,9 +9,9 @@ export default withApiAuthRequired(async function (
 ) {
   const session = getSession(req, res);
 
-  if (!session) res.status(401).end({ error: 'You are not authenticated' });
-  if (!session!.user.email_verified)
-    res.status(401).end({ error: 'Please verify your email first.' });
+  if (!session) return res.status(401).end({ error: 'You are not authenticated' });
+  if (!session.user.email_verified)
+    return res.status(401).end({ error: 'Please verify your email first.' });
 
   const { id, postId, content, postTitle } = JSON.parse(req.body);
 
@@ -21,7 +21,7 @@ export default withApiAuthRequired(async function (
         await deleteComment({
           commentId: id,
           postId,
-          user: session!.user,
+          user: session.user,
           content,
           postTitle,
         })
