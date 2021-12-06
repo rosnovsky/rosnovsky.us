@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import fetch from 'isomorphic-fetch';
 import Image from 'next/image';
 import defaultAvatar from '../../public/defaultAvatar.png';
+import { shimmer, toBase64 } from '@components/Utils/MDXComponents';
+
+const testEnv = process.env.NODE_ENV === 'test';
 
 export default function Comment({
   postComment,
@@ -74,8 +77,17 @@ export default function Comment({
             <Image
               className="h-12 w-12 rounded-full"
               alt={`${userProfile?.nickname}'s avatar`}
-              src={userProfile?.picture ? userProfile.picture : defaultAvatar}
+              src={
+                userProfile?.picture
+                  ? userProfile.picture
+                  : testEnv
+                  ? 'https://rosnovsky.us/static/avatar.png'
+                  : defaultAvatar
+              }
               placeholder={userProfile?.picture ? 'empty' : 'blur'}
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(50, 50)
+              )}}`}
               width={50}
               height={50}
             />
