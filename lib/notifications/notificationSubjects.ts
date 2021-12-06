@@ -8,7 +8,7 @@ export const selectSubject = (type: NotifyOptions['type']) => {
     case 'flagged_comment':
       return `You flagged a comment on `;
     case 'deleted_comment':
-      return `Your comment has been deleted`;
+      return `Your comment has been deleted from `;
     default:
       return `Rosnovsky Park™ notification`;
   }
