@@ -23,15 +23,15 @@ export default function Blog({
 }) {
   const { user } = useUser();
 
-  // const fetcher = (url) => fetch(url).then((res) => res.json());
-  // const url =
-  //   process.env.NODE_ENV === 'test'
-  //     ? 'https://rosnovsky.us/api/comments/getComments?id=test'
-  //     : `/api/comments/getComments?id=${frontMatter.slug}`;
-  // const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 });
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+  const url =
+    process.env.NODE_ENV === 'test'
+      ? 'https://rosnovsky.us/api/comments/getComments?id=test'
+      : `/api/comments/getComments?id=${frontMatter.slug}`;
+  const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 });
 
-  // if (error) return <div>failed to load</div>;
-  // if (!data) return <div>loading...</div>;
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
   return (
     <BlogLayout frontMatter={frontMatter}>
@@ -55,7 +55,7 @@ export default function Blog({
         </span>
       )}
       <Comments
-        comments={comments}
+        comments={data ? data : comments}
         postId={frontMatter.slug}
         postTitle={frontMatter.title}
       />
