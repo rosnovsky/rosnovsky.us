@@ -2,6 +2,8 @@ import { PostComment } from '../..';
 import { UserProfile, useUser } from '@auth0/nextjs-auth0';
 import { useEffect, useState } from 'react';
 import fetch from 'isomorphic-fetch';
+import Image from 'next/image';
+import defaultAvatar from '../../public/defaultAvatar.png';
 
 export default function Comment({
   postComment,
@@ -69,10 +71,13 @@ export default function Comment({
           }
         >
           <div className="flex items-center">
-            <img
+            <Image
               className="h-12 w-12 rounded-full"
               alt={`${userProfile?.nickname}'s avatar`}
-              src={userProfile?.picture ? userProfile.picture : ''}
+              src={userProfile?.picture ? userProfile.picture : defaultAvatar}
+              placeholder={userProfile?.picture ? 'empty' : 'blur'}
+              width={50}
+              height={50}
             />
             <div className="ml-2">
               <div className="text-sm ">
