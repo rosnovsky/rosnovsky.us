@@ -11,7 +11,7 @@ export const notify = async ({ type, user, postId, postTitle, content }: NotifyO
   const data = {
     from: 'Rosnovsky Park™ <artem@rosnovsky.us>',
     to: recipient,
-    subject: selectSubject(type),
+    subject: `${selectSubject(type)} ${postTitle}`,
     template: type,
     'h:X-Mailgun-Variables': JSON.stringify({
       user: user.name,

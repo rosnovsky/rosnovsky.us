@@ -28,5 +28,5 @@
     "incremental": true
   },
   "exclude": ["node_modules", "scripts"],
-  "include": ["/index.d.ts", "**/*.tsx", "**/*.ts"]
+  "include": ["/index.d.ts", "**/*.tsx", "**/*.ts", "stories/**/*.stories.tsx"]
 }
