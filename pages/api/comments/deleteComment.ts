@@ -9,7 +9,8 @@ export default withApiAuthRequired(async function (
 ) {
   const session = getSession(req, res);
 
-  if (!session) return res.status(401).end({ error: 'You are not authenticated' });
+  if (!session)
+    return res.status(401).end({ error: 'You are not authenticated' });
   if (!session.user.email_verified)
     return res.status(401).end({ error: 'Please verify your email first.' });
 
