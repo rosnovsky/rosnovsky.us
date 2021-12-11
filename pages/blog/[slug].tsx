@@ -1,5 +1,4 @@
 import { MDXRemote } from 'next-mdx-remote';
-import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 
 import { getFiles, getFileBySlug } from '../../lib/mdx';

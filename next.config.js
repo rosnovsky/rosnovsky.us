@@ -71,7 +71,7 @@ const ContentSecurityPolicy = `
   worker-src *.vercel.app localhost:3000 rosnovsky.us;
   media-src  *;
   connect-src *;
-  font-src 'self';
+  font-src *;
 `;
 
 const securityHeaders = [
