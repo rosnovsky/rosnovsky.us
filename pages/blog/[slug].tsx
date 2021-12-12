@@ -70,7 +70,7 @@ export async function getStaticProps({ params }) {
   const baseUrl =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'
-      : 'https://rosnovsky.us';
+      : 'https://rosnovskyus-rosnovsky.vercel.app';
   const post = await getFileBySlug('blog', params.slug);
 
   try {

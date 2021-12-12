@@ -1,15 +1,15 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import slugify from 'slugify';
 import chromium from 'chrome-aws-lambda';
+import slugify from 'slugify';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const cloudinary = require('cloudinary').v3;
+const cloudinary = require('cloudinary').v2;
+import fetch from 'isomorphic-fetch';
 
 interface OpenGraph {
   readonly query: { title: string };
   readonly imageUrl: string;
 }
 
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (req, res) => {
   if (!req.query) {
     return res.status(400).send({ status: 'No query params provided' });
   }
@@ -46,26 +46,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       .then((response) => response.url);
   };
 
-  const takeScreenshot = async function (url) {
-    const browser = await chromium.puppeteer.launch({
-      executablePath: local
-        ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-        : await chromium.executablePath,
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      headless: chromium.headless,
-    });
-    const page = await browser.newPage();
-    await page.setViewport({ height: 474, width: 843, deviceScaleFactor: 2 });
-    await page.goto(url, { waitUntil: 'load' });
-    const buffer = await page.screenshot({
-      type: 'jpeg',
-      quality: 100,
-    });
-    await browser.close();
-    return `data:image/jpg;base64,${buffer.toString('base64')}`;
-  };
-
   const checkImage = async function (title: string) {
     const url = `https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${title}.png`;
     return await fetch(url).then((result) => {
@@ -90,6 +70,26 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     );
   }
 
+  const takeScreenshot = async function (url) {
+    const browser = await chromium.puppeteer.launch({
+      executablePath: local
+        ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+        : await chromium.executablePath,
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      headless: chromium.headless,
+    });
+    const page = await browser.newPage();
+    await page.setViewport({ height: 474, width: 843, deviceScaleFactor: 2 });
+    await page.goto(url, { waitUntil: 'load' });
+    const buffer = await page.screenshot({
+      type: 'jpeg',
+      quality: 100,
+    });
+    await browser.close();
+    return `data:image/jpg;base64,${buffer.toString('base64')}`;
+  };
+
   const screenshotBuffer = await takeScreenshot(
     `${url}/socialCard?${imageParams}`
   );
@@ -102,15 +102,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       params.set(key, value);
     });
     return params.toString();
-  }
-
-  function paramsToObject(paramString: any) {
-    const params = new URLSearchParams(paramString);
-    const object = {};
-    for (const [key, value] of params.entries()) {
-      object[key] = value;
-    }
-    return object;
   }
 
   console.info(`✅ Done with ${title}`);
