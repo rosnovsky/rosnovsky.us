@@ -2,7 +2,7 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import slugify from 'slugify';
 import chromium from 'chrome-aws-lambda';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require('cloudinary').v3;
 
 interface OpenGraph {
   readonly query: { title: string };
@@ -17,7 +17,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const title = slugify(req.query.title as OpenGraph['query']['title']);
 
   const forwardResponse = (imageUrl: OpenGraph['imageUrl']) => {
-    console.log(imageUrl);
+    console.info('🖼 Image URL: ', imageUrl);
     res.redirect(308, imageUrl);
   };
   const local = process.env.NODE_ENV === 'development';
@@ -40,7 +40,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       public_id: `social-images/${title}`,
       unique_filename: false,
     };
-    console.log(`uploading ${title} to cloudinary`);
+    console.info(`⏫ Uploading ${title} to Cloudinary`);
     return await cloudinary.uploader
       .upload(buffer, cloudinaryOptions)
       .then((response) => response.url);
@@ -56,18 +56,23 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       headless: chromium.headless,
     });
     const page = await browser.newPage();
-    await page.setViewport({ height: 630, width: 1200 });
-    await page.goto(url);
-    const buffer = await page.screenshot();
+    await page.setViewport({ height: 474, width: 843, deviceScaleFactor: 2 });
+    await page.goto(url, { waitUntil: 'load' });
+    const buffer = await page.screenshot({
+      type: 'jpeg',
+      quality: 100,
+    });
     await browser.close();
-    return `data:image/png;base64,${buffer.toString('base64')}`;
+    return `data:image/jpg;base64,${buffer.toString('base64')}`;
   };
 
   const checkImage = async function (title: string) {
-    const url = `https://res.cloudinary.com/rosnovsky/image/upload/social-images/${title}.png`;
+    const url = `https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${title}.png`;
     return await fetch(url).then((result) => {
-      console.log(
-        `Checked if ${title} exists in Cloudinary, got ${result.status} in return`
+      console.info(
+        `🤔 Does ${title} exist in Cloudinary? Its status suggests that ${
+          result.status === 200 ? 'it does' : "it doesn't"
+        }...`
       );
       if (result.status !== 404) {
         return true;
@@ -79,14 +84,14 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   const existingImage = await checkImage(title);
   if (existingImage) {
-    console.log(`yay, ${title} already existed`);
+    console.info(`💃 Yay, ${title} already exists, no need to re-upload! 💃`);
     return forwardResponse(
-      'https://res.cloudinary.com/rosnovsky/image/upload/social-images/${title}.png'
+      `https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${title}.png`
     );
   }
 
   const screenshotBuffer = await takeScreenshot(
-    `${url}/generateOgImage?${imageParams}`
+    `${url}/socialCard?${imageParams}`
   );
   const newImage = await uploadImage(title, screenshotBuffer);
 
@@ -108,6 +113,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return object;
   }
 
-  console.log(`done with ${title}`);
+  console.info(`✅ Done with ${title}`);
   return forwardResponse(newImage);
 };

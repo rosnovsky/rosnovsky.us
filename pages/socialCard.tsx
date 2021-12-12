@@ -15,6 +15,11 @@ export const theme = {
 };
 
 const generateSocialImage = ({ coverImage, title, meta }) => {
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://rosnovsky.us'
+      : 'http://localhost:3000';
+
   return (
     <ThemeProvider theme={theme}>
       <div className="mx-auto">
@@ -23,7 +28,7 @@ const generateSocialImage = ({ coverImage, title, meta }) => {
             position: 'relative',
             border: '1px solid black',
             backgroundColor: 'white',
-            backgroundImage: `url(${coverImage})`,
+            backgroundImage: `url('${baseUrl}${coverImage}')`,
             backgroundSize: 'contain',
             width: '843px',
             aspectRatio: '16/9',
@@ -107,7 +112,7 @@ export async function getServerSideProps(params: any) {
   const {
     title = 'Something went wrong: this is NOT the cover image you deserve!',
     meta = 'December 2, 2021 | 8 min read',
-    coverImage = 'https://rosnovsky.us/static/socialCard.jpg',
+    coverImage = '/static/socialCard.jpg',
   } = params.query;
   return {
     props: {
