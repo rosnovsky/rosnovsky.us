@@ -1,8 +1,18 @@
-const OPERATIONS = ['getComments', 'getCommentById', 'getCommentsByDate', 'getCommentsByUserId', 'postComment', "updateComment", "updateCommentMetadata", 'deleteComment', 'flagComment'] as const
+const OPERATIONS = [
+  'getComments',
+  'getCommentById',
+  'getCommentsByDate',
+  'getCommentsByUserId',
+  'postComment',
+  'updateComment',
+  'updateCommentMetadata',
+  'deleteComment',
+  'flagComment',
+] as const;
 
-type Operations = typeof OPERATIONS[number]
+type Operations = typeof OPERATIONS[number];
 
-interface IValidateQueryData {
+interface ValidateQueryData {
   validateUUID: (uuid: string) => boolean;
   validateQueryData: (queryData: any, operation: Operations) => boolean;
   data: {
@@ -15,5 +25,5 @@ interface IValidateQueryData {
     deleted?: boolean;
     edited?: boolean;
     flagged?: boolean;
-  }
+  };
 }

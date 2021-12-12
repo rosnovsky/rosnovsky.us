@@ -9,14 +9,15 @@ export default withApiAuthRequired(async function (
   res: NextApiResponse
 ) {
   const session = getSession(req, res);
-  if (!session) res.status(401).end({ error: 'You are not authenticated' });
+  if (!session)
+    return res.status(401).end({ error: 'You are not authenticated' });
   const { id } = JSON.parse(req.body);
 
   if (validateQueryData(req.body, 'updateComment')) {
     if (await isCommentUnique(id, req.body.content)) {
       return res
         .status(200)
-        .send(await updateComment(id, req.body.content, session!.user));
+        .send(await updateComment(id, req.body.content, session.user));
     }
     return res.status(400).send({
       error:

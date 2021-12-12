@@ -17,16 +17,19 @@ const isCommentUnique = async (postId: string, content: string, user) => {
     .select('*')
     .eq('post_id', postId);
 
-  // check if the comment is unique (matching comment content hash, userId and postId)
-  const commentsByUserId = data!.filter(
-    (comment) => comment.user_id === user.sub
-  );
+  if (error) {
+    return error;
+  } else if (data) {
+    // check if the comment is unique (matching comment content hash, userId and postId)
+    const commentsByUserId = data.filter(
+      (comment) => comment.user_id === user.sub
+    );
 
-  const isUnique = commentsByUserId.every(
-    (comment) => comment.hash !== commentHash
-  );
-
-  return error ? error : isUnique;
+    const isUnique = commentsByUserId.every(
+      (comment) => comment.hash !== commentHash
+    );
+    return isUnique;
+  }
 };
 
 const published_at = new Date().toISOString();
@@ -77,20 +80,21 @@ export default withApiAuthRequired(async function (
 ) {
   const session = getSession(req, res);
 
-  if (!session) res.status(401).end({ error: 'You are not authenticated' });
-  if (!session!.user.email_verified)
-    res.status(401).end({ error: 'Please verify your email first.' });
+  if (!session)
+    return res.status(401).end({ error: 'You are not authenticated' });
+  if (!session.user.email_verified)
+    return res.status(401).end({ error: 'Please verify your email first.' });
 
   const { postId, content, postTitle } = JSON.parse(req.body);
 
   if (validateQueryData(JSON.parse(req.body), 'postComment')) {
     try {
-      const isUnique = await isCommentUnique(postId, content, session!.user);
+      const isUnique = await isCommentUnique(postId, content, session.user);
       if (!isUnique)
         return res.status(400).send({ error: 'Comment already exists' });
       return res
         .status(200)
-        .send(await postComment(postId, postTitle, content, session!.user));
+        .send(await postComment(postId, postTitle, content, session.user));
     } catch (e: any) {
       res
         .status(400)
