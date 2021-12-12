@@ -10,6 +10,7 @@ import { CommentForm } from '@components/Utils/CommentForm';
 import { useUser } from '@auth0/nextjs-auth0';
 import { FrontMatter, PostComment } from '../..';
 import Link from 'next/link';
+import { VercelResponse } from '@vercel/node';
 
 export default function Blog({
   mdxSource,
@@ -66,7 +67,34 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const baseUrl =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000'
+      : 'https://rosnovskyus-rosnovsky.vercel.app';
   const post = await getFileBySlug('blog', params.slug);
+
+  try {
+    const generateSocialImage: VercelResponse = await fetch(
+      `${baseUrl}/api/opengraph/generate?title=${
+        post.frontMatter.title
+      }&meta=${new Date(post.frontMatter.publishedAt).toLocaleDateString(
+        'en-US',
+        {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        }
+      )} | ${post.frontMatter.readingTime.text}&coverImage=${
+        post.frontMatter?.cover || null
+      }`
+    );
+    console.info(
+      `♻️ Generating Social Image for ${post.frontMatter.title}, here it is: `,
+      generateSocialImage.status
+    );
+  } catch (e) {
+    console.error(e);
+  }
 
   const comments: PostComment[] = await fetch(
     `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`,

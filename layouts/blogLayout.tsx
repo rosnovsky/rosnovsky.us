@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
-import generateSocialImage from '../utils/generateSocialCard';
+import slugify from 'slugify';
 
 import Container from '../components/Container';
 import SubscribeCard from '../components/Cards/SubscribeCard';
@@ -21,15 +21,9 @@ export default function BlogLayout({
     <Container
       title={`${frontMatter.title} – Art Rosnovsky`}
       description={frontMatter.summary}
-      image={generateSocialImage({
-        title: frontMatter.title,
-        cloudName: 'rosnovsky',
-        publishedAt: format(parseISO(frontMatter.publishedAt), 'dd MMMM yyyy'),
-        postTag: 'rosnovsky.us',
-        cloudinaryUrlBase: 'https://res.cloudinary.com',
-        imagePublicID: 'greenSocialCard.jpg',
-        textColor: 'fff',
-      })}
+      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
+        frontMatter.title
+      )}.jpg`}
       date={new Date(frontMatter.publishedAt).toISOString()}
       type="article"
     >

@@ -24,6 +24,7 @@ module.exports = withBundleAnalyzer({
       's.gravatar.com', // Gravatar
       'media-exp1.licdn.com', // Linkedin Profile Picture
       'image.mux.com',
+      'avatars.githubusercontent.com',
       'lh3.googleusercontent.com',
       'current-music.vercel.app',
       'is4-ssl.mzstatic.com',
@@ -71,7 +72,7 @@ const ContentSecurityPolicy = `
   worker-src *.vercel.app localhost:3000 rosnovsky.us;
   media-src  *;
   connect-src *;
-  font-src 'self';
+  font-src *;
 `;
 
 const securityHeaders = [
