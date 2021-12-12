@@ -20,7 +20,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
         url: `https://rosnovsky.us/static/images/${req.query.image}`,
       }),
       headers: [
-        ['Ocp-Apim-Subscription-Key', process.env.AZURE_VISION_KEY!],
+        ['Ocp-Apim-Subscription-Key', process.env.AZURE_VISION_KEY],
         ['Content-Type', 'application/json'],
       ],
     }).then((result) =>

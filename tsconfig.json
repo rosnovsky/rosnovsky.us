@@ -25,7 +25,8 @@
       "@lib/*": ["lib/*"],
       "@api/*": ["pages/api/*"]
     },
-    "incremental": true
+    "incremental": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["node_modules", "scripts"],
   "include": ["/index.d.ts", "**/*.tsx", "**/*.ts", "stories/**/*.stories.tsx"]

@@ -1,7 +1,5 @@
-import userEvent from '@testing-library/user-event';
-
 // eslint-disable-next-line prettier/prettier
-export { };
+export {};
 
 context('Home Page', () => {
   it('has no accessibility violations on load', () => {
@@ -40,11 +38,11 @@ context('Home Page', () => {
     // cy.go('back');
   });
   it('has dark mode toggle working', () => {
-    cy.get('html').should('have.class', 'dark');
-    cy.get('[data-testid="toggle-btn"]').click();
     cy.get('html').should('have.class', 'light');
     cy.get('[data-testid="toggle-btn"]').click();
     cy.get('html').should('have.class', 'dark');
+    cy.get('[data-testid="toggle-btn"]').click();
+    cy.get('html').should('have.class', 'light');
   });
 
   // it('has Featured Posts', () => {

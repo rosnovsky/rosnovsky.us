@@ -12,7 +12,8 @@ module.exports = {
         'green-opaque': 'rgb(6 78 59 / 24%)',
       },
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans],
+        body: ['Inter', ...fontFamily.sans],
+        heading: ['Space Grotesk', ...fontFamily.sans],
       },
       typography: (theme) => ({
         DEFAULT: {

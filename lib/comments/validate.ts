@@ -3,7 +3,7 @@ import validator from 'validator';
  * Validates whether a value is a UUID.
  * @param uuid The value to validate.
  **/
-export const validateUUID: IValidateQueryData['validateUUID'] = (uuid) => {
+export const validateUUID: ValidateQueryData['validateUUID'] = (uuid) => {
   if (!uuid || uuid.length < 1) {
     return false;
   }
@@ -11,7 +11,7 @@ export const validateUUID: IValidateQueryData['validateUUID'] = (uuid) => {
 };
 
 export const validateQueryData = (
-  data: IValidateQueryData['data'],
+  data: ValidateQueryData['data'],
   operation: Operations
 ): boolean => {
   if (!data || !operation) {

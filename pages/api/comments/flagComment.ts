@@ -17,7 +17,7 @@ export default withApiAuthRequired(async function (
       await flagComment({
         id,
         postId,
-        user: session!.user,
+        user: session.user,
         content,
         postTitle,
         operation,

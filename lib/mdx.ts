@@ -23,10 +23,10 @@ export async function getFileBySlug(type, slug) {
       remarkPlugins: [
         require('remark-autolink-headings'),
         require('remark-slug'),
-        require('remark-code-titles')
+        require('remark-code-titles'),
       ],
-      rehypePlugins: [mdxPrism]
-    }
+      rehypePlugins: [mdxPrism],
+    },
   });
 
   return {
@@ -37,20 +37,20 @@ export async function getFileBySlug(type, slug) {
       readingTime: readingTime(content),
       slug: slug || null,
       title: data.title,
-      cover: data.cover ? data.cover : '/static/favicons/favicon.ico',
+      cover: data.cover ? data.cover : '/static/socialCard.jpg',
       summary: data.summary,
       publishedAt: data.publishedAt,
-      ...data
-    }
+      ...data,
+    },
   };
 }
 
-const summarizeContent = async (content, slug) => {
-  const keyPhrases = SummarizeContent([content.substring(0, 1000)], slug).then(
-    (value) => value
-  );
-  return keyPhrases;
-};
+// const summarizeContent = async (content, slug) => {
+//   const keyPhrases = SummarizeContent([content.substring(0, 1000)], slug).then(
+//     (value) => value
+//   );
+//   return keyPhrases;
+// };
 
 export async function getFilesFrontMatter(type) {
   const files = await fs.readdirSync(path.join(root, 'data', type));
@@ -63,39 +63,44 @@ export async function getFilesFrontMatter(type) {
       console.log('No content: ', file, content);
     }
 
-    if (process.env.NODE_ENV === 'production') {
-      try {
-        const keyPhrasesSource = await summarizeContent(
-          content,
-          file.replace('.mdx', '')
-        );
-        // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
-        // @ts-expect-error
-        const keyPhrases = await keyPhrasesSource[0].keyPhrases;
-        if (keyPhrases === undefined) {
-          console.log('No key phrases: ', file);
-        }
-        const post = {
-          ...data,
-          slug: file.replace('.mdx', ''),
-          keyPhrases: await keyPhrases.join(', ')
-        };
+    // if (process.env.NODE_ENV === 'production') {
+    //   try {
+    //     const keyPhrasesSource = await summarizeContent(
+    //       content,
+    //       file.replace('.mdx', '')
+    //     );
+    //     // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
+    //     // @ts-expect-error
+    //     const keyPhrases = await keyPhrasesSource[0].keyPhrases;
+    //     if (keyPhrases === undefined) {
+    //       console.log('No key phrases: ', file);
+    //     }
+    //     const post = {
+    //       ...data,
+    //       slug: file.replace('.mdx', ''),
+    //       keyPhrases: await keyPhrases.join(', '),
+    //     };
 
-        posts.push(post);
-      } catch (error) {
-        const post = {
-          ...data,
-          slug: file.replace('.mdx', ''),
-        };
-        posts.push(post);
-      }
-    } else {
-      const post = {
-        ...data,
-        slug: file.replace('.mdx', ''),
-      };
-      posts.push(post);
-    }
+    //     posts.push(post);
+    //   } catch (error) {
+    //     const post = {
+    //       ...data,
+    //       slug: file.replace('.mdx', ''),
+    //     };
+    //     posts.push(post);
+    //   }
+    // } else {
+    //   const post = {
+    //     ...data,
+    //     slug: file.replace('.mdx', ''),
+    //   };
+    //   posts.push(post);
+    // }
+    const post = {
+      ...data,
+      slug: file.replace('.mdx', ''),
+    };
+    posts.push(post);
   }
 
   return posts.sort((a, b) =>
