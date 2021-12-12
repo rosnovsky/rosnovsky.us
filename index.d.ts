@@ -43,6 +43,14 @@ export type AppleMusicTrack = {
   }[];
 };
 
+export interface BlogPost {
+  slug: string;
+  title: string;
+  summary: string;
+  publishedAt: string;
+  keyPhrases: string;
+}
+
 export type PictureDescription = {
   description: {
     tags: string[];

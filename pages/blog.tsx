@@ -1,16 +1,8 @@
 import Container from '../components/Container';
-import BlogPost from '../components/Blog/BlogPost';
 import SubscribeCard from '../components/Cards/SubscribeCard';
 import { getFilesFrontMatter } from '../lib/mdx';
 import { InstantSearch } from '@components/InstantSearch';
-
-type BlogPost = {
-  slug: string;
-  title: string;
-  summary: string;
-  publishedAt: string;
-  keyPhrases: string;
-};
+import { BlogPost } from 'index';
 
 export default function Blog({ posts }: { posts: BlogPost[] }) {
   return (
