@@ -30,7 +30,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.6.1",
+    "@auth0/nextjs-auth0": "^1.6.2",
     "@heroicons/react": "^1.0.5",
     "@next/bundle-analyzer": "^12.0.7",
     "comma-number": "2.1.0",
