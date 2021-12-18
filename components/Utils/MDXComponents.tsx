@@ -31,7 +31,10 @@ const CustomLink = (props) => {
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <span {...props} />
+        <span
+          className="text-green-700 dark:text-green-400  underline cursor-pointer hover:text-green-900 dark:hover:text-green-200"
+          {...props}
+        />
       </Link>
     );
   }

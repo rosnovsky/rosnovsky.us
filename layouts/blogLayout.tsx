@@ -41,7 +41,6 @@ export default function BlogLayout({
               className="rounded-full"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300 ml-2">
-              by
               {'Art Rosnovsky / '}
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>

@@ -35,7 +35,7 @@ export default function Blog({
       {user ? (
         <CommentForm postId={frontMatter.slug} postTitle={frontMatter.title} />
       ) : (
-        <span className="text-black">
+        <span className="text-black dark:text-white">
           <Link href="/api/auth/login" passHref>
             <span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">
               Signup or Login
