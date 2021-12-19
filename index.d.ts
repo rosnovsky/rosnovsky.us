@@ -1,5 +1,23 @@
 import { UserProfile } from '@auth0/nextjs-auth0';
 
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      AZURE_TEXT_ANALYTICS_SUBSCRIPTION_KEY: string;
+      NEXT_PUBLIC_FATHOM_SITE_ID: string;
+      MAILGUN_KEY: string;
+      NOTIFY_ME_EMAIL: string;
+      NEXT_PUBLIC_SUPABASE_URL: string;
+      NEXT_SUPABASE_SERVICE_KEY: string;
+      NODE_ENV: 'development' | 'production' | 'test';
+    }
+  }
+}
+
+// If this file has no import/export statements (i.e. is a script)
+// convert it into a module by adding an empty export statement.
+export {};
+
 export type AppleMusicTrack = {
   data: {
     id: string;
@@ -68,7 +86,7 @@ export type PictureDescription = {
   modelVersion: string;
 };
 
-interface FrontMatter {
+export interface FrontMatter {
   cover: string;
   publishedAt: string;
   readingTime: { text: string };
@@ -78,26 +96,26 @@ interface FrontMatter {
   wordCount: number;
 }
 
-type CommentAuthor = {
+export type CommentAuthor = {
   user?: UserProfile;
   verified?: boolean;
   regular?: boolean;
   comments?: number;
 };
 
-type CommentDate = {
+export type CommentDate = {
   date: string;
   dateUTC: string;
   postedAt: Date;
 };
 
-type CommentStatus = {
+export type CommentStatus = {
   approved: boolean;
   published: 'draft' | 'published';
   flagged?: 'spam' | 'offensive' | 'other';
 };
 
-type PostComment = {
+export type PostComment = {
   id: string;
   user_id: string;
   published_at: string;
@@ -109,7 +127,7 @@ type PostComment = {
   hash: string;
 };
 
-interface Status {
+export interface Status {
   data: {
     id: string;
     type: string;

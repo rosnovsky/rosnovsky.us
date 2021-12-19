@@ -37,17 +37,7 @@ export const InstantSearch = ({ posts }: { posts: BlogPost[] }) => {
         <input
           className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 dark:border-gray-600 rounded-lg py-2 px-4 block w-full appearance-none text-black leading-normal"
           type="text"
-          placeholder={
-            process.env.NODE_ENV === 'production'
-              ? 'Instant search'
-              : 'Disabled in dev, may fix later'
-          }
-          disabled={
-            process.env.NODE_ENV === 'production' ||
-            process.env.NODE_ENV === 'test'
-              ? false
-              : true
-          }
+          placeholder={'Instant search'}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <div className="text-xs text-right text-black mt-1 dark:text-white">

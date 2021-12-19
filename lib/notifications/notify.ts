@@ -3,8 +3,14 @@ import { selectSubject } from './notificationSubjects';
 
 import { mg, DOMAIN } from './mailgunClient';
 
-export const notify = async ({ type, user, postId, postTitle, content }: NotifyOptions) => {
-  const recipient = [user.email!, process.env.NOTIFY_ME_EMAIL!];
+export const notify = async ({
+  type,
+  user,
+  postId,
+  postTitle,
+  content,
+}: NotifyOptions) => {
+  const recipient = [user.email!, process.env.NOTIFY_ME_EMAIL];
 
   // TODO: abstract away fetching post/comment data
 
@@ -17,8 +23,8 @@ export const notify = async ({ type, user, postId, postTitle, content }: NotifyO
       user: user.name,
       url: `https://rosnovsky.us/blog/${postId}`,
       postTitle: postTitle,
-      content: content
-    })
+      content: content,
+    }),
   };
 
   return await mg.messages.create(DOMAIN, data);

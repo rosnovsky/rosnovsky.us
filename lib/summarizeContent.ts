@@ -1,11 +1,11 @@
 import {
   TextAnalyticsClient,
-  AzureKeyCredential
+  AzureKeyCredential,
 } from '@azure/ai-text-analytics';
 
 // You will need to set these environment variables or edit the following values
 const endpoint = 'https://blog-summary.cognitiveservices.azure.com/';
-const apiKey = process.env.AZURE_TEXT_ANALYTICS_SUBSCRIPTION_KEY!;
+const apiKey = process.env.AZURE_TEXT_ANALYTICS_SUBSCRIPTION_KEY;
 
 export async function SummarizeContent(post: string[], slug: string) {
   try {
@@ -15,11 +15,8 @@ export async function SummarizeContent(post: string[], slug: string) {
     );
 
     const results = await client.extractKeyPhrases(post);
-
     return results;
+  } catch (err) {
+    return err;
   }
-  catch (err) {
-    return err
-  }
-
 }

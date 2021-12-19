@@ -45,12 +45,12 @@ export async function getFileBySlug(type, slug) {
   };
 }
 
-// const summarizeContent = async (content, slug) => {
-//   const keyPhrases = SummarizeContent([content.substring(0, 1000)], slug).then(
-//     (value) => value
-//   );
-//   return keyPhrases;
-// };
+const summarizeContent = async (content, slug) => {
+  const keyPhrases = SummarizeContent([content.substring(0, 1000)], slug).then(
+    (value) => value
+  );
+  return keyPhrases;
+};
 
 export async function getFilesFrontMatter(type) {
   const files = await fs.readdirSync(path.join(root, 'data', type));
@@ -62,45 +62,32 @@ export async function getFilesFrontMatter(type) {
     if (content.length < 1) {
       console.log('No content: ', file, content);
     }
+    try {
+      const keyPhrasesSource = await summarizeContent(
+        content,
+        file.replace('.mdx', '')
+      );
+      // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
 
-    // if (process.env.NODE_ENV === 'production') {
-    //   try {
-    //     const keyPhrasesSource = await summarizeContent(
-    //       content,
-    //       file.replace('.mdx', '')
-    //     );
-    //     // Not sure why this is needed, but it is. Somehow, the keyPhrasesSource array elements do not have keyPhrases (?) in their types.
-    //     // @ts-expect-error
-    //     const keyPhrases = await keyPhrasesSource[0].keyPhrases;
-    //     if (keyPhrases === undefined) {
-    //       console.log('No key phrases: ', file);
-    //     }
-    //     const post = {
-    //       ...data,
-    //       slug: file.replace('.mdx', ''),
-    //       keyPhrases: await keyPhrases.join(', '),
-    //     };
-
-    //     posts.push(post);
-    //   } catch (error) {
-    //     const post = {
-    //       ...data,
-    //       slug: file.replace('.mdx', ''),
-    //     };
-    //     posts.push(post);
-    //   }
-    // } else {
-    //   const post = {
-    //     ...data,
-    //     slug: file.replace('.mdx', ''),
-    //   };
-    //   posts.push(post);
-    // }
-    const post = {
-      ...data,
-      slug: file.replace('.mdx', ''),
-    };
-    posts.push(post);
+      // @ts-expect-error
+      const keyPhrases = await keyPhrasesSource[0].keyPhrases;
+      if (keyPhrases === undefined) {
+        console.log('No key phrases: ', file);
+      }
+      const post = {
+        ...data,
+        slug: file.replace('.mdx', ''),
+        keyPhrases: await keyPhrases.join(', '),
+      };
+      console.log('post: ', post);
+      posts.push(post);
+    } catch (error) {
+      const post = {
+        ...data,
+        slug: file.replace('.mdx', ''),
+      };
+      posts.push(post);
+    }
   }
 
   return posts.sort((a, b) =>

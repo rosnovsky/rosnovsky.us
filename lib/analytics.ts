@@ -7,9 +7,8 @@ export const useAnalytics = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID!, {
-        includedDomains: ['rosnovsky.us', 'llama.rosnovsky.us']
+      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
+        includedDomains: ['rosnovsky.us', 'llama.rosnovsky.us'],
       });
     }
 
