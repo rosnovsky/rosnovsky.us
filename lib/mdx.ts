@@ -9,13 +9,13 @@ import { SummarizeContent } from '../lib/summarizeContent';
 const root = process.cwd();
 
 export async function getFiles(type) {
-  return fs.readdirSync(path.join(root, 'data', type));
+  return fs.readdirSync(path.join(root, 'posts', type));
 }
 
 export async function getFileBySlug(type, slug) {
   const source = slug
-    ? fs.readFileSync(path.join(root, 'data', type, `${slug}.mdx`), 'utf8')
-    : fs.readFileSync(path.join(root, 'data', `${type}.mdx`), 'utf8');
+    ? fs.readFileSync(path.join(root, 'posts', type, `${slug}.mdx`), 'utf8')
+    : fs.readFileSync(path.join(root, 'posts', `${type}.mdx`), 'utf8');
 
   const { data, content } = matter(source);
   const mdxSource = await serialize(content, {
@@ -53,11 +53,14 @@ const summarizeContent = async (content, slug) => {
 };
 
 export async function getFilesFrontMatter(type) {
-  const files = await fs.readdirSync(path.join(root, 'data', type));
+  const files = await fs.readdirSync(path.join(root, 'posts', type));
   const posts: any[] = [];
 
   for (const file of files) {
-    const source = fs.readFileSync(path.join(root, 'data', type, file), 'utf8');
+    const source = fs.readFileSync(
+      path.join(root, 'posts', type, file),
+      'utf8'
+    );
     const { data, content } = matter(source);
     if (content.length < 1) {
       console.log('No content: ', file, content);

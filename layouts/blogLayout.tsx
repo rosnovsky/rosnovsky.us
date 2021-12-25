@@ -8,7 +8,7 @@ import React from 'react';
 import { FrontMatter } from 'index';
 
 const editUrl = (slug) =>
-  `https://github.com/rosnovsky/rosnovsky.us/edit/main/data/blog/${slug}.mdx`;
+  `https://github.com/rosnovsky/rosnovsky.us/edit/main/posts/blog/${slug}.mdx`;
 
 export default function BlogLayout({
   children,

@@ -23,7 +23,7 @@ export default function Home() {
               Arlington, WA
             </span>
           </a>
-          . I work as a Customer Onboarding Engineer @ Auth0.{' '}
+          . I work as a Customer Onboarding Engineer @ Auth0 (part of Okta).{' '}
           <Link href="/about" passHref>
             <span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">
               AMA
@@ -35,6 +35,13 @@ export default function Home() {
           <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
             Featured Posts
           </h3>
+          <BlogPost
+            title="Building This Website: Meditation Through Code"
+            summary="It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected."
+            slug="meditation-through-code"
+            publishedAt="2021/12/19"
+            cover="https://static.cascadiajs.com/2021/graphic-recordings/michelle-bakels.jpg"
+          />
           <BlogPost
             title="CascadiaJS 2021"
             summary="I wanted to attend CascadiaJS for a few years and it finally happened. I've got a few takeaways I want to share with you here."
