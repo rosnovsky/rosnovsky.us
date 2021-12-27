@@ -41,14 +41,14 @@ export default function Home() {
             slug="meditation-through-code"
             publishedAt="2021/12/19"
             cover="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            readingTime="4 min read"
+            frontMatter={{ readingTime: { text: '4 min read' } }}
           />
           <BlogPost
             title="CascadiaJS 2021"
             summary="I wanted to attend CascadiaJS for a few years and it finally happened. I've got a few takeaways I want to share with you here."
             slug="cascadiajs-2021"
             publishedAt="2021/11/04"
-            readingTime="7 min read"
+            frontMatter={{ readingTime: { text: '7 min read' } }}
             cover="/static/images/cascadiajs-2021/ticket.png"
           />
           <BlogPost
@@ -56,7 +56,7 @@ export default function Home() {
             summary="I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a gamechanger in the past few months."
             slug="journaling"
             publishedAt="2021-10-14"
-            readingTime="4 min read"
+            frontMatter={{ readingTime: { text: '4 min read' } }}
             cover="/static/images/journaling/journaling0001.jpg"
           />
           <BlogPost
@@ -64,7 +64,7 @@ export default function Home() {
             summary="I've updated my keyboarded recently. It's been a frustraring, fullfilling, and invigorating experience so far."
             slug="moonlander-keyboard"
             publishedAt="2021/09/17"
-            readingTime="4 min read"
+            frontMatter={{ readingTime: { text: '4 min read' } }}
             cover="/static/images/moonlander/moonlander0008.jpg"
           />
           <BlogPost
@@ -72,7 +72,7 @@ export default function Home() {
             summary="Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision."
             slug="alt-text"
             publishedAt="2021/06/21"
-            readingTime="5 min read"
+            frontMatter={{ readingTime: { text: '5 min read' } }}
             cover="/static/images/alt-text/test-image.jpg"
           />
         </section>
@@ -81,7 +81,7 @@ export default function Home() {
           <h3 className="font-bold font-heading text-2xl md:text-4xl tracking-tight mb-7 mt-8 text-black dark:text-white">
             Projects
           </h3>
-          <div className="mb-5 flex flex-col justify-center items-start max-w-2xl mx-auto">
+          <div className="mb-5 flex flex-col justify-center items-start max-w-4xl mx-auto">
             <ProjectCard
               title="Current Music: Apple Music"
               description="This project generates an SVG image featuring the last song you listened to on Apple Music."

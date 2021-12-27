@@ -81,6 +81,10 @@ export async function getFilesFrontMatter(type) {
         ...data,
         slug: file.replace('.mdx', ''),
         keyPhrases: await keyPhrases.join(', '),
+        frontMatter: {
+          wordCount: content.split(/\s+/gu).length,
+          readingTime: readingTime(content),
+        },
       };
       console.log('post: ', post);
       posts.push(post);
@@ -88,6 +92,10 @@ export async function getFilesFrontMatter(type) {
       const post = {
         ...data,
         slug: file.replace('.mdx', ''),
+        frontMatter: {
+          wordCount: content.split(/\s+/gu).length,
+          readingTime: readingTime(content),
+        },
       };
       posts.push(post);
     }

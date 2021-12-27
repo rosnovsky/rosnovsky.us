@@ -7,26 +7,28 @@ const trackGoal = () => {
   Fathom.trackGoal('WSO7SGLK', 1);
 };
 
+const test = process.env.NODE_ENV === 'test';
+
 const BlogPost = ({
   title,
   summary,
   slug,
   cover,
   publishedAt,
-  readingTime,
+  frontMatter,
 }: {
   title: string;
   summary: string;
   slug: string;
   publishedAt: string;
   cover?: string;
-  readingTime: string;
+  frontMatter: { readingTime: Record<string, string> };
 }) => {
   return (
     <div className="container w-100 mx-auto flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl  mt-4 w-100">
       <div className="lg:h-64 w-auto md:w-1/2">
         <Image
-          src={cover ? cover : avatar}
+          src={cover ? cover : test ? '/public/static/avatar.jpg' : avatar}
           alt={title}
           className="inset-0 h-full w-full object-cover object-center"
           placeholder="blur"
@@ -65,7 +67,7 @@ const BlogPost = ({
                 day: 'numeric',
               })}
             </span>
-            <span>{readingTime}</span>
+            <span>{frontMatter.readingTime.text}</span>
           </div>
         </div>
       </div>
