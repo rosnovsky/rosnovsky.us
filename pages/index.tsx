@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+        <h1 className="font-heading  font-black text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Rosnovsky Park™
         </h1>
         <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
@@ -40,7 +40,7 @@ export default function Home() {
             summary="It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected."
             slug="meditation-through-code"
             publishedAt="2021/12/19"
-            cover="https://static.cascadiajs.com/2021/graphic-recordings/michelle-bakels.jpg"
+            cover="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
           />
           <BlogPost
             title="CascadiaJS 2021"

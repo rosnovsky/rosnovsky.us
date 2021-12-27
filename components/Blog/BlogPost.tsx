@@ -1,5 +1,7 @@
 import * as Fathom from 'fathom-client';
-import Link from 'next/link';
+import Image from 'next/image';
+import { shimmer, toBase64 } from '@components/Utils/MDXComponents';
+import slugify from 'slugify';
 
 const trackGoal = () => {
   Fathom.trackGoal('WSO7SGLK', 1);
@@ -19,15 +21,30 @@ const BlogPost = ({
 }) => {
   return (
     <div className="flex lg:flex-row justify-center my-10 flex-col overflow-hidden">
-      <img
-        src={cover}
-        alt={title}
-        className="w-1/1 lg:w-1/2 mr-7 rounded-l-2xl object-cover"
-      />
-      <span className="w-full cursor-pointer">
+      <div className="w-full lg:w-1/2 mr-7 md:w-full object-contain">
+        <Image
+          src={
+            cover
+              ? cover
+              : `https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
+                  title
+                )}.jpg`
+          }
+          alt={title}
+          className="rounded-lg xl:rounded-none"
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            shimmer(300, 125)
+          )}}`}
+          layout="responsive"
+          width="230"
+          height="125"
+        />
+      </div>
+      <div className="w-full">
         <div className="mb-8 w-full">
           <div className="flex flex-col md:flex-row justify-between">
-            <h3 className="text-lg md:text-xl font-medium mb-2 w-full text-gray-900 dark:text-gray-100 hover:underline">
+            <h3 className="lg:mt-0 mt-5 text-2xl lg:text-xl font-heading font-bold mb-2 w-full text-gray-900 dark:text-gray-100  hover:underline">
               <a
                 href={`/blog/${slug}`}
                 aria-label={title}
@@ -40,7 +57,7 @@ const BlogPost = ({
           </div>
           <p className="text-gray-600 dark:text-gray-400">{summary}</p>
         </div>
-      </span>
+      </div>
     </div>
   );
 };
