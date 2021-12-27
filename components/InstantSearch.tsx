@@ -9,6 +9,7 @@ interface BlogPost {
   title: string;
   summary: string;
   publishedAt: string;
+  frontMatter: { readingTime: Record<string, string> };
   keyPhrases: string;
 }
 

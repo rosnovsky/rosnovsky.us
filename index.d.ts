@@ -67,6 +67,9 @@ export interface BlogPost {
   summary: string;
   publishedAt: string;
   keyPhrases: string;
+  frontMatter: {
+    readingTime: Record<string, string>;
+  };
 }
 
 export type PictureDescription = {

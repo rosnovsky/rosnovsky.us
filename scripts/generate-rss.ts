@@ -10,10 +10,10 @@ async function generate() {
     feed_url: 'https://rosnovsky.us/feed.xml'
   });
 
-  const posts = await fs.readdir(path.join(__dirname, '..', 'data', 'blog'))
+  const posts = await fs.readdir(path.join(__dirname, '..', 'posts', 'blog'))
   const parsedPosts = posts.map(async (name) => {
     const content = await fs.readFile(
-      path.join(__dirname, '..', 'data', 'blog', name)
+      path.join(__dirname, '..', 'posts', 'blog', name)
     );
     return { post: await matter(content), slug: name };
   })

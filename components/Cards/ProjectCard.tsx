@@ -14,7 +14,7 @@ const trackGoal = (title) => {
 export default function ProjectCard({ title, description, href, icon }) {
   return (
     <a
-      className="mb-4 hover:shadow"
+      className="mb-4 hover:shadow w-full"
       href={href}
       data-testid="project-card"
       onClick={() => trackGoal(title)}

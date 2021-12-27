@@ -12,14 +12,7 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { InstantSearch } from '../../components/InstantSearch';
-
-interface BlogPost {
-  slug: string;
-  title: string;
-  summary: string;
-  publishedAt: string;
-  keyPhrases: string;
-}
+import { BlogPost } from 'index';
 
 const posts: BlogPost[] = [
   {
@@ -28,6 +21,11 @@ const posts: BlogPost[] = [
     slug: 'test',
     publishedAt: '2020-01-01',
     keyPhrases: '1',
+    frontMatter: {
+      readingTime: {
+        text: '1 min read',
+      },
+    },
   },
   {
     title: 'test',
@@ -35,6 +33,11 @@ const posts: BlogPost[] = [
     slug: 'test',
     publishedAt: '2020-01-01',
     keyPhrases: '2',
+    frontMatter: {
+      readingTime: {
+        text: '1 min read',
+      },
+    },
   },
 ];
 
@@ -46,9 +49,7 @@ describe('Instant Search', () => {
 
   it('returns search results', async () => {
     render(<InstantSearch posts={posts} />);
-    const inputField = screen.getByPlaceholderText(
-      'Disabled in dev, may fix later'
-    );
+    const inputField = screen.getByPlaceholderText('Instant search');
     fireEvent.change(inputField, { target: { value: 'Test' } });
 
     await waitFor(() => screen.getByText('Test Blog Post'));

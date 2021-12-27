@@ -55,7 +55,7 @@ export default function Container(props) {
         <Navigation />
         <main
           id="skip"
-          className="flex flex-col justify-center bg-white dark:bg-black px-8"
+          className="mt-16 flex flex-col justify-center bg-white dark:bg-black px-8"
         >
           {children}
           <Footer />

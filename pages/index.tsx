@@ -8,8 +8,8 @@ import ProjectCard from '../components/Cards/ProjectCard';
 export default function Home() {
   return (
     <Container>
-      <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+      <div className="flex flex-col justify-center items-start max-w-4xl mx-auto mb-16">
+        <h1 className="font-heading  font-black text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
           Rosnovsky Park™
         </h1>
         <h2 className="prose text-gray-600 dark:text-gray-400 mb-16">
@@ -23,7 +23,7 @@ export default function Home() {
               Arlington, WA
             </span>
           </a>
-          . I work as a Customer Onboarding Engineer @ Auth0.{' '}
+          . I work as a Customer Onboarding Engineer @ Auth0 (part of Okta).{' '}
           <Link href="/about" passHref>
             <span className="text-green-700 dark:text-green-400  underline hover:cursor-pointer font-semibold hover:text-green-900 dark:hover:text-green-200">
               AMA
@@ -31,41 +31,57 @@ export default function Home() {
           </Link>
           !
         </h2>
-        <section aria-label="Featured Posts">
-          <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 text-black dark:text-white">
+        <section className="mb-10" aria-label="Featured Posts">
+          <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-7 text-black font-heading dark:text-white">
             Featured Posts
           </h3>
+          <BlogPost
+            title="Building This Website: Meditation Through Code"
+            summary="It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here."
+            slug="meditation-through-code"
+            publishedAt="2021/12/19"
+            cover="https://images.unsplash.com/photo-1580894742597-87bc8789db3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            frontMatter={{ readingTime: { text: '4 min read' } }}
+          />
           <BlogPost
             title="CascadiaJS 2021"
             summary="I wanted to attend CascadiaJS for a few years and it finally happened. I've got a few takeaways I want to share with you here."
             slug="cascadiajs-2021"
             publishedAt="2021/11/04"
+            frontMatter={{ readingTime: { text: '7 min read' } }}
+            cover="/static/images/cascadiajs-2021/ticket.png"
           />
           <BlogPost
             title="Journaling"
             summary="I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a gamechanger in the past few months."
             slug="journaling"
             publishedAt="2021-10-14"
+            frontMatter={{ readingTime: { text: '4 min read' } }}
+            cover="/static/images/journaling/journaling0001.jpg"
           />
           <BlogPost
             title="Moonlander Keyboard"
             summary="I've updated my keyboarded recently. It's been a frustraring, fullfilling, and invigorating experience so far."
             slug="moonlander-keyboard"
             publishedAt="2021/09/17"
+            frontMatter={{ readingTime: { text: '4 min read' } }}
+            cover="/static/images/moonlander/moonlander0008.jpg"
           />
           <BlogPost
             title="Using AI vision to generate alt text for images"
             summary="Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision."
             slug="alt-text"
             publishedAt="2021/06/21"
+            frontMatter={{ readingTime: { text: '5 min read' } }}
+            cover="/static/images/alt-text/test-image.jpg"
           />
         </section>
 
         <section aria-label="Projects">
-          <h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-4 mt-8 text-black dark:text-white">
+          <h3 className="font-bold font-heading text-2xl md:text-4xl tracking-tight mb-7 mt-8 text-black dark:text-white">
             Projects
           </h3>
-          <div className="mb-5 flex flex-col justify-center items-start max-w-2xl mx-auto">
+          <div className="mb-5 flex flex-col justify-center items-start max-w-4xl mx-auto">
             <ProjectCard
               title="Current Music: Apple Music"
               description="This project generates an SVG image featuring the last song you listened to on Apple Music."

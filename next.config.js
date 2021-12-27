@@ -24,6 +24,7 @@ module.exports = withBundleAnalyzer({
       's.gravatar.com', // Gravatar
       'media-exp1.licdn.com', // Linkedin Profile Picture
       'image.mux.com',
+      'images.unsplash.com',
       'avatars.githubusercontent.com',
       'lh3.googleusercontent.com',
       'current-music.vercel.app',
@@ -33,6 +34,9 @@ module.exports = withBundleAnalyzer({
       'is3-ssl.mzstatic.com',
       'is2-ssl.mzstatic.com',
       'is1-ssl.mzstatic.com',
+      'static.cascadiajs.com',
+      'loremflickr.com',
+      'res.cloudinary.com',
     ],
     disableStaticImages: false,
   },

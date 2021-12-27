@@ -16,7 +16,7 @@ const Navigation = () => {
   return (
     <nav
       data-testid="nav-bg"
-      className="sticky-nav flex justify-between items-center max-w-4xl w-full p-8 my-0 md:my-2 mx-auto bg-white dark:bg-black bg-opacity-60"
+      className="sticky-nav flex justify-between items-center max-w-5xl w-full p-8 my-0 md:my-2 mx-auto bg-white dark:bg-black bg-opacity-60"
     >
       <a href="#skip" className="sr-only focus:not-sr-only">
         Skip to content
