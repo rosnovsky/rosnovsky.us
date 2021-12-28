@@ -29,7 +29,7 @@ const generateSocialImage = ({ coverImage, title, meta }) => {
             border: '1px solid black',
             backgroundColor: 'white',
             backgroundImage: `url('${baseUrl}${coverImage}')`,
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             width: '843px',
             aspectRatio: '16/9',
             zIndex: 1,
