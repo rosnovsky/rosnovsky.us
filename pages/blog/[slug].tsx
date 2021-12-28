@@ -89,7 +89,20 @@ export async function getStaticProps({ params }) {
       }`
     );
     console.info(
-      `♻️ Generating Social Image for ${post.frontMatter.title}, here it is: `,
+      `♻️ Generating Social Image for ${
+        post.frontMatter.title
+      }: ${baseUrl}/api/opengraph/generate?title=${
+        post.frontMatter.title
+      }&meta=${new Date(post.frontMatter.publishedAt).toLocaleDateString(
+        'en-US',
+        {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        }
+      )} | ${post.frontMatter.readingTime.text}&coverImage=${
+        post.frontMatter?.cover || null
+      }). Here its status code: `,
       generateSocialImage.status
     );
   } catch (e) {

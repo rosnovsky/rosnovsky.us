@@ -3,7 +3,7 @@ import { shimmer, toBase64 } from './Utils/MDXComponents';
 
 export default function Track({ track }) {
   return (
-    <div className="flex flex-row max-w-3xl pl-2 pt-1 mt-8">
+    <div className="flex flex-row max-w-4xl pl-2 pt-1 mt-8">
       <div>
         <Image
           className="w-full"

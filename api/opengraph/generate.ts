@@ -97,7 +97,7 @@ export default async (req, res) => {
 
   function objectToParams(object: any) {
     const params = new URLSearchParams();
-    Object.entries(object).map((entry) => {
+    Object.entries(object).forEach((entry) => {
       const [key, value]: [key: any, value: any] = entry;
       params.set(key, value);
     });

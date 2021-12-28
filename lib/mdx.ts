@@ -86,7 +86,6 @@ export async function getFilesFrontMatter(type) {
           readingTime: readingTime(content),
         },
       };
-      console.log('post: ', post);
       posts.push(post);
     } catch (error) {
       const post = {
