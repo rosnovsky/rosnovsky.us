@@ -25,7 +25,7 @@ const BlogPost = ({
   frontMatter: { readingTime: Record<string, string> };
 }) => {
   return (
-    <div className="container w-100 mx-auto flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl  mt-4 w-100">
+    <div className="container w-100 mx-auto flex flex-col md:flex-row overflow-hidden bg-white dark:bg-gray-800 rounded-lg shadow-xl my-5 w-100">
       <div className="lg:h-64 w-auto md:w-1/2">
         <Image
           src={cover ? cover : test ? '/public/static/avatar.jpg' : avatar}
@@ -43,7 +43,7 @@ const BlogPost = ({
       <div className="w-full">
         <div className="py-4 px-6 h-full text-gray-800 flex flex-col justify-between">
           <div className="flex flex-col md:flex-row justify-between">
-            <h3 className="lg:mt-0 mt-5 text-2xl lg:text-xl font-heading font-bold mb-2 w-full text-gray-900 dark:text-gray-100  hover:underline">
+            <h3 className="lg:mt-0 mt-5 text-3xl lg:text-2xl font-heading font-bold mb-2 w-full text-gray-900 dark:text-gray-100  hover:underline">
               <a
                 href={`/blog/${slug}`}
                 aria-label={title}
