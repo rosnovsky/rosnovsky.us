@@ -75,7 +75,7 @@ export async function getStaticProps({ params }) {
 
   try {
     const generateSocialImage: VercelResponse = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${
+      `https://rosnovsky-api.vercel.app/api/opengraph/generate?title=${
         post.frontMatter.title
       }&meta=${new Date(post.frontMatter.publishedAt).toLocaleDateString(
         'en-US',
@@ -89,20 +89,7 @@ export async function getStaticProps({ params }) {
       }`
     );
     console.info(
-      `♻️ Generating Social Image for ${
-        post.frontMatter.title
-      }: ${baseUrl}/api/opengraph/generate?title=${
-        post.frontMatter.title
-      }&meta=${new Date(post.frontMatter.publishedAt).toLocaleDateString(
-        'en-US',
-        {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-        }
-      )} | ${post.frontMatter.readingTime.text}&coverImage=${
-        post.frontMatter?.cover || null
-      }). Here its status code: `,
+      `♻️ Generating Social Image for ${post.frontMatter.title}. Here its status code: `,
       generateSocialImage.status
     );
   } catch (e) {
