@@ -67,15 +67,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const baseUrl =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://rosnovsky.us';
+  const baseUrl = 'https://rosnovsky-api.vercel.app';
   const post = await getFileBySlug('blog', params.slug);
 
   try {
     const generateSocialImage: VercelResponse = await fetch(
-      `https://rosnovsky-api.vercel.app/api/opengraph/generate?title=${
+      `${baseUrl}/api/opengraph/generate?title=${
         post.frontMatter.title
       }&meta=${new Date(post.frontMatter.publishedAt).toLocaleDateString(
         'en-US',

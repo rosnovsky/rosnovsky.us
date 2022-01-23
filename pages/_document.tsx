@@ -55,6 +55,11 @@ class MyDocument extends Document {
             content="/static/favicons/browserconfig.xml"
             name="msapplication-config"
           />
+          <script
+            defer
+            data-domain="rosnovsky.us"
+            src="https://plausible.io/js/plausible.js"
+          ></script>
         </Head>
         <body className="bg-white dark:bg-black text-white dark:text-black">
           <Main />
