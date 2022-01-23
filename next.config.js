@@ -69,7 +69,7 @@ module.exports = withBundleAnalyzer({
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.github.com cdn.usefathom.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.plausible.io  *.youtube.com *.twitter.com *.github.com cdn.usefathom.com;
   child-src *.youtube.com *.google.com *.twitter.com localhost rosnovsky.us *.vercel.app;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
