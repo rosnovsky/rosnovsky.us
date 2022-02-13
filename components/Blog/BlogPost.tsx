@@ -1,7 +1,9 @@
 import * as Fathom from 'fathom-client';
+import sanityClient from '@sanity/client';
 import Image from 'next/image';
-import { shimmer, toBase64 } from '@components/Utils/MDXComponents';
+import { useNextSanityImage } from 'next-sanity-image';
 import avatar from '../../public/avatar.jpg';
+import imageUrlBuilder from '@sanity/image-url';
 
 const trackGoal = () => {
   Fathom.trackGoal('WSO7SGLK', 1);
@@ -9,35 +11,42 @@ const trackGoal = () => {
 
 const test = process.env.NODE_ENV === 'test';
 
+const configuredSanityClient = sanityClient({
+  projectId: 'n3o7a5dl',
+  dataset: 'prod',
+  useCdn: true,
+});
+const builder = imageUrlBuilder(configuredSanityClient);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
 const BlogPost = ({
   title,
   summary,
   slug,
-  cover,
+  coverImage,
   publishedAt,
-  frontMatter,
 }: {
   title: string;
-  summary: string;
-  slug: string;
+  summary: any;
+  slug: { current: string };
   publishedAt: string;
-  cover?: string;
-  frontMatter: { readingTime: Record<string, string> };
+  coverImage: any;
 }) => {
+  console.log(coverImage);
   return (
     <div className="container w-100 mx-auto flex flex-col md:flex-row overflow-hidden bg-white dark:bg-gray-800 rounded-lg shadow-xl my-5 w-100">
-      <div className="lg:h-64 w-auto md:w-1/2">
+      <div className="w-auto md:w-1/2">
+        {/* TODO: turn this into CoverImage component */}
         <Image
-          src={cover ? cover : test ? '/public/static/avatar.jpg' : avatar}
-          alt={title}
-          className="inset-0 h-full w-full object-cover object-center"
+          src={urlFor(coverImage).fit('clip').width(500).height(500).url()}
+          layout="responsive"
           placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(700, 800)
-          )}}`}
-          layout="intrinsic"
-          width="700"
-          height="800"
+          blurDataURL={coverImage.asset.metadata.lqip}
+          width={500}
+          height={500}
         />
       </div>
       <div className="w-full">
@@ -45,7 +54,7 @@ const BlogPost = ({
           <div className="flex flex-col md:flex-row justify-between">
             <h3 className="lg:mt-0 mt-5 text-3xl lg:text-2xl font-heading font-bold mb-2 w-full text-gray-900 dark:text-gray-100  hover:underline">
               <a
-                href={`/blog/${slug}`}
+                href={`/blog/${slug.current}`}
                 aria-label={title}
                 onClick={() => trackGoal()}
                 tabIndex={-1}
@@ -56,7 +65,7 @@ const BlogPost = ({
           </div>
           <div>
             <p className="text-gray-800 h-30 overflow-hidden  dark:text-gray-400">
-              {summary}
+              {/* {summary} */}
             </p>
           </div>
           <div className="text-gray-500 mt-3 text-sm flex flex-row justify-between">
@@ -67,7 +76,6 @@ const BlogPost = ({
                 day: 'numeric',
               })}
             </span>
-            <span>{frontMatter.readingTime.text}</span>
           </div>
         </div>
       </div>

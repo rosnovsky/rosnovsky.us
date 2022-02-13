@@ -2,9 +2,25 @@ import Container from '../components/Container';
 import SubscribeCard from '../components/Cards/SubscribeCard';
 import { getFilesFrontMatter } from '../lib/mdx';
 import { InstantSearch } from '@components/InstantSearch';
+import { useRouter } from 'next/router';
 import { BlogPost } from 'index';
+import client, {
+  getClient,
+  usePreviewSubscription,
+  PortableText,
+} from '@lib/sanity';
+import { groq } from 'next-sanity';
 
-export default function Blog({ posts }: { posts: BlogPost[] }) {
+export default function Blog(props) {
+  const { postdata, preview } = props;
+
+  const router = useRouter();
+
+  const { data: blogPosts } = usePreviewSubscription(query, {
+    initialData: postdata,
+    enabled: preview || router.query.preview !== undefined,
+  });
+
   return (
     <Container title="Blog – Art Rosnovsky" description="A bunch of nonsense.">
       <div className="flex flex-col justify-center items-start max-w-4xl mx-auto mb-16">
@@ -12,17 +28,34 @@ export default function Blog({ posts }: { posts: BlogPost[] }) {
           Blog
         </h1>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          {`My first blog on Livejournal was established in 2003. I've started this one in 2019, posting ${posts.length} blog posts.`}
+          {`My first blog on Livejournal was established in 2003. I've started this one in 2019, posting ${blogPosts.length} blog posts.`}
         </p>
-        <InstantSearch posts={posts} />
+        <InstantSearch posts={blogPosts} />
         <SubscribeCard />
       </div>
     </Container>
   );
 }
 
-export async function getStaticProps() {
-  const posts = await getFilesFrontMatter('blog');
+const query = groq`
+*[_type == "post"] | order(_createdAt desc) {
+  ..., 
+  categories[]->,
+  coverImage {
+    ...,
+    asset->
+  }
+}
+`;
 
-  return { props: { posts } };
+export async function getStaticProps({ preview = false }) {
+  const posts = await getClient(preview).fetch(query);
+
+  return {
+    props: {
+      postdata: posts,
+      preview,
+    },
+    revalidate: 10,
+  };
 }

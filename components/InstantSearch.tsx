@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { InView } from 'react-intersection-observer';
 
 interface BlogPost {
-  slug: string;
+  slug: { current: string };
   title: string;
-  summary: string;
+  coverImage: any;
+  summary: any;
   publishedAt: string;
-  frontMatter: { readingTime: Record<string, string> };
   keyPhrases: string;
 }
 
@@ -23,10 +23,10 @@ export const InstantSearch = ({ posts }: { posts: BlogPost[] }) => {
   useEffect(() => {
     const loadedPosts = posts.slice(0, page * 10);
     const searchResults = posts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.keyPhrases.includes(searchTerm.toLowerCase())
+      (post) => post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      // ||
+      // post.summary.toLowerCase().includes(searchTerm.toLowerCase())
+      // || post.keyPhrases.includes(searchTerm.toLowerCase())
     );
     setLoadedPosts(loadedPosts);
     setSearchResults(searchResults);
@@ -53,12 +53,12 @@ export const InstantSearch = ({ posts }: { posts: BlogPost[] }) => {
       <div className="relative w-full mb-4">
         {!searchTerm
           ? loadedPosts.map((post) => (
-              <div key={post.slug}>
+              <div key={post.slug.current}>
                 <BlogPost {...post} />{' '}
               </div>
             ))
           : searchResults.map((post) => (
-              <div key={post.slug}>
+              <div key={post.slug.current}>
                 <BlogPost {...post} />{' '}
               </div>
             ))}

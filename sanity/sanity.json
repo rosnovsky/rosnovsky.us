@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "Rosnovsky Park Blog"
+    "name": "Rosnovsky Park Blog",
+    "basePath": "/studio"
   },
   "api": {
     "projectId": "n3o7a5dl",
