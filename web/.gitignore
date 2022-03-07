@@ -1,0 +1,15 @@
+*.log
+.DS_Store
+.next
+node_modules
+.env.*
+public/sitemap.xml
+public/feed.xml
+.vercel
+.env.*
+public/sw.js.map
+*/sw.js.map
+*/sw.js
+coverage/
+.svelte-kit/
+build/
