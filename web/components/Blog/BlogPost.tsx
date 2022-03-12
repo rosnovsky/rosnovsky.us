@@ -8,12 +8,11 @@ const trackGoal = () => {
   Fathom.trackGoal('WSO7SGLK', 1);
 };
 
-const test = process.env.NODE_ENV === 'test';
-
 const configuredSanityClient = sanityClient({
   projectId: 'n3o7a5dl',
   dataset: 'prod',
   useCdn: true,
+  apiVersion: '2021-08-31',
 });
 const builder = imageUrlBuilder(configuredSanityClient);
 
@@ -63,7 +62,7 @@ const BlogPost = ({
           </div>
           <div>
             <p className="text-gray-800 h-30 overflow-hidden  dark:text-gray-400">
-              <PortableText blocks={summary} />
+              <PortableText value={summary} />
             </p>
           </div>
           <div className="text-gray-500 mt-3 text-sm flex flex-row justify-between">

@@ -7,7 +7,7 @@ import { CommentForm } from '@components/Utils/CommentForm';
 import { useUser } from '@auth0/nextjs-auth0';
 import { BlogPost as BlogPostType, PostComment } from '../..';
 import Link from 'next/link';
-import client from '@lib/sanity';
+import client, { PortableText } from '@lib/sanity';
 import BlogPost from '@components/Blog/BlogPost';
 
 export default function Blog({
@@ -21,7 +21,7 @@ export default function Blog({
 
   return (
     <BlogLayout post={post}>
-      <BlogPost {...post} />
+      <PortableText value={post.body} />
       {user ? (
         <CommentForm postId={post.slug.current} postTitle={post.title} />
       ) : (

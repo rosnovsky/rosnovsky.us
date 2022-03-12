@@ -21,7 +21,9 @@ export const InstantSearch = ({ posts }: { posts: BlogPost[] }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const loadedPosts = posts.slice(0, page * 10);
+    const loadedPosts = posts
+      .sort((postA, postB) => (postA.publishedAt > postB.publishedAt ? -1 : 1))
+      .slice(0, page * 10);
     const searchResults = posts.filter(
       (post) => post.title.toLowerCase().includes(searchTerm.toLowerCase())
       // ||

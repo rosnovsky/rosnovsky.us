@@ -69,6 +69,7 @@ export interface BlogPost {
   publishedAt: string;
   keyPhrases: string;
   coverImage: SanityImageSource;
+  body: any;
 }
 
 export type PictureDescription = {
