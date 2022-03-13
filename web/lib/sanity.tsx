@@ -49,60 +49,63 @@ const SampleImageComponent = ({ value }) => {
   );
 };
 
-export const PortableText = ({ value }) => (
-  <PortableTextComponent
-    value={value}
-    components={{
-      types: {
-        image: SampleImageComponent,
-        youtube: ({ value }: { value: { url: string } }) => {
-          const { url } = value;
-          return (
-            <div className="player-wrapper">
-              <ReactPlayer
-                url={url}
-                width="100%"
-                height="100%"
-                className="react-player"
-              />
-            </div>
-          );
+export const PortableText = ({ value }) => {
+  if (!value) return null;
+
+  return (
+    <PortableTextComponent
+      value={value}
+      components={{
+        types: {
+          image: SampleImageComponent,
+          youtube: ({ value }: { value: { url: string } }) => {
+            const { url } = value;
+            return (
+              <div className="player-wrapper">
+                <ReactPlayer
+                  url={url}
+                  width="100%"
+                  height="100%"
+                  className="react-player"
+                />
+              </div>
+            );
+          },
+          code: ({ value }) => {
+            if (!value || !value.code) {
+              return null;
+            }
+            const { language, code } = value;
+            return (
+              <SyntaxHighlighter
+                wrapLongLines
+                language={language || 'text'}
+                style={github}
+              >
+                {code}
+              </SyntaxHighlighter>
+            );
+          },
         },
-        code: ({ value }) => {
-          console.log(value.code);
-          if (!value || !value.code) {
-            return null;
-          }
-          const { language, code } = value;
-          return (
-            <SyntaxHighlighter
-              wrapLongLines
-              language={language || 'text'}
-              style={github}
-            >
-              {code}
-            </SyntaxHighlighter>
-          );
+        marks: {
+          link: ({ children, value }) => {
+            const rel = !value.href.startsWith('/')
+              ? 'noreferrer noopener'
+              : undefined;
+            return (
+              <a href={value.href} rel={rel}>
+                {children}
+              </a>
+            );
+          },
+          code: ({ children }) => {
+            return <code>{children}</code>;
+          },
         },
-      },
-      marks: {
-        link: ({ children, value }) => {
-          const rel = !value.href.startsWith('/')
-            ? 'noreferrer noopener'
-            : undefined;
-          return (
-            <a href={value.href} rel={rel}>
-              {children}
-            </a>
-          );
-        },
-        code: ({ children }) => {
-          return <code>{children}</code>;
-        },
-      },
-    }}
-  />
-);
+      }}
+    />
+  );
+};
 
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 

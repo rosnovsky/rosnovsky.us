@@ -9,7 +9,7 @@ export default function Comments({
   postTitle,
 }: {
   postId: string;
-  postTitle: string;
+  postTitle: string | null;
   comments: PostComment[];
 }) {
   const fetcher = (url) => fetch(url).then((res) => res.json());

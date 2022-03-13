@@ -8,8 +8,7 @@ export default withApiAuthRequired(async function (
   res: NextApiResponse
 ) {
   const session = getSession(req, res);
-  if (!session)
-    return res.status(401).end({ error: 'You are not authenticated' });
+  if (!session) res.status(401).end({ error: 'You are not authenticated' });
   const { id, postId, content, postTitle, operation } = JSON.parse(req.body);
 
   if (validateQueryData(req.body, 'flagComment')) {
@@ -17,7 +16,7 @@ export default withApiAuthRequired(async function (
       await flagComment({
         id,
         postId,
-        user: session.user,
+        user: session!.user,
         content,
         postTitle,
         operation,

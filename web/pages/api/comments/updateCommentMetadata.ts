@@ -28,8 +28,7 @@ export default withApiAuthRequired(async function (
   res: NextApiResponse
 ) {
   const session = getSession(req, res);
-  if (!session)
-    return res.status(401).end({ error: 'You are not authenticated' });
+  if (!session) res.status(401).end({ error: 'You are not authenticated' });
 
   try {
     if (validateQueryData(req.query, 'updateCommentMetadata')) {
@@ -41,7 +40,7 @@ export default withApiAuthRequired(async function (
             req.query.deleted as string,
             req.query.edited as string,
             req.query.flagged as string,
-            session.user
+            session!.user
           )
         );
     }

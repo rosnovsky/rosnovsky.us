@@ -18,12 +18,16 @@ export default function Blog({
   comments: PostComment[];
 }) {
   const { user } = useUser();
+  console.log('Building', post?.title ? post.title : 'NO TITLE');
 
   return (
     <BlogLayout post={post}>
-      <PortableText value={post.body} />
+      <PortableText value={post?.body ? post.body : null} />
       {user ? (
-        <CommentForm postId={post.slug.current} postTitle={post.title} />
+        <CommentForm
+          postId={post.slug.current}
+          postTitle={post?.title ? post.title : null}
+        />
       ) : (
         <span className="text-black dark:text-white">
           <Link href="/api/auth/login" passHref>
@@ -37,7 +41,7 @@ export default function Blog({
       <Comments
         comments={comments}
         postId={post.slug.current}
-        postTitle={post.title}
+        postTitle={post?.title ? post.title : null}
       />
     </BlogLayout>
   );
@@ -47,10 +51,11 @@ export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "post" && defined(slug.current)][].slug.current`
   );
+  console.log(paths);
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -91,6 +96,8 @@ export async function getStaticProps({ params }) {
   // } catch (e) {
   //   console.error(e);
   // }
+
+  console.log('SSR', params);
 
   const comments: PostComment[] = await fetch(
     `https://rosnovsky.us/api/comments/getComments?id=${params.slug}`,

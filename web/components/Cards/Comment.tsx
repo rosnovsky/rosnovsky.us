@@ -14,7 +14,7 @@ export default function Comment({
 }: {
   postComment: PostComment;
   postId: string;
-  postTitle: string;
+  postTitle: string | null;
 }) {
   const [userProfile, setUserProfile] = useState<UserProfile>();
 
