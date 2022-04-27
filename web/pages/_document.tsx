@@ -1,16 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@nextui-org/react';
 
-//@ts-expect-error somethings up with MyDocument type?
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return {
-      ...initialProps,
-      styles: <>{initialProps.styles}</>,
-    };
-  }
-
   render() {
     return (
       <Html lang="en">

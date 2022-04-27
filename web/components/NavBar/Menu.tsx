@@ -1,40 +1,27 @@
-import { Grid } from '@nextui-org/react';
-import { Switcher } from './Switch';
-import { Link } from '@nextui-org/react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 
-export const Menu = () => {
+const Menu = () => {
   return (
-    <Grid.Container md justify="center" alignItems="center" gap={3}>
-      <Grid>
-        <NextLink href="/blog">
-          <Link underline color="text">
-            Blog
-          </Link>
-        </NextLink>
-      </Grid>
-      <Grid>
-        <NextLink href="/blog">
-          <Link underline color="text">
-            Stats
-          </Link>
-        </NextLink>
-      </Grid>
-      <Grid>
-        <NextLink href="/blog">
-          <Link underline color="text">
-            About
-          </Link>
-        </NextLink>
-      </Grid>
-      <Grid>
-        <NextLink href="/blog">
-          <Link underline color="text">
-            Login
-          </Link>
-        </NextLink>
-      </Grid>
-      <Switcher />
-    </Grid.Container>
+    <div className="w-full">
+      <ul className="flex align-center justify-center flex:flex-row">
+        <li className="mr-12">
+          <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
+            <Link href="1">Blog</Link>
+          </span>
+        </li>
+        <li className="mr-12">
+          <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
+            <Link href="1">Stats</Link>
+          </span>
+        </li>
+        <li>
+          <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
+            <Link href="1">About</Link>
+          </span>
+        </li>
+      </ul>
+    </div>
   );
 };
+
+export default Menu;

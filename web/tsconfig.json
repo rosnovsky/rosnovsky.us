@@ -40,6 +40,9 @@
       "@layouts/*": [
         "layouts/*"
       ],
+      "@images/*": [
+        "public/static/images/*"
+      ],
     },
     "incremental": true,
     "allowSyntheticDefaultImports": true

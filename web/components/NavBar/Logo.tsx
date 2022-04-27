@@ -1,26 +1,11 @@
-import { Text } from '@nextui-org/react';
+import Link from 'next/link';
 
-export const Logo = () => {
+const Logo = () => {
   return (
-    <Text
-      h2
-      css={{
-        p: '0',
-        '@xs': {
-          textAlign: 'left',
-        },
-        '@sm': {
-          textAlign: 'left',
-        },
-        '@md': {
-          textAlign: 'left',
-        },
-        '@lg': {
-          textAlign: 'left',
-        },
-      }}
-    >
-      Rosnovsky Park
-    </Text>
+    <div className="lg:w-1/3 md:w-1/2 font-black text-5xl mb-5 md:mb-0 md:text-2xl">
+      <Link href="/">Rosnovsky Park</Link>
+    </div>
   );
 };
+
+export default Logo;
