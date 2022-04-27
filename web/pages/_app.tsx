@@ -1,17 +1,35 @@
-import '../styles/global.css';
+import type { AppProps } from 'next/app';
+import {
+  createTheme,
+  defaultTheme,
+  NextUIProvider,
+  Text,
+} from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
-import { ThemeProvider } from 'next-themes';
-import { useAnalytics } from '@lib/analytics';
-import { UserProvider } from '@auth0/nextjs-auth0';
+const lightTheme = createTheme({
+  type: 'light',
+});
 
-export default function App({ Component, pageProps }) {
-  useAnalytics();
+const darkTheme = createTheme({
+  type: 'dark',
+});
 
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <UserProvider>
-      <ThemeProvider attribute="class">
+    <NextThemesProvider
+      defaultTheme="system"
+      attribute="class"
+      value={{
+        light: lightTheme.className,
+        dark: darkTheme.className,
+      }}
+    >
+      <NextUIProvider>
         <Component {...pageProps} />
-      </ThemeProvider>
-    </UserProvider>
+      </NextUIProvider>
+    </NextThemesProvider>
   );
 }
+
+export default MyApp;

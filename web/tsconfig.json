@@ -11,10 +11,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": [
-      "cypress",
-      "cypress-axe"
-    ],
     "allowJs": true,
     "noEmit": true,
     "moduleResolution": "node",
@@ -36,10 +32,10 @@
         "pages/*"
       ],
       "@lib/*": [
-        "lib/*"
+        "../lib/*"
       ],
       "@api/*": [
-        "pages/api/*"
+        "../api/*"
       ],
       "@layouts/*": [
         "layouts/*"
@@ -57,5 +53,5 @@
     "**/*.tsx",
     "**/*.ts",
     "stories/**/*.stories.tsx"
-  ]
+, "../__mocks__/setupTests.ts"  ]
 }
