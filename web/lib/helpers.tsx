@@ -47,10 +47,19 @@ export const PortableTextComponents = {
       );
     },
     youtube: ({ value }) => {
-      const { url } = value;
-      const id = getYouTubeId(url);
-      console.log(id);
-      return <YouTube loading="lazy" videoId={id} />;
+      return (
+        <div className="embed-responsive aspect-ratio-16/9 w-full h-full">
+          <iframe
+            title="youtube video"
+            className="embed-responsive-item w-full h-full"
+            src={`https://www.youtube.com/embed/${getYouTubeId(value.url)}`}
+            frameBorder="0"
+            height={'400'}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      );
     },
   },
   marks: {},

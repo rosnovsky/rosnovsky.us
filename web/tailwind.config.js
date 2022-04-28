@@ -4,6 +4,13 @@ module.exports = {
   darkMode: 'class',
 
   theme: {
+    aspectRatio: {
+      none: 0,
+      square: [1, 1],
+      '16/9': [16, 9],
+      '4/3': [4, 3],
+      '21/9': [21, 9],
+    },
     screens: {
       sm: '640px',
       md: '768px',
@@ -475,6 +482,7 @@ module.exports = {
     },
   },
   variants: {
+    aspectRatio: ['responsive'],
     accessibility: ['responsive', 'focus-within', 'focus'],
     alignContent: ['responsive'],
     alignItems: ['responsive'],
@@ -639,6 +647,12 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  corePlugins: {},
-  plugins: [require('@tailwindcss/typography')],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+    require('tailwindcss-responsive-embed'),
+  ],
 };
