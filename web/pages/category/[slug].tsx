@@ -9,15 +9,16 @@ import type { BlogPost } from 'index';
 type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
+  postCount: number;
 };
 
-const Category = ({ posts, categories }: Props) => {
+const Category = ({ posts, categories, postCount }: Props) => {
   return (
     <div className="">
       <section className="relative bg-coolGray-50 overflow-hidden">
         <div className="bg-transparent">
           <NavBar />
-          <Blog posts={posts} categories={categories} />
+          <Blog posts={posts} categories={categories} postCount={postCount} />
           <NewsletterForm />
           <Stats />
           <Footer />
@@ -60,6 +61,12 @@ export async function getStaticProps(context) {
     { slug: context.params.slug }
   );
 
+  const postCount: number = await sanityClient.fetch(
+    `
+    *[count(_type == "post")]
+  `
+  );
+
   const categories = await sanityClient.fetch(
     `
     *[_type == "category"][0...6] {
@@ -74,6 +81,7 @@ export async function getStaticProps(context) {
     props: {
       posts,
       categories,
+      postCount,
     },
   };
 }
