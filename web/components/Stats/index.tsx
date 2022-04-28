@@ -8,7 +8,7 @@ const Stats = () => {
     <section
       className="py-20 xl:py-24 bg-white"
       style={{
-        backgroundImage: `url('flex-ui-assets/elements/pattern-white.svg')`,
+        backgroundImage: `url('/flex-ui-assets/elements/pattern-white.svg')`,
         backgroundPosition: 'center',
       }}
     >

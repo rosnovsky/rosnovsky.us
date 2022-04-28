@@ -1,9 +1,10 @@
-const PostSummary = () => {
+import { PortableText } from '@portabletext/react';
+
+const PostSummary = ({ summary }) => {
   return (
-    <p className="mb-4 text-base md:text-lg text-coolGray-400 font-medium">
-      We&apos;ve all experienced the chaos of multiple spreadsheets, tracking
-      and insight tools, and scrambling for the right data at the right time.
-    </p>
+    <div className="mb-4 text-base md:text-lg text-coolGray-400 font-medium">
+      <PortableText value={summary} />
+    </div>
   );
 };
 

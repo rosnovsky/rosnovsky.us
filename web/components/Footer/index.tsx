@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Footer = () => {
   return (
     <section className="bg-white">
@@ -16,7 +18,7 @@ const Footer = () => {
       <div
         className="bg-coolGray-50"
         style={{
-          backgroundImage: `url('flex-ui-assets/elements/pattern-light1.svg')`,
+          backgroundImage: `url('/flex-ui-assets/elements/pattern-light1.svg')`,
           backgroundPosition: 'center',
         }}
       >
@@ -27,36 +29,24 @@ const Footer = () => {
             </span>
             <div className="flex flex-wrap justify-center -mx-3 lg:-mx-6">
               <div className="w-full md:w-auto p-3 md:px-6">
-                <a
-                  className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="1"
-                >
-                  Home
-                </a>
+                <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
+                  <Link href="/">Home</Link>
+                </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
-                <a
-                  className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="1"
-                >
-                  About
-                </a>
+                <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
+                  <Link href="/about">About</Link>
+                </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
-                <a
-                  className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="1"
-                >
-                  Blog
-                </a>
+                <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
+                  <Link href="/blog">Blog</Link>
+                </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
-                <a
-                  className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="1"
-                >
-                  Privacy
-                </a>
+                <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
+                  <Link href="/privacy">Privacy</Link>
+                </span>
               </div>
             </div>
           </div>

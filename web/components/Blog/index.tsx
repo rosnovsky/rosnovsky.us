@@ -2,15 +2,15 @@ import Header from './Header';
 import Posts from './Posts';
 import ReadMore from './Posts/ReadMore';
 import Search from './Search';
-import Tags from './Tags';
+import Tags from './Categories';
 
-const Blog = () => {
+const Blog = ({ posts, categories }) => {
   return (
     <div>
       <section
         className="py-24 bg-white"
         style={{
-          backgroundImage: `url('flex-ui-assets/elements/pattern-white.svg')`,
+          backgroundImage: `url('/flex-ui-assets/elements/pattern-white.svg')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'left top',
         }}
@@ -20,8 +20,8 @@ const Blog = () => {
             <Header />
             <Search />
           </div>
-          <Tags />
-          <Posts />
+          <Tags categories={categories} />
+          <Posts posts={posts} />
           <ReadMore />
         </div>
       </section>

@@ -9,7 +9,7 @@ export const Hero = () => {
           className="flex flex-wrap xl:items-center -mx-4"
           style={{
             backgroundImage: `url(
-              'flex-ui-assets/elements/pattern-light-big.svg'
+              '/flex-ui-assets/elements/pattern-light-big.svg'
             )`,
             backgroundPosition: 'center',
           }}

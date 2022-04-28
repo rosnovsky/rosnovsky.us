@@ -32,16 +32,19 @@
         "pages/*"
       ],
       "@lib/*": [
-        "../lib/*"
+        "lib/*"
       ],
       "@api/*": [
-        "../api/*"
+        "api/*"
       ],
       "@layouts/*": [
         "layouts/*"
       ],
       "@images/*": [
         "public/static/images/*"
+      ],
+      "@flexui/*": [
+        "public/flex-ui-assets/*"
       ],
     },
     "incremental": true,

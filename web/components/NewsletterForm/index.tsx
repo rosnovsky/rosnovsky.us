@@ -7,7 +7,7 @@ const NewsletterForm = () => {
         <div
           className="relative py-16 md:py-32 px-6 text-center bg-coolGray-50 overflow-hidden rounded-7xl"
           style={{
-            backgroundImage: `url('flex-ui-assets/elements/pattern-light1.svg')`,
+            backgroundImage: `url('/flex-ui-assets/elements/pattern-light1.svg')`,
             backgroundPosition: 'center',
           }}
         >
@@ -22,22 +22,22 @@ const NewsletterForm = () => {
           </div>
           <img
             className="absolute top-0 left-0 w-28 md:w-auto"
-            src="flex-ui-assets/elements/wave2-yellow.svg"
+            src="/flex-ui-assets/elements/wave2-yellow.svg"
             alt=""
           />
           <img
             className="absolute right-6 top-6 w-28 md:w-auto"
-            src="flex-ui-assets/elements/dots3-green.svg"
+            src="/flex-ui-assets/elements/dots3-green.svg"
             alt=""
           />
           <img
             className="absolute right-0 bottom-0 w-28 md:w-auto"
-            src="flex-ui-assets/elements/wave3-red.svg"
+            src="/flex-ui-assets/elements/wave3-red.svg"
             alt=""
           />
           <img
             className="absolute left-6 bottom-6 w-28 md:w-auto"
-            src="flex-ui-assets/elements/dots3-violet.svg"
+            src="/flex-ui-assets/elements/dots3-violet.svg"
             alt=""
           />
         </div>

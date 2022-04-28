@@ -3,7 +3,7 @@ const Search = () => {
     <div className="relative mx-auto md:w-80">
       <img
         className="absolute top-1/2 left-4 transform -translate-y-1/2"
-        src="flex-ui-assets/elements/blog/search.svg"
+        src="/flex-ui-assets/elements/blog/search.svg"
         alt=""
       />
       <input
