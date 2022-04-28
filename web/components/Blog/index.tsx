@@ -8,9 +8,10 @@ import type { BlogPost } from 'index';
 type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
+  postCount: number;
 };
 
-const Blog = ({ posts, categories }: Props) => {
+const Blog = ({ posts, categories, postCount }: Props) => {
   return (
     <div>
       <section
@@ -23,7 +24,7 @@ const Blog = ({ posts, categories }: Props) => {
       >
         <div className="container px-4 mx-auto">
           <div className="md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
-            <Header />
+            <Header postCount={postCount} />
             <Search />
           </div>
           <Categories categories={categories} />

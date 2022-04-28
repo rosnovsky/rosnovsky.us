@@ -1,12 +1,16 @@
-const Header = () => {
+type Props = {
+  postCount: number;
+};
+
+const Header = ({ postCount }: Props) => {
   return (
     <>
       <h3 className="mb-4 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
-        Our mission is to make knowledge and news accessible for everyone.
+        Rosnovsky Park™ Blog
       </h3>
       <p className="mb-10 text-lg md:text-xl text-coolGray-500 font-medium">
-        With our integrated CRM, project management, collaboration and invoicing
-        capabilities, you can manage your business in one secure platform.
+        My first blog on Livejournal was established in 2003. <br /> I&apos;ve
+        started this one in 2019, posting {postCount} blog posts so far.
       </p>
     </>
   );

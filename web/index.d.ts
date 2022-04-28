@@ -74,6 +74,13 @@ export interface BlogPost extends SanityDocument {
   }[];
 }
 
+export interface Page extends SanityDocument {
+  title: string;
+  slug: { current: string };
+  body: Block[];
+  coverImage: ResolvedSanityImage;
+}
+
 export type PictureDescription = {
   description: {
     tags: string[];

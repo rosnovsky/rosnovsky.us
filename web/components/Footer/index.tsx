@@ -55,7 +55,8 @@ const Footer = () => {
         <div className="container px-4 mx-auto">
           <p className="py-5 md:pb-5 text-xs md:text-sm text-coolGray-400 text-center">
             Built with ❤️ and 🙇‍♂️ on Snohomish, Stillaguamish and other Puget
-            Salish ancestral lands. Land Acknowledgment
+            Salish ancestral lands.{' '}
+            <Link href="/land">Land Acknowledgment</Link>
           </p>
           <p className="py-5 md:pb-20 text-xs md:text-sm text-coolGray-400 text-center">
             © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights

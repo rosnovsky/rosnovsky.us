@@ -11,12 +11,12 @@ const Menu = () => {
         </li>
         <li className="mr-12">
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
-            <Link href="/stats">Stats</Link>
+            <Link href="/about">About</Link>
           </span>
         </li>
         <li>
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
-            <Link href="/about">About</Link>
+            <Link href="/privacy">Privacy</Link>
           </span>
         </li>
       </ul>

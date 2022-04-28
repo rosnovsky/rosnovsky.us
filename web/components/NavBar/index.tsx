@@ -12,7 +12,7 @@ export const NavBar = () => {
             <Menu />
             <div className="mt-5 md:mt-0 md:w-1/3">
               <div className="lg:flex items-center justify-end">
-                <span className="inline-block py-2 px-4 mr-2 leading-5 text-coolGray-500 hover:text-coolGray-900 bg-transparent font-medium rounded-md">
+                <span className="inline-block py-2 leading-5 text-coolGray-500 hover:text-coolGray-900 bg-transparent font-medium rounded-md">
                   <Link href="/api/auth/login">Log In</Link>
                 </span>
               </div>
