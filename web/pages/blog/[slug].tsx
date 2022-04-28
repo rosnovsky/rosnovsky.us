@@ -3,7 +3,7 @@ import { PortableText } from '@portabletext/react';
 import Footer from '@components/Footer';
 import { NavBar } from '@components/NavBar';
 import sanityClient from '../../lib/sanityClient';
-import { localDate, urlFor } from 'lib/helpers';
+import { localDate, PortableTextComponents, urlFor } from 'lib/helpers';
 import type { BlogPost } from 'index';
 
 type Props = {
@@ -64,7 +64,10 @@ const Post = ({ post }: Props) => {
                 />
               </div>
               <div className="prose prose-xl md:max-w-3xl mx-auto">
-                <PortableText value={body} />
+                <PortableText
+                  value={body}
+                  components={PortableTextComponents}
+                />
               </div>
             </div>
           </section>
@@ -108,6 +111,10 @@ export async function getStaticProps(context) {
         coverImage,
         summary
       },
+      body[]{
+        asset->{...},
+        ...
+      }
     }
   `,
     { slug }

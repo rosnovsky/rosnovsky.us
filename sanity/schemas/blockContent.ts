@@ -61,7 +61,7 @@ export default {
     // as a block type.
     {
       type: 'image',
-      options: {hotspot: true},
+      options: {hotspot: true, metadata: ['lqip', 'palette']},
     },
     {type: 'code'},
     {
