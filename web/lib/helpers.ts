@@ -1,3 +1,4 @@
+import { ResolvedSanityImage } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 
@@ -9,6 +10,6 @@ export const localDate = (date: string) => {
   });
 };
 
-export const urlFor = (source) => {
+export const urlFor = (source: ResolvedSanityImage) => {
   return imageUrlBuilder(sanityClient).image(source);
 };

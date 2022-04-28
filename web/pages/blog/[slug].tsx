@@ -4,8 +4,13 @@ import Footer from '@components/Footer';
 import { NavBar } from '@components/NavBar';
 import sanityClient from '../../lib/sanityClient';
 import { localDate, urlFor } from 'lib/helpers';
+import type { BlogPost } from 'index';
 
-const Post = ({ post }) => {
+type Props = {
+  post: BlogPost;
+};
+
+const Post = ({ post }: Props) => {
   if (!post) return <div>Nope.</div>;
   const { publishedAt, title, summary, coverImage, categories, body } = post;
 

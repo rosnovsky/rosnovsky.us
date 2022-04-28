@@ -2,9 +2,15 @@ import Header from './Header';
 import Posts from './Posts';
 import ReadMore from './Posts/ReadMore';
 import Search from './Search';
-import Tags from './Categories';
+import Categories from './Categories';
+import type { BlogPost } from 'index';
 
-const Blog = ({ posts, categories }) => {
+type Props = {
+  posts: BlogPost[];
+  categories: BlogPost['categories'];
+};
+
+const Blog = ({ posts, categories }: Props) => {
   return (
     <div>
       <section
@@ -20,7 +26,7 @@ const Blog = ({ posts, categories }) => {
             <Header />
             <Search />
           </div>
-          <Tags categories={categories} />
+          <Categories categories={categories} />
           <Posts posts={posts} />
           <ReadMore />
         </div>

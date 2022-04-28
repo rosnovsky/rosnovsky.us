@@ -4,8 +4,14 @@ import NewsletterForm from '@components/NewsletterForm';
 import Stats from '@components/Stats';
 import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
+import type { BlogPost } from 'index';
 
-const Category = ({ posts, categories }) => {
+type Props = {
+  posts: BlogPost[];
+  categories: BlogPost['categories'];
+};
+
+const Category = ({ posts, categories }: Props) => {
   return (
     <div className="">
       <section className="relative bg-coolGray-50 overflow-hidden">

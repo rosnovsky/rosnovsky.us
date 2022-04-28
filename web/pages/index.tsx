@@ -5,8 +5,14 @@ import NewsletterForm from '@components/NewsletterForm';
 import Stats from '@components/Stats';
 import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
+import type { BlogPost } from 'index';
 
-const Home = ({ posts, categories }) => {
+type Props = {
+  posts: BlogPost[];
+  categories: BlogPost['categories'];
+};
+
+const Home = ({ posts, categories }: Props) => {
   return (
     <div className="">
       <section className="relative bg-coolGray-50 overflow-hidden">
@@ -25,7 +31,7 @@ const Home = ({ posts, categories }) => {
 
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
-  const posts = await sanityClient.fetch(
+  const posts: BlogPost[] = await sanityClient.fetch(
     `
     *[_type == "post"][0...6] {
       title,
@@ -45,7 +51,7 @@ export async function getStaticProps() {
   `
   );
 
-  const categories = await sanityClient.fetch(
+  const categories: BlogPost['categories'] = await sanityClient.fetch(
     `
     *[_type == "category"][0...6] {
       title,

@@ -1,7 +1,0 @@
-.dccache
-node_modules
-.next
-.vercel
-.env.local
-.env.development
-.env.production

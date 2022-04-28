@@ -1,5 +1,6 @@
-import { UserProfile } from '@auth0/nextjs-auth0';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import type { UserProfile } from '@auth0/nextjs-auth0';
+import { ResolvedSanityImage } from '@sanity/asset-utils';
+import type { SanityDocument, Block } from '@sanity/types';
 
 declare global {
   namespace NodeJS {
@@ -62,14 +63,19 @@ export type AppleMusicTrack = {
   }[];
 };
 
-export interface BlogPost {
+export interface BlogPost extends SanityDocument {
   slug: { current: string };
   title: string;
-  summary: any;
+  summary: Block[];
   publishedAt: string;
   keyPhrases: string;
-  coverImage: SanityImageSource;
-  body: any;
+  coverImage: ResolvedSanityImage;
+  body: Block[];
+  categories: {
+    title: string;
+    description: Block[] | string;
+    slug: { current: string };
+  }[];
 }
 
 export type PictureDescription = {

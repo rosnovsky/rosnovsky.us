@@ -1,6 +1,14 @@
+import { BlogPost } from 'index';
 import Link from 'next/link';
 
-const PostMetadata = ({ metadata }) => {
+type Props = {
+  metadata: {
+    categories: BlogPost['categories'];
+    publishedAt: BlogPost['publishedAt'];
+  };
+};
+
+const PostMetadata = ({ metadata }: Props) => {
   return (
     <>
       <div className="mb-4">

@@ -1,8 +1,14 @@
+import { BlogPost } from 'index';
 import { urlFor } from 'lib/helpers';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const PostCover = ({ coverImage, slug }) => {
+type Props = {
+  coverImage: BlogPost['coverImage'];
+  slug: string;
+};
+
+const PostCover = ({ coverImage, slug }: Props) => {
   return (
     <div className="block mb-6 overflow-hidden rounded-md cursor-pointer">
       <Link href={`/blog/${slug}`}>
