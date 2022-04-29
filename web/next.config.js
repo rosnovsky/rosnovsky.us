@@ -77,6 +77,8 @@ const sentryWebpackPluginOptions = {
   //   urlPrefix, include, ignore
 
   silent: true, // Suppresses all logs
+  org: 'rosnovsky',
+  project: 'rosnovskyus',
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
