@@ -19,6 +19,11 @@ const Menu = () => {
             <Link href="/privacy">Privacy</Link>
           </span>
         </li>
+        <li className="mr-12">
+          <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
+            <Link href="/land">Land</Link>
+          </span>
+        </li>
 
         <li>
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">

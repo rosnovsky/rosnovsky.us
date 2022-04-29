@@ -4,6 +4,8 @@ import ReadMore from './Posts/ReadMore';
 import Search from './Search';
 import Categories from './Categories';
 import type { BlogPost } from 'index';
+import { useState } from 'react';
+import sanityClient from '@lib/sanityClient';
 
 type Props = {
   posts: BlogPost[];
@@ -12,6 +14,38 @@ type Props = {
 };
 
 const Blog = ({ posts, categories, postCount }: Props) => {
+  const [morePosts, setMorePosts] = useState(posts);
+  const [pageNumber, setPageNumber] = useState(6);
+
+  const handleReadMore = () => {
+    sanityClient
+      .fetch(
+        `*[_type == "post"] | order(publishedAt desc)[0...${pageNumber + 6}] {
+          title,
+          coverImage {
+            ...,
+            asset->
+          },
+          categories[]->{
+            title,
+            description,
+            slug
+          },
+          publishedAt,
+          summary,
+          slug,
+          "numberOfCharacters": length(pt::text(body)),
+          "estimatedWordCount": round(length(pt::text(body)) / 5),
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+        }`
+      )
+      .then((data) => {
+        setMorePosts(() => data);
+        setPageNumber(() => pageNumber + 6);
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <section
@@ -28,8 +62,15 @@ const Blog = ({ posts, categories, postCount }: Props) => {
             <Search />
           </div>
           <Categories categories={categories} />
-          <Posts posts={posts} />
-          <ReadMore />
+          <Posts posts={morePosts ? morePosts : posts} />
+          {posts && morePosts?.length > 6 && morePosts.length < postCount && (
+            <ReadMore handleReadMore={handleReadMore} />
+          )}
+          {posts && morePosts?.length === postCount && (
+            <div className="text-center">
+              You have reached the end of the Internet.
+            </div>
+          )}
         </div>
       </section>
     </div>

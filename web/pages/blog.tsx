@@ -30,7 +30,7 @@ export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts: BlogPost[] = await sanityClient.fetch(
     `
-    *[_type == "post"] {
+    *[_type == "post"] | order(publishedAt desc)[0...8] {
       title,
       coverImage {
         ...,
@@ -43,7 +43,10 @@ export async function getStaticProps() {
       },
       publishedAt,
       summary,
-      slug
+      slug,
+      "numberOfCharacters": length(pt::text(body)),
+      "estimatedWordCount": round(length(pt::text(body)) / 5),
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
     }
   `
   );
@@ -56,7 +59,7 @@ export async function getStaticProps() {
 
   const categories: BlogPost['categories'] = await sanityClient.fetch(
     `
-    *[_type == "category"][0...6] {
+    *[_type == "category"][0..6] {
       title,
       description,
       slug

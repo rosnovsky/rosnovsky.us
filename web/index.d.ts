@@ -67,6 +67,7 @@ export interface BlogPost extends SanityDocument {
   keyPhrases: string;
   coverImage: ResolvedSanityImage;
   body: Block[];
+  estimatedReadingTime: number;
   categories: {
     title: string;
     description: Block[] | string;

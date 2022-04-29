@@ -9,11 +9,20 @@ type Props = {
 };
 
 const PostCard = ({ post }: Props) => {
-  const { title, summary, coverImage, categories, publishedAt, slug } = post;
+  const {
+    title,
+    summary,
+    coverImage,
+    categories,
+    publishedAt,
+    slug,
+    estimatedReadingTime,
+  } = post;
 
   const postMetadata = {
     categories,
     publishedAt,
+    estimatedReadingTime,
   };
   return (
     <div key={title} className="w-full md:w-1/2 px-4 mb-24">

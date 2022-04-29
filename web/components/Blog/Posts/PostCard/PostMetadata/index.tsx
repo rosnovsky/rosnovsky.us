@@ -5,11 +5,12 @@ type Props = {
   metadata: {
     categories: BlogPost['categories'];
     publishedAt: BlogPost['publishedAt'];
+    estimatedReadingTime: BlogPost['estimatedReadingTime'];
   };
 };
 
 const PostMetadata = ({ metadata }: Props) => {
-  const { categories, publishedAt } = metadata;
+  const { categories, publishedAt, estimatedReadingTime } = metadata;
 
   return (
     <>
@@ -33,7 +34,7 @@ const PostMetadata = ({ metadata }: Props) => {
           month: 'short',
           day: 'numeric',
         })}{' '}
-        • 3 min read
+        • {estimatedReadingTime} min read
       </p>
     </>
   );

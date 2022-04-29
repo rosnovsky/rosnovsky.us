@@ -55,7 +55,10 @@ export async function getStaticProps(context) {
       },
       publishedAt,
       summary,
-      slug
+      slug,
+      "numberOfCharacters": length(pt::text(body)),
+      "estimatedWordCount": round(length(pt::text(body)) / 5),
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
     }
   `,
     { slug: context.params.slug }

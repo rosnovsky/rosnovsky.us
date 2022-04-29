@@ -1,8 +1,8 @@
-const ReadMore = () => {
+const ReadMore = ({ handleReadMore }) => {
   return (
-    <a
+    <button
       className="flex items-center justify-center py-2 px-4 mx-auto text-sm leading-5 text-blue-50 font-medium bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 md:max-w-max rounded-md"
-      href="1"
+      onClick={handleReadMore}
     >
       <span className="mr-3">View more</span>
       <svg
@@ -18,7 +18,7 @@ const ReadMore = () => {
           fill="currentColor"
         ></path>
       </svg>
-    </a>
+    </button>
   );
 };
 

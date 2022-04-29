@@ -13,7 +13,15 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   if (!post) return <div>Nope.</div>;
-  const { publishedAt, title, summary, coverImage, categories, body } = post;
+  const {
+    publishedAt,
+    title,
+    summary,
+    coverImage,
+    categories,
+    body,
+    estimatedReadingTime,
+  } = post;
 
   return (
     <div className="">
@@ -35,7 +43,7 @@ const Post = ({ post }: Props) => {
                   </p>
                   <span className="mx-1 text-blue-500">•</span>
                   <p className="inline-block text-blue-400 font-medium">
-                    3 minute read
+                    {estimatedReadingTime} minute read
                   </p>
                 </div>
                 <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
@@ -118,7 +126,10 @@ export async function getStaticProps(context) {
       body[]{
         asset->{...},
         ...
-      }
+      },
+      "numberOfCharacters": length(pt::text(body)),
+      "estimatedWordCount": round(length(pt::text(body)) / 5),
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
     }
   `,
     { slug }
