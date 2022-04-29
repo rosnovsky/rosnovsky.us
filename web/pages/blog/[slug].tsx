@@ -41,9 +41,9 @@ const Post = ({ post }: Props) => {
                 <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
                   {title}
                 </h2>
-                <p className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
+                <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
                   <PortableText value={summary} />
-                </p>
+                </div>
                 {categories &&
                   categories.map((category) => (
                     <div
