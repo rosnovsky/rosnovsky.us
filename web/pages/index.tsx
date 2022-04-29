@@ -74,6 +74,7 @@ export async function getStaticProps() {
       categories,
       postCount,
     },
+    revalidate: 30,
   };
 }
 

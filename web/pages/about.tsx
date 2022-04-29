@@ -1,7 +1,6 @@
 import { NavBar } from '@components/NavBar';
 import Image from 'next/image';
 import NewsletterForm from '@components/NewsletterForm';
-import Stats from '@components/Stats';
 import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
 import type { Page } from 'index';
@@ -13,7 +12,7 @@ type Props = {
 };
 
 const About = ({ page }: Props) => {
-  const { title, slug, coverImage, body } = page;
+  const { title, coverImage, body } = page;
   return (
     <div>
       <section className="relative bg-coolGray-50 overflow-hidden">

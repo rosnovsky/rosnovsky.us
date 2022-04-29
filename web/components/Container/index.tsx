@@ -1,4 +1,4 @@
-const Containter = ({ children }) => {
+const Containter = () => {
   return <div>!!</div>;
 };
 

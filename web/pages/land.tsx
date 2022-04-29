@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Land = ({ page }: Props) => {
-  const { title, slug, coverImage, body } = page;
+  const { title, coverImage, body } = page;
   return (
     <div>
       <section className="relative bg-coolGray-50 overflow-hidden">
@@ -78,7 +78,6 @@ export async function getStaticProps() {
     props: {
       page,
     },
-    revalidate: 10,
   };
 }
 

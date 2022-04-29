@@ -1,4 +1,3 @@
-import Categories from '@components/Blog/Categories';
 import { BlogPost } from 'index';
 import Link from 'next/link';
 
@@ -18,6 +17,7 @@ const PostMetadata = ({ metadata }: Props) => {
         {categories.map((category) => {
           return (
             <span
+              key={category.slug.current}
               className={`inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-500 hover:text-blue-600 font-medium uppercase bg-blue-100 hover:bg-blue-200 rounded-full shadow-sm`}
             >
               <Link href={`/category/${category.slug.current}`}>
