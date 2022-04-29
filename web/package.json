@@ -14,6 +14,7 @@
     "@sanity/asset-utils": "^1.2.3",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
+    "@sentry/nextjs": "^6.19.7",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
     "@types/react-syntax-highlighter": "^13.5.2",

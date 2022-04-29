@@ -13,3 +13,6 @@ public/sw.js.map
 coverage/
 .svelte-kit/
 build/
+
+# Sentry
+.sentryclirc
