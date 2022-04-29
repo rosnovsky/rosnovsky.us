@@ -1,10 +1,10 @@
-const ReadMore = ({ handleReadMore }) => {
+const ReadMore = ({ handleReadMore, loading }) => {
   return (
     <button
       className="flex items-center justify-center py-2 px-4 mx-auto text-sm leading-5 text-blue-50 font-medium bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 md:max-w-max rounded-md"
       onClick={handleReadMore}
     >
-      <span className="mr-3">View more</span>
+      <span className="mr-3">{loading ? 'Loading...' : 'View more'}</span>
       <svg
         className="text-blue-50"
         width="12"

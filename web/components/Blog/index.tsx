@@ -16,8 +16,10 @@ type Props = {
 const Blog = ({ posts, categories, postCount }: Props) => {
   const [morePosts, setMorePosts] = useState(posts);
   const [pageNumber, setPageNumber] = useState(6);
+  const [loading, setLoading] = useState(false);
 
   const handleReadMore = () => {
+    setLoading(true);
     sanityClient
       .fetch(
         `*[_type == "post"] | order(publishedAt desc)[0...${pageNumber + 6}] {
@@ -42,6 +44,7 @@ const Blog = ({ posts, categories, postCount }: Props) => {
       .then((data) => {
         setMorePosts(() => data);
         setPageNumber(() => pageNumber + 6);
+        setLoading(false);
       })
       .catch((err) => console.error(err));
   };
@@ -64,7 +67,7 @@ const Blog = ({ posts, categories, postCount }: Props) => {
           <Categories categories={categories} />
           <Posts posts={morePosts ? morePosts : posts} />
           {posts && morePosts?.length > 6 && morePosts.length < postCount && (
-            <ReadMore handleReadMore={handleReadMore} />
+            <ReadMore loading={loading} handleReadMore={handleReadMore} />
           )}
           {posts && morePosts?.length === postCount && (
             <div className="text-center">
