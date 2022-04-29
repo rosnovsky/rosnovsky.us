@@ -58,11 +58,9 @@ export async function getStaticProps() {
   `
   );
 
-  console.log(postCount);
-
   const categories: BlogPost['categories'] = await sanityClient.fetch(
     `
-    *[_type == "category"][0...6] {
+    *[_type == "category"] {
       title,
       description,
       slug

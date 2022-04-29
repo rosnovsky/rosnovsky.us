@@ -5,6 +5,7 @@ import { NavBar } from '@components/NavBar';
 import sanityClient from '../../lib/sanityClient';
 import { localDate, PortableTextComponents, urlFor } from 'lib/helpers';
 import type { BlogPost } from 'index';
+import Link from 'next/link';
 
 type Props = {
   post: BlogPost;
@@ -37,7 +38,7 @@ const Post = ({ post }: Props) => {
                     3 minute read
                   </p>
                 </div>
-                <h2 className="mb-4 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
+                <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
                   {title}
                 </h2>
                 <p className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
@@ -47,9 +48,11 @@ const Post = ({ post }: Props) => {
                   categories.map((category) => (
                     <div
                       key={category.title}
-                      className="inline-block py-1 px-3 text-xs leading-5 text-blue-500 font-medium uppercase bg-blue-100 rounded-full shadow-sm"
+                      className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-500 font-medium uppercase bg-blue-100 rounded-full shadow-sm"
                     >
-                      {category.title}
+                      <Link href={`/category/${category.slug.current}`}>
+                        {category.title}
+                      </Link>
                     </div>
                   ))}
               </div>
@@ -103,6 +106,7 @@ export async function getStaticProps(context) {
       categories[]->{
         title,
         description,
+        slug
       },
       references[]->{
         title,

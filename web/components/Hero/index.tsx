@@ -3,7 +3,7 @@ import WelcomeMessage from './WelcomeMessage';
 
 export const Hero = () => {
   return (
-    <div className="py-20 md:py-28">
+    <div className="py-10 md:py-28">
       <div className="container px-4 mx-auto">
         <div
           className="flex flex-wrap xl:items-center -mx-4"

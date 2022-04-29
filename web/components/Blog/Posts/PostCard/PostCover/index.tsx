@@ -10,7 +10,7 @@ type Props = {
 
 const PostCover = ({ coverImage, slug }: Props) => {
   return (
-    <div className="block mb-6 overflow-hidden rounded-md cursor-pointer">
+    <div className="block mb-6 overflow-hidden rounded-md cursor-pointer shadow shadow-darkCoolGray-100">
       <Link href={`/blog/${slug}`}>
         <span>
           <Image

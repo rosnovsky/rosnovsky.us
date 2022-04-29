@@ -6,7 +6,7 @@ import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
 import type { Page } from 'index';
 import { PortableText } from '@portabletext/react';
-import { urlFor } from '@lib/helpers';
+import { PortableTextComponents, urlFor } from '@lib/helpers';
 
 type Props = {
   page: Page;
@@ -43,7 +43,10 @@ const About = ({ page }: Props) => {
                 />
               </div>
               <div className="prose prose-xl md:max-w-3xl mx-auto">
-                <PortableText value={body} />
+                <PortableText
+                  value={body}
+                  components={PortableTextComponents}
+                />
               </div>
             </div>
           </section>

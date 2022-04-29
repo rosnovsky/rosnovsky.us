@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Logo = () => {
   return (
-    <div className="lg:w-1/3 md:w-1/2 font-black text-5xl mb-5 md:mb-0 md:text-2xl">
+    <div className="flex justify-center md:justify-start w-full font-black text-3xl mb-5 md:mb-0 md:text-4xl">
       <Link href="/">Rosnovsky Park</Link>
     </div>
   );
