@@ -14,12 +14,12 @@ const Menu = () => {
             <Link href="/about">About</Link>
           </span>
         </li>
-        <li className="mr-12">
+        <li className="mr-12 hidden md:block">
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
             <Link href="/privacy">Privacy</Link>
           </span>
         </li>
-        <li className="mr-12">
+        <li className="mr-12 hidden lg:block">
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
             <Link href="/land">Land</Link>
           </span>

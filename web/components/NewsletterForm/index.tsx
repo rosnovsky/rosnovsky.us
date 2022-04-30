@@ -13,30 +13,30 @@ const NewsletterForm = () => {
         >
           <div className="relative z-10 mx-auto md:max-w-2xl">
             <h3 className="mb-4 text-3xl md:text-4xl leading-tight font-bold tracking-tighter">
-              Be the first to know when we launch
+              Subscribe to the newsletter
             </h3>
             <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">
-              Stay in the loop with everything you need to know.
+              Get updates, new posts, photos, projects, ideas, and more!
             </p>
             <NewsletterInput />
           </div>
           <img
-            className="absolute top-0 left-0 w-28 md:w-auto"
-            src="/flex-ui-assets/elements/wave2-yellow.svg"
+            className="opacity-20 md:opacity-100 absolute top-0 left-0 w-28 md:w-auto"
+            src="/flex-ui-assets/elements/wave3-yellow.svg"
             alt=""
           />
           <img
-            className="absolute right-6 top-6 w-28 md:w-auto"
+            className="opacity-30 md:opacity-100 absolute right-6 top-0 w-28 md:w-auto"
             src="/flex-ui-assets/elements/dots3-green.svg"
             alt=""
           />
           <img
-            className="absolute right-0 bottom-0 w-28 md:w-auto"
+            className="opacity-30 md:opacity-100 absolute right-0 bottom-0 w-28 md:w-auto"
             src="/flex-ui-assets/elements/wave3-red.svg"
             alt=""
           />
           <img
-            className="absolute left-6 bottom-6 w-28 md:w-auto"
+            className="absolute left-6 bottom-0 md:bottom-0 opacity-20 md:opacity-100 w-28 md:w-auto"
             src="/flex-ui-assets/elements/dots3-violet.svg"
             alt=""
           />

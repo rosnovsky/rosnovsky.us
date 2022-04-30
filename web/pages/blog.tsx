@@ -4,6 +4,7 @@ import NewsletterForm from '@components/NewsletterForm';
 import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
 import type { BlogPost } from 'index';
+import Containter from '@components/Container';
 
 type Props = {
   posts: BlogPost[];
@@ -13,16 +14,10 @@ type Props = {
 
 const BlogPage = ({ posts, categories, postCount }: Props) => {
   return (
-    <div className="">
-      <section className="relative bg-coolGray-50 overflow-hidden">
-        <div className="bg-transparent">
-          <NavBar />
-          <Blog posts={posts} categories={categories} postCount={postCount} />
-          <NewsletterForm />
-          <Footer />
-        </div>
-      </section>
-    </div>
+    <Containter>
+      <Blog posts={posts} categories={categories} postCount={postCount} />
+      <NewsletterForm />
+    </Containter>
   );
 };
 

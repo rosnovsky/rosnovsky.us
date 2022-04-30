@@ -1,17 +1,10 @@
 const CoverBackground = () => {
   return (
-    <>
-      <img
-        className="absolute z-10 -left-14 -top-12 w-28 md:w-auto text-yellow-400"
-        src="/flex-ui-assets/elements/circle3-violet.svg"
-        alt=""
-      />
-      <img
-        className="absolute z-10 -right-7 -bottom-8 w-28 md:w-auto text-blue-500"
-        src="/flex-ui-assets/elements/dots3-red.svg"
-        alt=""
-      />
-    </>
+    <img
+      className="absolute z-10 -right-16 -bottom-24 md:-right-14 md:-bottom-16 lg:-right-24 lg:-bottom-24 -rotate-[25deg] w-64 md:w-36 lg:w-60 xl:w-80 xl:-bottom-36 opacity-90 text-blue-500"
+      src="/static/images/1618138263Ukraine-heart-shape-flag.png"
+      alt="Ukrainian flag in the shape of heart"
+    />
   );
 };
 

@@ -6,6 +6,7 @@ import sanityClient from '../../lib/sanityClient';
 import { localDate, PortableTextComponents, urlFor } from 'lib/helpers';
 import type { BlogPost } from 'index';
 import Link from 'next/link';
+import Containter from '@components/Container';
 
 type Props = {
   post: BlogPost;
@@ -24,68 +25,59 @@ const Post = ({ post }: Props) => {
   } = post;
 
   return (
-    <div className="">
-      <section className="relative bg-coolGray-50 overflow-hidden">
-        <div className="bg-transparent">
-          <NavBar />
-          <section
-            className="py-16 md:py-24 bg-white"
-            style={{
-              backgroundImage: `url('/flex-ui-assets/elements/pattern-white.svg')`,
-              backgroundPosition: 'center top',
-            }}
-          >
-            <div className="container px-4 mx-auto">
-              <div className="md:max-w-2xl mx-auto mb-12 text-center">
-                <div className="flex items-center justify-center">
-                  <p className="inline-block text-blue-600 font-medium">
-                    {localDate(publishedAt)}
-                  </p>
-                  <span className="mx-1 text-blue-500">•</span>
-                  <p className="inline-block text-blue-400 font-medium">
-                    {estimatedReadingTime} minute read
-                  </p>
-                </div>
-                <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
-                  {title}
-                </h2>
-                <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
-                  <PortableText value={summary} />
-                </div>
-                {categories &&
-                  categories.map((category) => (
-                    <div
-                      key={category.title}
-                      className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-500 font-medium uppercase bg-blue-100 rounded-full shadow-sm"
-                    >
-                      <Link href={`/category/${category.slug.current}`}>
-                        {category.title}
-                      </Link>
-                    </div>
-                  ))}
-              </div>
-              <div className="mb-10 mx-auto max-w-max overflow-hidden rounded-lg">
-                <Image
-                  src={urlFor(coverImage).url()}
-                  placeholder="blur"
-                  blurDataURL={coverImage.asset.metadata.lqip}
-                  width={coverImage.asset.metadata.dimensions.width}
-                  height={coverImage.asset.metadata.dimensions.height}
-                  objectFit="cover"
-                />
-              </div>
-              <div className="prose prose-xl md:max-w-3xl mx-auto">
-                <PortableText
-                  value={body}
-                  components={PortableTextComponents}
-                />
-              </div>
+    <Containter>
+      <section
+        className="py-16 md:py-24 bg-white"
+        style={{
+          backgroundImage: `url('/flex-ui-assets/elements/pattern-white.svg')`,
+          backgroundPosition: 'center top',
+        }}
+      >
+        <div className="container px-4 mx-auto">
+          <div className="md:max-w-2xl mx-auto mb-12 text-center">
+            <div className="flex items-center justify-center">
+              <p className="inline-block text-blue-600 font-medium">
+                {localDate(publishedAt)}
+              </p>
+              <span className="mx-1 text-blue-500">•</span>
+              <p className="inline-block text-blue-400 font-medium">
+                {estimatedReadingTime} minute read
+              </p>
             </div>
-          </section>
-          <Footer />
+            <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
+              {title}
+            </h2>
+            <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
+              <PortableText value={summary} />
+            </div>
+            {categories &&
+              categories.map((category) => (
+                <div
+                  key={category.title}
+                  className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-500 font-medium uppercase bg-blue-100 rounded-full shadow-sm"
+                >
+                  <Link href={`/category/${category.slug.current}`}>
+                    {category.title}
+                  </Link>
+                </div>
+              ))}
+          </div>
+          <div className="mb-10 mx-auto max-w-max overflow-hidden rounded-lg">
+            <Image
+              src={urlFor(coverImage).url()}
+              placeholder="blur"
+              blurDataURL={coverImage.asset.metadata.lqip}
+              width={coverImage.asset.metadata.dimensions.width}
+              height={coverImage.asset.metadata.dimensions.height}
+              objectFit="cover"
+            />
+          </div>
+          <div className="prose prose-xl md:max-w-3xl mx-auto">
+            <PortableText value={body} components={PortableTextComponents} />
+          </div>
         </div>
       </section>
-    </div>
+    </Containter>
   );
 };
 

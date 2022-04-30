@@ -12,9 +12,11 @@ const WelcomeMessage = () => {
       </p>
       <div className="flex flex-wrap">
         <div className="w-full md:w-auto py-1 md:py-0">
-          <span className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-coolGray-800 font-medium text-center bg-white hover:bg-coolGray-100 focus:ring-2 focus:ring-coolGray-200 focus:ring-opacity-50 border border-coolGray-200 rounded-md shadow-sm">
-            <Link href="blog">Check it out</Link>
-          </span>
+          <Link href="/blog">
+            <button className="inline-block py-5 px-7 w-full text-base md:text-lg leading-4 text-coolGray-800 font-medium text-center bg-white hover:bg-coolGray-100 focus:ring-2 focus:ring-coolGray-200 focus:ring-opacity-50 border border-coolGray-200 rounded-md shadow-sm">
+              Check it out
+            </button>
+          </Link>
         </div>
       </div>
     </div>
