@@ -32,7 +32,7 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.7.0",
     "@heroicons/react": "^1.0.5",
-    "@next/bundle-analyzer": "^12.0.8",
+    "@next/bundle-analyzer": "^12.1.4",
     "comma-number": "2.1.0",
     "dompurify": "^2.3.4",
     "fathom-client": "3.2.0",
