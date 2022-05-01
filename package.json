@@ -49,7 +49,7 @@
     "reading-time": "1.5.0",
     "swr": "^1.1.2",
     "unsplash-js": "7.0.15",
-    "webpack": "5.66.0"
+    "webpack": "5.72.0"
   },
   "devDependencies": {
     "@azure/ai-text-analytics": "^5.1.0",
