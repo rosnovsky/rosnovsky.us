@@ -1,4 +1,3 @@
-import { NavBar } from '@components/NavBar';
 import Blog from '@components/Blog';
 import NewsletterForm from '@components/NewsletterForm';
 import Stats from '@components/Stats';

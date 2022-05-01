@@ -1,7 +1,5 @@
-import { NavBar } from '@components/NavBar';
 import Image from 'next/image';
 import NewsletterForm from '@components/NewsletterForm';
-import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
 import type { Page } from 'index';
 import { PortableText } from '@portabletext/react';

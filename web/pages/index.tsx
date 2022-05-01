@@ -1,9 +1,7 @@
-import { NavBar } from '@components/NavBar';
 import { Hero } from '@components/Hero';
 import Blog from '@components/Blog';
 import NewsletterForm from '@components/NewsletterForm';
 import Stats from '@components/Stats';
-import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
 import type { BlogPost } from 'index';
 import Container from '@components/Container';
