@@ -1,7 +1,11 @@
 import Footer from '@components/Footer';
 import { NavBar } from '@components/NavBar';
 
-const Containter = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Containter = ({ children }: Props) => {
   return (
     <div className="">
       <section className="relative bg-coolGray-50 overflow-hidden">

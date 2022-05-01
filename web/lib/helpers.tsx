@@ -3,10 +3,9 @@ import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import Image from 'next/image';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { LightAsync as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import getYouTubeId from 'get-youtube-id';
-import YouTube from 'react-youtube';
 
 export const localDate = (date: string) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -29,6 +28,7 @@ export const PortableTextComponents = {
           src={urlFor(value).fit('crop').auto('format').url()}
           width={getImageDimensions(value).width}
           height={getImageDimensions(value).height}
+          loading="lazy"
           placeholder="blur"
           blurDataURL={urlFor(value)
             .fit('max')

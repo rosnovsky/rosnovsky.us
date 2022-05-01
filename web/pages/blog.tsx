@@ -1,10 +1,9 @@
-import { NavBar } from '@components/NavBar';
 import Blog from '@components/Blog';
 import NewsletterForm from '@components/NewsletterForm';
-import Footer from '@components/Footer';
 import sanityClient from 'lib/sanityClient';
 import type { BlogPost } from 'index';
 import Containter from '@components/Container';
+import Head from 'next/head';
 
 type Props = {
   posts: BlogPost[];
@@ -15,6 +14,78 @@ type Props = {
 const BlogPage = ({ posts, categories, postCount }: Props) => {
   return (
     <Containter>
+      <Head>
+        <title>Rosnovsky Park&trade; Blog</title>
+        <meta name="description" content="Art Rosnovsky's Blog" />
+        <meta
+          name="keywords"
+          content="Art Rosnovsky, Rosnovsky Park, Rosnovsky Park&trade;, Rosnovsky Park's Blog"
+        />
+        <meta name="author" content="Art Rosnovsky" />
+        <meta name="robots" content="index, follow" />
+        <meta name="referrer" content="origin" />
+        <meta
+          name="og:title"
+          property="og:title"
+          content="Rosnovsky Park&trade; - Art Rosnovsky's Blog"
+        />
+        <meta
+          name="og:description"
+          property="og:description"
+          content="Art Rosnovsky's Blog"
+        />
+        <meta
+          name="og:image"
+          property="og:image"
+          content="https://rosnovsky.us/static/logo.png"
+        />
+        <meta
+          name="og:url"
+          property="og:url"
+          content="https://rosnovsky.us/blog"
+        />
+        <meta name="og:type" property="og:type" content="website" />
+        <meta
+          name="twitter:card"
+          property="twitter:card"
+          content="summary_large_image"
+        />
+        <meta
+          name="twitter:site"
+          property="twitter:site"
+          content="@rosnovsky"
+        />
+        <meta
+          name="twitter:creator"
+          property="twitter:creator"
+          content="@rosnovsky"
+        />
+        <meta
+          name="twitter:title"
+          property="twitter:title"
+          content="Rosnovsky Park&trade; - Art Rosnovsky's Blog"
+        />
+        <meta
+          name="twitter:description"
+          property="twitter:description"
+          content="Art Rosnovsky's Blog"
+        />
+        <meta
+          name="twitter:image"
+          property="twitter:image"
+          content="https://rosnovsky.us/static/logo.png"
+        />
+        <meta
+          name="twitter:url"
+          property="twitter:url"
+          content="https://rosnovsky.us/blog"
+        />
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="https://rosnovsky.us/static/logo.png"
+        />
+      </Head>
       <Blog posts={posts} categories={categories} postCount={postCount} />
       <NewsletterForm />
     </Containter>
