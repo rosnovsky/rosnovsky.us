@@ -5,11 +5,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          {CssBaseline.flush()}
-          <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
-          <meta name="google" content="notranslate" key="notranslate" />
-        </Head>
+        <Head>{CssBaseline.flush()}</Head>
         <body>
           <Main />
           <NextScript />
