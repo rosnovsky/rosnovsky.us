@@ -62,7 +62,11 @@ const Blog = ({ posts, categories, postCount }: Props) => {
         <div className="container px-4 mx-auto">
           <div className="md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
             <Header postCount={postCount} />
-            <Search />
+            <Search
+              placeholder="Looking for something?"
+              openOnFocus={true}
+              debug={true}
+            />
           </div>
           <Categories categories={categories} />
           <Posts posts={morePosts ? morePosts : posts} />
