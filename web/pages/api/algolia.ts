@@ -6,7 +6,7 @@ import indexer from 'sanity-algolia';
 
 export const searchClient = algoliasearch(
   'MX9C0DBFF5',
-  process.env.ALGOLIA_ADMIN_KEY!,
+  process.env.ALGOLIA_ADMIN_KEY || '',
   {}
 );
 
@@ -60,7 +60,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
     (document: SanityDocumentStub) => {
       switch (document._type) {
         case 'post':
-          return Object.assign({}, document);
+          return document;
         default:
           return document;
       }
@@ -87,7 +87,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
   // client and make sure the algolia indices are synced to match.
   return (
     sanityAlgolia
-      // @ts-expect-error
+      // @ts-expect-error Types are not correct here
       .webhookSync(sanity, req.body)
       .then(() => res.status(200).send('ok'))
   );

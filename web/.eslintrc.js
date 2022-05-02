@@ -34,7 +34,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     'jsx-a11y/label-has-associated-control': [
-      'error',
+      'warn',
       {
         labelComponents: [],
         labelAttributes: [],

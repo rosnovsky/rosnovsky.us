@@ -109,6 +109,7 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
           {...autocomplete.getFormProps({ inputElement: inputRef.current })}
         >
           <div className="aa-InputWrapperPrefix">
+            {/* //  */}
             <label className="aa-Label" {...autocomplete.getLabelProps({})}>
               <button className="aa-SubmitButton" type="submit" title="Submit">
                 <SearchIcon />
