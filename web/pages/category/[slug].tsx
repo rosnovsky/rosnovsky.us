@@ -13,7 +13,6 @@ type Props = {
 };
 
 const Category = ({ posts, categories, postCount }: Props) => {
-  console.log(postCount);
   return (
     <Containter>
       <Blog posts={posts} categories={categories} postCount={postCount} />

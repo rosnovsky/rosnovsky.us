@@ -22,7 +22,7 @@ const Blog = ({ posts, categories, postCount }: Props) => {
     setLoading(true);
     sanityClient
       .fetch(
-        `*[_type == "post"] | order(publishedAt desc)[0...${pageNumber + 6}] {
+        `*[_type == "post"] | order(publishedAt desc)[0...${pageNumber + 15}] {
           title,
           coverImage {
             ...,
@@ -43,7 +43,7 @@ const Blog = ({ posts, categories, postCount }: Props) => {
       )
       .then((data) => {
         setMorePosts(() => data);
-        setPageNumber(() => pageNumber + 6);
+        setPageNumber(() => pageNumber + 15);
         setLoading(false);
       })
       .catch((err) => console.error(err));

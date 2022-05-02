@@ -6,13 +6,19 @@ import type { BlogPost } from 'index';
 import Link from 'next/link';
 import Containter from '@components/Container';
 import Head from 'next/head';
+import NotFound from '@pages/404';
 
 type Props = {
   post: BlogPost;
 };
 
 const Post = ({ post }: Props) => {
-  if (!post) return <div>Nope.</div>;
+  if (!post)
+    return (
+      <div>
+        <NotFound />
+      </div>
+    );
   const {
     publishedAt,
     title,

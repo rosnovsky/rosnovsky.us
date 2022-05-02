@@ -26,7 +26,7 @@ MyError.getInitialProps = async (context) => {
 
   // Returning early because we don't want to log 404 errors to Sentry.
   if (res?.statusCode === 404) {
-    return errorInitialProps;
+    return <NextErrorComponent statusCode={405} />;
   }
 
   // Running on the server, the response object (`res`) is available.

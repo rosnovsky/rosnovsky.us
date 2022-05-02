@@ -1,16 +1,13 @@
-import {
-  getImage,
-  getImageAsset,
-  getImageDimensions,
-} from '@sanity/asset-utils';
+import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'));
 import { nightOwl } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import getYouTubeId from 'get-youtube-id';
+import { useEffect, useState } from 'react';
+import { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 
 export const localDate = (date: string) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -20,7 +17,7 @@ export const localDate = (date: string) => {
   });
 };
 
-export const urlFor = (source: SanityImageObject) => {
+export const urlFor = (source: SanityDocument) => {
   return imageUrlBuilder(sanityClient).image(source);
 };
 
@@ -28,26 +25,42 @@ export const PortableTextComponents = {
   types: {
     image: ({ value }: { value }) => {
       if (!value?.asset) return null;
-      console.log(getImage(value, { projectId: 'n3o7a5dl', dataset: 'prod' }));
-      return (
-        <div className="h-full w-full">
-          <Image
-            src={urlFor(value).fit('crop').auto('format').url()}
-            width={getImageDimensions(value).width}
-            height={getImageDimensions(value).height}
-            loading="lazy"
-            layout="responsive"
-            placeholder="blur"
-            blurDataURL={urlFor(value)
-              .fit('max')
-              .auto('format')
-              .quality(10)
-              .blur(10)
-              .url()}
-          />
-          <div className="mb-5">{value.alt}</div>
-        </div>
-      );
+      const ImageComponent = () => {
+        const [asset, setAsset] = useState<SanityImageAssetDocument>();
+
+        useEffect(() => {
+          const fetchAsset = async () => {
+            const data: any = await sanityClient.getDocument(
+              getAssetDocumentId(value)
+            );
+            setAsset(data ? data : null);
+            return data;
+          };
+          fetchAsset();
+        }, []);
+
+        return (
+          <div className="h-full w-full">
+            {asset && (
+              <>
+                <Image
+                  src={urlFor(value).fit('crop').auto('format').url()}
+                  width={getImageDimensions(value).width}
+                  height={getImageDimensions(value).height}
+                  layout="responsive"
+                  placeholder="blur"
+                  blurDataURL={asset.metadata.lqip}
+                />
+                <div className="w-full mt-3 text-gray-700 mb-5 text-center text-sm">
+                  {asset?.description}
+                </div>
+              </>
+            )}
+          </div>
+        );
+      };
+
+      return <ImageComponent />;
     },
     code: ({ value }) => {
       return (

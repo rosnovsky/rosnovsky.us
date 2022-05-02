@@ -1,6 +1,6 @@
 import type { UserProfile } from '@auth0/nextjs-auth0';
-import { ResolvedSanityImage } from '@sanity/asset-utils';
 import type { SanityDocument, Block } from '@sanity/types';
+import { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 
 declare global {
   namespace NodeJS {
@@ -65,7 +65,7 @@ export interface BlogPost extends SanityDocument {
   summary: Block[];
   publishedAt: string;
   keyPhrases: string;
-  coverImage: ResolvedSanityImage;
+  coverImage: SanityImageAssetDocument;
   body: Block[];
   estimatedReadingTime: number;
   categories: {
@@ -79,7 +79,7 @@ export interface Page extends SanityDocument {
   title: string;
   slug: { current: string };
   body: Block[];
-  coverImage: ResolvedSanityImage;
+  coverImage: SanityImageAssetDocument;
 }
 
 export type PictureDescription = {
