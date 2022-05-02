@@ -74,7 +74,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
     // implement any `publishedAt` datetime visibility rules or other custom
     // visibility scheme you may be using.
     (document: SanityDocumentStub) => {
-      if (document.hasOwnProperty('isHidden')) {
+      if (document.isHidden) {
         return !document.isHidden;
       }
       return true;
