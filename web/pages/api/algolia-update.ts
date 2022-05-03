@@ -22,20 +22,6 @@ const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET;
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
-  console.log('Sanity signature', req.headers['sanity-webhook-signature']);
-  console.log('secret', secret);
-
-  console.log(
-    'isValidSignature',
-    isValidSignature(
-      JSON.stringify(req.body),
-      req.headers['sanity-webhook-signature'] as string,
-      secret
-    )
-  );
-
-  console.log('isValidRequest', isValidRequest(req, secret));
-
   if (!isValidRequest(req, secret)) {
     res.status(401).json({ success: false, message: 'Invalid signature' });
     return;
@@ -117,7 +103,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
       .webhookSync(sanity, {
         ids: { created: [], updated: id, deleted: [] },
       })
-      .then(() => res.status(200).send('ok'))
+      .then(() => res.status(200).json({ success: true, id }))
   );
 };
 
