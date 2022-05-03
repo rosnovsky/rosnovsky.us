@@ -96,7 +96,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
     sanityAlgolia
       // @ts-expect-error Issue with types
       .webhookSync(sanity, {
-        ids: { created: [], updated: id, deleted: [] },
+        ids: { created: id, updated: [], deleted: [] },
       })
       .then(() => res.status(200).send('ok'))
   );

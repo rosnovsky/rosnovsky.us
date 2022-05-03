@@ -48,8 +48,8 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
           "body": pt::text(body),
           "cover": coverImage.asset->url,
           "categories": categories[]->{ title },
-          "summary": pt::text(summary),
-          createdAt
+          "summary": pt::text(summary)
+          publishedAt
           }`,
       },
       // For the article document in this example we want to resolve a list of
@@ -64,6 +64,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
       switch (document._type) {
         case 'post':
           return document;
+        // add 'page' and 'category' cases here
         default:
           return document;
       }
@@ -96,7 +97,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
     sanityAlgolia
       // @ts-expect-error Issue with types
       .webhookSync(sanity, {
-        ids: { created: [], updated: id, deleted: [] },
+        ids: { created: [], updated: [], deleted: id },
       })
       .then(() => res.status(200).send('ok'))
   );
