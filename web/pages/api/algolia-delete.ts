@@ -10,16 +10,17 @@ export const searchClient = algoliasearch(
   process.env.ALGOLIA_ADMIN_KEY || '',
   {}
 );
-
-const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET || '';
+if (!process.env.ALGOLIA_SANITY_SHARED_SECRET) {
+  throw new Error('ALGOLIA_SANITY_SHARED_SECRET is not set');
+}
+const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET;
 
 /**
  *  This function receives webhook POSTs from Sanity and updates, creates or
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
-  // @ts-ignore - this is a valid request
-  if (!isValidRequest(req, process.env.ALGOLIA_SANITY_SHARED_SECRET!)) {
+  if (!isValidRequest(req, secret)) {
     res.status(401).json({ success: false, message: 'Invalid signature' });
     return;
   }
