@@ -11,12 +11,14 @@ export const searchClient = algoliasearch(
   {}
 );
 
+const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET || '';
+
 /**
  *  This function receives webhook POSTs from Sanity and updates, creates or
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
-  if (!isValidRequest(req, process.env.ALGOLIA_SANITY_SHARED_SECRET || '')) {
+  if (!isValidRequest(req, secret || '')) {
     res.status(401).json({ success: false, message: 'Invalid signature' });
     return;
   }
