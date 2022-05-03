@@ -11,15 +11,13 @@ export const searchClient = algoliasearch(
   {}
 );
 
-const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET || '';
-
 /**
  *  This function receives webhook POSTs from Sanity and updates, creates or
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
-  console.log(secret);
-  if (!isValidRequest(req, secret)) {
+  // @ts-ignore - this is a valid request
+  if (!isValidRequest(req, process.env.ALGOLIA_SANITY_SHARED_SECRET!)) {
     res.status(401).json({ success: false, message: 'Invalid signature' });
     return;
   }
@@ -51,8 +49,7 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
           "body": pt::text(body),
           "cover": coverImage.asset->url,
           "categories": categories[]->{ title },
-          "summary": pt::text(summary),
-          createdAt
+          "summary": pt::text(summary)
           }`,
       },
       // For the article document in this example we want to resolve a list of
