@@ -14,6 +14,7 @@
     "@algolia/autocomplete-preset-algolia": "^1.6.2",
     "@algolia/autocomplete-theme-classic": "^1.6.2",
     "@algolia/client-search": "^4.13.0",
+    "@auth0/nextjs-auth0": "^1.7.0",
     "@nextui-org/react": "^1.0.0-beta.6",
     "@portabletext/react": "^1.0.6",
     "@sanity/asset-utils": "^1.2.3",

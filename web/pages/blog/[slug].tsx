@@ -7,12 +7,14 @@ import Link from 'next/link';
 import Containter from '@components/Container';
 import Head from 'next/head';
 import NotFound from '@pages/404';
+import { useUser } from '@auth0/nextjs-auth0';
 
 type Props = {
   post: BlogPost;
 };
 
 const Post = ({ post }: Props) => {
+  const { user, error, isLoading } = useUser();
   if (!post)
     return (
       <div>

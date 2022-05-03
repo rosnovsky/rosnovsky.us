@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Menu = () => {
+  const { user, error, isLoading } = useUser();
+
   return (
     <div className="w-full flex justify-center md:justify-end">
       <ul className="flex align-center justify-center md:align-end my-auto">
@@ -27,7 +30,10 @@ const Menu = () => {
 
         <li>
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
-            <Link href="/api/auth/login">Log In</Link>
+            {!user && !isLoading && <Link href="/api/auth/login">Log In</Link>}
+            {user && <Link href="/api/auth/logout">Log Out</Link>}
+            {isLoading && <span className="text-gray-300">Wait...</span>}
+            {error && <span className="text-red-500">Error</span>}
           </span>
         </li>
       </ul>

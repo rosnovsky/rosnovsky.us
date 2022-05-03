@@ -104,6 +104,10 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
         ids: { created: [], updated: id, deleted: [] },
       })
       .then(() => res.status(200).json({ success: true, id }))
+      .catch((err) => {
+        res.status(500).json({ success: false, message: err.message });
+        return;
+      })
   );
 };
 

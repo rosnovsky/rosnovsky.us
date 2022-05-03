@@ -103,7 +103,11 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
       .webhookSync(sanity, {
         ids: { created: [], updated: [], deleted: id },
       })
-      .then(() => res.status(200).send('ok'))
+      .then(() => res.status(200).json({ success: true, id }))
+      .catch((err) => {
+        res.status(500).json({ success: false, message: err.message });
+        return;
+      })
   );
 };
 
