@@ -164,7 +164,11 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
                               {...autocomplete.getItemProps({ item, source })}
                             >
                               <div className="aa-ItemWrapper">
-                                <Link href={`/blog/${item.slug}`}>
+                                <Link
+                                  href={`/blog/${encodeURIComponent(
+                                    item.slug
+                                  )}`}
+                                >
                                   <div className="aa-ItemContent">
                                     <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
                                       <img
