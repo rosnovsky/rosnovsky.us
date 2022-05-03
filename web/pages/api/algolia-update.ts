@@ -15,9 +15,9 @@ export const searchClient = algoliasearch(
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
-  // Tip: Its good practice to include a shared secret in your webhook URLs and
-  // validate it before proceeding with webhook handling. Omitted in this short
-  // example.
+  if (req.query.secret !== process.env.ALGOLIA_SANITY_SHARED_SECRET) {
+    return res.status(401).send('Unauthorized');
+  }
   if (req.headers['content-type'] !== 'application/json') {
     res.status(400);
     res.json({ message: 'Bad request' });
@@ -85,10 +85,16 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
   // configured serializers and optional visibility function. `webhookSync` will
   // inspect the webhook payload, make queries back to Sanity with the `sanity`
   // client and make sure the algolia indices are synced to match.
-  return (
+
+  const postId = req.body._id;
+  const query = `* [_id == $postId && !(_id in path("drafts.**"))][]._id`;
+
+  return sanity.fetch(query, { postId }).then((id) =>
     sanityAlgolia
-      // @ts-expect-error Types are not correct here
-      .webhookSync(sanity, req.body)
+      // @ts-expect-error Issue with types
+      .webhookSync(sanity, {
+        ids: { created: [], updated: id, deleted: [] },
+      })
       .then(() => res.status(200).send('ok'))
   );
 };
