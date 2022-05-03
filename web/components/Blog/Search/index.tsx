@@ -164,27 +164,32 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
                               {...autocomplete.getItemProps({ item, source })}
                             >
                               <div className="aa-ItemWrapper">
-                                <div className="aa-ItemContent">
-                                  <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
-                                    <img
-                                      src={item.cover}
-                                      alt={item.title}
-                                      width="40"
-                                      height="40"
-                                    />
-                                  </div>
-                                  <div className="aa-ItemContentBody">
-                                    <div className="aa-ItemContentTitle">
-                                      <Highlight hit={item} attribute="title" />
-                                    </div>
-                                    <div className="aa-ItemContentDescription">
-                                      <Highlight
-                                        hit={item}
-                                        attribute="summary"
+                                <Link href={`/blog/${item.slug}`}>
+                                  <div className="aa-ItemContent">
+                                    <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
+                                      <img
+                                        src={item.cover}
+                                        alt={item.title}
+                                        width="40"
+                                        height="40"
                                       />
                                     </div>
+                                    <div className="aa-ItemContentBody">
+                                      <div className="aa-ItemContentTitle">
+                                        <Highlight
+                                          hit={item}
+                                          attribute="title"
+                                        />
+                                      </div>
+                                      <div className="aa-ItemContentDescription">
+                                        <Highlight
+                                          hit={item}
+                                          attribute="summary"
+                                        />
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
+                                </Link>
                                 <div className="aa-ItemActions">
                                   <button
                                     className="aa-ItemActionButton aa-DesktopOnly aa-ActiveOnly"
@@ -239,6 +244,7 @@ export function ClearIcon(props: React.SVGProps<SVGSVGElement>) {
 
 import { parseAlgoliaHitHighlight } from '@algolia/autocomplete-preset-algolia';
 import { createElement, Fragment } from 'react';
+import Link from 'next/link';
 
 type HighlightHitParams<THit> = {
   /**

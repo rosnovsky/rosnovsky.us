@@ -3,7 +3,7 @@ import { SanityDocumentStub } from '@sanity/client';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import algoliasearch from 'algoliasearch';
 import indexer from 'sanity-algolia';
-import { isValidRequest } from '@sanity/webhook';
+import { isValidRequest, isValidSignature } from '@sanity/webhook';
 
 export const searchClient = algoliasearch(
   'MX9C0DBFF5',
@@ -22,6 +22,20 @@ const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET;
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
+  console.log('Sanity signature', req.headers['sanity-webhook-signature']);
+  console.log('secret', secret);
+
+  console.log(
+    'isValidSignature',
+    isValidSignature(
+      JSON.stringify(req.body),
+      req.headers['sanity-webhook-signature'] as string,
+      secret
+    )
+  );
+
+  console.log('isValidRequest', isValidRequest(req, secret));
+
   if (!isValidRequest(req, secret)) {
     res.status(401).json({ success: false, message: 'Invalid signature' });
     return;
