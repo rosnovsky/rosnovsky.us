@@ -22,10 +22,10 @@ const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET;
  *  deletes records in the corresponding Algolia indices.
  */
 const handler = (req: VercelRequest, res: VercelResponse) => {
-  if (!isValidRequest(req, secret)) {
-    res.status(401).json({ success: false, message: 'Invalid signature' });
-    return;
-  }
+  // if (!isValidRequest(req, secret)) {
+  //   res.status(401).json({ success: false, message: 'Invalid signature' });
+  //   return;
+  // }
   if (req.headers['content-type'] !== 'application/json') {
     res.status(400);
     res.json({ message: 'Bad request' });
