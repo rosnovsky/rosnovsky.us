@@ -162,7 +162,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
           <div className="w-full text-center mt-10 mx-auto">
             <h2 className="text-2xl">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
-              {postComments && (
+              {postComments && resolvedUsers && (
                 <Comments
                   postComments={postComments}
                   resolvedUsers={resolvedUsers}
@@ -245,7 +245,7 @@ export async function getStaticProps(context) {
       props: {
         post,
         postComments,
-        resolvedUsers: postComments ? await Promise.all(users) : null,
+        resolvedUsers: null,
       },
       revalidate: 1,
     };
