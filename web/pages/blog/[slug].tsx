@@ -235,7 +235,7 @@ export async function getStaticProps(context) {
 
     const users = uniqueUserIds.map(async (id) => {
       const user = await fetch(
-        `http://localhost:3000/api/comments/userProfile?user_id=${id}`
+        `https://rosnovsky.us/api/comments/userProfile?user_id=${id}`
       )
         .then((res) => res.json())
         .catch((err) => console.error(err));
