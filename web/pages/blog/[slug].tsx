@@ -154,6 +154,26 @@ const Post = ({ post }: Props) => {
           <div className="prose prose-xl md:max-w-3xl mx-auto">
             <PortableText value={body} components={PortableTextComponents} />
           </div>
+          <div className="w-full text-center mt-10 mx-auto">
+            <h2 className="text-2xl">Comments</h2>
+            <div className="max-w-3xl min-w-3xl mx-auto border">
+              <div className="flex">
+                <div className="w-36 h-36 border">
+                  <img
+                    src={user?.picture as string}
+                    alt={user?.nickname as string}
+                  />
+                </div>
+                <div className="text-left flex flex-col ml-5 mb-2 mt-2">
+                  <div className="mb-0">{user?.name}</div>
+                  <div className="mb-2 text-xs text-gray-500">
+                    Date * Edited
+                  </div>
+                  <div>Comment</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </Containter>

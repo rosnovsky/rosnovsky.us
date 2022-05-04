@@ -35,7 +35,7 @@
         "lib/*"
       ],
       "@api/*": [
-        "api/*"
+        "pages/api/*"
       ],
       "@layouts/*": [
         "layouts/*"
@@ -58,6 +58,7 @@
     "/index.d.ts",
     "**/*.tsx",
     "**/*.ts",
-    "stories/**/*.stories.tsx"
-, "../__mocks__/setupTests.ts"  ]
+    "stories/**/*.stories.tsx",
+    "../__mocks__/setupTests.ts"
+  ]
 }
