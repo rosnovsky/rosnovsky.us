@@ -98,13 +98,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).send({ oops: error });
   }
   return res.status(200).send({
-    user: {
-      name: data.name,
-      given_name: data.given_name,
-      family_name: data.family_name,
-      email_verified: data.email_verified,
-      picture: data.picture,
-      nickname: data.nickname,
-    },
+    data,
   });
 }

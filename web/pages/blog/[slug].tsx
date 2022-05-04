@@ -2,23 +2,28 @@ import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import sanityClient from '../../lib/sanityClient';
 import { localDate, PortableTextComponents, urlFor } from 'lib/helpers';
-import type { BlogPost } from 'index';
+import type { BlogPost, PostComment } from 'index';
 import Link from 'next/link';
 import Containter from '@components/Container';
 import Head from 'next/head';
-import NotFound from '@pages/404';
-import { useUser } from '@auth0/nextjs-auth0';
+import Error from 'next/error';
+import { useUser, UserProfile } from '@auth0/nextjs-auth0';
+import Comments from '@components/Comments/Comments';
+import fetch from 'isomorphic-fetch';
 
 type Props = {
   post: BlogPost;
+  postComments: PostComment[];
+  resolvedUsers: { data: UserProfile }[];
 };
 
-const Post = ({ post }: Props) => {
+const Post = ({ post, postComments, resolvedUsers }: Props) => {
   const { user, error, isLoading } = useUser();
+
   if (!post)
     return (
       <div>
-        <NotFound />
+        <Error statusCode={404} />
       </div>
     );
   const {
@@ -156,22 +161,13 @@ const Post = ({ post }: Props) => {
           </div>
           <div className="w-full text-center mt-10 mx-auto">
             <h2 className="text-2xl">Comments</h2>
-            <div className="max-w-3xl min-w-3xl mx-auto border">
-              <div className="flex">
-                <div className="w-36 h-36 border">
-                  <img
-                    src={user?.picture as string}
-                    alt={user?.nickname as string}
-                  />
-                </div>
-                <div className="text-left flex flex-col ml-5 mb-2 mt-2">
-                  <div className="mb-0">{user?.name}</div>
-                  <div className="mb-2 text-xs text-gray-500">
-                    Date * Edited
-                  </div>
-                  <div>Comment</div>
-                </div>
-              </div>
+            <div className="max-w-3xl min-w-3xl mx-auto py-3">
+              {postComments && (
+                <Comments
+                  postComments={postComments}
+                  resolvedUsers={resolvedUsers}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -187,7 +183,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: 'blocking',
+    fallback: false,
   };
 }
 
@@ -226,11 +222,42 @@ export async function getStaticProps(context) {
     { slug }
   );
 
+  const postComments: PostComment[] = await fetch(
+    `https://rosnovsky.us/api/comments/getComments?id=${slug}`
+  ).then((res) => res.json());
+
+  if (postComments) {
+    const userIds = postComments.map((comment) => {
+      return [comment.user_id];
+    });
+
+    const uniqueUserIds = [...new Set(userIds.flat())];
+
+    const users = uniqueUserIds.map(async (id) => {
+      const user = await fetch(
+        `http://localhost:3000/api/comments/userProfile?user_id=${id}`
+      )
+        .then((res) => res.json())
+        .catch((err) => console.error(err));
+      return user;
+    });
+    return {
+      props: {
+        post,
+        postComments,
+        resolvedUsers: postComments ? await Promise.all(users) : null,
+      },
+      revalidate: 1,
+    };
+  }
+
   return {
     props: {
       post,
+      postComments,
+      resolvedUsers: null,
     },
-    revalidate: 30,
+    revalidate: 1,
   };
 }
 

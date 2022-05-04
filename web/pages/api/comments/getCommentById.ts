@@ -12,6 +12,10 @@ const getComment = async (commentId) => {
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   return validateQueryData(req.query, 'getCommentById')
-    ? res.status(200).send(await getComment(req.query.commentId))
+    ? res
+        .status(200)
+        .send(
+          await getComment(encodeURIComponent(req.query.commentId as string))
+        )
     : res.status(400).send('Invalid get comment by ID data');
 }

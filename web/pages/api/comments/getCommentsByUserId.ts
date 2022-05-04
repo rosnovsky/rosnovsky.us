@@ -7,7 +7,7 @@ export const getCommentsByUserId = async (userId: string) => {
     .from('comments')
     .select('*')
     .eq('user_id', userId);
-  return error ? error : userComments;
+  return error ? 'error' : userComments;
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {

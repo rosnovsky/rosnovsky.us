@@ -4,16 +4,19 @@ import { validateQueryData } from '@lib/comments/validate';
 import validator from 'validator';
 
 const getCommentsByDate = async (date: string) => {
+  const validDate = validator.toDate(date);
+  if (validDate === null) {
+    return;
+  }
   const { data: comments, error } = await supabase
     .from('comments')
     .select('*')
-    // @ts-expect-error ts-migrate(2339) FIXME: Date may be null... Yet it can't, you Typescript. Remove this comment to see the full error message
-    .eq('published_at', validator.toDate(date).toUTCString());
+    .eq('published_at', validDate.toUTCString());
   return error ? error : comments;
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   return validateQueryData(req.query, 'getCommentsByDate')
-    ? res.status(200).send(await getCommentsByDate(req.query.date as string))
-    : res.status(400).send('Invalid get comments by date data');
+    ? res.status(200).end(await getCommentsByDate(req.query.date as string))
+    : res.status(400).end('Invalid get comments by date data');
 }

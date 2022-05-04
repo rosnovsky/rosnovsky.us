@@ -7,22 +7,28 @@ export default withApiAuthRequired(async function (
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = getSession(req, res);
-  if (!session) res.status(401).end({ error: 'You are not authenticated' });
-  const { id, postId, content, postTitle, operation } = JSON.parse(req.body);
+  try {
+    const session = getSession(req, res);
+    if (!session) {
+      throw new Error('Error: user not found');
+    }
+    const { id, postId, content, postTitle, operation } = JSON.parse(req.body);
 
-  if (validateQueryData(req.body, 'flagComment')) {
-    return res.status(200).send(
-      await flagComment({
-        id,
-        postId,
-        user: session!.user,
-        content,
-        postTitle,
-        operation,
-      })
-    );
+    if (validateQueryData(req.body, 'flagComment')) {
+      res.status(200).end(
+        await flagComment({
+          id,
+          postId,
+          user: session.user,
+          content,
+          postTitle,
+          operation,
+        })
+      );
+    } else {
+      throw new Error('Error: invalid flag comment data');
+    }
+  } catch (error) {
+    res.status(400).end({ error: 'Invalid comment update data' });
   }
-
-  return res.status(400).send({ error: 'Invalid comment update data' });
 });
