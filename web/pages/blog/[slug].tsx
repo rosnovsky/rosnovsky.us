@@ -223,10 +223,12 @@ export async function getStaticProps(context) {
   );
 
   const postComments: PostComment[] = await fetch(
-    `/api/comments/getComments?id=${slug}`
-  ).then((res) => res.json());
+    `https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/getComments?id=${slug}`
+  )
+    .then((res) => res.json())
+    .catch(() => []);
 
-  if (postComments) {
+  if (postComments.length > 0) {
     const userIds = postComments.map((comment) => {
       return [comment.user_id];
     });
@@ -234,7 +236,9 @@ export async function getStaticProps(context) {
     const uniqueUserIds = [...new Set(userIds.flat())];
 
     const users = uniqueUserIds.map(async (id) => {
-      const user = await fetch(`/api/comments/userProfile?user_id=${id}`)
+      const user = await fetch(
+        `https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/userProfile?user_id=${id}`
+      )
         .then((res) => res.json())
         .catch((err) => console.error(err));
       return user;
@@ -243,7 +247,7 @@ export async function getStaticProps(context) {
       props: {
         post,
         postComments,
-        resolvedUsers: null,
+        resolvedUsers: await Promise.all(users),
       },
       revalidate: 1,
     };

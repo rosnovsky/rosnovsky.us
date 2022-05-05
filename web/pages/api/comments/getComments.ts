@@ -7,7 +7,7 @@ const getComments = async (postId) => {
     .from('comments')
     .select('*')
     .eq('post_id', postId);
-  return error ? 'error' : comments;
+  return error ? error : comments;
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
