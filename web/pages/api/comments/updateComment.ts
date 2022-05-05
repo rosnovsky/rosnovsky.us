@@ -19,15 +19,15 @@ export default withApiAuthRequired(async function (
       if (await isCommentUnique(id, req.body.content)) {
         res
           .status(200)
-          .end(await updateComment(id, req.body.content, session.user));
+          .send(await updateComment(id, req.body.content, session.user));
       } else {
-        res.status(400).end({
+        res.status(400).send({
           error:
             'This exact comment, posted by you, already exists. You sneaky, you!',
         });
       }
     }
   } catch (error) {
-    res.status(401).end({ error: 'You are not authenticated' });
+    res.status(401).send({ error: 'You are not authenticated' });
   }
 });

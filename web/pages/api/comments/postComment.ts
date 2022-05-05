@@ -104,6 +104,6 @@ export default withApiAuthRequired(async function (
       }
     }
   } catch (error) {
-    res.status(400).end({ error: 'Invalid post comment data' });
+    res.status(400).send({ error: 'Invalid post comment data' });
   }
 });

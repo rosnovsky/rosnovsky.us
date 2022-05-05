@@ -29,6 +29,6 @@ export default withApiAuthRequired(async function (
       throw new Error('Error: invalid flag comment data');
     }
   } catch (error) {
-    res.status(400).end({ error: 'Invalid comment update data' });
+    res.status(400).send({ error: 'Invalid comment update data' });
   }
 });
