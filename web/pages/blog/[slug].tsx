@@ -223,7 +223,7 @@ export async function getStaticProps(context) {
   );
 
   const postComments: PostComment[] = await fetch(
-    `https://rosnovsky.us/api/comments/getComments?id=${slug}`
+    `/api/comments/getComments?id=${slug}`
   ).then((res) => res.json());
 
   if (postComments) {
@@ -234,9 +234,7 @@ export async function getStaticProps(context) {
     const uniqueUserIds = [...new Set(userIds.flat())];
 
     const users = uniqueUserIds.map(async (id) => {
-      const user = await fetch(
-        `https://rosnovsky.us/api/comments/userProfile?user_id=${id}`
-      )
+      const user = await fetch(`/api/comments/userProfile?user_id=${id}`)
         .then((res) => res.json())
         .catch((err) => console.error(err));
       return user;
