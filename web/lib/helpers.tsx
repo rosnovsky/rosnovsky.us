@@ -87,3 +87,15 @@ export const PortableTextComponents = {
   },
   marks: {},
 };
+
+export const URLReplacer = (str) => {
+  const match = str.match(
+    /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\\/]))?/
+  );
+  if (!match) return str;
+  let final = str;
+  match.forEach((url) => {
+    final = final.replace(url, '[removed external link]');
+  });
+  return final;
+};

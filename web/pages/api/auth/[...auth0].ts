@@ -5,7 +5,7 @@ export default handleAuth({
     try {
       await handleLogin(req, res, { returnTo: req.query.returnTo as string });
     } catch (error: any) {
-      res.status(500).end({ message: error.message });
+      res.status(500).send({ message: error.message });
     }
   },
 });

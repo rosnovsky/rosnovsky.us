@@ -1,7 +1,8 @@
+import dynamic from 'next/dynamic';
 import { Hero } from '@components/Hero';
 import Blog from '@components/Blog';
-import NewsletterForm from '@components/NewsletterForm';
-import Stats from '@components/Stats';
+const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
+const Stats = dynamic(() => import('@components/Stats'));
 import sanityClient from 'lib/sanityClient';
 import type { BlogPost } from 'index';
 import Container from '@components/Container';

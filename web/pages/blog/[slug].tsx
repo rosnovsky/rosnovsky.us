@@ -168,6 +168,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
                   resolvedUsers={resolvedUsers}
                 />
               )}
+              (Commenting feature coming soon)
             </div>
           </div>
         </div>

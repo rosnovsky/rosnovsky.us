@@ -1,3 +1,5 @@
+import { URLReplacer } from '@lib/helpers';
+
 const Comment = ({ comment, user }) => {
   return (
     <div className="flex justify-start my-10 py-5 border-b border-r">
@@ -17,7 +19,7 @@ const Comment = ({ comment, user }) => {
             year: 'numeric',
           })}
         </div>
-        <div>{comment.comment}</div>
+        <div className="w-lg">{URLReplacer(comment.comment)}</div>
       </div>
     </div>
   );

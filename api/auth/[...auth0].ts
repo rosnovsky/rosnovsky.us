@@ -5,7 +5,7 @@ export default handleAuth({
     try {
       await handleLogin(req, res, { returnTo: `${req.headers.referer}` });
     } catch (error: any) {
-      res.status(error.status || 500).end(error.message);
+      res.status(error.status || 500).send(error.message);
     }
   },
 });

@@ -1,7 +1,8 @@
-import Comments from './Comments';
-import Github from './Github';
-import Subscribers from './Subscribers';
-import Visitors from './Visitors';
+import dynamic from 'next/dynamic';
+const Comments = dynamic(() => import('./Comments'));
+const Github = dynamic(() => import('./Github'));
+const Subscribers = dynamic(() => import('./Subscribers'));
+const Visitors = dynamic(() => import('./Visitors'));
 
 const Stats = () => {
   return (
