@@ -22,7 +22,6 @@
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^1.0.2",
-    "@sentry/nextjs": "^6.19.7",
     "@supabase/supabase-js": "^1.35.2",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
