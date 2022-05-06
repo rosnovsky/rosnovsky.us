@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  content: ['./pages/**/*.tsx', './components/**/*.tsx'],
+  content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx'],
   darkMode: 'class',
 
   theme: {
