@@ -1,4 +1,4 @@
-import Video from './CoverImage';
+import CoverImage from './CoverImage';
 import WelcomeMessage from './WelcomeMessage';
 
 export const Hero = () => {
@@ -15,7 +15,7 @@ export const Hero = () => {
           }}
         >
           <WelcomeMessage />
-          <Video />
+          <CoverImage />
         </div>
       </div>
     </div>

@@ -3,12 +3,13 @@ import { PortableText } from '@portabletext/react';
 import sanityClient from '../../lib/sanityClient';
 import { localDate, PortableTextComponents, urlFor } from 'lib/helpers';
 import type { BlogPost, PostComment } from 'index';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
+const Error = dynamic(() => import('next/error'));
 import Containter from '@components/Container';
 import Head from 'next/head';
-import Error from 'next/error';
 import { useUser, UserProfile } from '@auth0/nextjs-auth0';
-import Comments from '@components/Comments/Comments';
+const Comments = dynamic(() => import('@components/Comments/Comments'));
 import fetch from 'isomorphic-fetch';
 
 type Props = {

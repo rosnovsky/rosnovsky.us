@@ -1,8 +1,9 @@
+import dynamic from 'next/dynamic';
 import Header from './Header';
 import Posts from './Posts';
-import ReadMore from './Posts/ReadMore';
-import Search from './Search';
-import Categories from './Categories';
+const ReadMore = dynamic(() => import('./Posts/ReadMore'));
+const Search = dynamic(() => import('./Search'));
+const Categories = dynamic(() => import('./Categories'));
 import type { BlogPost } from 'index';
 import { useState } from 'react';
 import sanityClient from '@lib/sanityClient';

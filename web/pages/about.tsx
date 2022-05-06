@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
+const Image = dynamic(() => import('next/image'));
 import NewsletterForm from '@components/NewsletterForm';
 import sanityClient from 'lib/sanityClient';
 import type { Page } from 'index';
