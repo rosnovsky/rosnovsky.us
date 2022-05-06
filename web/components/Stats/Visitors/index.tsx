@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 const Visitors = () => {
   const { data, error } = useSWR('/api/fathom/uniquesThisMonth', fetcher, {
-    refreshInterval: 30,
+    refreshInterval: 30000,
   });
   if (error) {
     console.error(error);

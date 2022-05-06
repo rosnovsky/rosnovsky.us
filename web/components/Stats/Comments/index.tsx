@@ -3,7 +3,7 @@ import useSWR from 'swr';
 
 const Comments = () => {
   const { data, error } = useSWR('/api/comments/getCommentsCount', fetcher, {
-    refreshInterval: 120,
+    refreshInterval: 120000,
   });
   if (error) {
     console.error(error);

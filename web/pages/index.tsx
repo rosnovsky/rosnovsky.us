@@ -7,14 +7,16 @@ import sanityClient from 'lib/sanityClient';
 import type { BlogPost } from 'index';
 import Container from '@components/Container';
 import Head from 'next/head';
+import { SWRConfig } from 'swr';
 
 type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
   postCount: number;
+  fallback: any;
 };
 
-const Home = ({ posts, categories, postCount }: Props) => {
+const Home = ({ posts, categories, postCount, fallback }: Props) => {
   return (
     <Container>
       <Head>
@@ -88,7 +90,9 @@ const Home = ({ posts, categories, postCount }: Props) => {
       <Hero />
       <Blog posts={posts} categories={categories} postCount={postCount} />
       <NewsletterForm />
-      <Stats />
+      <SWRConfig value={{ fallback }}>
+        <Stats />
+      </SWRConfig>
     </Container>
   );
 };
@@ -134,12 +138,35 @@ export async function getStaticProps() {
   `
   );
 
+  const githubStats = await fetch(
+    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/github'
+  ).then((res) => res.json());
+
+  const commentsStats = await fetch(
+    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/getCommentsCount'
+  ).then((res) => res.json());
+
+  const subscribersStats = await fetch(
+    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/subscribers'
+  ).then((res) => res.json());
+
+  const visitorsStats = await fetch(
+    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/fathom/uniquesThisMonth'
+  ).then((res) => res.json());
+
   return {
     props: {
       posts,
       categories,
       postCount,
+      fallback: {
+        '/api/github': githubStats,
+        '/api/comments/getCommentsCount': commentsStats,
+        '/api/subscribers': subscribersStats,
+        '/api/fathom/uniquesThisMonth': visitorsStats,
+      },
     },
+
     revalidate: 30,
   };
 }
