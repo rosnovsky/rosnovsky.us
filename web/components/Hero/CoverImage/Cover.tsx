@@ -4,7 +4,16 @@ import placeholderVideo from '@images/IMG_8477 4.jpeg';
 const Cover = () => {
   return (
     <div className="relative overflow-hidden rounded-7xl">
-      <Image src={placeholderVideo} placeholder="blur" />
+      <Image
+        priority
+        loading="eager"
+        quality={80}
+        width={480}
+        height={360}
+        src={placeholderVideo}
+        layout="responsive"
+        placeholder="blur"
+      />
     </div>
   );
 };
