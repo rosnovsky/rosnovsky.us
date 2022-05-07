@@ -11,6 +11,7 @@ import Head from 'next/head';
 import { useUser, UserProfile } from '@auth0/nextjs-auth0';
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import fetch from 'isomorphic-fetch';
+import slugify from 'slugify';
 
 type Props = {
   post: BlogPost;
@@ -31,6 +32,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
     publishedAt,
     title,
     summary,
+    summaryRaw,
     coverImage,
     categories,
     body,
@@ -38,7 +40,15 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
   } = post;
 
   return (
-    <Containter>
+    <Containter
+      title={`${title} – Art Rosnovsky`}
+      description={summaryRaw}
+      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
+        title
+      )}.jpg`}
+      date={new Date(publishedAt).toISOString()}
+      type="article"
+    >
       <Head>
         <title>{title} - Rosnovsky Park&trade; Blog</title>
         <meta name="description" content={title} />
@@ -216,6 +226,7 @@ export async function getStaticProps(context) {
         asset->{...},
         ...
       },
+      "summaryRaw": pt::text(summary),
       "numberOfCharacters": length(pt::text(body)),
       "estimatedWordCount": round(length(pt::text(body)) / 5),
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
@@ -229,7 +240,27 @@ export async function getStaticProps(context) {
   )
     .then((res) => res.json())
     .catch(() => []);
+  const baseUrl = 'https://rosnovsky-api.vercel.app';
 
+  try {
+    const generateSocialImage = await fetch(
+      `${baseUrl}/api/opengraph/generate?title=${post.title}&meta=${new Date(
+        post.publishedAt
+      ).toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })} | ${post.estimatedReadingTime}&coverImage=${
+        urlFor(post.coverImage) || null
+      }`
+    );
+    console.info(
+      `♻️ Generating Social Image for ${post.title}. Here its status code: `,
+      generateSocialImage.status
+    );
+  } catch (e) {
+    console.error(e);
+  }
   if (postComments.length > 0) {
     const userIds = postComments.map((comment) => {
       return [comment.user_id];
