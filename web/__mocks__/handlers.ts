@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const handlers = [
-  rest.get('https://rosnovsky.us/api/status', (req, res, ctx) => {
+  rest.get('https://rosnovsky.us/api/status', (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -9,7 +9,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get('https://rosnovsky.us/api/stats', (req, res, ctx) => {
+  rest.get('https://rosnovsky.us/api/stats', (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -21,7 +21,7 @@ export const handlers = [
 
   rest.get(
     'https://rosnovsky.us/api/comments/getCommentsCount',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(
         ctx.status(200),
         ctx.json({
@@ -31,26 +31,29 @@ export const handlers = [
     }
   ),
 
-  rest.get(`https://rosnovsky.us/api/comments/getComments`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json([
-        {
-          id: '1',
-          user_id: 'user',
-          published_at: '2021-10-28T05:08:31.043+00:00',
-          comment: 'Comment',
-          flagged: false,
-          deleted: false,
-          edited: false,
-          post_id: 'test',
-          hash: '@@@',
-        },
-      ])
-    );
-  }),
+  rest.get(
+    `https://rosnovsky.us/api/comments/getComments`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json([
+          {
+            id: '1',
+            user_id: 'user',
+            published_at: '2021-10-28T05:08:31.043+00:00',
+            comment: 'Comment',
+            flagged: false,
+            deleted: false,
+            edited: false,
+            post_id: 'test',
+            hash: '@@@',
+          },
+        ])
+      );
+    }
+  ),
 
-  rest.get('https://rosnovsky.us/api/last-played', (req, res, ctx) => {
+  rest.get('https://rosnovsky.us/api/last-played', (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json([
@@ -64,7 +67,7 @@ export const handlers = [
       ])
     );
   }),
-  rest.get('https://rosnovsky.us/api/top-tracks', (req, res, ctx) => {
+  rest.get('https://rosnovsky.us/api/top-tracks', (_req, res, ctx) => {
     return res.once(
       ctx.status(200),
       ctx.json({
@@ -93,7 +96,7 @@ export const handlers = [
     );
   }),
 
-  rest.get('https://rosnovsky.us/api/top-tracks', (req, res, ctx) => {
+  rest.get('https://rosnovsky.us/api/top-tracks', (_req, res, ctx) => {
     return res(ctx.status(400), ctx.json({}));
   }),
 
@@ -104,11 +107,11 @@ export const handlers = [
     }
   ),
 
-  rest.post('https://rosnovsky.us/api/subscribe', (req, res, ctx) => {
+  rest.post('https://rosnovsky.us/api/subscribe', (_req, res, ctx) => {
     return res.once(ctx.status(400), ctx.json({ error: 'error' }));
   }),
 
-  rest.post('https://rosnovsky.us/api/subscribe', (req, res, ctx) => {
+  rest.post('https://rosnovsky.us/api/subscribe', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json({}));
   }),
 ];

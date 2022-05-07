@@ -66,12 +66,12 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
     // to an Algolia Record. Here you can do further mutations to the data before
     // it is sent to Algolia.
     (document: SanityDocumentStub) => {
-      switch (document._type) {
-        case 'post':
-          return document;
-        default:
-          return document;
-      }
+      // switch (document._type) {
+      //   case 'post':
+      //     return document;
+      //   default:
+      return document;
+      // }
     },
     // Visibility function (optional).
     //
@@ -106,7 +106,6 @@ const handler = (req: VercelRequest, res: VercelResponse) => {
       .then(() => res.status(200).json({ success: true, id }))
       .catch((err) => {
         res.status(500).json({ success: false, message: err.message });
-        return;
       })
   );
 };

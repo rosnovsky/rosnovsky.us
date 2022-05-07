@@ -1,4 +1,4 @@
-const fathom = async (req, res) => {
+const uniquesThisMonth = async (_req, res) => {
   const totalUniques = await fetch(
     'https://api.usefathom.com/v1/aggregations?entity=pageview&entity_id=IMKYNEVQ&aggregates=uniques&date_grouping=month&sort_by=timestamp:desc',
     {
@@ -18,4 +18,4 @@ const fathom = async (req, res) => {
   });
 };
 
-export default fathom;
+export default uniquesThisMonth;

@@ -19,11 +19,11 @@ export const updateComment = async (
   await userProfile(user);
 
   // We are using comment content hash to validate comment's uniqueness.
-  const hash = md5(escape(content));
+  const hash = md5(content);
 
   const { data: comment, error } = await supabase
     .from('comments')
-    .update({ comment: escape(content), edited: true, hash })
+    .update({ comment: content, edited: true, hash })
     .match({ id: commentId, user_id: user.sub });
   if (comment === null) return { error: 'You can only edit your own comments' };
 

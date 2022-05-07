@@ -194,12 +194,11 @@ export async function getStaticProps(context) {
     const uniqueUserIds = [...new Set(userIds.flat())];
 
     const users = uniqueUserIds.map(async (id) => {
-      const user = await fetch(
+      return await fetch(
         `https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/userProfile?user_id=${id}`
       )
         .then((res) => res.json())
         .catch((err) => console.error(err));
-      return user;
     });
     return {
       props: {

@@ -9,6 +9,6 @@ const getCommentsCount = async () => {
   return error ? error : comments ? comments.length : 0;
 };
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function (_req: NextApiRequest, res: NextApiResponse) {
   return res.status(200).send({ totalComments: await getCommentsCount() });
 }

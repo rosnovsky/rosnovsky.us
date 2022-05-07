@@ -92,7 +92,7 @@ export const PortableTextComponents = {
 
 export const URLReplacer = (str) => {
   const match = str.match(
-    /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\\/]))?/
+    /(ftp|http|https):\/\/(\w+:?\w*@)?(\S+)(:\d+)?(\/|\/([\w#:.?+=&%@!\-\\/]))?/
   );
   if (!match) return str;
   let final = str;

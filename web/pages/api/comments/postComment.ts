@@ -25,10 +25,7 @@ const isCommentUnique = async (postId: string, content: string, user) => {
       (comment) => comment.user_id === user.sub
     );
 
-    const isUnique = commentsByUserId.every(
-      (comment) => comment.hash !== commentHash
-    );
-    return isUnique;
+    return commentsByUserId.every((comment) => comment.hash !== commentHash);
   }
 };
 
@@ -45,9 +42,9 @@ const postComment = async (
     {
       published_at,
       user_id: user.sub,
-      post_id: escape(postId),
+      post_id: postId,
       comment: content,
-      hash: md5(escape(content)),
+      hash: md5(content),
     },
     { ignoreDuplicates: true }
   );
