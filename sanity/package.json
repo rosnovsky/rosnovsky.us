@@ -1,0 +1,37 @@
+{
+  "name": "rosnovsky-sanity",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Art Rosnovsky <artem@rosnovsky.us>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.29.8",
+    "@sanity/code-input": "^2.29.8",
+    "@sanity/core": "^2.29.5",
+    "@sanity/data-aspects": "^2.29.3",
+    "@sanity/default-layout": "^2.29.8",
+    "@sanity/default-login": "^2.29.8",
+    "@sanity/desk-tool": "^2.29.8",
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/form-builder": "^2.29.8",
+    "@sanity/vision": "^2.29.8",
+    "eslint": "^8.6.0",
+    "get-youtube-id": "^1.0.1",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-player": "^2.9.0",
+    "react-youtube": "^7.14.0",
+    "sanity-plugin-media": "^1.4.4",
+    "styled-components": "^5.2.0"
+  }
+}
