@@ -82,7 +82,7 @@ export async function getStaticProps(context) {
       categories,
       postCount,
     },
-    revalidate: 30,
+    revalidate: 30000,
   };
 }
 

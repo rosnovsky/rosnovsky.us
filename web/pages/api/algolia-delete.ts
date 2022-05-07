@@ -3,7 +3,7 @@ import { SanityDocumentStub } from '@sanity/client';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import algoliasearch from 'algoliasearch';
 import indexer from 'sanity-algolia';
-import { isValidRequest } from '@sanity/webhook';
+// import { isValidRequest } from '@sanity/webhook';
 
 export const searchClient = algoliasearch(
   'MX9C0DBFF5',
@@ -13,7 +13,7 @@ export const searchClient = algoliasearch(
 if (!process.env.ALGOLIA_SANITY_SHARED_SECRET) {
   throw new Error('ALGOLIA_SANITY_SHARED_SECRET is not set');
 }
-const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET;
+// const secret = process.env.ALGOLIA_SANITY_SHARED_SECRET;
 
 /**
  *  This function receives webhook POSTs from Sanity and updates, creates or

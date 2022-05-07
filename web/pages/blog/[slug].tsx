@@ -7,8 +7,7 @@ import dynamic from 'next/dynamic';
 const Link = dynamic(() => import('next/link'));
 const Error = dynamic(() => import('next/error'));
 import Containter from '@components/Container';
-import Head from 'next/head';
-import { useUser, UserProfile } from '@auth0/nextjs-auth0';
+import type { UserProfile } from '@auth0/nextjs-auth0';
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import fetch from 'isomorphic-fetch';
 import slugify from 'slugify';
@@ -20,8 +19,6 @@ type Props = {
 };
 
 const Post = ({ post, postComments, resolvedUsers }: Props) => {
-  const { user, error, isLoading } = useUser();
-
   if (!post)
     return (
       <div>
@@ -49,78 +46,6 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
       date={new Date(publishedAt).toISOString()}
       type="article"
     >
-      <Head>
-        <title>{title} - Rosnovsky Park&trade; Blog</title>
-        <meta name="description" content={title} />
-        <meta
-          name="keywords"
-          content="Art Rosnovsky, Rosnovsky Park, Rosnovsky Park&trade;, Rosnovsky Park's Blog"
-        />
-        <meta name="author" content="Art Rosnovsky" />
-        <meta name="robots" content="index, follow" />
-        <meta name="referrer" content="origin" />
-        <meta
-          name="og:title"
-          property="og:title"
-          content="Rosnovsky Park&trade; - Art Rosnovsky's Blog"
-        />
-        <meta
-          name="og:description"
-          property="og:description"
-          content="Art Rosnovsky's Blog"
-        />
-        <meta
-          name="og:image"
-          property="og:image"
-          content="https://rosnovsky.us/static/logo.png"
-        />
-        <meta
-          name="og:url"
-          property="og:url"
-          content="https://rosnovsky.us/blog"
-        />
-        <meta name="og:type" property="og:type" content="website" />
-        <meta
-          name="twitter:card"
-          property="twitter:card"
-          content="summary_large_image"
-        />
-        <meta
-          name="twitter:site"
-          property="twitter:site"
-          content="@rosnovsky"
-        />
-        <meta
-          name="twitter:creator"
-          property="twitter:creator"
-          content="@rosnovsky"
-        />
-        <meta
-          name="twitter:title"
-          property="twitter:title"
-          content="Rosnovsky Park&trade; - Art Rosnovsky's Blog"
-        />
-        <meta
-          name="twitter:description"
-          property="twitter:description"
-          content="Art Rosnovsky's Blog"
-        />
-        <meta
-          name="twitter:image"
-          property="twitter:image"
-          content="https://rosnovsky.us/static/logo.png"
-        />
-        <meta
-          name="twitter:url"
-          property="twitter:url"
-          content="https://rosnovsky.us/blog"
-        />
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="https://rosnovsky.us/static/logo.png"
-        />
-      </Head>
       <section
         className="py-16 md:py-24 bg-white"
         style={{

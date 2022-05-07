@@ -7,10 +7,9 @@ const Containter = (props) => {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'Art Rosnovsky – Web Developer, podcaster, human.',
-    description: `Software Engineer, web developer, podcaster, human. He/him.`,
+    title: 'Art Rosnovsky – Web Developer & human.',
+    description: `Hey, I'm Art, and we need to talk. `,
     image: 'https://rosnovsky.us/static/images/banner.jpg',
-    type: 'website',
     ...customMeta,
   };
 
@@ -37,7 +36,10 @@ const Containter = (props) => {
           }
         />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Art Rosnovsky" />
+        <meta
+          property="og:site_name"
+          content="Rosnovsky Park - Art Rosnovsky"
+        />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />

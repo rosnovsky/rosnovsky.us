@@ -32,7 +32,7 @@ const Menu = () => {
 
         <li>
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
-            {!user && !isLoading && (
+            {!user && !isLoading && !error && (
               <Link passHref href={`/api/auth/login?returnTo=${router.asPath}`}>
                 Log In
               </Link>
@@ -46,7 +46,7 @@ const Menu = () => {
               </Link>
             )}
             {isLoading && <span className="text-gray-300">Wait...</span>}
-            {error && <span className="text-red-500">Error</span>}
+            {error && <span className="text-red-500">Oops </span>}
           </span>
         </li>
       </ul>

@@ -17,7 +17,12 @@ type Props = {
 
 const Home = ({ posts, categories, postCount, fallback }: Props) => {
   return (
-    <Container>
+    <Container
+      title={`Rosnovsky Park – Art Rosnovsky`}
+      description={"Hey, I'm Art, and we need to talk. Seriously."}
+      image={`https://rosnovsky.us/static/images/banner.jpg`}
+      type="website"
+    >
       <Hero />
       <Blog posts={posts} categories={categories} postCount={postCount} />
       <NewsletterForm />
