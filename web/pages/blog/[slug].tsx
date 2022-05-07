@@ -250,7 +250,7 @@ export async function getStaticProps(context) {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
-      })} | ${post.estimatedReadingTime}&coverImage=${
+      })} | ${post.estimatedReadingTime} min read&coverImage=${
         urlFor(post.coverImage) || null
       }`
     );
