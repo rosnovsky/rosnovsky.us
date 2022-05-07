@@ -7,6 +7,7 @@ specifiers:
   '@algolia/autocomplete-theme-classic': ^1.6.2
   '@algolia/client-search': ^4.13.0
   '@auth0/nextjs-auth0': ^1.7.0
+  '@azure/ai-text-analytics': ^5.1.0
   '@babel/core': ^7.17.9
   '@nextui-org/react': 1.0.0-beta.6
   '@portabletext/react': ^1.0.6
@@ -37,6 +38,7 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-jsx-a11y: ^6.5.1
   eslint-plugin-prettier: ^4.0.0
+  fathom-client: ^3.4.1
   form-data: ^4.0.0
   get-youtube-id: ^1.0.1
   isomorphic-fetch: ^3.0.0
@@ -70,6 +72,7 @@ dependencies:
   '@algolia/autocomplete-theme-classic': 1.6.2
   '@algolia/client-search': 4.13.0
   '@auth0/nextjs-auth0': 1.8.0_next@12.1.6
+  '@azure/ai-text-analytics': 5.1.0
   '@nextui-org/react': 1.0.0-beta.6_sfoxds7t5ydpegc3knd667wn6m
   '@portabletext/react': 1.0.6_react@17.0.2
   '@sanity/asset-utils': 1.2.3
@@ -90,6 +93,7 @@ dependencies:
   eslint-config-prettier: 8.5.0_eslint@8.14.0
   eslint-plugin-jsx-a11y: 6.5.1_eslint@8.14.0
   eslint-plugin-prettier: 4.0.0_mzpligoj26dazigcet37nxg2zy
+  fathom-client: 3.4.1
   form-data: 4.0.0
   get-youtube-id: 1.0.1
   isomorphic-fetch: 3.0.0
@@ -290,6 +294,132 @@ packages:
       - supports-color
     dev: false
 
+  /@azure/abort-controller/1.1.0:
+    resolution: {integrity: sha512-TrRLIoSQVzfAJX9H1JeFjzAoDGcoK1IYX1UImfceTZpsyYfWr09Ss1aHW1y5TrrR3iq6RZLBwJ3E24uwPhwahw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/ai-text-analytics/5.1.0:
+    resolution: {integrity: sha512-vkAFCxj0dn7kjTDuzpqM4EgQJkn3V0N/KJ0/n+UwralpeCESWll3DLuf8h2kL94vT9pyHWq7xWiNMBrzXxF1yA==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@azure/abort-controller': 1.1.0
+      '@azure/core-asynciterator-polyfill': 1.0.2
+      '@azure/core-auth': 1.3.2
+      '@azure/core-client': 1.6.0
+      '@azure/core-lro': 2.2.4
+      '@azure/core-paging': 1.2.1
+      '@azure/core-rest-pipeline': 1.8.1
+      '@azure/core-tracing': 1.0.0-preview.12
+      '@azure/logger': 1.0.3
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@azure/core-asynciterator-polyfill/1.0.2:
+    resolution: {integrity: sha512-3rkP4LnnlWawl0LZptJOdXNrT/fHp2eQMadoasa6afspXdpGrtPZuAQc2PD0cpgyuoXtUWyC3tv7xfntjGS5Dw==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@azure/core-auth/1.3.2:
+    resolution: {integrity: sha512-7CU6DmCHIZp5ZPiZ9r3J17lTKMmYsm/zGvNkjArQwPkrLlZ1TZ+EUYfGgh2X31OLMVAQCTJZW4cXHJi02EbJnA==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@azure/abort-controller': 1.1.0
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/core-client/1.6.0:
+    resolution: {integrity: sha512-YhSf4cb61ApSjItscp9XoaLq8KRnacPDAhmjAZSMnn/gs6FhFbZNfOBOErG2dDj7JRknVtCmJ5mLmfR2sLa11A==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@azure/abort-controller': 1.1.0
+      '@azure/core-auth': 1.3.2
+      '@azure/core-rest-pipeline': 1.8.1
+      '@azure/core-tracing': 1.0.1
+      '@azure/core-util': 1.0.0
+      '@azure/logger': 1.0.3
+      tslib: 2.4.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@azure/core-lro/2.2.4:
+    resolution: {integrity: sha512-e1I2v2CZM0mQo8+RSix0x091Av493e4bnT22ds2fcQGslTHzM2oTbswkB65nP4iEpCxBrFxOSDPKExmTmjCVtQ==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@azure/abort-controller': 1.1.0
+      '@azure/core-tracing': 1.0.0-preview.13
+      '@azure/logger': 1.0.3
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/core-paging/1.2.1:
+    resolution: {integrity: sha512-UtH5iMlYsvg+nQYIl4UHlvvSrsBjOlRF4fs0j7mxd3rWdAStrKYrh2durOpHs5C9yZbVhsVDaisoyaf/lL1EVA==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@azure/core-asynciterator-polyfill': 1.0.2
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/core-rest-pipeline/1.8.1:
+    resolution: {integrity: sha512-R/XpxZcDgGbnneEifnsAcjLoR2NCmlDxKDmzd8oi5jx5YEnPE6gsxHQWAk2+uY55Ka717x/fdctyoCYKnumrqw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@azure/abort-controller': 1.1.0
+      '@azure/core-auth': 1.3.2
+      '@azure/core-tracing': 1.0.1
+      '@azure/core-util': 1.0.0
+      '@azure/logger': 1.0.3
+      form-data: 4.0.0
+      http-proxy-agent: 4.0.1
+      https-proxy-agent: 5.0.1
+      tslib: 2.4.0
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@azure/core-tracing/1.0.0-preview.12:
+    resolution: {integrity: sha512-nvo2Wc4EKZGN6eFu9n3U7OXmASmL8VxoPIH7xaD6OlQqi44bouF0YIi9ID5rEsKLiAU59IYx6M297nqWVMWPDg==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@opentelemetry/api': 1.1.0
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/core-tracing/1.0.0-preview.13:
+    resolution: {integrity: sha512-KxDlhXyMlh2Jhj2ykX6vNEU0Vou4nHr025KoSEiz7cS3BNiHNaZcdECk/DmLkEB0as5T7b/TpRcehJ5yV6NeXQ==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@opentelemetry/api': 1.1.0
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/core-tracing/1.0.1:
+    resolution: {integrity: sha512-I5CGMoLtX+pI17ZdiFJZgxMJApsK6jjfm85hpgp3oazCdq5Wxgh4wMr7ge/TTWW1B5WBuvIOI1fMU/FrOAMKrw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/core-util/1.0.0:
+    resolution: {integrity: sha512-yWshY9cdPthlebnb3Zuz/j0Lv4kjU6u7PR5sW7A9FF7EX+0irMRJAtyTq5TPiDHJfjH8gTSlnIYFj9m7Ed76IQ==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
+  /@azure/logger/1.0.3:
+    resolution: {integrity: sha512-aK4s3Xxjrx3daZr3VylxejK3vG5ExXck5WOHDJ8in/k9AqlfIyFMMT1uG7u8mNjX+QRILTIn0/Xgschfh/dQ9g==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
   /@babel/code-frame/7.16.7:
     resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
     engines: {node: '>=6.9.0'}
@@ -440,6 +570,8 @@ packages:
     resolution: {integrity: sha512-n2Q6i+fnJqzOaq2VkdXxy2TCPCWQZHiCo0XqmrCvDWcZQKRyZzYi4Z0yxlBuN0w+r2ZHmre+Q087DSrw3pbJDQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.10
     dev: true
 
   /@babel/runtime-corejs3/7.17.9:
@@ -802,6 +934,11 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+
+  /@opentelemetry/api/1.1.0:
+    resolution: {integrity: sha512-hf+3bwuBwtXsugA2ULBc95qxrOqP2pOekLz34BJhcAKawt94vfeNyUKpYc0lZQ/3sCP6LqRa7UAdHA7i5UODzQ==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /@panva/asn1.js/1.0.0:
     resolution: {integrity: sha512-UdkG3mLEqXgnlKsWanWcgb6dOjUzJ+XC5f+aWw30qrtjxeNUSfKX1cd5FBzOaXQumoe9nIqeZUvrRJS03HCCtw==}
@@ -1410,6 +1547,8 @@ packages:
       get-it: 5.2.1
       make-error: 1.3.6
       object-assign: 4.1.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@sanity/client/3.3.0:
@@ -1422,6 +1561,8 @@ packages:
       make-error: 1.3.6
       object-assign: 4.1.1
       rxjs: 6.6.7
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@sanity/eventsource/2.23.0:
@@ -1527,6 +1668,8 @@ packages:
     dependencies:
       '@types/phoenix': 1.5.4
       websocket: 1.0.34
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@supabase/storage-js/1.7.0:
@@ -1547,6 +1690,7 @@ packages:
       '@supabase/storage-js': 1.7.0
     transitivePeerDependencies:
       - encoding
+      - supports-color
     dev: false
 
   /@szmarczak/http-timer/4.0.6:
@@ -1579,7 +1723,6 @@ packages:
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
     engines: {node: '>= 6'}
     dev: false
-    optional: true
 
   /@types/cacheable-request/6.0.2:
     resolution: {integrity: sha512-B3xVo+dlKM6nnKTcmm5ZtY/OL8bOAOd2Olee9M1zft65ox50OzjEHW91sDiU9j6cvW8Ejg1/Qkf4xd2kugApUA==}
@@ -2616,11 +2759,21 @@ packages:
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.0.0
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.1.3
     dev: true
@@ -2921,13 +3074,14 @@ packages:
       eslint: 8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_myxbwluo6p3kuxjcyp342zygci
-      eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-import: 2.26.0_rnfz7akqr4wjw2qkn2c5k6phri
       eslint-plugin-jsx-a11y: 6.5.1_eslint@8.14.0
       eslint-plugin-react: 7.29.4_eslint@8.14.0
       eslint-plugin-react-hooks: 4.5.0_eslint@8.14.0
       next: 12.1.6_tmacpkxga3bcx5k2p7mjqnxqbe
       typescript: 4.6.4
     transitivePeerDependencies:
+      - eslint-import-resolver-webpack
       - supports-color
     dev: true
 
@@ -2945,6 +3099,8 @@ packages:
     dependencies:
       debug: 3.2.7
       resolve: 1.22.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /eslint-import-resolver-typescript/2.7.1_myxbwluo6p3kuxjcyp342zygci:
@@ -2956,7 +3112,7 @@ packages:
     dependencies:
       debug: 4.3.4
       eslint: 8.14.0
-      eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-import: 2.26.0_rnfz7akqr4wjw2qkn2c5k6phri
       glob: 7.2.0
       is-glob: 4.0.3
       resolve: 1.22.0
@@ -2965,27 +3121,51 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.3:
+  /eslint-module-utils/2.7.3_kvyt4kvbdmj4ueyk2ybejan4d4:
     resolution: {integrity: sha512-088JEC7O3lDZM9xGe0RerkOMd0EjFl+Yvd1jPWIkMT5u3H9+HC34mWWPnqPrN13gieT9pBOO+Qt07Nb/6TresQ==}
     engines: {node: '>=4'}
+    peerDependencies:
+      '@typescript-eslint/parser': '*'
+      eslint-import-resolver-node: '*'
+      eslint-import-resolver-typescript: '*'
+      eslint-import-resolver-webpack: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
+      eslint-import-resolver-node:
+        optional: true
+      eslint-import-resolver-typescript:
+        optional: true
+      eslint-import-resolver-webpack:
+        optional: true
     dependencies:
+      '@typescript-eslint/parser': 5.22.0_t725usgvqspm5woeqpaxbfp2qu
       debug: 3.2.7
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_myxbwluo6p3kuxjcyp342zygci
       find-up: 2.1.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
-  /eslint-plugin-import/2.26.0_eslint@8.14.0:
+  /eslint-plugin-import/2.26.0_rnfz7akqr4wjw2qkn2c5k6phri:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
     engines: {node: '>=4'}
     peerDependencies:
+      '@typescript-eslint/parser': '*'
       eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
     dependencies:
+      '@typescript-eslint/parser': 5.22.0_t725usgvqspm5woeqpaxbfp2qu
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
       doctrine: 2.1.0
       eslint: 8.14.0
       eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.3
+      eslint-module-utils: 2.7.3_kvyt4kvbdmj4ueyk2ybejan4d4
       has: 1.0.3
       is-core-module: 2.9.0
       is-glob: 4.0.3
@@ -2993,6 +3173,10 @@ packages:
       object.values: 1.1.5
       resolve: 1.22.0
       tsconfig-paths: 3.14.1
+    transitivePeerDependencies:
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
     dev: true
 
   /eslint-plugin-jsx-a11y/6.5.1_eslint@8.14.0:
@@ -3257,6 +3441,10 @@ packages:
     dependencies:
       reusify: 1.0.4
 
+  /fathom-client/3.4.1:
+    resolution: {integrity: sha512-iQFKx9B9RDeGLzgNqsaXWg3Fvu7yfq1Z8GjpAG3DP8IoGoPRWOOktpM7DUKiUzoE3d37hdvDQvkqUHfNzVwimg==}
+    dev: false
+
   /fault/1.0.4:
     resolution: {integrity: sha512-CJ0HCB5tL5fYTEA7ToAq5+kTwd++Borf1/bifxd9iT70QcXr4MRrO3Llf8Ifs70q+SJcGHFtnIE/Nw6giCtECA==}
     dependencies:
@@ -3477,6 +3665,8 @@ packages:
       simple-concat: 1.0.1
       tunnel-agent: 0.6.0
       url-parse: 1.5.10
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /get-it/6.1.0:
@@ -3501,6 +3691,8 @@ packages:
       simple-concat: 1.0.1
       tunnel-agent: 0.6.0
       url-parse: 1.5.10
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /get-stream/5.2.0:
@@ -3721,7 +3913,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
-    optional: true
 
   /http2-wrapper/1.0.3:
     resolution: {integrity: sha512-V+23sDMr12Wnz7iTcDeJr3O6AIxlnvT/bmaAAAP/Xda35C90p9599p0F1eHR/N1KILWSoWVAiOMFjBBXaXSMxg==}
@@ -3750,7 +3941,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
-    optional: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -5146,6 +5336,8 @@ packages:
       prop-types: 15.8.1
       react: 17.0.2
       youtube-player: 5.5.2
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /react/17.0.2:
@@ -5303,6 +5495,8 @@ packages:
       '@sanity/client': 2.23.2
       algoliasearch: 4.13.0
       stopword: 1.0.11
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /scheduler/0.20.2:
@@ -5979,6 +6173,11 @@ packages:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
     dev: false
 
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
     dev: true
@@ -6082,6 +6281,8 @@ packages:
       typedarray-to-buffer: 3.1.5
       utf-8-validate: 5.0.9
       yaeti: 0.0.6
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /whatwg-fetch/3.6.2:
@@ -6195,4 +6396,6 @@ packages:
       debug: 2.6.9
       load-script: 1.0.0
       sister: 3.0.2
+    transitivePeerDependencies:
+      - supports-color
     dev: false
