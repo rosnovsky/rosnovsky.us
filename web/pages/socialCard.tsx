@@ -1,81 +1,26 @@
 const generateSocialImage = ({ coverImage, title, meta }) => {
-  const baseUrl =
-    process.env.NODE_ENV === 'production'
-      ? 'https://rosnovsky.us'
-      : 'http://localhost:3000';
-
-  console.log(`${baseUrl}${coverImage}`);
-
   return (
     <div className="mx-auto">
       <div
-        className={`relative border-1 border-black bg-white  bg-cover z-1`}
-        // style={{
-        //   before: {
-        //     content: '""',
-        //     position: 'absolute',
-        //     top: 0,
-        //     right: 0,
-        //     bottom: 0,
-        //     left: 0,
-        //     background: 'rgba(0, 0, 0, 0)',
-        //     zIndex: 2,
-        //   },
-        // }}
+        className={`relative border-1 border-black bg-white  bg-cover z-1 before:content-['""'] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:z-2`}
+        style={{
+          backgroundImage: `url('${coverImage}')`,
+        }}
       >
         <div
-        // sx={{
-        //   position: 'relative',
-        //   flexDirection: 'column',
-        //   justifyContent: 'space-between',
-        //   width: '90%',
-        //   height: '100%',
-        //   padding: 30,
-        //   background:
-        //     'linear-gradient(75deg,rgb(255,255,255) 69%,rgb(66,153,225) 69%,rgb(229,62,62) 70%,transparent 0%)',
-        //   color: 'rgb(0,0,0)',
-        //   zIndex: 3,
-        //   opacity: 0.9,
-        // }}
+          className="relative flex flex-col justify-between w-9/10 min-h-screen p-10 z-3 opacity-90 bg-gradient-to-r-bottom bg-gradient-to-r-top "
+          style={{
+            background:
+              'linear-gradient(75deg,rgb(255,255,255) 69%,rgb(66,153,225) 69%,rgb(229,62,62) 70%,transparent 0%)',
+          }}
         >
           <div className="align-center">
-            <div
-            // sx={{
-            //   color: 'black',
-            //   // textTransform: 'uppercase',
-            //   fontFamily: 'body',
-            //   fontSize: 15,
-            // }}
-            >
-              rosnovsky.us
-            </div>
+            <div className="text-sx prose-lead">rosnovsky.us</div>
           </div>
 
           <div>
-            <div
-            // sx={{
-            //   marginBottom: 4,
-            //   width: '70%',
-            //   fontFamily: 'heading',
-            //   fontSize: 6,
-            //   fontWeight: '500',
-            //   lineHeight: 'normal',
-            // }}
-            >
-              {title}
-            </div>
-            <div
-            // sx={{
-            //   marginBottom: 3,
-            //   fontFamily: 'body',
-            //   fontSize: 2,
-            //   fontWeight: '300',
-            //   lineHeight: 'normal',
-            //   color: 'black',
-            // }}
-            >
-              {meta}
-            </div>
+            <div className="mb-20 w-2/3 prose font-black text-5xl">{title}</div>
+            <div className="mb-3 prose-body text-sm font-medium">{meta}</div>
           </div>
         </div>
       </div>
