@@ -40,6 +40,7 @@ const Land = ({ page }: Props) => {
               width={coverImage.asset.metadata.dimensions.width}
               height={coverImage.asset.metadata.dimensions.height}
               objectFit="cover"
+              priority
             />
           </div>
 
