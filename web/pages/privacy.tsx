@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 const Image = dynamic(() => import('next/image'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
-import sanityClient from 'lib/sanityClient';
+import sanityClient from '@lib/sanityClient';
 import type { Page } from 'index';
 import { PortableText } from '@portabletext/react';
 import { PortableTextComponents, urlFor } from '@lib/helpers';

@@ -1,9 +1,19 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withPWA = require('next-pwa');
+
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === 'development',
+  },
   images: {
     domains: ['cdn.sanity.io'],
   },
+
   reactStrictMode: true,
   async headers() {
     return [
@@ -13,15 +23,25 @@ module.exports = {
       },
     ];
   },
-};
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+      };
+    }
+
+    return config;
+  },
+});
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.plausible.io  *.youtube.com *.twitter.com *.github.com cdn.usefathom.com;
-  child-src *.youtube.com *.google.com *.twitter.com localhost rosnovsky.us *.vercel.app;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.youtube.com *.twitter.com *.github.com localhost:3000 llama.rosnovsky.us usefathom.com;
+  child-src *.youtube.com *.google.com *.twitter.com localhost:3000 rosnovsky.us *.vercel.app llama.rosnovsky.us;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src * blob: data:;
-  worker-src *.vercel.app localhost:3000 rosnovsky.us;
+  worker-src *.vercel.app localhost:3000 rosnovsky.us llama.rosnovsky.us;
   media-src  *;
   connect-src *;
   font-src *;

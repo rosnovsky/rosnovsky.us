@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
-import sanityClient from '../../lib/sanityClient';
-import { localDate, PortableTextComponents, urlFor } from 'lib/helpers';
+import sanityClient from '@lib/sanityClient';
+import { localDate, PortableTextComponents, urlFor } from '@lib/helpers';
 import type { BlogPost, PostComment } from 'index';
 import dynamic from 'next/dynamic';
 const Link = dynamic(() => import('next/link'));

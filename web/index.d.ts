@@ -64,10 +64,10 @@ export interface BlogPost extends SanityDocument {
   title: string;
   summary: Block[];
   publishedAt: string;
-  keyPhrases: string;
   coverImage: SanityImageAssetDocument;
   body: Block[];
   summaryRaw: string;
+  bodyRaw: string;
   estimatedReadingTime: number;
   categories: {
     title: string;

@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 const Stats = dynamic(() => import('@components/Stats'));
 const Footer = dynamic(() => import('@components/Footer'));
-import sanityClient from 'lib/sanityClient';
+import sanityClient from '@lib/sanityClient';
 import type { BlogPost } from 'index';
 import Containter from '@components/Container';
 

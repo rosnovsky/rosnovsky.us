@@ -7,6 +7,7 @@ import sanityClient from 'lib/sanityClient';
 import type { BlogPost } from 'index';
 import Container from '@components/Container';
 import { SWRConfig } from 'swr';
+import { generateRssFeed } from '@lib/helpers';
 
 type Props = {
   posts: BlogPost[];
@@ -89,6 +90,8 @@ export async function getStaticProps() {
   const visitorsStats = await fetch(
     'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/fathom/uniquesThisMonth'
   ).then((res) => res.json());
+
+  await generateRssFeed();
 
   return {
     props: {

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 const Image = dynamic(() => import('next/image'));
 import NewsletterForm from '@components/NewsletterForm';
-import sanityClient from 'lib/sanityClient';
+import sanityClient from '@lib/sanityClient';
 import type { Page } from 'index';
 import { PortableText } from '@portabletext/react';
 import { PortableTextComponents, urlFor } from '@lib/helpers';
@@ -41,6 +41,7 @@ const About = ({ page }: Props) => {
               height={coverImage.asset.metadata.dimensions.height}
               objectFit="cover"
               priority
+              loading="eager"
             />
           </div>
           <div className="prose prose-xl md:max-w-3xl mx-auto">

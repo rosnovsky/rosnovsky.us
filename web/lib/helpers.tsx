@@ -10,6 +10,9 @@ import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/hljs/night-owl';
 import getYouTubeId from 'get-youtube-id';
 import { useEffect, useState } from 'react';
 import type { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
+import { Feed } from 'feed';
+import type { BlogPost } from 'index';
+import fs from 'fs';
 
 export const localDate = (date: string) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -100,4 +103,70 @@ export const URLReplacer = (str) => {
     final = final.replace(url, '[removed external link]');
   });
   return final;
+};
+
+const getBlogPostsData = async (): Promise<BlogPost[]> => {
+  return await sanityClient.fetch(
+    `
+    *[_type == "post"] | order(publishedAt desc) {
+      title,
+      coverImage {
+        ...,
+        asset->
+      },
+      publishedAt,
+      slug,
+      "summaryRaw": pt::text(summary),
+      "bodyRaw": pt::text(body),
+    }
+  `
+  );
+};
+
+export const generateRssFeed = async () => {
+  const posts = await getBlogPostsData();
+  const siteURL = 'https://rosnovsky.us';
+  const date = new Date();
+  const author = {
+    name: 'Rosnovsky Park™',
+    email: 'artem@rosnovsky.us',
+    link: 'https://twitter.com/rosnovsky',
+  };
+
+  const feed = new Feed({
+    title: 'Rosnovsky Park™ Blog',
+    description: 'A blog and site of Art Rosnovsky.',
+    id: siteURL,
+    link: siteURL,
+    image: `${siteURL}/icon-512x512.png`,
+    favicon: `${siteURL}/icon-512x512.png`,
+    copyright: `All rights reserved ${date.getFullYear()}, Art Rosnovsky`,
+    updated: date,
+    generator: 'Feed for Node.js',
+    feedLinks: {
+      rss2: `${siteURL}/feed/feed.xml`,
+      json: `${siteURL}/feed/feed.json`,
+      atom: `${siteURL}/feed/atom.xml`,
+    },
+    author,
+  });
+
+  posts.forEach((post) => {
+    const url = `${siteURL}/blog/${post.slug.current}`;
+
+    feed.addItem({
+      title: post.title,
+      id: url,
+      link: url,
+      description: post.summaryRaw,
+      content: post.bodyRaw,
+      author: [author],
+      contributor: [author],
+      date: new Date(post.publishedAt),
+    });
+  });
+  fs.mkdirSync('./public/feed', { recursive: true });
+  fs.writeFileSync('./public/feed/feed.xml', feed.rss2());
+  fs.writeFileSync('./public/feed/atom.xml', feed.atom1());
+  fs.writeFileSync('./public/feed/feed.json', feed.json1());
 };
