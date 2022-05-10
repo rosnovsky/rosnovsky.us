@@ -7,7 +7,7 @@ const Cover = () => {
     <div className="relative rounded-7xl">
       <Image
         priority
-        quality={80}
+        quality={90}
         width={656}
         height={492}
         src={placeholderVideo}
@@ -16,11 +16,10 @@ const Cover = () => {
       />
       <div className="absolute -right-20 -bottom-28 w-64 h-64 -rotate-[25deg] opacity-80  md:-bottom-28 md:-right-36 md:w-64 md:h-64 lg:-bottom-28 lg:-right-36 lg:w-80 lg:h-80">
         <Image
-          className=""
           src="/static/images/stand-with-Ukraine.png"
           alt="Ukrainian flag in the shape of heart"
-          width={300}
-          height={300}
+          width={512}
+          height={512}
         />
       </div>
     </div>

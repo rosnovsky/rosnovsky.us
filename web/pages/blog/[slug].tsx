@@ -73,7 +73,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
               categories.map((category) => (
                 <div
                   key={category.title}
-                  className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-500 font-medium uppercase bg-blue-100 rounded-full shadow-sm"
+                  className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-700 font-medium uppercase bg-blue-100 rounded-full shadow-sm"
                 >
                   <Link href={`/category/${category.slug.current}`}>
                     {category.title}
