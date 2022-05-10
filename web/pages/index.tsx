@@ -53,7 +53,8 @@ export async function getStaticProps() {
       slug,
       "numberOfCharacters": length(pt::text(body)),
       "estimatedWordCount": round(length(pt::text(body)) / 5),
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+      "summaryRaw": pt::text(summary)
     }
   `
   );
