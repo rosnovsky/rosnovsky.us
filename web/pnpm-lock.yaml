@@ -17,7 +17,6 @@ specifiers:
   '@supabase/supabase-js': ^1.35.2
   '@tailwindcss/aspect-ratio': ^0.4.0
   '@tailwindcss/typography': ^0.5.2
-  '@types/isomorphic-fetch': ^0.0.36
   '@types/md5': ^2.3.2
   '@types/node': 17.0.31
   '@types/react': 18.0.8
@@ -110,7 +109,6 @@ dependencies:
 devDependencies:
   '@babel/core': 7.17.10
   '@next/bundle-analyzer': 12.1.6
-  '@types/isomorphic-fetch': 0.0.36
   '@types/md5': 2.3.2
   '@types/node': 17.0.31
   '@types/react': 18.0.8
@@ -1940,10 +1938,6 @@ packages:
   /@types/http-cache-semantics/4.0.1:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
     dev: false
-
-  /@types/isomorphic-fetch/0.0.36:
-    resolution: {integrity: sha512-ulw4d+vW1HKn4oErSmNN2HYEcHGq0N1C5exlrMM0CRqX1UUpFhGb5lwiom5j9KN3LBJJDLRmYIZz1ghm7FIzZw==}
-    dev: true
 
   /@types/json-buffer/3.0.0:
     resolution: {integrity: sha512-3YP80IxxFJB4b5tYC2SUPwkg0XQLiu0nWvhRgEatgjf+29IcWO9X1k8xRv5DGssJ/lCrjYTjQPcobJr2yWIVuQ==}
