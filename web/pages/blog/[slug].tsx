@@ -89,6 +89,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
               width={coverImage.asset.metadata.dimensions.width}
               height={coverImage.asset.metadata.dimensions.height}
               objectFit="cover"
+              priority
             />
           </div>
           <div className="prose prose-xl md:max-w-3xl mx-auto">
