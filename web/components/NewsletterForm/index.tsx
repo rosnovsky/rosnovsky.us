@@ -1,4 +1,5 @@
-import NewsletterInput from './NewsletterInput';
+import dynamic from 'next/dynamic';
+const NewsletterInput = dynamic(() => import('./NewsletterInput'));
 
 const NewsletterForm = () => {
   return (
@@ -20,26 +21,6 @@ const NewsletterForm = () => {
             </p>
             <NewsletterInput />
           </div>
-          <img
-            className="opacity-20 md:opacity-100 absolute top-0 left-0 w-28 md:w-auto"
-            src="/flex-ui-assets/elements/wave3-yellow.svg"
-            alt=""
-          />
-          <img
-            className="opacity-30 md:opacity-100 absolute right-6 top-0 w-28 md:w-auto"
-            src="/flex-ui-assets/elements/dots3-green.svg"
-            alt=""
-          />
-          <img
-            className="opacity-30 md:opacity-100 absolute right-0 bottom-0 w-28 md:w-auto"
-            src="/flex-ui-assets/elements/wave3-red.svg"
-            alt=""
-          />
-          <img
-            className="absolute left-6 bottom-0 md:bottom-0 opacity-20 md:opacity-100 w-28 md:w-auto"
-            src="/flex-ui-assets/elements/dots3-violet.svg"
-            alt=""
-          />
         </div>
       </div>
     </section>

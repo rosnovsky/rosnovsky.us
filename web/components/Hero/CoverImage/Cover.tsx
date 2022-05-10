@@ -14,7 +14,7 @@ const Cover = () => {
         placeholder="blur"
         alt="Art's portrait"
       />
-      <div className="absolute top-48 left-72 w-64 h-64 -rotate-[25deg] opacity-80 sm:top-48 sm:left-72 md:top-28 md:left-48 md:w-64 md:h-64 lg:top-48 lg:left-80 lg:w-80 lg:h-80">
+      <div className="absolute -right-20 -bottom-28 w-64 h-64 -rotate-[25deg] opacity-80  md:-bottom-28 md:-right-36 md:w-64 md:h-64 lg:-bottom-28 lg:-right-36 lg:w-80 lg:h-80">
         <Image
           className=""
           src="/static/images/stand-with-Ukraine.png"
