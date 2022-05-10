@@ -10,6 +10,11 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=optional"
             rel="stylesheet"
           />
+          <link
+            dns-prefetch
+            href="https://llama.rosnovsky.us/script.js"
+            rel="preconnect"
+          />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png"></link>
           <meta name="theme-color" content="#fff" />
