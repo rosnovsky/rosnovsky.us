@@ -2,7 +2,7 @@ import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
+const Image = dynamic(() => import('next/image'), { ssr: false });
 const SyntaxHighlighter = dynamic(
   () => import('react-syntax-highlighter/dist/cjs/light')
 );

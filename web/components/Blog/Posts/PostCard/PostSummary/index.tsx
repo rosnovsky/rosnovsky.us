@@ -1,14 +1,13 @@
-import { PortableText } from '@portabletext/react';
 import { BlogPost } from 'index';
 
 type Props = {
-  summary: BlogPost['summary'];
+  summaryRaw: BlogPost['summaryRaw'];
 };
 
-const PostSummary = ({ summary }: Props) => {
+const PostSummary = ({ summaryRaw }: Props) => {
   return (
     <div className="mb-4 text-base md:text-lg text-coolGray-400 font-medium">
-      <PortableText value={summary} />
+      <div className="prose prose-xl">{summaryRaw}</div>
     </div>
   );
 };

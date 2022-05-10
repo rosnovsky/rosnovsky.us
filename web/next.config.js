@@ -1,39 +1,44 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const withPWA = require('next-pwa');
-
-module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === 'development',
-  },
-  images: {
-    domains: ['cdn.sanity.io'],
-  },
-
-  reactStrictMode: true,
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders,
-      },
-    ];
-  },
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-      };
-    }
-
-    return config;
-  },
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
 });
+
+module.exports = withBundleAnalyzer(
+  withPWA({
+    pwa: {
+      dest: 'public',
+      register: true,
+      skipWaiting: true,
+      disable: process.env.NODE_ENV === 'development',
+    },
+    images: {
+      domains: ['cdn.sanity.io'],
+    },
+
+    reactStrictMode: true,
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+      ];
+    },
+    webpack: (config, { isServer }) => {
+      // Fixes npm packages that depend on `fs` module
+      if (!isServer) {
+        config.resolve.fallback = {
+          fs: false,
+        };
+      }
+
+      return config;
+    },
+  })
+);
 
 const ContentSecurityPolicy = `
   default-src 'self';

@@ -1,7 +1,7 @@
 import Logo from './Logo';
 import Menu from './Menu';
 
-export const NavBar = () => {
+const NavBar = () => {
   return (
     <section className="relative bg-coolGray-50 overflow-hidden">
       <div className="bg-transparent">
@@ -15,3 +15,5 @@ export const NavBar = () => {
     </section>
   );
 };
+
+export default NavBar;

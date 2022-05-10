@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
 
 const Categories = ({ categories }) => {
   return (
@@ -16,7 +17,7 @@ const Categories = ({ categories }) => {
               passHref
             >
               <li className="w-full md:w-auto px-2 cursor-pointer">
-                <div className="inline-block w-full py-2 px-4 mb-4 md:mb-0 text-sm text-coolGray-400 hover:text-blue-500 hover:bg-blue-200 font-bold rounded-md hover:shadow-sm">
+                <div className="inline-block w-full py-2 px-4 mb-4 md:mb-0 text-sm text-coolGray-400 hover:text-blue-700 hover:bg-blue-200 font-bold rounded-md hover:shadow-sm">
                   {category.title}
                 </div>
               </li>

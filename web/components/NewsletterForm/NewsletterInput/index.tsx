@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
 import { useState } from 'react';
 
 const NewsletterInput = () => {
@@ -55,8 +56,8 @@ const NewsletterInput = () => {
             onClick={(e) => handleSubscribe(e)}
             className={`inline-block py-3 px-5 w-full leading-5 text-white ${
               success
-                ? 'bg-green-500 cursor-not-allowed focus:ring-green-500'
-                : 'bg-blue-500 hover:bg-blue-600 focus:ring-blue-500'
+                ? 'bg-green-700 cursor-not-allowed focus:ring-green-500'
+                : 'bg-blue-700 hover:bg-blue-900 focus:ring-blue-500'
             } font-medium text-center focus:ring-2 focus:ring-opacity-50 border  rounded-md shadow-sm`}
             disabled={success || loading}
           >
@@ -69,8 +70,11 @@ const NewsletterInput = () => {
           {error ? `Nope (${error.error})` : null}
         </div>
         <span>Learn about how I handle your&nbsp;</span>
-        <span className="text-blue-500 hover:text-blue-600">
-          <Link href="/privacy">privacy</Link>.
+        <span className="text-blue-700 hover:text-blue-900">
+          <Link href="/privacy">
+            <span className="py-2 cursor-pointer">privacy</span>
+          </Link>
+          .
         </span>
       </span>
     </div>

@@ -1,14 +1,14 @@
-import Image from 'next/image';
+import { PortableText } from '@portabletext/react';
 import sanityClient from '@lib/sanityClient';
-import { localDate, PortableTextComponents, urlFor } from '@lib/helpers';
+import { localDate, PortableTextComponents } from '@lib/helpers';
 import type { BlogPost, PostComment } from 'index';
 import dynamic from 'next/dynamic';
+const Image = dynamic(() => import('next/image'));
 const Link = dynamic(() => import('next/link'));
 const Error = dynamic(() => import('next/error'));
-import Containter from '@components/Container';
-import type { UserProfile } from '@auth0/nextjs-auth0';
+const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
-import fetch from 'isomorphic-fetch';
+import type { UserProfile } from '@auth0/nextjs-auth0';
 import slugify from 'slugify';
 
 type Props = {
@@ -67,7 +67,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
               {title}
             </h2>
             <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
-              <div className="prose prose-xl">{summaryRaw}</div>
+              <PortableText value={summary} />
             </div>
             {categories &&
               categories.map((category) => (
@@ -83,7 +83,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
           </div>
           <div className="mb-10 mx-auto max-w-max overflow-hidden rounded-lg">
             <Image
-              src={urlFor(coverImage).url()}
+              src={coverImage.asset.url}
               placeholder="blur"
               blurDataURL={coverImage.asset.metadata.lqip}
               width={coverImage.asset.metadata.dimensions.width}
@@ -160,7 +160,7 @@ export async function getStaticProps(context) {
   );
 
   const postComments: PostComment[] = await fetch(
-    `https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/getComments?id=${slug}`
+    `https://rosnovsky.us/api/comments/getComments?id=${slug}`
   )
     .then((res) => res.json())
     .catch(() => []);
@@ -175,7 +175,7 @@ export async function getStaticProps(context) {
         month: 'long',
         year: 'numeric',
       })} | ${post.estimatedReadingTime} min read&coverImage=${
-        urlFor(post.coverImage) || null
+        post.coverImage.asset.url || null
       }`
     );
     console.info(

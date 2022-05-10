@@ -1,4 +1,3 @@
-import CoverBackground from './CoverBackground';
 import Cover from './Cover';
 
 const Video = () => {

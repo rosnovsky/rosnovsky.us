@@ -1,5 +1,6 @@
-import Footer from '@components/Footer';
-import { NavBar } from '@components/NavBar';
+import dynamic from 'next/dynamic';
+const Footer = dynamic(() => import('@components/Footer'));
+const NavBar = dynamic(() => import('@components/NavBar'));
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 

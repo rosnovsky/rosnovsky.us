@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
 

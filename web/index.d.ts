@@ -80,6 +80,7 @@ export interface Page extends SanityDocument {
   title: string;
   slug: { current: string };
   body: Block[];
+  bodyRaw: string;
   coverImage: SanityImageAssetDocument;
 }
 

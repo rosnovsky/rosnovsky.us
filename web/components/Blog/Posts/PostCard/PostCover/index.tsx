@@ -1,7 +1,8 @@
 import { BlogPost } from 'index';
 import { urlFor } from 'lib/helpers';
-import Image from 'next/image';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Image = dynamic(() => import('next/image'), { ssr: false });
+const Link = dynamic(() => import('next/link'));
 
 type Props = {
   coverImage: BlogPost['coverImage'];
@@ -15,13 +16,14 @@ const PostCover = ({ coverImage, slug }: Props) => {
         <span>
           <Image
             className="w-full rounded-lg"
-            src={urlFor(coverImage).url()}
+            src={coverImage.asset.url}
             layout="responsive"
             placeholder="blur"
             blurDataURL={coverImage.asset.metadata.lqip}
             width={600}
             height={400}
             objectFit="cover"
+            alt={slug}
           />
         </span>
       </Link>

@@ -6,7 +6,18 @@ import {
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import { Hit } from '@algolia/client-search';
 import algoliasearch from 'algoliasearch/lite';
-import React from 'react';
+
+import { parseAlgoliaHitHighlight } from '@algolia/autocomplete-preset-algolia';
+import {
+  createElement,
+  Fragment,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
 
 import '@algolia/autocomplete-theme-classic';
 
@@ -25,7 +36,7 @@ type AutocompleteItem = Hit<{
 }>;
 
 export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
-  const [autocompleteState, setAutocompleteState] = React.useState<
+  const [autocompleteState, setAutocompleteState] = useState<
     AutocompleteState<AutocompleteItem>
   >({
     collections: [],
@@ -36,7 +47,7 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
     activeItemId: null,
     status: 'idle',
   });
-  const autocomplete = React.useMemo(
+  const autocomplete = useMemo(
     () =>
       createAutocomplete<
         AutocompleteItem,
@@ -75,12 +86,12 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
       }),
     [props]
   );
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const formRef = React.useRef<HTMLFormElement>(null);
-  const panelRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const { getEnvironmentProps } = autocomplete;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!formRef.current || !panelRef.current || !inputRef.current) {
       return undefined;
     }
@@ -245,10 +256,6 @@ export function ClearIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-import { parseAlgoliaHitHighlight } from '@algolia/autocomplete-preset-algolia';
-import { createElement, Fragment } from 'react';
-import Link from 'next/link';
 
 type HighlightHitParams<THit> = {
   /**

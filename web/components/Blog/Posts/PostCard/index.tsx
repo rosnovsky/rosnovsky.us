@@ -11,7 +11,7 @@ type Props = {
 const PostCard = ({ post }: Props) => {
   const {
     title,
-    summary,
+    summaryRaw,
     coverImage,
     categories,
     publishedAt,
@@ -29,7 +29,7 @@ const PostCard = ({ post }: Props) => {
       <PostCover coverImage={coverImage} slug={slug.current} />
       <PostMetadata metadata={postMetadata} />
       <PostHeading heading={title} slug={slug.current} />
-      <PostSummary summary={summary} />
+      <PostSummary summaryRaw={summaryRaw} />
     </div>
   );
 };

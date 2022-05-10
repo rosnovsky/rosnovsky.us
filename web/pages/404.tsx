@@ -1,6 +1,7 @@
-import Container from '@components/Container';
-import NewsletterForm from '@components/NewsletterForm';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
+const Container = dynamic(() => import('@components/Container'));
+const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 
 export default function Custom404() {
   return (

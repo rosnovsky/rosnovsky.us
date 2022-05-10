@@ -1,5 +1,6 @@
 import { BlogPost } from 'index';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Link = dynamic(() => import('next/link'));
 
 type Props = {
   heading: BlogPost['title'];

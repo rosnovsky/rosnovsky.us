@@ -1,4 +1,6 @@
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const Image = dynamic(() => import('next/image'), { ssr: false });
 
 const CoverBackground = () => {
   return (
