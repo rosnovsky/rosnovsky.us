@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { PortableText } from '@portabletext/react';
 import sanityClient from '@lib/sanityClient';
 import { localDate, PortableTextComponents, urlFor } from '@lib/helpers';
 import type { BlogPost, PostComment } from 'index';
@@ -68,7 +67,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
               {title}
             </h2>
             <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
-              <PortableText value={summary} />
+              <div className="prose prose-xl">{summaryRaw}</div>
             </div>
             {categories &&
               categories.map((category) => (
@@ -195,7 +194,7 @@ export async function getStaticProps(context) {
 
     const users = uniqueUserIds.map(async (id) => {
       return await fetch(
-        `https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/userProfile?user_id=${id}`
+        `https://rosnovsky.us/api/comments/userProfile?user_id=${id}`
       )
         .then((res) => res.json())
         .catch((err) => console.error(err));
@@ -206,7 +205,6 @@ export async function getStaticProps(context) {
         postComments,
         resolvedUsers: await Promise.all(users),
       },
-      revalidate: 1,
     };
   }
 
@@ -216,7 +214,6 @@ export async function getStaticProps(context) {
       postComments,
       resolvedUsers: null,
     },
-    revalidate: 1,
   };
 }
 
