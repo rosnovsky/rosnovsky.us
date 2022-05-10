@@ -20,7 +20,7 @@ const PostMetadata = ({ metadata }: Props) => {
           return (
             <span
               key={category.slug.current}
-              className={`inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-500 hover:text-blue-600 font-medium uppercase bg-blue-100 hover:bg-blue-200 rounded-full shadow-sm`}
+              className={`inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-700 hover:text-blue-600 font-medium uppercase bg-blue-100 hover:bg-blue-200 rounded-full shadow-sm`}
             >
               <Link href={`/category/${category.slug.current}`}>
                 {category.title}
