@@ -15,8 +15,14 @@ module.exports = withBundleAnalyzer(
       disable: process.env.NODE_ENV === 'development',
     },
     images: {
-      domains: ['cdn.sanity.io'],
+      domains: [
+        'cdn.sanity.io',
+        's.gravatar.com',
+        'avatars.githubusercontent.com',
+        'lh3.googleusercontent.com',
+      ],
     },
+    swcMinify: true,
 
     reactStrictMode: true,
     async headers() {

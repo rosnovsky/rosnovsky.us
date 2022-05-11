@@ -18,7 +18,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
-    // 'plugin:storybook/recommended',
+    'next/core-web-vitals',
   ],
   rules: {
     // Include .prettierrc.js rules

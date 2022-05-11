@@ -1,5 +1,4 @@
 import { BlogPost } from 'index';
-import { urlFor } from 'lib/helpers';
 import dynamic from 'next/dynamic';
 const Image = dynamic(() => import('next/image'), { ssr: false });
 const Link = dynamic(() => import('next/link'));

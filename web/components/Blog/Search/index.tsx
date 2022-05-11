@@ -20,6 +20,7 @@ import dynamic from 'next/dynamic';
 const Link = dynamic(() => import('next/link'));
 
 import '@algolia/autocomplete-theme-classic';
+import Image from 'next/image';
 
 export const searchClient = algoliasearch(
   'MX9C0DBFF5',
@@ -182,7 +183,7 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
                                 >
                                   <div className="aa-ItemContent">
                                     <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
-                                      <img
+                                      <Image
                                         src={item.cover}
                                         alt={item.title}
                                         width="40"

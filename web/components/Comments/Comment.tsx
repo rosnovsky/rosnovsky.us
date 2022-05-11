@@ -1,13 +1,16 @@
 import { URLReplacer } from '@lib/helpers';
+import Image from 'next/image';
 
 const Comment = ({ comment, user }) => {
   return (
     <div className="flex justify-start my-10 py-5 border-b border-r">
       <div className="w-28 h-28">
-        <img
+        <Image
           src={user.data.picture as string}
           className="rounded-full"
           alt={user.data.nickname as string}
+          width={100}
+          height={100}
         />
       </div>
       <div className="text-left flex flex-col ml-5 mb-2 mt-2">

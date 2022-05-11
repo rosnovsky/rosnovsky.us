@@ -14,7 +14,7 @@ function RosnovskyPark({ Component, pageProps }: AppProps) {
   useEffect(() => {
     Fathom.load('IMKYNEVQ', {
       includedDomains: ['rosnovsky.us', '*.vercel.app', 'localhost:3000'],
-      // honorDNT: true,
+      honorDNT: true,
       url: 'https://llama.rosnovsky.us/script.js',
     });
     function onRouteChangeComplete() {
