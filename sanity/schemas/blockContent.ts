@@ -53,6 +53,18 @@ export default {
               },
             ],
           },
+          {
+            title: 'abbr',
+            name: 'abbriviation',
+            type: 'object',
+            fields: [
+              {
+                title: 'Abbriviation',
+                name: 'definition',
+                type: 'text',
+              }
+            ]
+          }
         ],
       },
     },
@@ -66,6 +78,9 @@ export default {
     {type: 'code'},
     {
       type: 'youtube'
+    },
+    {
+      type: 'metacard'
     }
   ],
 }

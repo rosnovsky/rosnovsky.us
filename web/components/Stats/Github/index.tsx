@@ -2,7 +2,7 @@ import fetcher from '@lib/fetcher';
 import useSWR from 'swr';
 
 const Github = () => {
-  const { data, error } = useSWR('/api/github', fetcher);
+  const { data, error } = useSWR('/api/stats/github', fetcher);
   if (error) {
     console.error(error);
   }

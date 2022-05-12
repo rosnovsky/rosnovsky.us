@@ -13,6 +13,7 @@ import type { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 import { Feed } from 'feed';
 import type { BlogPost } from 'index';
 import fs from 'fs';
+import Metacard from '@components/Metacard';
 
 export const localDate = (date: string) => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -55,6 +56,7 @@ export const PortableTextComponents = {
                   layout="responsive"
                   placeholder="blur"
                   blurDataURL={asset.metadata.lqip}
+                  alt=""
                 />
                 <div className="w-full mt-3 text-gray-700 mb-5 text-center text-sm">
                   {asset?.description}
@@ -89,8 +91,28 @@ export const PortableTextComponents = {
         </div>
       );
     },
+    metacard: ({
+      value,
+    }: {
+      value: { url: string; size?: string; media?: string };
+    }) => {
+      return (
+        <div className="flex w-full mx-auto justify-center">
+          <Metacard {...value} />
+        </div>
+      );
+    },
   },
-  marks: {},
+  marks: {
+    abbriviation: ({ value, children }) => {
+      console.log(value);
+      return (
+        <abbr className="cursor-wait" title={value.definition}>
+          {children}
+        </abbr>
+      );
+    },
+  },
 };
 
 export const URLReplacer = (str) => {

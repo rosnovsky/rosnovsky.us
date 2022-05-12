@@ -2,7 +2,7 @@ import fetcher from '@lib/fetcher';
 import useSWR from 'swr';
 
 const Subscribers = () => {
-  const { data, error } = useSWR('/api/subscribers', fetcher);
+  const { data, error } = useSWR('/api/stats/subscribers', fetcher);
   if (error) {
     console.error(error);
   }

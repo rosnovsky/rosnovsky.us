@@ -8,9 +8,21 @@ import logo from 'metascraper-logo';
 import publisher from 'metascraper-publisher';
 import got from 'got';
 import { VercelRequest, VercelResponse } from '@vercel/node';
+import { SiteMetadata } from 'index';
+import NextCors from 'nextjs-cors';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const targetUrl = req.query.url as string;
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 100, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
 
   try {
     if (targetUrl === undefined || targetUrl === '')
@@ -27,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       clearbit(),
     ]);
 
-    const metadata = await configuredMetascraper({ html, url });
+    const metadata: SiteMetadata = await configuredMetascraper({ html, url });
     res.status(200).send({ metadata });
   } catch (error: any) {
     console.error(error);
