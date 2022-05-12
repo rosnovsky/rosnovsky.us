@@ -1,9 +1,8 @@
-// @ts-expect-error
-import React, { useCallback, useMemo, useState } from 'react'
+import { createContext, useCallback, useMemo, useState } from 'react';
 
-const initialState = {}
+const initialState = {};
 
-export const GlobalContext = React.createContext(initialState)
+export const GlobalContext = createContext(initialState);
 
 const GlobalState = ({
   autoPlay,
@@ -16,12 +15,13 @@ const GlobalState = ({
   size,
   ...rest
 }) => {
-  const [state, setState] = useState(initialState)
+  const [state, setState] = useState(initialState);
 
   const updateState = useCallback(
-    newState => setState(currentState => ({ ...currentState, ...newState })),
+    (newState) =>
+      setState((currentState) => ({ ...currentState, ...newState })),
     []
-  )
+  );
 
   const props = useMemo(
     () => ({
@@ -31,25 +31,25 @@ const GlobalState = ({
       mediaRef,
       muted,
       playsInline,
-      size
+      size,
     }),
     [autoPlay, controls, loop, mediaRef, muted, playsInline, size]
-  )
+  );
 
   const values = useMemo(
     () => ({
       props,
       state,
-      updateState
+      updateState,
     }),
     [props, state, updateState]
-  )
+  );
 
   return (
     <GlobalContext.Provider value={values}>
       {children(rest)}
     </GlobalContext.Provider>
-  )
-}
+  );
+};
 
-export default GlobalState
+export default GlobalState;

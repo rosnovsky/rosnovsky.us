@@ -96,6 +96,12 @@ export const PortableTextComponents = {
     }: {
       value: { url: string; size?: string; media?: string };
     }) => {
+      const isSSR = typeof window === 'undefined';
+      if (isSSR) {
+        console.log(isSSR, 'no metacard');
+        return null;
+      }
+      console.log(isSSR, 'metacard', value);
       return (
         <div className="flex w-full mx-auto justify-center">
           <Metacard {...value} />
@@ -104,11 +110,10 @@ export const PortableTextComponents = {
     },
   },
   marks: {
-    abbriviation: ({ value, children }) => {
-      console.log(value);
+    abbriviation: ({ value, text }: { value?: any; text?: any }) => {
       return (
         <abbr className="cursor-wait" title={value.definition}>
-          {children}
+          {text}
         </abbr>
       );
     },

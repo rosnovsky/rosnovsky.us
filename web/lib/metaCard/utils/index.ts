@@ -1,41 +1,39 @@
-import isLocalhostUrl from 'is-localhost-url'
-import { any } from 'prop-types'
-import { css } from 'styled-components'
+import isLocalhostUrl from 'is-localhost-url';
+import { css } from 'styled-components';
 
-type URLOrObject<T extends Record<string,string> | string> = T extends string
+type URLOrObject<T extends Record<string, string> | string> = T extends string
   ? string
-  : Record<string,string>;
+  : Record<string, string>;
 type ImageUrl = URLOrObject<Record<string, string> | string>;
 
-export const isSSR = typeof window === 'undefined'
+export const isSSR = typeof window === 'undefined';
 
-export const castArray = value => [].concat(value)
+export const castArray = (value) => [].concat(value);
 
 export const getPreferredMedia = (data, mediaProps) => {
-  let prefer
+  let prefer;
 
   for (let index = 0; index < mediaProps.length; index++) {
-    const key = mediaProps[index]
-    const value = data[key]
+    const key = mediaProps[index];
+    const value = data[key];
     if (!isNil(value)) {
-      prefer = key
-      break
+      prefer = key;
+      break;
     }
   }
 
-  return prefer
-}
+  return prefer;
+};
 
-export const isFunction = fn => typeof fn === 'function'
+export const isFunction = (fn) => typeof fn === 'function';
 
-export const isNil = value => value == null
+export const isNil = (value) => value == null;
 
-export const getUrlPath = (data: ImageUrl): string => (typeof data !== 'string' 
-      ? data.url
-      : data)
+export const getUrlPath = (data: ImageUrl): string =>
+  typeof data !== 'string' ? data.url : data;
 
 export const someProp = (data, props) =>
-  data[props.find(prop => !isNil(data[prop]))]
+  data[props.find((prop) => !isNil(data[prop]))];
 
 export const media = {
   mobile: (...args) => css`
@@ -47,34 +45,33 @@ export const media = {
     @media (min-width: 48em) {
       ${css(...args)};
     }
-  `
-}
+  `,
+};
 
-export const isLarge = cardSize => cardSize === 'large'
+export const isLarge = (cardSize) => cardSize === 'large';
 
-export const isSmall = cardSize => cardSize === 'small'
+export const isSmall = (cardSize) => cardSize === 'small';
 
-export const imageProxy = url =>
+export const imageProxy = (url) =>
   isLocalhostUrl(url)
     ? url
-    : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`
-
+    : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`;
 
 export const clampNumber = (num, min, max) => {
   switch (true) {
     case num <= min:
-      return min
+      return min;
     case num >= max:
-      return max
+      return max;
     default:
-      return num
+      return num;
   }
-}
+};
 
-const BASE_CLASSNAME = 'microlink_card'
-const CONTENT_BASE_CLASSNAME = `${BASE_CLASSNAME}__content`
-const MEDIA_BASE_CLASSNAME = `${BASE_CLASSNAME}__media`
-const CONTROLS_BASE_CLASSNAME = `${MEDIA_BASE_CLASSNAME}__controls`
+const BASE_CLASSNAME = 'microlink_card';
+const CONTENT_BASE_CLASSNAME = `${BASE_CLASSNAME}__content`;
+const MEDIA_BASE_CLASSNAME = `${BASE_CLASSNAME}__media`;
+const CONTROLS_BASE_CLASSNAME = `${MEDIA_BASE_CLASSNAME}__controls`;
 
 export const classNames = {
   main: BASE_CLASSNAME,
@@ -98,5 +95,5 @@ export const classNames = {
   progressBar: `${CONTROLS_BASE_CLASSNAME}_progress_bar`,
   progressTime: `${CONTROLS_BASE_CLASSNAME}_progress_time`,
   spinner: `${CONTROLS_BASE_CLASSNAME}_spinner`,
-  iframe: `${BASE_CLASSNAME}__iframe`
-}
+  iframe: `${BASE_CLASSNAME}__iframe`,
+};

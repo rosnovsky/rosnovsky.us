@@ -1,17 +1,16 @@
 /* eslint-disable multiline-ternary */
-// @ts-expect-error
-import React, { useContext } from 'react'
-import styled from 'styled-components'
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { emptyStateAnimation, emptyStateImageAnimation } from './CardAnimation'
-import CardImage from './CardMedia/Image'
-import { Content } from './CardContent'
-import { GlobalContext } from '../context/GlobalState'
-import { isLarge, isSmall } from '../utils'
+import { emptyStateAnimation, emptyStateImageAnimation } from './CardAnimation';
+import CardImage from './CardMedia/Image';
+import { Content } from './CardContent';
+import { GlobalContext } from '../context/GlobalState';
+import { isLarge, isSmall } from '../utils';
 
 const MediaEmpty = styled(CardImage)`
   ${emptyStateImageAnimation};
-`
+`;
 
 const HeaderEmpty = styled('span')`
   opacity: 0.8;
@@ -28,7 +27,7 @@ const HeaderEmpty = styled('span')`
     `
     height: 15px;
   `};
-`
+`;
 
 const DescriptionEmpty = styled('span')`
   opacity: 0.8;
@@ -38,7 +37,7 @@ const DescriptionEmpty = styled('span')`
   position: relative;
   ${emptyStateAnimation};
   animation-delay: 0.125s;
-`
+`;
 
 const FooterEmpty = styled('span')`
   opacity: 0.8;
@@ -52,13 +51,14 @@ const FooterEmpty = styled('span')`
     `
     height: 10px;
   `};
-`
+`;
 
 const CardEmptyState = () => {
   const {
-    props: { size }
-  } = useContext(GlobalContext)
-  const isSmallCard = isSmall(size)
+    // @ts-expect-error ???
+    props: { size },
+  } = useContext(GlobalContext);
+  const isSmallCard = isSmall(size);
 
   return (
     <>
@@ -77,7 +77,7 @@ const CardEmptyState = () => {
         <FooterEmpty />
       </Content>
     </>
-  )
-}
+  );
+};
 
-export default CardEmptyState
+export default CardEmptyState;

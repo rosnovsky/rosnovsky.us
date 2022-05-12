@@ -7,7 +7,6 @@ import clearbit from 'metascraper-clearbit';
 import logo from 'metascraper-logo';
 import publisher from 'metascraper-publisher';
 import got from 'got';
-import { VercelRequest, VercelResponse } from '@vercel/node';
 import { SiteMetadata } from 'index';
 import NextCors from 'nextjs-cors';
 import { NextApiRequest, NextApiResponse } from 'next';

@@ -1,11 +1,11 @@
-import { createElement, forwardRef, useContext } from 'react'
-import styled, { css } from 'styled-components'
+import { createElement, forwardRef, useContext } from 'react';
+import styled, { css } from 'styled-components';
 
-import { GlobalContext } from '../context/GlobalState'
-import { font, animation, speed } from '../theme'
-import { media, isLarge } from '../utils'
+import { GlobalContext } from '../context/GlobalState';
+import { font, animation, speed } from '../theme';
+import { media, isLarge } from '../utils';
 
-const HEIGHT = '382px'
+const HEIGHT = '382px';
 
 const contrastStyle = ({ backgroundColor, color }) => css`
   background-color: ${backgroundColor};
@@ -20,7 +20,7 @@ const contrastStyle = ({ backgroundColor, color }) => css`
   &:hover {
     filter: brightness(90%);
   }
-`
+`;
 
 const largeStyle = css`
   flex-direction: column;
@@ -28,20 +28,20 @@ const largeStyle = css`
   ${media.mobile`
     height: calc(${HEIGHT} * 7/9);
   `};
-`
+`;
 
 const hoverStyle = css`
   transition-property: background, border-color;
   will-change: background, border-color;
   &:hover {
     background-color: var(--microlink-hover-background-color, #f5f8fa);
-    border-color: var(--microlink-hover-border-color, #8899A680);
+    border-color: var(--microlink-hover-border-color, #8899a680);
   }
-`
+`;
 
 const rtlStyle = ({ cardSize }) => css`
   flex-direction: ${isLarge(cardSize) ? 'column-reverse' : 'row-reverse'};
-`
+`;
 
 const baseStyle = css(
   () => `
@@ -65,7 +65,7 @@ const baseStyle = css(
     outline: 0;
   }
 `
-)
+);
 
 const Element = styled('a')(
   baseStyle,
@@ -76,29 +76,34 @@ const Element = styled('a')(
     contrast && color && backgroundColor && contrastStyle,
   ({ backgroundColor, color, contrast }) =>
     contrast && (!color || !backgroundColor) && hoverStyle
-)
-
+);
+// @ts-expect-error ???
+// eslint-disable-next-line react/display-name
 const CardWrap = forwardRef(({ href, rel, target, ...restProps }, ref) => {
   const {
+    // @ts-expect-error ???
     state: { backgroundColor, color, title },
-    props: { size: cardSize }
-  } = useContext(GlobalContext)
+    // @ts-expect-error ???
+    props: { size: cardSize },
+  } = useContext(GlobalContext);
 
   return createElement(Element, {
+    // @ts-expect-error ???
     ...(restProps.as === 'a' ? { href, rel, target } : undefined),
     ...restProps,
     backgroundColor,
     cardSize,
     color,
     ref,
-    title
-  })
-})
+    title,
+  });
+});
 
 CardWrap.defaultProps = {
+  // @ts-expect-error ???
   as: 'a',
   rel: 'noopener noreferrer',
-  target: '_blank'
-}
+  target: '_blank',
+};
 
-export default CardWrap
+export default CardWrap;

@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components'
-import { transition } from '../../theme'
+import styled, { css } from 'styled-components';
+import { transition } from '../../theme';
 
 export const ImageLoadCatcher = styled('img')`
   height: 1px;
   width: 1px;
   position: absolute;
   z-index: -1;
-`
+`;
 
 export const loadingOverlay = css`
   &::after {
@@ -22,8 +22,8 @@ export const loadingOverlay = css`
     will-change: opacity;
 
     ${({ isLoading }) => css`
-      opacity: ${(isLoading ? 1 : 0)};
-      visibility: ${(isLoading ? 'visible' : 'hidden')};
+      opacity: ${isLoading ? 1 : 0};
+      visibility: ${isLoading ? 'visible' : 'hidden'};
     `};
   }
-`
+`;

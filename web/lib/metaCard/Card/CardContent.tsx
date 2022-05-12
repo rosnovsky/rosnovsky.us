@@ -1,21 +1,18 @@
-// @ts-expect-error
-import React, { useCallback, useMemo, useContext } from 'react'
-import styled, { css } from 'styled-components'
-import CardText from './CardText'
+import { useMemo, useContext } from 'react';
+import styled, { css } from 'styled-components';
+import CardText from './CardText';
 
-import { transition } from '../theme'
-import { classNames, media, isLarge, isSmall, isNil } from '../utils'
-import { GlobalContext } from '../context/GlobalState'
+import { transition } from '../theme';
+import { classNames, media, isLarge, isSmall, isNil } from '../utils';
+import { GlobalContext } from '../context/GlobalState';
 
-const REGEX_STRIP_WWW = /^www\./
-const BADGE_WIDTH = '16px'
-const BADGE_HEIGHT = '12px'
+const REGEX_STRIP_WWW = /^www\./;
 
-const getHostname = href => {
-  if (isNil(href)) return ''
-  const { hostname } = new URL(href)
-  return hostname.replace(REGEX_STRIP_WWW, '')
-}
+const getHostname = (href) => {
+  if (isNil(href)) return '';
+  const { hostname } = new URL(href);
+  return hostname.replace(REGEX_STRIP_WWW, '');
+};
 
 const mobileDescriptionStyle = css`
   ${media.mobile`
@@ -25,7 +22,7 @@ const mobileDescriptionStyle = css`
       white-space: nowrap;
     }
   `};
-`
+`;
 
 export const Content = styled('div').attrs({ className: classNames.content })`
   display: flex;
@@ -38,7 +35,7 @@ export const Content = styled('div').attrs({ className: classNames.content })`
     flex-direction: ${!isSmall(cardSize) ? 'column' : 'row'};
     align-items: ${!isSmall(cardSize) ? 'stretch' : 'center'};
   `};
-`
+`;
 
 const Header = styled('header').attrs({ className: classNames.title })`
   text-align: left;
@@ -50,12 +47,12 @@ const Header = styled('header').attrs({ className: classNames.title })`
     font-size: ${!isSmall(cardSize) ? '16px' : '15px'};
 
     ${isSmall(cardSize) &&
-      css`
-        min-width: 0;
-        padding-right: 14px;
-      `}
+    css`
+      min-width: 0;
+      padding-right: 14px;
+    `}
   `}
-`
+`;
 
 const Description = styled('div').attrs({ className: classNames.description })`
   text-align: left;
@@ -65,7 +62,7 @@ const Description = styled('div').attrs({ className: classNames.description })`
   line-height: 18px;
   font-weight: normal;
   ${({ cardSize }) => !isLarge(cardSize) && mobileDescriptionStyle};
-`
+`;
 
 const Footer = styled('footer').attrs({ className: classNames.url })`
   display: flex;
@@ -79,7 +76,7 @@ const Footer = styled('footer').attrs({ className: classNames.url })`
     font-size: ${!isSmall(cardSize) ? '12px' : '10px'};
     ${!isSmall(cardSize) && 'width: 100%;'}
   `};
-`
+`;
 
 const Author = styled(CardText)`
   opacity: 0.75;
@@ -89,15 +86,17 @@ const Author = styled(CardText)`
   .${classNames.main}:hover & {
     opacity: 1;
   }
-`
+`;
 
 const CardContent = () => {
   const {
+    // @ts-expect-error ???
     state: { description, title, url },
-    props: { size }
-  } = useContext(GlobalContext)
-  const isSmallCard = isSmall(size)
-  const formattedUrl = useMemo(() => getHostname(url), [url])
+    // @ts-expect-error ???
+    props: { size },
+  } = useContext(GlobalContext);
+  const isSmallCard = isSmall(size);
+  const formattedUrl = useMemo(() => getHostname(url), [url]);
 
   return (
     <Content cardSize={size}>
@@ -113,7 +112,7 @@ const CardContent = () => {
         <Author useNanoClamp={false}>{formattedUrl}</Author>
       </Footer>
     </Content>
-  )
-}
+  );
+};
 
-export default CardContent
+export default CardContent;

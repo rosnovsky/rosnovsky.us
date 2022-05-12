@@ -18,7 +18,3 @@ const Metacard = ({ url, size, media }: Props) => {
 };
 
 export default Metacard;
-
-const MetacardPlaceholder = () => {
-  return <div>Loading...</div>;
-};

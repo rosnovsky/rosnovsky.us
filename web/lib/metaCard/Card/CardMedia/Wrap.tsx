@@ -1,10 +1,9 @@
-// @ts-expect-error
-import React, { useContext } from 'react'
-import styled, { css } from 'styled-components'
+import { useContext } from 'react';
+import styled, { css } from 'styled-components';
 
-import { GlobalContext } from '../../context/GlobalState'
-import { media } from '../../utils'
-import { loadingOverlay } from './loader'
+import { GlobalContext } from '../../context/GlobalState';
+import { media } from '../../utils';
+import { loadingOverlay } from './loader';
 
 const mediaSizeStyles = {
   small: css`
@@ -23,8 +22,8 @@ const mediaSizeStyles = {
     &::before {
       padding-bottom: 0;
     }
-  `
-}
+  `,
+};
 
 const StyledWrap = styled('div')`
   background: transparent no-repeat center center / cover;
@@ -42,14 +41,15 @@ const StyledWrap = styled('div')`
   ${({ cardSize }) => mediaSizeStyles[cardSize]};
 
   ${loadingOverlay};
-`
+`;
 
-const Wrap = props => {
+const Wrap = (props) => {
   const {
-    props: { size }
-  } = useContext(GlobalContext)
+    // @ts-expect-error ???
+    props: { size },
+  } = useContext(GlobalContext);
 
-  return <StyledWrap cardSize={size} {...props} />
-}
+  return <StyledWrap cardSize={size} {...props} />;
+};
 
-export default Wrap
+export default Wrap;

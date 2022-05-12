@@ -1,85 +1,57 @@
 /* eslint-disable multiline-ternary */
-// @ts-expect-error
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  useContext
-} from 'react'
+import { useState, useEffect, useCallback, useMemo, useContext } from 'react';
 
-import { CardWrap, CardMedia, CardContent, CardEmpty } from './Card'
-import GlobalState, { GlobalContext } from './context/GlobalState'
+import { CardWrap, CardMedia, CardContent, CardEmpty } from './Card';
+import GlobalState, { GlobalContext } from './context/GlobalState';
 import {
   castArray,
   classNames,
   getUrlPath,
-  getPreferredMedia,
   imageProxy,
   isFunction,
   isSSR,
-  someProp
-} from './utils'
+} from './utils';
 
-
-interface SiteMetadata {
-  title?: string;
-  url: string;
-  publisher?: string;
-  image?: string;
-  logo?: string;
-  description?: string;
-}
-
-const Card = props => {
+const Card = (props) => {
   const {
     className,
-    fetchData,
-    lazy,
     loading,
     media: mediaProp,
     setData,
     url,
     ...restProps
-  } = props
+  } = props;
 
-  const mediaProps = useMemo(() => castArray(mediaProp), [mediaProp])
-  const { updateState } = useContext(GlobalContext)
-  const [loadingState, setLoading] = useState(true)
-  const [iframeMedia, setIframeMedia] = useState(null)
-  const [isError, setIsError] = useState(false)
-  const isLoadingUndefined = useMemo(() => loading === undefined, [loading])
-  const apiUrl = `https://rosnovskyus-git-metacards-rosnovsky.vercel.app/api/meta?url=${url}`
+  const mediaProps = useMemo(() => castArray(mediaProp), [mediaProp]);
+  // @ts-expect-error ???
+  const { updateState } = useContext(GlobalContext);
+  const [loadingState, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const isLoadingUndefined = useMemo(() => loading === undefined, [loading]);
+  const apiUrl = `https://rosnovsky.us/api/meta?url=${url}`;
 
   const toFetchData = useCallback(() => {
     const fetcher = async () => {
-      setLoading(true)
-      const data = await fetch(`http://localhost:3000/api/meta?url=${url}`)
-        .then(res => res.json())
-      return mergeData(await data)
-    }
-    fetcher()
-  }, [url])
+      setLoading(true);
+      const data = await fetch(apiUrl).then((res) => res.json());
+      return mergeData(await data);
+    };
+    fetcher();
+  }, [url]);
 
   const mergeData = useCallback(
-    fetchedData => {
+    (fetchedData) => {
       const payload = isFunction(setData)
         ? setData(fetchedData)
-        : { ...fetchedData, ...setData }
+        : { ...fetchedData, ...setData };
 
-      const {
-        title,
-        description,
-        url,
-        image,
-        logo,
-      } = payload.metadata
+      const { title, description, url, image, logo } = payload.metadata;
 
-      const mediaFallback = image || logo || {}
-      let media = mediaFallback
+      const mediaFallback = image || logo || {};
+      const media = mediaFallback;
 
-      const imageUrl = getUrlPath(media)
-      const { color, background_color: backgroundColor } = media
+      const imageUrl = getUrlPath(media);
+      const { color, background_color: backgroundColor } = media;
 
       updateState({
         url,
@@ -87,26 +59,26 @@ const Card = props => {
         title,
         description,
         imageUrl,
-        backgroundColor
-      })
+        backgroundColor,
+      });
 
-      setLoading(false)
+      setLoading(false);
     },
     [mediaProps, setData]
-  )
+  );
 
-  useEffect(toFetchData, [url, setData])
+  useEffect(toFetchData, [url, setData]);
 
-  const isLoading = isLoadingUndefined ? loadingState : loading
+  const isLoading = isLoadingUndefined ? loadingState : loading;
 
   if (isError) {
     return (
       <a href={url} {...restProps}>
         {url}
       </a>
-    )
+    );
   }
-
+  if (isSSR) return null;
   return (
     <CardWrap
       className={`${classNames.main} ${className}`.trim()}
@@ -123,13 +95,15 @@ const Card = props => {
         </>
       )}
     </CardWrap>
-  )
-}
+  );
+};
 
-const Microlink = props => (
-  <GlobalState {...props}>{otherProps => <Card {...otherProps} />}</GlobalState>
-)
+const Microlink = (props) => (
+  <GlobalState {...props}>
+    {(otherProps) => <Card {...otherProps} />}
+  </GlobalState>
+);
 
-export { imageProxy }
+export { imageProxy };
 
-export default Microlink
+export default Microlink;

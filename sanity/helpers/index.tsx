@@ -49,12 +49,12 @@ const Card = props => {
   const [iframeMedia, setIframeMedia] = useState(null)
   const [isError, setIsError] = useState(false)
   const isLoadingUndefined = useMemo(() => loading === undefined, [loading])
-  const apiUrl = `https://rosnovskyus-git-metacards-rosnovsky.vercel.app/api/meta?url=${url}`
+  const apiUrl = `https://rosnovsky.us/api/meta?url=${url}`
 
   const toFetchData = useCallback(() => {
     const fetcher = async () => {
       setLoading(true)
-      const data = await fetch(`http://localhost:3000/api/meta?url=${url}`)
+      const data = await fetch(apiUrl)
         .then(res => res.json())
       return mergeData(await data)
     }

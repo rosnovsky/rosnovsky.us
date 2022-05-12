@@ -1,15 +1,13 @@
 /* eslint-disable multiline-ternary */
-// @ts-expect-error
-import React from 'react'
-import styled, { css } from 'styled-components'
-import NanoClamp from 'nanoclamp'
+import styled, { css } from 'styled-components';
+import NanoClamp from 'nanoclamp';
 
-import { isNil } from '../utils'
+import { isNil } from '../utils';
 
 const Clamp = ({ children, className, lines }) =>
   isNil(children) ? null : (
-    <NanoClamp className={className} lines={lines} text={children} is='p' />
-  )
+    <NanoClamp className={className} lines={lines} text={children} is="p" />
+  );
 
 const StyledClamp = styled(Clamp)`
   &&& {
@@ -27,18 +25,18 @@ const StyledClamp = styled(Clamp)`
         text-overflow: ellipsis;
       `}
   }
-`
+`;
 
 const CardText = ({ useNanoClamp = true, children, ...props }) => {
   const textProps = useNanoClamp
     ? props
-    : { ...props, as: 'p', title: children }
+    : { ...props, as: 'p', title: children };
 
   return (
     <StyledClamp useNanoClamp={useNanoClamp} {...textProps}>
       {children}
     </StyledClamp>
-  )
-}
+  );
+};
 
-export default CardText
+export default CardText;
