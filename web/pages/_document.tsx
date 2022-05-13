@@ -6,9 +6,8 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link
-            dns-prefetch="true"
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=optional"
-            rel="stylesheet"
+            rel="dns-prefetch"
           />
           <link
             dns-prefetch

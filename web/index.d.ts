@@ -191,3 +191,12 @@ export interface Status {
     };
   };
 }
+
+interface SiteMetadata {
+  title?: string;
+  url: string;
+  publisher?: string;
+  image?: string;
+  logo?: string;
+  description?: string;
+}
