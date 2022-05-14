@@ -1,6 +1,5 @@
 /* eslint-disable multiline-ternary */
 
-import Link from 'next/link';
 import React, {
   useState,
   useEffect,
@@ -148,9 +147,9 @@ const Card = (props) => {
 
   if (isError) {
     return (
-      <Link href={url} {...restProps}>
+      <a href={url} {...restProps}>
         {url}
-      </Link>
+      </a>
     );
   }
 

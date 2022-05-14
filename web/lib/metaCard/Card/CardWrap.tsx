@@ -89,8 +89,7 @@ const CardWrap = forwardRef(({ href, rel, target, ...restProps }, ref) => {
   } = useContext(GlobalContext);
 
   return createElement(Element, {
-    // @ts-expect-error ???
-    ...(restProps.as === 'a' ? { href, rel, target } : undefined),
+    ...{ href, rel, target },
     ...restProps,
     backgroundColor,
     cardSize,
