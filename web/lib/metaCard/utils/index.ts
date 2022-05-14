@@ -27,9 +27,11 @@ export const getPreferredMedia = (data, mediaProps) => {
 
 export const isFunction = (fn) => typeof fn === 'function';
 
+export const isObject = (obj) => typeof obj === 'object';
+
 export const isNil = (value) => value == null;
 
-export const getUrlPath = (data: ImageUrl): string =>
+export const getUrlPath = (data: ImageUrl) =>
   typeof data !== 'string' ? data.url : data;
 
 export const someProp = (data, props) =>
@@ -48,14 +50,32 @@ export const media = {
   `,
 };
 
+export const getApiUrl = (url) => `https://rosnovsky.us/api/meta?url=${url}`;
+
 export const isLarge = (cardSize) => cardSize === 'large';
 
 export const isSmall = (cardSize) => cardSize === 'small';
 
-export const imageProxy = (url) =>
-  isLocalhostUrl(url)
+export const imageProxy = (url) => {
+  console.log(url);
+  return isLocalhostUrl(url)
     ? url
     : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`;
+};
+
+export const isLazySupported = !isSSR && 'IntersectionObserver' in window;
+
+export const formatSeconds = (secs) => {
+  const secsToNum = parseInt(secs, 10);
+  const hours = Math.floor(secsToNum / 3600);
+  const minutes = Math.floor(secsToNum / 60) % 60;
+  const seconds = secsToNum % 60;
+
+  return [hours, minutes, seconds]
+    .filter((v, i) => v > 0 || i > 0)
+    .map((v) => (v >= 10 ? v : `0${v}`))
+    .join(':');
+};
 
 export const clampNumber = (num, min, max) => {
   switch (true) {

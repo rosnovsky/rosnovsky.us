@@ -1,4 +1,4 @@
-import Microlink from '@lib/metaCard';
+import MetaCard from '@lib/metaCard';
 
 type Props = {
   url: string;
@@ -8,7 +8,7 @@ type Props = {
 
 const Metacard = ({ url, size, media }: Props) => {
   return (
-    <Microlink
+    <MetaCard
       url={url}
       fetchData
       size={size || 'normal'}

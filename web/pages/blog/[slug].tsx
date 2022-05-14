@@ -3,8 +3,8 @@ import sanityClient from '@lib/sanityClient';
 import { localDate, PortableTextComponents } from '@lib/helpers';
 import type { BlogPost, PostComment } from 'index';
 import dynamic from 'next/dynamic';
-const Image = dynamic(() => import('next/image'));
-const Link = dynamic(() => import('next/link'));
+const Image = dynamic(() => import('next/image'), { ssr: true });
+const Link = dynamic(() => import('next/link'), { ssr: true });
 const Error = dynamic(() => import('next/error'));
 const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
@@ -149,8 +149,8 @@ export async function getStaticProps(context) {
         summary
       },
       body[]{
-        asset->{...},
-        ...
+        ...,
+        asset->{...}
       },
       "summaryRaw": pt::text(summary),
       "numberOfCharacters": length(pt::text(body)),

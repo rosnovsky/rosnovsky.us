@@ -2,7 +2,7 @@ import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import dynamic from 'next/dynamic';
-const Image = dynamic(() => import('next/image'), { ssr: false });
+const Image = dynamic(() => import('next/image'), { ssr: true });
 const SyntaxHighlighter = dynamic(
   () => import('react-syntax-highlighter/dist/cjs/light')
 );
@@ -96,14 +96,9 @@ export const PortableTextComponents = {
     }: {
       value: { url: string; size?: string; media?: string };
     }) => {
-      const isSSR = typeof window === 'undefined';
-      if (isSSR) {
-        console.log(isSSR, 'no metacard');
-        return null;
-      }
-      console.log(isSSR, 'metacard', value);
+      console.log(value);
       return (
-        <div className="flex w-full mx-auto justify-center">
+        <div className="min-w-full mx-auto my-3 justify-center">
           <Metacard {...value} />
         </div>
       );

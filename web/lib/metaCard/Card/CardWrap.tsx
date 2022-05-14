@@ -45,7 +45,7 @@ const rtlStyle = ({ cardSize }) => css`
 
 const baseStyle = css(
   () => `
-  max-width: var(--microlink-max-width, 500px);
+  min-width: var(--microlink-max-width, 500px);
   background-color: var(--microlink-background-color, #fff);
   border-width: var(--microlink-border-width, 1px);
   border-style: var(--microlink-border-style, solid);
@@ -57,6 +57,7 @@ const baseStyle = css(
   text-decoration: none;
   opacity: 1;
   position: relative;
+  margin: 0 auto;
   transition-duration: ${speed.medium};
   transition-timing-function: ${animation.medium};
 
@@ -98,12 +99,5 @@ const CardWrap = forwardRef(({ href, rel, target, ...restProps }, ref) => {
     title,
   });
 });
-
-CardWrap.defaultProps = {
-  // @ts-expect-error ???
-  as: 'a',
-  rel: 'noopener noreferrer',
-  target: '_blank',
-};
 
 export default CardWrap;
