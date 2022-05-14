@@ -45,7 +45,8 @@ const rtlStyle = ({ cardSize }) => css`
 
 const baseStyle = css(
   () => `
-  min-width: var(--microlink-max-width, 500px);
+  min-width: var(--microlink-max-width, 16rem);
+  max-width: var(--microlink-max-width, 100%);
   background-color: var(--microlink-background-color, #fff);
   border-width: var(--microlink-border-width, 1px);
   border-style: var(--microlink-border-style, solid);
