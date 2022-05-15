@@ -75,20 +75,20 @@ export async function getStaticProps() {
   `
   );
 
-  const githubStats = await fetch(
-    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/github'
-  ).then((res) => res.json());
+  const githubStats = await fetch('https://rosnovsky.us/api/stats/github').then(
+    (res) => res.json()
+  );
 
   const commentsStats = await fetch(
-    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/comments/getCommentsCount'
+    'https://rosnovsky.us/api/comments/getCommentsCount'
   ).then((res) => res.json());
 
   const subscribersStats = await fetch(
-    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/subscribers'
+    'https://rosnovsky.us/api/stats/subscribers'
   ).then((res) => res.json());
 
   const visitorsStats = await fetch(
-    'https://rosnovskyus-git-back-to-sanity-rosnovsky.vercel.app/api/fathom/uniquesThisMonth'
+    'https://rosnovsky.us/api/stats/uniquesThisMonth'
   ).then((res) => res.json());
 
   return {

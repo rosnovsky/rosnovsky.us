@@ -10,18 +10,16 @@ const Categories = ({ categories }) => {
       {categories &&
         categories.map((category) => {
           return (
-            <Link
-              key={category.slug.current}
-              href={`/category/${encodeURIComponent(category.slug.current)}`}
-              scroll={false}
-              passHref
+            <li
+              key={category.title}
+              className="w-full md:w-auto px-2 cursor-pointer"
             >
-              <li className="w-full md:w-auto px-2 cursor-pointer">
+              <a href={`/category/${category.slug.current}`}>
                 <div className="inline-block w-full py-2 px-4 mb-4 md:mb-0 text-sm text-coolGray-400 hover:text-blue-700 hover:bg-blue-200 font-bold rounded-md hover:shadow-sm">
                   {category.title}
                 </div>
-              </li>
-            </Link>
+              </a>
+            </li>
           );
         })}
     </ul>

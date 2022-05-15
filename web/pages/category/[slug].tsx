@@ -36,7 +36,7 @@ export async function getStaticPaths() {
   );
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
@@ -44,7 +44,7 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts = await sanityClient.fetch(
     `
-    *[_type == "post" && $slug in categories[]->slug.current][0...15] {
+    *[_type == "post" && $slug in categories[]->slug.current] | order(publishedAt desc)[0...15] {
       title,
       coverImage {
         ...,
