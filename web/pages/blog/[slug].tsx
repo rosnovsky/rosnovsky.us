@@ -3,7 +3,7 @@ import sanityClient from '@lib/sanityClient';
 import { localDate, PortableTextComponents } from '@lib/helpers';
 import type { BlogPost, PostComment } from 'index';
 import dynamic from 'next/dynamic';
-const Image = dynamic(() => import('next/image'), { ssr: true });
+import Image from 'next/image';
 const Link = dynamic(() => import('next/link'), { ssr: true });
 const Error = dynamic(() => import('next/error'));
 const Containter = dynamic(() => import('@components/Container'));
@@ -37,7 +37,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
 
   return (
     <Containter
-      title={`${title} – Art Rosnovsky`}
+      title={`${title}`}
       description={summaryRaw}
       image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
         title

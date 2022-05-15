@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 const Error = dynamic(() => import('next/error'));
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
-const Image = dynamic(() => import('next/image'), { ssr: false });
+import Image from 'next/image';
 import slugify from 'slugify';
 
 type Props = {

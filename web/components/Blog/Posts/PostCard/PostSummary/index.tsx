@@ -7,7 +7,7 @@ type Props = {
 const PostSummary = ({ summaryRaw }: Props) => {
   return (
     <div className="mb-4 text-base md:text-lg text-coolGray-400 font-medium">
-      <div className="prose prose-xl">{summaryRaw}</div>
+      <div className="prose prose-xl text-coolGray-500">{summaryRaw}</div>
     </div>
   );
 };

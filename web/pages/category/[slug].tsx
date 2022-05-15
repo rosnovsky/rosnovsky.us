@@ -11,12 +11,18 @@ type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
   postCount: number;
+  isCategory: BlogPost['categories'][0]['slug']['current'];
 };
 
-const Category = ({ posts, categories, postCount }: Props) => {
+const Category = ({ posts, categories, postCount, isCategory }: Props) => {
   return (
     <Containter>
-      <Blog posts={posts} categories={categories} postCount={postCount} />
+      <Blog
+        posts={posts}
+        categories={categories}
+        postCount={postCount}
+        isCategory={isCategory}
+      />
       <NewsletterForm />
       <Stats />
       <Footer />
@@ -38,7 +44,7 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const posts = await sanityClient.fetch(
     `
-    *[_type == "post" && $slug in categories[]->slug.current] {
+    *[_type == "post" && $slug in categories[]->slug.current][0...15] {
       title,
       coverImage {
         ...,
@@ -62,8 +68,9 @@ export async function getStaticProps(context) {
 
   const postCount: number = await sanityClient.fetch(
     `
-    count(*[_type == "post"])
-  `
+    count(*[_type == "post" && $slug in categories[]->slug.current])
+  `,
+    { slug: context.params.slug }
   );
 
   const categories = await sanityClient.fetch(
@@ -81,6 +88,7 @@ export async function getStaticProps(context) {
       posts,
       categories,
       postCount,
+      isCategory: context.params.slug,
     },
   };
 }
