@@ -1,6 +1,6 @@
 import { BlogPost } from 'index';
 import dynamic from 'next/dynamic';
-const Image = dynamic(() => import('next/image'), { ssr: false });
+const Image = dynamic(() => import('next/image'), { ssr: true });
 const Link = dynamic(() => import('next/link'));
 
 type Props = {

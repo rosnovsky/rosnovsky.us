@@ -79,25 +79,28 @@ const Element = styled('a')(
   ({ backgroundColor, color, contrast }) =>
     contrast && (!color || !backgroundColor) && hoverStyle
 );
-// @ts-expect-error ???
-// eslint-disable-next-line react/display-name
-const CardWrap = forwardRef(({ href, rel, target, ...restProps }, ref) => {
-  const {
-    // @ts-expect-error ???
-    state: { backgroundColor, color, title },
-    // @ts-expect-error ???
-    props: { size: cardSize },
-  } = useContext(GlobalContext);
 
-  return createElement(Element, {
-    ...{ href, rel, target },
-    ...restProps,
-    backgroundColor,
-    cardSize,
-    color,
-    ref,
-    title,
-  });
-});
+// eslint-disable-next-line react/display-name
+const CardWrap = forwardRef(
+  // @ts-expect-error ???
+  ({ href, rel, target = '_blank', ...restProps }, ref) => {
+    const {
+      // @ts-expect-error ???
+      state: { backgroundColor, color, title },
+      // @ts-expect-error ???
+      props: { size: cardSize },
+    } = useContext(GlobalContext);
+
+    return createElement(Element, {
+      ...{ href, rel, target },
+      ...restProps,
+      backgroundColor,
+      cardSize,
+      color,
+      ref,
+      title,
+    });
+  }
+);
 
 export default CardWrap;

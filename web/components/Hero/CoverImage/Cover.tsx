@@ -1,4 +1,4 @@
-const Image = dynamic(() => import('next/image'), { ssr: false });
+const Image = dynamic(() => import('next/image'), { ssr: true });
 import placeholderVideo from '@images/IMG_8477 4.jpeg';
 import ukraineHeart from '@images/stand-with-Ukraine.png';
 import dynamic from 'next/dynamic';
@@ -7,6 +7,7 @@ const Cover = () => {
   return (
     <div className="relative rounded-7xl">
       <Image
+        className="rounded-7xl"
         priority
         quality={90}
         src={placeholderVideo}

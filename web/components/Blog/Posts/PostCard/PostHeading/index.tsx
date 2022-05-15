@@ -9,9 +9,9 @@ type Props = {
 
 const PostHeading = ({ heading, slug }: Props) => {
   return (
-    <span className="inline-block mb-4 text-2xl leading-tight text-coolGray-800 hover:text-coolGray-900 font-bold hover:underline">
+    <h3 className="inline-block mb-4 text-3xl leading-tight text-coolGray-800 hover:text-coolGray-900 font-bold hover:underline">
       <Link href={`/blog/${slug}`}>{heading}</Link>
-    </span>
+    </h3>
   );
 };
 

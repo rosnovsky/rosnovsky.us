@@ -2,7 +2,7 @@ import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import dynamic from 'next/dynamic';
-const Image = dynamic(() => import('next/image'), { ssr: true });
+import Image from 'next/image';
 const SyntaxHighlighter = dynamic(
   () => import('react-syntax-highlighter/dist/cjs/light')
 );
@@ -96,7 +96,6 @@ export const PortableTextComponents = {
     }: {
       value: { url: string; size?: string; media?: string };
     }) => {
-      console.log(value);
       return (
         <div className="min-w-full mx-auto my-3 justify-center">
           <Metacard {...value} />

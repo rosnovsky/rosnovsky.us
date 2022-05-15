@@ -12,18 +12,19 @@ type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
   postCount: number;
+  isCategory?: BlogPost['categories'][0]['slug']['current'];
 };
 
-const Blog = ({ posts, categories, postCount }: Props) => {
+const Blog = ({ posts, categories, postCount, isCategory }: Props) => {
   const [morePosts, setMorePosts] = useState(posts);
   const [pageNumber, setPageNumber] = useState(6);
   const [loading, setLoading] = useState(false);
 
   const handleReadMore = () => {
     setLoading(true);
-    sanityClient
-      .fetch(
-        `*[_type == "post"] | order(publishedAt desc)[0...${pageNumber + 15}] {
+    const postsQuery = `*[_type == "post"] | order(publishedAt desc)[0...${
+      pageNumber + 15
+    }] {
           title,
           coverImage {
             ...,
@@ -40,7 +41,32 @@ const Blog = ({ posts, categories, postCount }: Props) => {
           "numberOfCharacters": length(pt::text(body)),
           "estimatedWordCount": round(length(pt::text(body)) / 5),
           "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
-        }`
+        }`;
+    const categoryQuery = `*[_type == "post" && $slug in categories[]->slug.current] | order(publishedAt desc)[0...${
+      pageNumber + 15
+    }] {
+          title,
+          coverImage {
+            ...,
+            asset->
+          },
+          categories[]->{
+            title,
+            description,
+            slug
+          },
+          publishedAt,
+          summary,
+          slug,
+          "numberOfCharacters": length(pt::text(body)),
+          "estimatedWordCount": round(length(pt::text(body)) / 5),
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+        }`;
+
+    sanityClient
+      .fetch(
+        isCategory ? categoryQuery : postsQuery,
+        isCategory ? { slug: isCategory } : {}
       )
       .then((data) => {
         setMorePosts(() => data);
