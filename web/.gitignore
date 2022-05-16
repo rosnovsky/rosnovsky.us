@@ -13,13 +13,12 @@ public/sw.js.map
 coverage/
 .svelte-kit/
 build/
-/cypress-coverage/**
 
 # Sentry
 .sentryclirc
 
-# Cypress
-cypress-coverage/**
+# .nyc_output
+.nyc_output/
 
 .dccache
 
