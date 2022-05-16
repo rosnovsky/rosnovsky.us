@@ -2,7 +2,7 @@ import { getLastPlayedAppleMusicTrack } from '@lib/music';
 import type { AppleMusicTrack } from 'index';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (_req: NextApiRequest, res: NextApiResponse) => {
   const appleResponse = await getLastPlayedAppleMusicTrack();
   const appleTrack: AppleMusicTrack = await appleResponse.json();
 

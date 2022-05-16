@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "alwaysStrict": true,
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
@@ -12,15 +11,13 @@
     ],
     "moduleResolution": "node",
     "noEmit": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "preserveConstEnums": true,
     "removeComments": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
     "types": [
       "cypress",
       "@testing-library/cypress"

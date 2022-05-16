@@ -3,9 +3,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-const SyntaxHighlighter = dynamic(
-  () => import('react-syntax-highlighter/dist/cjs/light')
-);
+const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'));
 import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/hljs/night-owl';
 import getYouTubeId from 'get-youtube-id';
 import { useEffect, useState } from 'react';

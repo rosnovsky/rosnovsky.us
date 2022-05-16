@@ -9,7 +9,7 @@ const getStatus = async () => {
   return status;
 };
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function (_req: NextApiRequest, res: NextApiResponse) {
   const result: Status = await getStatus();
   return res.status(200).send({ status: result.data.attributes.status });
 }
