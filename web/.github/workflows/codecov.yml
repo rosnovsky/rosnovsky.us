@@ -1,4 +1,4 @@
-name: 'Run tests and upload coverage'
+name: 'Run tests and upload coverage to Codecov'
 on: [push, pull_request]
 
 jobs:
