@@ -7,7 +7,10 @@ const WelcomeMessage = () => {
       <h2 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
         Hi, I&apos;m Art. We need to talk.
       </h2>
-      <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">
+      <p
+        id="welcome"
+        className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium"
+      >
         Or maybe we don&apos;t. In any case, I write about web development,
         hiking, and random hobbies I pick up every now and then.
       </p>

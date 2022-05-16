@@ -16,8 +16,7 @@
     "extends": "./.nycrc.json",
     "report-dir": "cypress-coverage",
     "reporter": [
-      "json",
-      "lcov"
+      "json"
     ]
   },
   "dependencies": {

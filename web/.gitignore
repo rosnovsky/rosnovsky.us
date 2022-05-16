@@ -17,6 +17,9 @@ build/
 # Sentry
 .sentryclirc
 
+# .nyc_output
+.nyc_output/
+
 .dccache
 
 

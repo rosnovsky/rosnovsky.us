@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-context('Home Page', () => {
+context('Home Page Tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });
@@ -39,6 +39,11 @@ context('Home Page', () => {
 
   it('should render the Welcome section', () => {
     cy.get('h2').contains("Hi, I'm Art. We need to talk.").should('exist');
+    cy.get('#welcome')
+      .contains(
+        "Or maybe we don't. In any case, I write about web development, hiking, and random hobbies I pick up every now and then."
+      )
+      .should('exist');
     cy.findByRole('button', { name: /Check it out/i }).should('exist');
     cy.findByRole('presentation').should('exist');
     cy.get('#ukrainianFlag').should('exist');
