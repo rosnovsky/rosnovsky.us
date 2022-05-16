@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import sanityClient from '@lib/sanityClient';
 import { PortableTextComponents } from '@lib/helpers';
-import type { Page } from 'index';
+import type { Page as PageType } from 'index';
 import dynamic from 'next/dynamic';
 const Error = dynamic(() => import('next/error'));
 const Containter = dynamic(() => import('@components/Container'));
@@ -10,7 +10,7 @@ import Image from 'next/image';
 import slugify from 'slugify';
 
 type Props = {
-  page: Page;
+  page: PageType;
 };
 
 const Page = ({ page }: Props) => {
@@ -80,7 +80,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const page: Page = await sanityClient.fetch(
+  const page: PageType = await sanityClient.fetch(
     `
     *[_type == "page" && slug.current == $slug][0] {
       ...,
