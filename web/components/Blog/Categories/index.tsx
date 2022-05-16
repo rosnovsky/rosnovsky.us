@@ -1,6 +1,3 @@
-import dynamic from 'next/dynamic';
-const Link = dynamic(() => import('next/link'));
-
 const Categories = ({ categories }) => {
   return (
     <ul
