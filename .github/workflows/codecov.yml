@@ -14,11 +14,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
-        run: npm run test:jest
+        run: npm run test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
-          flags: unittests # optional
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
