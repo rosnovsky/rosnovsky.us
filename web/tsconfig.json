@@ -1,25 +1,30 @@
 {
   "compilerOptions": {
-    "target": "es2021",
+    "alwaysStrict": true,
+    "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
     "strict": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "noEmit": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
     "isolatedModules": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
+    "lib": [
+      "ESNext"
+    ],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "types": [
+      "cypress",
+      "@testing-library/cypress"
+    ],
     "baseUrl": ".",
     "paths": {
       "@components/*": [
@@ -45,10 +50,12 @@
       ],
       "@flexui/*": [
         "public/flex-ui-assets/*"
-      ],
+      ]
     },
     "incremental": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",

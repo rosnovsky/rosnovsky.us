@@ -9,7 +9,10 @@ const Menu = () => {
 
   return (
     <div className="w-full flex justify-center md:justify-end">
-      <ul className="flex align-center justify-center md:align-end my-auto">
+      <ul
+        id="menu"
+        className="flex align-center justify-center md:align-end my-auto"
+      >
         <li className="mr-12">
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
             <Link href="/blog">Blog</Link>

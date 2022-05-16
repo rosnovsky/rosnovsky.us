@@ -3,7 +3,7 @@ const Link = dynamic(() => import('next/link'));
 
 const Footer = () => {
   return (
-    <section className="bg-white">
+    <section id="footer" className="bg-white">
       <div className="wave-top w-full text-coolGray-50">
         <svg
           viewBox="0 0 1440 116"

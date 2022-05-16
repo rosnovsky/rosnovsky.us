@@ -3,7 +3,7 @@ const NewsletterInput = dynamic(() => import('./NewsletterInput'));
 
 const NewsletterForm = () => {
   return (
-    <section className="py-24 bg-white">
+    <section id="newsletterSection" className="py-24 bg-white">
       <div className="container px-4 mx-auto">
         <div
           className="relative py-16 md:py-32 px-6 text-center bg-coolGray-50 overflow-hidden rounded-7xl"

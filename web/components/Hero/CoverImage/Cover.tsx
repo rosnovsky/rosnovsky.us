@@ -9,6 +9,7 @@ const Cover = () => {
       <Image
         className="rounded-7xl"
         priority
+        role="presentation"
         quality={90}
         src={placeholderVideo}
         placeholder="blur"
@@ -18,6 +19,7 @@ const Cover = () => {
         <Image
           src={ukraineHeart}
           alt="Ukrainian flag in the shape of heart"
+          id="ukrainianFlag"
           placeholder="blur"
           priority
         />

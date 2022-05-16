@@ -4,9 +4,9 @@ const Link = dynamic(() => import('next/link'));
 const WelcomeMessage = () => {
   return (
     <div className="w-full md:w-1/2 px-4 mb-16 md:mb-0">
-      <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
+      <h2 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
         Hi, I&apos;m Art. We need to talk.
-      </h1>
+      </h2>
       <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">
         Or maybe we don&apos;t. In any case, I write about web development,
         hiking, and random hobbies I pick up every now and then.

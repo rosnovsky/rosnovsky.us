@@ -25,7 +25,7 @@ const PostCard = ({ post }: Props) => {
     estimatedReadingTime,
   };
   return (
-    <div key={title} className="w-full md:w-1/2 px-4 mb-24">
+    <div id="postCard" key={title} className="w-full md:w-1/2 px-4 mb-24">
       <PostCover coverImage={coverImage} slug={slug.current} />
       <PostMetadata metadata={postMetadata} />
       <PostHeading heading={title} slug={slug.current} />

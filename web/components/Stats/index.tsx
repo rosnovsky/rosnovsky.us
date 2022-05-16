@@ -14,7 +14,10 @@ const Stats = () => {
       }}
     >
       <div className="container px-4 mx-auto">
-        <div className="flex flex-wrap justify-center text-center -mx-4">
+        <div
+          id="stats"
+          className="flex flex-wrap justify-center text-center -mx-4"
+        >
           <Github />
           <Comments />
           <Subscribers />
