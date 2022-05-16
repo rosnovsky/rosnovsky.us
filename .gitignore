@@ -1,3 +1,4 @@
 .dccache
 .vscode
 .DS_Store
+web/cypress-coverage/**
