@@ -183,19 +183,19 @@
     },
     "branchMap": {},
     "s": {
-      "0": 28,
-      "1": 28,
-      "2": 12,
-      "3": 2,
-      "4": 12,
-      "5": 12,
+      "0": 46,
+      "1": 46,
+      "2": 19,
+      "3": 4,
+      "4": 19,
+      "5": 19,
       "6": 0,
-      "7": 28
+      "7": 46
     },
     "f": {
-      "0": 28,
-      "1": 12,
-      "2": 2,
+      "0": 46,
+      "1": 19,
+      "2": 4,
       "3": 0
     },
     "b": {},
@@ -342,17 +342,17 @@
     },
     "branchMap": {},
     "s": {
-      "0": 12,
-      "1": 12,
-      "2": 12,
-      "3": 12,
-      "4": 12,
-      "5": 24
+      "0": 13,
+      "1": 13,
+      "2": 13,
+      "3": 13,
+      "4": 13,
+      "5": 26
     },
     "f": {
-      "0": 12,
-      "1": 12,
-      "2": 24
+      "0": 13,
+      "1": 13,
+      "2": 26
     },
     "b": {},
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
@@ -603,28 +603,28 @@
       }
     },
     "s": {
-      "0": 2,
+      "0": 4,
       "1": 0,
-      "2": 2,
-      "3": 2,
-      "4": 2,
-      "5": 1,
-      "6": 2,
-      "7": 4,
+      "2": 4,
+      "3": 4,
+      "4": 4,
+      "5": 2,
+      "6": 4,
+      "7": 8,
       "8": 0,
-      "9": 4,
-      "10": 4
+      "9": 8,
+      "10": 8
     },
     "f": {
       "0": 0,
-      "1": 2,
-      "2": 1,
-      "3": 4
+      "1": 4,
+      "2": 2,
+      "3": 8
     },
     "b": {
       "0": [
         0,
-        4
+        8
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
@@ -632,12 +632,195 @@
   },
   "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/404.tsx": {
     "path": "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/404.tsx",
-    "statementMap": {},
-    "fnMap": {},
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 2,
+          "column": 13
+        },
+        "end": {
+          "line": 2,
+          "column": 47
+        }
+      },
+      "1": {
+        "start": {
+          "line": 2,
+          "column": 27
+        },
+        "end": {
+          "line": 2,
+          "column": 46
+        }
+      },
+      "2": {
+        "start": {
+          "line": 3,
+          "column": 18
+        },
+        "end": {
+          "line": 3,
+          "column": 64
+        }
+      },
+      "3": {
+        "start": {
+          "line": 3,
+          "column": 32
+        },
+        "end": {
+          "line": 3,
+          "column": 63
+        }
+      },
+      "4": {
+        "start": {
+          "line": 4,
+          "column": 23
+        },
+        "end": {
+          "line": 4,
+          "column": 74
+        }
+      },
+      "5": {
+        "start": {
+          "line": 4,
+          "column": 37
+        },
+        "end": {
+          "line": 4,
+          "column": 73
+        }
+      },
+      "6": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 30,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 2,
+            "column": 21
+          },
+          "end": {
+            "line": 2,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 27
+          },
+          "end": {
+            "line": 2,
+            "column": 46
+          }
+        },
+        "line": 2
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 3,
+            "column": 26
+          },
+          "end": {
+            "line": 3,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 32
+          },
+          "end": {
+            "line": 3,
+            "column": 63
+          }
+        },
+        "line": 3
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 31
+          },
+          "end": {
+            "line": 4,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 37
+          },
+          "end": {
+            "line": 4,
+            "column": 73
+          }
+        },
+        "line": 4
+      },
+      "3": {
+        "name": "Custom404",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 24
+          },
+          "end": {
+            "line": 6,
+            "column": 33
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 36
+          },
+          "end": {
+            "line": 31,
+            "column": 1
+          }
+        },
+        "line": 6
+      }
+    },
     "branchMap": {},
-    "s": {},
-    "f": {},
-    "b": {}
+    "s": {
+      "0": 6,
+      "1": 4,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 4,
+      "6": 12
+    },
+    "f": {
+      "0": 4,
+      "1": 6,
+      "2": 4,
+      "3": 12
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "46697adbc50e7c8af8572100e3061a8afd34b2fc"
   },
   "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/_document.tsx": {
     "path": "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/_document.tsx",
