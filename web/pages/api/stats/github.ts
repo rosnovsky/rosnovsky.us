@@ -1,7 +1,17 @@
 const github = async (_, res) => {
-  const userResponse = await fetch('https://api.github.com/users/rosnovsky');
+  // NOTE: Authorized requests have rate limit of 5000 requests per hour.
+  const userResponse = await fetch('https://api.github.com/users/rosnovsky', {
+    headers: {
+      Authorization: 'token ' + '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',
+    },
+  });
   const userReposResponse = await fetch(
-    'https://api.github.com/users/rosnovsky/repos?per_page=100'
+    'https://api.github.com/users/rosnovsky/repos?per_page=100',
+    {
+      headers: {
+        Authorization: 'token ' + process.env.GH_TOKEN,
+      },
+    }
   );
 
   const user = await userResponse.json();

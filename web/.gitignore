@@ -18,10 +18,11 @@ build/
 .sentryclirc
 
 # .nyc_output
-.nyc_output/
+.nyc_output
 
 .dccache
-
+cypress/screenshots/
+cypress/videos
 
 # PWA files
 **/public/sw.js

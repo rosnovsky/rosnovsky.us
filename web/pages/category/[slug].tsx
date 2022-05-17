@@ -6,7 +6,7 @@ const Footer = dynamic(() => import('@components/Footer'));
 import sanityClient from '@lib/sanityClient';
 import type { BlogPost } from 'index';
 import Containter from '@components/Container';
-const Error = dynamic(() => import('next/error'));
+import Custom404 from '@pages/404';
 
 type Props = {
   posts: BlogPost[];
@@ -16,12 +16,8 @@ type Props = {
 };
 
 const Category = ({ posts, categories, postCount, isCategory }: Props) => {
-  if (postCount === 0) {
-    return (
-      <div>
-        <Error statusCode={404} />
-      </div>
-    );
+  if (!postCount) {
+    return <Custom404 />;
   }
   return (
     <Containter>
@@ -44,7 +40,7 @@ export async function getStaticPaths() {
   );
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 

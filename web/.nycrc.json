@@ -1,7 +1,5 @@
 {
   "extension": [
-    ".js",
-    ".jsx",
     ".ts",
     ".tsx"
   ],
@@ -10,7 +8,7 @@
     "pages/**/*"
   ],
   "exclude": [
-    "pages/api/__coverage__/coverage.ts"
+    "pages/api/**/*"
   ],
   "all": true,
   "sourceMap": true,

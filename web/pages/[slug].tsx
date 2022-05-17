@@ -3,7 +3,6 @@ import sanityClient from '@lib/sanityClient';
 import { PortableTextComponents } from '@lib/helpers';
 import type { Page as PageType } from 'index';
 import dynamic from 'next/dynamic';
-const Error = dynamic(() => import('next/error'));
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import Image from 'next/image';
@@ -14,12 +13,6 @@ type Props = {
 };
 
 const Page = ({ page }: Props) => {
-  if (!page)
-    return (
-      <div>
-        <Error statusCode={404} />
-      </div>
-    );
   const { title, coverImage, body, bodyRaw } = page;
 
   return (
