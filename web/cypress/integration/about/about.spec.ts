@@ -6,7 +6,7 @@ context('About Page Tests', () => {
   });
 
   it('About page is reacheable form the Home Page', () => {
-    cy.get('#menu').contains('About', { timeout: 3000 }).click();
+    cy.get('#menu').contains('About', { timeout: 5000 }).click();
     cy.url().should('include', '/about');
   });
 });

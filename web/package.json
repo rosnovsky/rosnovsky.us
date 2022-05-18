@@ -10,7 +10,9 @@
     "lint": "next lint --fix",
     "analyze": "cross-env ANALYZE=true next build",
     "cypress:open": "cypress open",
-    "test": "start-server-and-test dev 3000 cypress:open"
+    "cypress:run": "cypress run --record --key 857c832c-5e4c-472f-8c90-7aafdd47c1e2",
+    "test:build-and-run": "rm -rf .next && pnpm build && pnpm test",
+    "test": "start-server-and-test start http://0.0.0.0:3000 cypress:run"
   },
   "nyc": {
     "extends": "./.nycrc.json",

@@ -1,3 +1,5 @@
 .dccache
 .vscode
 .DS_Store
+.cache_ggshield
+.env

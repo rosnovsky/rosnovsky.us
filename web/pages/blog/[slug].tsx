@@ -5,7 +5,6 @@ import type { BlogPost, PostComment } from 'index';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 const Link = dynamic(() => import('next/link'), { ssr: true });
-const Error = dynamic(() => import('next/error'));
 const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import type { UserProfile } from '@auth0/nextjs-auth0';
@@ -18,12 +17,7 @@ type Props = {
 };
 
 const Post = ({ post, postComments, resolvedUsers }: Props) => {
-  if (!post)
-    return (
-      <div>
-        <Error statusCode={404} />
-      </div>
-    );
+  // if (!post) return <Custom404 />;
   const {
     publishedAt,
     title,

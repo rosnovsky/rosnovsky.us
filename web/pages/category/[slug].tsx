@@ -6,6 +6,7 @@ const Footer = dynamic(() => import('@components/Footer'));
 import sanityClient from '@lib/sanityClient';
 import type { BlogPost } from 'index';
 import Containter from '@components/Container';
+import Custom404 from '@pages/404';
 
 type Props = {
   posts: BlogPost[];
@@ -15,6 +16,9 @@ type Props = {
 };
 
 const Category = ({ posts, categories, postCount, isCategory }: Props) => {
+  if (!postCount) {
+    return <Custom404 />;
+  }
   return (
     <Containter>
       <Blog
