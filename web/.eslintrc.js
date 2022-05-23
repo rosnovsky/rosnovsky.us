@@ -33,6 +33,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    'import/no-anonymous-default-export': 'off',
     'jsx-a11y/label-has-associated-control': [
       'warn',
       {

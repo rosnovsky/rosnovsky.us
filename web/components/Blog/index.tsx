@@ -38,6 +38,7 @@ const Blog = ({ posts, categories, postCount, isCategory }: Props) => {
           publishedAt,
           summary,
           slug,
+          "summaryRaw": pt::text(summary),
           "numberOfCharacters": length(pt::text(body)),
           "estimatedWordCount": round(length(pt::text(body)) / 5),
           "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
@@ -58,6 +59,7 @@ const Blog = ({ posts, categories, postCount, isCategory }: Props) => {
           publishedAt,
           summary,
           slug,
+          "summaryRaw": pt::text(summary),
           "numberOfCharacters": length(pt::text(body)),
           "estimatedWordCount": round(length(pt::text(body)) / 5),
           "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
