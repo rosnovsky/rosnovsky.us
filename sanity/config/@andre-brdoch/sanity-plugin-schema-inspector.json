@@ -1,0 +1,11 @@
+{
+  "typesToIgnore": [],
+  "keysToIgnore": [
+    "icon",
+    "fieldset",
+    "fieldsets",
+    "preview",
+    "initialValue",
+    "inputComponent"
+  ]
+}
