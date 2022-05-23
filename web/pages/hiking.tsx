@@ -68,7 +68,7 @@ export async function getStaticProps() {
     const generateSocialImage = await fetch(
       `${baseUrl}/api/opengraph/generate?title=${
         hikingPage.title
-      }&&coverImage=${hikingPage.coverImage.asset.url || null}`
+      }&&coverImage=${hikingPage.coverImage?.asset.url || null}`
     );
     console.info(
       `♻️ Generating Social Image for ${hikingPage.title}. Here its status code: `,
