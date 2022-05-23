@@ -201,7 +201,7 @@ export async function getStaticProps(context) {
         postComments,
         resolvedUsers: await Promise.all(users),
       },
-      revalidate: 120;
+      revalidate: 120,
     };
   }
 
@@ -211,7 +211,7 @@ export async function getStaticProps(context) {
       postComments,
       resolvedUsers: null,
     },
-    revalidate: 120;
+    revalidate: 120,
   };
 }
 
