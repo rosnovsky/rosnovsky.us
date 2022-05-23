@@ -6,50 +6,44 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-const withTM = require('next-transpile-modules')([
-  '@here/maps-api-for-javascript',
-]);
+module.exports = withBundleAnalyzer(
+  withPWA({
+    pwa: {
+      dest: 'public',
+      register: true,
+      skipWaiting: true,
+      disable: process.env.NODE_ENV === 'development',
+    },
+    images: {
+      domains: [
+        'cdn.sanity.io',
+        's.gravatar.com',
+        'avatars.githubusercontent.com',
+        'lh3.googleusercontent.com',
+      ],
+    },
+    swcMinify: true,
 
-module.exports = withTM(
-  withBundleAnalyzer(
-    withPWA({
-      pwa: {
-        dest: 'public',
-        register: true,
-        skipWaiting: true,
-        disable: process.env.NODE_ENV === 'development',
-      },
-      images: {
-        domains: [
-          'cdn.sanity.io',
-          's.gravatar.com',
-          'avatars.githubusercontent.com',
-          'lh3.googleusercontent.com',
-        ],
-      },
-      swcMinify: true,
+    reactStrictMode: true,
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+      ];
+    },
+    webpack: (config, { isServer }) => {
+      // Fixes npm packages that depend on `fs` module
+      if (!isServer) {
+        config.resolve.fallback = {
+          fs: false,
+        };
+      }
 
-      reactStrictMode: true,
-      async headers() {
-        return [
-          {
-            source: '/(.*)',
-            headers: securityHeaders,
-          },
-        ];
-      },
-      webpack: (config, { isServer }) => {
-        // Fixes npm packages that depend on `fs` module
-        if (!isServer) {
-          config.resolve.fallback = {
-            fs: false,
-          };
-        }
-
-        return config;
-      },
-    })
-  )
+      return config;
+    },
+  })
 );
 
 // const ContentSecurityPolicy = `
