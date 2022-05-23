@@ -4,5 +4,14 @@
   "@sanity/default-login": "6fb6d3800aa71346e1b84d95bbcaa287879456f2922372bb0294e30b968cd37f",
   "@sanity/form-builder": "b38478227ba5e22c91981da4b53436df22e48ff25238a55a973ed620be5068aa",
   "@sanity/data-aspects": "d199e2c199b3e26cd28b68dc84d7fc01c9186bf5089580f2e2446994d36b3cb6",
-  "@sanity/vision": "da5b6ed712703ecd04bf4df560570c668aa95252c6bc1c41d6df1bda9b8b8f60"
+  "@sanity/vision": "da5b6ed712703ecd04bf4df560570c668aa95252c6bc1c41d6df1bda9b8b8f60",
+  "sanity-plugin-mapbox-input": "57ae3a403ce6a070b31ec6fa1f3c8339cafa66661eaddba1d4d5ee3cc2197ec2",
+  "sanity-plugin-asset-source-giphy": "d675c1b7b6c4f165860bfadfb9b537539d91cb4447eef3fa994aad5a115bbcca",
+  "sanity-plugin-media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "sanity-plugin-asset-source-cloudinary": "90a9bd123778d4a589a7875d9bbc5a9b713f39084be79987a076da2f6d1d0161",
+  "mapbox-input": "57ae3a403ce6a070b31ec6fa1f3c8339cafa66661eaddba1d4d5ee3cc2197ec2",
+  "asset-source-giphy": "d675c1b7b6c4f165860bfadfb9b537539d91cb4447eef3fa994aad5a115bbcca",
+  "media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "asset-source-cloudinary": "90a9bd123778d4a589a7875d9bbc5a9b713f39084be79987a076da2f6d1d0161",
+  "@andre-brdoch/sanity-plugin-schema-inspector": "4feafffa155bc1fc8efc4f26e0e9c49c69938a03eb12e2c66c764afc82f02eea"
 }

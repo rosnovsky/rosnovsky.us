@@ -77,6 +77,11 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: { type: 'post' } }],
     },
+    {
+      name: 'location',
+      type: 'geopoint',
+      title: 'Location',
+    },
   ],
 
   preview: {
