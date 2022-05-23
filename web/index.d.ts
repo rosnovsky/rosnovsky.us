@@ -69,6 +69,10 @@ export interface BlogPost extends SanityDocument {
   summaryRaw: string;
   bodyRaw: string;
   estimatedReadingTime: number;
+  location: {
+    lat: number;
+    lng: number;
+  };
   categories: {
     title: string;
     description: Block[] | string;
@@ -82,6 +86,10 @@ export interface Page extends SanityDocument {
   body: Block[];
   bodyRaw: string;
   coverImage: SanityImageAssetDocument;
+  location: {
+    lat: number;
+    lng: number;
+  };
 }
 
 export type PictureDescription = {

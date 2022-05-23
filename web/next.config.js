@@ -48,18 +48,18 @@ module.exports = withBundleAnalyzer(
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.youtube.com *.twitter.com *.github.com localhost:3000 llama.rosnovsky.us usefathom.com;
-  child-src *.youtube.com *.google.com *.twitter.com localhost:3000 rosnovsky.us *.vercel.app llama.rosnovsky.us;
-  style-src 'self' 'unsafe-inline' *.googleapis.com;
-  img-src * blob: data:;
-  worker-src *.vercel.app localhost:3000 rosnovsky.us llama.rosnovsky.us;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.youtube.com *.twitter.com *.github.com localhost:3000 llama.rosnovsky.us usefathom.com api.mapbox.com;
+  child-src *.youtube.com *.google.com *.twitter.com localhost:3000 rosnovsky.us *.vercel.app llama.rosnovsky.us api.mapbox.com;
+  style-src 'self' 'unsafe-inline' *.googleapis.com api.mapbox.com;
+  img-src * blob: data: api.mapbox.com;
+  worker-src blob: *.vercel.app localhost:3000 rosnovsky.us llama.rosnovsky.us;
   media-src  *;
-  connect-src *;
+  connect-src 'self' blob: ws://localhost:3000 rosnovsky.us llama.rosnovsky.us api.mapbox.com;
   font-src *;
 `;
 
 const securityHeaders = [
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  // // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
     value: ContentSecurityPolicy.replace(/\n/g, ''),
