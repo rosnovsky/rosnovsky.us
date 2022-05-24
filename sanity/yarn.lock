@@ -10,17 +10,6 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@andre-brdoch/sanity-plugin-schema-inspector@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@andre-brdoch/sanity-plugin-schema-inspector/-/sanity-plugin-schema-inspector-1.5.0.tgz#139812a190123f288199b964ba4fd8ac0723af22"
-  integrity sha512-v/BHhTnRXcwMPK24wfYo0Y7QDTRsqWT5oAtcoOcs++RA3lgck37PP7CVDRx/HLb5+YQQCArDP9DMclrtg/pcIw==
-  dependencies:
-    "@sanity/base" "^2.22.0"
-    "@sanity/desk-tool" "^2.22.0"
-    "@sanity/ui" "^0.36.15"
-    react-icons "^4.1.0"
-    react-json-inspector "^7.1.1"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
@@ -1511,7 +1500,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-1.2.3.tgz#a90c7895c6506405d64c2363db131923ba1fa6ef"
   integrity sha512-0eOR0D6zcqd6nEmAGIJ93ibRGO6ocYzQ5aEuyYvngHy5MDDjUfC821UnF/YPIcxiMXg2DLDjWd4EPt9F8frKNQ==
 
-"@sanity/base@2.30.0", "@sanity/base@^2.22.0", "@sanity/base@^2.29.8":
+"@sanity/base@2.30.0", "@sanity/base@^2.29.8":
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/@sanity/base/-/base-2.30.0.tgz#33c4280537745915792fdac01f462cb0f86e9f67"
   integrity sha512-b7ZZQq4/1k6Km+e4cHXbNy0dMLNT/DCw9qrhWRnqSRaYl6k/nG5mi+NoEukffQ/jkcOnKa01X5DjZNoPsn6E4w==
@@ -1912,7 +1901,7 @@
     scroll "^3.0.1"
     shallow-equals "^1.0.0"
 
-"@sanity/desk-tool@^2.22.0", "@sanity/desk-tool@^2.29.8":
+"@sanity/desk-tool@^2.29.8":
   version "2.30.0"
   resolved "https://registry.yarnpkg.com/@sanity/desk-tool/-/desk-tool-2.30.0.tgz#fdea378985f8b6193d534b866af1871af7305fee"
   integrity sha512-FxI17mB4UBtSPLwRb3N5eKJZtg1QnQUqsx6YfeMORVk/c8Hxb+KJ9YCNhStGBkfYHDRWJqt5d4udIKht6zHPog==
@@ -2128,7 +2117,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-3.0.0.tgz#60e9cba61b82103ea3761730a53cd9310b98892d"
   integrity sha512-wtMYcV5GIDIhVyF/jjmdwq1GdlK07dRL40XMns73VbrFI7FteRltxv48bhYVZPcLkRXb0SHjpDS/icj9/yzbVA==
 
-"@sanity/icons@^1.0.8", "@sanity/icons@^1.1.3", "@sanity/icons@^1.1.7", "@sanity/icons@^1.2.2", "@sanity/icons@^1.2.6", "@sanity/icons@^1.2.8":
+"@sanity/icons@^1.0.8", "@sanity/icons@^1.1.3", "@sanity/icons@^1.2.2", "@sanity/icons@^1.2.6", "@sanity/icons@^1.2.8":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.8.tgz#7d899a83104cb13c434a02f1e73e981148980c63"
   integrity sha512-WkFb1HGxzXQa+d7ETxIU5KF6TBok9RmbGPdS3H0rLJy302bjIEtUevDA3V6Lxu6j3oyVCOFj/Te5iaoTPqgSqw==
@@ -2512,7 +2501,7 @@
     "@types/react" "^17.0.42"
     rxjs "^6.5.3"
 
-"@sanity/ui@^0.36.10", "@sanity/ui@^0.36.12", "@sanity/ui@^0.36.15", "@sanity/ui@^0.36.17":
+"@sanity/ui@^0.36.12", "@sanity/ui@^0.36.17":
   version "0.36.17"
   resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.36.17.tgz#2c7674e0d28da0bc2daa605c6dc2b194e5eb23d5"
   integrity sha512-5U2NPxjCsxmzv3p58wMczfwIaJVa3UCjNGs7CCK2RoLo0G0nyT+swMBLRmXiDA3WnCt/o5oaYYqesfL8Rgkchg==
@@ -10893,7 +10882,7 @@ react-icon-base@^2.1.2:
   resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.2.tgz#a17101dad9c1192652356096860a9ab43a0766c7"
   integrity sha512-NRlRo0RPxWRMQT7osj8UCBSSXsGOxhF1pre84ildhuft5S2U382NOs7tg29osWSjbO90L2a3VTCqadA/LnAzHQ==
 
-react-icons@^4.1.0, react-icons@^4.2.0:
+react-icons@^4.2.0:
   version "4.3.1"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz#2fa92aebbbc71f43d2db2ed1aed07361124e91ca"
   integrity sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==
@@ -11793,15 +11782,6 @@ sanity-plugin-mapbox-input@^0.0.3:
     react-map-gl "^5.0.9"
     react-map-gl-geocoder "^2.0.9"
 
-sanity-plugin-media-library@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/sanity-plugin-media-library/-/sanity-plugin-media-library-2.0.2.tgz#14c85f53d71a5df8928e58d28a4c6f0114e1530f"
-  integrity sha512-hPO9FuyZx3awG/rJ+ljs0pG0++4+IZWiAKm0Q/uQ4clCQK0JrhzDTizBhg+OWbh6XQoy+kgI/wRX9bPdxVE6PA==
-  dependencies:
-    "@sanity/icons" "^1.1.7"
-    "@sanity/ui" "^0.36.10"
-    styled-components "^5.3.1"
-
 sanity-plugin-media@^1.4.4:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/sanity-plugin-media/-/sanity-plugin-media-1.4.8.tgz#fa97ea2b00ddebbe3767c749e8b0849c727a68b7"
@@ -12622,7 +12602,7 @@ styled-components@^4.4.1:
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
 
-styled-components@^5.2.0, styled-components@^5.3.1:
+styled-components@^5.2.0:
   version "5.3.5"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-5.3.5.tgz#a750a398d01f1ca73af16a241dec3da6deae5ec4"
   integrity sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==

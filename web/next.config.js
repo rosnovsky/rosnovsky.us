@@ -17,6 +17,7 @@ module.exports = withBundleAnalyzer(
     images: {
       domains: [
         'cdn.sanity.io',
+        'n3o7a5dl.apicdn.sanity.io',
         's.gravatar.com',
         'avatars.githubusercontent.com',
         'lh3.googleusercontent.com',
@@ -51,10 +52,10 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.youtube.com *.twitter.com *.github.com localhost:3000 llama.rosnovsky.us usefathom.com api.mapbox.com;
   child-src *.youtube.com *.google.com *.twitter.com localhost:3000 rosnovsky.us *.vercel.app llama.rosnovsky.us api.mapbox.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com api.mapbox.com;
-  img-src * blob: data: api.mapbox.com;
+  img-src * blob: data: api.mapbox.com n3o7a5dl.apicdn.sanity.io;
   worker-src blob: *.vercel.app localhost:3000 rosnovsky.us llama.rosnovsky.us;
   media-src  *;
-  connect-src 'self' blob: ws://localhost:3000 rosnovsky.us llama.rosnovsky.us api.mapbox.com;
+  connect-src 'self' blob: rosnovsky.us llama.rosnovsky.us api.mapbox.com n3o7a5dl.apicdn.sanity.io
   font-src *;
 `;
 
