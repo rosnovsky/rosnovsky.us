@@ -64,6 +64,6 @@
     "**/*.ts",
     "stories/**/*.stories.tsx",
     "../__mocks__/setupTests.ts",
-    "pages/hiking.tsx"
+    "pages/hike/hiking.tsx"
   ]
 }

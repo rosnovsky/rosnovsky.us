@@ -56,7 +56,7 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime',
+      type: 'date',
       validation: (Rule) => Rule.required(),
     },
     {
@@ -78,9 +78,10 @@ export default {
       of: [{ type: 'reference', to: { type: 'post' } }],
     },
     {
-      name: 'location',
-      type: 'geopoint',
-      title: 'Location',
+      name: 'hike',
+      title: 'Hike report?',
+      type: 'reference',
+      to: { type: 'hike' },
     },
   ],
 

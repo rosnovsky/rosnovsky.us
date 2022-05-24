@@ -11,6 +11,7 @@ import post from './post';
 import page from './page';
 import youtube from './youtube';
 import metacard from './metacard';
+import hike from './hike';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,6 +23,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     post,
+    hike,
     page,
     category,
     youtube,

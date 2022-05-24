@@ -36,12 +36,17 @@ const Footer = () => {
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
                 <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
+                  <Link href="/blog">Blog</Link>
+                </span>
+              </div>
+              <div className="w-full md:w-auto p-3 md:px-6">
+                <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
                   <Link href="/about">About</Link>
                 </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
                 <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
-                  <Link href="/blog">Blog</Link>
+                  <Link href="/maps/hikes">Hiking Map</Link>
                 </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
