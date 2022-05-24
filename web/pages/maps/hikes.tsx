@@ -1,24 +1,25 @@
 import sanityClient from '@lib/sanityClient';
-import type { Page as PageType } from 'index';
+import type { Hike as HikeType } from 'index';
 import dynamic from 'next/dynamic';
+import slugify from 'slugify';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
-const Map = dynamic(() => import('@components/Hiking/Map'), {
+const Map = dynamic(() => import('@components/Map'), {
   ssr: false,
 });
 
 type Props = {
-  hikingPage: PageType[];
+  hikes: HikeType[];
 };
 
-const Page = ({ hikingPage }: Props) => {
-  const postsWithLocation = hikingPage.filter((post) => post.location !== null);
-
+const HikesMap = ({ hikes }: Props) => {
   return (
     <Containter
       title={`Hiking Map – Art Rosnovsky`}
       description={'All my hikes in one place'}
-      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/hiking-map.jpg`}
+      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
+        'Hiking Map'
+      )}.jpg`}
       type="article"
     >
       <section
@@ -33,12 +34,21 @@ const Page = ({ hikingPage }: Props) => {
             <h2 className="mb-4 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 prose font-bold tracking-tighter">
               Hiking Map
             </h2>
+            <div className="text-2xl flex items-center justify-center">
+              <p className="inline-block text-blue-700 font-medium">
+                {hikes.length} total hikes{' '}
+                <span className="mx-1 text-blue-900">•</span>
+                {Math.ceil(hikes.reduce((a, b) => a + b.length, 0))} miles{' '}
+                <span className="mx-1 text-blue-900">•</span>
+                {Math.ceil(
+                  hikes.reduce((a, b) => a + b.elevationGain, 0) / 1000
+                ).toLocaleString()}
+                K ft of elevation gain
+              </p>
+            </div>
           </div>
           <div className="prose prose-xl md:max-w-3xl mx-auto">
-            <div className="w-full h-auto">
-              <Map posts={postsWithLocation} />
-            </div>
-            {/* <PortableText value={body} components={PortableTextComponents} /> */}
+            <Map data={hikes} />
           </div>
         </div>
       </section>
@@ -49,15 +59,19 @@ const Page = ({ hikingPage }: Props) => {
 
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
-  const hikingPage: PageType = await sanityClient.fetch(
+  const hikes: HikeType[] = await sanityClient.fetch(
     `
-    *[_type == "post"] {
+    *[_type == "hike"] {
       title,
-      slug,
       location,
       coverImage {
         asset->
-      }
+      }, 
+      report->,
+      trail,
+      length,
+      slug,
+      elevationGain
     }
   `
   );
@@ -66,12 +80,10 @@ export async function getStaticProps() {
 
   try {
     const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${
-        hikingPage.title
-      }&&coverImage=${hikingPage.coverImage?.asset.url || null}`
+      `${baseUrl}/api/opengraph/generate?title="Hiking map"&coverImage=${null}`
     );
     console.info(
-      `♻️ Generating Social Image for ${hikingPage.title}. Here its status code: `,
+      `♻️ Generating Social Image for Hiking Map. Here its status code: `,
       generateSocialImage.status
     );
   } catch (e) {
@@ -80,9 +92,9 @@ export async function getStaticProps() {
 
   return {
     props: {
-      hikingPage,
+      hikes,
     },
   };
 }
 
-export default Page;
+export default HikesMap;

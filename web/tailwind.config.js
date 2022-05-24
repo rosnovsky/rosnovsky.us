@@ -25,6 +25,16 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      amber: {
+        700: 'rgb(180 83 9)',
+      },
+      emerald: {
+        700: 'rgb(15 118 110)',
+      },
+      rose: {
+        700: 'rgb(225 29 72)',
+      },
+
       darkCoolGray: {
         50: '#F5F6F7',
         100: '#EBEDEF',

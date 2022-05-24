@@ -189,3 +189,23 @@ export const generateRssFeed = async () => {
   fs.writeFileSync('./public/feed/atom.xml', feed.atom1());
   fs.writeFileSync('./public/feed/feed.json', feed.json1());
 };
+
+export const difficultyColor = (difficulty: string) => {
+  switch (difficulty) {
+    case 'Easy':
+      return 'inline-block font-medium text-emerald-700';
+    case 'Moderate':
+      return 'inline-block font-medium text-amber-700';
+    case 'Hard':
+      return 'inline-block font-medium text-rose-700';
+    default:
+      return 'inline-block font-medium text-blue-700';
+  }
+};
+
+export const lengthColor = (length: number) => {
+  if (length <= 8) return 'inline-block text-emerald-700 font-medium';
+  if (length > 8 && length <= 20)
+    return 'inline-block text-amber-700 font-medium';
+  if (length > 20) return 'inline-block text-rose-700 font-medium';
+};
