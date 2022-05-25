@@ -28,7 +28,10 @@ const Footer = () => {
             <span className="block md:mx-auto mb-5 max-w-max text-coolGray-900 text-2xl font-medium">
               Rosnovsky Park™
             </span>
-            <div className="flex flex-wrap justify-center -mx-3 lg:-mx-6">
+            <div
+              id="footer-menu"
+              className="flex flex-wrap justify-center -mx-3 lg:-mx-6"
+            >
               <div className="w-full md:w-auto p-3 md:px-6">
                 <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
                   <Link href="/">Home</Link>
@@ -59,7 +62,10 @@ const Footer = () => {
         </div>
         <div className="border-b border-coolGray-100"></div>
         <div className="container px-4 mx-auto">
-          <p className="py-5 md:pb-5 text-xs md:text-sm text-coolGray-400 text-center">
+          <p
+            id="land"
+            className="py-5 md:pb-5 text-xs md:text-sm text-coolGray-400 text-center"
+          >
             Built with ❤️ and 🙇‍♂️ on Snohomish, Stillaguamish and other Puget
             Salish ancestral lands.{' '}
             <span className="font-medium text-black">
