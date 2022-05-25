@@ -6,7 +6,7 @@ context('Privacy Page Tests', () => {
   });
 
   it('Privacy page is reacheable form the Home Page', () => {
-    cy.get('#menu').contains('Privacy', { timeout: 3000 }).click();
+    cy.get('#footer-menu').contains('Privacy', { timeout: 3000 }).click();
     cy.url().should('include', '/privacy');
   });
 });

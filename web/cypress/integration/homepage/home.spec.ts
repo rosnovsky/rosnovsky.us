@@ -21,8 +21,7 @@ context('Home Page Tests', () => {
     menuSmall.should('contain', 'Blog');
     menuSmall.should('contain', 'About');
     menuSmall.should('contain', 'Log In', { timeout: 2000 });
-    cy.get('#menu').children().contains('Privacy').should('not.be.visible');
-    cy.get('#menu').children().contains('Land').should('not.be.visible');
+    cy.get('#menu').children().contains('Hiking Map').should('not.be.visible');
 
     cy.viewport(1000, 900);
     const menu = cy.get('#menu').children();
@@ -33,9 +32,8 @@ context('Home Page Tests', () => {
 
     menu.should('contain', 'Blog').should('be.visible');
     menu.should('contain', 'About').should('be.visible');
-    menu.should('contain', 'Privacy').should('be.visible');
     menu.should('contain', 'Log In').should('be.visible');
-    cy.get('#menu').children().contains('Land').should('not.be.visible');
+    menu.should('contain', 'Hiking Map').should('be.visible');
 
     cy.viewport(1920, 1080);
     const menuLarge = cy.get('#menu').children();
@@ -45,8 +43,7 @@ context('Home Page Tests', () => {
     });
     menuLarge.should('contain', 'Blog').should('be.visible');
     menuLarge.should('contain', 'About').should('be.visible');
-    menuLarge.should('contain', 'Privacy').should('be.visible');
-    menuLarge.should('contain', 'Land').should('be.visible');
+    menuLarge.should('contain', 'Hiking Map').should('be.visible');
     menuLarge.should('contain', 'Log In').should('be.visible');
   });
 
