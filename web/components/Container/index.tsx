@@ -49,10 +49,6 @@ const Containter = (props) => {
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
-        <link
-          href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css"
-          rel="stylesheet"
-        />
       </Head>
       <div className="">
         <section className="relative bg-coolGray-50 overflow-hidden">

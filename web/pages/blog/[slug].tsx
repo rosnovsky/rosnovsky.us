@@ -9,6 +9,7 @@ const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import type { UserProfile } from '@auth0/nextjs-auth0';
 import slugify from 'slugify';
+import { RelatedPosts } from '@components/Blog/Posts';
 
 type Props = {
   post: BlogPost;
@@ -17,7 +18,6 @@ type Props = {
 };
 
 const Post = ({ post, postComments, resolvedUsers }: Props) => {
-  // if (!post) return <Custom404 />;
   const {
     publishedAt,
     title,
@@ -27,6 +27,7 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
     categories,
     body,
     estimatedReadingTime,
+    references,
   } = post;
 
   return (
@@ -90,6 +91,17 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
           <div className="prose prose-xl md:max-w-3xl mx-auto">
             <PortableText value={body} components={PortableTextComponents} />
           </div>
+          {references && (
+            <div className="mb-10 mx-auto md:max-w-3xl overflow-hidden rounded-lg">
+              <h2 className="text-2xl text-center my-10 mx-auto overflow-hidden rounded-lg">
+                Related Posts
+              </h2>
+
+              <div className="w-full md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
+                <RelatedPosts posts={references} />
+              </div>
+            </div>
+          )}
           <div className="w-full text-center mt-10 mx-auto">
             <h2 className="text-2xl">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
@@ -139,7 +151,11 @@ export async function getStaticProps(context) {
         title,
         publishedAt,
         slug,
-        coverImage,
+        categories[]->,
+        coverImage {
+          ...,
+          asset->
+        },
         summary
       },
       body[]{
