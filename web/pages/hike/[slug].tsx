@@ -139,6 +139,7 @@ export async function getStaticProps(context) {
     props: {
       hike,
     },
+    revalidate: 120,
   };
 }
 
