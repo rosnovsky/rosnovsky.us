@@ -103,6 +103,7 @@ export async function getStaticProps() {
         '/api/fathom/uniquesThisMonth': visitorsStats,
       },
     },
+    revalidate: 120,
   };
 }
 
