@@ -94,7 +94,7 @@ export async function getStaticProps() {
     props: {
       hikes,
     },
-    refalidate: 120,
+    revalidate: 120,
   };
 }
 
