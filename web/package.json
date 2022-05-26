@@ -12,7 +12,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --record --key 857c832c-5e4c-472f-8c90-7aafdd47c1e2",
     "test:build-and-run": "rm -rf .next && pnpm build && pnpm test",
-    "test": "start-server-and-test start http://0.0.0.0:3000 cypress:run"
+    "test": "start-server-and-test start http://0.0.0.0:3000 cypress:run",
+    "postbuild": "next-sitemap"
   },
   "nyc": {
     "extends": "./.nycrc.json",
@@ -104,6 +105,7 @@
     "cypress": "^9.6.1",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.6",
+    "next-sitemap": "^2.5.25",
     "nyc": "^15.1.0",
     "react-syntax-highlighter": "^15.5.0",
     "start-server-and-test": "^1.14.0",
