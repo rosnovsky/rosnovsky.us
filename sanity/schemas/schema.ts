@@ -12,6 +12,10 @@ import page from './page';
 import youtube from './youtube';
 import metacard from './metacard';
 import hike from './hike';
+import person from './life/people/person';
+import country from './life/places/country';
+import city from './life/places/city';
+import company from './life/jobs/company';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -31,5 +35,9 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
+    person,
+    country,
+    city,
+    company
   ]),
 });
