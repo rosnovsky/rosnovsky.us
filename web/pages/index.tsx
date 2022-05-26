@@ -80,7 +80,7 @@ export async function getStaticProps() {
   );
 
   const commentsStats = await fetch(
-    'https://rosnovsky.us/api/comments/getCommentsCount'
+    'https://rosnovsky.us/api/comments/getCount'
   ).then((res) => res.json());
 
   const subscribersStats = await fetch(
@@ -98,7 +98,7 @@ export async function getStaticProps() {
       postCount,
       fallback: {
         '/api/github': githubStats,
-        '/api/comments/getCommentsCount': commentsStats,
+        '/api/comments/getCount': commentsStats,
         '/api/subscribers': subscribersStats,
         '/api/fathom/uniquesThisMonth': visitorsStats,
       },

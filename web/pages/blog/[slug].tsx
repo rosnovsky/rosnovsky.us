@@ -172,7 +172,7 @@ export async function getStaticProps(context) {
   );
 
   const postComments: PostComment[] = await fetch(
-    `https://rosnovsky.us/api/comments/getComments?id=${slug}`
+    `https://rosnovsky.us/api/comments/getByPost?id=${slug}`
   )
     .then((res) => res.json())
     .catch(() => []);
@@ -206,7 +206,7 @@ export async function getStaticProps(context) {
 
     const users = uniqueUserIds.map(async (id) => {
       return await fetch(
-        `https://rosnovsky.us/api/comments/userProfile?user_id=${id}`
+        `https://rosnovsky.us/api/comments/getUserProfile?user_id=${id}`
       )
         .then((res) => res.json())
         .catch((err) => console.error(err));

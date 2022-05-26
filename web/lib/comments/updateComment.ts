@@ -2,7 +2,7 @@ import { UserProfile } from '@auth0/nextjs-auth0';
 import { supabase } from '@lib/supabase';
 import { PostComment } from 'index';
 import md5 from 'md5';
-import { userProfile } from '@api/comments/userProfile';
+import { userProfile } from '@pages/api/comments/getUserProfile';
 
 /**
   Update comment content. Sets `edited` to true.

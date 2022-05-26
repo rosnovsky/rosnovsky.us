@@ -50,7 +50,8 @@ export const media = {
   `,
 };
 
-export const getApiUrl = (url) => `https://rosnovsky.us/api/meta?url=${url}`;
+export const getApiUrl = (url) =>
+  `https://rosnovsky.us/api/getMetaCardData?url=${url}`;
 
 export const isLarge = (cardSize) => cardSize === 'large';
 

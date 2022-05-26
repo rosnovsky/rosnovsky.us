@@ -41,7 +41,7 @@ const Card = (props) => {
   const [iframeMedia, setIframeMedia] = useState(null);
   const [isError, setIsError] = useState(false);
   const isLoadingUndefined = useMemo(() => loading === undefined, [loading]);
-  const apiUrl = `https://rosnovsky.us/api/meta?url=${url}`;
+  const apiUrl = `https://rosnovsky.us/api/getMetaCardData?url=${url}`;
 
   const isLazyEnabled = useMemo(
     () => isLazySupported && (lazy === true || isObject(lazy)),
