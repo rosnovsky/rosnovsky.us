@@ -2,7 +2,7 @@ import fetcher from '@lib/fetcher';
 import useSWR from 'swr';
 
 const Comments = () => {
-  const { data, error } = useSWR('/api/comments/getCommentsCount', fetcher, {
+  const { data, error } = useSWR('/api/comments/getCount', fetcher, {
     refreshInterval: 120000,
   });
   if (error) {

@@ -12,8 +12,8 @@ export const getLastPlayedAppleMusicTrack = async () => {
   return fetch(LAST_PLAYED_APPLE, {
     headers: {
       Authorization: `Bearer ${APPLE_DEV_TOKEN}`,
-      'Music-User-Token': `${APPLE_USER_TOKEN}`
-    }
+      'Music-User-Token': `${APPLE_USER_TOKEN}`,
+    },
   });
 };
 
@@ -21,7 +21,7 @@ export const getLastPlayedAppleMusicTracks = async () => {
   return fetch(LAST_TRACKS_APPLE, {
     headers: {
       Authorization: `Bearer ${APPLE_DEV_TOKEN}`,
-      'Music-User-Token': `${APPLE_USER_TOKEN}`
-    }
+      'Music-User-Token': `${APPLE_USER_TOKEN}`,
+    },
   });
 };

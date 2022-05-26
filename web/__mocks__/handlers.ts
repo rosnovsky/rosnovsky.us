@@ -19,39 +19,33 @@ export const handlers = [
     );
   }),
 
-  rest.get(
-    'https://rosnovsky.us/api/comments/getCommentsCount',
-    (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          totalComments: 666,
-        })
-      );
-    }
-  ),
+  rest.get('https://rosnovsky.us/api/comments/getCount', (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        totalComments: 666,
+      })
+    );
+  }),
 
-  rest.get(
-    `https://rosnovsky.us/api/comments/getComments`,
-    (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json([
-          {
-            id: '1',
-            user_id: 'user',
-            published_at: '2021-10-28T05:08:31.043+00:00',
-            comment: 'Comment',
-            flagged: false,
-            deleted: false,
-            edited: false,
-            post_id: 'test',
-            hash: '@@@',
-          },
-        ])
-      );
-    }
-  ),
+  rest.get(`https://rosnovsky.us/api/comments/getByPost`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        {
+          id: '1',
+          user_id: 'user',
+          published_at: '2021-10-28T05:08:31.043+00:00',
+          comment: 'Comment',
+          flagged: false,
+          deleted: false,
+          edited: false,
+          post_id: 'test',
+          hash: '@@@',
+        },
+      ])
+    );
+  }),
 
   rest.get('https://rosnovsky.us/api/last-played', (_req, res, ctx) => {
     return res(
@@ -101,7 +95,7 @@ export const handlers = [
   }),
 
   rest.get(
-    'http://localhost:3000/api/comments/userProfile?user_id=1',
+    'http://localhost:3000/api/comments/getUserProfile?user_id=1',
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json({}));
     }

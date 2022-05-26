@@ -6,7 +6,7 @@ import {
   UserProfile,
 } from '@auth0/nextjs-auth0';
 import md5 from 'md5';
-import { userProfile } from './userProfile';
+import { userProfile } from './getUserProfile';
 import { notify } from '@lib/notifications/notify';
 import { validateQueryData } from '@lib/comments/validate';
 
