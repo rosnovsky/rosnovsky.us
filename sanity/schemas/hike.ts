@@ -1,7 +1,10 @@
+import { GiWalk } from 'react-icons/gi';
+
 export default {
   name: 'hike',
   title: 'Hike',
   type: 'document',
+  icon: GiWalk,
   fields: [
     {
       name: 'title',
@@ -82,14 +85,36 @@ export default {
   preview: {
     select: {
       title: 'title',
-      hikeDate: 'hikeDate',
+      date: 'hikeDate',
       media: 'coverImage',
     },
     prepare(selection) {
-      const { hikeDate } = selection;
-      return Object.assign({}, selection, {
-        subtitle: new Date(hikeDate).toLocaleDateString(),
-      });
-    },
+      const { title, date, media } = selection;
+      return {
+        title,
+        subtitle: new Date(date).toLocaleDateString('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric',
+        }),
+        media,
+      };
+    }
   },
+    orderings: [
+    {
+      title: 'New hikes first',
+      name: 'hikeDateDesc',
+      by: [
+        {field: 'hikeDate', direction: 'desc'}
+      ]
+    },
+    {
+      title: 'Old hikes first',
+      name: 'hikeDateAsc',
+      by: [
+        {field: 'hikeDate', direction: 'asc'}
+      ]
+    },
+  ]
 };

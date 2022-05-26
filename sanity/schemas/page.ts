@@ -1,7 +1,10 @@
+import {RiPagesLine} from 'react-icons/ri';
+
 export default {
   name: 'page',
   title: 'Page',
   type: 'document',
+  icon: RiPagesLine,
   fields: [
     {
       name: 'title',

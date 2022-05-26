@@ -12,6 +12,12 @@ import page from './page';
 import youtube from './youtube';
 import metacard from './metacard';
 import hike from './hike';
+import person from './life/people/person';
+import country from './life/places/country';
+import city from './life/places/city';
+import company from './life/jobs/company';
+import airline from './life/travel/airline';
+import flight from './life/travel/flight';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,8 +34,14 @@ export default createSchema({
     category,
     youtube,
     metacard,
+    person,
+    country,
+    city,
+    company,
+    airline,
+    flight,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    blockContent,
+    blockContent
   ]),
 });

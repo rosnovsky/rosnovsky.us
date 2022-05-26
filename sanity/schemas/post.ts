@@ -1,7 +1,10 @@
+import { BiPencil } from 'react-icons/bi'
+
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
+  icon: BiPencil,
   fields: [
     {
       name: 'title',
@@ -94,7 +97,11 @@ export default {
     prepare(selection) {
       const { publishedAt } = selection;
       return Object.assign({}, selection, {
-        subtitle: new Date(publishedAt).toLocaleDateString(),
+        subtitle: new Date(publishedAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
       });
     },
   },
