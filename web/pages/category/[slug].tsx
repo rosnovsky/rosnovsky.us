@@ -94,6 +94,7 @@ export async function getStaticProps(context) {
       postCount,
       isCategory: context.params.slug,
     },
+    revalidate: 120,
   };
 }
 

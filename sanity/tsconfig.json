@@ -9,6 +9,7 @@
     "./node_modules/@sanity/base/types/**/*.ts",
     "./**/*.ts",
     "./**/*.tsx",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "src/dashboardConfig.js"
   ]
 }

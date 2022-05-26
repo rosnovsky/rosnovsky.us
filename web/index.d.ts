@@ -69,11 +69,34 @@ export interface BlogPost extends SanityDocument {
   summaryRaw: string;
   bodyRaw: string;
   estimatedReadingTime: number;
+  location: {
+    lat: number;
+    lng: number;
+  };
   categories: {
     title: string;
     description: Block[] | string;
     slug: { current: string };
   }[];
+  references: BlogPost[];
+}
+
+export interface Hike {
+  title: string;
+  coverImage: SanityImageAssetDocument;
+  report: BlogPost;
+  hikeDate: string;
+  location: {
+    lat: number;
+    lng: number;
+  };
+  reportRaw: string;
+  summary: Block[];
+  difficulty: 'Easy' | 'Moderate' | 'Hard';
+  trail: string;
+  length: number;
+  elevationGain: number;
+  slug: { current: string };
 }
 
 export interface Page extends SanityDocument {
@@ -82,6 +105,10 @@ export interface Page extends SanityDocument {
   body: Block[];
   bodyRaw: string;
   coverImage: SanityImageAssetDocument;
+  location: {
+    lat: number;
+    lng: number;
+  };
 }
 
 export type PictureDescription = {
@@ -100,16 +127,6 @@ export type PictureDescription = {
   };
   modelVersion: string;
 };
-
-export interface FrontMatter {
-  cover: string;
-  publishedAt: string;
-  readingTime: { text: string };
-  slug: string;
-  summary: string;
-  title: string;
-  wordCount: number;
-}
 
 export type CommentAuthor = {
   user?: UserProfile;

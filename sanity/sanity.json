@@ -14,7 +14,13 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/code-input",
-    "media"
+    "asset-source-unsplash",
+    "mapbox-input",
+    "vercel-deploy",
+    "@sanity/dashboard",
+    "media",
+    "icon-picker",
+    "@sanity/vision"
   ],
   "env": {
     "development": {

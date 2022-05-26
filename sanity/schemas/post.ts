@@ -56,7 +56,7 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime',
+      type: 'date',
       validation: (Rule) => Rule.required(),
     },
     {
@@ -76,6 +76,12 @@ export default {
       title: 'Refernce Posts',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'post' } }],
+    },
+    {
+      name: 'hike',
+      title: 'Hike report?',
+      type: 'reference',
+      to: { type: 'hike' },
     },
   ],
 
