@@ -1,8 +1,8 @@
 {
   "apiKey": "pk.eyJ1Ijoicm9zbm92c2t5IiwiYSI6ImNsM2k1dGt6eTBvdXczaXVtOGh4c2x6cm0ifQ.s1iOueVeWKaqkf2Er3TWuA",
-  "defaultZoom": 11,
+  "defaultZoom": 6,
   "defaultLocation": {
-    "lat": 40.7058254,
-    "lng": -74.1180863
+    "lat": 47.7058254,
+    "lng": -121.1180863
   }
 }
