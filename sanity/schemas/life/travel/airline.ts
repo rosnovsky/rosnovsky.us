@@ -1,7 +1,10 @@
+import { FaPlane } from 'react-icons/fa';
+
 export default {
-  name: 'country',
-  title: 'Country',
+  name: 'airline',
+  title: 'Airline',
   type: 'document',
+  icon: FaPlane,
   fields: [
     {
       name: 'name',
@@ -10,9 +13,9 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'location',
-      title: 'Location',
-      type: 'geopoint',
+      name: 'website',
+      title: 'Website',
+      type: 'url',
       validation: (Rule) => Rule.required(),
     },
     {
@@ -25,21 +28,12 @@ export default {
       },
       validation: (Rule) => Rule.required(),
     },
-    {
-      name: 'flag',
-      title: 'Flag',
-      type: 'image',
-      options: {
-        hotspot: true,
-        metadata: ['exif', 'location', 'lqip', 'blurhash', 'palette'],
-      },
-    },
   ],
 
   preview: {
     select: {
       title: 'name',
-      media: 'flag',
+      subtitle: 'website',
     },
   },
 };

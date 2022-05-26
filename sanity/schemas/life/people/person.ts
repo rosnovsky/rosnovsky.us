@@ -1,7 +1,10 @@
+import {BsFillPersonFill} from 'react-icons/bs';
+
 export default {
   name: 'person',
   title: 'Person',
   type: 'document',
+  icon: BsFillPersonFill,
   fields: [
     {
       name: 'firstName',
@@ -21,20 +24,11 @@ export default {
       type: 'date',
     },
     {
-      name: 'deceased',
-      title: 'Deceased',
-      type: 'boolean',
-      options: {
-        layout: 'checkbox',
-        default: false,
-      }
-    },
-    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'firstName',
+        source: doc => `${doc.firstName}-${doc.lastName}`,
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
@@ -72,6 +66,15 @@ export default {
       title: 'Friends',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'person' } }],
+    },
+    {
+      name: 'deceased',
+      title: 'Deceased',
+      type: 'boolean',
+      initialValue: false,
+      options: {
+        layout: 'checkbox',
+      }
     },
     
   ],

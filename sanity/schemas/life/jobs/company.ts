@@ -1,7 +1,10 @@
+import {MdBusinessCenter} from 'react-icons/md';
+
 export default {
   name: 'company',
   title: 'Company',
   type: 'document',
+  icon: MdBusinessCenter,
   fields: [
     {
       name: 'name',

@@ -3,13 +3,15 @@
   // parts, the actual transpilation is done by babel. Any compiler configuration in
   // here will be ignored.
   "compilerOptions": {
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
   },
   "include": [
     "./node_modules/@sanity/base/types/**/*.ts",
     "./**/*.ts",
     "./**/*.tsx",
     "tailwind.config.js",
-    "src/dashboardConfig.js"
+    "src/dashboardConfig.js",
+    "deskStructure.ts"
   ]
 }

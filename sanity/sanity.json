@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "Rosnovsky Park Blog",
+    "name": "Rosnovsky Park™",
     "basePath": "/studio"
   },
   "api": {
@@ -22,17 +22,14 @@
     "icon-picker",
     "@sanity/vision"
   ],
-  "env": {
-    "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
-    }
-  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.ts"
     },
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",

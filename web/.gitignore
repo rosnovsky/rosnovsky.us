@@ -3,8 +3,6 @@
 .next
 node_modules
 .env.*
-public/sitemap.xml
-public/feed.xml
 .vercel
 .env.*
 public/sw.js.map

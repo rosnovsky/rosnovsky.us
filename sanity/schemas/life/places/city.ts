@@ -1,7 +1,10 @@
+import {RiMapPinLine} from 'react-icons/ri';
+
 export default {
   name: 'city',
   title: 'City',
   type: 'document',
+  icon: RiMapPinLine,
   fields: [
     {
       name: 'name',

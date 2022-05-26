@@ -1,4 +1,3 @@
-// @ts-expect-error
 import React from 'react'
 
 import Metacard from '../components/Metacard'
