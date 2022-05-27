@@ -13,15 +13,17 @@ type Props = {
   categories: BlogPost['categories'];
   postCount: number;
   fallback: any;
+  status: 'up' | 'down';
 };
 
-const Home = ({ posts, categories, postCount, fallback }: Props) => {
+const Home = ({ posts, categories, postCount, fallback, status }: Props) => {
   return (
     <Container
       title={`Rosnovsky Park – Art Rosnovsky`}
       description={"Hey, I'm Art, and we need to talk. Seriously."}
       image={`https://rosnovsky.us/static/images/banner.jpg`}
       type="website"
+      status={status}
     >
       <Hero />
       <Blog posts={posts} categories={categories} postCount={postCount} />
@@ -91,11 +93,16 @@ export async function getStaticProps() {
     'https://rosnovsky.us/api/stats/uniquesThisMonth'
   ).then((res) => res.json());
 
+  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
+    (res) => res.json()
+  );
+
   return {
     props: {
       posts,
       categories,
       postCount,
+      status: sysytemStatus,
       fallback: {
         '/api/github': githubStats,
         '/api/comments/getCount': commentsStats,
