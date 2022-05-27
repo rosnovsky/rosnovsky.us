@@ -18,7 +18,7 @@ const Menu = () => {
       localStorage.setItem('isAuthenticated', 'true');
       setAuthenticated(true);
     }
-  });
+  }, [user, error, authenticated]);
 
   return (
     <div className="w-full flex justify-center md:justify-end">
