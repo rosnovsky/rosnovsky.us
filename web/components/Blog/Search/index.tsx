@@ -186,8 +186,10 @@ export function Search(props: Partial<AutocompleteOptions<AutocompleteItem>>) {
                                       <Image
                                         src={item.cover}
                                         alt={item.title}
-                                        width="40"
-                                        height="40"
+                                        width="90"
+                                        height="90"
+                                        objectFit="cover"
+                                        quality={70}
                                       />
                                     </div>
                                     <div className="aa-ItemContentBody">
