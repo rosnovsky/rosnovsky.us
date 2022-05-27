@@ -56,7 +56,7 @@ const ContentSecurityPolicy = `
   worker-src blob: *.vercel.app localhost:3000 rosnovsky.us llama.rosnovsky.us;
   media-src  *;
   connect-src 'self' blob: rosnovsky.us llama.rosnovsky.us api.mapbox.com n3o7a5dl.apicdn.sanity.io fonts.gstatic.com *.algolianet.com *.algolia.net;
-  font-src fonts.gstatic.com;
+  font-src fonts.gstatic.com vitals.vercel-insights.com;
 `;
 
 const securityHeaders = [
