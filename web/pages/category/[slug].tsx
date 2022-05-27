@@ -2,7 +2,6 @@ import Blog from '@components/Blog';
 import dynamic from 'next/dynamic';
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 const Stats = dynamic(() => import('@components/Stats'));
-const Footer = dynamic(() => import('@components/Footer'));
 import sanityClient from '@lib/sanityClient';
 import type { BlogPost } from 'index';
 import Containter from '@components/Container';
@@ -13,14 +12,21 @@ type Props = {
   categories: BlogPost['categories'];
   postCount: number;
   isCategory: BlogPost['categories'][0]['slug']['current'];
+  status: 'up' | 'down';
 };
 
-const Category = ({ posts, categories, postCount, isCategory }: Props) => {
+const Category = ({
+  posts,
+  categories,
+  postCount,
+  isCategory,
+  status,
+}: Props) => {
   if (!postCount) {
-    return <Custom404 />;
+    return <Custom404 status={status} />;
   }
   return (
-    <Containter>
+    <Containter status={status}>
       <Blog
         posts={posts}
         categories={categories}
@@ -29,7 +35,6 @@ const Category = ({ posts, categories, postCount, isCategory }: Props) => {
       />
       <NewsletterForm />
       <Stats />
-      <Footer />
     </Containter>
   );
 };
@@ -103,8 +108,13 @@ export async function getStaticProps(context) {
     console.error(e);
   }
 
+  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
+    (res) => res.json()
+  );
+
   return {
     props: {
+      status: sysytemStatus,
       posts,
       categories,
       postCount,

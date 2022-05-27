@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 const Link = dynamic(() => import('next/link'));
 
-const Footer = () => {
+const Footer = ({ status }) => {
   return (
     <section id="footer" className="bg-white">
       <div className="wave-top w-full text-coolGray-50">
@@ -74,7 +74,18 @@ const Footer = () => {
           </p>
           <p className="py-5 md:pb-20 text-xs md:text-sm text-coolGray-400 text-center">
             © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights
-            reserved.
+            reserved.{' '}
+            <Link href="https://status.rosnovsky.us">
+              {status.status === 'up' ? (
+                <span className="cursor-pointer text-green-500">
+                  All systems up.
+                </span>
+              ) : (
+                <span className="cursor-pointer text-red-500">
+                  Some systems down
+                </span>
+              )}
+            </Link>
           </p>
         </div>
       </div>

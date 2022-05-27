@@ -3,9 +3,9 @@ const Link = dynamic(() => import('next/link'));
 const Container = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 
-export default function Custom404() {
+export default function Custom404({ status = 'up' }) {
   return (
-    <Container>
+    <Container status={status}>
       <section
         className="py-16 md:py-24 bg-white"
         style={{

@@ -18,9 +18,10 @@ const Map = dynamic(() => import('@components/Map'), {
 
 type Props = {
   hike: HikeType;
+  status: 'up' | 'down';
 };
 
-const Hike = ({ hike }: Props) => {
+const Hike = ({ hike, status }: Props) => {
   const { title, report, difficulty, length, trail, hikeDate, summary } = hike;
 
   return (
@@ -31,6 +32,7 @@ const Hike = ({ hike }: Props) => {
         title
       )}.jpg`}
       type="article"
+      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -120,6 +122,10 @@ export async function getStaticProps(context) {
     { slug }
   );
 
+  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
+    (res) => res.json()
+  );
+
   const baseUrl = 'https://rosnovsky-api.vercel.app';
 
   try {
@@ -141,6 +147,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       hike,
+      status: sysytemStatus,
     },
     revalidate: 120,
   };

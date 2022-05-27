@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const Containter = (props) => {
-  const { children, ...customMeta } = props;
+  const { children, status = 'up', ...customMeta } = props;
   const router = useRouter();
   const meta = {
     title: "Rosnovsky Prk – Art Rosnovsky's Blog",
@@ -54,7 +54,7 @@ const Containter = (props) => {
         <section className="relative bg-coolGray-50 overflow-hidden">
           <NavBar />
           <div className="bg-transparent">{children}</div>
-          <Footer />
+          <Footer status={status} />
         </section>
       </div>
     </>

@@ -15,9 +15,10 @@ type Props = {
   post: BlogPost;
   postComments: PostComment[];
   resolvedUsers: { data: UserProfile }[];
+  status: 'up' | 'down';
 };
 
-const Post = ({ post, postComments, resolvedUsers }: Props) => {
+const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
   const {
     publishedAt,
     title,
@@ -37,9 +38,11 @@ const Post = ({ post, postComments, resolvedUsers }: Props) => {
       image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
         title
       )}.jpg`}
+      status={status}
       date={new Date(publishedAt).toISOString()}
       type="article"
     >
+      https://rosnovsky.us/api/status
       <section
         className="py-16 md:py-24 bg-white"
         style={{
@@ -171,6 +174,10 @@ export async function getStaticProps(context) {
     { slug }
   );
 
+  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
+    (res) => res.json()
+  );
+
   const postComments: PostComment[] = await fetch(
     `https://rosnovsky.us/api/comments/getByPost?id=${slug}`
   )
@@ -216,6 +223,7 @@ export async function getStaticProps(context) {
         post,
         postComments,
         resolvedUsers: await Promise.all(users),
+        status: sysytemStatus,
       },
       revalidate: 120,
     };
@@ -226,6 +234,7 @@ export async function getStaticProps(context) {
       post,
       postComments,
       resolvedUsers: null,
+      status: sysytemStatus,
     },
     revalidate: 120,
   };
