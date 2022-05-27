@@ -72,6 +72,7 @@ specifiers:
   prettier: ^2.6.2
   react: 18.1.0
   react-dom: 18.1.0
+  react-is: ^18.1.0
   react-map-gl: ^7.0.14
   react-syntax-highlighter: ^15.5.0
   sanity-algolia: ^1.0.2
@@ -171,6 +172,7 @@ devDependencies:
   eslint-config-next: 12.1.6_k6khgwrcmlpd2kpaxkviqw2zii
   next-sitemap: 2.5.25_next@12.1.6
   nyc: 15.1.0
+  react-is: 18.1.0
   react-syntax-highlighter: 15.5.0_react@18.1.0
   start-server-and-test: 1.14.0
   typescript: 4.7.2
@@ -1516,8 +1518,8 @@ packages:
       babelify: 10.0.0_@babel+core@7.18.2
       bluebird: 3.7.2
       browserify: 16.5.2
-      coffeeify: 3.0.1_coffeescript@2.7.0
-      coffeescript: 2.7.0
+      coffeeify: 3.0.1_coffeescript@1.12.7
+      coffeescript: 1.12.7
       debug: 4.3.4
       fs-extra: 9.1.0
       lodash.clonedeep: 4.5.0
@@ -1533,7 +1535,7 @@ packages:
       cypress: '*'
     dependencies:
       '@babel/preset-env': 7.18.2_@babel+core@7.18.2
-      '@cypress/webpack-preprocessor': 5.11.1_xynbh4k6lmtrg3soclyambitum
+      '@cypress/webpack-preprocessor': 5.11.1_w2i5cy6pptznn7rmavsgpnxasa
       babel-loader: 8.2.5_w2i5cy6pptznn7rmavsgpnxasa
       chalk: 4.1.2
       cypress: 9.7.0
@@ -1546,6 +1548,8 @@ packages:
       nyc: 15.1.0
     transitivePeerDependencies:
       - '@babel/core'
+      - '@babel/preset-env'
+      - babel-loader
       - supports-color
       - webpack
     dev: true
@@ -1573,7 +1577,7 @@ packages:
       tunnel-agent: 0.6.0
       uuid: 8.3.2
 
-  /@cypress/webpack-preprocessor/5.11.1_xynbh4k6lmtrg3soclyambitum:
+  /@cypress/webpack-preprocessor/5.11.1_w2i5cy6pptznn7rmavsgpnxasa:
     resolution: {integrity: sha512-kfdF+W/Tns81rFplnqlgZ+t6V+FJ7vegeQCYolLyhh0nJ8eG3s5HvV/ak/zSlbQnaOmAuYiZIChJFVZLUWuNOA==}
     peerDependencies:
       '@babel/core': ^7.0.1
@@ -1582,8 +1586,6 @@ packages:
       webpack: ^4 || ^5
     dependencies:
       '@babel/core': 7.18.2
-      '@babel/preset-env': 7.18.2_@babel+core@7.18.2
-      babel-loader: 8.2.5_w2i5cy6pptznn7rmavsgpnxasa
       bluebird: 3.7.1
       debug: 4.3.4
       lodash: 4.17.21
@@ -3762,19 +3764,19 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /coffeeify/3.0.1_coffeescript@2.7.0:
+  /coffeeify/3.0.1_coffeescript@1.12.7:
     resolution: {integrity: sha512-Qjnr7UX6ldK1PHV7wCnv7AuCd4q19KTUtwJnu/6JRJB4rfm12zvcXtKdacUoePOKr1I4ka/ydKiwWpNAdsQb0g==}
     peerDependencies:
       coffeescript: '>1.9.2 <3'
     dependencies:
-      coffeescript: 2.7.0
+      coffeescript: 1.12.7
       convert-source-map: 1.8.0
       through2: 2.0.5
     dev: true
 
-  /coffeescript/2.7.0:
-    resolution: {integrity: sha512-hzWp6TUE2d/jCcN67LrW1eh5b/rSDKQK6oD6VMLlggYVUUFexgTH9z3dNYihzX4RMhze5FTUsUmOXViJKFQR/A==}
-    engines: {node: '>=6'}
+  /coffeescript/1.12.7:
+    resolution: {integrity: sha512-pLXHFxQMPklVoEekowk8b3erNynC+DVJzChxS/LCBBgR6/8AJkHivkm//zbowcfc7BTCAjryuhx6gPqPRfsFoA==}
+    engines: {node: '>=0.8.0'}
     hasBin: true
     dev: true
 
@@ -8231,7 +8233,6 @@ packages:
 
   /react-is/18.1.0:
     resolution: {integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==}
-    dev: false
 
   /react-map-gl/7.0.15_5knyr2osybn4rs4susxdpr73ne:
     resolution: {integrity: sha512-l7x8lBhIEcHTreSgrc7hsKv5HsMY1wQg2PVXuKAPmQtgRZc9C3NGwurVJFe24gOlAwzta5UavAHWDiZdU1ZNCw==}
