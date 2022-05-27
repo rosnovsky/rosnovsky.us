@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Art Rosnovsky]]></title>
+        <description><![CDATA[Art Rosnovsky]]></description>
+        <link>https://rosnovsky.us</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Sat, 23 Apr 2022 19:14:15 GMT</lastBuildDate>
+        <atom:link href="https://rosnovsky.us/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Old Man Yells at Cloud]]></title>
+            <description><![CDATA[Effective immediately, I'm protected by the Age Discrimination Act of 1975 👴🏻]]></description>
+            <link>https://rosnovsky.us/blog/old-man-yells-at-cloud</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/old-man-yells-at-cloud</guid>
+            <pubDate>Fri, 28 Jan 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[2021: The Year in Review]]></title>
+            <description><![CDATA[2021 was a very long year. In part because we didn't get to decompress after 2020, in part because a lot of 2020 stayed with us through the entire 2021, and in part because of a bunch of personal stuff that happened.]]></description>
+            <link>https://rosnovsky.us/blog/2021</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/2021</guid>
+            <pubDate>Tue, 28 Dec 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Building This Website: Meditation Through Code]]></title>
+            <description><![CDATA[It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected.]]></description>
+            <link>https://rosnovsky.us/blog/meditation-through-code</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/meditation-through-code</guid>
+            <pubDate>Sun, 19 Dec 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[CascadiaJS 2021]]></title>
+            <description><![CDATA[I wanted to attend CascadiaJS for a few years and it finally happened. I've got a few takeaways I want to share with you here.]]></description>
+            <link>https://rosnovsky.us/blog/cascadiajs-2021</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/cascadiajs-2021</guid>
+            <pubDate>Thu, 04 Nov 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Listening now: Apple Music]]></title>
+            <description><![CDATA[At the bottom of this page you can find the latest song I've listened to on Apple Music. Here's how I made it works.]]></description>
+            <link>https://rosnovsky.us/blog/apple-music</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/apple-music</guid>
+            <pubDate>Mon, 01 Nov 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Journaling]]></title>
+            <description><![CDATA[I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a gamechanger in the past few months.]]></description>
+            <link>https://rosnovsky.us/blog/journaling</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/journaling</guid>
+            <pubDate>Thu, 14 Oct 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Moonlander Keyboard]]></title>
+            <description><![CDATA[I've upgraded my keyboard recently. It's been a frustraring, fullfilling, and invigorating experience so far.]]></description>
+            <link>https://rosnovsky.us/blog/moonlander-keyboard</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/moonlander-keyboard</guid>
+            <pubDate>Fri, 17 Sep 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Fall Out Boy, Green Day, Lindsey Stirling]]></title>
+            <description><![CDATA[2020 was a year of, among other things, missed concerts. I missed live music so much that as soon as I got a chance to go to concerts again, I went nuts.]]></description>
+            <link>https://rosnovsky.us/blog/fallout-boy-green-day-lindsey-stirling</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/fallout-boy-green-day-lindsey-stirling</guid>
+            <pubDate>Sat, 11 Sep 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Arlington: bike ride]]></title>
+            <description><![CDATA[Just a few photos from the bike ride through Arlington, Washington.]]></description>
+            <link>https://rosnovsky.us/blog/arlington</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/arlington</guid>
+            <pubDate>Sat, 04 Sep 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Configure Twilio SIP Trunk with Unifi Talk]]></title>
+            <description><![CDATA[Unifi Talk by Ubiquity is a very promising service. However, so far it's been lacking documentation. Here's how to configure Twilio SIP Trunk with Unifi Talk.]]></description>
+            <link>https://rosnovsky.us/blog/twillio-and-unifi-talk</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/twillio-and-unifi-talk</guid>
+            <pubDate>Fri, 06 Aug 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Summer Time]]></title>
+            <description><![CDATA[The summer is different this year. Let's take a look at what's going on this time around.]]></description>
+            <link>https://rosnovsky.us/blog/summer-time</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/summer-time</guid>
+            <pubDate>Tue, 13 Jul 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[June 2021 Update]]></title>
+            <description><![CDATA[It's been such an exhausting yet exciting month. The new house stuff is coming along, moving out is on track, work is buzzing. I'm tired, pumped up, sleepy, and on fire!]]></description>
+            <link>https://rosnovsky.us/blog/june-2021-update</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/june-2021-update</guid>
+            <pubDate>Sat, 26 Jun 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Using AI vision to generate alt text for images]]></title>
+            <description><![CDATA[Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision.]]></description>
+            <link>https://rosnovsky.us/blog/alt-text</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/alt-text</guid>
+            <pubDate>Mon, 07 Jun 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Weekly Update #4]]></title>
+            <description><![CDATA[A a lot had happend in the past month. We closed on the house, got fully vaccinated, I won a hackathon at work, and once again updated this website. ]]></description>
+            <link>https://rosnovsky.us/blog/weekly-update-4</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/weekly-update-4</guid>
+            <pubDate>Sat, 05 Jun 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Weekly Update #3]]></title>
+            <description><![CDATA[This one is short: house hunting is over & family is in town!]]></description>
+            <link>https://rosnovsky.us/blog/weekly-update-3</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/weekly-update-3</guid>
+            <pubDate>Tue, 20 Apr 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Weekly Update #2]]></title>
+            <description><![CDATA[An exciting week, full of driving around and anticipation of change.]]></description>
+            <link>https://rosnovsky.us/blog/weekly-update-2</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/weekly-update-2</guid>
+            <pubDate>Mon, 12 Apr 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Weekly Update #1]]></title>
+            <description><![CDATA[In order to keep myself accounatble and to develop some writing consistency, I'm going to start posting weekly updates. Here's the first one.]]></description>
+            <link>https://rosnovsky.us/blog/weekly-update-april-3-2021</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/weekly-update-april-3-2021</guid>
+            <pubDate>Sat, 03 Apr 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Auth0: 10 Years Later]]></title>
+            <description><![CDATA[It's hard to believe that it's been over a year since I joined Auth0. It's time to do some reflection. Shall we?]]></description>
+            <link>https://rosnovsky.us/blog/auth0-10-years-later</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/auth0-10-years-later</guid>
+            <pubDate>Sun, 14 Mar 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Building this website: Part 3]]></title>
+            <description><![CDATA[In this installment, let’s talk about what it takes to start over and why perfect is indeed the enemy of good.]]></description>
+            <link>https://rosnovsky.us/blog/building-this-website-part-3</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/building-this-website-part-3</guid>
+            <pubDate>Tue, 23 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Dynamic comments for a static website]]></title>
+            <description><![CDATA[For the past couple of months, I've been working on a comment feature for this blog. Now that it's almost finished, I invite you to check it out along with some implementation details.]]></description>
+            <link>https://rosnovsky.us/blog/dynamic-comments-for-a-static-website</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/dynamic-comments-for-a-static-website</guid>
+            <pubDate>Sat, 13 Feb 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Generating Blog Social Images]]></title>
+            <description><![CDATA[Since I launched my new blog, I discovered that social images were broken; they were an afterthought after all, and I decided to fix it permanently.]]></description>
+            <link>https://rosnovsky.us/blog/generating-blog-social-images</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/generating-blog-social-images</guid>
+            <pubDate>Sun, 03 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Building this website: Part 2]]></title>
+            <description><![CDATA[For the past few months, I’ve been rebuilding my website. This time, I’ve built it from scratch, with these two hands. In this post, I want to take a deep dive into what and how I built, and what’s next.]]></description>
+            <link>https://rosnovsky.us/blog/building-this-website-part-2</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/building-this-website-part-2</guid>
+            <pubDate>Sat, 02 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[2020 won't be missed]]></title>
+            <description><![CDATA[This by far the worst year in generations is coming to a close. It won't be missed, yet it will remain in our memory, history books, and our shared trauma will take decades to heal. Here's to 2021, hopefully, a better year.]]></description>
+            <link>https://rosnovsky.us/blog/2020-you-won-t-be-missed</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/2020-you-won-t-be-missed</guid>
+            <pubDate>Thu, 31 Dec 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[5 Tools in 5 Minutes]]></title>
+            <description><![CDATA[These are some of my favorite tools that make my day-to-day job so much easier.]]></description>
+            <link>https://rosnovsky.us/blog/5-tools-in-5-minutes</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/5-tools-in-5-minutes</guid>
+            <pubDate>Wed, 23 Dec 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Building this website]]></title>
+            <description><![CDATA[I’m rebuilding my site, again. This time, though, I decided to do it in public and share what I do, how, and why.]]></description>
+            <link>https://rosnovsky.us/blog/building-this-website</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/building-this-website</guid>
+            <pubDate>Mon, 26 Oct 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Quibi is shutting down!]]></title>
+            <description><![CDATA[After just over 6 months, Quibi is sutting down. What a surprise!..]]></description>
+            <link>https://rosnovsky.us/blog/quibi-is-shutting-down</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/quibi-is-shutting-down</guid>
+            <pubDate>Wed, 21 Oct 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Loowit Trail]]></title>
+            <description><![CDATA[It was a terrible mistake and I shouldn't have done this trail. Sheer luck and generosity of other hikers are the only two reasons I'm not a hero of an article about local Search and Rescue trying to airlift a hiker from Mt. St. Helens.]]></description>
+            <link>https://rosnovsky.us/blog/loowit-trail</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/loowit-trail</guid>
+            <pubDate>Fri, 18 Sep 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lake Valhalla Hike]]></title>
+            <description><![CDATA[A story about a washed away road, how I couldn't find a trail, night hike on the Pacific Crest Trail, and killer-mosquitoes 🦟]]></description>
+            <link>https://rosnovsky.us/blog/lake-valhalla-hike</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/lake-valhalla-hike</guid>
+            <pubDate>Wed, 26 Aug 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[White Pass Hike]]></title>
+            <description><![CDATA[60,000+ steps, 20 miles round trip, 600 floors climbed. What doesn't kill you makes you back hurt. Also, I've got blisters on my thumbs 🤦‍♂️]]></description>
+            <link>https://rosnovsky.us/blog/white-pass-hike</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/white-pass-hike</guid>
+            <pubDate>Sun, 09 Aug 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Goat Lake Hike]]></title>
+            <description><![CDATA[A perfect hike featuring creeks, streams, waterfalls, all kinds of forests, from birch to brush to old growth, and the payoff is one of the most beautiful lakes out there.]]></description>
+            <link>https://rosnovsky.us/blog/goat-lake-hike</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/goat-lake-hike</guid>
+            <pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Monte Cristo Ghost Town Trail]]></title>
+            <description><![CDATA[There's plenty of ghost towns in Washington. Monte Cristo is one of them. But to get there, you have to hike 🤷‍♂️]]></description>
+            <link>https://rosnovsky.us/blog/monte-cristo-ghost-town-trail</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/monte-cristo-ghost-town-trail</guid>
+            <pubDate>Tue, 21 Jul 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Heather Lake Hike]]></title>
+            <description><![CDATA[Painful ascent but spectacular payoff.]]></description>
+            <link>https://rosnovsky.us/blog/heather-lake</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/heather-lake</guid>
+            <pubDate>Wed, 15 Jul 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Wallace Falls Hike]]></title>
+            <description><![CDATA[Recently, I started hiking again with a goal to do an overnight hike in the North Cascades by the end of summer. Here's a bunch of photos from Wallace Falls trail.]]></description>
+            <link>https://rosnovsky.us/blog/wallace-falls</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/wallace-falls</guid>
+            <pubDate>Sun, 12 Jul 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Resources]]></title>
+            <description><![CDATA[Sharing some helpful anti-racism resources. It's your ]]></description>
+            <link>https://rosnovsky.us/blog/resources</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/resources</guid>
+            <pubDate>Fri, 12 Jun 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[No Justice, No Peace]]></title>
+            <description><![CDATA[Seattle Protests against police brutality.]]></description>
+            <link>https://rosnovsky.us/blog/no-justice-no-peace</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/no-justice-no-peace</guid>
+            <pubDate>Wed, 03 Jun 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Black Lives Matter]]></title>
+            <description><![CDATA[Silence is complicity.]]></description>
+            <link>https://rosnovsky.us/blog/black-lives-matter</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/black-lives-matter</guid>
+            <pubDate>Sat, 30 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Smart Reschedule: TypeScript?]]></title>
+            <description><![CDATA[A quick status update, and how I got distracted by TypeScript ♥️]]></description>
+            <link>https://rosnovsky.us/blog/todoist-smart-reschedule-typescript</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/todoist-smart-reschedule-typescript</guid>
+            <pubDate>Mon, 25 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Developer Support Observations]]></title>
+            <description><![CDATA[I've been working as a Developer Support Engineer at Auth0 for the past six months. Here're a few things I learned along the way.]]></description>
+            <link>https://rosnovsky.us/blog/developer-support-observations</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/developer-support-observations</guid>
+            <pubDate>Sun, 24 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Todoist Smart Reschedule]]></title>
+            <description><![CDATA[Instead of looking for Todoist alternatives, I decided to implement my own Smart Reschedule feature, which they removed from the app not long ago.]]></description>
+            <link>https://rosnovsky.us/blog/todoist-smart-reschedule</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/todoist-smart-reschedule</guid>
+            <pubDate>Mon, 18 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[How I collect your data]]></title>
+            <description><![CDATA[This is how I collect and use your data when you visit my blog, sign up, sign in, become a paid member, cancel membership, or want to delete your account permanently.]]></description>
+            <link>https://rosnovsky.us/blog/how-i-collect-your-data</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/how-i-collect-your-data</guid>
+            <pubDate>Thu, 07 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Byteconf React 2020]]></title>
+            <description><![CDATA[Online-only conferences are going to be huge in the coming months and years. Here's one I enjoyed recently.]]></description>
+            <link>https://rosnovsky.us/blog/byteconf-react-2020</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/byteconf-react-2020</guid>
+            <pubDate>Sun, 03 May 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Entertainment in times of Covid-19]]></title>
+            <description><![CDATA[Bookmark this!]]></description>
+            <link>https://rosnovsky.us/blog/entertainment-in-times-of-covid-19</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/entertainment-in-times-of-covid-19</guid>
+            <pubDate>Sun, 26 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Ori and the Heartbreak of Non-Gamers]]></title>
+            <description><![CDATA[I understand that the Will of the Wisps is an upgrade in every sense of the word, but it's clearly geared to attract more hardcore gamers.]]></description>
+            <link>https://rosnovsky.us/blog/ori-and-the-will-of-the-wisps</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/ori-and-the-will-of-the-wisps</guid>
+            <pubDate>Sat, 25 Apr 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Will we bounce back?]]></title>
+            <description><![CDATA[We’ll bounce back, scarred and battered, but stronger and more resilient.]]></description>
+            <link>https://rosnovsky.us/blog/will-we-bounce-back</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/will-we-bounce-back</guid>
+            <pubDate>Sat, 21 Mar 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[How To Give a Shit]]></title>
+            <description><![CDATA[True values become evident in times of crisis.]]></description>
+            <link>https://rosnovsky.us/blog/how-to-give-a-shit</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/how-to-give-a-shit</guid>
+            <pubDate>Sat, 14 Mar 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[FREE HAND SANITIZER]]></title>
+            <description><![CDATA[Running low on hand sanitizer? Here's how you can get some!]]></description>
+            <link>https://rosnovsky.us/blog/free-hand-sanitizer</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/free-hand-sanitizer</guid>
+            <pubDate>Fri, 13 Mar 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Do you want to build a service?]]></title>
+            <description><![CDATA[A quick announcement of a new educational and mental-health focused project. Join the team, it's fun!]]></description>
+            <link>https://rosnovsky.us/blog/do-you-want-to-build-a-service</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/do-you-want-to-build-a-service</guid>
+            <pubDate>Sun, 02 Feb 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Two Thousand Tens]]></title>
+            <description><![CDATA[An overview of the past 10 years: where I came from, how it all went down the wire, and how I ended up where I am now.]]></description>
+            <link>https://rosnovsky.us/blog/2010-2020</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/2010-2020</guid>
+            <pubDate>Sat, 01 Feb 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[You don't have to follow a passion]]></title>
+            <description><![CDATA[Stop reducing people to two-dimensional single-passion beings]]></description>
+            <link>https://rosnovsky.us/blog/you-don-t-have-to-follow-a-passion</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/you-don-t-have-to-follow-a-passion</guid>
+            <pubDate>Thu, 23 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[New Job: Auth0]]></title>
+            <description><![CDATA[I started this year with a resolution, that I will upgrade my job, and will not compromise on anything in the process.]]></description>
+            <link>https://rosnovsky.us/blog/new-job</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/new-job</guid>
+            <pubDate>Thu, 26 Dec 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[New OS, Who Dis: Going Linux after 15 years on Mac]]></title>
+            <description><![CDATA[A story of a hardcore Mac user of 15 years switching to Linux and loving it.]]></description>
+            <link>https://rosnovsky.us/blog/mac-to-linux</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/mac-to-linux</guid>
+            <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Digital Hygiene]]></title>
+            <description><![CDATA[Wash your hands with soap after visiting Facebook. No exceptions!]]></description>
+            <link>https://rosnovsky.us/blog/digital-hygiene</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/digital-hygiene</guid>
+            <pubDate>Wed, 21 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Monroe 4.6 magnitude earthquake 2019]]></title>
+            <description><![CDATA[The day that shook Monroe, WA. And my house. And a bunch of other people's houses.]]></description>
+            <link>https://rosnovsky.us/blog/monroe-earthquake-2019</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/monroe-earthquake-2019</guid>
+            <pubDate>Mon, 22 Jul 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[30 Best Tech and Dev Podcasts]]></title>
+            <description><![CDATA[I've been podcasting for 15+ years. Here's my list of top 30 podcasts of all times... of 2019.]]></description>
+            <link>https://rosnovsky.us/blog/tech-podcasts-in-2019</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/tech-podcasts-in-2019</guid>
+            <pubDate>Mon, 10 Jun 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Live Coding vs Imposter Paralysis]]></title>
+            <description><![CDATA[I've struggled with imposter paralysis for a while. Then I found a cure.]]></description>
+            <link>https://rosnovsky.us/blog/live-coding-vs-imposter-paralysis</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/live-coding-vs-imposter-paralysis</guid>
+            <pubDate>Sat, 08 Jun 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[On Reading]]></title>
+            <description><![CDATA[Definition of reading is evolving.]]></description>
+            <link>https://rosnovsky.us/blog/on-reading</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/on-reading</guid>
+            <pubDate>Fri, 02 Nov 2018 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Middle School Football]]></title>
+            <description><![CDATA[School football is such a thrill!]]></description>
+            <link>https://rosnovsky.us/blog/middle-school-football</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/middle-school-football</guid>
+            <pubDate>Sun, 21 Oct 2018 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[20-minute bike commute in 5 minutes]]></title>
+            <description><![CDATA[Biking!!!]]></description>
+            <link>https://rosnovsky.us/blog/20-minute-bike-commute-in-5-minutes</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/20-minute-bike-commute-in-5-minutes</guid>
+            <pubDate>Wed, 01 Aug 2018 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[100 miles biking milestone]]></title>
+            <description><![CDATA[Ebiking is a pretty fantastic thing. Here's a quick overview of my first 100 miles.]]></description>
+            <link>https://rosnovsky.us/blog/100-miles-biking-milestone</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/100-miles-biking-milestone</guid>
+            <pubDate>Sat, 09 Jun 2018 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Red Hot Chili Peppers in Portland]]></title>
+            <description><![CDATA[RHCP!]]></description>
+            <link>https://rosnovsky.us/blog/red-hot-chili-peppers-in-portland</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/red-hot-chili-peppers-in-portland</guid>
+            <pubDate>Fri, 17 Mar 2017 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Saturday Helicopter Fun @ Seaside]]></title>
+            <description><![CDATA[A quick review of my experience with **Seaside Helicopters **and where I ended up flying with them just once.]]></description>
+            <link>https://rosnovsky.us/blog/seaside-helicopters</link>
+            <guid isPermaLink="true">https://rosnovsky.us/blog/seaside-helicopters</guid>
+            <pubDate>Mon, 26 Aug 2013 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
