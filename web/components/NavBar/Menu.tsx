@@ -2,23 +2,10 @@ import dynamic from 'next/dynamic';
 const Link = dynamic(() => import('next/link'));
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 const Menu = () => {
-  const { user, error } = useUser();
-  const [authenticated, setAuthenticated] = useState(false);
+  const { user, error, isLoading } = useUser();
   const router = useRouter();
-
-  useEffect(() => {
-    const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (isAuthenticated && !user && !error) {
-      setAuthenticated(true);
-    }
-    if (user) {
-      localStorage.setItem('isAuthenticated', 'true');
-      setAuthenticated(true);
-    }
-  }, [user, error, authenticated]);
 
   return (
     <div className="w-full flex justify-center md:justify-end">
@@ -43,23 +30,24 @@ const Menu = () => {
         </li>
         <li>
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
-            {!authenticated && (
-              <Link passHref href={`/api/auth/login?returnTo=${router.asPath}`}>
-                Log In
-              </Link>
-            )}
-            {authenticated && (
+            {(!user && !error) ||
+              (isLoading && (
+                <Link
+                  passHref
+                  href={`/api/auth/login?returnTo=${router.asPath}`}
+                >
+                  Log In
+                </Link>
+              ))}
+            {user && (
               <Link
-                legacyBehavior={false}
-                onClick={() => {
-                  setAuthenticated(false);
-                  localStorage.setItem('isAuthenticated', 'false');
-                }}
+                passHref
                 href={`/api/auth/logout?returnTo=${router.asPath}`}
               >
                 Log Out
               </Link>
             )}
+            {error && <span className="text-red-500">Oops </span>}
           </span>
         </li>
       </ul>
