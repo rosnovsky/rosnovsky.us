@@ -42,7 +42,6 @@ const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
       date={new Date(publishedAt).toISOString()}
       type="article"
     >
-      https://rosnovsky.us/api/status
       <section
         className="py-16 md:py-24 bg-white"
         style={{
