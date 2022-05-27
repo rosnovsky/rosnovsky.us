@@ -19,8 +19,12 @@ const generateSocialImage = ({ coverImage, title, meta }) => {
           </div>
 
           <div>
-            <div className="mb-20 w-2/3 prose font-black text-5xl">{title}</div>
-            <div className="mb-3 prose-body text-sm font-medium">{meta}</div>
+            <div className="mb-20 w-2/3 prose prose-xl prose-headings: font-black text-5xl">
+              {title}
+            </div>
+            <div className="mb-3 prose-body max-w-2xl truncate text-sm font-medium">
+              {meta}
+            </div>
           </div>
         </div>
       </div>
