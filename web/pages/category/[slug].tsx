@@ -87,6 +87,22 @@ export async function getStaticProps(context) {
   `
   );
 
+  const baseUrl = 'https://rosnovsky-api.vercel.app';
+
+  try {
+    const generateSocialImage = await fetch(
+      `${baseUrl}/api/opengraph/generate?title=${
+        context.slug
+      } category&meta=${postCount} posts&coverImage=${null}`
+    );
+    console.info(
+      `♻️ Generating Social Image for ${context.slug} category. Here its status code: `,
+      generateSocialImage.status
+    );
+  } catch (e) {
+    console.error(e);
+  }
+
   return {
     props: {
       posts,

@@ -95,7 +95,9 @@ export async function getStaticProps(context) {
 
   try {
     const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${page.title}&&coverImage=${
+      `${baseUrl}/api/opengraph/generate?title=${
+        page.title
+      }&meta=${page.bodyRaw.slice(0, 150)}&coverImage=${
         page.coverImage.asset.url || null
       }`
     );
