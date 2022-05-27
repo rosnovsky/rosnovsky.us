@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const Containter = (props) => {
-  const { children, status, ...customMeta } = props;
+  const { children, status = 'up', ...customMeta } = props;
   const router = useRouter();
   const meta = {
     title: "Rosnovsky Prk – Art Rosnovsky's Blog",

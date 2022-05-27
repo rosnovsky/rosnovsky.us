@@ -10,9 +10,10 @@ import slugify from 'slugify';
 
 type Props = {
   page: PageType;
+  status: 'up' | 'down';
 };
 
-const Page = ({ page }: Props) => {
+const Page = ({ page, status }: Props) => {
   const { title, coverImage, body, bodyRaw } = page;
 
   return (
@@ -23,6 +24,7 @@ const Page = ({ page }: Props) => {
         title
       )}.jpg`}
       type="article"
+      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -109,9 +111,14 @@ export async function getStaticProps(context) {
     console.error(e);
   }
 
+  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
+    (res) => res.json()
+  );
+
   return {
     props: {
       page,
+      status: sysytemStatus,
     },
     revalidate: 120,
   };
