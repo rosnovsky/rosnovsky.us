@@ -39,22 +39,19 @@ const Footer = ({ status }) => {
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
                 <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
-                  <Link href="/blog">Blog</Link>
-                </span>
-              </div>
-              <div className="w-full md:w-auto p-3 md:px-6">
-                <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
                   <Link href="/about">About</Link>
                 </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
                 <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
-                  <Link href="/maps/hikes">Hiking Map</Link>
+                  <Link href="/privacy">Privacy</Link>
                 </span>
               </div>
               <div className="w-full md:w-auto p-3 md:px-6">
                 <span className="inline-block text-lg md:text-xl text-coolGray-500 hover:text-coolGray-600 font-medium">
-                  <Link href="/privacy">Privacy</Link>
+                  <Link rel="me" href="https://mstdn.social/@rosnovsky">
+                    Mastodon
+                  </Link>
                 </span>
               </div>
             </div>
@@ -74,7 +71,7 @@ const Footer = ({ status }) => {
           </p>
           <p className="py-5 md:pb-20 text-xs md:text-sm text-coolGray-400 text-center">
             © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights
-            reserved.{' '}
+            reserved. <br />
             <Link href="https://status.rosnovsky.us">
               {status.status === 'up' ? (
                 <span className="cursor-pointer text-green-500">
