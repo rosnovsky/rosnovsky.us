@@ -25,6 +25,18 @@ module.exports = withBundleAnalyzer(
     },
     swcMinify: true,
 
+    async rewrites() {
+      return [
+        {
+          source: '/blog/:year/:month/:day/:slug',
+          destination: '/blog/:slug',
+          // Since the :first parameter is used in the destination the :second parameter
+          // will not automatically be added in the query although we can manually add it
+          // as shown above
+        },
+      ];
+    },
+
     reactStrictMode: true,
     async headers() {
       return [

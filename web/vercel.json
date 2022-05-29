@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/blog/:year/:month/:day/:slug",
+      "destination": "/blog/:slug"
+    }
+  ]
+}

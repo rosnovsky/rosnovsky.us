@@ -69,7 +69,7 @@ export interface BlogPost extends SanityDocument {
   summaryRaw: string;
   bodyRaw: string;
   estimatedReadingTime: number;
-  location: {
+  location?: {
     lat: number;
     lng: number;
   };
@@ -78,7 +78,7 @@ export interface BlogPost extends SanityDocument {
     description: Block[] | string;
     slug: { current: string };
   }[];
-  references: BlogPost[];
+  references?: Omit<BlogPost, 'references'>[];
 }
 
 export interface Hike {
