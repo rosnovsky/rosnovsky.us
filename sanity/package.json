@@ -25,6 +25,7 @@
     "@sanity/desk-tool": "^2.29.8",
     "@sanity/eslint-config-studio": "^2.0.0",
     "@sanity/form-builder": "^2.29.8",
+    "@sanity/ui": "^0.37.11",
     "@sanity/vision": "^2.29.8",
     "eslint": "^8.6.0",
     "get-youtube-id": "^1.0.1",

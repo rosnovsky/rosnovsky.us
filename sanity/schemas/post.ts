@@ -1,4 +1,5 @@
 import { BiPencil } from 'react-icons/bi'
+import metacard from './metacard';
 
 export default {
   name: 'post',
@@ -26,24 +27,6 @@ export default {
       name: 'coverImage',
       title: 'Cover image',
       type: 'image',
-      fields: [
-        {
-          title: 'Caption',
-          name: 'caption',
-          type: 'string',
-          options: {
-            isHighlighted: true,
-          },
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          title: 'Alternative text',
-          name: 'alt',
-          type: 'string',
-          options: { isHighlighted: true },
-          validation: (Rule) => Rule.required(),
-        },
-      ],
       options: {
         hotspot: true,
         metadata: ['exif', 'location', 'lqip', 'blurhash', 'palette'],
@@ -83,8 +66,17 @@ export default {
     {
       name: 'hike',
       title: 'Hike report?',
+      description: 'If this post is a hike report, select the hike.',
       type: 'reference',
       to: { type: 'hike' },
+    },
+        {
+      name: 'socialCard',
+      title: 'Generate Social Card',
+      description: 'When ready, click the button below to generate a social card for this post.',
+      type: 'socialCard',
+      validation: (Rule) => Rule.required(),
+
     },
   ],
 
