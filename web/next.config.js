@@ -64,7 +64,7 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-eval' 'unsafe-inline'  *.youtube.com *.twitter.com *.github.com localhost:3000 llama.rosnovsky.us usefathom.com api.mapbox.com fonts.gstatic.com;
   child-src *.youtube.com *.google.com *.twitter.com localhost:3000 rosnovsky.us *.vercel.app llama.rosnovsky.us api.mapbox.com;
   style-src 'self' 'unsafe-inline' *.googleapis.com api.mapbox.com fonts.gstatic.com;
-  img-src * blob: data: api.mapbox.com n3o7a5dl.apicdn.sanity.io;
+  img-src * blob: data: api.mapbox.com n3o7a5dl.apicdn.sanity.io images.weserv.nl;
   worker-src blob: *.vercel.app localhost:3000 rosnovsky.us llama.rosnovsky.us;
   media-src  *;
   connect-src 'self' blob: rosnovsky.us llama.rosnovsky.us api.mapbox.com n3o7a5dl.apicdn.sanity.io fonts.gstatic.com *.algolianet.com *.algolia.net;
