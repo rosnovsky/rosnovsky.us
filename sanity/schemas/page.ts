@@ -29,26 +29,19 @@ export default {
       options: {
         hotspot: true,
       },
-      fields: [
-        {
-          name: 'caption',
-          type: 'string',
-          title: 'Caption',
-          options: { isHighlighted: true },
-        },
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          options: { isHighlighted: true },
-        },
-      ],
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+    },
+    {
+      name: 'socialCard',
+      title: 'Generate Social Card',
+      description: 'When ready, click the button below to generate a social card for this post.',
+      type: 'socialCard',
+      validation: (Rule) => Rule.required().error("Please generate a social card"),
     },
   ],
 
