@@ -1,17 +1,59 @@
-import React from 'react'
-import { Button as GenerateButton, Inline } from '@sanity/ui'
-import { FaCheckCircle } from 'react-icons/fa'
+import React, { useState } from 'react'
+import { Badge, Box, Button as GenerateButton, Inline, Popover, Text, Tooltip } from '@sanity/ui'
+import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 
 export const Button = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null)
+  const [isError, setIsError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<any>(null)
+
+  const handleClick = async () => {
+    setIsLoading(true)
+    
+    try {
+      const result = await fetch('https://api.sanity.io/v1/data/query/production', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ doo: 'doo' }),
+      })
+      if (result.ok) {
+        setIsSuccess(true)
+      } else {
+        setErrorMessage(await result.json())
+        throw new Error('Something went wrong')
+      }
+    } catch (err) {
+      setIsError(true)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+
   return (
   <Inline space={[3, 3, 4]}>
-    <GenerateButton
+      <GenerateButton
+      disabled={isLoading || isError || isSuccess}
       fontSize={[2, 2, 3]}
-      icon={FaCheckCircle}
+      icon={!isError ? FaCheckCircle : FaExclamationTriangle}
       mode="ghost"
       padding={[3, 3, 4]}
-      text="Generate Social Card"
-    />
+      onClick={handleClick}
+        text={isError ? "Error" : isLoading ? 'Generating...' : isSuccess ? "Done!" : "Generate Social Card"}
+      />
+      {isError ? <Tooltip
+      content={
+        <Box padding={2}>
+          <Text size={2}><pre>{errorMessage.message}</pre></Text>
+        </Box>
+      }
+      fallbackPlacements={['right', 'left']}
+      placement="top"
+      portal
+    ><Badge tone="critical">Error</Badge></Tooltip> : isSuccess ? <Badge tone="positive">Smashing success!</Badge> : null}
     </Inline>
   )
 }
