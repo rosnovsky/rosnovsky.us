@@ -67,8 +67,6 @@ export async function getStaticProps(context) {
       publishedAt,
       summary,
       slug,
-      "numberOfCharacters": length(pt::text(body)),
-      "estimatedWordCount": round(length(pt::text(body)) / 5),
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
     }
   `,
@@ -91,22 +89,6 @@ export async function getStaticProps(context) {
     }
   `
   );
-
-  const baseUrl = 'https://rosnovsky-api.vercel.app';
-
-  try {
-    const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${
-        context.slug
-      } category&meta=${postCount} posts&coverImage=${null}`
-    );
-    console.info(
-      `♻️ Generating Social Image for ${context.slug} category. Here its status code: `,
-      generateSocialImage.status
-    );
-  } catch (e) {
-    console.error(e);
-  }
 
   const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
     (res) => res.json()

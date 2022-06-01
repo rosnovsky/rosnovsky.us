@@ -80,6 +80,13 @@ export default {
       title: 'Location',
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: 'socialCard',
+      title: 'Generate Social Card',
+      description: 'When ready, click the button below to generate a social card for this post.',
+      type: 'socialCard',
+      validation: (Rule) => Rule.required().error("Please generate a social card"),
+    },
   ],
 
   preview: {

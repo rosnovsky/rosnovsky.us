@@ -9,7 +9,6 @@ import { PortableText } from '@portabletext/react';
 import type { Hike as HikeType } from 'index';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import slugify from 'slugify';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 const Map = dynamic(() => import('@components/Map'), {
@@ -22,15 +21,26 @@ type Props = {
 };
 
 const Hike = ({ hike, status }: Props) => {
-  const { title, report, difficulty, length, trail, hikeDate, summary } = hike;
+  const {
+    title,
+    report,
+    difficulty,
+    length,
+    trail,
+    hikeDate,
+    summary,
+    socialCardImage,
+  } = hike;
 
   return (
     <Containter
-      title={`Hiking Map – Art Rosnovsky`}
-      description={'All my hikes in one place'}
-      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
-        title
-      )}.jpg`}
+      title={`${title} – Art Rosnovsky`}
+      description={`${length} miles, ${difficulty} difficulty`}
+      image={
+        socialCardImage
+          ? socialCardImage.asset.url
+          : 'https://rosnovsky.us/static/images/banner.jpg'
+      }
       type="article"
       status={status}
     >
@@ -116,7 +126,10 @@ export async function getStaticProps(context) {
       hikeDate,
       trail,
       elevationGain,
-      slug
+      slug,
+      socialCardImage {
+        asset->
+      }
     }
   `,
     { slug }
@@ -125,24 +138,6 @@ export async function getStaticProps(context) {
   const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
     (res) => res.json()
   );
-
-  const baseUrl = 'https://rosnovsky-api.vercel.app';
-
-  try {
-    const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${hike.title}&meta=${
-        hike.hikeDate
-      } | ${hike.length} mi | ${hike.elevationGain} ft gain | ${
-        hike.difficulty
-      }&coverImage=${hike.coverImage?.asset.url || null}`
-    );
-    console.info(
-      `♻️ Generating Social Image for ${hike.title}. Here its status code: `,
-      generateSocialImage.status
-    );
-  } catch (e) {
-    console.error(e);
-  }
 
   return {
     props: {

@@ -65,6 +65,7 @@ export interface BlogPost extends SanityDocument {
   summary: Block[];
   publishedAt: string;
   coverImage: SanityImageAssetDocument;
+  socialCardImage: SanityImageAssetDocument;
   body: Block[];
   summaryRaw: string;
   bodyRaw: string;
@@ -84,6 +85,7 @@ export interface BlogPost extends SanityDocument {
 export interface Hike {
   title: string;
   coverImage: SanityImageAssetDocument;
+  socialCardImage: SanityImageAssetDocument;
   report: BlogPost;
   hikeDate: string;
   location: {
@@ -105,6 +107,7 @@ export interface Page extends SanityDocument {
   body: Block[];
   bodyRaw: string;
   coverImage: SanityImageAssetDocument;
+  socialCardImage: SanityImageAssetDocument;
   location: {
     lat: number;
     lng: number;

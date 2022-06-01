@@ -1,16 +1,33 @@
 import { BiPencil } from 'react-icons/bi'
+import {Button} from '../components/socialCard';
 
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
   icon: BiPencil,
+  groups: [
+    {
+      name: 'basics',
+      title: 'Basics',
+      default: true
+    },
+        {
+      name: 'meta',
+      title: 'Meta',
+    },
+    {
+      name: 'extras',
+      title: 'Extras',
+    },
+  ],
   fields: [
     {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Every post must have a title'),
+      group: 'basics'
     },
     {
       name: 'slug',
@@ -20,72 +37,97 @@ export default {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
+      group: 'basics',
+      validation: (Rule) => Rule.required().error('Please generate a slug'),
     },
     {
       name: 'coverImage',
       title: 'Cover image',
       type: 'image',
-      fields: [
-        {
-          title: 'Caption',
-          name: 'caption',
-          type: 'string',
-          options: {
-            isHighlighted: true,
-          },
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          title: 'Alternative text',
-          name: 'alt',
-          type: 'string',
-          options: { isHighlighted: true },
-          validation: (Rule) => Rule.required(),
-        },
-      ],
       options: {
         hotspot: true,
         metadata: ['exif', 'location', 'lqip', 'blurhash', 'palette'],
       },
+      group: 'meta',
+      validation: (Rule) => Rule.required().error('Cover Images are required'),
     },
     {
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'category' } }],
-      validation: (Rule) => Rule.required(),
+      group: 'meta',
+      validation: (Rule) => Rule.required().error('Every post must belong to at least one category'),
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'date',
-      validation: (Rule) => Rule.required(),
+      group: 'meta',
+      validation: (Rule) => Rule.required().error('Every post must have a publish date'),
     },
     {
       name: 'summary',
       title: 'Summary',
       type: 'blockContent',
-      validation: (Rule) => Rule.required(),
+      group: 'basics',
+      validation: (Rule) => Rule.required().error('Every post must have a summary'),
     },
     {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-      validation: (Rule) => Rule.required(),
+      group: 'basics',
+      validation: (Rule) => Rule.required().error('Every post must have a body'),
     },
     {
       name: 'references',
       title: 'Refernce Posts',
       type: 'array',
+            group: 'extras',
       of: [{ type: 'reference', to: { type: 'post' } }],
+      validation: (Rule) => Rule.warning("Are you sure you don't want to reference other posts?"),
     },
     {
       name: 'hike',
       title: 'Hike report?',
+      description: 'If this post is a hike report, select the hike.',
       type: 'reference',
+      group: 'extras',
       to: { type: 'hike' },
     },
+    // {
+    //   name: 'socialCard',
+    //   title: 'Generate Social Card',
+    //   description: 'When ready, click the button below to generate a social card for this post.',
+    //   type: 'socialCard',
+    //   group: 'extras',
+    //   validation: (Rule) => Rule.custom((_socialCard, context) => {
+    //     console.log(context)
+    //     if (context.document.socialCard?.socialCardImageUrl?.asset !== undefined) {
+    //       return true
+    //     }
+    //     return 'Generate an image for the social card'
+    //   } )
+    // },
+    {
+      name: 'socialCardImage',
+      title: 'Social Card Image',
+      type: 'image',
+      // validation: (Rule) => Rule.custom((_url, context) => {
+      //   if (context.document.socialImageCard === undefined) {
+      //     return "Generate or upload an image"
+      //   }
+      //   return true
+      // }),
+      readOnly: () => true
+    },
+    {
+      name: 'socialCardButton',
+      title: 'Social Card Button',
+      type: 'boolean',
+      inputComponent: Button,
+    }
   ],
 
   preview: {
