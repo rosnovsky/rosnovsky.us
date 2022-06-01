@@ -12,12 +12,19 @@ export const Button = () => {
     setIsLoading(true)
     
     try {
-      const result = await fetch('https://api.sanity.io/v1/data/query/production', {
+      const result = await fetch('http://localhost:3000/api/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ doo: 'doo' }),
+        body: JSON.stringify({ 
+          title: "Sanity",
+          estimatedReadingTime: "11",
+          publishedAt: "Oct 22, 2044",
+          coverImage: {
+            url: `http://localhost:3001/_next/image?url=${encodeURIComponent("https://cdn.sanity.io/images/n3o7a5dl/prod/1f0d9bb5405b2b05b59900dc15cbdcda75d7f2cc-3024x4032.jpg&w=3840&q=75")}`
+          }
+      }),
       })
       if (result.ok) {
         setIsSuccess(true)
@@ -47,7 +54,7 @@ export const Button = () => {
       {isError ? <Tooltip
       content={
         <Box padding={2}>
-          <Text size={2}><pre>{errorMessage.message}</pre></Text>
+          <Text size={2}><pre>{errorMessage?.message ? errorMessage.message : errorMessage}</pre></Text>
         </Box>
       }
       fallbackPlacements={['right', 'left']}
