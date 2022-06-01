@@ -58,10 +58,7 @@ export const isLarge = (cardSize) => cardSize === 'large';
 export const isSmall = (cardSize) => cardSize === 'small';
 
 export const imageProxy = (url) => {
-  console.log(url);
-  return isLocalhostUrl(url)
-    ? url
-    : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`;
+  return url;
 };
 
 export const isLazySupported = !isSSR && 'IntersectionObserver' in window;
