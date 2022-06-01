@@ -1,4 +1,4 @@
-// import isLocalhostUrl from 'is-localhost-url';
+import isLocalhostUrl from 'is-localhost-url';
 import { css } from 'styled-components';
 
 type URLOrObject<T extends Record<string, string> | string> = T extends string
@@ -58,7 +58,9 @@ export const isLarge = (cardSize) => cardSize === 'large';
 export const isSmall = (cardSize) => cardSize === 'small';
 
 export const imageProxy = (url) => {
-  return url;
+  return isLocalhostUrl(url)
+    ? url
+    : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`;
 };
 
 export const isLazySupported = !isSSR && 'IntersectionObserver' in window;

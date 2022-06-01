@@ -1,4 +1,4 @@
-// import isLocalhostUrl from 'is-localhost-url'
+import isLocalhostUrl from 'is-localhost-url'
 import { any } from 'prop-types'
 import { css } from 'styled-components'
 
@@ -55,9 +55,9 @@ export const isLarge = cardSize => cardSize === 'large'
 export const isSmall = cardSize => cardSize === 'small'
 
 export const imageProxy = url => url
-    // isLocalhostUrl(url)
-    //   ? url
-    //   : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`
+    isLocalhostUrl(url)
+      ? url
+      : `https://images.weserv.nl/?url=${encodeURIComponent(url)}&l=9&af&il&n=-1`
 
 
 export const clampNumber = (num, min, max) => {
