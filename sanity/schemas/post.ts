@@ -1,4 +1,5 @@
 import { BiPencil } from 'react-icons/bi'
+import {Button} from '../components/socialCard';
 
 export default {
   name: 'post',
@@ -95,20 +96,38 @@ export default {
       group: 'extras',
       to: { type: 'hike' },
     },
+    // {
+    //   name: 'socialCard',
+    //   title: 'Generate Social Card',
+    //   description: 'When ready, click the button below to generate a social card for this post.',
+    //   type: 'socialCard',
+    //   group: 'extras',
+    //   validation: (Rule) => Rule.custom((_socialCard, context) => {
+    //     console.log(context)
+    //     if (context.document.socialCard?.socialCardImageUrl?.asset !== undefined) {
+    //       return true
+    //     }
+    //     return 'Generate an image for the social card'
+    //   } )
+    // },
     {
-      name: 'socialCard',
-      title: 'Generate Social Card',
-      description: 'When ready, click the button below to generate a social card for this post.',
-      type: 'socialCard',
-      group: 'extras',
-      validation: (Rule) => Rule.custom((_socialCard, context) => {
-        console.log(context)
-        if (context.document.socialCard?.socialCardImageUrl?.asset !== undefined) {
-          return true
-        }
-        return 'Generate an image for the social card'
-      } )
+      name: 'socialCardImage',
+      title: 'Social Card Image',
+      type: 'image',
+      // validation: (Rule) => Rule.custom((_url, context) => {
+      //   if (context.document.socialImageCard === undefined) {
+      //     return "Generate or upload an image"
+      //   }
+      //   return true
+      // }),
+      readOnly: () => true
     },
+    {
+      name: 'socialCardButton',
+      title: 'Social Card Button',
+      type: 'boolean',
+      inputComponent: Button,
+    }
   ],
 
   preview: {

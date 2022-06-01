@@ -41,8 +41,6 @@ export async function getStaticProps() {
       publishedAt,
       summary,
       slug,
-      "numberOfCharacters": length(pt::text(body)),
-      "estimatedWordCount": round(length(pt::text(body)) / 5),
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       "summaryRaw": pt::text(summary)
     }
@@ -64,20 +62,6 @@ export async function getStaticProps() {
     }
   `
   );
-
-  const baseUrl = 'https://rosnovsky-api.vercel.app';
-
-  try {
-    const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=All ${postCount} blog posts&meta=Try using search, it's pretty cool&coverImage=${null}`
-    );
-    console.info(
-      `♻️ Generating Social Image for Blog page. Here its status code: `,
-      generateSocialImage.status
-    );
-  } catch (e) {
-    console.error(e);
-  }
 
   return {
     props: {

@@ -1,7 +1,6 @@
 import sanityClient from '@lib/sanityClient';
 import type { Hike as HikeType } from 'index';
 import dynamic from 'next/dynamic';
-import slugify from 'slugify';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 const Map = dynamic(() => import('@components/Map'), {
@@ -18,9 +17,6 @@ const HikesMap = ({ hikes, status }: Props) => {
     <Containter
       title={`Hiking Map – Art Rosnovsky`}
       description={'All my hikes in one place'}
-      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
-        'Hiking Map'
-      )}.jpg`}
       type="article"
       status={status}
     >
@@ -78,19 +74,6 @@ export async function getStaticProps() {
   `
   );
 
-  const baseUrl = 'https://rosnovsky-api.vercel.app';
-
-  try {
-    const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=Hiking map&coverImage=${null}&meta=All%20my%20hikes%20in%20one%20place!`
-    );
-    console.info(
-      `♻️ Generating Social Image for Hiking Map. Here its status code: `,
-      generateSocialImage.status
-    );
-  } catch (e) {
-    console.error(e);
-  }
   const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
     (res) => res.json()
   );

@@ -21,7 +21,6 @@ const Home = ({ posts, categories, postCount, fallback, status }: Props) => {
     <Container
       title={`Rosnovsky Park – Art Rosnovsky`}
       description={"Hey, I'm Art, and we need to talk. Seriously."}
-      image={`https://rosnovsky.us/static/images/banner.jpg`}
       type="website"
       status={status}
     >
@@ -53,8 +52,6 @@ export async function getStaticProps() {
       publishedAt,
       summary,
       slug,
-      "numberOfCharacters": length(pt::text(body)),
-      "estimatedWordCount": round(length(pt::text(body)) / 5),
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       "summaryRaw": pt::text(summary)
     }

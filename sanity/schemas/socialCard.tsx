@@ -7,7 +7,7 @@ const Preview = (value) => {
 export default {
   name: 'socialCard',
   title: 'Social Card',
-  type: 'document',
+  type: 'object',
   fields: [
     {
       name: 'socialCardImage',

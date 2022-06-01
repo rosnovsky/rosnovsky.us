@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import Image from 'next/image';
-import slugify from 'slugify';
 
 type Props = {
   page: PageType;
@@ -14,15 +13,17 @@ type Props = {
 };
 
 const Page = ({ page, status }: Props) => {
-  const { title, coverImage, body, bodyRaw } = page;
+  const { title, coverImage, body, bodyRaw, socialCardImage } = page;
 
   return (
     <Containter
       title={`${title} – Art Rosnovsky`}
       description={bodyRaw.slice(0, 200) + '...'}
-      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
-        title
-      )}.jpg`}
+      image={
+        socialCardImage
+          ? socialCardImage.asset.url
+          : 'https://rosnovsky.us/static/images/banner.jpg'
+      }
       type="article"
       status={status}
     >
@@ -88,28 +89,13 @@ export async function getStaticProps(context) {
         ...
       },
       "bodyRaw": pt::text(body),
+      socialCardImage {
+        asset->
+      }
     }
   `,
     { slug }
   );
-
-  const baseUrl = 'https://rosnovsky-api.vercel.app';
-
-  try {
-    const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${
-        page.title
-      }&meta=${page.bodyRaw.slice(0, 150)}&coverImage=${
-        page.coverImage.asset.url || null
-      }`
-    );
-    console.info(
-      `♻️ Generating Social Image for ${page.title}. Here its status code: `,
-      generateSocialImage.status
-    );
-  } catch (e) {
-    console.error(e);
-  }
 
   const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
     (res) => res.json()

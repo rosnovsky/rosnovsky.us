@@ -8,7 +8,6 @@ const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import type { UserProfile } from '@auth0/nextjs-auth0';
-import slugify from 'slugify';
 import { RelatedPosts } from '@components/Blog/Posts';
 
 type Props = {
@@ -29,15 +28,18 @@ const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
     body,
     estimatedReadingTime,
     references,
+    socialCardImage,
   } = post;
 
   return (
     <Containter
       title={`${title}`}
       description={summaryRaw}
-      image={`https://res.cloudinary.com/rosnovsky/image/upload/v1639272559/social-images/${slugify(
-        title
-      )}.jpg`}
+      image={
+        socialCardImage
+          ? socialCardImage.asset.url
+          : 'https://rosnovsky.us/static/images/banner.jpg'
+      }
       status={status}
       date={new Date(publishedAt).toISOString()}
       type="article"
@@ -149,6 +151,8 @@ export async function getStaticProps(context) {
         description,
         slug
       },
+      socialCardImage {
+        asset->},
       references[]->{
         title,
         publishedAt,
@@ -182,27 +186,7 @@ export async function getStaticProps(context) {
   )
     .then((res) => res.json())
     .catch(() => []);
-  const baseUrl = 'https://rosnovsky-api.vercel.app';
 
-  try {
-    const generateSocialImage = await fetch(
-      `${baseUrl}/api/opengraph/generate?title=${post.title}&meta=${new Date(
-        post.publishedAt
-      ).toLocaleDateString('en-US', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-      })} | ${post.estimatedReadingTime} min read&coverImage=${
-        post.coverImage.asset.url || null
-      }`
-    );
-    console.info(
-      `♻️ Generating Social Image for ${post.title}. Here its status code: `,
-      generateSocialImage.status
-    );
-  } catch (e) {
-    console.error(e);
-  }
   if (postComments.length > 0) {
     const userIds = postComments.map((comment) => {
       return [comment.user_id];
