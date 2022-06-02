@@ -1,5 +1,4 @@
 /* eslint-disable multiline-ternary */
-// @ts-expect-error
 import React, {
   useState,
   useEffect,
@@ -44,6 +43,7 @@ const Card = props => {
   } = props
 
   const mediaProps = useMemo(() => castArray(mediaProp), [mediaProp])
+  // @ts-expect-error ???
   const { updateState } = useContext(GlobalContext)
   const [loadingState, setLoading] = useState(true)
   const [iframeMedia, setIframeMedia] = useState(null)
