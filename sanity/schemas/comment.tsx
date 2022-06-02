@@ -21,7 +21,7 @@ export const InputComponent = withDocument(MyInput)
 export default {
   name: 'comment',
   title: 'Comment',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'authorName',

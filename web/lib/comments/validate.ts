@@ -30,7 +30,7 @@ export const validateQueryData = (
     case 'getCommentsByUserId':
       return !data.userId ? false : true;
     case 'postComment':
-      return !data.postId || !data.content ? false : true;
+      return !data.postId || !data.commentBody ? false : true;
     case 'updateCommentMetadata':
       return !data.id || !data.deleted || !data.edited || !data.flagged
         ? false
