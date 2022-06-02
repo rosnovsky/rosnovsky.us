@@ -7,7 +7,6 @@ import {
 import sanityClient from '@sanity/client';
 import { userProfile } from './getUserProfile';
 import { notify } from '@lib/notifications/notify';
-import { validateQueryData } from '@lib/comments/validate';
 
 const client = sanityClient({
   projectId: 'n3o7a5dl',
@@ -20,14 +19,14 @@ const client = sanityClient({
 const postComment = async (
   postId: string,
   content: string,
-  postTitle,
+  postTitle: string,
   user: UserProfile
 ) => {
   await userProfile(user);
 
   const comment = {
     _type: 'comment',
-    authorName: user.nickname,
+    authorName: user.nickname || user.name || user.email,
     authorAvatar: user.picture,
     authorEmail: user.email,
     authorId: user.sub,
@@ -37,24 +36,22 @@ const postComment = async (
   };
   client.create(comment).then((res) => {
     client
-      .patch(postId) // Document ID to patch
-      .append('comments', [res]) // Shallow merge
-      .commit() // Perform the patch and return a promise
+      .patch(postId)
+      .append('comments', [res])
+      .commit()
       .then((newComment) => {
-        console.log('Hurray, the bike is updated! New document:');
-        console.log(newComment);
+        notify({
+          type: 'new-comment-notification',
+          content,
+          postId,
+          postTitle,
+          user,
+        });
+        return newComment;
       })
       .catch((err) => {
         console.error('Oh no, the update failed: ', err.message);
       });
-  });
-
-  await notify({
-    type: 'new-comment-notification',
-    content,
-    postId,
-    postTitle,
-    user,
   });
 };
 
@@ -71,7 +68,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const { postId, content, postTitle, user } = req.body;
 
-    // if (validateQueryData(JSON.parse(req.body), 'postComment')) {
     try {
       return res
         .status(200)
@@ -79,11 +75,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     } catch (e: any) {
       res
         .status(400)
-        .send({ error: 'Invalid post comment data?', message: e.message });
+        .send({ error: 'Invalid post comment data', message: e.message });
     }
-    // }
   } catch (error) {
     console.error(error);
-    res.status(400).send({ error: 'Invalid post comment data' });
+    res.status(500).send({ message: 'Something went wrong', error });
   }
 }

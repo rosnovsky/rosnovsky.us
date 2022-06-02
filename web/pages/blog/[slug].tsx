@@ -9,6 +9,7 @@ const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import type { UserProfile } from '@auth0/nextjs-auth0';
 import { RelatedPosts } from '@components/Blog/Posts';
+import { CommentEditor } from '@components/Comments/Editor';
 
 type Props = {
   post: BlogPost;
@@ -109,13 +110,13 @@ const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
           <div className="w-full text-center mt-10 mx-auto">
             <h2 className="text-2xl">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
+              <CommentEditor postId={post._id} />
               {postComments && resolvedUsers && (
                 <Comments
                   postComments={postComments}
                   resolvedUsers={resolvedUsers}
                 />
               )}
-              (Commenting feature coming soon)
             </div>
           </div>
         </div>
@@ -142,6 +143,7 @@ export async function getStaticProps(context) {
     `
     *[_type == "post" && slug.current == $slug][0] {
       ...,
+      _id,
       coverImage {
         ...,
         asset->

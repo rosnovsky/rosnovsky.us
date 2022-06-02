@@ -1,5 +1,5 @@
 import type { UserProfile } from '@auth0/nextjs-auth0';
-import type { SanityDocument, Block } from '@sanity/types';
+import type { SanityDocument, Block } from '@sanity/client';
 import { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 
 declare global {

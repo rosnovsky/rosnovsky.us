@@ -1,4 +1,5 @@
 import Comment from '@components/Comments/Comment';
+import { MyInput } from './Editor';
 
 const Comments = ({ postComments, resolvedUsers }) => {
   return (
