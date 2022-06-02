@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
@@ -10,11 +10,6 @@ import { $generateHtmlFromNodes } from '@lexical/html';
 
 // When the editor changes, you can get notified via the
 // LexicalOnChangePlugin!
-function onChange(editor, postId) {
-  editor.update(() => {
-    localStorage.setItem(`${postId}`, $generateHtmlFromNodes(editor, null));
-  });
-}
 
 // Lexical React plugins are React components, which makes them
 // highly composable. Furthermore, you can lazy load plugins if
@@ -39,6 +34,11 @@ function onError(error) {
 }
 
 export function CommentEditor({ postId }) {
+  function onChange(_editorState, editor) {
+    editor.update(() => {
+      localStorage.setItem(postId, $generateHtmlFromNodes(editor, null));
+    });
+  }
   const initialConfig = {
     onError,
   };
@@ -49,7 +49,7 @@ export function CommentEditor({ postId }) {
         contentEditable={<ContentEditable />}
         placeholder={<div>Enter some text...</div>}
       />
-      <OnChangePlugin onChange={(editor, postId) => onChange(editor, postId)} />
+      <OnChangePlugin onChange={onChange} />
       <HistoryPlugin />
       <MyCustomAutoFocusPlugin />
     </LexicalComposer>
