@@ -3,7 +3,7 @@ import PostCard from './PostCard';
 import RelatedPostCard from './RelatedPostCard';
 
 type Props = {
-  posts: BlogPost[];
+  posts: BlogPost[] | BlogPost['references'];
 };
 
 const Posts = ({ posts }: Props) => {

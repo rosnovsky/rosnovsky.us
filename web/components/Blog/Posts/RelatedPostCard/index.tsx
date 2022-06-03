@@ -4,7 +4,7 @@ import PostHeading from './PostHeading';
 import PostSummary from './PostSummary';
 
 type Props = {
-  post: BlogPost;
+  post: BlogPost | BlogPost['references'][0];
 };
 
 const PostCard = ({ post }: Props) => {
