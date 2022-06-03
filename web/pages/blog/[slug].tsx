@@ -10,6 +10,8 @@ const Comments = dynamic(() => import('@components/Comments/Comments'));
 import type { UserProfile } from '@auth0/nextjs-auth0';
 import { RelatedPosts } from '@components/Blog/Posts';
 import { CommentEditor } from '@components/Comments/Editor';
+import blockTools from '@sanity/block-tools';
+import Schema from '@sanity/schema';
 
 type Props = {
   post: BlogPost;
@@ -31,6 +33,40 @@ const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
     references,
     socialCardImage,
   } = post;
+
+  const handleComment = async (comment) => {
+    const defaultSchema = Schema.compile({
+      name: 'myBlog',
+      types: [
+        {
+          type: 'object',
+          name: 'blogPost',
+          fields: [
+            {
+              title: 'Body',
+              name: 'body',
+              type: 'array',
+              of: [{ type: 'block' }],
+            },
+          ],
+        },
+      ],
+    });
+
+    // The compiled schema type for the content type that holds the block array
+    const blockContentType = defaultSchema
+      .get('blogPost')
+      .fields.find((field) => field.name === 'body').type;
+    const blocks = blockTools.htmlToBlocks(comment, blockContentType);
+    await fetch('/api/comments/post', {
+      method: 'POST',
+      body: JSON.stringify({
+        postId: post._id,
+        postTitle: post.title,
+        commentContent: blocks,
+      }),
+    });
+  };
 
   return (
     <Containter
@@ -110,7 +146,7 @@ const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
           <div className="w-full text-center mt-10 mx-auto">
             <h2 className="text-2xl">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
-              <CommentEditor postId={post._id} />
+              <CommentEditor postId={post._id} handleComment={handleComment} />
               {postComments && resolvedUsers && (
                 <Comments
                   postComments={postComments}

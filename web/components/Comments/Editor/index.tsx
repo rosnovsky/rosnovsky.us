@@ -7,51 +7,95 @@ import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $generateHtmlFromNodes } from '@lexical/html';
+import { CodeHighlightNode, CodeNode } from '@lexical/code';
+import { LinkNode } from '@lexical/link';
+import exampleTheme from './theme';
+import ToolbarPlugin from './toolbar';
+import { $getRoot, EditorState, LexicalEditor } from 'lexical';
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { TRANSFORMERS } from '@lexical/markdown';
+import CodeHighlightPlugin from './codeHighlight';
 
-// When the editor changes, you can get notified via the
-// LexicalOnChangePlugin!
+function Placeholder() {
+  return <div className="editor-placeholder">Enter some rich text...</div>;
+}
 
-// Lexical React plugins are React components, which makes them
-// highly composable. Furthermore, you can lazy load plugins if
-// desired, so you don't pay the cost for plugins until you
-// actually use them.
 function MyCustomAutoFocusPlugin() {
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
-    // Focus the editor when the effect fires!
     editor.focus();
   }, [editor]);
 
   return null;
 }
 
-// Catch any errors that occur during Lexical updates and log them
-// or throw them as needed. If you don't throw them, Lexical will
-// try to recover gracefully without losing user data.
 function onError(error) {
   console.error(error);
 }
 
-export function CommentEditor({ postId }) {
-  function onChange(_editorState, editor) {
+export function CommentEditor({ postId, handleComment }) {
+  const [disabled, setDisabled] = useState(true);
+  const [commentLength, setCommentLength] = useState(0);
+
+  function onChange(_editorState: EditorState, editor: LexicalEditor) {
     editor.update(() => {
+      const contentLength = $getRoot()
+        .getAllTextNodes()
+        .reduce(
+          (acc, node) => acc + node.getTextContent(false, false).trim().length,
+          0
+        );
+      // autosave on change
       localStorage.setItem(postId, $generateHtmlFromNodes(editor, null));
+      setCommentLength(contentLength);
+
+      // disable Save button if there is no content
+      if (contentLength < 10) {
+        setDisabled(true);
+      } else {
+        setDisabled(false);
+      }
     });
   }
+
+  function saveComment() {
+    const comment = localStorage.getItem(postId);
+    handleComment(comment);
+  }
+
   const initialConfig = {
     onError,
+    theme: exampleTheme,
+    nodes: [LinkNode, CodeNode, CodeHighlightNode],
   };
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <RichTextPlugin
-        contentEditable={<ContentEditable />}
-        placeholder={<div>Enter some text...</div>}
-      />
-      <OnChangePlugin onChange={onChange} />
-      <HistoryPlugin />
-      <MyCustomAutoFocusPlugin />
+      <div className="container border rounded-t-lg text-left caret-darkCoolGray-700">
+        <ToolbarPlugin />
+        <div className="container bg-darkCoolGray-50">
+          <RichTextPlugin
+            contentEditable={<ContentEditable className="editor-input" />}
+            placeholder={<Placeholder />}
+          />
+          <OnChangePlugin onChange={onChange} />
+          <HistoryPlugin />
+          <MyCustomAutoFocusPlugin />
+          <CodeHighlightPlugin />
+          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+        </div>
+      </div>
+      <button
+        className="mt-4 inline-block py-2 px-4 w-full text-sm leading-5 text-white bg-blue-500 hover:bg-blue-600 font-medium text-center focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md disabled:bg-gray-600"
+        disabled={disabled}
+        onClick={saveComment}
+      >
+        {disabled ? `Add ${10 - commentLength} characters` : 'Post Comment'}
+      </button>
+      <span className="text-xs text-gray-600 mt-2">
+        Use markdown to add links, paste code to add code snippets
+      </span>
     </LexicalComposer>
   );
 }

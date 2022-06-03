@@ -2,6 +2,7 @@ import { BiPencil } from 'react-icons/bi'
 import { withDocument } from 'part:@sanity/form-builder'
 import { Container, Box, Card, Text, Avatar } from '@sanity/ui'
 import React from 'react';
+import { PortableText } from '@portabletext/react';
 
 function MyInput(props) {
   if (!props.value) return <div>No comments</div>
@@ -10,8 +11,8 @@ function MyInput(props) {
       <Card padding={4}>
         <Text size={2} style={{lineHeight: '2'}}>{comment.authorName}</Text>
         <Text size={1} style={{lineHeight: '1.6'}}>{new Date(comment.commentDate).toLocaleTimeString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</Text>
-      <Text size={1} style={{ lineHeight: '2' }}>{comment.commentBody}</Text>
-      <Text size={1} style={{ lineHeight: '1.6' }}><a target='_blank' href={`https://rosnovsky.us/blog/${props.document.slug.current}/#${comment._key}`}>comment</a></Text>
+      <PortableText value={comment.commentBody} />
+      <Text size={1} style={{ lineHeight: '1.6' }}><a target='_blank' href={`https://rosnovsky.us/blog/${props.document.slug.current}/#${comment._id}`}>comment</a></Text>
       </Card>
     )
 }
@@ -56,7 +57,8 @@ export default {
     {
       name: 'commentBody',
       title: 'Comment Body',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
     },
     {
       name: 'flags',

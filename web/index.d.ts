@@ -79,7 +79,7 @@ export interface BlogPost extends SanityDocument {
     description: Block[] | string;
     slug: { current: string };
   }[];
-  references?: Omit<BlogPost, 'references'>[];
+  references: Omit<BlogPost, 'references'>[];
 }
 
 export interface Hike {

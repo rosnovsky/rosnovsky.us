@@ -16,13 +16,19 @@ const client = sanityClient({
   useCdn: false,
 });
 
-const postComment = async (
-  postId: string,
-  content: string,
-  postTitle: string,
-  user: UserProfile
-) => {
+const postComment = async ({
+  postId,
+  commentContent,
+  postTitle,
+  user,
+}: {
+  postId: string;
+  commentContent: string;
+  postTitle: string;
+  user: UserProfile;
+}) => {
   await userProfile(user);
+  console.log('commentContent', commentContent);
 
   const comment = {
     _type: 'comment',
@@ -31,22 +37,24 @@ const postComment = async (
     authorEmail: user.email,
     authorId: user.sub,
     commentDate: new Date().toISOString(),
-    commentBody: content,
+    commentBody: commentContent,
     flags: [{ isFlagged: false, isHidden: false, isEdited: false }],
   };
+  console.log(commentContent);
   client.create(comment).then((res) => {
     client
       .patch(postId)
+      .setIfMissing({ comments: [] })
       .append('comments', [res])
       .commit()
       .then((newComment) => {
-        notify({
-          type: 'new-comment-notification',
-          content,
-          postId,
-          postTitle,
-          user,
-        });
+        // notify({
+        //   type: 'new-comment-notification',
+        //   content,
+        //   postId,
+        //   postTitle,
+        //   user,
+        // });
         return newComment;
       })
       .catch((err) => {
@@ -55,23 +63,26 @@ const postComment = async (
   });
 };
 
-// export default withApiAuthRequired(async function (
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default withApiAuthRequired(async function (
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
-    // const session = getSession(req, res);
-    // if (!session) {
-    //   throw new Error('Error: user not found');
-    // }
+    const session = getSession(req, res);
+    if (!session) {
+      throw new Error('Error: user not found');
+    }
 
-    // if (session && !session.user.email_verified)
-    //   res.status(401).end({ error: 'Please verify your email first.' });
+    if (session && !session.user.email_verified)
+      res.status(401).end({ error: 'Please verify your email first.' });
 
-    const { postId, content, postTitle, user } = req.body;
+    const { postId, commentContent, postTitle } = JSON.parse(req.body);
+    const user = session.user;
 
     try {
       return res
         .status(200)
-        .send(await postComment(postId, postTitle, content, user));
+        .send(await postComment({ postId, postTitle, commentContent, user }));
     } catch (e: any) {
       res
         .status(400)
@@ -81,4 +92,4 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     console.error(error);
     res.status(500).send({ message: 'Something went wrong', error });
   }
-}
+});
