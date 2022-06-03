@@ -14,7 +14,7 @@ import ToolbarPlugin from './toolbar';
 import { $getRoot, EditorState, LexicalEditor } from 'lexical';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { TRANSFORMERS } from '@lexical/markdown';
-import CodeHighlightPlugin from './codeHighlight';
+import CodeHighlightPlugin from './plugins/codeHighlight';
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;

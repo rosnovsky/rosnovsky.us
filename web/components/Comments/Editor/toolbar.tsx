@@ -1,8 +1,6 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  CAN_REDO_COMMAND,
-  CAN_UNDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
   $getSelection,
@@ -10,7 +8,7 @@ import {
   $getNodeByKey,
 } from 'lexical';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
-import { $isParentElementRTL, $isAtNodeEnd } from '@lexical/selection';
+import { $isAtNodeEnd } from '@lexical/selection';
 import { $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
 import { $isListNode, ListNode } from '@lexical/list';
 import { createPortal } from 'react-dom';
@@ -219,8 +217,6 @@ export default function ToolbarPlugin() {
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
-  const [isStrikethrough, setIsStrikethrough] = useState(false);
   const [isCode, setIsCode] = useState(false);
 
   const updateToolbar = useCallback(() => {
@@ -254,8 +250,6 @@ export default function ToolbarPlugin() {
       // Update text format
       setIsBold(selection.hasFormat('bold'));
       setIsItalic(selection.hasFormat('italic'));
-      setIsUnderline(selection.hasFormat('underline'));
-      setIsStrikethrough(selection.hasFormat('strikethrough'));
       setIsCode(selection.hasFormat('code'));
 
       // Update links
@@ -302,14 +296,6 @@ export default function ToolbarPlugin() {
     [editor, selectedElementKey]
   );
 
-  const insertLink = useCallback(() => {
-    if (!isLink) {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, 'https://');
-    } else {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-    }
-  }, [editor, isLink]);
-
   return (
     <div className="toolbar bg-darkCoolGray-100" ref={toolbarRef}>
       {blockType === 'code' ? (
@@ -341,26 +327,6 @@ export default function ToolbarPlugin() {
             aria-label="Format Italics"
           >
             <i className="format italic" />
-          </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
-            }}
-            className={'toolbar-item spaced ' + (isUnderline ? 'active' : '')}
-            aria-label="Format Underline"
-          >
-            <i className="format underline" />
-          </button>
-          <button
-            onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
-            }}
-            className={
-              'toolbar-item spaced ' + (isStrikethrough ? 'active' : '')
-            }
-            aria-label="Format Strikethrough"
-          >
-            <i className="format strikethrough" />
           </button>
           <button
             onClick={() => {
