@@ -10,7 +10,7 @@ const Comments = dynamic(() => import('@components/Comments/Comments'));
 import type { UserProfile } from '@auth0/nextjs-auth0';
 import { RelatedPosts } from '@components/Blog/Posts';
 import { CommentEditor } from '@components/Comments/Editor';
-import blockTools from '@sanity/block-tools';
+import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
 import Schema from '@sanity/schema';
 
 type Props = {
@@ -57,13 +57,17 @@ const Post = ({ post, postComments, resolvedUsers, status = 'up' }: Props) => {
     const blockContentType = defaultSchema
       .get('blogPost')
       .fields.find((field) => field.name === 'body').type;
-    const blocks = blockTools.htmlToBlocks(comment, blockContentType);
+
+    const blocks = htmlToBlocks(comment, blockContentType);
+    const normalizedBlocks = blocks.map((block) => {
+      return normalizeBlock(block);
+    });
     await fetch('/api/comments/post', {
       method: 'POST',
       body: JSON.stringify({
         postId: post._id,
         postTitle: post.title,
-        commentContent: blocks,
+        commentContent: normalizedBlocks,
       }),
     });
   };

@@ -65,6 +65,7 @@
     "got": "^12.0.4",
     "is-localhost-url": "^1.0.3",
     "isomorphic-fetch": "^3.0.0",
+    "jsdom": "^19.0.0",
     "lexical": "^0.3.0",
     "mailgun.js": "^7.0.0",
     "mapbox-gl": "^2.8.2",
