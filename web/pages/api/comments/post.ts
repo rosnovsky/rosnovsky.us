@@ -5,8 +5,8 @@ import {
   UserProfile,
 } from '@auth0/nextjs-auth0';
 import sanityClient from '@sanity/client';
-import { userProfile } from './getUserProfile';
-import { notify } from '@lib/notifications/notify';
+// import userProfile  from './getUserProfile';
+// import { notify } from '@lib/notifications/notify';
 
 const client = sanityClient({
   projectId: 'n3o7a5dl',
@@ -19,7 +19,7 @@ const client = sanityClient({
 const postComment = async ({
   postId,
   commentContent,
-  postTitle,
+  // postTitle,
   user,
 }: {
   postId: string;
@@ -27,7 +27,7 @@ const postComment = async ({
   postTitle: string;
   user: UserProfile;
 }) => {
-  await userProfile(user);
+  // await userProfile(user);
   console.log('commentContent', commentContent);
 
   const comment = {

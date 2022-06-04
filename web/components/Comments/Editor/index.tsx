@@ -15,7 +15,7 @@ import { $getRoot, EditorState, LexicalEditor } from 'lexical';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { TRANSFORMERS } from '@lexical/markdown';
 import CodeHighlightPlugin from './plugins/codeHighlight';
-import { useUser } from '@auth0/nextjs-auth0';
+// import { useUser } from '@auth0/nextjs-auth0';
 
 // function Placeholder() {
 //   return <div className="editor-placeholder">Enter some rich text...</div>;
@@ -38,7 +38,7 @@ function onError(error) {
 export function CommentEditor({ postId, handleComment }) {
   const [disabled, setDisabled] = useState(true);
   const [commentLength, setCommentLength] = useState(0);
-  const user = useUser();
+  // const user = useUser();
 
   function onChange(_editorState: EditorState, editor: LexicalEditor) {
     editor.update(() => {
