@@ -20,7 +20,7 @@ export function CommentEditor({ postId, handleComment }) {
   const [commentLength, setCommentLength] = useState(0);
   const [commentEditorEditor, setCommentEditorEditor] =
     useState<LexicalEditor>();
-  const [_commentEditorState, setCommentEditorState] = useState<EditorState>();
+  const [commentEditorState, setCommentEditorState] = useState<EditorState>();
 
   function onChange(_editorState: EditorState, editor: LexicalEditor) {
     editor.update(() => {
@@ -48,6 +48,7 @@ export function CommentEditor({ postId, handleComment }) {
 
   function saveComment() {
     const comment = localStorage.getItem(postId);
+    console.info(commentEditorState);
     setCommentLength(0);
     setDisabled(true);
     commentEditorEditor?.update(() => {

@@ -12,7 +12,6 @@ import { CommentEditor } from '@components/Comments/Editor';
 import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
 import Schema from '@sanity/schema';
 import { useUser } from '@auth0/nextjs-auth0';
-import useSWR from 'swr';
 
 type Props = {
   post: BlogPost;
