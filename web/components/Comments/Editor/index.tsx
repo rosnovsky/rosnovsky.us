@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $generateHtmlFromNodes } from '@lexical/html';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { LinkNode } from '@lexical/link';
@@ -15,30 +14,13 @@ import { $getRoot, EditorState, LexicalEditor } from 'lexical';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { TRANSFORMERS } from '@lexical/markdown';
 import CodeHighlightPlugin from './plugins/codeHighlight';
-// import { useUser } from '@auth0/nextjs-auth0';
-
-// function Placeholder() {
-//   return <div className="editor-placeholder">Enter some rich text...</div>;
-// }
-
-function MyCustomAutoFocusPlugin() {
-  const [editor] = useLexicalComposerContext();
-
-  useEffect(() => {
-    editor.focus();
-  }, [editor]);
-
-  return null;
-}
-
-function onError(error) {
-  console.error(error);
-}
 
 export function CommentEditor({ postId, handleComment }) {
   const [disabled, setDisabled] = useState(true);
   const [commentLength, setCommentLength] = useState(0);
-  // const user = useUser();
+  const [commentEditorEditor, setCommentEditorEditor] =
+    useState<LexicalEditor>();
+  const [_commentEditorState, setCommentEditorState] = useState<EditorState>();
 
   function onChange(_editorState: EditorState, editor: LexicalEditor) {
     editor.update(() => {
@@ -50,7 +32,10 @@ export function CommentEditor({ postId, handleComment }) {
         );
       // autosave on change
       localStorage.setItem(postId, $generateHtmlFromNodes(editor, null));
+      setDisabled(false);
       setCommentLength(contentLength);
+      setCommentEditorEditor(editor);
+      setCommentEditorState(_editorState);
 
       // disable Save button if there is no content
       if (contentLength < 10) {
@@ -63,13 +48,23 @@ export function CommentEditor({ postId, handleComment }) {
 
   function saveComment() {
     const comment = localStorage.getItem(postId);
+    setCommentLength(0);
+    setDisabled(true);
+    commentEditorEditor?.update(() => {
+      $getRoot().clear();
+    });
+
     handleComment(comment);
+  }
+
+  function onError(error) {
+    console.error(error);
   }
 
   const initialConfig = {
     onError,
     theme: exampleTheme,
-    disabled: true,
+    // disabled: true,
     // disabled: user.user?.name ? false : true,
     nodes: [LinkNode, CodeNode, CodeHighlightNode],
   };
@@ -85,7 +80,6 @@ export function CommentEditor({ postId, handleComment }) {
           />
           <OnChangePlugin onChange={onChange} />
           <HistoryPlugin />
-          <MyCustomAutoFocusPlugin />
           <CodeHighlightPlugin />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
         </div>

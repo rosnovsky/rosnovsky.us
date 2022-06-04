@@ -79,6 +79,7 @@ export interface BlogPost extends SanityDocument {
     description: Block[] | string;
     slug: { current: string };
   }[];
+  comments?: PostComment[];
   references: Omit<BlogPost, 'references'>[];
 }
 
@@ -150,17 +151,16 @@ export type CommentStatus = {
   flagged?: 'spam' | 'offensive' | 'other';
 };
 
-export type PostComment = {
-  id: string;
-  user_id: string;
-  published_at: string;
-  comment: string;
-  deleted: boolean;
-  flagged: boolean;
-  edited: boolean;
-  post_id: string;
-  hash: string;
-};
+export interface PostComment extends SanityDocument {
+  authorId: string;
+  commentDate: string;
+  commentBody: Block[];
+  flags: {
+    isFlagged: boolean;
+    isEdited: boolean;
+    isHidden: boolean;
+  };
+}
 
 export interface Status {
   data: {

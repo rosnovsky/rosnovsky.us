@@ -27,9 +27,6 @@ const postComment = async ({
   postTitle: string;
   user: UserProfile;
 }) => {
-  // await userProfile(user);
-  console.log('commentContent', commentContent);
-
   const comment = {
     _type: 'comment',
     authorName: user.nickname || user.name || user.email,
@@ -40,7 +37,7 @@ const postComment = async ({
     commentBody: commentContent,
     flags: { isFlagged: false, isHidden: false, isEdited: false },
   };
-  console.log(commentContent);
+
   client.create(comment).then((res) => {
     client
       .patch(postId)
