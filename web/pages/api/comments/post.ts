@@ -38,7 +38,7 @@ const postComment = async ({
     authorId: user.sub,
     commentDate: new Date().toISOString(),
     commentBody: commentContent,
-    flags: [{ isFlagged: false, isHidden: false, isEdited: false }],
+    flags: { isFlagged: false, isHidden: false, isEdited: false },
   };
   console.log(commentContent);
   client.create(comment).then((res) => {
