@@ -1,5 +1,4 @@
 import { PostComment } from 'index';
-import { supabase } from '@lib/supabase';
 import md5 from 'md5';
 
 /**
@@ -12,12 +11,12 @@ export const isCommentUnique = async (
   content: PostComment['comment']
 ) => {
   const commentHash = md5(encodeURIComponent(content));
-  const { data: comment, error } = await supabase
-    .from('comments')
-    .select('*')
-    .eq('id', commentId);
+  // const { data: comment, error } = await supabase
+  //   .from('comments')
+  //   .select('*')
+  //   .eq('id', commentId);
 
-  const isUnique = comment![0].hash !== commentHash;
+  // const isUnique = comment![0].hash !== commentHash;
 
-  return error ? error : isUnique;
+  // return error ? error : isUnique;
 };

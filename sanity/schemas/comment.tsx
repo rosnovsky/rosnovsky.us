@@ -23,6 +23,10 @@ const Comments = (props) => {
   const toast = useToast();
 
   React.useEffect(() => {
+    if (!props?.value) {
+      setComments([]);
+      return;
+    }
     setComments(props.value);
   }, [props]);
 

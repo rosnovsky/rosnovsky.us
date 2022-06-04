@@ -1,5 +1,4 @@
 import { UserProfile } from '@auth0/nextjs-auth0';
-import { supabase } from '@lib/supabase';
 import { PostComment } from 'index';
 import md5 from 'md5';
 import { userProfile } from '@pages/api/comments/getUserProfile';
@@ -21,11 +20,11 @@ export const updateComment = async (
   // We are using comment content hash to validate comment's uniqueness.
   const hash = md5(content);
 
-  const { data: comment, error } = await supabase
-    .from('comments')
-    .update({ comment: content, edited: true, hash })
-    .match({ id: commentId, user_id: user.sub });
-  if (comment === null) return { error: 'You can only edit your own comments' };
+  // const { data: comment, error } = await supabase
+  //   .from('comments')
+  //   .update({ comment: content, edited: true, hash })
+  //   .match({ id: commentId, user_id: user.sub });
+  // if (comment === null) return { error: 'You can only edit your own comments' };
 
-  return error ? error : comment;
+  // return error ? error : comment;
 };
