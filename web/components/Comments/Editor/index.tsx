@@ -9,7 +9,6 @@ import { $generateHtmlFromNodes } from '@lexical/html';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { LinkNode } from '@lexical/link';
 import exampleTheme from './theme';
-import ToolbarPlugin from './toolbar';
 import { $getRoot, EditorState, LexicalEditor } from 'lexical';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { TRANSFORMERS } from '@lexical/markdown';
@@ -73,7 +72,6 @@ export function CommentEditor({ postId, handleComment }) {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <div className="container border rounded-t-lg text-left caret-darkCoolGray-700">
-        <ToolbarPlugin />
         <div className="container bg-darkCoolGray-50">
           <RichTextPlugin
             contentEditable={<ContentEditable className="editor-input" />}
@@ -93,7 +91,7 @@ export function CommentEditor({ postId, handleComment }) {
         {disabled ? `Add ${10 - commentLength} characters` : 'Post Comment'}
       </button>
       <span className="text-xs text-gray-600 mt-2">
-        Use markdown to add links, paste code to add code snippets
+        Use markdown or keyboard shortcuts to format text.
       </span>
     </LexicalComposer>
   );

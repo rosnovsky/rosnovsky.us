@@ -112,18 +112,6 @@ export const PortableTextComponents = {
   },
 };
 
-export const URLReplacer = (str) => {
-  const match = str.match(
-    /(ftp|http|https):\/\/(\w+:?\w*@)?(\S+)(:\d+)?(\/|\/([\w#:.?+=&%@!\-\\/]))?/
-  );
-  if (!match) return str;
-  let final = str;
-  match.forEach((url) => {
-    final = final.replace(url, '[removed external link]');
-  });
-  return final;
-};
-
 const getBlogPostsData = async (): Promise<BlogPost[]> => {
   return await sanityClient.fetch(
     `

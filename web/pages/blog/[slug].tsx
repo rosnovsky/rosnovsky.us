@@ -12,6 +12,7 @@ import { CommentEditor } from '@components/Comments/Editor';
 import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
 import Schema from '@sanity/schema';
 import { useUser } from '@auth0/nextjs-auth0';
+import { useState } from 'react';
 
 type Props = {
   post: BlogPost;
@@ -33,6 +34,7 @@ const Post = ({ post, status = 'up' }: Props) => {
     socialCardImage,
     comments,
   } = post;
+  const [fetchedComments, setFetchedComments] = useState(comments);
 
   const handleComment = async (comment) => {
     const defaultSchema = Schema.compile({
@@ -69,7 +71,14 @@ const Post = ({ post, status = 'up' }: Props) => {
         postTitle: post.title,
         commentContent: normalizedBlocks,
       }),
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFetchedComments(data.updatedPostComments);
+
+        return data;
+      });
   };
 
   return (
@@ -158,7 +167,13 @@ const Post = ({ post, status = 'up' }: Props) => {
               ) : (
                 <Link href="/api/auth/login">Login to comment</Link>
               )}
-              {comments && <Comments comments={comments} />}
+              {fetchedComments && (
+                <Comments
+                  comments={fetchedComments.filter(
+                    (comment) => comment.flags.isHidden !== true
+                  )}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -174,7 +189,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
@@ -225,8 +240,6 @@ export async function getStaticProps(context) {
   const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
     (res) => res.json()
   );
-
-  console.log(post.comments?.length);
 
   return {
     props: {

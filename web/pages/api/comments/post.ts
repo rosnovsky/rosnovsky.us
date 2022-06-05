@@ -29,7 +29,7 @@ const postComment = async ({
 }) => {
   const comment = {
     _type: 'comment',
-    authorName: user.nickname || user.name || user.email,
+    authorName: user.name || user.nickname || user.email,
     authorAvatar: user.picture,
     authorEmail: user.email,
     authorId: user.sub,
@@ -38,8 +38,8 @@ const postComment = async ({
     flags: { isFlagged: false, isHidden: false, isEdited: false },
   };
 
-  client.create(comment).then((res) => {
-    client
+  const newComment = await client.create(comment).then(async (res) => {
+    return await client
       .patch(postId)
       .setIfMissing({ comments: [] })
       .append('comments', [res])
@@ -52,12 +52,15 @@ const postComment = async ({
         //   postTitle,
         //   user,
         // });
+        console.log('new comment posted');
         return newComment;
       })
       .catch((err) => {
         console.error('Oh no, the update failed: ', err.message);
+        return err;
       });
   });
+  return newComment;
 };
 
 export default withApiAuthRequired(async function (
@@ -77,9 +80,15 @@ export default withApiAuthRequired(async function (
     const user = session.user;
 
     try {
-      return res
-        .status(200)
-        .send(await postComment({ postId, postTitle, commentContent, user }));
+      const newComment = await postComment({
+        postId,
+        postTitle,
+        commentContent,
+        user,
+      });
+      res.status(200).send({
+        updatedPostComments: newComment.comments,
+      });
     } catch (e: any) {
       res
         .status(400)
