@@ -1,5 +1,5 @@
 import type { UserProfile } from '@auth0/nextjs-auth0';
-import type { SanityDocument, Block } from '@sanity/types';
+import type { SanityDocument, Block } from '@sanity/client';
 import { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 
 declare global {
@@ -79,7 +79,8 @@ export interface BlogPost extends SanityDocument {
     description: Block[] | string;
     slug: { current: string };
   }[];
-  references?: Omit<BlogPost, 'references'>[];
+  comments?: PostComment[];
+  references: Omit<BlogPost, 'references'>[];
 }
 
 export interface Hike {
@@ -150,17 +151,16 @@ export type CommentStatus = {
   flagged?: 'spam' | 'offensive' | 'other';
 };
 
-export type PostComment = {
-  id: string;
-  user_id: string;
-  published_at: string;
-  comment: string;
-  deleted: boolean;
-  flagged: boolean;
-  edited: boolean;
-  post_id: string;
-  hash: string;
-};
+export interface PostComment extends SanityDocument {
+  authorId: string;
+  commentDate: string;
+  commentBody: Block[];
+  flags: {
+    isFlagged: boolean;
+    isEdited: boolean;
+    isHidden: boolean;
+  };
+}
 
 export interface Status {
   data: {

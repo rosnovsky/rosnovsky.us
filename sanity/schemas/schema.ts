@@ -19,6 +19,7 @@ import company from './life/jobs/company';
 import airline from './life/travel/airline';
 import flight from './life/travel/flight';
 import socialCard from './socialCard';
+import comment from './comment';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -44,6 +45,7 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
-    socialCard
+    socialCard,
+    comment
   ]),
 });

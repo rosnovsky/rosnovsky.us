@@ -1,74 +1,66 @@
-import { supabase } from '@lib/supabase';
 import { NextApiRequest, NextApiResponse } from 'next';
 import {
   withApiAuthRequired,
   getSession,
   UserProfile,
 } from '@auth0/nextjs-auth0';
-import md5 from 'md5';
-import { userProfile } from './getUserProfile';
-import { notify } from '@lib/notifications/notify';
-import { validateQueryData } from '@lib/comments/validate';
+import sanityClient from '@sanity/client';
+// import userProfile  from './getUserProfile';
+// import { notify } from '@lib/notifications/notify';
 
-const isCommentUnique = async (postId: string, content: string, user) => {
-  const commentHash = md5(content);
-  const { data, error } = await supabase
-    .from('comments')
-    .select('*')
-    .eq('post_id', postId);
+const client = sanityClient({
+  projectId: 'n3o7a5dl',
+  dataset: 'prod',
+  apiVersion: '2021-10-21',
+  token: process.env.SANITY_TOKEN,
+  useCdn: false,
+});
 
-  if (error) {
-    return error;
-  } else if (data) {
-    // check if the comment is unique (matching comment content hash, userId and postId)
-    const commentsByUserId = data.filter(
-      (comment) => comment.user_id === user.sub
-    );
+const postComment = async ({
+  postId,
+  commentContent,
+  // postTitle,
+  user,
+}: {
+  postId: string;
+  commentContent: string;
+  postTitle: string;
+  user: UserProfile;
+}) => {
+  const comment = {
+    _type: 'comment',
+    authorName: user.name || user.nickname || user.email,
+    authorAvatar: user.picture,
+    authorEmail: user.email,
+    authorId: user.sub,
+    commentDate: new Date().toISOString(),
+    commentBody: commentContent,
+    flags: { isFlagged: false, isHidden: false, isEdited: false },
+  };
 
-    return commentsByUserId.every((comment) => comment.hash !== commentHash);
-  }
-};
-
-const published_at = new Date().toISOString();
-
-const postComment = async (
-  postId: string,
-  postTitle: string,
-  content: string,
-  user: UserProfile
-) => {
-  await userProfile(user);
-  const { data, error } = await supabase.from('comments').upsert(
-    {
-      published_at,
-      user_id: user.sub,
-      post_id: postId,
-      comment: content,
-      hash: md5(content),
-    },
-    { ignoreDuplicates: true }
-  );
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // FIXME: I honestly can't recall why this is here.
-  // const response = await supabase.from('users').upsert(
-  //   {
-  //     user_id: user.sub,
-  //     name: user.name,
-  //     email: user.email,
-  //     email_verified: user.email_verified,
-  //     picture: user.picture,
-  //     nickname: user.nickname,
-  //   },
-  //   { ignoreDuplicates: true }
-  // );
-  await notify({
-    type: 'new-comment-notification',
-    content,
-    postId,
-    postTitle,
-    user,
+  const newComment = await client.create(comment).then(async (res) => {
+    return await client
+      .patch(postId)
+      .setIfMissing({ comments: [] })
+      .append('comments', [res])
+      .commit()
+      .then((newComment) => {
+        // notify({
+        //   type: 'new-comment-notification',
+        //   content,
+        //   postId,
+        //   postTitle,
+        //   user,
+        // });
+        console.log('new comment posted');
+        return newComment;
+      })
+      .catch((err) => {
+        console.error('Oh no, the update failed: ', err.message);
+        return err;
+      });
   });
-  return error ? error : data;
+  return newComment;
 };
 
 export default withApiAuthRequired(async function (
@@ -84,23 +76,26 @@ export default withApiAuthRequired(async function (
     if (session && !session.user.email_verified)
       res.status(401).end({ error: 'Please verify your email first.' });
 
-    const { postId, content, postTitle } = JSON.parse(req.body);
+    const { postId, commentContent, postTitle } = JSON.parse(req.body);
+    const user = session.user;
 
-    if (validateQueryData(JSON.parse(req.body), 'postComment')) {
-      try {
-        const isUnique = await isCommentUnique(postId, content, session.user);
-        if (!isUnique)
-          return res.status(400).send({ error: 'Comment already exists' });
-        return res
-          .status(200)
-          .send(await postComment(postId, postTitle, content, session.user));
-      } catch (e: any) {
-        res
-          .status(400)
-          .send({ error: 'Invalid post comment data?', message: e.message });
-      }
+    try {
+      const newComment = await postComment({
+        postId,
+        postTitle,
+        commentContent,
+        user,
+      });
+      res.status(200).send({
+        updatedPostComments: newComment.comments,
+      });
+    } catch (e: any) {
+      res
+        .status(400)
+        .send({ error: 'Invalid post comment data', message: e.message });
     }
   } catch (error) {
-    res.status(400).send({ error: 'Invalid post comment data' });
+    console.error(error);
+    res.status(500).send({ message: 'Something went wrong', error });
   }
 });
