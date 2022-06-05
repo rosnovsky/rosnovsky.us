@@ -12,11 +12,19 @@ type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
   postCount: number;
+  commentCount: number;
   fallback: any;
   status: 'up' | 'down';
 };
 
-const Home = ({ posts, categories, postCount, fallback, status }: Props) => {
+const Home = ({
+  posts,
+  categories,
+  postCount,
+  fallback,
+  status,
+  commentCount,
+}: Props) => {
   return (
     <Container
       title={`Rosnovsky Park – Art Rosnovsky`}
@@ -28,7 +36,7 @@ const Home = ({ posts, categories, postCount, fallback, status }: Props) => {
       <Blog posts={posts} categories={categories} postCount={postCount} />
       <NewsletterForm />
       <SWRConfig value={{ fallback }}>
-        <Stats />
+        <Stats commentCount={commentCount} />
       </SWRConfig>
     </Container>
   );
@@ -63,6 +71,11 @@ export async function getStaticProps() {
     count(*[_type == "post"])
   `
   );
+  const commentCount: number = await sanityClient.fetch(
+    `
+    count(*[_type == "comment"])
+  `
+  );
 
   const categories: BlogPost['categories'] = await sanityClient.fetch(
     `
@@ -77,10 +90,6 @@ export async function getStaticProps() {
   const githubStats = await fetch('https://rosnovsky.us/api/stats/github').then(
     (res) => res.json()
   );
-
-  const commentsStats = await fetch(
-    'https://rosnovsky.us/api/comments/getCount'
-  ).then((res) => res.json());
 
   const subscribersStats = await fetch(
     'https://rosnovsky.us/api/stats/subscribers'
@@ -99,10 +108,10 @@ export async function getStaticProps() {
       posts,
       categories,
       postCount,
+      commentCount,
       status: sysytemStatus,
       fallback: {
         '/api/github': githubStats,
-        '/api/comments/getCount': commentsStats,
         '/api/subscribers': subscribersStats,
         '/api/fathom/uniquesThisMonth': visitorsStats,
       },

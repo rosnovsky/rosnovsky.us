@@ -11,6 +11,7 @@ type Props = {
   posts: BlogPost[];
   categories: BlogPost['categories'];
   postCount: number;
+  commentCount: number;
   isCategory: BlogPost['categories'][0]['slug']['current'];
   status: 'up' | 'down';
 };
@@ -21,6 +22,7 @@ const Category = ({
   postCount,
   isCategory,
   status,
+  commentCount,
 }: Props) => {
   if (!postCount) {
     return <Custom404 status={status} />;
@@ -34,7 +36,7 @@ const Category = ({
         isCategory={isCategory}
       />
       <NewsletterForm />
-      <Stats />
+      <Stats commentCount={commentCount} />
     </Containter>
   );
 };
@@ -80,6 +82,12 @@ export async function getStaticProps(context) {
     { slug: context.params.slug }
   );
 
+  const commentCount: number = await sanityClient.fetch(
+    `
+    count(*[_type == "comment"])
+  `
+  );
+
   const categories = await sanityClient.fetch(
     `
     *[_type == "category"][0...6] {
@@ -100,9 +108,10 @@ export async function getStaticProps(context) {
       posts,
       categories,
       postCount,
+      commentCount,
       isCategory: context.params.slug,
     },
-    revalidate: 120,
+    revalidate: 1,
   };
 }
 

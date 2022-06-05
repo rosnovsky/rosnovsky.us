@@ -1,4 +1,5 @@
-import {RiPagesLine} from 'react-icons/ri';
+import { RiPagesLine } from 'react-icons/ri';
+import { Button } from '../components/socialCard';
 
 export default {
   name: 'page',
@@ -37,11 +38,16 @@ export default {
       type: 'blockContent',
     },
     {
-      name: 'socialCard',
-      title: 'Generate Social Card',
-      description: 'When ready, click the button below to generate a social card for this post.',
-      type: 'socialCard',
-      validation: (Rule) => Rule.required().error("Please generate a social card"),
+      name: 'socialCardImage',
+      title: 'Social Card Image',
+      type: 'image',
+      readOnly: () => true,
+    },
+    {
+      name: 'socialCardButton',
+      title: 'Social Card Button',
+      type: 'boolean',
+      inputComponent: Button,
     },
   ],
 

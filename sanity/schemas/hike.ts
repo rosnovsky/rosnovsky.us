@@ -1,4 +1,5 @@
 import { GiWalk } from 'react-icons/gi';
+import { Button } from '../components/socialCard';
 
 export default {
   name: 'hike',
@@ -49,7 +50,7 @@ export default {
       description: 'A link to the trail on the WTA / Alltrails website',
       type: 'url',
     },
-    { 
+    {
       name: 'length',
       title: 'Total distance',
       description: 'In miles',
@@ -81,11 +82,17 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'socialCard',
-      title: 'Generate Social Card',
-      description: 'When ready, click the button below to generate a social card for this post.',
-      type: 'socialCard',
-      validation: (Rule) => Rule.required().error("Please generate a social card"),
+      name: 'socialCardImage',
+      title: 'Social Card Image',
+      type: 'image',
+      readOnly: () => true,
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'socialCardButton',
+      title: 'Social Card Button',
+      type: 'boolean',
+      inputComponent: Button,
     },
   ],
 
@@ -106,22 +113,18 @@ export default {
         }),
         media,
       };
-    }
+    },
   },
-    orderings: [
+  orderings: [
     {
       title: 'New hikes first',
       name: 'hikeDateDesc',
-      by: [
-        {field: 'hikeDate', direction: 'desc'}
-      ]
+      by: [{ field: 'hikeDate', direction: 'desc' }],
     },
     {
       title: 'Old hikes first',
       name: 'hikeDateAsc',
-      by: [
-        {field: 'hikeDate', direction: 'asc'}
-      ]
+      by: [{ field: 'hikeDate', direction: 'asc' }],
     },
-  ]
+  ],
 };
