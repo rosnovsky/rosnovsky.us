@@ -6,7 +6,7 @@ import {
 } from '@auth0/nextjs-auth0';
 import sanityClient from '@sanity/client';
 // import userProfile  from './getUserProfile';
-// import { notify } from '@lib/notifications/notify';
+import { notify } from '@lib/notifications/notify';
 
 const client = sanityClient({
   projectId: 'n3o7a5dl',
@@ -19,7 +19,7 @@ const client = sanityClient({
 const postComment = async ({
   postId,
   commentContent,
-  // postTitle,
+  postTitle,
   user,
 }: {
   postId: string;
@@ -45,13 +45,13 @@ const postComment = async ({
       .append('comments', [res])
       .commit()
       .then((newComment) => {
-        // notify({
-        //   type: 'new-comment-notification',
-        //   content,
-        //   postId,
-        //   postTitle,
-        //   user,
-        // });
+        notify({
+          type: 'new-comment-notification',
+          content: comment.commentBody,
+          postId,
+          postTitle,
+          user,
+        });
         console.log('new comment posted');
         return newComment;
       })
