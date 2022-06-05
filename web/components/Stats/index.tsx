@@ -4,7 +4,7 @@ const Github = dynamic(() => import('./Github'));
 const Subscribers = dynamic(() => import('./Subscribers'));
 const Visitors = dynamic(() => import('./Visitors'));
 
-const Stats = () => {
+const Stats = ({ commentCount }) => {
   return (
     <section
       className="py-20 xl:py-24 bg-white"
@@ -19,7 +19,7 @@ const Stats = () => {
           className="flex flex-wrap justify-center text-center -mx-4"
         >
           <Github />
-          <Comments />
+          <Comments commentCount={commentCount} />
           <Subscribers />
           <Visitors />
         </div>
