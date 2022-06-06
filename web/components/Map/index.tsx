@@ -21,7 +21,7 @@ export default function Map({ data }: Props) {
       latitude: data instanceof Array ? 47.02577533373375 : data.location.lat,
       longitude:
         data instanceof Array ? -122.44353688197594 : data.location.lng,
-      zoom: data instanceof Array ? 6 : 12,
+      zoom: data instanceof Array ? 2 : 12,
     },
   });
   const [popupInfo, setPopupInfo] = useState<Hike | null>();
