@@ -10,14 +10,13 @@ Hey there! I'm [Art](https://github.com/rosnovsky), and this is my blog and webs
 ## What is this, really?
 
 - [`Next.js`](https://nextjs.org) powers the entire thing
-- [`Supabase`](https://supabase.io) powers comments
+- [`Sanity.io`](https://sanity.io) powers content and comments
 - [`Auth0`](https://auth0.com) for user auth
 - [`Mailgun`](https://mailgun.com) for email notifications
 - [`Buttondown`](https://buttondown.email) powers the newsletter
 - [`Vercel`](https://vercel.com) as hosting platform
 - [`BetterStatus`](https://status.rosnovsky.us) for status monitoring
 - [`Fathom`](https://usefathom.com/ref/NB77IT) for non-tracking, cookie-less analytics
-- [`Azure Vision`](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/) and [`Azure Text`](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/#overview) for [generating alt text for images](https://rosnovsky.us/blog/alt-text) and provide blog post summaries.
 - `Jest` & `Cypress` for unit and integration tests
 - Apple Music for the widget below
 
