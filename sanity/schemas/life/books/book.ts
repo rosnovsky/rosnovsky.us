@@ -4,13 +4,18 @@ export default {
   name: 'book',
   title: 'Book',
   type: 'document',
+  description: 'A book I have in my library',
   icon: FaBook,
   fields: [
     {
       name: 'isbn',
       title: 'ISBN',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      description: 'The ISBN of the book',
+      validation: (Rule) =>
+        Rule.required().error(
+          'You must provide an ISBN and then feche the book using the button below'
+        ),
     },
     {
       name: 'fetchBook',
@@ -36,18 +41,23 @@ export default {
       name: 'description',
       title: 'Description',
       type: 'text',
-      validation: (Rule) => Rule.required(),
-      readOnly: () => true,
+      description:
+        "If book doesn't have a description in ISBNDB, you can add one here",
+      validation: (Rule) =>
+        Rule.required().error(
+          'Description is required since its rendered on the website.'
+        ),
     },
     {
       name: 'cover',
       title: 'Cover',
       type: 'image',
+      description:
+        "If book doesn't have a cover image in ISBNDB, you can add one here",
       options: {
         hotspot: true,
       },
       validation: (Rule) => Rule.required(),
-      readOnly: () => true,
     },
     {
       name: 'pages',

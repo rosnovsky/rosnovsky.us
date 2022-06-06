@@ -52,7 +52,7 @@ export const Button = withDocument((props) => {
         })
         .commit()
         .then(async (res) => {
-          await fetch('http://localhost:3000/api/fetchBookCover', {
+          await fetch('https://rosnovsky.us/api/fetchBookCover', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -70,6 +70,7 @@ export const Button = withDocument((props) => {
     } catch (err) {
       console.error(err);
       setIsError(true);
+      setErrorMessage(err);
     } finally {
       setIsLoading(false);
     }
@@ -92,7 +93,7 @@ export const Button = withDocument((props) => {
             <Box padding={2}>
               <Text size={2}>
                 <pre>
-                  {errorMessage?.message ? errorMessage.message : errorMessage}
+                  {errorMessage.message ? errorMessage.message : errorMessage}
                 </pre>
               </Text>
             </Box>
