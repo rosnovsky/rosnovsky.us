@@ -20,6 +20,7 @@ import airline from './life/travel/airline';
 import flight from './life/travel/flight';
 import socialCard from './socialCard';
 import comment from './comment';
+import book from './life/books/book';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -33,6 +34,7 @@ export default createSchema({
     post,
     hike,
     page,
+    book,
     category,
     youtube,
     metacard,
@@ -46,6 +48,6 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     blockContent,
     socialCard,
-    comment
+    comment,
   ]),
 });

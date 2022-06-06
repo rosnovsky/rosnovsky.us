@@ -9,8 +9,6 @@ declare global {
       NEXT_PUBLIC_FATHOM_SITE_ID: string;
       MAILGUN_KEY: string;
       NOTIFY_ME_EMAIL: string;
-      NEXT_PUBLIC_SUPABASE_URL: string;
-      NEXT_SUPABASE_SERVICE_KEY: string;
       NODE_ENV: 'development' | 'production' | 'test';
     }
   }
