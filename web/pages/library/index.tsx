@@ -105,7 +105,7 @@ const Library = ({ books, status = 'up' }: Props) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const books: BookType = await sanityClient.fetch(
     `
