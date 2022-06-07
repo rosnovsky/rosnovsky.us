@@ -14,7 +14,7 @@ import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPl
 import { TRANSFORMERS } from '@lexical/markdown';
 import CodeHighlightPlugin from './plugins/codeHighlight';
 
-export function CommentEditor({ postId, handleComment }) {
+export default function CommentEditor({ postId, handleComment }) {
   const [disabled, setDisabled] = useState(true);
   const [commentLength, setCommentLength] = useState(0);
   const [commentEditorEditor, setCommentEditorEditor] =

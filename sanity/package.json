@@ -38,7 +38,7 @@
     "react-dom": "^17.0",
     "react-icons": "^4.4.0",
     "react-player": "^2.9.0",
-    "react-youtube": "^7.14.0",
+    "react-youtube": "^9.0.2",
     "sanity-plugin-asset-source-cloudinary": "^0.1.2",
     "sanity-plugin-asset-source-giphy": "^0.0.12",
     "sanity-plugin-asset-source-unsplash": "^0.2.1",
