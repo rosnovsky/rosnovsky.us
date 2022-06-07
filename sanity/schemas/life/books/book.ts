@@ -80,6 +80,26 @@ export default {
       validation: (Rule) => Rule.required(),
       readOnly: () => true,
     },
+    {
+      name: 'own',
+      title: 'Own?',
+      type: 'boolean',
+    },
+    {
+      name: 'read',
+      title: 'Read?',
+      type: 'date',
+      description: 'If you read the book, add the date here',
+    },
+    {
+      title: 'Rating',
+      name: 'rating',
+      type: 'rating',
+      description: 'Apply a rating out of 5 stars',
+      options: {
+        stars: 5,
+      },
+    },
   ],
   preview: {
     select: {
