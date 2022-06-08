@@ -77,7 +77,7 @@ const Library = ({ books, status = 'up' }: Props) => {
                         : 'opacity-50 hover:opacity-100 transition-opacity duration-200'
                     }`}
                   >
-                    <Link href={`/library/book/${book.isbn}`}>
+                    <Link href="/library/book/[slug]" as={`/library/book/${book.isbn}`}>
                       <Image
                         src={book.cover.asset.url}
                         alt={book.title}
@@ -109,6 +109,7 @@ export async function getStaticProps() {
         ...,
         asset->
       },
+      isbn,
       title,
       author,
       publisher,
