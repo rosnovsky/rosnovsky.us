@@ -3,6 +3,7 @@ import { localDate, ratingToText } from '@lib/helpers';
 import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { PortableText } from '@portabletext/react';
 const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 
@@ -88,7 +89,7 @@ const Book = ({ book, status = 'up' }: Props) => {
                 {estimatedReadingTime} hours
               </span>{' '}
               to read it.{' '}
-              {own ? (
+              {own && (
                 <span>
                   I{' '}
                   <span className="inline-block text-blue-600 font-medium">
@@ -96,7 +97,8 @@ const Book = ({ book, status = 'up' }: Props) => {
                   </span>{' '}
                   this book.{' '}
                 </span>
-              ) : (
+              )}{' '}
+              {!read && (
                 <span className="font-bold">I haven&apos;t read it yet.</span>
               )}
               {read && (
@@ -115,8 +117,12 @@ const Book = ({ book, status = 'up' }: Props) => {
             </div>
           </div>
         </div>
-
-        <div className="prose prose-xl md:max-w-3xl mx-auto">{review}</div>
+        {review && (
+          <div className="prose prose-xl md:max-w-3xl mx-auto">
+            <h3>Review</h3>
+            <PortableText value={review} />
+          </div>
+        )}
       </section>
     </Containter>
   );
