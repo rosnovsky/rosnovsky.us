@@ -28,14 +28,12 @@ export default {
       title: 'Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
-      readOnly: () => true,
     },
     {
       name: 'author',
       title: 'Author',
       type: 'string',
       validation: (Rule) => Rule.required(),
-      readOnly: () => true,
     },
     {
       name: 'description',
@@ -64,14 +62,12 @@ export default {
       title: 'Pages',
       type: 'number',
       validation: (Rule) => Rule.required(),
-      readOnly: () => true,
     },
     {
       name: 'publisher',
       title: 'Publisher',
       type: 'string',
       validation: (Rule) => Rule.required(),
-      readOnly: () => true,
     },
     {
       name: 'publishedDate',
@@ -90,6 +86,16 @@ export default {
       title: 'Read?',
       type: 'date',
       description: 'If you read the book, add the date here',
+    },
+    {
+      name: 'review',
+      title: 'Book review',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+        },
+      ],
     },
     {
       title: 'Rating',

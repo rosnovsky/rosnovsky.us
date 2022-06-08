@@ -1,5 +1,5 @@
 import sanityClient from '@lib/sanityClient';
-import { localDate } from '@lib/helpers';
+
 import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -28,30 +28,56 @@ const Library = ({ books, status = 'up' }: Props) => {
       >
         <div className="container px-4 mx-auto">
           <div className="md:max-w-2xl mx-auto mb-12 text-center">
-            <div className="flex items-center justify-center">
+            <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
+              Library
+            </h2>
+            <div className="flex flex-wrap items-center justify-center mb-6">
               <p className="inline-block text-blue-600 font-medium">
-                Total of {books.length} books
+                {books.length} books
               </p>
-              <span className="mx-1 text-blue-500">•</span>
-              <p className="inline-block text-blue-400 font-medium">
-                ~
+              <span className="mx-2 text-blue-500">•</span>
+              <p className="inline-block text-blue-600 font-medium">
                 {Math.ceil(
                   books.reduce(
                     (acc, book) => acc + book.estimatedReadingTime,
                     0
                   ) / 24
                 )}{' '}
-                days to read them all
+                days of reading
+              </p>
+              <span className="mx-2 text-blue-500">•</span>
+              <p className="inline-block text-blue-600 font-medium">
+                {Math.ceil(
+                  (books.reduce((acc, book) => acc + (book.read ? 1 : 0), 0) /
+                    books.length) *
+                    100
+                )}
+                % finished
+              </p>
+              <span className="mx-2 text-blue-500">•</span>
+              <p className="inline-block text-blue-600 font-medium">
+                {Math.round(
+                  books.reduce(
+                    (acc, book) => acc + (book.rating ? book.rating : 0),
+                    0
+                  ) /
+                    books.reduce((acc, book) => acc + (book.rating ? 1 : 0), 0)
+                )}{' '}
+                stars average
               </p>
             </div>
-            <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
-              Library
-            </h2>
-            {books &&
-              books.map((book) => (
-                <div key={book.isbn} className="mb-4 cursor-pointer">
-                  <a href={`/library/book/${book.isbn}`}>
-                    <>
+            <div className="flex flex-wrap min-w-full justify-between">
+              {books &&
+                books.map((book) => (
+                  <div
+                    key={book.isbn}
+                    className={`mb-4 mx-2 cursor-pointer  ${
+                      book.read
+                        ? ''
+                        : 'opacity-50 hover:opacity-100 transition-opacity duration-200'
+                    }`}
+                  >
+                    <Link href={`/library/book/${book.isbn}`}>
                       <Image
                         src={book.cover.asset.url}
                         alt={book.title}
@@ -63,41 +89,10 @@ const Library = ({ books, status = 'up' }: Props) => {
                         loading="lazy"
                         className="rounded-lg"
                       />
-
-                      <div className="ml-4">
-                        <h3 className="text-lg leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
-                          {book.title}
-                        </h3>
-                        <p className="text-sm leading-tight text-darkCoolGray-600">
-                          {localDate(book.publishedDate)}
-                        </p>
-                      </div>
-                      <div className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-blue-700 font-medium uppercase bg-blue-100 rounded-full shadow-sm">
-                        <Link href={`/library/publisher/${book.publisher}`}>
-                          {book.publisher}
-                        </Link>
-                      </div>
-                      {book.own && (
-                        <div className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-green-700 font-medium uppercase bg-green-100 rounded-full shadow-sm">
-                          <span className="mx-1 text-green-800">Own</span>
-                        </div>
-                      )}
-                      {book.read && (
-                        <div className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-red-800 font-medium uppercase bg-red-100 rounded-full shadow-sm">
-                          <span className="mx-1 text-red-800">✅ Read</span>
-                        </div>
-                      )}
-                      {book.read && book.rating && (
-                        <div className="inline-block py-1 px-3 mr-2 text-xs leading-5 text-yellow-700 font-medium uppercase bg-yellow-100 rounded-full shadow-sm">
-                          <span className="mx-1 text-yellow-900">
-                            {book.rating} stars
-                          </span>
-                        </div>
-                      )}
-                    </>
-                  </a>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </section>
@@ -109,9 +104,7 @@ export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const books: BookType = await sanityClient.fetch(
     `
-    *[_type == "book"] {
-      ...,
-      _id,
+    *[_type == "book"] | order(publishedDate desc) {
       cover {
         ...,
         asset->
@@ -120,12 +113,12 @@ export async function getStaticProps() {
       author,
       publisher,
       publishedDate,
-      summary,
       pages,
       socialCardImage {
         asset->},
       own,
       read,
+      rating,
       "estimatedReadingTime": round(pages * 2 / 60)
     }
   `

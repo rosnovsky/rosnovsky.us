@@ -1,5 +1,4 @@
 import sanityClient from '@lib/sanityClient';
-import { localDate } from '@lib/helpers';
 import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -29,54 +28,47 @@ const Publisher = ({ books, status = 'up' }: Props) => {
       >
         <div className="container px-4 mx-auto">
           <div className="md:max-w-2xl mx-auto mb-12 text-center">
-            <div className="flex items-center justify-center">
-              <p className="inline-block text-blue-600 font-medium">
-                Total of {books.length} books
-              </p>
-              <span className="mx-1 text-blue-500">•</span>
-              <p className="inline-block text-blue-400 font-medium">
-                ~
-                {books.reduce(
-                  (acc, book) => acc + book.estimatedReadingTime,
-                  0
-                )}{' '}
-                hours to read them all
-              </p>
-            </div>
             <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
               {publisher}
             </h2>
-            {books &&
-              books.map((book) => (
-                <div key={book.isbn} className="mb-4">
-                  <Link
-                    href="/library/book/[slug]"
-                    as={`/library/book/${book.isbn}`}
-                  >
-                    <>
+            <div className="flex items-center justify-center mb-6">
+              <p className="inline-block text-blue-600 font-medium">
+                Total of {books.length} books
+              </p>
+              <span className="mx-2 text-blue-500">•</span>
+              <p className="inline-block text-blue-600 font-medium">
+                ~
+                {Math.ceil(
+                  books.reduce(
+                    (acc, book) => acc + book.estimatedReadingTime,
+                    0
+                  ) / 24
+                )}{' '}
+                days of reading
+              </p>
+            </div>
+            <div className="flex flex-wrap min-w-full justify-between">
+              {books &&
+                books.map((book) => (
+                  <div key={book.isbn} className="cursor-pointer mb-4">
+                    <Link
+                      href="/library/book/[slug]"
+                      as={`/library/book/${book.isbn}`}
+                    >
                       <Image
                         src={book.cover.asset.url}
                         alt={book.title}
-                        width={100}
-                        height={100}
-                        layout="responsive"
+                        width={200}
+                        height={300}
+                        layout="intrinsic"
                         quality={80}
                         loading="lazy"
                         className="rounded-lg"
                       />
-
-                      <div className="ml-4">
-                        <h3 className="text-lg leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
-                          {book.title}
-                        </h3>
-                        <p className="text-sm leading-tight text-darkCoolGray-600">
-                          {localDate(book.publishedDate)}
-                        </p>
-                      </div>
-                    </>
-                  </Link>
-                </div>
-              ))}
+                    </Link>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </section>
@@ -100,7 +92,7 @@ export async function getStaticProps(context) {
   const { slug = '' } = context.params;
   const books: BookType = await sanityClient.fetch(
     `
-    *[_type == "book" && publisher == $slug] {
+    *[_type == "book" && publisher == $slug] | order(publishedDate desc) {
       ...,
       _id,
       cover {
@@ -132,7 +124,7 @@ export async function getStaticProps(context) {
       books,
       status: sysytemStatus,
     },
-    revalidate: 1,
+    revalidate: 120,
   };
 }
 

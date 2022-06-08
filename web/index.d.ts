@@ -233,4 +233,5 @@ interface Book {
   rating: number;
   publisher: string;
   publishedDate: string;
+  review: Block[];
 }

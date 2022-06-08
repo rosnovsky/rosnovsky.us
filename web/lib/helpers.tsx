@@ -13,12 +13,26 @@ import type { BlogPost } from 'index';
 import fs from 'fs';
 import Metacard from '@components/Metacard';
 
-export const localDate = (date: string) => {
-  return new Date(date).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
+export const localDate = (date: string, format?: 'year' | 'month' | 'full') => {
+  const formatDate = (
+    format: 'year' | 'month' | 'full' | undefined
+  ): {
+    year?: 'numeric' | '2-digit' | undefined;
+    month?: 'long' | 'short' | undefined;
+    day?: 'numeric' | '2-digit' | undefined;
+  } => {
+    switch (format) {
+      case 'year':
+        return { year: 'numeric' };
+      case 'month':
+        return { year: 'numeric', month: 'long' };
+      case 'full':
+        return { year: 'numeric', month: 'long', day: 'numeric' };
+      default:
+        return { year: 'numeric', month: 'long', day: 'numeric' };
+    }
+  };
+  return new Date(date).toLocaleDateString('en-US', formatDate(format));
 };
 
 export const urlFor = (source: SanityDocument) => {
@@ -196,4 +210,21 @@ export const lengthColor = (length: number) => {
   if (length > 8 && length <= 20)
     return 'inline-block text-amber-700 font-medium';
   if (length > 20) return 'inline-block text-rose-700 font-medium';
+};
+
+export const ratingToText = (rating: number) => {
+  switch (rating) {
+    case 1:
+      return 'hated it';
+    case 2:
+      return 'disliked it';
+    case 3:
+      return 'it was okay';
+    case 4:
+      return 'liked it';
+    case 5:
+      return 'loved it';
+    default:
+      return 'it was okay';
+  }
 };
