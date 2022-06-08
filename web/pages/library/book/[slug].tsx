@@ -67,7 +67,13 @@ const Book = ({ book, status = 'up' }: Props) => {
                   {title}
                 </h2>
                 <h4 className="mb-4 mt-1 text-md md:text-xl leading-loose text-darkCoolGray-900  tracking-loose">
-                  by {author}
+                  by{' '}
+                  <Link
+                    href="/library/author/[slug]"
+                    as={`/library/author/${book.author}`}
+                  >
+                    {author}
+                  </Link>
                 </h4>
               </div>
               This book was published in{' '}
@@ -148,8 +154,16 @@ export async function getStaticProps(context) {
       ...,
       _id,
       cover {
-        ...,
-        asset->
+        asset-> {
+          url,
+          metadata {
+            dimensions {
+              width,
+              height
+            },
+            lqip
+          }
+        }
       },
       title,
       author,

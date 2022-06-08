@@ -1,9 +1,10 @@
+import Books from '@components/Library/Books';
+import BooksMeta from '@components/Library/Books/Meta';
 import sanityClient from '@lib/sanityClient';
 
 import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-const Link = dynamic(() => import('next/link'), { ssr: true });
+
 const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
@@ -31,71 +32,12 @@ const Library = ({ books, status = 'up' }: Props) => {
             <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
               Library
             </h2>
-            <div className="flex flex-wrap items-center justify-center mb-6">
-              <p className="inline-block text-blue-600 font-medium">
-                {books.length} books
-              </p>
-              <span className="mx-2 text-blue-500">•</span>
-              <p className="inline-block text-blue-600 font-medium">
-                {Math.ceil(
-                  books.reduce(
-                    (acc, book) => acc + book.estimatedReadingTime,
-                    0
-                  ) / 24
-                )}{' '}
-                days of reading
-              </p>
-              <span className="mx-2 text-blue-500">•</span>
-              <p className="inline-block text-blue-600 font-medium">
-                {Math.ceil(
-                  (books.reduce((acc, book) => acc + (book.read ? 1 : 0), 0) /
-                    books.length) *
-                    100
-                )}
-                % finished
-              </p>
-              <span className="mx-2 text-blue-500">•</span>
-              <p className="inline-block text-blue-600 font-medium">
-                {Math.round(
-                  books.reduce(
-                    (acc, book) => acc + (book.rating ? book.rating : 0),
-                    0
-                  ) /
-                    books.reduce((acc, book) => acc + (book.rating ? 1 : 0), 0)
-                )}{' '}
-                stars average
-              </p>
+            <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
+              Think of this as my bookshelf that you can explore. The books I
+              haven&apos;t read yet are denoted by transparent covers.
             </div>
-            <div className="flex flex-wrap min-w-full justify-between">
-              {books &&
-                books.map((book) => (
-                  <div
-                    key={book.isbn}
-                    className={`mb-4 mx-2 cursor-pointer  ${
-                      book.read
-                        ? ''
-                        : 'opacity-50 hover:opacity-100 transition-opacity duration-200'
-                    }`}
-                  >
-                    <Link
-                      href="/library/book/[slug]"
-                      as={`/library/book/${book.isbn}`}
-                    >
-                      <Image
-                        src={book.cover.asset.url}
-                        alt={book.title}
-                        width={100}
-                        height={150}
-                        layout="intrinsic"
-                        objectFit="cover"
-                        quality={80}
-                        loading="lazy"
-                        className="rounded-lg"
-                      />
-                    </Link>
-                  </div>
-                ))}
-            </div>
+            <BooksMeta books={books} />
+            <Books books={books} />
           </div>
         </div>
       </section>
@@ -109,18 +51,20 @@ export async function getStaticProps() {
     `
     *[_type == "book"] | order(publishedDate desc) {
       cover {
-        ...,
-        asset->
+        asset->{
+          url,
+          metadata {
+            dimensions {
+              height,
+              width
+            },
+            lqip
+          }
+        }
       },
       isbn,
-      title,
-      author,
-      publisher,
       publishedDate,
       pages,
-      socialCardImage {
-        asset->},
-      own,
       read,
       rating,
       "estimatedReadingTime": round(pages * 2 / 60)

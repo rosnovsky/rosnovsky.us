@@ -1,8 +1,8 @@
+import Books from '@components/Library/Books';
+import BooksMeta from '@components/Library/Books/Meta';
 import sanityClient from '@lib/sanityClient';
 import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
-const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
@@ -31,44 +31,8 @@ const Publisher = ({ books, status = 'up' }: Props) => {
             <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
               {publisher}
             </h2>
-            <div className="flex items-center justify-center mb-6">
-              <p className="inline-block text-blue-600 font-medium">
-                Total of {books.length} books
-              </p>
-              <span className="mx-2 text-blue-500">•</span>
-              <p className="inline-block text-blue-600 font-medium">
-                ~
-                {Math.ceil(
-                  books.reduce(
-                    (acc, book) => acc + book.estimatedReadingTime,
-                    0
-                  ) / 24
-                )}{' '}
-                days of reading
-              </p>
-            </div>
-            <div className="flex flex-wrap min-w-full justify-between">
-              {books &&
-                books.map((book) => (
-                  <div key={book.isbn} className="cursor-pointer mb-4">
-                    <Link
-                      href="/library/book/[slug]"
-                      as={`/library/book/${book.isbn}`}
-                    >
-                      <Image
-                        src={book.cover.asset.url}
-                        alt={book.title}
-                        width={200}
-                        height={300}
-                        layout="intrinsic"
-                        quality={80}
-                        loading="lazy"
-                        className="rounded-lg"
-                      />
-                    </Link>
-                  </div>
-                ))}
-            </div>
+            <BooksMeta books={books} />
+            <Books books={books} />
           </div>
         </div>
       </section>
@@ -93,22 +57,28 @@ export async function getStaticProps(context) {
   const books: BookType = await sanityClient.fetch(
     `
     *[_type == "book" && publisher == $slug] | order(publishedDate desc) {
-      ...,
-      _id,
-      cover {
-        ...,
-        asset->
+        cover {
+          asset->{
+            url,
+            metadata {
+              dimensions {
+                width,
+                height
+            }, 
+            lqip
+          }
+        }
       },
       title,
       author,
       publisher,
       publishedDate,
-      summary,
       pages,
       socialCardImage {
         asset->},
-      own,
       read,
+      rating,
+      isbn,
       "estimatedReadingTime": round(pages * 2 / 60)
     }
   `,
