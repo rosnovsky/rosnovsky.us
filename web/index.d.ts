@@ -1,5 +1,4 @@
 import type { UserProfile } from '@auth0/nextjs-auth0';
-import { SanityImageAsset } from '@sanity/asset-utils';
 import type { SanityDocument, Block } from '@sanity/client';
 import { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 
