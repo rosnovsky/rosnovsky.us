@@ -8,7 +8,9 @@ const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import { RelatedPosts } from '@components/Blog/Posts';
-import { CommentEditor } from '@components/Comments/Editor';
+const CommentEditor = dynamic(() => import('@components/Comments/Editor'), {
+  ssr: false,
+});
 import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
 import Schema from '@sanity/schema';
 import { useUser } from '@auth0/nextjs-auth0';

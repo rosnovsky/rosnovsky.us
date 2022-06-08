@@ -218,3 +218,19 @@ interface SiteMetadata {
   logo?: string;
   description?: string;
 }
+
+interface Book {
+  title: string;
+  author: string;
+  isbn: string;
+  cover: SanityImageAssetDocument;
+  socialCardImage: SanityImageAssetDocument;
+  summary: string;
+  estimatedReadingTime: number;
+  own: boolean;
+  read: string;
+  rating: number;
+  publisher: string;
+  publishedDate: string;
+  review: Block[];
+}

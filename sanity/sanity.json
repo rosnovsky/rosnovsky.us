@@ -20,7 +20,9 @@
     "@sanity/dashboard",
     "media",
     "icon-picker",
-    "@sanity/vision"
+    "@sanity/vision",
+    "simple-star-rating",
+    "@sanity/scheduled-publishing"
   ],
   "parts": [
     {
@@ -38,6 +40,10 @@
     {
       "implements": "part:@sanity/form-builder/input/file/asset-sources",
       "path": "./parts/assetSources.ts"
+    },
+    {
+      "implements": "part:@sanity/base/document-badges/resolver",
+      "path": "./components/badges.tsx"
     }
   ]
 }

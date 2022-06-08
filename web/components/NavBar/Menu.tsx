@@ -28,6 +28,11 @@ const Menu = () => {
             <Link href="/maps/hikes">Hiking Map</Link>
           </span>
         </li>
+        <li className="mr-12 hidden md:block">
+          <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
+            <Link href="/library">Library</Link>
+          </span>
+        </li>
         <li>
           <span className="text-coolGray-500 hover:text-coolGray-900 font-medium">
             {!user && !isLoading && !error && (
