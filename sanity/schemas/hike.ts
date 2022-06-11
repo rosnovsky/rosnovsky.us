@@ -75,12 +75,12 @@ export default {
       description: 'In feet',
       type: 'number',
     },
-    {
-      name: 'location',
-      type: 'geopoint',
-      title: 'Location',
-      validation: (Rule) => Rule.required(),
-    },
+    // {
+    //   name: 'location',
+    //   type: 'geopoint',
+    //   title: 'Location',
+    //   validation: (Rule) => Rule.required(),
+    // },
     {
       name: 'socialCardImage',
       title: 'Social Card Image',

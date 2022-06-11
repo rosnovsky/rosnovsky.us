@@ -13,5 +13,7 @@
   "asset-source-giphy": "d675c1b7b6c4f165860bfadfb9b537539d91cb4447eef3fa994aad5a115bbcca",
   "media-library": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
   "asset-source-cloudinary": "90a9bd123778d4a589a7875d9bbc5a9b713f39084be79987a076da2f6d1d0161",
-  "@andre-brdoch/sanity-plugin-schema-inspector": "4feafffa155bc1fc8efc4f26e0e9c49c69938a03eb12e2c66c764afc82f02eea"
+  "@andre-brdoch/sanity-plugin-schema-inspector": "4feafffa155bc1fc8efc4f26e0e9c49c69938a03eb12e2c66c764afc82f02eea",
+  "sanity-plugin-mux-input": "595f2707bb80b1584160b3e4aa64454d9f89d1c5ce0f40b4de718d02fd1b3744",
+  "mux-input": "595f2707bb80b1584160b3e4aa64454d9f89d1c5ce0f40b4de718d02fd1b3744"
 }

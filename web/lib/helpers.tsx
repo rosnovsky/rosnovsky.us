@@ -12,6 +12,7 @@ import { Feed } from 'feed';
 import type { BlogPost } from 'index';
 import fs from 'fs';
 import Metacard from '@components/Metacard';
+import SanityMuxPlayer from 'sanity-mux-player';
 
 export const localDate = (date: string, format?: 'year' | 'month' | 'full') => {
   const formatDate = (
@@ -41,6 +42,26 @@ export const urlFor = (source: SanityDocument) => {
 
 export const PortableTextComponents = {
   types: {
+    video: ({ value }) => {
+      return (
+        <>
+          <SanityMuxPlayer
+            assetDocument={value.videoFile.asset}
+            autoload={true}
+            autoplay={false}
+            className={'video'}
+            height={'100%'}
+            loop={true}
+            muted={false}
+            showControls={true}
+            style={{}}
+            width={'100%'}
+          />
+          <p className="mx-auto">{value.title}</p>
+        </>
+      );
+    },
+
     image: ({ value }: { value }) => {
       if (!value?.asset) return null;
       const ImageComponent = () => {
