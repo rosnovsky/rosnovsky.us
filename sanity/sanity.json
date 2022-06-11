@@ -15,14 +15,13 @@
     "@sanity/desk-tool",
     "@sanity/code-input",
     "asset-source-unsplash",
-    "mapbox-input",
     "vercel-deploy",
     "@sanity/dashboard",
     "media",
-    "icon-picker",
     "@sanity/vision",
     "simple-star-rating",
-    "@sanity/scheduled-publishing"
+    "@sanity/scheduled-publishing",
+    "mux-input"
   ],
   "parts": [
     {

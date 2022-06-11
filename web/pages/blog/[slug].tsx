@@ -228,6 +228,15 @@ export async function getStaticProps(context) {
       },
       body[]{
         ...,
+        _type == "video" => {
+          ...,
+          videoFile {
+            asset->{
+              ...,
+              "url": "https://stream.mux.com/" + playbackId
+            }
+          }
+        },
         asset->{...}
       },
       "summaryRaw": pt::text(summary),

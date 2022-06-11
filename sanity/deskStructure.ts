@@ -35,6 +35,10 @@ export default () =>
         .child(
           S.documentList().title('Categories').filter('_type == "category"')
         ),
+      S.listItem()
+        .title('Videos')
+        .schemaType('video')
+        .child(S.documentList().title('Videos').filter('_type == "video"')),
       S.divider(),
       S.listItem()
         .title('Books')

@@ -91,6 +91,7 @@ specifiers:
   react-map-gl: ^7.0.14
   react-syntax-highlighter: ^15.5.0
   sanity-algolia: ^1.0.2
+  sanity-mux-player: ^0.0.27
   sharp: ^0.30.4
   slugify: ^1.6.5
   start-server-and-test: ^1.14.0
@@ -172,6 +173,7 @@ dependencies:
   react-icons: 4.4.0_react@17.0.2
   react-map-gl: 7.0.15_nziqc4bpo6ecs43sxc4vb75rri
   sanity-algolia: 1.0.2
+  sanity-mux-player: 0.0.27_react@17.0.2
   sharp: 0.30.5
   slugify: 1.6.5
   styled-components: 5.3.5_ukrbqhh2t6r2q67fyfhmpyy5um
@@ -5965,6 +5967,13 @@ packages:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}
     dev: true
 
+  /hls.js/0.11.0:
+    resolution: {integrity: sha512-qlCP7uBaHxF1iiP9xw8RFZ9Es9ZM5micqaMTp8P/2WYhd+CSmMMREH+taAzkQDu7u2nHBBd9yZyKgCjg3O3wSw==}
+    dependencies:
+      string.prototype.endswith: 0.2.0
+      url-toolkit: 2.2.5
+    dev: false
+
   /hmac-drbg/1.0.1:
     resolution: {integrity: sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=}
     dependencies:
@@ -7743,7 +7752,7 @@ packages:
     dev: true
 
   /object-assign/4.1.1:
-    resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
+    resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
 
   /object-hash/2.2.0:
@@ -8378,7 +8387,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /property-information/5.6.0:
     resolution: {integrity: sha512-YUHSPk+A30YPv+0Qf8i9Mbfe/C0hdPXk1s1jPVToV8pk8BQtpw10ct89Eo7OWkutrwqvT0eicAxlOg3dOAu8JA==}
@@ -8841,6 +8849,17 @@ packages:
       - supports-color
     dev: false
 
+  /sanity-mux-player/0.0.27_react@17.0.2:
+    resolution: {integrity: sha512-a07k+d08PQsim8pks9H2T1fGrh9iCZU5ZL7ZDvrKfh0CIUDebAmkkBJWYTRoatf4P0ihzbM2ps7XF5S4Gr9prw==}
+    peerDependencies:
+      react: '>=16.3.x'
+    dependencies:
+      hls.js: 0.11.0
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      react: 17.0.2
+    dev: false
+
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
     dev: false
@@ -9227,6 +9246,10 @@ packages:
       emoji-regex: 8.0.0
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
+
+  /string.prototype.endswith/0.2.0:
+    resolution: {integrity: sha512-CLb+YN1AleXLWyh88P1R5s2ajz83wF6bWOyxfOXJ7P3ioK/lOnA39VIEcen24/ELWJvU6y8NG6vEmWSOJIVFfQ==}
+    dev: false
 
   /string.prototype.matchall/4.0.7:
     resolution: {integrity: sha512-f48okCX7JiwVi1NXCVWcFnZgADDC/n2vePlQ/KUCNqCikLLilQvwjMO8+BHVKvgzH0JB0J9LEPgxOGT02RoETg==}
@@ -9899,6 +9922,10 @@ packages:
       ip-regex: 4.3.0
       re2: 1.17.4
       tlds: 1.231.0
+    dev: false
+
+  /url-toolkit/2.2.5:
+    resolution: {integrity: sha512-mtN6xk+Nac+oyJ/PrI7tzfmomRVNFIWKUbG8jdYFt52hxbiReFAXIjYskvu64/dvuW71IcB7lV8l0HvZMac6Jg==}
     dev: false
 
   /url/0.11.0:

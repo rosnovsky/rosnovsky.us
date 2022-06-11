@@ -91,6 +91,7 @@
     "react-icons": "^4.4.0",
     "react-map-gl": "^7.0.14",
     "sanity-algolia": "^1.0.2",
+    "sanity-mux-player": "^0.0.27",
     "sharp": "^0.30.4",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.5",
