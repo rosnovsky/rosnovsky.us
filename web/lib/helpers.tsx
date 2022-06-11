@@ -49,15 +49,17 @@ export const PortableTextComponents = {
             assetDocument={value.videoFile.asset}
             autoload={true}
             autoplay={false}
-            className={'video'}
+            className="mb-0"
             height={'100%'}
-            loop={true}
+            loop={false}
             muted={false}
             showControls={true}
-            style={{}}
+            style={{ marginBottom: '0' }}
             width={'100%'}
           />
-          <p className="mx-auto">{value.title}</p>
+          <p className="w-full mx-auto text-sm text-darkCoolGray-600 text-center">
+            {value.title}
+          </p>
         </>
       );
     },
