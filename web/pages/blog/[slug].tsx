@@ -1,5 +1,6 @@
 import { PortableText } from '@portabletext/react';
 import sanityClient from '@lib/sanityClient';
+import { postQuery, postPathsQuery } from '@lib/queries';
 import { localDate, PortableTextComponents } from '@lib/helpers';
 import type { BlogPost } from 'index';
 import dynamic from 'next/dynamic';
@@ -8,13 +9,8 @@ const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 const Comments = dynamic(() => import('@components/Comments/Comments'));
 import { RelatedPosts } from '@components/Blog/Posts';
-const CommentEditor = dynamic(() => import('@components/Comments/Editor'), {
-  ssr: false,
-});
-import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
-import Schema from '@sanity/schema';
+import CommentEditor from '@components/Comments/Editor';
 import { useUser } from '@auth0/nextjs-auth0';
-import { useState } from 'react';
 
 type Props = {
   post: BlogPost;
@@ -34,54 +30,7 @@ const Post = ({ post, status = 'up' }: Props) => {
     estimatedReadingTime,
     references,
     socialCardImage,
-    comments,
   } = post;
-  const [fetchedComments, setFetchedComments] = useState(comments);
-
-  const handleComment = async (comment) => {
-    const defaultSchema = Schema.compile({
-      name: 'myBlog',
-      types: [
-        {
-          type: 'object',
-          name: 'blogPost',
-          fields: [
-            {
-              title: 'Body',
-              name: 'body',
-              type: 'array',
-              of: [{ type: 'block' }],
-            },
-          ],
-        },
-      ],
-    });
-
-    // The compiled schema type for the content type that holds the block array
-    const blockContentType = defaultSchema
-      .get('blogPost')
-      .fields.find((field) => field.name === 'body').type;
-
-    const blocks = htmlToBlocks(comment, blockContentType);
-    const normalizedBlocks = blocks.map((block) => {
-      return normalizeBlock(block);
-    });
-    await fetch('/api/comments/post', {
-      method: 'POST',
-      body: JSON.stringify({
-        postId: post._id,
-        postTitle: post.title,
-        commentContent: normalizedBlocks,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setFetchedComments(data.updatedPostComments);
-
-        return data;
-      });
-  };
 
   return (
     <Containter
@@ -162,20 +111,11 @@ const Post = ({ post, status = 'up' }: Props) => {
             <h2 className="text-2xl">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
               {user ? (
-                <CommentEditor
-                  postId={post._id}
-                  handleComment={handleComment}
-                />
+                <CommentEditor postId={post._id} postTitle={post.title} />
               ) : (
                 <Link href="/api/auth/login">Login to comment</Link>
               )}
-              {fetchedComments && (
-                <Comments
-                  comments={fetchedComments.filter(
-                    (comment) => comment.flags.isHidden !== true
-                  )}
-                />
-              )}
+              <Comments slug={post.slug.current} />
             </div>
           </div>
         </div>
@@ -185,9 +125,7 @@ const Post = ({ post, status = 'up' }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(
-    `*[_type == "post" && defined(slug.current)][].slug.current`
-  );
+  const paths = await sanityClient.fetch(postPathsQuery);
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -198,65 +136,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const post: BlogPost = await sanityClient.fetch(
-    `
-    *[_type == "post" && slug.current == $slug][0] {
-      ...,
-      _id,
-      coverImage {
-        ...,
-        asset->
-      },
-      categories[]->{
-        title,
-        description,
-        slug
-      },
-      comments,
-      socialCardImage {
-        asset->},
-      references[]->{
-        title,
-        publishedAt,
-        slug,
-        categories[]->,
-        coverImage {
-          ...,
-          asset->
-        },
-        summary
-      },
-      body[]{
-        ...,
-        markDefs[]{
-          _type == "link" => {
-            ...,
-          internal->{
-            title,
-            _type,
-            slug
-          }
-          }
-        },
-        _type == "video" => {
-          ...,
-          videoFile {
-            asset->{
-              ...,
-              "url": "https://stream.mux.com/" + playbackId
-            }
-          }
-        },
-        asset->{...}
-      },
-      "summaryRaw": pt::text(summary),
-      "numberOfCharacters": length(pt::text(body)),
-      "estimatedWordCount": round(length(pt::text(body)) / 5),
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
-    }
-  `,
-    { slug }
-  );
+  const post: BlogPost = await sanityClient.fetch(postQuery, { slug });
 
   const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
     (res) => res.json()

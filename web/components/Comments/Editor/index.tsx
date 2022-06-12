@@ -1,98 +1,120 @@
-import React, { useState } from 'react';
+import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
+import Schema from '@sanity/schema';
+import dynamic from 'next/dynamic';
+import { useEffect, useMemo, useState } from 'react';
+import { useDebouncedValue } from '@mantine/hooks';
 
-import { LexicalComposer } from '@lexical/react/LexicalComposer';
-import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { ContentEditable } from '@lexical/react/LexicalContentEditable';
-import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
-import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
-import { $generateHtmlFromNodes } from '@lexical/html';
-import { CodeHighlightNode, CodeNode } from '@lexical/code';
-import { LinkNode } from '@lexical/link';
-import exampleTheme from './theme';
-import { $getRoot, EditorState, LexicalEditor } from 'lexical';
-import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
-import { TRANSFORMERS } from '@lexical/markdown';
-import CodeHighlightPlugin from './plugins/codeHighlight';
+const RTE = dynamic(() => import('@mantine/rte'), {
+  ssr: false,
+  loading: () => null,
+});
 
-export default function CommentEditor({ postId, handleComment }) {
-  const [disabled, setDisabled] = useState(true);
-  const [commentLength, setCommentLength] = useState(0);
-  const [commentEditorEditor, setCommentEditorEditor] =
-    useState<LexicalEditor>();
-  const [commentEditorState, setCommentEditorState] = useState<EditorState>();
+// TODO Fetch users and tags from API
+const people = [{ id: 1, value: 'Art Rosnovsky' }];
 
-  function onChange(_editorState: EditorState, editor: LexicalEditor) {
-    editor.update(() => {
-      const contentLength = $getRoot()
-        .getAllTextNodes()
-        .reduce(
-          (acc, node) => acc + node.getTextContent(false, false).trim().length,
-          0
+const tags = [
+  { id: 1, value: 'JavaScript' },
+  { id: 2, value: 'TypeScript' },
+];
+
+type Props = {
+  postId: string;
+  postTitle: string;
+};
+
+const CommentEditor = ({ postId, postTitle }: Props) => {
+  const [value, setValue] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    const initialValue = localStorage.getItem(`${postId}`);
+    if (initialValue) {
+      setValue(initialValue);
+    }
+  }, [postId]);
+
+  const handleComment = async (comment, postId) => {
+    const defaultSchema = Schema.compile({
+      name: 'myBlog',
+      types: [
+        {
+          type: 'object',
+          name: 'blogPost',
+          fields: [
+            {
+              title: 'Body',
+              name: 'body',
+              type: 'array',
+              of: [{ type: 'block' }],
+            },
+          ],
+        },
+      ],
+    });
+
+    // The compiled schema type for the content type that holds the block array
+    const blockContentType = defaultSchema
+      .get('blogPost')
+      .fields.find((field) => field.name === 'body').type;
+
+    const blocks = htmlToBlocks(comment, blockContentType);
+    const normalizedBlocks = blocks.map((block) => {
+      return normalizeBlock(block);
+    });
+    console.log(normalizedBlocks);
+    await fetch('/api/comments/post', {
+      method: 'POST',
+      body: JSON.stringify({
+        postId: postId,
+        postTitle: postTitle,
+        commentContent: normalizedBlocks,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        return data;
+      });
+  };
+
+  const mentions = useMemo(
+    () => ({
+      allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
+      mentionDenotationChars: ['@', '#'],
+      source: (
+        searchTerm: string,
+        renderList: (items: Record<string, string | number>[]) => JSX.Element,
+        mentionChar: string
+      ) => {
+        const list = mentionChar === '@' ? people : tags;
+        const includesSearchTerm = list.filter((item) =>
+          item.value.toLowerCase().includes(searchTerm.toLowerCase())
         );
-      // autosave on change
-      localStorage.setItem(postId, $generateHtmlFromNodes(editor, null));
-      setDisabled(false);
-      setCommentLength(contentLength);
-      setCommentEditorEditor(editor);
-      setCommentEditorState(_editorState);
+        renderList(includesSearchTerm);
+      },
+    }),
+    []
+  );
 
-      // disable Save button if there is no content
-      if (contentLength < 10) {
-        setDisabled(true);
-      } else {
-        setDisabled(false);
-      }
-    });
-  }
-
-  function saveComment() {
-    const comment = localStorage.getItem(postId);
-    console.info(commentEditorState);
-    setCommentLength(0);
-    setDisabled(true);
-    commentEditorEditor?.update(() => {
-      $getRoot().clear();
-    });
-
-    handleComment(comment);
-  }
-
-  function onError(error) {
-    console.error(error);
-  }
-
-  const initialConfig = {
-    onError,
-    theme: exampleTheme,
-    // disabled: true,
-    // disabled: user.user?.name ? false : true,
-    nodes: [LinkNode, CodeNode, CodeHighlightNode],
+  // ? This is not necessary, but I'm using it as an autosave feature. Using the debounced value for performance reasons.
+  const handleChange = (value: string) => {
+    setValue(value);
+    localStorage.setItem(postId, value);
   };
 
   return (
-    <LexicalComposer initialConfig={initialConfig}>
-      <div className="container border rounded-t-lg text-left caret-darkCoolGray-700">
-        <div className="container bg-darkCoolGray-50">
-          <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={null}
-          />
-          <OnChangePlugin onChange={onChange} />
-          <HistoryPlugin />
-          <CodeHighlightPlugin />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-        </div>
-      </div>
-      <button
-        className="mt-4 inline-block py-2 px-4 w-full text-sm leading-5 text-white bg-blue-500 hover:bg-blue-600 font-medium text-center focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md disabled:bg-gray-600"
-        disabled={disabled}
-        onClick={saveComment}
-      >
-        {disabled ? `Add ${10 - commentLength} characters` : 'Post Comment'}
-      </button>
-      <span className="text-xs text-gray-600 mt-2">
-        Use markdown or keyboard shortcuts to format text.
-      </span>
-    </LexicalComposer>
+    <>
+      <RTE
+        className="text-left"
+        controls={[['bold', 'italic', 'link'], ['blockquote'], ['codeBlock']]}
+        value={value}
+        onChange={handleChange}
+        mentions={mentions}
+      />
+      <button onClick={() => handleComment(value, postId)}>Submit</button>
+    </>
   );
-}
+};
+
+export default CommentEditor;
