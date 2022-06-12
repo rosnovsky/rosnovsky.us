@@ -1,4 +1,5 @@
 import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
+import { FloatingTooltip } from '@mantine/core';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
 import dynamic from 'next/dynamic';
@@ -13,6 +14,8 @@ import type { BlogPost } from 'index';
 import fs from 'fs';
 import Metacard from '@components/Metacard';
 import SanityMuxPlayer from 'sanity-mux-player';
+import Link from 'next/link';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 export const localDate = (date: string, format?: 'year' | 'month' | 'full') => {
   const formatDate = (
@@ -139,11 +142,46 @@ export const PortableTextComponents = {
     },
   },
   marks: {
-    abbriviation: ({ value, text }: { value?: any; text?: any }) => {
+    link: (props) => {
+      const { value, children, ...args } = props;
       return (
-        <abbr className="cursor-wait" title={value.definition}>
-          {text}
-        </abbr>
+        <>
+          {value?.internal ? (
+            <FloatingTooltip
+              transition="fade"
+              transitionDuration={300}
+              transitionTimingFunction="ease"
+              label={`Read "${value.internal.title}" ${value.internal._type}`}
+              className="inline-block underline hover:cursor-pointer"
+            >
+              <Link href={value.internal.slug.current} {...args}>
+                <span className="font-semibold cursor-pointer">
+                  {props.text}
+                </span>
+              </Link>
+            </FloatingTooltip>
+          ) : value?.external ? (
+            <a target="_blank" rel="noreferrer" href={value.external}>
+              <span className="inline">
+                <FloatingTooltip
+                  transition="fade"
+                  transitionDuration={300}
+                  transitionTimingFunction="ease"
+                  label={value.external}
+                  className="inline-block"
+                >
+                  {children}&nbsp;
+                </FloatingTooltip>
+                <sup>
+                  <FaExternalLinkAlt
+                    size={'1rem'}
+                    className="text-gray-500 inline-block self-baseline"
+                  />
+                </sup>
+              </span>
+            </a>
+          ) : null}
+        </>
       );
     },
   },
