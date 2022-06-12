@@ -8,6 +8,10 @@
  *    type: 'blockContent'
  *  }
  */
+
+import { FaVideo, FaCode, FaIdCard, FaYoutube } from 'react-icons/fa';
+import { MdAddPhotoAlternate } from 'react-icons/md';
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -37,6 +41,7 @@ export default {
           { title: 'Strong', value: 'strong' },
           { title: 'Emphasis', value: 'em' },
           { title: 'Code', value: 'code' },
+          { title: 'Underline', value: 'underline' },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -46,21 +51,21 @@ export default {
             type: 'object',
             fields: [
               {
-                title: 'URL',
-                name: 'href',
+                name: 'external',
                 type: 'url',
+                title: 'URL',
+                hidden: ({ parent, value }) => !value && parent?.internal,
               },
-            ],
-          },
-          {
-            title: 'abbr',
-            name: 'abbriviation',
-            type: 'object',
-            fields: [
               {
-                title: 'Abbriviation',
-                name: 'definition',
-                type: 'text',
+                name: 'internal',
+                type: 'reference',
+                to: [
+                  { type: 'page' },
+                  { type: 'post' },
+                  { type: 'hike' },
+                  { type: 'book' },
+                ],
+                hidden: ({ parent, value }) => !value && parent?.external,
               },
             ],
           },
@@ -72,15 +77,24 @@ export default {
     // as a block type.
     {
       type: 'image',
+      icon: MdAddPhotoAlternate,
       options: { hotspot: true, metadata: ['lqip', 'palette'] },
     },
-    { type: 'code' },
+    {
+      type: 'code',
+      icon: FaCode,
+    },
     {
       type: 'youtube',
+      icon: FaYoutube,
     },
-    { type: 'video' },
+    {
+      type: 'video',
+      icon: FaVideo,
+    },
     {
       type: 'metacard',
+      icon: FaIdCard,
     },
   ],
 };

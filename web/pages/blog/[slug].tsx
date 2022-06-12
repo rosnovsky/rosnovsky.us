@@ -228,6 +228,16 @@ export async function getStaticProps(context) {
       },
       body[]{
         ...,
+        markDefs[]{
+          _type == "link" => {
+            ...,
+          internal->{
+            title,
+            _type,
+            slug
+          }
+          }
+        },
         _type == "video" => {
           ...,
           videoFile {
