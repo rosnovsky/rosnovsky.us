@@ -10,6 +10,8 @@ specifiers:
   '@babel/core': ^7.17.9
   '@cypress/browserify-preprocessor': ^3.0.2
   '@cypress/code-coverage': ^3.9.12
+  '@headlessui/react': ^1.6.4
+  '@heroicons/react': ^1.0.6
   '@istanbuljs/nyc-config-typescript': ^1.0.2
   '@lexical/code': ^0.3.1
   '@lexical/html': ^0.3.0
@@ -69,6 +71,7 @@ specifiers:
   lexical: ^0.3.0
   mailgun.js: ^7.0.0
   mapbox-gl: ^2.8.2
+  marked: ^4.0.16
   md5: ^2.3.0
   metascraper: ^5.29.3
   metascraper-author: ^5.29.3
@@ -117,6 +120,8 @@ dependencies:
   '@algolia/autocomplete-theme-classic': 1.6.3
   '@algolia/client-search': 4.13.1
   '@auth0/nextjs-auth0': 1.9.0_next@12.1.6
+  '@headlessui/react': 1.6.4_sfoxds7t5ydpegc3knd667wn6m
+  '@heroicons/react': 1.0.6_react@17.0.2
   '@lexical/code': 0.3.1_lexical@0.3.1
   '@lexical/html': 0.3.0_lexical@0.3.1
   '@lexical/link': 0.3.1_lexical@0.3.1
@@ -161,6 +166,7 @@ dependencies:
   lexical: 0.3.1
   mailgun.js: 7.0.0
   mapbox-gl: 2.8.2
+  marked: 4.0.16
   md5: 2.3.0
   metascraper: 5.29.6
   metascraper-author: 5.29.6
@@ -1758,6 +1764,25 @@ packages:
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
     dependencies:
       '@hapi/hoek': 9.3.0
+
+  /@headlessui/react/1.6.4_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-0yqz1scwbFtwljmbbKjXsSGl5ABEYNICVHZnMCWo0UtOZodo2Tpu94uOVgCRjRZ77l2WcTi2S0uidINDvG7lsA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /@heroicons/react/1.0.6_react@17.0.2:
+    resolution: {integrity: sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 17.0.2
+    dev: false
 
   /@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -7458,6 +7483,12 @@ packages:
       supercluster: 7.1.5
       tinyqueue: 2.0.3
       vt-pbf: 3.1.3
+    dev: false
+
+  /marked/4.0.16:
+    resolution: {integrity: sha512-wahonIQ5Jnyatt2fn8KqF/nIqZM8mh3oRu2+l5EANGMhu6RFjiSG52QNE2eWzFMI94HqYSgN184NurgNG6CztA==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: false
 
   /md5.js/1.3.5:

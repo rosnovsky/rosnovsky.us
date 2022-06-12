@@ -4,7 +4,7 @@ import { sanityFetcher } from '@lib/fetcher';
 
 const Comments = ({ slug }) => {
   const { data, error } = useSWR(slug, sanityFetcher, {
-    refreshInterval: 1000,
+    refreshInterval: 500,
     revalidateIfStale: true,
     refreshWhenHidden: true,
     dedupingInterval: 10000,

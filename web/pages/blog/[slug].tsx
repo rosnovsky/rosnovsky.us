@@ -11,6 +11,8 @@ const Comments = dynamic(() => import('@components/Comments/Comments'));
 import { RelatedPosts } from '@components/Blog/Posts';
 import CommentEditor from '@components/Comments/Editor';
 import { useUser } from '@auth0/nextjs-auth0';
+import Notification from '@components/Comments/notification';
+import { useState } from 'react';
 
 type Props = {
   post: BlogPost;
@@ -31,6 +33,11 @@ const Post = ({ post, status = 'up' }: Props) => {
     references,
     socialCardImage,
   } = post;
+
+  const [commentStatus, setCommentStatus] = useState(false);
+  const [statusMessage, setStatusMessage] = useState(
+    'Your comment has been posted'
+  );
 
   return (
     <Containter
@@ -111,7 +118,12 @@ const Post = ({ post, status = 'up' }: Props) => {
             <h2 className="text-3xl font-bold mb-3">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
               {user ? (
-                <CommentEditor postId={post._id} postTitle={post.title} />
+                <CommentEditor
+                  postId={post._id}
+                  postTitle={post.title}
+                  setCommentStatus={setCommentStatus}
+                  setStatusMessage={setStatusMessage}
+                />
               ) : (
                 <Link href="/api/auth/login">Login to comment</Link>
               )}
@@ -119,6 +131,7 @@ const Post = ({ post, status = 'up' }: Props) => {
             </div>
           </div>
         </div>
+        <Notification notify={commentStatus} message={statusMessage} />
       </section>
     </Containter>
   );
