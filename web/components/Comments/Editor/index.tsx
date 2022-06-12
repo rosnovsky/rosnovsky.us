@@ -1,21 +1,6 @@
 import { htmlToBlocks, normalizeBlock } from '@sanity/block-tools';
 import Schema from '@sanity/schema';
-import dynamic from 'next/dynamic';
-import { useEffect, useMemo, useState } from 'react';
-import { useDebouncedValue } from '@mantine/hooks';
-
-const RTE = dynamic(() => import('@mantine/rte'), {
-  ssr: false,
-  loading: () => null,
-});
-
-// TODO Fetch users and tags from API
-const people = [{ id: 1, value: 'Art Rosnovsky' }];
-
-const tags = [
-  { id: 1, value: 'JavaScript' },
-  { id: 2, value: 'TypeScript' },
-];
+import { useEffect, useState } from 'react';
 
 type Props = {
   postId: string;
@@ -28,13 +13,15 @@ const CommentEditor = ({ postId, postTitle }: Props) => {
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    const initialValue = localStorage.getItem(`${postId}`);
+    const initialValue = localStorage.getItem(`comment-${postId}`);
     if (initialValue) {
       setValue(initialValue);
     }
-  }, [postId]);
+  }, []);
 
-  const handleComment = async (comment, postId) => {
+  const handleComment = async (e, value, postId) => {
+    e.preventDefault();
+    setIsSaving(true);
     const defaultSchema = Schema.compile({
       name: 'myBlog',
       types: [
@@ -58,11 +45,11 @@ const CommentEditor = ({ postId, postTitle }: Props) => {
       .get('blogPost')
       .fields.find((field) => field.name === 'body').type;
 
-    const blocks = htmlToBlocks(comment, blockContentType);
+    const blocks = htmlToBlocks(value, blockContentType);
     const normalizedBlocks = blocks.map((block) => {
       return normalizeBlock(block);
     });
-    console.log(normalizedBlocks);
+
     await fetch('/api/comments/post', {
       method: 'POST',
       body: JSON.stringify({
@@ -73,47 +60,42 @@ const CommentEditor = ({ postId, postTitle }: Props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setIsSaving(false);
+        setIsSaved(true);
+        setValue('');
+        localStorage.removeItem(`comment-${postId}`);
         return data;
       });
   };
 
-  const mentions = useMemo(
-    () => ({
-      allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
-      mentionDenotationChars: ['@', '#'],
-      source: (
-        searchTerm: string,
-        renderList: (items: Record<string, string | number>[]) => JSX.Element,
-        mentionChar: string
-      ) => {
-        const list = mentionChar === '@' ? people : tags;
-        const includesSearchTerm = list.filter((item) =>
-          item.value.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        renderList(includesSearchTerm);
-      },
-    }),
-    []
-  );
-
-  // ? This is not necessary, but I'm using it as an autosave feature. Using the debounced value for performance reasons.
-  const handleChange = (value: string) => {
-    setValue(value);
-    localStorage.setItem(postId, value);
+  const handleChange = (e) => {
+    localStorage.setItem(`comment-${postId}`, e.target.value);
+    setValue(e.target.value);
   };
 
   return (
-    <>
-      <RTE
-        className="text-left"
-        controls={[['bold', 'italic', 'link'], ['blockquote'], ['codeBlock']]}
+    <div className="max-w-2xlmx-auto flex flex-col md:w-auto">
+      <textarea
+        rows={5}
+        className="p-2 max-w-2xl mx-auto my-2 text-left h-full w-full py-3 px-4 text-coolGray-500 leading-tight placeholder-coolGray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xs"
+        contentEditable
         value={value}
-        onChange={handleChange}
-        mentions={mentions}
+        onChange={(e) => handleChange(e)}
+        placeholder="Add a comment..."
+        disabled={isSaving}
       />
-      <button onClick={() => handleComment(value, postId)}>Submit</button>
-    </>
+      <button
+        className="max-w-sm mx-auto inline-block py-3 px-5 mt-3 mb-5 leading-5 text-white bg-blue-500 hover:bg-blue-600 font-medium text-center focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 border border-transparent rounded-md shadow-sm disabled:text-coolGray-800 transition-all duration-300 disabled:bg-coolGray-200 disabled:hover:bg-coolGray-300 disabled:focus:ring-coolGray-200 disabled:border-coolGray-200"
+        disabled={isSaving || value.length < 10}
+        onClick={(e) => handleComment(e, value, postId)}
+      >
+        {value.length < 10
+          ? 'Too short'
+          : isSaving
+          ? 'Posting...'
+          : 'Post Comment'}
+      </button>
+    </div>
   );
 };
 

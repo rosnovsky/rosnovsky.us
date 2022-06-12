@@ -14,7 +14,6 @@ const Comments = ({ slug }) => {
     revalidateOnMount: true,
     revalidateOnReconnect: true,
     revalidateOnFocus: true,
-    suspense: true,
   });
 
   if (error) return <p>Failed to load.</p>;
@@ -22,9 +21,9 @@ const Comments = ({ slug }) => {
 
   if (data.comments?.length === 0)
     return <div className="mt-5">No Comments</div>;
-  return data.comments.map((comment) => (
-    <Comment key={comment._id} comment={comment} />
-  ));
+  return data.comments
+    .sort((a, b) => a.commentDate > b.commentDate)
+    .map((comment) => <Comment key={comment._id} comment={comment} />);
 };
 
 export default Comments;

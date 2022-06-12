@@ -9,8 +9,6 @@ export default async function fetcher(...args) {
 }
 
 export async function sanityFetcher(slug, ...args) {
-  console.log('sanityFetcher', slug);
   const res = await sanityClient.fetch(commentQuery, { slug });
-  console.log('sanityFetcher res', res);
   return res;
 }

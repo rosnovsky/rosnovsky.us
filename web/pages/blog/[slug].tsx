@@ -97,18 +97,18 @@ const Post = ({ post, status = 'up' }: Props) => {
             <PortableText value={body} components={PortableTextComponents} />
           </div>
           {references && (
-            <div className="mb-10 mx-auto md:max-w-3xl overflow-hidden rounded-lg">
-              <h2 className="text-2xl text-center my-10 mx-auto overflow-hidden rounded-lg">
+            <div className="mb-5 mx-auto md:max-w-3xl overflow-hidden rounded-lg">
+              <h2 className="text-3xl font-semibold text-center my-10 mx-auto overflow-hidden rounded-lg">
                 Related Posts
               </h2>
 
-              <div className="w-full md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
+              <div className="w-full md:max-w-5xl mx-auto mb-2 md:mb-6 text-center">
                 <RelatedPosts posts={references} />
               </div>
             </div>
           )}
-          <div className="w-full text-center mt-4 mx-auto">
-            <h2 className="text-2xl">Comments</h2>
+          <div className="w-full text-center mx-auto">
+            <h2 className="text-3xl font-bold mb-3">Comments</h2>
             <div className="max-w-3xl min-w-3xl mx-auto py-3">
               {user ? (
                 <CommentEditor postId={post._id} postTitle={post.title} />
