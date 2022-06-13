@@ -18,7 +18,6 @@ import client from 'part:@sanity/base/client';
 const sanityClient = client.withConfig({ apiVersion: '2021-10-21' });
 
 const Comments = (props) => {
-  console.log(props);
   const [comments, setComments] = React.useState([]);
   const [inProgress, setInProgress] = React.useState(false);
   const toast = useToast();

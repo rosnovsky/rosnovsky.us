@@ -143,7 +143,6 @@ export const PortableTextComponents = {
   },
   marks: {
     link: (props) => {
-      console.log(props);
       const { value, children, ...args } = props;
       return (
         <>

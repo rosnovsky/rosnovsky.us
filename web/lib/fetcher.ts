@@ -8,7 +8,7 @@ export default async function fetcher(...args) {
   return res.json();
 }
 
-export async function sanityFetcher(slug, ...args) {
+export async function sanityFetcher(slug) {
   const res = await sanityClient.fetch(commentQuery, { slug });
   return res;
 }
