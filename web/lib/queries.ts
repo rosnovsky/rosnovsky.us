@@ -60,3 +60,39 @@ export const postQuery = groq`
 export const postPathsQuery = `*[_type == "post" && defined(slug.current)][].slug.current`;
 
 export const commentQuery = `*[_type == "post" && slug.current == $slug][0] {comments}`;
+
+export const indexPagePostsQuery = groq`
+    *[_type == "post"] | order(publishedAt desc)[0...$pagePostsLimit] {
+      title,
+      coverImage {
+        ...,
+        asset->
+      },
+      categories[]->{
+        title,
+        description,
+        slug
+      },
+      publishedAt,
+      summary,
+      slug,
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
+      "summaryRaw": pt::text(summary)
+    }
+  `;
+
+export const totalPostsCountQuery = groq`
+    count(*[_type == "post"])
+  `;
+
+export const totalCommentsCountQuery = groq`
+    count(*[_type == "comment"])
+  `;
+
+export const categoriesQuery = groq`
+    *[_type == "category"] {
+      title,
+      description,
+      slug
+    }
+  `;

@@ -64,6 +64,7 @@
     "**/*.ts",
     "stories/**/*.stories.tsx",
     "../__mocks__/setupTests.ts",
-    "pages/hike/hiking.tsx"
+    "pages/hike/hiking.tsx",
+    "tailwind.config.js"
   ]
 }

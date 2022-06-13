@@ -2,10 +2,7 @@ import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
 import { FloatingTooltip } from '@mantine/core';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
-const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'));
-import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/hljs/night-owl';
 import getYouTubeId from 'get-youtube-id';
 import { useEffect, useState } from 'react';
 import type { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
@@ -15,7 +12,6 @@ import fs from 'fs';
 import Metacard from '@components/Metacard';
 import SanityMuxPlayer from 'sanity-mux-player';
 import Link from 'next/link';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 
 export const localDate = (date: string, format?: 'year' | 'month' | 'full') => {
   const formatDate = (
@@ -108,11 +104,7 @@ export const PortableTextComponents = {
       return <ImageComponent />;
     },
     code: ({ value }) => {
-      return (
-        <SyntaxHighlighter style={nightOwl} language={value.language}>
-          {value.code}
-        </SyntaxHighlighter>
-      );
+      return <pre>{value.code}</pre>;
     },
     youtube: ({ value }) => {
       return (
@@ -172,12 +164,7 @@ export const PortableTextComponents = {
                 >
                   {children}&nbsp;
                 </FloatingTooltip>
-                <sup>
-                  <FaExternalLinkAlt
-                    size={'1rem'}
-                    className="text-gray-500 inline-block self-baseline"
-                  />
-                </sup>
+                <sup>↗️</sup>
               </span>
             </a>
           ) : (

@@ -94,7 +94,6 @@ export async function getStaticProps(context) {
       post,
       status: sysytemStatus,
     },
-    revalidate: 1,
   };
 }
 

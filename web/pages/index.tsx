@@ -7,6 +7,12 @@ import Container from '@components/Container';
 import { Hero } from '@components/Hero';
 import Blog from '@components/Blog/blog';
 import type { BlogPost } from 'index';
+import {
+  categoriesQuery,
+  indexPagePostsQuery,
+  totalCommentsCountQuery,
+  totalPostsCountQuery,
+} from '@lib/queries';
 
 type Props = {
   posts: BlogPost[];
@@ -43,48 +49,17 @@ const Home = ({
 };
 
 export async function getStaticProps() {
-  // It's important to default the slug so that it doesn't return "undefined"
-  const posts: BlogPost[] = await sanityClient.fetch(
-    `
-    *[_type == "post"] | order(publishedAt desc)[0...6] {
-      title,
-      coverImage {
-        ...,
-        asset->
-      },
-      categories[]->{
-        title,
-        description,
-        slug
-      },
-      publishedAt,
-      summary,
-      slug,
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-      "summaryRaw": pt::text(summary)
-    }
-  `
-  );
+  const posts: BlogPost[] = await sanityClient.fetch(indexPagePostsQuery, {
+    pagePostsLimit: 6,
+  });
 
-  const postCount: number = await sanityClient.fetch(
-    `
-    count(*[_type == "post"])
-  `
-  );
+  const postCount: number = await sanityClient.fetch(totalPostsCountQuery);
   const commentCount: number = await sanityClient.fetch(
-    `
-    count(*[_type == "comment"])
-  `
+    totalCommentsCountQuery
   );
 
   const categories: BlogPost['categories'] = await sanityClient.fetch(
-    `
-    *[_type == "category"] {
-      title,
-      description,
-      slug
-    }
-  `
+    categoriesQuery
   );
 
   const githubStats = await fetch('https://rosnovsky.us/api/stats/github').then(
