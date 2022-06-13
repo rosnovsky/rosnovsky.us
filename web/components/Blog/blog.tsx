@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Header from './Header';
-import Posts from './Posts';
+import Posts from './Posts/posts';
 const ReadMore = dynamic(() => import('./Posts/ReadMore'));
 const Search = dynamic(() => import('./Search'));
 const Categories = dynamic(() => import('./Categories'));

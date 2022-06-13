@@ -1,11 +1,9 @@
-import { PortableText } from '@portabletext/react';
-import sanityClient from '@lib/sanityClient';
-import { PortableTextComponents } from '@lib/helpers';
-import type { Page as PageType } from 'index';
 import dynamic from 'next/dynamic';
+import sanityClient from '@lib/sanityClient';
+import { PostContent, PostImage } from '@components/Blog/Posts';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
-import Image from 'next/image';
+import type { Page as PageType } from 'index';
 
 type Props = {
   page: PageType;
@@ -40,21 +38,8 @@ const Page = ({ page, status }: Props) => {
               {title}
             </h2>
           </div>
-          <div className="mb-10 mx-auto max-w-max overflow-hidden rounded-lg">
-            <Image
-              src={coverImage.asset.url}
-              placeholder="blur"
-              blurDataURL={coverImage.asset.metadata.lqip}
-              width={coverImage.asset.metadata.dimensions.width}
-              height={coverImage.asset.metadata.dimensions.height}
-              objectFit="cover"
-              priority
-              alt=""
-            />
-          </div>
-          <div className="prose prose-xl md:max-w-3xl mx-auto">
-            <PortableText value={body} components={PortableTextComponents} />
-          </div>
+          <PostImage coverImage={coverImage} />
+          <PostContent body={body} />
         </div>
       </section>
       <NewsletterForm />

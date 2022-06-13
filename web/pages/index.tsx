@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic';
-import { Hero } from '@components/Hero';
-import Blog from '@components/Blog';
-const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import sanityClient from 'lib/sanityClient';
-import type { BlogPost } from 'index';
-import Container from '@components/Container';
-const Stats = dynamic(() => import('@components/Stats'));
 import { SWRConfig } from 'swr';
+const Stats = dynamic(() => import('@components/Stats'));
+const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
+import Container from '@components/Container';
+import { Hero } from '@components/Hero';
+import Blog from '@components/Blog/blog';
+import type { BlogPost } from 'index';
 
 type Props = {
   posts: BlogPost[];

@@ -1,4 +1,4 @@
-import Blog from '@components/Blog';
+import Blog from '@components/Blog/blog';
 import dynamic from 'next/dynamic';
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 const Stats = dynamic(() => import('@components/Stats'));

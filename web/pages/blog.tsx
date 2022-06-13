@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-const Blog = dynamic(() => import('@components/Blog'));
-const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import sanityClient from '@lib/sanityClient';
-import type { BlogPost } from 'index';
 const Containter = dynamic(() => import('@components/Container'));
+const Blog = dynamic(() => import('@components/Blog/blog'));
+const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
+import type { BlogPost } from 'index';
 
 type Props = {
   posts: BlogPost[];
