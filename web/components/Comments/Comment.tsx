@@ -1,3 +1,4 @@
+import { PortableTextComponents } from '@lib/helpers';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import { GoVerified } from 'react-icons/go';
@@ -37,7 +38,10 @@ const Comment = ({ comment }) => {
           })}
         </div>
         <div className="max-w-xl">
-          <PortableText value={commentBody} />
+          <PortableText
+            value={commentBody}
+            components={PortableTextComponents}
+          />
         </div>
       </div>
     </div>

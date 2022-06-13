@@ -180,7 +180,26 @@ export const PortableTextComponents = {
                 </sup>
               </span>
             </a>
-          ) : null}
+          ) : (
+            <a
+              target="_blank"
+              className="underline"
+              rel="noreferrer"
+              href={value.href}
+            >
+              <span className="inline">
+                <FloatingTooltip
+                  transition="fade"
+                  transitionDuration={300}
+                  transitionTimingFunction="ease"
+                  label={value.href}
+                  className="inline-block"
+                >
+                  <span className="underline">{children}</span>&nbsp;
+                </FloatingTooltip>
+              </span>
+            </a>
+          )}
         </>
       );
     },

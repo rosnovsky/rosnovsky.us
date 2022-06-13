@@ -106,7 +106,6 @@ export async function getStaticProps(context) {
       page,
       status: sysytemStatus,
     },
-    revalidate: 120,
   };
 }
 
