@@ -13,6 +13,12 @@ import Metacard from '@components/Metacard';
 import SanityMuxPlayer from 'sanity-mux-player';
 import Link from 'next/link';
 
+/**
+ * This helper function takes a date and a format parameter and returns the date formatted as requestd.
+ * @param date The date to format
+ * @param format The format to use. Options are `year` (returns just the year), `month` (returns a year and a month, for example, "June 2022"), and `full` (returns a full date, for example, "June 22, 2022"). Defaults to returning a full date in locale format.
+ * @returns The formatted date as a `string`
+ */
 export const localDate = (date: string, format?: 'year' | 'month' | 'full') => {
   const formatDate = (
     format: 'year' | 'month' | 'full' | undefined
