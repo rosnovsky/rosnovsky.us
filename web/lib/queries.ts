@@ -57,8 +57,6 @@ export const postQuery = groq`
     }
   `;
 
-export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][].slug.current`;
-
 export const commentQuery = groq`*[_type == "post" && slug.current == $slug][0] {comments}`;
 
 export const indexPagePostsQuery = groq`
@@ -96,3 +94,190 @@ export const categoriesQuery = groq`
       slug
     }
   `;
+
+export const pageQuery = groq`
+    *[_type == "page" && slug.current == $slug][0] {
+      ...,
+      coverImage {
+        ...,
+        asset->
+      },
+      body[]{
+        asset->{...},
+        ...
+      },
+      "bodyRaw": pt::text(body),
+      socialCardImage {
+        asset->
+      }
+    }
+  `;
+
+export const categoryPageQuery = groq`
+    *[_type == "post" && $slug in categories[]->slug.current] | order(publishedAt desc)[0...15] {
+      title,
+      coverImage {
+        ...,
+        asset->
+      },
+      categories[]->{
+        title,
+        description,
+        slug
+      },
+      publishedAt,
+      summary,
+      summaryRaw,
+      slug,
+      "summaryRaw": pt::text(summary),
+      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
+    }
+  `;
+
+export const categoryPostCountQuery = groq`
+    count(*[_type == "post" && $slug in categories[]->slug.current])
+  `;
+
+export const commentCountQuery = groq`
+    count(*[_type == "comment"])
+  `;
+
+export const hikeQuery = groq`
+    *[_type == "hike" && slug.current == $slug][0] {
+      title,
+      location,
+      coverImage {
+        asset->
+      }, 
+      report->,
+      summary,
+      difficulty,
+      length,
+      hikeDate,
+      trail,
+      elevationGain,
+      slug,
+      socialCardImage {
+        asset->
+      }
+    }
+  `;
+
+export const authorBooksQuery = groq`
+    *[_type == "book" && author == $slug] {
+      cover {
+        asset->
+      },
+      author,
+      publishedDate,
+      read,
+      rating,
+      isbn,
+      "estimatedReadingTime": round(pages * 2 / 60)
+    }
+  `;
+
+export const bookQuery = groq`
+    *[_type == "book" && isbn == $slug][0] {
+      ...,
+      _id,
+      cover {
+        asset-> {
+          url,
+          metadata {
+            dimensions {
+              width,
+              height
+            },
+            lqip
+          }
+        }
+      },
+      title,
+      author,
+      publisher,
+      publishedDate,
+      summary,
+      pages,
+      socialCardImage {
+        asset->},
+      own,
+      read,
+      review,
+      "estimatedReadingTime": round(pages * 2 / 60)
+    }
+  `;
+
+export const publisherBooksQuery = groq`
+    *[_type == "book" && publisher == $slug] | order(publishedDate desc) {
+        cover {
+          asset->{
+            url,
+            metadata {
+              dimensions {
+                width,
+                height
+            }, 
+            lqip
+          }
+        }
+      },
+      title,
+      author,
+      publisher,
+      publishedDate,
+      pages,
+      socialCardImage {
+        asset->},
+      read,
+      rating,
+      isbn,
+      "estimatedReadingTime": round(pages * 2 / 60)
+    }
+  `;
+
+export const booksQuery = groq`
+    *[_type == "book"] | order(publishedDate desc) {
+      cover {
+        asset->{
+          url,
+          metadata {
+            dimensions {
+              height,
+              width
+            },
+            lqip
+          }
+        }
+      },
+      isbn,
+      publishedDate,
+      pages,
+      read,
+      rating,
+      "estimatedReadingTime": round(pages * 2 / 60)
+    }
+  `;
+
+export const hikesQuery = groq`
+    *[_type == "hike"] {
+      title,
+      location,
+      coverImage {
+        asset->
+      }, 
+      report->,
+      trail,
+      length,
+      slug,
+      elevationGain
+    }
+  `;
+
+export const publisherPagePathsQuery = groq`*[_type == "book" && defined(publisher)][].publisher`;
+export const authorPagePathsQuery = groq`*[_type == "book"][].author`;
+export const categoryPagePathsQuery = groq`*[_type == "post" && categories[]->slug.current == slug.current][].slug.current`;
+
+// Slug paths, refactorable
+export const pagePathsQuery = groq`*[_type == $type && defined(slug.current)][].slug.current`;
+

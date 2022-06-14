@@ -4,6 +4,11 @@ const Containter = dynamic(() => import('@components/Container'));
 const Blog = dynamic(() => import('@components/Blog/blog'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import type { BlogPost } from 'index';
+import {
+  categoriesQuery,
+  indexPagePostsQuery,
+  totalPostsCountQuery,
+} from '@lib/queries';
 
 type Props = {
   posts: BlogPost[];
@@ -25,42 +30,14 @@ const BlogPage = ({ posts, categories, postCount }: Props) => {
 
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
-  const posts: BlogPost[] = await sanityClient.fetch(
-    `
-    *[_type == "post"] | order(publishedAt desc)[0...8] {
-      title,
-      coverImage {
-        ...,
-        asset->
-      },
-      categories[]->{
-        title,
-        description,
-        slug
-      },
-      publishedAt,
-      summary,
-      slug,
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-      "summaryRaw": pt::text(summary)
-    }
-  `
-  );
+  const posts: BlogPost[] = await sanityClient.fetch(indexPagePostsQuery, {
+    pagePostsLimit: 8,
+  });
 
-  const postCount: number = await sanityClient.fetch(
-    `
-    count(*[_type == "post"])
-  `
-  );
+  const postCount: number = await sanityClient.fetch(totalPostsCountQuery);
 
   const categories: BlogPost['categories'] = await sanityClient.fetch(
-    `
-    *[_type == "category"][0..8] {
-      title,
-      description,
-      slug
-    }
-  `
+    categoriesQuery
   );
 
   return {

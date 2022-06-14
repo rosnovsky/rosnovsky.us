@@ -1,3 +1,4 @@
+import { hikesQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 import type { Hike as HikeType } from 'index';
 import dynamic from 'next/dynamic';
@@ -55,22 +56,7 @@ const HikesMap = ({ hikes }: Props) => {
 
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
-  const hikes: HikeType[] = await sanityClient.fetch(
-    `
-    *[_type == "hike"] {
-      title,
-      location,
-      coverImage {
-        asset->
-      }, 
-      report->,
-      trail,
-      length,
-      slug,
-      elevationGain
-    }
-  `
-  );
+  const hikes: HikeType[] = await sanityClient.fetch(hikesQuery);
 
   return {
     props: {

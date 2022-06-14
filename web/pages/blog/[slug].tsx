@@ -1,5 +1,5 @@
 import sanityClient from '@lib/sanityClient';
-import { postQuery, postPathsQuery } from '@lib/queries';
+import { postQuery, pagePathsQuery } from '@lib/queries';
 import dynamic from 'next/dynamic';
 const Containter = dynamic(() => import('@components/Container'));
 import { PostHeader } from '@components/Blog/Posts';
@@ -70,7 +70,7 @@ const Post = ({ post }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(postPathsQuery);
+  const paths = await sanityClient.fetch(pagePathsQuery, { type: 'post' });
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),

@@ -108,10 +108,10 @@ export const PortableTextComponents = {
     },
     youtube: ({ value }) => {
       return (
-        <div className="embed-responsive aspect-ratio-16/9 w-full h-full">
+        <div className="embed-responsive aspect-ratio-16/9 w-full my-3 max-h-3xl">
           <iframe
             title="youtube video"
-            className="embed-responsive-item w-full h-full"
+            className="embed-responsive-item aspect-w-16/9 w-full max-h-3xl"
             src={`https://www.youtube.com/embed/${getYouTubeId(value.url)}`}
             frameBorder="0"
             height={'400'}

@@ -25,15 +25,15 @@ const Comments = ({ slug }) => {
   if (error) return <p>Failed to load.</p>;
   if (!data) return <p>Loading...</p>;
 
-  if (data.comments?.length === 0)
-    return <div className="mt-5">No Comments</div>;
-  return (
-    <>
-      {data.comments.map((comment) => (
-        <Comment key={comment._id} comment={comment} />
-      ))}
-    </>
-  );
+  if (data?.comments?.length === 0)
+    return (
+      <>
+        {data?.comments?.map((comment) => (
+          <Comment key={comment._id} comment={comment} />
+        ))}
+      </>
+    );
+  return <div className="mt-5">No Comments</div>;
 };
 
 export default Comments;

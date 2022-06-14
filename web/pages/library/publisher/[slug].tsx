@@ -1,5 +1,6 @@
 import Books from '@components/Library/Books';
 import BooksMeta from '@components/Library/Books/Meta';
+import { publisherBooksQuery, publisherPagePathsQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
@@ -39,9 +40,7 @@ const Publisher = ({ books }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(
-    `*[_type == "book" && defined(publisher)][].publisher`
-  );
+  const paths = await sanityClient.fetch(publisherPagePathsQuery);
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -52,36 +51,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const books: BookType = await sanityClient.fetch(
-    `
-    *[_type == "book" && publisher == $slug] | order(publishedDate desc) {
-        cover {
-          asset->{
-            url,
-            metadata {
-              dimensions {
-                width,
-                height
-            }, 
-            lqip
-          }
-        }
-      },
-      title,
-      author,
-      publisher,
-      publishedDate,
-      pages,
-      socialCardImage {
-        asset->},
-      read,
-      rating,
-      isbn,
-      "estimatedReadingTime": round(pages * 2 / 60)
-    }
-  `,
-    { slug }
-  );
+  const books: BookType = await sanityClient.fetch(publisherBooksQuery, {
+    slug,
+  });
 
   return {
     props: {

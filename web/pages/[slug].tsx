@@ -4,6 +4,7 @@ import { PostContent, PostImage } from '@components/Blog/Posts';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import type { Page as PageType } from 'index';
+import { pagePathsQuery, pageQuery } from '@lib/queries';
 
 type Props = {
   page: PageType;
@@ -46,9 +47,7 @@ const Page = ({ page }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(
-    `*[_type == "page" && defined(slug.current)][].slug.current`
-  );
+  const paths = await sanityClient.fetch(pagePathsQuery, { type: 'page' });
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -59,26 +58,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const page: PageType = await sanityClient.fetch(
-    `
-    *[_type == "page" && slug.current == $slug][0] {
-      ...,
-      coverImage {
-        ...,
-        asset->
-      },
-      body[]{
-        asset->{...},
-        ...
-      },
-      "bodyRaw": pt::text(body),
-      socialCardImage {
-        asset->
-      }
-    }
-  `,
-    { slug }
-  );
+  const page: PageType = await sanityClient.fetch(pageQuery, { slug });
 
   return {
     props: {
