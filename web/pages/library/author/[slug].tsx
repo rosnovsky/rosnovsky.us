@@ -5,20 +5,19 @@ import dynamic from 'next/dynamic';
 
 import BooksMeta from '@components/Library/Books/Meta';
 import Books from '@components/Library/Books';
+import { authorBooksQuery, authorPagePathsQuery } from '@lib/queries';
 
 const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
   books: BookType[];
-  status: 'up' | 'down';
 };
 
-const Author = ({ books, status = 'up' }: Props) => {
+const Author = ({ books }: Props) => {
   return (
     <Containter
       title={`All books by ${books[0].author}`}
       description={`All books by ${books[0].author}`}
-      status={status}
       type="article"
     >
       <section
@@ -43,7 +42,7 @@ const Author = ({ books, status = 'up' }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(`*[_type == "book"][].author`);
+  const paths = await sanityClient.fetch(authorPagePathsQuery);
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -54,31 +53,13 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const books: BookType[] = await sanityClient.fetch(
-    `
-    *[_type == "book" && author == $slug] {
-      cover {
-        asset->
-      },
-      author,
-      publishedDate,
-      read,
-      rating,
-      isbn,
-      "estimatedReadingTime": round(pages * 2 / 60)
-    }
-  `,
-    { slug }
-  );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
+  const books: BookType[] = await sanityClient.fetch(authorBooksQuery, {
+    slug,
+  });
 
   return {
     props: {
       books,
-      status: sysytemStatus,
     },
     revalidate: 1,
   };

@@ -1,10 +1,4 @@
-import ReactMapGL, {
-  Marker,
-  Popup,
-  FullscreenControl,
-  ScaleControl,
-  GeolocateControl,
-} from 'react-map-gl';
+import ReactMapGL, { Marker, Popup, ScaleControl } from 'react-map-gl';
 import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -85,8 +79,6 @@ export default function Map({ data }: Props) {
         interactive
         optimizeForTerrain
       >
-        <GeolocateControl position="top-left" />
-        <FullscreenControl position="top-left" />
         <ScaleControl />
         {pins}
         {popupInfo && (

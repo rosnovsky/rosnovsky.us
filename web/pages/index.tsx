@@ -1,12 +1,18 @@
 import dynamic from 'next/dynamic';
-import { Hero } from '@components/Hero';
-import Blog from '@components/Blog';
-const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import sanityClient from 'lib/sanityClient';
-import type { BlogPost } from 'index';
-import Container from '@components/Container';
-const Stats = dynamic(() => import('@components/Stats'));
 import { SWRConfig } from 'swr';
+const Stats = dynamic(() => import('@components/Stats'));
+const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
+import Container from '@components/Container';
+import { Hero } from '@components/Hero';
+import Blog from '@components/Blog/blog';
+import type { BlogPost } from 'index';
+import {
+  categoriesQuery,
+  indexPagePostsQuery,
+  totalCommentsCountQuery,
+  totalPostsCountQuery,
+} from '@lib/queries';
 
 type Props = {
   posts: BlogPost[];
@@ -14,7 +20,6 @@ type Props = {
   postCount: number;
   commentCount: number;
   fallback: any;
-  status: 'up' | 'down';
 };
 
 const Home = ({
@@ -22,7 +27,6 @@ const Home = ({
   categories,
   postCount,
   fallback,
-  status,
   commentCount,
 }: Props) => {
   return (
@@ -30,7 +34,6 @@ const Home = ({
       title={`Rosnovsky Park – Art Rosnovsky`}
       description={"Hey, I'm Art, and we need to talk. Seriously."}
       type="website"
-      status={status}
     >
       <Hero />
       <Blog posts={posts} categories={categories} postCount={postCount} />
@@ -43,48 +46,17 @@ const Home = ({
 };
 
 export async function getStaticProps() {
-  // It's important to default the slug so that it doesn't return "undefined"
-  const posts: BlogPost[] = await sanityClient.fetch(
-    `
-    *[_type == "post"] | order(publishedAt desc)[0...6] {
-      title,
-      coverImage {
-        ...,
-        asset->
-      },
-      categories[]->{
-        title,
-        description,
-        slug
-      },
-      publishedAt,
-      summary,
-      slug,
-      "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
-      "summaryRaw": pt::text(summary)
-    }
-  `
-  );
+  const posts: BlogPost[] = await sanityClient.fetch(indexPagePostsQuery, {
+    pagePostsLimit: 6,
+  });
 
-  const postCount: number = await sanityClient.fetch(
-    `
-    count(*[_type == "post"])
-  `
-  );
+  const postCount: number = await sanityClient.fetch(totalPostsCountQuery);
   const commentCount: number = await sanityClient.fetch(
-    `
-    count(*[_type == "comment"])
-  `
+    totalCommentsCountQuery
   );
 
   const categories: BlogPost['categories'] = await sanityClient.fetch(
-    `
-    *[_type == "category"] {
-      title,
-      description,
-      slug
-    }
-  `
+    categoriesQuery
   );
 
   const githubStats = await fetch('https://rosnovsky.us/api/stats/github').then(
@@ -99,17 +71,12 @@ export async function getStaticProps() {
     'https://rosnovsky.us/api/stats/uniquesThisMonth'
   ).then((res) => res.json());
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       posts,
       categories,
       postCount,
       commentCount,
-      status: sysytemStatus,
       fallback: {
         '/api/github': githubStats,
         '/api/subscribers': subscribersStats,

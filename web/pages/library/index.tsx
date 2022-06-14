@@ -1,5 +1,6 @@
 import Books from '@components/Library/Books';
 import BooksMeta from '@components/Library/Books/Meta';
+import { booksQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 
 import type { Book as BookType } from 'index';
@@ -9,15 +10,13 @@ const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
   books: BookType[];
-  status: 'up' | 'down';
 };
 
-const Library = ({ books, status = 'up' }: Props) => {
+const Library = ({ books }: Props) => {
   return (
     <Containter
       title={`All ${books.length} books`}
       description={`All books my books`}
-      status={status}
       type="article"
     >
       <section
@@ -47,39 +46,11 @@ const Library = ({ books, status = 'up' }: Props) => {
 
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
-  const books: BookType = await sanityClient.fetch(
-    `
-    *[_type == "book"] | order(publishedDate desc) {
-      cover {
-        asset->{
-          url,
-          metadata {
-            dimensions {
-              height,
-              width
-            },
-            lqip
-          }
-        }
-      },
-      isbn,
-      publishedDate,
-      pages,
-      read,
-      rating,
-      "estimatedReadingTime": round(pages * 2 / 60)
-    }
-  `
-  );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
+  const books: BookType = await sanityClient.fetch(booksQuery);
 
   return {
     props: {
       books,
-      status: sysytemStatus,
     },
     revalidate: 1,
   };

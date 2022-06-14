@@ -73,7 +73,7 @@ const Footer = ({ status }) => {
             © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights
             reserved. <br />
             <Link href="https://status.rosnovsky.us">
-              {status.status === 'up' ? (
+              {status?.length === 0 ? (
                 <span className="cursor-pointer text-green-500">
                   All systems up.
                 </span>

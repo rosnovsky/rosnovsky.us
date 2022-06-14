@@ -2,10 +2,7 @@ import { getAssetDocumentId, getImageDimensions } from '@sanity/asset-utils';
 import { FloatingTooltip } from '@mantine/core';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from './sanityClient';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
-const SyntaxHighlighter = dynamic(() => import('react-syntax-highlighter'));
-import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/hljs/night-owl';
 import getYouTubeId from 'get-youtube-id';
 import { useEffect, useState } from 'react';
 import type { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
@@ -15,8 +12,13 @@ import fs from 'fs';
 import Metacard from '@components/Metacard';
 import SanityMuxPlayer from 'sanity-mux-player';
 import Link from 'next/link';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 
+/**
+ * This helper function takes a date and a format parameter and returns the date formatted as requestd.
+ * @param date The date to format
+ * @param format The format to use. Options are `year` (returns just the year), `month` (returns a year and a month, for example, "June 2022"), and `full` (returns a full date, for example, "June 22, 2022"). Defaults to returning a full date in locale format.
+ * @returns The formatted date as a `string`
+ */
 export const localDate = (date: string, format?: 'year' | 'month' | 'full') => {
   const formatDate = (
     format: 'year' | 'month' | 'full' | undefined
@@ -108,18 +110,14 @@ export const PortableTextComponents = {
       return <ImageComponent />;
     },
     code: ({ value }) => {
-      return (
-        <SyntaxHighlighter style={nightOwl} language={value.language}>
-          {value.code}
-        </SyntaxHighlighter>
-      );
+      return <pre>{value.code}</pre>;
     },
     youtube: ({ value }) => {
       return (
-        <div className="embed-responsive aspect-ratio-16/9 w-full h-full">
+        <div className="embed-responsive aspect-ratio-16/9 w-full my-3 max-h-3xl">
           <iframe
             title="youtube video"
-            className="embed-responsive-item w-full h-full"
+            className="embed-responsive-item aspect-w-16/9 w-full max-h-3xl"
             src={`https://www.youtube.com/embed/${getYouTubeId(value.url)}`}
             frameBorder="0"
             height={'400'}
@@ -172,12 +170,7 @@ export const PortableTextComponents = {
                 >
                   {children}&nbsp;
                 </FloatingTooltip>
-                <sup>
-                  <FaExternalLinkAlt
-                    size={'1rem'}
-                    className="text-gray-500 inline-block self-baseline"
-                  />
-                </sup>
+                <sup>↗️</sup>
               </span>
             </a>
           ) : (

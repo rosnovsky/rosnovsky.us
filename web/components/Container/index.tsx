@@ -1,11 +1,13 @@
+import fetcher from '@lib/fetcher';
 import dynamic from 'next/dynamic';
 const Footer = dynamic(() => import('@components/Footer'));
 const NavBar = dynamic(() => import('@components/NavBar'));
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import useSWR from 'swr';
 
 const Containter = (props) => {
-  const { children, status = 'up', ...customMeta } = props;
+  const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
     title: "Rosnovsky Prk – Art Rosnovsky's Blog",
@@ -13,6 +15,8 @@ const Containter = (props) => {
     image: 'https://rosnovsky.us/static/images/banner.jpg',
     ...customMeta,
   };
+
+  const { data: statusData } = useSWR('/api/status', fetcher);
 
   return (
     <>
@@ -54,7 +58,11 @@ const Containter = (props) => {
         <section className="relative bg-coolGray-50 overflow-hidden">
           <NavBar />
           <div className="bg-transparent">{children}</div>
-          <Footer status={status} />
+          <Footer
+            status={statusData?.status.filter(
+              (incident) => incident.attributes.resolved_at === null
+            )}
+          />
         </section>
       </div>
     </>

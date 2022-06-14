@@ -1,3 +1,4 @@
+import { hikesQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 import type { Hike as HikeType } from 'index';
 import dynamic from 'next/dynamic';
@@ -9,16 +10,14 @@ const Map = dynamic(() => import('@components/Map'), {
 
 type Props = {
   hikes: HikeType[];
-  status: 'up' | 'down';
 };
 
-const HikesMap = ({ hikes, status }: Props) => {
+const HikesMap = ({ hikes }: Props) => {
   return (
     <Containter
       title={`Hiking Map – Art Rosnovsky`}
       description={'All my hikes in one place'}
       type="article"
-      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -57,30 +56,11 @@ const HikesMap = ({ hikes, status }: Props) => {
 
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
-  const hikes: HikeType[] = await sanityClient.fetch(
-    `
-    *[_type == "hike"] {
-      title,
-      location,
-      coverImage {
-        asset->
-      }, 
-      report->,
-      trail,
-      length,
-      slug,
-      elevationGain
-    }
-  `
-  );
+  const hikes: HikeType[] = await sanityClient.fetch(hikesQuery);
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
   return {
     props: {
       hikes,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };

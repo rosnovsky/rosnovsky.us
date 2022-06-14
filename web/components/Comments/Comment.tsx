@@ -1,7 +1,7 @@
 import { PortableTextComponents } from '@lib/helpers';
+import { Badge } from '@mantine/core';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
-import { GoVerified } from 'react-icons/go';
 
 const Comment = ({ comment }) => {
   const { authorId, authorName, authorAvatar, commentDate, commentBody, _id } =
@@ -23,7 +23,7 @@ const Comment = ({ comment }) => {
             {authorName.charAt(0).toUpperCase() + authorName.slice(1)}&nbsp;
             <span className=" text-blue-500">
               {authorId === 'auth0|60f1f34374a38b006885a17d' ? (
-                <GoVerified size={20} title="Site author" />
+                <Badge color={'green'}>Boss</Badge>
               ) : (
                 ''
               )}

@@ -17,7 +17,7 @@ const Posts = ({ posts }: Props) => {
   );
 };
 
-export const RelatedPosts = ({ posts }: Props) => {
+export const RelatedPostsCards = ({ posts }: Props) => {
   return (
     <div
       id="relatedBlogPosts"

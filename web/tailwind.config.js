@@ -1,8 +1,9 @@
+/** @type {import('tailwindcss').Config} */
+
 module.exports = {
+  darkMode: 'media',
   mode: 'jit',
   content: ['./pages/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx'],
-  darkMode: 'class',
-
   theme: {
     aspectRatio: {
       none: 0,

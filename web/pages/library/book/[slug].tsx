@@ -4,15 +4,15 @@ import type { Book as BookType } from 'index';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
+import { pagePathsQuery, bookQuery } from '@lib/queries';
 const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
   book: BookType;
-  status: 'up' | 'down';
 };
 
-const Book = ({ book, status = 'up' }: Props) => {
+const Book = ({ book }: Props) => {
   const {
     title,
     author,
@@ -36,7 +36,6 @@ const Book = ({ book, status = 'up' }: Props) => {
           ? socialCardImage.asset.url
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
-      status={status}
       type="article"
     >
       <section
@@ -135,9 +134,7 @@ const Book = ({ book, status = 'up' }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(
-    `*[_type == "book" && defined(slug.current)][].slug.current`
-  );
+  const paths = await sanityClient.fetch(pagePathsQuery, { type: 'book' });
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -148,48 +145,10 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const book: BookType = await sanityClient.fetch(
-    `
-    *[_type == "book" && isbn == $slug][0] {
-      ...,
-      _id,
-      cover {
-        asset-> {
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            },
-            lqip
-          }
-        }
-      },
-      title,
-      author,
-      publisher,
-      publishedDate,
-      summary,
-      pages,
-      socialCardImage {
-        asset->},
-      own,
-      read,
-      review,
-      "estimatedReadingTime": round(pages * 2 / 60)
-    }
-  `,
-    { slug }
-  );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
+  const book: BookType = await sanityClient.fetch(bookQuery, { slug });
   return {
     props: {
       book,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };

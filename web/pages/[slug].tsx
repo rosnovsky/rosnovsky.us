@@ -1,18 +1,16 @@
-import { PortableText } from '@portabletext/react';
-import sanityClient from '@lib/sanityClient';
-import { PortableTextComponents } from '@lib/helpers';
-import type { Page as PageType } from 'index';
 import dynamic from 'next/dynamic';
+import sanityClient from '@lib/sanityClient';
+import { PostContent, PostImage } from '@components/Blog/Posts';
 const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
-import Image from 'next/image';
+import type { Page as PageType } from 'index';
+import { pagePathsQuery, pageQuery } from '@lib/queries';
 
 type Props = {
   page: PageType;
-  status: 'up' | 'down';
 };
 
-const Page = ({ page, status }: Props) => {
+const Page = ({ page }: Props) => {
   const { title, coverImage, body, bodyRaw, socialCardImage } = page;
 
   return (
@@ -25,7 +23,6 @@ const Page = ({ page, status }: Props) => {
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
       type="article"
-      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -40,21 +37,8 @@ const Page = ({ page, status }: Props) => {
               {title}
             </h2>
           </div>
-          <div className="mb-10 mx-auto max-w-max overflow-hidden rounded-lg">
-            <Image
-              src={coverImage.asset.url}
-              placeholder="blur"
-              blurDataURL={coverImage.asset.metadata.lqip}
-              width={coverImage.asset.metadata.dimensions.width}
-              height={coverImage.asset.metadata.dimensions.height}
-              objectFit="cover"
-              priority
-              alt=""
-            />
-          </div>
-          <div className="prose prose-xl md:max-w-3xl mx-auto">
-            <PortableText value={body} components={PortableTextComponents} />
-          </div>
+          <PostImage coverImage={coverImage} />
+          <PostContent body={body} />
         </div>
       </section>
       <NewsletterForm />
@@ -63,9 +47,7 @@ const Page = ({ page, status }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(
-    `*[_type == "page" && defined(slug.current)][].slug.current`
-  );
+  const paths = await sanityClient.fetch(pagePathsQuery, { type: 'page' });
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -76,35 +58,11 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const page: PageType = await sanityClient.fetch(
-    `
-    *[_type == "page" && slug.current == $slug][0] {
-      ...,
-      coverImage {
-        ...,
-        asset->
-      },
-      body[]{
-        asset->{...},
-        ...
-      },
-      "bodyRaw": pt::text(body),
-      socialCardImage {
-        asset->
-      }
-    }
-  `,
-    { slug }
-  );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
+  const page: PageType = await sanityClient.fetch(pageQuery, { slug });
 
   return {
     props: {
       page,
-      status: sysytemStatus,
     },
   };
 }

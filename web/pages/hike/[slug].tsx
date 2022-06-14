@@ -4,6 +4,7 @@ import {
   localDate,
   PortableTextComponents,
 } from '@lib/helpers';
+import { hikeQuery, pagePathsQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 import { PortableText } from '@portabletext/react';
 import type { Hike as HikeType } from 'index';
@@ -17,10 +18,9 @@ const Map = dynamic(() => import('@components/Map'), {
 
 type Props = {
   hike: HikeType;
-  status: 'up' | 'down';
 };
 
-const Hike = ({ hike, status }: Props) => {
+const Hike = ({ hike }: Props) => {
   const {
     title,
     report,
@@ -42,7 +42,6 @@ const Hike = ({ hike, status }: Props) => {
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
       type="article"
-      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -98,9 +97,7 @@ const Hike = ({ hike, status }: Props) => {
 };
 
 export async function getStaticPaths() {
-  const paths = await sanityClient.fetch(
-    `*[_type == "hike" && defined(slug.current)][].slug.current`
-  );
+  const paths = await sanityClient.fetch(pagePathsQuery, { type: 'hike' });
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
@@ -111,38 +108,11 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.params;
-  const hike: HikeType = await sanityClient.fetch(
-    `
-    *[_type == "hike" && slug.current == $slug][0] {
-      title,
-      location,
-      coverImage {
-        asset->
-      }, 
-      report->,
-      summary,
-      difficulty,
-      length,
-      hikeDate,
-      trail,
-      elevationGain,
-      slug,
-      socialCardImage {
-        asset->
-      }
-    }
-  `,
-    { slug }
-  );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
+  const hike: HikeType = await sanityClient.fetch(hikeQuery, { slug });
 
   return {
     props: {
       hike,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };
