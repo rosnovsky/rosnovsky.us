@@ -7,10 +7,9 @@ import type { Page as PageType } from 'index';
 
 type Props = {
   page: PageType;
-  status: 'up' | 'down';
 };
 
-const Page = ({ page, status }: Props) => {
+const Page = ({ page }: Props) => {
   const { title, coverImage, body, bodyRaw, socialCardImage } = page;
 
   return (
@@ -23,7 +22,6 @@ const Page = ({ page, status }: Props) => {
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
       type="article"
-      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -82,14 +80,9 @@ export async function getStaticProps(context) {
     { slug }
   );
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       page,
-      status: sysytemStatus,
     },
   };
 }

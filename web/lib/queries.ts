@@ -57,9 +57,9 @@ export const postQuery = groq`
     }
   `;
 
-export const postPathsQuery = `*[_type == "post" && defined(slug.current)][].slug.current`;
+export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][].slug.current`;
 
-export const commentQuery = `*[_type == "post" && slug.current == $slug][0] {comments}`;
+export const commentQuery = groq`*[_type == "post" && slug.current == $slug][0] {comments}`;
 
 export const indexPagePostsQuery = groq`
     *[_type == "post"] | order(publishedAt desc)[0...$pagePostsLimit] {

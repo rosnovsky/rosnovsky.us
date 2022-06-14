@@ -9,10 +9,9 @@ const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
   book: BookType;
-  status: 'up' | 'down';
 };
 
-const Book = ({ book, status = 'up' }: Props) => {
+const Book = ({ book }: Props) => {
   const {
     title,
     author,
@@ -36,7 +35,6 @@ const Book = ({ book, status = 'up' }: Props) => {
           ? socialCardImage.asset.url
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
-      status={status}
       type="article"
     >
       <section
@@ -181,15 +179,9 @@ export async function getStaticProps(context) {
   `,
     { slug }
   );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       book,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };

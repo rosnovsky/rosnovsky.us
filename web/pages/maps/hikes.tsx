@@ -9,16 +9,14 @@ const Map = dynamic(() => import('@components/Map'), {
 
 type Props = {
   hikes: HikeType[];
-  status: 'up' | 'down';
 };
 
-const HikesMap = ({ hikes, status }: Props) => {
+const HikesMap = ({ hikes }: Props) => {
   return (
     <Containter
       title={`Hiking Map – Art Rosnovsky`}
       description={'All my hikes in one place'}
       type="article"
-      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -74,13 +72,9 @@ export async function getStaticProps() {
   `
   );
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
   return {
     props: {
       hikes,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };

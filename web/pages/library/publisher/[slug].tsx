@@ -7,16 +7,14 @@ const Containter = dynamic(() => import('@components/Container'));
 
 type Props = {
   books: BookType[];
-  status: 'up' | 'down';
 };
 
-const Publisher = ({ books, status = 'up' }: Props) => {
+const Publisher = ({ books }: Props) => {
   const { publisher } = books[0];
   return (
     <Containter
       title={`${publisher}`}
       description={`All books by ${publisher}`}
-      status={status}
       type="article"
     >
       <section
@@ -85,14 +83,9 @@ export async function getStaticProps(context) {
     { slug }
   );
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       books,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };

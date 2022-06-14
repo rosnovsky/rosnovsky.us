@@ -17,10 +17,9 @@ const Map = dynamic(() => import('@components/Map'), {
 
 type Props = {
   hike: HikeType;
-  status: 'up' | 'down';
 };
 
-const Hike = ({ hike, status }: Props) => {
+const Hike = ({ hike }: Props) => {
   const {
     title,
     report,
@@ -42,7 +41,6 @@ const Hike = ({ hike, status }: Props) => {
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
       type="article"
-      status={status}
     >
       <section
         className="py-16 md:py-24 bg-white"
@@ -135,14 +133,9 @@ export async function getStaticProps(context) {
     { slug }
   );
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       hike,
-      status: sysytemStatus,
     },
     revalidate: 120,
   };

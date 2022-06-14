@@ -20,7 +20,6 @@ type Props = {
   postCount: number;
   commentCount: number;
   fallback: any;
-  status: 'up' | 'down';
 };
 
 const Home = ({
@@ -28,7 +27,6 @@ const Home = ({
   categories,
   postCount,
   fallback,
-  status,
   commentCount,
 }: Props) => {
   return (
@@ -36,7 +34,6 @@ const Home = ({
       title={`Rosnovsky Park – Art Rosnovsky`}
       description={"Hey, I'm Art, and we need to talk. Seriously."}
       type="website"
-      status={status}
     >
       <Hero />
       <Blog posts={posts} categories={categories} postCount={postCount} />
@@ -74,17 +71,12 @@ export async function getStaticProps() {
     'https://rosnovsky.us/api/stats/uniquesThisMonth'
   ).then((res) => res.json());
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       posts,
       categories,
       postCount,
       commentCount,
-      status: sysytemStatus,
       fallback: {
         '/api/github': githubStats,
         '/api/subscribers': subscribersStats,

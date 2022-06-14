@@ -13,7 +13,6 @@ type Props = {
   postCount: number;
   commentCount: number;
   isCategory: BlogPost['categories'][0]['slug']['current'];
-  status: 'up' | 'down';
 };
 
 const Category = ({
@@ -21,14 +20,13 @@ const Category = ({
   categories,
   postCount,
   isCategory,
-  status,
   commentCount,
 }: Props) => {
   if (!postCount) {
-    return <Custom404 status={status} />;
+    return <Custom404 />;
   }
   return (
-    <Containter status={status}>
+    <Containter>
       <Blog
         posts={posts}
         categories={categories}
@@ -97,14 +95,8 @@ export async function getStaticProps(context) {
     }
   `
   );
-
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
-      status: sysytemStatus,
       posts,
       categories,
       postCount,

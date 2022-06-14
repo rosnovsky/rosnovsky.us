@@ -15,10 +15,9 @@ import type { BlogPost } from 'index';
 
 type Props = {
   post: BlogPost;
-  status: 'up' | 'down';
 };
 
-const Post = ({ post, status = 'up' }: Props) => {
+const Post = ({ post }: Props) => {
   const {
     publishedAt,
     title,
@@ -43,7 +42,6 @@ const Post = ({ post, status = 'up' }: Props) => {
           ? socialCardImage.asset.url
           : 'https://rosnovsky.us/static/images/banner.jpg'
       }
-      status={status}
       date={new Date(publishedAt).toISOString()}
       type="article"
     >
@@ -85,14 +83,9 @@ export async function getStaticProps(context) {
   const { slug = '' } = context.params;
   const post: BlogPost = await sanityClient.fetch(postQuery, { slug });
 
-  const sysytemStatus = await fetch('https://rosnovsky.us/api/status').then(
-    (res) => res.json()
-  );
-
   return {
     props: {
       post,
-      status: sysytemStatus,
     },
   };
 }
