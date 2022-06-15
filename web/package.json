@@ -36,6 +36,7 @@
     "@mantine/rte": "^4.2.8",
     "@portabletext/react": "^1.0.6",
     "@sanity/asset-utils": "^1.2.3",
+    "@sanity/block-content-to-html": "^2.0.0",
     "@sanity/block-tools": "^2.29.3",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
@@ -96,7 +97,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
-    "mapbox-gl": "^2.8.2",
     "@cypress/browserify-preprocessor": "^3.0.2",
     "@cypress/code-coverage": "^3.9.12",
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
@@ -114,6 +114,7 @@
     "cypress": "^9.6.1",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
+    "mapbox-gl": "^2.8.2",
     "next-sitemap": "^2.5.25",
     "nyc": "^15.1.0",
     "react-is": "^18.1.0",

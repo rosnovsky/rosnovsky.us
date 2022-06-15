@@ -25,7 +25,7 @@ const Comments = ({ slug }) => {
   if (error) return <p>Failed to load.</p>;
   if (!data) return <p>Loading...</p>;
 
-  if (data?.comments?.length === 0)
+  if (data?.comments?.length !== 0)
     return (
       <>
         {data?.comments?.map((comment) => (

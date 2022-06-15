@@ -1,5 +1,6 @@
 import { NotifyOptions } from '.';
 import { selectSubject } from './notificationSubjects';
+import BlocksToHTML from '@sanity/block-content-to-html';
 
 import { mg, DOMAIN } from './mailgunClient';
 
@@ -10,7 +11,9 @@ export const notify = async ({
   postTitle,
   content,
 }: NotifyOptions) => {
-  const recipient = [user.email!, process.env.NOTIFY_ME_EMAIL];
+  if (!user?.email || !type || !postId || !postTitle || !content)
+    throw new Error('Not enough information to fire off a notification');
+  const recipient = [user.email, process.env.NOTIFY_ME_EMAIL];
 
   // TODO: abstract away fetching post/comment data
 
@@ -23,7 +26,7 @@ export const notify = async ({
       user: user.name,
       url: `https://rosnovsky.us/blog/${postId}`,
       postTitle: postTitle,
-      content: content,
+      content: BlocksToHTML({ blocks: content }),
     }),
   };
 

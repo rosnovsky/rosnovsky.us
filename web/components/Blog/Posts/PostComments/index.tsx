@@ -17,7 +17,9 @@ export const PostComments = ({ post, setCommentStatus, setStatusMessage }) => {
             setStatusMessage={setStatusMessage}
           />
         ) : (
-          <Link href="/api/auth/login">Login to comment</Link>
+          <Link href={`/api/auth/login?returnTo=/blog/${post.slug.current}`}>
+            Login to comment
+          </Link>
         )}
         <Comments slug={post.slug.current} />
       </div>
