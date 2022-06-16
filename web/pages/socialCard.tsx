@@ -1,4 +1,10 @@
-const generateSocialImage = ({ coverImage, title, meta }) => {
+type Props = {
+  coverImage: string;
+  title: string;
+  meta: string;
+};
+
+const generateSocialImage = ({ coverImage, title, meta }: Props) => {
   return (
     <div className="mx-auto">
       <div
@@ -34,7 +40,7 @@ const generateSocialImage = ({ coverImage, title, meta }) => {
 
 export default generateSocialImage;
 
-export async function getServerSideProps(params: any) {
+export async function getServerSideProps(params: { query: Props }) {
   const {
     title = 'Something went wrong: this is NOT the cover image you deserve!',
     meta = 'December 2, 2021 | 8 min read',
