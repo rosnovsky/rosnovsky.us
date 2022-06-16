@@ -5,13 +5,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npm postbuild",
+    "build": "next build && npm run postbuild",
     "start": "next start",
     "lint": "next lint --fix",
     "analyze": "cross-env ANALYZE=true next build",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --config video=false --record --key 857c832c-5e4c-472f-8c90-7aafdd47c1e2",
-    "test:build-and-run": "rm -rf .next && npm build && npm test",
+    "test:build-and-run": "rm -rf .next && npm run build && npm run test",
     "test": "start-server-and-test start http://0.0.0.0:3000 cypress:run",
     "postbuild": "next-sitemap"
   },

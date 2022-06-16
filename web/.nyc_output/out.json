@@ -1822,8 +1822,1753 @@
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
     "hash": "a04b6e2ea63efdd15e840cb31aa208a08759e972"
   },
-  "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/_document.tsx": {
-    "path": "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/_document.tsx",
+  "/workspaces/rosnovsky.us/web/pages/_app.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/_app.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 11,
+          "column": 17
+        },
+        "end": {
+          "line": 11,
+          "column": 28
+        }
+      },
+      "1": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 30,
+          "column": 9
+        }
+      },
+      "2": {
+        "start": {
+          "line": 15,
+          "column": 4
+        },
+        "end": {
+          "line": 19,
+          "column": 7
+        }
+      },
+      "3": {
+        "start": {
+          "line": 21,
+          "column": 6
+        },
+        "end": {
+          "line": 21,
+          "column": 29
+        }
+      },
+      "4": {
+        "start": {
+          "line": 24,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 67
+        }
+      },
+      "5": {
+        "start": {
+          "line": 27,
+          "column": 4
+        },
+        "end": {
+          "line": 29,
+          "column": 6
+        }
+      },
+      "6": {
+        "start": {
+          "line": 28,
+          "column": 6
+        },
+        "end": {
+          "line": 28,
+          "column": 70
+        }
+      },
+      "7": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 38,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "RosnovskyPark",
+        "decl": {
+          "start": {
+            "line": 10,
+            "column": 9
+          },
+          "end": {
+            "line": 10,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 59
+          },
+          "end": {
+            "line": 39,
+            "column": 1
+          }
+        },
+        "line": 10
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 14,
+            "column": 12
+          },
+          "end": {
+            "line": 14,
+            "column": 13
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 18
+          },
+          "end": {
+            "line": 30,
+            "column": 3
+          }
+        },
+        "line": 14
+      },
+      "2": {
+        "name": "onRouteChangeComplete",
+        "decl": {
+          "start": {
+            "line": 20,
+            "column": 13
+          },
+          "end": {
+            "line": 20,
+            "column": 34
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 20,
+            "column": 37
+          },
+          "end": {
+            "line": 22,
+            "column": 5
+          }
+        },
+        "line": 20
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 27,
+            "column": 11
+          },
+          "end": {
+            "line": 27,
+            "column": 12
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 27,
+            "column": 17
+          },
+          "end": {
+            "line": 29,
+            "column": 5
+          }
+        },
+        "line": 27
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 160,
+      "1": 160,
+      "2": 103,
+      "3": 55,
+      "4": 103,
+      "5": 103,
+      "6": 41,
+      "7": 160
+    },
+    "f": {
+      "0": 160,
+      "1": 103,
+      "2": 55,
+      "3": 41
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "2abe9ef7b3e47430d4e00315857fb4c40fe3f4eb"
+  },
+  "/workspaces/rosnovsky.us/web/pages/index.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/index.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 14
+        },
+        "end": {
+          "line": 4,
+          "column": 56
+        }
+      },
+      "1": {
+        "start": {
+          "line": 4,
+          "column": 28
+        },
+        "end": {
+          "line": 4,
+          "column": 55
+        }
+      },
+      "2": {
+        "start": {
+          "line": 5,
+          "column": 23
+        },
+        "end": {
+          "line": 5,
+          "column": 74
+        }
+      },
+      "3": {
+        "start": {
+          "line": 5,
+          "column": 37
+        },
+        "end": {
+          "line": 5,
+          "column": 73
+        }
+      },
+      "4": {
+        "start": {
+          "line": 25,
+          "column": 13
+        },
+        "end": {
+          "line": 46,
+          "column": 1
+        }
+      },
+      "5": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 45,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 22
+          },
+          "end": {
+            "line": 4,
+            "column": 23
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 28
+          },
+          "end": {
+            "line": 4,
+            "column": 55
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 31
+          },
+          "end": {
+            "line": 5,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 37
+          },
+          "end": {
+            "line": 5,
+            "column": 73
+          }
+        },
+        "line": 5
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 25,
+            "column": 13
+          },
+          "end": {
+            "line": 25,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 13
+          },
+          "end": {
+            "line": 46,
+            "column": 1
+          }
+        },
+        "line": 31
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 45,
+      "1": 34,
+      "2": 45,
+      "3": 34,
+      "4": 45,
+      "5": 68
+    },
+    "f": {
+      "0": 34,
+      "1": 34,
+      "2": 68
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "7d0128eae37667698adb072ae529dbedffd81082"
+  },
+  "/workspaces/rosnovsky.us/web/pages/blog.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/blog.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 19
+        },
+        "end": {
+          "line": 3,
+          "column": 65
+        }
+      },
+      "1": {
+        "start": {
+          "line": 3,
+          "column": 33
+        },
+        "end": {
+          "line": 3,
+          "column": 64
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 13
+        },
+        "end": {
+          "line": 4,
+          "column": 59
+        }
+      },
+      "3": {
+        "start": {
+          "line": 4,
+          "column": 27
+        },
+        "end": {
+          "line": 4,
+          "column": 58
+        }
+      },
+      "4": {
+        "start": {
+          "line": 5,
+          "column": 23
+        },
+        "end": {
+          "line": 5,
+          "column": 74
+        }
+      },
+      "5": {
+        "start": {
+          "line": 5,
+          "column": 37
+        },
+        "end": {
+          "line": 5,
+          "column": 73
+        }
+      },
+      "6": {
+        "start": {
+          "line": 19,
+          "column": 17
+        },
+        "end": {
+          "line": 29,
+          "column": 1
+        }
+      },
+      "7": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 28,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 3,
+            "column": 27
+          },
+          "end": {
+            "line": 3,
+            "column": 28
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 33
+          },
+          "end": {
+            "line": 3,
+            "column": 64
+          }
+        },
+        "line": 3
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 4,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 27
+          },
+          "end": {
+            "line": 4,
+            "column": 58
+          }
+        },
+        "line": 4
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 31
+          },
+          "end": {
+            "line": 5,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 37
+          },
+          "end": {
+            "line": 5,
+            "column": 73
+          }
+        },
+        "line": 5
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 19,
+            "column": 17
+          },
+          "end": {
+            "line": 19,
+            "column": 18
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 62
+          },
+          "end": {
+            "line": 29,
+            "column": 1
+          }
+        },
+        "line": 19
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 42,
+      "1": 3,
+      "2": 42,
+      "3": 3,
+      "4": 42,
+      "5": 3,
+      "6": 42,
+      "7": 6
+    },
+    "f": {
+      "0": 3,
+      "1": 3,
+      "2": 3,
+      "3": 6
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "efd135806eb7108ce0016cfdf909ed49606fdbc7"
+  },
+  "/workspaces/rosnovsky.us/web/pages/library/index.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/library/index.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 9,
+          "column": 19
+        },
+        "end": {
+          "line": 9,
+          "column": 65
+        }
+      },
+      "1": {
+        "start": {
+          "line": 9,
+          "column": 33
+        },
+        "end": {
+          "line": 9,
+          "column": 64
+        }
+      },
+      "2": {
+        "start": {
+          "line": 15,
+          "column": 16
+        },
+        "end": {
+          "line": 45,
+          "column": 1
+        }
+      },
+      "3": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 44,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 9,
+            "column": 27
+          },
+          "end": {
+            "line": 9,
+            "column": 28
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 33
+          },
+          "end": {
+            "line": 9,
+            "column": 64
+          }
+        },
+        "line": 9
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 15,
+            "column": 16
+          },
+          "end": {
+            "line": 15,
+            "column": 17
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 38
+          },
+          "end": {
+            "line": 45,
+            "column": 1
+          }
+        },
+        "line": 15
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 33,
+      "1": 0,
+      "2": 33,
+      "3": 0
+    },
+    "f": {
+      "0": 0,
+      "1": 0
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "b13f06edd10e633d233e222b7b4ce1ba375e264f"
+  },
+  "/workspaces/rosnovsky.us/web/pages/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/[slug].tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 19
+        },
+        "end": {
+          "line": 4,
+          "column": 65
+        }
+      },
+      "1": {
+        "start": {
+          "line": 4,
+          "column": 33
+        },
+        "end": {
+          "line": 4,
+          "column": 64
+        }
+      },
+      "2": {
+        "start": {
+          "line": 5,
+          "column": 23
+        },
+        "end": {
+          "line": 5,
+          "column": 74
+        }
+      },
+      "3": {
+        "start": {
+          "line": 5,
+          "column": 37
+        },
+        "end": {
+          "line": 5,
+          "column": 73
+        }
+      },
+      "4": {
+        "start": {
+          "line": 13,
+          "column": 13
+        },
+        "end": {
+          "line": 47,
+          "column": 1
+        }
+      },
+      "5": {
+        "start": {
+          "line": 14,
+          "column": 64
+        },
+        "end": {
+          "line": 14,
+          "column": 68
+        }
+      },
+      "6": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 46,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 27
+          },
+          "end": {
+            "line": 4,
+            "column": 28
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 33
+          },
+          "end": {
+            "line": 4,
+            "column": 64
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 31
+          },
+          "end": {
+            "line": 5,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 37
+          },
+          "end": {
+            "line": 5,
+            "column": 73
+          }
+        },
+        "line": 5
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 13,
+            "column": 13
+          },
+          "end": {
+            "line": 13,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 34
+          },
+          "end": {
+            "line": 47,
+            "column": 1
+          }
+        },
+        "line": 13
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 21,
+            "column": 8
+          },
+          "end": {
+            "line": 23,
+            "column": 59
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 22,
+              "column": 37
+            }
+          },
+          {
+            "start": {
+              "line": 23,
+              "column": 12
+            },
+            "end": {
+              "line": 23,
+              "column": 59
+            }
+          }
+        ],
+        "line": 21
+      }
+    },
+    "s": {
+      "0": 40,
+      "1": 3,
+      "2": 40,
+      "3": 0,
+      "4": 40,
+      "5": 3,
+      "6": 3
+    },
+    "f": {
+      "0": 3,
+      "1": 0,
+      "2": 3
+    },
+    "b": {
+      "0": [
+        0,
+        3
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "34f0b9da2fbe8b942d8377ed69164635b301a738"
+  },
+  "/workspaces/rosnovsky.us/web/pages/maps/hikes.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/maps/hikes.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 5,
+          "column": 19
+        },
+        "end": {
+          "line": 5,
+          "column": 65
+        }
+      },
+      "1": {
+        "start": {
+          "line": 5,
+          "column": 33
+        },
+        "end": {
+          "line": 5,
+          "column": 64
+        }
+      },
+      "2": {
+        "start": {
+          "line": 6,
+          "column": 23
+        },
+        "end": {
+          "line": 6,
+          "column": 74
+        }
+      },
+      "3": {
+        "start": {
+          "line": 6,
+          "column": 37
+        },
+        "end": {
+          "line": 6,
+          "column": 73
+        }
+      },
+      "4": {
+        "start": {
+          "line": 7,
+          "column": 12
+        },
+        "end": {
+          "line": 9,
+          "column": 2
+        }
+      },
+      "5": {
+        "start": {
+          "line": 7,
+          "column": 26
+        },
+        "end": {
+          "line": 7,
+          "column": 51
+        }
+      },
+      "6": {
+        "start": {
+          "line": 15,
+          "column": 17
+        },
+        "end": {
+          "line": 55,
+          "column": 1
+        }
+      },
+      "7": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 54,
+          "column": 4
+        }
+      },
+      "8": {
+        "start": {
+          "line": 38,
+          "column": 50
+        },
+        "end": {
+          "line": 38,
+          "column": 62
+        }
+      },
+      "9": {
+        "start": {
+          "line": 41,
+          "column": 41
+        },
+        "end": {
+          "line": 41,
+          "column": 60
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 5,
+            "column": 27
+          },
+          "end": {
+            "line": 5,
+            "column": 28
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 33
+          },
+          "end": {
+            "line": 5,
+            "column": 64
+          }
+        },
+        "line": 5
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 31
+          },
+          "end": {
+            "line": 6,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 37
+          },
+          "end": {
+            "line": 6,
+            "column": 73
+          }
+        },
+        "line": 6
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 7,
+            "column": 20
+          },
+          "end": {
+            "line": 7,
+            "column": 21
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 26
+          },
+          "end": {
+            "line": 7,
+            "column": 51
+          }
+        },
+        "line": 7
+      },
+      "3": {
+        "name": "(anonymous_3)",
+        "decl": {
+          "start": {
+            "line": 15,
+            "column": 17
+          },
+          "end": {
+            "line": 15,
+            "column": 18
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 39
+          },
+          "end": {
+            "line": 55,
+            "column": 1
+          }
+        },
+        "line": 15
+      },
+      "4": {
+        "name": "(anonymous_4)",
+        "decl": {
+          "start": {
+            "line": 38,
+            "column": 40
+          },
+          "end": {
+            "line": 38,
+            "column": 41
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 38,
+            "column": 50
+          },
+          "end": {
+            "line": 38,
+            "column": 62
+          }
+        },
+        "line": 38
+      },
+      "5": {
+        "name": "(anonymous_5)",
+        "decl": {
+          "start": {
+            "line": 41,
+            "column": 31
+          },
+          "end": {
+            "line": 41,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 41,
+            "column": 41
+          },
+          "end": {
+            "line": 41,
+            "column": 60
+          }
+        },
+        "line": 41
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 34,
+      "1": 1,
+      "2": 34,
+      "3": 0,
+      "4": 34,
+      "5": 0,
+      "6": 34,
+      "7": 1,
+      "8": 21,
+      "9": 21
+    },
+    "f": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 21,
+      "5": 21
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "e31e5bf4330dfaad12bb18d5165ce59dd91a81af"
+  },
+  "/workspaces/rosnovsky.us/web/pages/blog/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/blog/[slug].tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 4,
+          "column": 19
+        },
+        "end": {
+          "line": 4,
+          "column": 65
+        }
+      },
+      "1": {
+        "start": {
+          "line": 4,
+          "column": 33
+        },
+        "end": {
+          "line": 4,
+          "column": 64
+        }
+      },
+      "2": {
+        "start": {
+          "line": 20,
+          "column": 13
+        },
+        "end": {
+          "line": 70,
+          "column": 1
+        }
+      },
+      "3": {
+        "start": {
+          "line": 29,
+          "column": 6
+        },
+        "end": {
+          "line": 29,
+          "column": 10
+        }
+      },
+      "4": {
+        "start": {
+          "line": 31,
+          "column": 44
+        },
+        "end": {
+          "line": 31,
+          "column": 59
+        }
+      },
+      "5": {
+        "start": {
+          "line": 32,
+          "column": 44
+        },
+        "end": {
+          "line": 34,
+          "column": 3
+        }
+      },
+      "6": {
+        "start": {
+          "line": 36,
+          "column": 2
+        },
+        "end": {
+          "line": 69,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 27
+          },
+          "end": {
+            "line": 4,
+            "column": 28
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 33
+          },
+          "end": {
+            "line": 4,
+            "column": 64
+          }
+        },
+        "line": 4
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 20,
+            "column": 13
+          },
+          "end": {
+            "line": 20,
+            "column": 14
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 20,
+            "column": 34
+          },
+          "end": {
+            "line": 70,
+            "column": 1
+          }
+        },
+        "line": 20
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 41,
+            "column": 8
+          },
+          "end": {
+            "line": 43,
+            "column": 59
+          }
+        },
+        "type": "cond-expr",
+        "locations": [
+          {
+            "start": {
+              "line": 42,
+              "column": 12
+            },
+            "end": {
+              "line": 42,
+              "column": 37
+            }
+          },
+          {
+            "start": {
+              "line": 43,
+              "column": 12
+            },
+            "end": {
+              "line": 43,
+              "column": 59
+            }
+          }
+        ],
+        "line": 41
+      }
+    },
+    "s": {
+      "0": 25,
+      "1": 3,
+      "2": 25,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6
+    },
+    "f": {
+      "0": 3,
+      "1": 6
+    },
+    "b": {
+      "0": [
+        6,
+        0
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "067298be16f232adfb2df8fbbf29f5a600246a1a"
+  },
+  "/workspaces/rosnovsky.us/web/pages/404.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/404.tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 2,
+          "column": 13
+        },
+        "end": {
+          "line": 2,
+          "column": 47
+        }
+      },
+      "1": {
+        "start": {
+          "line": 2,
+          "column": 27
+        },
+        "end": {
+          "line": 2,
+          "column": 46
+        }
+      },
+      "2": {
+        "start": {
+          "line": 3,
+          "column": 18
+        },
+        "end": {
+          "line": 3,
+          "column": 64
+        }
+      },
+      "3": {
+        "start": {
+          "line": 3,
+          "column": 32
+        },
+        "end": {
+          "line": 3,
+          "column": 63
+        }
+      },
+      "4": {
+        "start": {
+          "line": 4,
+          "column": 23
+        },
+        "end": {
+          "line": 4,
+          "column": 74
+        }
+      },
+      "5": {
+        "start": {
+          "line": 4,
+          "column": 37
+        },
+        "end": {
+          "line": 4,
+          "column": 73
+        }
+      },
+      "6": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 30,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 2,
+            "column": 21
+          },
+          "end": {
+            "line": 2,
+            "column": 22
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 27
+          },
+          "end": {
+            "line": 2,
+            "column": 46
+          }
+        },
+        "line": 2
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 3,
+            "column": 26
+          },
+          "end": {
+            "line": 3,
+            "column": 27
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 32
+          },
+          "end": {
+            "line": 3,
+            "column": 63
+          }
+        },
+        "line": 3
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 31
+          },
+          "end": {
+            "line": 4,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 37
+          },
+          "end": {
+            "line": 4,
+            "column": 73
+          }
+        },
+        "line": 4
+      },
+      "3": {
+        "name": "Custom404",
+        "decl": {
+          "start": {
+            "line": 6,
+            "column": 24
+          },
+          "end": {
+            "line": 6,
+            "column": 33
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 36
+          },
+          "end": {
+            "line": 31,
+            "column": 1
+          }
+        },
+        "line": 6
+      }
+    },
+    "branchMap": {},
+    "s": {
+      "0": 28,
+      "1": 16,
+      "2": 28,
+      "3": 3,
+      "4": 28,
+      "5": 16,
+      "6": 4
+    },
+    "f": {
+      "0": 16,
+      "1": 3,
+      "2": 16,
+      "3": 4
+    },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "ef8690821e5fe398169ff5bf3741d9daaecb6a68"
+  },
+  "/workspaces/rosnovsky.us/web/pages/category/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/category/[slug].tsx",
+    "statementMap": {
+      "0": {
+        "start": {
+          "line": 3,
+          "column": 23
+        },
+        "end": {
+          "line": 3,
+          "column": 74
+        }
+      },
+      "1": {
+        "start": {
+          "line": 3,
+          "column": 37
+        },
+        "end": {
+          "line": 3,
+          "column": 73
+        }
+      },
+      "2": {
+        "start": {
+          "line": 4,
+          "column": 14
+        },
+        "end": {
+          "line": 4,
+          "column": 56
+        }
+      },
+      "3": {
+        "start": {
+          "line": 4,
+          "column": 28
+        },
+        "end": {
+          "line": 4,
+          "column": 55
+        }
+      },
+      "4": {
+        "start": {
+          "line": 25,
+          "column": 17
+        },
+        "end": {
+          "line": 47,
+          "column": 1
+        }
+      },
+      "5": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 34,
+          "column": 3
+        }
+      },
+      "6": {
+        "start": {
+          "line": 33,
+          "column": 4
+        },
+        "end": {
+          "line": 33,
+          "column": 25
+        }
+      },
+      "7": {
+        "start": {
+          "line": 35,
+          "column": 2
+        },
+        "end": {
+          "line": 46,
+          "column": 4
+        }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": {
+            "line": 3,
+            "column": 31
+          },
+          "end": {
+            "line": 3,
+            "column": 32
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 37
+          },
+          "end": {
+            "line": 3,
+            "column": 73
+          }
+        },
+        "line": 3
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": {
+            "line": 4,
+            "column": 22
+          },
+          "end": {
+            "line": 4,
+            "column": 23
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 28
+          },
+          "end": {
+            "line": 4,
+            "column": 55
+          }
+        },
+        "line": 4
+      },
+      "2": {
+        "name": "(anonymous_2)",
+        "decl": {
+          "start": {
+            "line": 25,
+            "column": 17
+          },
+          "end": {
+            "line": 25,
+            "column": 18
+          }
+        },
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 13
+          },
+          "end": {
+            "line": 47,
+            "column": 1
+          }
+        },
+        "line": 31
+      }
+    },
+    "branchMap": {
+      "0": {
+        "loc": {
+          "start": {
+            "line": 32,
+            "column": 2
+          },
+          "end": {
+            "line": 34,
+            "column": 3
+          }
+        },
+        "type": "if",
+        "locations": [
+          {
+            "start": {
+              "line": 32,
+              "column": 2
+            },
+            "end": {
+              "line": 34,
+              "column": 3
+            }
+          },
+          {
+            "start": {},
+            "end": {}
+          }
+        ],
+        "line": 32
+      }
+    },
+    "s": {
+      "0": 26,
+      "1": 14,
+      "2": 26,
+      "3": 13,
+      "4": 26,
+      "5": 28,
+      "6": 2,
+      "7": 26
+    },
+    "f": {
+      "0": 14,
+      "1": 13,
+      "2": 28
+    },
+    "b": {
+      "0": [
+        2,
+        26
+      ]
+    },
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "3ea2ecba8544b65d6328074c3339936b5671f9c3"
+  },
+  "/workspaces/rosnovsky.us/web/pages/_document.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/_document.tsx",
     "statementMap": {},
     "fnMap": {},
     "branchMap": {},
@@ -1831,8 +3576,8 @@
     "f": {},
     "b": {}
   },
-  "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/socialCard.tsx": {
-    "path": "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/socialCard.tsx",
+  "/workspaces/rosnovsky.us/web/pages/socialCard.tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/socialCard.tsx",
     "statementMap": {},
     "fnMap": {},
     "branchMap": {},
@@ -1840,8 +3585,35 @@
     "f": {},
     "b": {}
   },
-  "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/hike/[slug].tsx": {
-    "path": "/Users/rosnovsky/code/30 Rosnovsky/31 Rosnovsky.us/rosnovsky.us/web/pages/hike/[slug].tsx",
+  "/workspaces/rosnovsky.us/web/pages/hike/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/hike/[slug].tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/workspaces/rosnovsky.us/web/pages/library/author/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/library/author/[slug].tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/workspaces/rosnovsky.us/web/pages/library/book/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/library/book/[slug].tsx",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/workspaces/rosnovsky.us/web/pages/library/publisher/[slug].tsx": {
+    "path": "/workspaces/rosnovsky.us/web/pages/library/publisher/[slug].tsx",
     "statementMap": {},
     "fnMap": {},
     "branchMap": {},
