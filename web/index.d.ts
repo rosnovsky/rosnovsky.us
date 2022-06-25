@@ -227,6 +227,8 @@ interface Book {
   socialCardImage: SanityImageAssetDocument;
   summary: string;
   estimatedReadingTime: number;
+  pages: number;
+  status: 'to read' | 'reading' | 'read' | 'abandoned';
   own: boolean;
   read: string;
   rating: number;

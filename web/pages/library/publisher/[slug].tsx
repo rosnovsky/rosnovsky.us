@@ -1,5 +1,6 @@
 import Books from '@components/Library/Books';
 import BooksMeta from '@components/Library/Books/Meta';
+import NotFound from '@pages/404';
 import { publisherBooksQuery, publisherPagePathsQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 import type { Book as BookType } from 'index';
@@ -11,6 +12,9 @@ type Props = {
 };
 
 const Publisher = ({ books }: Props) => {
+  if (books[0] === undefined) {
+    return <NotFound />;
+  }
   const { publisher } = books[0];
   return (
     <Containter

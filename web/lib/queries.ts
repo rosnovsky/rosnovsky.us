@@ -173,6 +173,8 @@ export const authorBooksQuery = groq`
       read,
       rating,
       isbn,
+      status,
+      pages,
       "estimatedReadingTime": round(pages * 2 / 60)
     }
   `;
@@ -203,6 +205,7 @@ export const bookQuery = groq`
         asset->},
       own,
       read,
+      status,
       review,
       "estimatedReadingTime": round(pages * 2 / 60)
     }
@@ -227,6 +230,7 @@ export const publisherBooksQuery = groq`
       publisher,
       publishedDate,
       pages,
+      status,
       socialCardImage {
         asset->},
       read,
@@ -252,8 +256,12 @@ export const booksQuery = groq`
       },
       isbn,
       publishedDate,
+      publisher,
       pages,
       read,
+      status,
+      title,
+      author,
       rating,
       "estimatedReadingTime": round(pages * 2 / 60)
     }
@@ -280,4 +288,3 @@ export const categoryPagePathsQuery = groq`*[_type == "post" && categories[]->sl
 
 // Slug paths, refactorable
 export const pagePathsQuery = groq`*[_type == $type && defined(slug.current)][].slug.current`;
-

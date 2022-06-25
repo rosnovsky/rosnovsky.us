@@ -1,5 +1,6 @@
 import Books from '@components/Library/Books';
-import BooksMeta from '@components/Library/Books/Meta';
+import LibraryMeta from '@components/Library/Meta';
+import NotFound from '@pages/404';
 import { booksQuery } from '@lib/queries';
 import sanityClient from '@lib/sanityClient';
 
@@ -13,6 +14,9 @@ type Props = {
 };
 
 const Library = ({ books }: Props) => {
+  if (books.length === 0) {
+    return <NotFound />;
+  }
   return (
     <Containter
       title={`All ${books.length} books`}
@@ -31,11 +35,7 @@ const Library = ({ books }: Props) => {
             <h2 className="mb-4 mt-3 text-3xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
               Library
             </h2>
-            <div className="mb-6 text-lg md:text-xl font-medium text-coolGray-500">
-              Think of this as my bookshelf that you can explore. The books I
-              haven&apos;t read yet are denoted by transparent covers.
-            </div>
-            <BooksMeta books={books} />
+            <LibraryMeta books={books} />
             <Books books={books} />
           </div>
         </div>

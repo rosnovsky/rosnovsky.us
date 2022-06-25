@@ -4,7 +4,6 @@ import {
   Box,
   Button as GenerateButton,
   Inline,
-  Popover,
   Text,
   Tooltip,
 } from '@sanity/ui';

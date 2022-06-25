@@ -9,11 +9,16 @@ import { authorBooksQuery, authorPagePathsQuery } from '@lib/queries';
 
 const Containter = dynamic(() => import('@components/Container'));
 
+import NotFound from '@pages/404';
+
 type Props = {
   books: BookType[];
 };
 
 const Author = ({ books }: Props) => {
+  if (books[0] === undefined) {
+    return <NotFound />;
+  }
   return (
     <Containter
       title={`All books by ${books[0].author}`}

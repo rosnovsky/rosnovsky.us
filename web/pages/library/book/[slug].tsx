@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import { pagePathsQuery, bookQuery } from '@lib/queries';
+import NotFound from '@pages/404';
 const Link = dynamic(() => import('next/link'), { ssr: true });
 const Containter = dynamic(() => import('@components/Container'));
 
@@ -13,6 +14,9 @@ type Props = {
 };
 
 const Book = ({ book }: Props) => {
+  if (!book) {
+    return <NotFound />;
+  }
   const {
     title,
     author,
@@ -25,6 +29,7 @@ const Book = ({ book }: Props) => {
     publishedDate,
     rating,
     review,
+    status,
   } = book;
 
   return (
@@ -103,8 +108,18 @@ const Book = ({ book }: Props) => {
                   this book.{' '}
                 </span>
               )}{' '}
-              {!read && (
+              {!status && !read && (
                 <span className="font-bold">I haven&apos;t read it yet.</span>
+              )}
+              {status === 'reading' && (
+                <span className="font-bold">
+                  I&apos;m reading it right now.
+                </span>
+              )}
+              {status === 'abandoned' && (
+                <span className="font-bold">
+                  I tried reading it, but abandoned it.
+                </span>
               )}
               {read && (
                 <span>

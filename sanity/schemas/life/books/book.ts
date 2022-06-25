@@ -82,10 +82,23 @@ export default {
       type: 'boolean',
     },
     {
+      name: 'status',
+      title: 'Kowalski, staus',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'To Read', value: 'to read' },
+          { title: 'Reading', value: 'reading' },
+          { title: 'Read', value: 'read' },
+          { title: 'Abandoned', value: 'abandoned' },
+        ],
+      },
+    },
+    {
       name: 'read',
-      title: 'Read?',
+      title: 'When did you finish it?',
       type: 'date',
-      description: 'If you read the book, add the date here',
+      hidden: ({ parent, value }) => !value && parent?.status !== 'Read',
     },
     {
       name: 'review',

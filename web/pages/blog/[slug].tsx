@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import sanityClient from '@lib/sanityClient';
 import { postQuery, pagePathsQuery } from '@lib/queries';
 import dynamic from 'next/dynamic';
@@ -11,6 +13,7 @@ import {
   RelatedPosts,
   PostComments,
 } from '@components/Blog/Posts';
+import NotFound from '@pages/404';
 import type { BlogPost } from 'index';
 
 type Props = {
@@ -18,6 +21,9 @@ type Props = {
 };
 
 const Post = ({ post }: Props) => {
+  if (!post) {
+    return <NotFound />;
+  }
   const {
     publishedAt,
     title,

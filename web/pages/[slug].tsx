@@ -5,12 +5,16 @@ const Containter = dynamic(() => import('@components/Container'));
 const NewsletterForm = dynamic(() => import('@components/NewsletterForm'));
 import type { Page as PageType } from 'index';
 import { pagePathsQuery, pageQuery } from '@lib/queries';
+import NotFound from '@pages/404';
 
 type Props = {
   page: PageType;
 };
 
 const Page = ({ page }: Props) => {
+  if (!page) {
+    return <NotFound />;
+  }
   const { title, coverImage, body, bodyRaw, socialCardImage } = page;
 
   return (
