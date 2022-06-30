@@ -6,7 +6,7 @@ const client = sanityClient({
   dataset: 'prod',
   apiVersion: '2021-10-21', // use current UTC date - see "specifying API version"!
   token: process.env.SANITY_TOKEN, // or leave blank for unauthenticated usage
-  useCdn: false, // `false` if you want to ensure fresh data
+  useCdn: process.env.NODE_ENV === 'production' ? true : false, // `false` if you want to ensure fresh data
 });
 
 const allowCors = (fn) => async (req, res) => {

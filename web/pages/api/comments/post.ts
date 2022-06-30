@@ -13,7 +13,7 @@ const client = sanityClient({
   dataset: 'prod',
   apiVersion: '2021-10-21',
   token: process.env.SANITY_TOKEN,
-  useCdn: false,
+  useCdn: process.env.NODE_ENV === 'production' ? true : false,
 });
 
 const postComment = async ({
