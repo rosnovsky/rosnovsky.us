@@ -1,4 +1,3 @@
-// @ts-expect-error
 import React from 'react'
 
 import ReactPlayer from 'react-player/youtube'
@@ -6,8 +5,8 @@ import ReactPlayer from 'react-player/youtube'
 const Preview = ({ value }: { value: { url: string } }) => {
   const { url } = value
   return (<div className="player-wrapper">
-              <ReactPlayer url={url} width="100%" className="react-player" />
-            </div>)
+    <ReactPlayer url={url} width="100%" className="react-player" />
+  </div>)
 }
 export default {
   name: 'youtube',
@@ -22,7 +21,7 @@ export default {
   ],
   preview: {
     select: {
-    url: 'url'
+      url: 'url'
     },
     component: Preview
   }

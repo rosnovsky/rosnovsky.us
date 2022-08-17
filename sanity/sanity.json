@@ -21,7 +21,9 @@
     "@sanity/vision",
     "simple-star-rating",
     "@sanity/scheduled-publishing",
-    "mux-input"
+    "mux-input",
+    "autocomplete-tags",
+    "mapbox-input"
   ],
   "parts": [
     {

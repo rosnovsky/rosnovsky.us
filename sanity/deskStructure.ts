@@ -54,6 +54,13 @@ export default () =>
         ),
       S.divider(),
       S.listItem()
+        .title('Site Settings')
+        .schemaType('settings')
+        .child(
+          S.documentList().title('Settings').filter('_type == "settings"')
+        ),
+      S.divider(),
+      S.listItem()
         .title('People')
         .schemaType('person')
         .child(

@@ -22,6 +22,7 @@ import socialCard from './socialCard';
 import comment from './comment';
 import book from './life/books/book';
 import video from './mux';
+import settings from './settings';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,6 +33,7 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
+    settings,
     post,
     hike,
     page,
