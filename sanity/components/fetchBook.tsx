@@ -71,6 +71,7 @@ export const Button = withDocument((props) => {
       console.error(err);
       setIsError(true);
       setErrorMessage(err);
+      throw new Error(err);
     } finally {
       setIsLoading(false);
     }
@@ -93,7 +94,7 @@ export const Button = withDocument((props) => {
             <Box padding={2}>
               <Text size={2}>
                 <pre>
-                  {errorMessage.message ? errorMessage.message : errorMessage}
+                  {errorMessage}
                 </pre>
               </Text>
             </Box>

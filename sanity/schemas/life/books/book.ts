@@ -74,7 +74,7 @@ export default {
       title: 'Published Date',
       type: 'string',
       validation: (Rule) => Rule.required(),
-      readOnly: () => true,
+      // readOnly: () => true,
     },
     {
       name: 'own',

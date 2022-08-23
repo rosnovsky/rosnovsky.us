@@ -70,7 +70,7 @@ const BooksMeta = ({ books }: { books: Book[] }) => {
           ~
           {Math.ceil(
             books.reduce((acc, book) => acc + book.estimatedReadingTime, 0) /
-              365
+            365
           ).toLocaleString('en-US')}{' '}
           years
         </span>
@@ -115,7 +115,7 @@ const BooksMeta = ({ books }: { books: Book[] }) => {
           .map((book) => (
             <span key={book.isbn}>
               <Link href={`/library/book/${book.isbn}`}>{book.title}</Link> by{' '}
-              {book.author}
+              {book.author}{' '}
             </span>
           ))}
         .
