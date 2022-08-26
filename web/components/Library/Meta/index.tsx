@@ -69,9 +69,8 @@ const BooksMeta = ({ books }: { books: Book[] }) => {
         <span className="text-blue-600 font-medium">
           ~
           {Math.ceil(
-            books.reduce((acc, book) => acc + book.estimatedReadingTime, 0) /
-            365
-          ).toLocaleString('en-US')}{' '}
+            // eslint-disable-next-line prettier/prettier
+            books.reduce((acc, book) => acc + book.estimatedReadingTime, 0) / 365).toLocaleString('en-US')}{' '}
           years
         </span>
         : it&apos;s roughly{' '}
