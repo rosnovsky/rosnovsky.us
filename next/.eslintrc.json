@@ -1,8 +1,5 @@
 {
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./next/tsconfig.json"
-  },
   "plugins": [
     "@typescript-eslint"
   ],

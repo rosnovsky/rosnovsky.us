@@ -1,49 +1,69 @@
-// src/pages/_app.tsx
-import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
-import { loggerLink } from "@trpc/client/links/loggerLink";
-import { withTRPC } from "@trpc/next";
-import type { AppType } from "next/dist/shared/lib/utils";
-import superjson from "superjson";
-import type { AppRouter } from "../server/router";
-import "../styles/globals.css";
+import { withTRPC } from '@trpc/next';
+import { AppType } from 'next/dist/shared/lib/utils';
+import superjson from 'superjson';
+import type { AppRouter } from '../server/router';
+import { UserProvider } from '@auth0/nextjs-auth0';
+import '../styles/globals.css';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import * as Fathom from 'fathom-client';
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
-};
+  const router = useRouter();
+  // Initialize Fathom when the app loads
+  useEffect(() => {
+    Fathom.load('IMKYNEVQ', {
+      includedDomains: ['rosnovsky.us', '*.vercel.app', 'localhost:3000'],
+      honorDNT: true,
+      url: 'https://llama.rosnovsky.us/script.js',
+    });
+    function onRouteChangeComplete() {
+      Fathom.trackPageview();
+    }
+    // Record a pageview when route changes
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
 
-const getBaseUrl = () => {
-  if (typeof window !== "undefined") return ""; // browser should use relative url
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
-  return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
+    // Unassign event listener
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete);
+    };
+  }, []);
+  return <UserProvider><Component {...pageProps} /></UserProvider>;
 };
 
 export default withTRPC<AppRouter>({
-  config() {
-    /**
-     * If you want to use SSR, you need to use the server's full URL
-     * @link https://trpc.io/docs/ssr
-     */
-    const url = `${getBaseUrl()}/api/trpc`;
+  config({ ctx }) {
+    if (typeof window !== 'undefined') {
+      // during client requests
+      return {
+        transformer: superjson, // optional - adds superjson serialization
+        url: '/api/trpc',
+      };
+    }
+    // during SSR below
+
+    // optional: use SSG-caching for each rendered page (see caching section for more details)
+    const ONE_DAY_SECONDS = 60 * 60 * 24;
+    ctx?.res?.setHeader(
+      'Cache-Control',
+      `s-maxage=1, stale-while-revalidate=${ONE_DAY_SECONDS}`,
+    );
+
+    // The server needs to know your app's full url
+    // On render.com you can use `http://${process.env.RENDER_INTERNAL_HOSTNAME}:${process.env.PORT}/api/trpc`
+    const url = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}/api/trpc`
+      : 'http://localhost:3000/api/trpc';
 
     return {
-      links: [
-        loggerLink({
-          enabled: (opts) =>
-            process.env.NODE_ENV === "development" ||
-            (opts.direction === "down" && opts.result instanceof Error),
-        }),
-        httpBatchLink({ url }),
-      ],
+      transformer: superjson, // optional - adds superjson serialization
       url,
-      transformer: superjson,
-      /**
-       * @link https://react-query.tanstack.com/reference/QueryClient
-       */
-      // queryClientConfig: { defaultOptions: { queries: { staleTime: 60 } } },
+      headers: {
+        // optional - inform server that it's an ssr request
+        'x-ssr': '1',
+      },
     };
   },
-  /**
-   * @link https://trpc.io/docs/ssr
-   */
-  ssr: false,
+  ssr: true,
+
 })(MyApp);

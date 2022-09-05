@@ -1,0 +1,78 @@
+import dynamic from 'next/dynamic';
+// const Footer = dynamic(() => import('@components/Footer'));
+const NavBar = dynamic(() => import('./NavBar/NavBar'));
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+type ContainerProps = {
+  children: React.ReactNode;
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  customMeta?: Record<string, string>
+}
+const Containter = (props: ContainerProps) => {
+  const { children, ...customMeta } = props;
+  const router = useRouter();
+  const meta = {
+    title: "Rosnovsky Prk – Art Rosnovsky's Blog",
+    description: `Hey, I'm Art, and we need to talk. `,
+    image: 'https://rosnovsky.us/static/images/banner.jpg',
+    ...customMeta,
+  };
+
+  // const { data: statusData } = useSWR('/api/status', fetcher);
+
+  return (
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="robots" content="follow, index" />
+        <meta content={'meta.description'} name="description" />
+        <meta
+          property="og:url"
+          content={
+            process.env.NODE_ENV !== 'test'
+              ? `https://rosnovsky.us${router.asPath}`
+              : 'https://rosnovsky.us/'
+          }
+        />
+        <link
+          rel="canonical"
+          href={
+            process.env.NODE_ENV !== 'test'
+              ? `https://rosnovsky.us${router.asPath}`
+              : 'https://rosnovsky.us/'
+          }
+        />
+        {/* <meta property="og:type" content={meta.type} /> */}
+        <meta property="og:site_name" content="Rosnovsky Park Blog" />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:image" content={meta.image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@rosnovsky" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.image} />
+        {/* {meta.date && (
+          <meta property="article:published_time" content={meta.date} />
+        )} */}
+      </Head>
+      <div className="  bg-coolGray-50">
+        <section className="max-w-5xl mx-auto relative bg-coolGray-50 overflow-hidden">
+          <NavBar />
+          <div className="bg-transparent">{children}</div>
+          {/* <Footer
+            status={statusData?.status.filter(
+              (incident) => incident.attributes.resolved_at === null
+            )}
+          /> */}
+        </section>
+      </div>
+    </>
+  );
+};
+
+export default Containter;
