@@ -7,7 +7,7 @@ import superjson from 'superjson';
 import Container from '../components/Container';
 import { trpc } from '../utils/trpc';
 
-const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Features = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { posts } = props;
 
   const status = trpc.useQuery(['meta.getStatus'])
@@ -38,7 +38,7 @@ const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export default Home;
+export default Features;
 
 export async function getStaticProps() {
   const ssg = createSSGHelpers({
