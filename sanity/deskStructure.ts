@@ -61,6 +61,15 @@ export default () =>
         ),
       S.divider(),
       S.listItem()
+        .title('Hardware')
+        .schemaType('hardware')
+        .child(
+          S.documentList()
+            .title('Hardware')
+            .filter('_type == "hardware"')
+            .defaultOrdering([{ field: 'datePurchased', direction: 'desc' }])
+        ),
+      S.listItem()
         .title('People')
         .schemaType('person')
         .child(

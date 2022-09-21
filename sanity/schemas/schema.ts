@@ -23,6 +23,7 @@ import comment from './comment';
 import book from './life/books/book';
 import video from './mux';
 import settings from './settings';
+import hardware from './life/uses/hardware';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -48,6 +49,7 @@ export default createSchema({
     airline,
     flight,
     video,
+    hardware,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
