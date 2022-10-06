@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Tooltip } from '@mantine/core';
 import { Book } from 'index';
 
@@ -39,11 +40,12 @@ const BooksMeta = ({ books }: { books: Book[] }) => {
         {Math.ceil(
           (books.reduce(
             (acc, book) =>
-              acc + (book.read || book.status === 'abandoned' ? 1 : 0),
+              acc +
+              (book.status === 'read' || book.status === 'abandoned' ? 1 : 0),
             0
           ) /
             books.length) *
-            100
+          100
         )}
         % finished
       </p>
@@ -58,7 +60,7 @@ const BooksMeta = ({ books }: { books: Book[] }) => {
                 0
               ) /
                 books.reduce((acc, book) => acc + (book.rating ? 1 : 0), 0)) *
-                100
+              100
             ) / 100}{' '}
             stars average
           </p>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Book } from 'index';
 import Link from 'next/link';
 
@@ -55,12 +56,20 @@ const BooksMeta = ({ books }: { books: Book[] }) => {
         </span>
         . I&apos;ve read{' '}
         <span className="text-blue-600 font-medium">
-          {books.filter((book) => book.read).length}
+          {
+            books.filter(
+              (book) => book.status === 'read' || book.status === 'abandoned'
+            ).length
+          }
         </span>{' '}
         of these books which is roughly{' '}
         <span className="text-blue-600 font-medium">
           {Math.ceil(
-            (books.filter((book) => book.read).length / books.length) * 100
+            (books.filter(
+              (book) => book.status === 'read' || book.status === 'abandoned'
+            ).length /
+              books.length) *
+            100
           )}
           %
         </span>

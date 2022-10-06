@@ -279,11 +279,9 @@ type HighlightHitParams<THit> = {
   tagName?: string;
 };
 
-export function Highlight<THit>({
-  hit,
-  attribute,
-  tagName = 'mark',
-}: HighlightHitParams<THit>): JSX.Element {
+export function Highlight<
+  THit extends { _highlightResult?: Record<string, unknown> | undefined }
+>({ hit, attribute, tagName = 'mark' }: HighlightHitParams<THit>): JSX.Element {
   return createElement(
     Fragment,
     {},

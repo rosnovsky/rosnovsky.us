@@ -26,9 +26,6 @@ const CommentEditor = ({
     if (isSaved) {
       setIsSaved(false);
     }
-    return () => {
-      clearInterval();
-    };
   }, [isSaved, postId, setCommentStatus]);
 
   const handleChange = (e) => {
