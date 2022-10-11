@@ -1,5 +1,0 @@
-User-agent: PetalBot 
-Disallow: /
-
-User-agent: *
-Sitemap: https://rosnovsky.us/sitemap.xml
