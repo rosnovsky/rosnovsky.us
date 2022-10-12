@@ -13,9 +13,6 @@ coverage
 out/
 build
 
-# sanity
-dist/
-
 # misc
 .DS_Store
 *.pem
