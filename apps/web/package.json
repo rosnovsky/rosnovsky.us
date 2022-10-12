@@ -1,6 +1,6 @@
 {
-  "name": "template",
-  "version": "0.1.0",
+  "name": "rosnovsky-us",
+  "version": "6.0.0",
   "private": true,
   "scripts": {
     "build": "next build",
