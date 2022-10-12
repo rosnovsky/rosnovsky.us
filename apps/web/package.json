@@ -41,6 +41,7 @@
     "next": "12.3.1",
     "next-auth": "^4.12.3",
     "nextjs-cors": "^2.1.1",
+    "postcss-focus-visible": "^7.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-lite-youtube-embed": "^2.3.1",
