@@ -39,7 +39,7 @@
     "metascraper-title": "^5.29.11",
     "metascraper-url": "^5.29.11",
     "nanoclamp": "^1.4.1",
-    "next": "12.3.1",
+    "next": "12.3.2-canary.25",
     "next-auth": "^4.12.3",
     "nextjs-cors": "^2.1.1",
     "postcss-focus-visible": "^7.1.0",
