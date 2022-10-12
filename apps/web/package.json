@@ -1,6 +1,6 @@
 {
   "name": "rosnovsky-us",
-  "version": "6.0.0",
+  "version": "6.0.0-canary.0",
   "private": true,
   "scripts": {
     "build": "next build",
