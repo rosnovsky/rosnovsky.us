@@ -14,6 +14,7 @@ export const useIntersectionObserver = (enabled, options) => {
             self.unobserve(entry.target)
           }
         }
+        // @ts-expect-error ???
         const observer = new IntersectionObserver(onIntersect, options)
 
         if (node !== null) {

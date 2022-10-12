@@ -33,9 +33,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
-  // It's important to default the slug so that it doesn't return "undefined"
-  const { slug = "" } = context.params;
-  const post: BlogPost = await sanityClient.fetch(postQuery, { slug });
+
+
+  const post: BlogPost = await sanityClient.fetch(postQuery, { slug: context.params?.slug || '' });
 
   return {
     props: {

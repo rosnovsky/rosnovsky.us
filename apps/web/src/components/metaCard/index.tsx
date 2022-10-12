@@ -38,7 +38,7 @@ const Card = (props) => {
   // @ts-expect-error ???
   const { updateState } = useContext(GlobalContext);
   const [loadingState, setLoading] = useState(true);
-  const [iframeMedia, setIframeMedia] = useState(null);
+  const [iframeMedia, setIframeMedia] = useState<Record<string, unknown>>();
   const [isError, setIsError] = useState(false);
   const isLoadingUndefined = useMemo(() => loading === undefined, [loading]);
   const apiUrl = `https://rosnovsky.us/api/getMetaCardData?url=${url}`;
@@ -154,6 +154,7 @@ const Card = (props) => {
   }
 
   if (iframeMedia) {
+    // @ts-expect-error Not sure why this is happening
     iframeMedia.scripts.forEach((attrs) => {
       const hasScript = document.querySelector(`script[src="${attrs.src}"]`);
       if (!hasScript) {

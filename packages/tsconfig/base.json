@@ -15,12 +15,15 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": false,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "noImplicitAny": false,
+    "noExplicitAny": false,
+    "allowJs": true,
+    "noEmit": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noUncheckedIndexedAccess": true
   },
   "exclude": [
     "node_modules"

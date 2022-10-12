@@ -76,7 +76,7 @@ export const PortableTextComponents = {
         <div className="embed-responsive aspect-ratio-16/9 w-full my-3 max-h-3xl">
           <Suspense fallback={<div>Loading...</div>}>
             <LiteYouTubeEmbed
-              id={getYouTubeId(value.url)} // Default none, id of the video or playlist
+              id={getYouTubeId(value.url)!} // Default none, id of the video or playlist
               adNetwork={false} // Default true, to preconnect or not to doubleclick addresses called by YouTube iframe (the adnetwork from Google)
               params="" // any params you want to pass to the URL, assume we already had '&' and pass your parameters string
               playlist={false} // Use  true when your ID be from a playlist
