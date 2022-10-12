@@ -37,3 +37,4 @@ yarn-error.log*
 
 _web/
 _salish/
+.vercel
