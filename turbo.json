@@ -28,6 +28,7 @@
     "GITHUB_CLIENT_SECRET",
     "NEXT_PUBLIC_SITR_URL",
     "VERCEL_URL",
-    "NODE_ENV"
+    "NODE_ENV",
+    "BUTTONDOWN_API_KEY"
   ]
 }
