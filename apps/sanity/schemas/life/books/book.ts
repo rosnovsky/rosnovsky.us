@@ -32,19 +32,9 @@ export default {
     {
       name: 'author',
       title: 'Author',
-      type: 'string',
+      type: 'reference',
+      to: [{ type: 'author' }],
       validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      description:
-        "If book doesn't have a description in ISBNDB, you can add one here",
-      validation: (Rule) =>
-        Rule.required().error(
-          'Description is required since its rendered on the website.'
-        ),
     },
     {
       name: 'cover',
@@ -66,7 +56,8 @@ export default {
     {
       name: 'publisher',
       title: 'Publisher',
-      type: 'string',
+      type: 'reference',
+      to: [{ type: 'publisher' }],
       validation: (Rule) => Rule.required(),
     },
     {
@@ -80,6 +71,10 @@ export default {
       name: 'own',
       title: 'Own?',
       type: 'boolean',
+      options: {
+        layout: 'checkbox',
+        default: true,
+      },
     },
     {
       name: 'status',
@@ -123,7 +118,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      subtitle: 'author',
+      subtitle: 'author.name',
       media: 'cover',
     },
   },

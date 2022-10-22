@@ -26,6 +26,8 @@ import settings from './settings';
 import flags from './flags';
 import hardware from './life/things/hardware';
 import software from './life/things/software';
+import authors from './life/books/authors';
+import publishers from './life/books/publishers';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -41,6 +43,8 @@ export default createSchema({
     hike,
     page,
     book,
+    authors,
+    publishers,
     category,
     hardware,
     software,

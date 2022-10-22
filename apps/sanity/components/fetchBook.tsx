@@ -29,10 +29,10 @@ export const Button = withDocument((props) => {
         `https://api2.isbndb.com/book/${document.isbn}`,
         {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: process.env.SANITY_STUDIO_ISBNDB_KEY,
-          },
+          headers: [
+            ['Content-Type', 'application/json'],
+            ['Authorization', '47968_e47180545576e41eb26f372841be03bd'],
+          ]
         }
       )
         .then((res) => res.json())
