@@ -12,7 +12,7 @@ import openBookIcon from '@/images/icons/book-opened.svg'
 
 export default function Library({ library }: { library: Book[] }) {
   const stats = new LibraryStats(library)
-  const statsCard: Record<string, any>[] = [{ id: 1, name: 'Total Books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, }, { id: 2, name: 'Total pages', stat: "1", icon: openBookIcon, secondStat: "1", }, { id: 3, name: 'Total Reading time', stat: stats.totalTimeRead, icon: openBookIcon, secondStat: stats.totalToRead }]
+  const statsCard: Record<string, any>[] = [{ id: 1, name: 'Total Books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, }, { id: 2, name: 'Total pages', stat: stats.totalPages, icon: openBookIcon, secondStat: stats.totalPagesRead, }, { id: 3, name: 'Total Reading time', stat: stats.totalTimeToRead, icon: openBookIcon, secondStat: stats.totalTimeRead }]
   return (
     <>
       <Head>

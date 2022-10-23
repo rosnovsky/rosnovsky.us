@@ -26,6 +26,8 @@ export class LibraryStats {
   totalPublishers: number
   totalTimeToRead: number
   totalTimeRead: number
+  totalPages: number
+  totalPagesRead: number
   averageBooksPerAuthor: number
   averageBooksPerPublisher: number
   averageReadingTimePerBook: number
@@ -47,18 +49,33 @@ export class LibraryStats {
     this.totalPublishers = [
       ...new Set(books.map((book) => book.publisher)),
     ].length
-    this.totalTimeToRead = books.reduce(
-      (acc, book) => acc + book.estimatedReadingTime,
+    this.totalPages = books.reduce((acc, book) => acc + book.pages, 0)
+    this.totalPagesRead = books.reduce(
+      (acc, book) =>
+        acc +
+        (book.status === 'read' || book.status === 'abandoned'
+          ? book.pages
+          : 0),
       0
     )
-    this.totalTimeRead = books.reduce(
-      (acc, book) => acc + book.estimatedReadingTime,
-      0
+    this.totalTimeToRead = Math.floor(
+      books.reduce((acc, book) => acc + book.estimatedReadingTime, 0)
     )
-    this.averageBooksPerAuthor = this.totalBooks / this.totalAuthors
-    this.averageAuthorsPerPublisher = this.totalAuthors / this.totalPublishers
-    this.averageBooksPerPublisher = this.totalBooks / this.totalPublishers
-    this.averageReadingTimePerBook = this.totalTimeToRead / this.totalBooks
+    this.totalTimeRead = Math.floor(
+      books
+        .filter((book) => book.status === 'read' || book.status === 'abandoned')
+        .reduce((acc, book) => acc + book.estimatedReadingTime, 0)
+    )
+    this.averageBooksPerAuthor = Math.floor(this.totalBooks / this.totalAuthors)
+    this.averageAuthorsPerPublisher = Math.floor(
+      this.totalAuthors / this.totalPublishers
+    )
+    this.averageBooksPerPublisher = Math.floor(
+      this.totalBooks / this.totalPublishers
+    )
+    this.averageReadingTimePerBook = Math.floor(
+      this.totalTimeToRead / this.totalBooks
+    )
     this.topTenAuthorsByBookCount = Object.entries(
       books.reduce((acc, book) => {
         acc[book.author?.name] = (acc[book.author?.name] || 0) + 1
@@ -91,44 +108,4 @@ export class LibraryStats {
       books: publisher[1],
     }))
   }
-}
-
-export const libraryStats = (books: Book[]) => {
-  currentlyReading: books.filter((book) => book.status === 'reading') || null
-  totalAuthors: books.map((book) => book.author).length
-  totalPublishers: books.map((book) => book.publisher).length
-  totalTimeToRead: books.reduce(
-    (acc, book) => acc + book.estimatedReadingTime,
-    0
-  )
-  totalTimeRead: books.reduce((acc, book) => acc + book.estimatedReadingTime, 0)
-  averageBooksPerAuthor: books.length / books.map((book) => book.author).length
-  averagePagesPerBook: books.reduce((acc, book) => acc + book.pages, 0) /
-    books.length
-  averageReadingTimePerBook: books.reduce(
-    (acc, book) => acc + book.estimatedReadingTime,
-    0
-  ) / books.length
-  averageAuthorsPerPublisher: books.map((book) => book.author).length /
-    books.map((book) => book.publisher).length
-  topTenAuthorsByBookCount: books
-    .map((book) => book.author)
-    .reduce((acc, author) => {
-      if (acc[author.name]) {
-        acc[author.name] += 1
-      } else {
-        acc[author.name] = 1
-      }
-      return acc
-    }, {})
-  topTenPublishersByBookCount: books
-    .map((book) => book.publisher)
-    .reduce((acc, publisher) => {
-      if (acc[publisher.name]) {
-        acc[publisher.name] += 1
-      } else {
-        acc[publisher.name] = 1
-      }
-      return acc
-    }, {})
 }
