@@ -33,25 +33,30 @@ export default function Library({ library }: { library: Book[] }) {
       </Head>
       <SimpleLayout
         title="Welcome to my library."
-        intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read. ${library.length} books in total, ${library.filter((book) => book.status === 'read').length} of them I've finished, ${library.reduce((acc, book) => acc + book.pages, 0).toLocaleString()} pages in total. I'm currently reading ${library.filter((book) => book.status === 'reading')[0]?.title}. Total publishers ${new Set(library.map((book) => book.publisher?.name)).size}, total authors ${new Set(library.map((book) => book.author?.name)).size}. Total time to read ${Math.floor(library.reduce((acc, book) => acc + book.estimatedReadingTime, 0)).toLocaleString()} hours. Average books per author ${Math.floor(library.length / new Set(library.map((book) => book.author?.name)).size)}. 
-        Authors with most books ${Object.entries(library.reduce((acc, book) => { acc[book.author?.name] = (acc[book.author?.name] || 0) + 1; return acc }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => `${name} (${count})`).join(', ')}. Publishers with most books ${Object.entries(library.reduce((acc, book) => { acc[book.publisher?.name] = (acc[book.publisher?.name] || 0) + 1; return acc }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => `${name} (${count})`).join(', ')}.`}>
+        intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
+        <div className='prose prose-xl text-black dark:text-white'>
+          <ul>
+            <li>{library.length} books in total, {library.filter((book) => book.status === 'read').length} of them I've finished, {library.reduce((acc, book) => acc + book.pages, 0).toLocaleString()} pages in total.</li>
+            <li>I'm currently reading {library.filter((book) => book.status === 'reading')[0]?.title}.</li>
+            <li>Total publishers {new Set(library.map((book) => book.publisher?.name)).size}, total authors {new Set(library.map((book) => book.author?.name)).size}.</li>
+            <li>Total time to read {Math.floor(library.reduce((acc, book) => acc + book.estimatedReadingTime, 0)).toLocaleString()} hours.</li> <li>Average books per author {Math.floor(library.length / new Set(library.map((book) => book.author?.name)).size)}.</li>
+            <li>Authors with most books {Object.entries(library.reduce((acc, book) => { acc[book.author?.name] = (acc[book.author?.name] || 0) + 1; return acc }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => `${name} (${count})`).join(', ')}. </li>
+            <li>Publishers with most books {Object.entries(library.reduce((acc, book) => { acc[book.publisher?.name] = (acc[book.publisher?.name] || 0) + 1; return acc }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => `${name} (${count})`).join(', ')}.`</li></ul></div>
         <ul
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
         >
           {library.map((book) => (
             <Card className="" as="li" key={book.title}>
-              <div className="">
-                <Image
-                  src={book.cover.url}
-                  alt=""
-                  className="object-contain max-h-36 items-center justify-center rounded-md bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
-                  width={100}
-                  height={140}
-                  placeholder="blur"
-                  blurDataURL={book.cover.metadata.lqip}
-                />
-              </div>
+              <Image
+                src={book.cover.url}
+                alt=""
+                className="z-10 object-contain max-h-36 items-center justify-center rounded-md bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+                width={100}
+                height={140}
+                placeholder="blur"
+                blurDataURL={book.cover.metadata.lqip}
+              />
               <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                 <Card.Link href={`/library/${book.isbn}`}>{book.title}</Card.Link>
               </h2>
