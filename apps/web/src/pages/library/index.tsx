@@ -7,9 +7,12 @@ import { Book } from 'index'
 import sanityClient from '@/lib/sanityClient'
 import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
+import bookIcon from '@/images/icons/notebook.svg'
+import openBookIcon from '@/images/icons/book-opened.svg'
 
 export default function Library({ library }: { library: Book[] }) {
   const stats = new LibraryStats(library)
+  const statsCard: Record<string, any>[] = [{ id: 1, name: 'Total Books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, }, { id: 2, name: 'Total pages', stat: "1", icon: openBookIcon, secondStat: "1", }, { id: 3, name: 'Total Reading time', stat: stats.totalTimeRead, icon: openBookIcon, secondStat: stats.totalToRead }]
   return (
     <>
       <Head>
@@ -17,16 +20,17 @@ export default function Library({ library }: { library: Book[] }) {
         <meta
           name="description"
           content="All my books."
+          className="text-teal-500"
         />
       </Head>
       <SimpleLayout
         title="Welcome to my library."
         intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
-        <LibraryStatsComponent />
+        <LibraryStatsComponent statsCard={statsCard} />
 
         <ul
           role="list"
-          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mt-10"
         >
           {library.map((book) => (
             <Card className="" as="li" key={book.title}>
