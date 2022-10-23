@@ -17,7 +17,7 @@ export function SimpleLayout({ title, intro, children }: SimpleLayoutProps) {
           {intro}
         </p>
       </header>
-      <div className="mt-16 sm:mt-20">{children}</div>
+      <div className="mt-10 sm:mt-14">{children}</div>
     </Container>
   )
 }

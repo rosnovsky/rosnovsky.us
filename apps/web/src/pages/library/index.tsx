@@ -9,10 +9,11 @@ import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
 import bookIcon from '@/images/icons/notebook.svg'
 import openBookIcon from '@/images/icons/book-opened.svg'
+import calendarIcon from '@/images/icons/calendar-event.svg'
 
-export default function Library({ library }: { library: Book[] }) {
-  const stats = new LibraryStats(library)
-  const statsCard: Record<string, any>[] = [{ id: 1, name: 'Total Books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, }, { id: 2, name: 'Total pages', stat: stats.totalPages, icon: openBookIcon, secondStat: stats.totalPagesRead, }, { id: 3, name: 'Total Reading time', stat: stats.totalTimeToRead, icon: openBookIcon, secondStat: stats.totalTimeRead }]
+export default function Library({ library, allLibrary }: { library: Book[], allLibrary: Book[] }) {
+  const stats = new LibraryStats(allLibrary)
+  const statsCard: Record<string, any>[] = [{ id: 1, name: 'Total Books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, }, { id: 2, name: 'Total pages', stat: stats.totalPagesFormatted, icon: openBookIcon, secondStat: stats.totalPagesReadFormatted, }, { id: 3, name: 'Total Reading time', stat: stats.totalReadingTimeInYears, icon: calendarIcon, secondStat: stats.totalReadTimeInYears }]
   return (
     <>
       <Head>
@@ -27,7 +28,29 @@ export default function Library({ library }: { library: Book[] }) {
         title="Welcome to my library."
         intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
         <LibraryStatsComponent statsCard={statsCard} />
+        <div className='grid grid-cols-2 mb-20'>
+          <div><h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">Top 10 authors</h3>
+            <ol className=' list-decimal '>
+              {stats.topTenAuthors.filter(author => author.name !== "undefined").map((author) => (
+                <li key={author.name}>
+                  {author.name}: {author.books} books
+                </li>
+              ))}
+            </ol>
+          </div>
 
+          <div><h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">Top 10 publishers</h3>
+            <ol className='  list-decimal '>
+              {stats.topTenPublishers.filter(publisher => publisher.name !== "undefined").map((publisher) => (
+                <li key={publisher.name}>
+                  {publisher.name}: {publisher.books} books
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+
+        <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">All Books</h3>
         <ul
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mt-10"
@@ -61,34 +84,16 @@ export default function Library({ library }: { library: Book[] }) {
 
 export async function getStaticProps() {
   const library = await sanityClient.fetch(`
-    *[ _type == "book" ] | order(publishedDate desc)
+    *[ _type == "book" ] | order(publishedDate desc)[0..$page] 
     {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}
-    `)
+    `, { page: 10 })
+  const allLibrary = await sanityClient.fetch(`*[_type == "book"]{status, pages, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}`)
   return {
     props: {
       library,
+      allLibrary
     },
   }
 }
 
 
-// Set aside
-{/* <div>
-  Top 10 books:
-  <ul>
-    {stats.topTenAuthors.filter(author => author.author !== "undefined").map((author) => (
-      <li key={author.author}>
-        {author.author}: {author.books} books
-      </li>
-    ))}
-  </ul>
-
-  Top 10 books:
-  <ul>
-    {stats.topTenPublishers.filter(publisher => publisher.publisher !== "undefined").map((publisher) => (
-      <li key={publisher.publisher}>
-        {publisher.publisher}: {publisher.books} books
-      </li>
-    ))}
-  </ul>
-</div> */}

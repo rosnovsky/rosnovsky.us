@@ -4,10 +4,8 @@ export default function LibraryStatsComponent({ statsCard }: { statsCard: Record
   const stats = statsCard
 
   return (
-    <div>
-      <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">Numbers</h3>
-
-      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className='mb-20'>
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 ">
         {stats.map((item) => (
           <div
             key={item.name}
@@ -22,7 +20,7 @@ export default function LibraryStatsComponent({ statsCard }: { statsCard: Record
             <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
               <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-200">{item.stat.toLocaleString()}</p>
               <p
-                className="text-green-600 ml-2 flex items-baseline text-sm font-semibold">
+                className="text-teal-600 ml-2 flex items-baseline text-sm font-semibold">
                 {item.secondStat.toLocaleString()} finished
               </p>
             </dd>

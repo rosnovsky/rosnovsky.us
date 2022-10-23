@@ -83,7 +83,7 @@ export class LibraryStats {
       }, {} as Record<string, number>)
     )
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
+      .slice(0, 11)
 
     this.topTenPublishersByBookCount = Object.entries(
       books.reduce((acc, book) => {
@@ -92,7 +92,7 @@ export class LibraryStats {
       }, {} as Record<string, number>)
     )
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 10)
+      .slice(0, 11)
   }
 
   get topTenAuthors() {
@@ -107,5 +107,22 @@ export class LibraryStats {
       name: publisher[0],
       books: publisher[1],
     }))
+  }
+  get totalPagesReadFormatted() {
+    return `${Math.floor(this.totalPagesRead / 1000)}k`
+  }
+
+  get totalPagesFormatted() {
+    return `~${Math.floor(this.totalPages / 1000)}k`
+  }
+
+  get totalReadingTimeInYears() {
+    return `~${Math.ceil(this.totalTimeToRead / 24 / 365)}y
+    `
+  }
+
+  get totalReadTimeInYears() {
+    return `${Math.ceil(this.totalTimeRead / 24 / 365)}y
+    `
   }
 }
