@@ -33,8 +33,8 @@ export default function Library({ library }: { library: Book[] }) {
       </Head>
       <SimpleLayout
         title="Welcome to my library."
-        intro="I love reading books. And I've read a lot of them. Here's a list of all the books I've read."
-      >
+        intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read. ${library.length} books in total, ${library.filter((book) => book.status === 'read').length} of them I've finished, ${library.reduce((acc, book) => acc + book.pages, 0).toLocaleString()} pages in total. I'm currently reading ${library.filter((book) => book.status === 'reading')[0]?.title}. Total publishers ${new Set(library.map((book) => book.publisher?.name)).size}, total authors ${new Set(library.map((book) => book.author?.name)).size}. Total time to read ${Math.floor(library.reduce((acc, book) => acc + book.estimatedReadingTime, 0)).toLocaleString()} hours. Average books per author ${Math.floor(library.length / new Set(library.map((book) => book.author?.name)).size)}. 
+        Authors with most books ${Object.entries(library.reduce((acc, book) => { acc[book.author?.name] = (acc[book.author?.name] || 0) + 1; return acc }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => `${name} (${count})`).join(', ')}. Publishers with most books ${Object.entries(library.reduce((acc, book) => { acc[book.publisher?.name] = (acc[book.publisher?.name] || 0) + 1; return acc }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, count]) => `${name} (${count})`).join(', ')}.`}>
         <ul
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
@@ -71,7 +71,7 @@ export default function Library({ library }: { library: Book[] }) {
 export async function getStaticProps() {
   const library = await sanityClient.fetch(`
     *[ _type == "book" ] | order(publishedDate desc)
-    {..., "cover": cover.asset->, author->{name}, publisher->{name}}
+    {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}
     `)
   return {
     props: {
