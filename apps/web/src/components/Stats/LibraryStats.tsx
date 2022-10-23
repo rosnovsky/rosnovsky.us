@@ -1,4 +1,18 @@
-export const LibraryStats = (library) => {
+import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
+import { CursorArrowRaysIcon, EnvelopeOpenIcon, UsersIcon } from '@heroicons/react/24/outline'
+
+const stats = [
+
+  { id: 1, name: 'Total Books', stat: '232', icon: UsersIcon, change: '158 read', changeType: 'increase' },
+  { id: 2, name: 'Total pages', stat: '98,200', icon: EnvelopeOpenIcon, change: '68,321 read', changeType: 'increase' },
+  { id: 3, name: 'Total Reading time', stat: '9 years', icon: CursorArrowRaysIcon, change: '6 years read', changeType: 'decrease' },
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export default function LibraryStatsComponent() {
   return (
     <div>
       <h3 className="text-lg font-medium leading-6 text-gray-900">Last 30 days</h3>
@@ -7,7 +21,7 @@ export const LibraryStats = (library) => {
         {stats.map((item) => (
           <div
             key={item.id}
-            className="relative overflow-hidden rounded-lg bg-white px-4 pt-5 pb-12 shadow sm:px-6 sm:pt-6"
+            className="relative overflow-hidden rounded-lg bg-white px-4 pt-5  shadow sm:px-6 sm:pt-6"
           >
             <dt>
               <div className="absolute rounded-md bg-indigo-500 p-3">
@@ -32,14 +46,6 @@ export const LibraryStats = (library) => {
                 <span className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
                 {item.change}
               </p>
-              <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
-                <div className="text-sm">
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                    {' '}
-                    View all<span className="sr-only"> {item.name} stats</span>
-                  </a>
-                </div>
-              </div>
             </dd>
           </div>
         ))}

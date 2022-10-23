@@ -5,10 +5,11 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Book } from 'index'
 import sanityClient from '@/lib/sanityClient'
-import { bookStatus, LibraryStats, libraryStats } from '@/lib/libraryHelpers'
-
+import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
+import LibraryStatsComponent from '@/components/Stats/LibraryStats'
 
 export default function Library({ library }: { library: Book[] }) {
+  const stats = new LibraryStats(library)
   return (
     <>
       <Head>
@@ -21,9 +22,8 @@ export default function Library({ library }: { library: Book[] }) {
       <SimpleLayout
         title="Welcome to my library."
         intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
-        <div>
-          {new LibraryStats(library).totalAuthors}
-        </div>
+        <LibraryStatsComponent />
+
         <ul
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
@@ -64,7 +64,27 @@ export async function getStaticProps() {
     props: {
       library,
     },
-    revalidate: 10
   }
 }
 
+
+// Set aside
+{/* <div>
+  Top 10 books:
+  <ul>
+    {stats.topTenAuthors.filter(author => author.author !== "undefined").map((author) => (
+      <li key={author.author}>
+        {author.author}: {author.books} books
+      </li>
+    ))}
+  </ul>
+
+  Top 10 books:
+  <ul>
+    {stats.topTenPublishers.filter(publisher => publisher.publisher !== "undefined").map((publisher) => (
+      <li key={publisher.publisher}>
+        {publisher.publisher}: {publisher.books} books
+      </li>
+    ))}
+  </ul>
+</div> */}
