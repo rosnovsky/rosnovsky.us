@@ -219,20 +219,30 @@ interface SiteMetadata {
   description?: string
 }
 
+type Author = {
+  name: string
+  slug: { current: string }
+  website: string
+}
+
+type Publisher = {
+  name: string
+  slug: { current: string }
+  website: string
+}
+
 interface Book {
   title: string
-  author: string
+  author: Author
   isbn: string
   cover: SanityImageAssetDocument
   socialCardImage: SanityImageAssetDocument
-  summary: string
   estimatedReadingTime: number
   pages: number
-  status: 'to read' | 'reading' | 'read' | 'abandoned'
+  status?: 'to read' | 'reading' | 'read' | 'abandoned'
   own: boolean
-  read: string
   rating: number
-  publisher: string
+  publisher: Publisher
   publishedDate: string
-  review: Block[]
+  review?: Block[]
 }

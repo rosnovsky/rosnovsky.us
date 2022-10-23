@@ -1,86 +1,82 @@
+import Image from 'next/future/image'
 import Head from 'next/head'
 
 import { Card } from '@/components/Card'
-import { Section } from '@/components/Section'
 import { SimpleLayout } from '@/components/SimpleLayout'
+import { Book } from 'index'
+import sanityClient from '@/lib/sanityClient'
 
-function SpeakingSection({ children, ...props }) {
-  return (
-    <Section title="" {...props}>
-      <div className="space-y-16">{children}</div>
-    </Section>
-  )
+const bookStatus = (status: Book["status"]) => {
+  switch (status) {
+    case 'read':
+      return 'Finished'
+    case 'reading':
+      return 'Reading now'
+    case 'to read':
+      return 'Want to Read'
+    case 'abandoned':
+      return 'Started but Abandoned'
+    default:
+      return 'Not Read'
+  }
 }
 
-function Appearance({ title, description, event, cta, href }) {
-  return (
-    <Card className="" as="article">
-      <Card.Title as="h3" href={href}>
-        {title}
-      </Card.Title>
-      <Card.Eyebrow className="" decorate>{event}</Card.Eyebrow>
-      <Card.Description>{description}</Card.Description>
-      <Card.Cta>{cta}</Card.Cta>
-    </Card>
-  )
-}
-
-export default function Speaking() {
+export default function Library({ library }: { library: Book[] }) {
   return (
     <>
       <Head>
-        <title>Speaking - Spencer Sharp</title>
+        <title>Library - Art Rosnovsky</title>
         <meta
           name="description"
-          content="I’ve spoken at events all around the world and been interviewed for many podcasts."
+          content="All my books."
         />
       </Head>
       <SimpleLayout
-        title="I’ve spoken at events all around the world and been interviewed for many podcasts."
-        intro="One of my favorite ways to share my ideas is live on stage, where there’s so much more communication bandwidth than there is in writing, and I love podcast interviews because they give me the opportunity to answer questions instead of just present my opinions."
+        title="Welcome to my library."
+        intro="I love reading books. And I've read a lot of them. Here's a list of all the books I've read."
       >
-        <div className="space-y-20">
-          <SpeakingSection title="Conferences">
-            <Appearance
-              href="#"
-              title="In space, no one can watch you stream — until now"
-              description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
-              event="SysConf 2021"
-              cta="Watch video"
-            />
-            <Appearance
-              href="#"
-              title="Lessons learned from our first product recall"
-              description="They say that if you’re not embarassed by your first version, you’re doing it wrong. Well when you’re selling DIY space shuttle kits it turns out it’s a bit more complicated."
-              event="Business of Startups 2020"
-              cta="Watch video"
-            />
-          </SpeakingSection>
-          <SpeakingSection title="Podcasts">
-            <Appearance
-              href="#"
-              title="Using design as a competitive advantage"
-              description="How we used world-class visual design to attract a great team, win over customers, and get more press for Planetaria."
-              event="Encoding Design, July 2022"
-              cta="Listen to podcast"
-            />
-            <Appearance
-              href="#"
-              title="Bootstrapping an aerospace company to $17M ARR"
-              description="The story of how we built one of the most promising space startups in the world without taking any capital from investors."
-              event="The Escape Velocity Show, March 2022"
-              cta="Listen to podcast"
-            />
-            <Appearance
-              href="#"
-              title="Programming your company operating system"
-              description="On the importance of creating systems and processes for running your business so that everyone on the team knows how to make the right decision no matter the situation."
-              event="How They Work Radio, September 2021"
-              cta="Listen to podcast"
-            />
-          </SpeakingSection>
-        </div>
+        <ul
+          role="list"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {library.map((book) => (
+            <Card className="" as="li" key={book.title}>
+              <div className="">
+                <Image
+                  src={book.cover.url}
+                  alt=""
+                  className="object-contain max-h-36 items-center justify-center rounded-md bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+                  width={100}
+                  height={140}
+                  placeholder="blur"
+                  blurDataURL={book.cover.metadata.lqip}
+                />
+              </div>
+              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                <Card.Link href={`/library/${book.isbn}`}>{book.title}</Card.Link>
+              </h2>
+              <Card.Description>by {book.author?.name} ({book.publisher?.name}, {book.publishedDate})</Card.Description>
+              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+                {/* <LinkIcon className="h-6 w-6 flex-none" /> */}
+                <span className="ml-2">{bookStatus(book.status)}</span>
+              </p>
+            </Card>
+          ))}
+        </ul>
       </SimpleLayout>
     </>
   )
 }
+
+export async function getStaticProps() {
+  const library = await sanityClient.fetch(`
+    *[ _type == "book" ] | order(publishedDate desc)
+    {..., "cover": cover.asset->, author->{name}, publisher->{name}}
+    `)
+  return {
+    props: {
+      library,
+    },
+  }
+}
+
