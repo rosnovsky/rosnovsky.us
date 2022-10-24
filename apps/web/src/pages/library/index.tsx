@@ -7,13 +7,10 @@ import { Book } from 'index'
 import sanityClient from '@/lib/sanityClient'
 import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
-import bookIcon from '@/images/icons/notebook.svg'
-import openBookIcon from '@/images/icons/book-opened.svg'
-import calendarIcon from '@/images/icons/calendar-event.svg'
+import { TopTen } from '@/components/Stats/TopTen'
 
-export default function Library({ library, allLibrary }: { library: Book[], allLibrary: Book[] }) {
+export default function Library({ library, allLibrary, allAuthors, allPublishers }: { library: Book[], allLibrary: Book[], allAuthors: any[], allPublishers: any[] }) {
   const stats = new LibraryStats(allLibrary)
-  const statsCard: Record<string, any>[] = [{ id: 1, name: 'Total Books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, }, { id: 2, name: 'Total pages', stat: stats.totalPagesFormatted, icon: openBookIcon, secondStat: stats.totalPagesReadFormatted, }, { id: 3, name: 'Total Reading time', stat: stats.totalReadingTimeInYears, icon: calendarIcon, secondStat: stats.totalReadTimeInYears }]
   return (
     <>
       <Head>
@@ -27,28 +24,8 @@ export default function Library({ library, allLibrary }: { library: Book[], allL
       <SimpleLayout
         title="Welcome to my library."
         intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
-        <LibraryStatsComponent statsCard={statsCard} />
-        <div className='grid grid-cols-2 mb-20'>
-          <div><h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">Top 10 authors</h3>
-            <ol className=' list-decimal '>
-              {stats.topTenAuthors.filter(author => author.name !== "undefined").map((author) => (
-                <li key={author.name}>
-                  {author.name}: {author.books} books
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div><h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">Top 10 publishers</h3>
-            <ol className='  list-decimal '>
-              {stats.topTenPublishers.filter(publisher => publisher.name !== "undefined").map((publisher) => (
-                <li key={publisher.name}>
-                  {publisher.name}: {publisher.books} books
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
+        <LibraryStatsComponent stats={stats} />
+        <TopTen allAuthors={allAuthors} allPublishers={allPublishers} />
 
         <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">All Books</h3>
         <ul
@@ -87,12 +64,31 @@ export async function getStaticProps() {
     *[ _type == "book" ] | order(publishedDate desc)[0..$page] 
     {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}
     `, { page: 10 })
-  const allLibrary = await sanityClient.fetch(`*[_type == "book"]{status, pages, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}`)
+  const allLibrary = await sanityClient.fetch(`*
+  [_type == "book"]
+  {
+    status, 
+    pages, 
+    "estimatedReadingTime": pages / 1.5,
+}`)
+  const allAuthors = await sanityClient.fetch(`*[_type=="author"]{
+  ...,
+  "books": *[_type=='book' && references(^._id)]{ title },
+  "totalBooks": count(*[_type=='book' && references(^._id)])
+}`)
+  const allPublishers = await sanityClient.fetch(`*[_type == "publisher"]{
+    ...,
+    "books": * [_type == 'book' && references(^._id)]{ title },
+    "totalBooks": count(* [_type == 'book' && references(^._id)])
+}`)
   return {
     props: {
       library,
-      allLibrary
+      allLibrary,
+      allAuthors,
+      allPublishers,
     },
+    revalidate: 120
   }
 }
 

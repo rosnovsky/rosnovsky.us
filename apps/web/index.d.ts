@@ -219,16 +219,18 @@ interface SiteMetadata {
   description?: string
 }
 
-type Author = {
+interface Author extends SanityDocument {
   name: string
   slug: { current: string }
   website: string
+  totalBooks: number
 }
 
-type Publisher = {
+interface Publisher extends SanityDocument {
   name: string
   slug: { current: string }
   website: string
+  totalBooks: number
 }
 
 interface Book {
