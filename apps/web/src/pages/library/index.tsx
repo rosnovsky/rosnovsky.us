@@ -9,7 +9,7 @@ import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
 import { TopTen } from '@/components/Stats/TopTen'
 
-export default function Library({ library, allLibrary, allAuthors, allPublishers }: { library: Book[], allLibrary: Book[], allAuthors: any[], allPublishers: any[] }) {
+export default function Library({ library, allLibrary, allAuthors, allPublishers, allGenres }: { library: Book[], allLibrary: Book[], allAuthors: any[], allPublishers: any[], allGenres: any[] }) {
   const stats = new LibraryStats(allLibrary)
   return (
     <>
@@ -25,7 +25,7 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
         title="Welcome to my library."
         intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
         <LibraryStatsComponent stats={stats} />
-        <TopTen allAuthors={allAuthors} allPublishers={allPublishers} />
+        <TopTen allAuthors={allAuthors} allPublishers={allPublishers} allGenres={allGenres} />
 
         <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">All Books</h3>
         <ul
@@ -81,12 +81,19 @@ export async function getStaticProps() {
     "books": * [_type == 'book' && references(^._id)]{ title },
     "totalBooks": count(* [_type == 'book' && references(^._id)])
 }`)
+
+  const allGenres = await sanityClient.fetch(`*[_type == "genre"]{
+    ...,
+    "books": * [_type == 'book' && references(^._id)]{ title },
+    "totalBooks": count(* [_type == 'book' && references(^._id)])
+}`)
   return {
     props: {
       library,
       allLibrary,
       allAuthors,
       allPublishers,
+      allGenres
     },
     revalidate: 120
   }

@@ -9,6 +9,8 @@ import { SessionProvider } from "next-auth/react";
 import type { Session } from "next-auth";
 import type { AppType } from "next/app";
 import { trpc } from "../utils/trpc";
+import ErrorBoundary from '@/components/ErrorBoundary'
+import Error from '@/pages/_error'
 
 function usePrevious(value: any) {
   let ref = useRef<any>()
@@ -37,7 +39,10 @@ const RosnovskyPark: AppType<{ session: Session | null }> = ({
         <SessionProvider session={session}>
           <Header />
           <main>
-            <Component previousPathname={previousPathname} {...pageProps} />
+            {/* @ts-expect-error ??? */}
+            <ErrorBoundary FallbackComponent={Error}>
+              <Component previousPathname={previousPathname} {...pageProps} />
+            </ErrorBoundary>
           </main>
         </SessionProvider>
         <Footer />

@@ -233,6 +233,12 @@ interface Publisher extends SanityDocument {
   totalBooks: number
 }
 
+interface Genre extends SanityDocument {
+  name: string
+  slug: { current: string }
+  totalBooks: number
+}
+
 interface Book {
   title: string
   author: Author
