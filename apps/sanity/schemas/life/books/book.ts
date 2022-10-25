@@ -30,6 +30,15 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'slug',
+      title:  'slug',
+      type: 'slug',
+      options: {
+	source: 'title'
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',
