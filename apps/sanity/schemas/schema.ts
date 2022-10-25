@@ -12,22 +12,17 @@ import page from './page';
 import youtube from './youtube';
 import metacard from './metacard';
 import hike from './hike';
-// import person from './life/people/person';
-// import country from './life/places/country';
-// import city from './life/places/city';
-// import company from './life/jobs/company';
-// import airline from './life/travel/airline';
-// import flight from './life/travel/flight';
 import socialCard from './socialCard';
 import comment from './comment';
 import book from './life/books/book';
+import authors from './life/books/authors';
+import publishers from './life/books/publishers';
 import video from './mux';
 import settings from './settings';
 import flags from './flags';
 import hardware from './life/things/hardware';
 import software from './life/things/software';
-import authors from './life/books/authors';
-import publishers from './life/books/publishers';
+import genre from './life/books/genre';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -45,17 +40,12 @@ export default createSchema({
     book,
     authors,
     publishers,
+    genre,
     category,
     hardware,
     software,
     youtube,
     metacard,
-    // person,
-    // country,
-    // city,
-    // company,
-    // airline,
-    // flight,
     video,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

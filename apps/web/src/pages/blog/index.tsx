@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { formatDate } from '@/lib/formatDate'
+import { formatDate } from '@/lib/helpers'
 import type { BlogPost } from 'index'
 import sanityClient from '@/lib/sanityClient'
 import { indexPagePostsQuery, totalPostsCountQuery } from '@/lib/queries'

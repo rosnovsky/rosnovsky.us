@@ -5,10 +5,12 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Book } from 'index'
 import sanityClient from '@/lib/sanityClient'
-import { bookStatus, LibraryStats, libraryStats } from '@/lib/libraryHelpers'
+import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
+import LibraryStatsComponent from '@/components/Stats/LibraryStats'
+import { TopTen } from '@/components/Stats/TopTen'
 
-
-export default function Library({ library }: { library: Book[] }) {
+export default function Library({ library, allLibrary, allAuthors, allPublishers, allGenres }: { library: Book[], allLibrary: Book[], allAuthors: any[], allPublishers: any[], allGenres: any[] }) {
+  const stats = new LibraryStats(allLibrary)
   return (
     <>
       <Head>
@@ -16,17 +18,19 @@ export default function Library({ library }: { library: Book[] }) {
         <meta
           name="description"
           content="All my books."
+          className="text-teal-500"
         />
       </Head>
       <SimpleLayout
         title="Welcome to my library."
         intro={`I love reading books. And I've read a lot of them. Here's a list of all the books I've read.`}>
-        <div>
-          {new LibraryStats(library).totalAuthors}
-        </div>
+        <LibraryStatsComponent stats={stats} />
+        <TopTen allAuthors={allAuthors} allPublishers={allPublishers} allGenres={allGenres} />
+
+        <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-zinc-100">All Books</h3>
         <ul
           role="list"
-          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mt-10"
         >
           {library.map((book) => (
             <Card className="" as="li" key={book.title}>
@@ -57,14 +61,42 @@ export default function Library({ library }: { library: Book[] }) {
 
 export async function getStaticProps() {
   const library = await sanityClient.fetch(`
-    *[ _type == "book" ] | order(publishedDate desc)
+    *[ _type == "book" ] | order(publishedDate desc)[0..$page] 
     {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}
-    `)
+    `, { page: 10 })
+  const allLibrary = await sanityClient.fetch(`*
+  [_type == "book"]
+  {
+    status, 
+    pages, 
+    "estimatedReadingTime": pages / 1.5,
+}`)
+  const allAuthors = await sanityClient.fetch(`*[_type=="author"]{
+  ...,
+  "books": *[_type=='book' && references(^._id)]{ title },
+  "totalBooks": count(*[_type=='book' && references(^._id)])
+}`)
+  const allPublishers = await sanityClient.fetch(`*[_type == "publisher"]{
+    ...,
+    "books": * [_type == 'book' && references(^._id)]{ title },
+    "totalBooks": count(* [_type == 'book' && references(^._id)])
+}`)
+
+  const allGenres = await sanityClient.fetch(`*[_type == "genre"]{
+    ...,
+    "books": * [_type == 'book' && references(^._id)]{ title },
+    "totalBooks": count(* [_type == 'book' && references(^._id)])
+}`)
   return {
     props: {
       library,
+      allLibrary,
+      allAuthors,
+      allPublishers,
+      allGenres
     },
-    revalidate: 10
+    revalidate: 120
   }
 }
+
 

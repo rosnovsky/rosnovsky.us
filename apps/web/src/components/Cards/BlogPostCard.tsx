@@ -1,5 +1,5 @@
 import { Card } from '@/components/Card';
-import { formatDate } from '@/lib/formatDate';
+import { formatDate } from '@/lib/helpers';
 import { BlogPost } from 'index';
 
 

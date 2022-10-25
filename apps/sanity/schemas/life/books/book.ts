@@ -77,6 +77,13 @@ export default {
       // readOnly: () => true,
     },
     {
+      name: 'genre',
+      title: 'Genre',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'genre' }] }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'own',
       title: 'Own?',
       type: 'boolean',
