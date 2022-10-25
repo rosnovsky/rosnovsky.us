@@ -253,4 +253,5 @@ interface Book {
   publisher: Publisher
   publishedDate: string
   review?: Block[]
+  slug: { current: string}
 }

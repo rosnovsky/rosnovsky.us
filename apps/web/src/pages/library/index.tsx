@@ -44,7 +44,7 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
                 blurDataURL={book.cover.metadata.lqip}
               />
               <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                <Card.Link href={`/library/${book.isbn}`}>{book.title}</Card.Link>
+                <Card.Link href={`/library/book/${book.slug.current}`}>{book.title}</Card.Link>
               </h2>
               <Card.Description>by {book.author?.name} ({book.publisher?.name}, {book.publishedDate})</Card.Description>
               <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
