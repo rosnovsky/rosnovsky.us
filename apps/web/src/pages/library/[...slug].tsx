@@ -40,7 +40,7 @@ export default function LibraryPage({ books }: { books: { name: string, totalBoo
               <h2 className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
                   <Card.Link href={`/library/book/${book.slug.current}`}> {book.title}{bookStatus(book.status) === 'Finished' ? readIcon : ''}</Card.Link>
               </h2>
-                  <Card.Description>by {book.author?.name} <br /><span className="text-xs">{book.publisher?.name}, {book.publishedDate}</span></Card.Description>
+                  <Card.Description>by {book.author.name} <br /><span className="text-xs">{book.publisher.name}, {book.publishedDate}</span></Card.Description>
             </div>
           </div>
         </Card>
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   } else if (slug[0] === 'publisher') {
     const books = await sanityClient.fetch(`*[_type == "publisher" && slug.current == $slug][0]{
       ...,
-      "books": * [_type == 'book' && references(^._id)] | order(publishedDate desc) { ..., "cover": cover.asset->, author->{name} },
+      "books": * [_type == 'book' && references(^._id)] | order(publishedDate desc) { ..., "cover": cover.asset->, author->{name}, publisher->{name} },
       "totalBooks": count(* [_type == 'book' && references(^._id)])
     }`, { slug: slug[1] })
 
