@@ -1,13 +1,14 @@
-import Image from 'next/future/image'
-import bookIcon from '@/images/icons/notebook.svg'
-import openBookIcon from '@/images/icons/book-opened.svg'
-import calendarIcon from '@/images/icons/calendar-event.svg'
+const bookIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" aria-labelledby="notebookIconTitle" stroke="rgb(20 184 166)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="rgb(20 184 166)"> <title id="notebookIconTitle">Notebook</title> <path d="M9 8h5" /> <path d="M18 3v18H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12z" /> <path d="M5 19v-1a1 1 0 0 1 1-1h12" /> </svg>
+
+const openBookIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" aria-labelledby="bookOpenedIconTitle" stroke="rgb(20 184 166)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="rgb(20 184 166)"> <title id="bookOpenedIconTitle">Book</title> <path d="M12 6s-2-2-4-2-5 2-5 2v14s3-2 5-2 4 2 4 2c1.333-1.333 2.667-2 4-2 1.333 0 3 .667 5 2V6c-2-1.333-3.667-2-5-2-1.333 0-2.667.667-4 2z" /> <path stroke-linecap="round" d="M12 6v14" /> </svg>
+
+const calendarIcon = <svg width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-labelledby="calendarEventIconTitle" stroke="rgb(20 184 166)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" color="rgb(20 184 166)"> <title id="calendarEventIconTitle">Calendar event</title> <path d="M3 5H21V21H3V5Z" /> <path d="M21 9H3" /> <path d="M7 5V3" /> <path d="M17 5V3" /> <rect x="15" y="15" width="2" height="2" /> </svg>
 
 type StatsCard = {
   id: number
   name: "Total books" | "Total pages" | "Total reading time"
   stat: number | string
-  icon: string
+  icon: JSX.Element
   secondStat: number | string
 }
 
@@ -27,7 +28,7 @@ export default function LibraryStatsComponent({ stats }) {
           >
             <dt>
               <div className="absolute rounded-md dark:bg-zinc-900 bg-zinc-50 p-3">
-                <Image src={item.icon} width="30" height="30" alt="icon" priority />
+                {item.icon}
               </div>
               <p className="ml-16 truncate text-sm font-medium dark:text-zinc-400 text-gray-500">{item.name}</p>
             </dt>

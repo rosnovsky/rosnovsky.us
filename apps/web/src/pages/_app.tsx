@@ -5,8 +5,6 @@ import { Header } from '../components/Header'
 
 import '@/styles/tailwind.css'
 import 'focus-visible'
-import { SessionProvider } from "next-auth/react";
-import type { Session } from "next-auth";
 import type { AppType } from "next/app";
 import { trpc } from "../utils/trpc";
 import ErrorBoundary from '@/components/ErrorBoundary'
@@ -22,9 +20,9 @@ function usePrevious(value: any) {
   return ref.current
 }
 
-const RosnovskyPark: AppType<{ session: Session | null }> = ({
+const RosnovskyPark: AppType = ({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps: { ...pageProps },
   router
 }) => {
   let previousPathname = usePrevious(router.pathname)
@@ -36,7 +34,6 @@ const RosnovskyPark: AppType<{ session: Session | null }> = ({
         </div>
       </div>
       <div className="relative">
-        <SessionProvider session={session}>
           <Header />
           <main>
             {/* @ts-expect-error ??? */}
@@ -44,11 +41,9 @@ const RosnovskyPark: AppType<{ session: Session | null }> = ({
               <Component previousPathname={previousPathname} {...pageProps} />
             </ErrorBoundary>
           </main>
-        </SessionProvider>
         <Footer />
       </div>
     </>
-    // </Suspense>
   );
 };
 

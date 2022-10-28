@@ -40,7 +40,7 @@ export default function About(props: InferGetStaticPropsType<typeof getStaticPro
         <title>About - Art Rosnovsky</title>
         <meta
           name="description"
-          content="I’m Spencer Sharp. I live in New York City, where I design the future."
+          content="I'm Art Rosnovsky. I'm a software engineer living in the Pacific Northwest. I love coding, hiking, and reading."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">

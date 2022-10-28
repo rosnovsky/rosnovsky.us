@@ -5,6 +5,8 @@ import { Container } from '@/components/Container'
 import { formatDate } from '@/lib/helpers'
 import { Prose } from '@/components/Prose'
 
+const stopwatch = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" aria-labelledby="stopwatchIconTitle" stroke="rgb(20 184 166)" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="rgb(20 184 166)"> <title id="stopwatchIconTitle">Stopwatch</title><circle cx="12" cy="13" r="8" /> <path d="M12 9L12 13M18 7L20 5M15 2L9 2" /></svg>
+
 function ArrowLeftIcon(props) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
@@ -33,7 +35,7 @@ export function ArticleLayout({
   return (
     <>
       <Head>
-        <title>{`${meta.title} - Spencer Sharp`}</title>
+        <title>{`${meta.title} - Art Rosnovsky`}</title>
         <meta name="description" content={meta.description} />
       </Head>
       <Container className="mt-16 lg:mt-32">
@@ -59,7 +61,7 @@ export function ArticleLayout({
                   className="order-first flex items-center text-base text-zinc-500 dark:text-zinc-400"
                 >
                   <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                  <span className="ml-3">{formatDate(meta.date)} ⏲️ {meta.estimatedReadingTime} minute read</span>
+                  <span className="ml-3 z-10 flex items-center text-sm text-zinc-400 dark:text-zinc-400">{formatDate(meta.date)}&nbsp;{stopwatch}&nbsp;{meta.estimatedReadingTime} minute read</span>
                 </time>
               </header>
               <Prose className="prose prose-xl mt-8">{children}</Prose>

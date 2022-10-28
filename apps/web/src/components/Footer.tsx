@@ -23,9 +23,8 @@ export function Footer() {
               <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
                 <NavLink href="/">Home</NavLink>
                 <NavLink href="/about">About</NavLink>
-                <NavLink href="/features">Features</NavLink>
+                <NavLink href="/library">Library</NavLink>
                 <NavLink href="/uses">Uses</NavLink>
-                <NavLink href="/login">Login</NavLink>
                 <Link href="https://status.rosnovsky.us">
                   <div className="flex pt-2">
                     <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-teal-400 opacity-75"></span>

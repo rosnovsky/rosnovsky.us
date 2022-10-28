@@ -4,8 +4,9 @@ import logoMicrosoft from '@/images/logos/microsoft.svg';
 import logoAtt from '@/images/logos/att.svg';
 import logoOkta from '@/images/logos/okta.svg'
 import logoIntel from '@/images/logos/intel.svg';
-import { BriefcaseIcon, ArrowDownIcon } from './Icons';
 import { StaticImageData } from 'next/image';
+
+const caseIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="suitcaseIconTitle" stroke="rgb(20 184 166)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" color="rgb(20 184 166)"> <title id="suitcaseIconTitle">Suitcase</title> <rect width="18" height="12" x="3" y="7" /> <rect width="8" height="4" x="8" y="3" /> </svg>
 
 type Role = {
   company: string;
@@ -17,7 +18,7 @@ type Role = {
 
 // TODO: fetch this from Sanity
 export function Resume() {
-  let resume: Role[] = [
+  const resume: Role[] = [
     {
       company: 'Okta',
       title: 'Software Engineer',
@@ -52,7 +53,7 @@ export function Resume() {
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
+        {caseIcon}
         <span className="ml-3">Work</span>
       </h2>
       <ol className="mt-6 space-y-4">
@@ -87,9 +88,9 @@ export function Resume() {
           </li>
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download resume
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+      <Button href="" variant="secondary" className="group mt-6 w-full">
+        Not looking for work
+        {/* <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" /> */}
       </Button>
     </div>
   );

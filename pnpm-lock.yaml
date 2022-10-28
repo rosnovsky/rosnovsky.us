@@ -129,7 +129,6 @@ importers:
       metascraper-url: ^5.29.11
       nanoclamp: ^1.4.1
       next: 12.3.2-canary.25
-      next-auth: ^4.12.3
       nextjs-cors: ^2.1.1
       postcss: ^8.4.14
       postcss-focus-visible: ^7.1.0
@@ -176,7 +175,6 @@ importers:
       metascraper-url: 5.31.1
       nanoclamp: 1.4.1_react@18.2.0
       next: 12.3.2-canary.25_biqbaboplfbrettd7655fr4n2y
-      next-auth: 4.13.0_qnvvwvi2cecl3h5afxxv2ijfl4
       nextjs-cors: 2.1.1_next@12.3.2-canary.25
       postcss-focus-visible: 7.1.0_postcss@8.4.17
       react: 18.2.0

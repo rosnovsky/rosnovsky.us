@@ -16,12 +16,13 @@ import { Photos } from '../components/Photos'
 import { BlogPostCard } from '@/components/Cards/BlogPostCard'
 import { indexPagePostsQuery } from '@/lib/queries';
 import sanityClient from '@/lib/sanityClient';
-import { BlogPost } from 'index';
+import { BlogPost, Book } from 'index';
+import { CurrentBook } from '@/components/Cards/CurrentBook';
 
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
-  const { posts } = props;
+  const { posts, currentBook } = props;
   return (
     <>
       <Head>
@@ -30,7 +31,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
         </title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. "
         />
       </Head>
       <Container className="mt-9">
@@ -71,6 +72,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <Newsletter />
             <Resume />
+            <CurrentBook currentBook={currentBook} />
           </div>
         </div>
       </Container>
@@ -83,9 +85,19 @@ export async function getStaticProps() {
     pagePostsLimit: 10
   })
 
+  const currentBook: Book = await sanityClient.fetch(`*[_type == "book" && status == "reading"][0] {
+    title,
+    slug,
+    "author": author->{name},
+    "cover": cover.asset->,
+    "publisher": publisher->{name},
+    publishedDate
+  }`);
+
   return {
     props: {
-      posts
+      posts, 
+      currentBook
     },
     revalidate: 120,
   };

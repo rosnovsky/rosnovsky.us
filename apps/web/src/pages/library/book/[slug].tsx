@@ -15,7 +15,6 @@ export const getStaticPaths = async () => {
   const paths = booksPaths.filter(path => path !== null).map(book => {
     return `/library/book/${book}`;
   });
-  console.log(paths)
   return {
     paths,
     fallback: 'blocking',
