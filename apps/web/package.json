@@ -10,6 +10,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@algolia/autocomplete-core": "^1.7.2",
+    "@algolia/autocomplete-preset-algolia": "^1.7.2",
+    "@algolia/autocomplete-theme-classic": "^1.7.2",
+    "@algolia/client-search": "^4.14.2",
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^2.0.12",
     "@mux/mux-player-react": "^1.1.2",
@@ -25,6 +29,8 @@
     "@trpc/next": "10.0.0-proxy-beta.17",
     "@trpc/react": "10.0.0-proxy-beta.17",
     "@trpc/server": "10.0.0-proxy-beta.17",
+    "@vercel/node": "^2.5.26",
+    "algoliasearch": "^4.14.2",
     "clsx": "^1.2.1",
     "focus-visible": "^5.2.0",
     "get-youtube-id": "^1.0.1",
@@ -46,6 +52,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-lite-youtube-embed": "^2.3.1",
+    "sanity-algolia": "^1.0.2",
     "styled-components": "^5.3.6",
     "superjson": "1.9.1",
     "zod": "^3.19.1"

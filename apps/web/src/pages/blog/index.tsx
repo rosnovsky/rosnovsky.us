@@ -7,6 +7,7 @@ import type { BlogPost } from 'index'
 import sanityClient from '@/lib/sanityClient'
 import { indexPagePostsQuery, totalPostsCountQuery } from '@/lib/queries'
 import { InferGetStaticPropsType } from 'next/types'
+import Search from '@/components/Search'
 
 function BlogPost({ post }: { post: BlogPost }) {
   return (
@@ -54,6 +55,7 @@ export default function BlogIndex(props: InferGetStaticPropsType<typeof getStati
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
+            <Search />
             {posts?.map((post) => (
               <BlogPost key={post.slug.current} post={post} />
             ))}
