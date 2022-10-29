@@ -114,6 +114,7 @@ importers:
       '@types/react-dom': 18.0.5
       '@typescript-eslint/eslint-plugin': ^5.33.0
       '@typescript-eslint/parser': ^5.33.0
+      '@vercel/analytics': ^0.1.3
       '@vercel/node': ^2.5.26
       algoliasearch: ^4.14.2
       autoprefixer: ^10.4.7
@@ -170,6 +171,7 @@ importers:
       '@trpc/next': 10.0.0-proxy-beta.17_fdj6nz6sicxjvn6dtrqssrnie4
       '@trpc/react': 10.0.0-proxy-beta.17_uadbn2mco7dvd7zrpswafsek5m
       '@trpc/server': 10.0.0-proxy-beta.17
+      '@vercel/analytics': 0.1.3_react@18.2.0
       '@vercel/node': 2.5.26
       algoliasearch: 4.14.2
       clsx: 1.2.1
@@ -4214,6 +4216,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.40.0
       eslint-visitor-keys: 3.3.0
+
+  /@vercel/analytics/0.1.3_react@18.2.0:
+    resolution: {integrity: sha512-zJuEwzvi0bBmWrMrj9jvyMS+X6iUdW3m/y5P7aOLwJQKHsJyfpdINo/4Rv+wxubz3gl4nRqIQdtOFCe1P1ErXQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@vercel/build-utils/5.5.5:
     resolution: {integrity: sha512-ZBJpqnqm2OqYyWEqfRn0CYvlmSdOf/igtFy58x0bvSbJdN6Dx2rEw9sNg8SU7O/+zWpKP5rRfWcT6iql/p0sCg==}

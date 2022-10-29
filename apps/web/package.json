@@ -29,6 +29,7 @@
     "@trpc/next": "10.0.0-proxy-beta.17",
     "@trpc/react": "10.0.0-proxy-beta.17",
     "@trpc/server": "10.0.0-proxy-beta.17",
+    "@vercel/analytics": "^0.1.3",
     "@vercel/node": "^2.5.26",
     "algoliasearch": "^4.14.2",
     "clsx": "^1.2.1",
