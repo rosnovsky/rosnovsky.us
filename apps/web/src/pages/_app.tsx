@@ -10,6 +10,8 @@ import { trpc } from "../utils/trpc";
 import ErrorBoundary from '@/components/ErrorBoundary'
 import Error from '@/pages/_error'
 
+import { Analytics } from '@vercel/analytics/react';
+
 function usePrevious(value: any) {
   let ref = useRef<any>()
 
@@ -34,15 +36,16 @@ const RosnovskyPark: AppType = ({
         </div>
       </div>
       <div className="relative">
-          <Header />
-          <main>
-            {/* @ts-expect-error ??? */}
-            <ErrorBoundary FallbackComponent={Error}>
-              <Component previousPathname={previousPathname} {...pageProps} />
-            </ErrorBoundary>
-          </main>
+        <Header />
+        <main>
+          {/* @ts-expect-error ??? */}
+          <ErrorBoundary FallbackComponent={Error}>
+            <Component previousPathname={previousPathname} {...pageProps} />
+          </ErrorBoundary>
+        </main>
         <Footer />
       </div>
+      <Analytics />
     </>
   );
 };
