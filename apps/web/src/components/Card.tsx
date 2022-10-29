@@ -14,7 +14,7 @@ function ChevronRightIcon(props) {
   )
 }
 
-export function Card({ as: Component = 'div', className, children }) {
+export function Card({ className, children }) {
   return (
     <div
       className={clsx(className, 'group relative flex flex-col items-start')}
@@ -36,7 +36,7 @@ Card.Link = function CardLink({ children, ...props }) {
   )
 }
 
-Card.Title = function CardTitle({ as: Component = 'h2', href, children }) {
+Card.Title = function CardTitle({ href, children }) {
   return (
     <div className=" font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
@@ -65,7 +65,6 @@ Card.Cta = function CardCta({ children }) {
 }
 
 Card.Eyebrow = function CardEyebrow({
-  as: Component = 'p',
   decorate = false,
   className,
   children,

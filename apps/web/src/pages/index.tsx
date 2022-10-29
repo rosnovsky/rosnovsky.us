@@ -10,7 +10,9 @@ import {
   LinkedInIcon,
 } from '@/components/Icons'
 import { Resume } from '../components/Resume'
-import { Newsletter } from '../components/Newsletter'
+import dynamic from "next/dynamic";
+
+const Newsletter = dynamic(() => import("@/components/Newsletter"), { ssr: false });
 import { SocialLink } from '../components/SocialLink'
 import { Photos } from '../components/Photos'
 import { BlogPostCard } from '@/components/Cards/BlogPostCard'
@@ -18,6 +20,7 @@ import { indexPagePostsQuery } from '@/lib/queries';
 import sanityClient from '@/lib/sanityClient';
 import { BlogPost, Book } from 'index';
 import { CurrentBook } from '@/components/Cards/CurrentBook';
+import { Suspense } from 'react';
 
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -70,7 +73,9 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Newsletter />
+            </Suspense>
             <Resume />
             <CurrentBook currentBook={currentBook} />
           </div>
@@ -96,7 +101,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts, 
+      posts,
       currentBook
     },
     revalidate: 120,

@@ -121,6 +121,7 @@ importers:
       clsx: ^1.2.1
       eslint: 8.22.0
       eslint-config-next: 12.3.1
+      fathom-client: ^3.5.0
       focus-visible: ^5.2.0
       get-youtube-id: ^1.0.1
       got: ^12.1.0
@@ -175,6 +176,7 @@ importers:
       '@vercel/node': 2.5.26
       algoliasearch: 4.14.2
       clsx: 1.2.1
+      fathom-client: 3.5.0
       focus-visible: 5.2.0
       get-youtube-id: 1.0.1
       got: 12.5.1
@@ -8292,6 +8294,10 @@ packages:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
     dependencies:
       reusify: 1.0.4
+
+  /fathom-client/3.5.0:
+    resolution: {integrity: sha512-BiRDS9Q9a8Zma0H717FWC5cvf545K/CsxBpxKT22TcSl1EbRhhlHWIJgrdeiQUfdorBK2ppy09TwMOhRsbos/A==}
+    dev: false
 
   /fbemitter/3.0.0:
     resolution: {integrity: sha512-KWKaceCwKQU0+HPoop6gn4eOHk50bBv/VxjJtGMfwmJt3D29JpN4H4eisCtIPA+a8GVBam+ldMMpMjJUvpDyHw==}

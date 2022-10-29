@@ -6,7 +6,7 @@ import logoOkta from '@/images/logos/okta.svg'
 import logoIntel from '@/images/logos/intel.svg';
 import { StaticImageData } from 'next/image';
 
-const caseIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="suitcaseIconTitle" stroke="rgb(20 184 166)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" color="rgb(20 184 166)"> <title id="suitcaseIconTitle">Suitcase</title> <rect width="18" height="12" x="3" y="7" /> <rect width="8" height="4" x="8" y="3" /> </svg>
+const caseIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="suitcaseIconTitle" stroke="rgb(20 184 166)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="suitcaseIconTitle">Suitcase</title> <rect width="18" height="12" x="3" y="7" /> <rect width="8" height="4" x="8" y="3" /> </svg>
 
 type Role = {
   company: string;
@@ -73,7 +73,7 @@ export function Resume() {
               </dd>
               <dt className="sr-only">Date</dt>
               <dd
-                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+                className="ml-auto text-xs text-zinc-500 dark:text-zinc-400"
                 aria-label={`${role.start} until ${role.end}`}
               >
                 <time dateTime={role.start}>

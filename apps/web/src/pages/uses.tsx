@@ -34,8 +34,8 @@ function ToolsSection({ children, ...props }) {
 
 function Tool({ title, href, children }: ToolProps) {
   return (
-    <Card className="" as="li">
-      <Card.Title as="h3" href={href}>
+    <Card className="">
+      <Card.Title href={href}>
         {title}
       </Card.Title>
       <Card.Description>{children}</Card.Description>
@@ -81,7 +81,7 @@ export default function Uses(props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tools = await sanityClient.fetch(`*[_type == "hardware"] {...} | order(year desc)`)
+  const tools: Hardware[] = await sanityClient.fetch(`*[_type == "hardware"] {...} | order(year desc)`)
   const apps = await sanityClient.fetch(`*[_type == "software"] {...}`)
 
   return {

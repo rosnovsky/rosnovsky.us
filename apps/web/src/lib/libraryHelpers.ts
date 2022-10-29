@@ -1,4 +1,4 @@
-import { Author, Book, Publisher } from 'index'
+import { Book } from 'index'
 
 export const bookStatus = (status: Book['status']) => {
   switch (status) {

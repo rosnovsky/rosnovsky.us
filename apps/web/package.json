@@ -33,6 +33,7 @@
     "@vercel/node": "^2.5.26",
     "algoliasearch": "^4.14.2",
     "clsx": "^1.2.1",
+    "fathom-client": "^3.5.0",
     "focus-visible": "^5.2.0",
     "get-youtube-id": "^1.0.1",
     "got": "^12.1.0",

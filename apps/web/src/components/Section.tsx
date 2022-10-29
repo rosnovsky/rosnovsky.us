@@ -1,7 +1,7 @@
 import { useId } from 'react'
 
 export function Section({ title, children }) {
-  let id = useId()
+  const id = useId()
 
   return (
     <section

@@ -25,14 +25,14 @@ export function Footer() {
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/library">Library</NavLink>
                 <NavLink href="/uses">Uses</NavLink>
-                <Link href="https://status.rosnovsky.us">
+                <Link href="https://status.rosnovsky.us" title='Site Status'>
                   <div className="flex pt-2">
-                    <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-teal-400 opacity-75"></span>
+                    <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-teal-400 opacity-75"><span className="sr-only">Site status</span></span>
                     <span className=" inline-flex relative rounded-full h-2 w-2 bg-teal-500"></span>
                   </div>
                 </Link>
               </div>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 &copy; 2003-{new Date().getFullYear()} Art Rosnovsky. All rights
                 reserved.
               </p>

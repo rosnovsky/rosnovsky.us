@@ -67,8 +67,8 @@ const Svg = styled('svg')`
 
 const Circle = styled('circle')`
   stroke: #fff;
-  stroke-linecap: round;
-  stroke-width: 7;
+  strokeLinecap: round;
+  strokeWidth: 7;
   fill: none;
   animation: ${dash} 1.5s ease-in-out infinite;
   will-change: stroke-dasharray, stroke-dashoffset;
