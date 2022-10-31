@@ -2,12 +2,13 @@ import sanityClient from '@/lib/sanityClient'
 import { BlogPost } from 'index'
 import {promises as fs} from 'node:fs'
 import RSS from 'rss'
+import { toHTML } from '@portabletext/to-html'
 
 export async function generateRss() {
   const feed = new RSS({
     title: 'Art Rosnovsky',
     site_url: 'https://rosnovsky.us',
-    feed_url: 'https://rosnovsky.us/feed.xml',
+    feed_url: 'https://rosnovsky.us/feed/feed.xml',
     generator: 'Next.js using Feed for Node.js',
     description: 'Art Rosnovsky\'s blog and library.',
     copyright: `© 2003 - ${new Date().getFullYear()} Art Rosnovsky`,
@@ -19,10 +20,34 @@ export async function generateRss() {
 
   console.warn('Fetching posts for RSS feed')
 
-  const posts: BlogPost[] = await sanityClient.fetch(`*[_type == "post"] {
+  const posts: BlogPost[] = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc) {
       title,
       slug,
       summary,
+      "cover": cover.asset->url,
+      body[]{
+        ...,
+        markDefs[]{
+          _type == "link" => {
+            ...,
+          internal->{
+            title,
+            _type,
+            slug
+          }
+          }
+        },
+        _type == "video" => {
+          title,
+          videoFile {
+            asset->{
+              ...,
+              "url": "https://stream.mux.com/" + playbackId
+            }
+          }
+        },
+        asset->{...}
+      },
       publishedAt,
       "categories": categories[]->title,
       "summaryRaw": pt::text(summary),
@@ -42,16 +67,12 @@ export async function generateRss() {
         url:
           'https://rosnovsky.us/blog/' + actualPost.slug.current,
         date: new Date(actualPost.publishedAt),
-        description: actualPost.summaryRaw,
+        description: toHTML(actualPost.body),
         author: 'Art Rosnovsky',
         categories: [...actualPost.categories.map((category) => category.title)],
       })
     })
   )
-
-  // feed.items = feed.items.sort((postA: BlogPost, postB: BlogPost) => {
-  //   return Date.parse(postB.publishedAt) < Date.parse(postA.publishedAt) ? -1 : 1
-  // })
 
   console.warn('Writing RSS feed')
 
