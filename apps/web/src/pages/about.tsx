@@ -83,8 +83,8 @@ export default function About(props: InferGetStaticPropsType<typeof getStaticPro
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink className="" href="https://twitter.com/rosnovsky" icon={TwitterIcon}>
-                Follow on Twitter
+              <SocialLink className="" href="https://rosnovsky.us/feed/feed.xml" icon={TwitterIcon}>
+                Subscribe to RSS
               </SocialLink>
               <SocialLink href="https://github.com/rosnovsky" icon={GitHubIcon} className="mt-4">
                 Follow on GitHub

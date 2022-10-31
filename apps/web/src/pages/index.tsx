@@ -65,7 +65,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com/rosnovsky"
+              href="https://rosnovsky.us/feed/feed.xml"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
