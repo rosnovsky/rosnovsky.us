@@ -40,8 +40,24 @@ export default function About(props: InferGetStaticPropsType<typeof getStaticPro
         <title>About - Art Rosnovsky</title>
         <meta
           name="description"
-          content="I'm Art Rosnovsky. I'm a software engineer living in the Pacific Northwest. I love coding, hiking, and reading."
+          content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. "
         />
+        <meta
+          property="og:image"
+          content={`https://rosnovsky.us/api/og?title=About me&date=est. 2019&readTime=1 min read`}
+        />
+        <meta property="og:url" content="https://rosnovsky.us/about" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Art Rosnovsky: About me" />
+        <meta property="og:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
+        <meta property="og:image" content="https://rosnovsky.us/api/og?title=About me&date=est. 2019&readTime=1 min read" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="rosnovsky.us" />
+        <meta property="twitter:url" content="https://rosnovsky.us/about" />
+        <meta name="twitter:title" content="Art Rosnovsky: About me" />
+        <meta name="twitter:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
+        <meta name="twitter:image" content="https://rosnovsky.us/api/og?title=About me&date=est. 2019&readTime=1 min read" />
       </Head>
       <Container className="mt-16 sm:mt-32">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">

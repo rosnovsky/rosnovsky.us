@@ -19,9 +19,24 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
         <title>Library - Art Rosnovsky</title>
         <meta
           name="description"
-          content="All my books."
-          className="text-teal-500"
+          content={`I've got ${stats.totalBooks} books in my library, check it out`}
         />
+        <meta
+          property="og:image"
+          content={`https://rosnovsky.us/api/og?title=Library&date=est. 2019&readTime=${stats.totalReadingTimeInYears} years`}
+        />
+        <meta property="og:url" content={`https://rosnovsky.us/library`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Art Rosnovsky: Library" />
+        <meta property="og:description" content={`I've got ${stats.totalBooks} books in my library, check it out`} />
+        <meta property="og:image" content={`https://rosnovsky.us/api/og?title=Library&date=est. 2019&readTime=${stats.totalReadingTimeInYears} years`} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="rosnovsky.us" />
+        <meta property="twitter:url" content="https://rosnovsky.us/library" />
+        <meta name="twitter:title" content="Art Rosnovsky: Uses" />
+        <meta name="twitter:description" content={`I've got ${stats.totalBooks} books in my library, check it out`} />
+        <meta name="twitter:image" content={`https://rosnovsky.us/api/og?title=Library&date=est. 2019&readTime=${stats.totalReadingTimeInYears} years`} />
       </Head>
       <SimpleLayout
         title="Welcome to my library."

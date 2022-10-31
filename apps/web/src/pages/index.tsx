@@ -36,6 +36,22 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
           name="description"
           content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. "
         />
+        <meta
+          property="og:image"
+          content={`https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=a few weeks`}
+        />
+        <meta property="og:url" content="https://rosnovsky.us" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Rosnovsky Park by Art Rosnovsky" />
+        <meta property="og:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
+        <meta property="og:image" content="https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=good read" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="rosnovsky.us" />
+        <meta property="twitter:url" content="https://rosnovsky.us" />
+        <meta name="twitter:title" content="Rosnovsky Park by Art Rosnovsky" />
+        <meta name="twitter:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
+        <meta name="twitter:image" content="https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=good read" />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
@@ -91,12 +107,12 @@ export async function getStaticProps() {
   })
 
   const currentBook: Book = await sanityClient.fetch(`*[_type == "book" && status == "reading"][0] {
-    title,
-    slug,
-    "author": author->{name},
+                            title,
+                            slug,
+                            "author": author->{name},
     "cover": cover.asset->,
     "publisher": publisher->{name},
-    publishedDate
+                          publishedDate
   }`);
 
   return {
