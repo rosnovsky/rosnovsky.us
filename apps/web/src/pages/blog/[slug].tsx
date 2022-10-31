@@ -6,6 +6,7 @@ import { pagePathsQuery, postQuery } from '@/lib/queries'
 import { ArticleLayout } from '@/components/ArticleLayout'
 import { PortableTextComponents } from '@/lib/portableText';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next/types';
+import Head from 'next/head';
 
 export default function BlogPost(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { post } = props
@@ -16,10 +17,49 @@ export default function BlogPost(props: InferGetStaticPropsType<typeof getStatic
     date: post?.publishedAt,
     estimatedReadingTime: post?.estimatedReadingTime,
   }
+
   return (
+    <>
+      <Head>
+        <title>
+          {meta.title} by Art Rosnovsky
+        </title>
+        <meta
+          name="description"
+          content={meta.description}
+        />
+        <meta
+          property="og:image"
+          content={`https://rosnovsky.us/api/og?title=${encodeURIComponent(meta.title)}&date=${encodeURIComponent(new Date(meta.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }))}&readTime=${encodeURIComponent(meta.estimatedReadingTime + ' min read')}`}
+        />
+        <meta property="og:url" content="https://rosnovsky.us" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${meta.title} by Art Rosnovsky`} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:image" content={`https://rosnovsky.us/api/og?title=${encodeURIComponent(meta.title)}&date=${encodeURIComponent(new Date(meta.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }))}&readTime=${encodeURIComponent(meta.estimatedReadingTime + ' min read')}`} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="rosnovsky.us" />
+        <meta property="twitter:url" content="https://rosnovsky.us" />
+        <meta name="twitter:title" content={`${meta.title} by Art Rosnovsky`} />
+        <meta name="twitter:description" content={`${meta.description}`} />
+        <meta name="twitter:image" content={`https://rosnovsky.us/api/og?title=${encodeURIComponent(meta.title)}&date=${encodeURIComponent(new Date(meta.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }))}&readTime=${encodeURIComponent(meta.estimatedReadingTime + ' min read')}`} />
+      </Head>
     <ArticleLayout meta={meta} {...props}>
       <PortableText value={post?.body} components={PortableTextComponents} />
-    </ArticleLayout>
+      </ArticleLayout></>
   )
 }
 
