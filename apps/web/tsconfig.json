@@ -34,7 +34,7 @@
     "tailwind.config.js",
     "**/*.cjs",
     "**/*.mjs"
-  ],
+, "src/scripts/generate-sitemap.js"  ],
   "exclude": [
     "node_modules"
   ]
