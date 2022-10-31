@@ -43,7 +43,7 @@ export default function Document() {
         <link
           rel="alternate"
           type="application/rss+xml"
-          href={`${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`}
+          href={`${process.env.NEXT_PUBLIC_SITE_URL}/feed/feed.xml`}
         />
         {/* <link
           rel="alternate"

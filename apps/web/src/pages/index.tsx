@@ -22,6 +22,7 @@ import { BlogPost, Book } from 'index';
 import { CurrentBook } from '@/components/Cards/CurrentBook';
 import { Suspense } from 'react';
 import { generateRss } from '@/scripts/generate-rss';
+import { generateSitemap } from '@/scripts/generate-sitemap';
 
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -104,7 +105,8 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
 
 export async function getStaticProps() {
   await generateRss();
-  
+  await generateSitemap();
+
   const posts: BlogPost[] = await sanityClient.fetch(indexPagePostsQuery, {
     pagePostsLimit: 10
   })

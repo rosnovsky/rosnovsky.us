@@ -53,7 +53,7 @@ export async function generateRss() {
   //   return Date.parse(postB.publishedAt) < Date.parse(postA.publishedAt) ? -1 : 1
   // })
 
-  console.warn('Writing RSS feed', feed.xml())
+  console.warn('Writing RSS feed')
 
   await fs.writeFile('./public/feed/feed.xml', feed.xml({ indent: true })).then((res) => {
     console.warn('RSS feed written', res)
