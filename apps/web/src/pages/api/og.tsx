@@ -18,6 +18,7 @@ export default function OG(req: NextRequest) {
       : 'Blog post';
     const readTime = hasReadTime ? searchParams.get('readTime') : 'a few minutes'; // ?readTime=<readTime> 1 min read
     const date = hasDate ? searchParams.get('date') : 'sometime in the past'; // ?date=<date> 2021-01-01
+    const summary = searchParams.get('summary')?.slice(0, 200) || 'Summary';
 
     return new ImageResponse(
       (
@@ -37,7 +38,6 @@ export default function OG(req: NextRequest) {
           }}
         >
           <div style={{
-            border: '1px dashed rgba(20, 184, 166, 0.2)',
             padding: '100px',
             display: 'flex',
             flexDirection: 'column',
@@ -50,7 +50,7 @@ export default function OG(req: NextRequest) {
                 fontSize: '60px',
                 fontStyle: 'normal',
                 color: 'black',
-                marginBottom: '30px',
+                marginBottom: '15px',
                 width: '80%',
                 justifyContent: 'center',
                 lineHeight: 1.3,
@@ -58,19 +58,34 @@ export default function OG(req: NextRequest) {
                 whiteSpace: 'pre-wrap',
               }}
             >
-              {title}
+              <b>{title}</b>
             </div>
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '24px',
+                fontSize: '12px',
                 fontWeight: 500,
                 color: 'black'
               }}
             >
-              {date}<svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" style={{ margin: '0 10px' }} height="30px" viewBox="0 0 24 24" stroke="rgb(20 184 166)" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="rgb(20 184 166)">  <circle cx="12" cy="13" r="8" /> <path d="M12 9L12 13M18 7L20 5M15 2L9 2" /> </svg>{readTime}
+              {date}<svg role="img" xmlns="http://www.w3.org/2000/svg" width="20px" style={{ margin: '0 10px' }} height="20px" viewBox="0 0 24 24" stroke="rgb(20 184 166)" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="rgb(20 184 166)">  <circle cx="12" cy="13" r="8" /> <path d="M12 9L12 13M18 7L20 5M15 2L9 2" /> </svg>{readTime}
+            </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '22px',
+              fontWeight: 200,
+              color: 'black',
+              marginTop: '30px',
+              width: '60%',
+              lineHeight: 1.4,
+              whiteSpace: 'pre-wrap',
+            }}
+            >
+              {summary}
             </div>
             <div
               style={{

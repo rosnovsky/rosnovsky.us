@@ -40,7 +40,7 @@ export function ArticleLayout({
       </Head>
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-3xl">
             {previousPathname && (
               <button
                 type="button"
@@ -64,7 +64,7 @@ export function ArticleLayout({
                   <span className="ml-3 z-10 flex items-center text-sm text-zinc-400 dark:text-zinc-400">{formatDate(meta.date)}&nbsp;{stopwatch}&nbsp;{meta.estimatedReadingTime} minute read</span>
                 </time>
               </header>
-              <Prose className="prose prose-xl mt-8">{children}</Prose>
+              <Prose className="text-zinc-700 dark:text-zinc-300 prose prose-xl mt-8">{children}</Prose>
             </article>
           </div>
         </div>

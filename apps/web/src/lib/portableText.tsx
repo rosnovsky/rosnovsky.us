@@ -40,7 +40,7 @@ export const PortableTextComponents = {
       if (!value) return null;
       const ImageComponent = () => {
         return (
-          <div className="h-full w-full">
+          <div className=" w-full">
             {value.asset && (
               <>
                 <Image

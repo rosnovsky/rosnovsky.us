@@ -16,8 +16,9 @@ export const postQuery = groq`
       },
       socialCardImage {
         asset->},
-      references[]->{
+      references[0...2]->{
         title,
+        "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
         publishedAt,
         slug,
         categories[]->,
