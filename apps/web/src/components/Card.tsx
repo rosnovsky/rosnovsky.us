@@ -46,7 +46,7 @@ Card.Title = function CardTitle({ href, children }) {
 
 Card.Description = function CardDescription({ children }) {
   return (
-    <div className="relative z-10 mt-2 text-zinc-600 dark:text-zinc-400">
+    <div className="text-base relative z-10 mt-2 text-zinc-600 dark:text-zinc-400">
       {children}
     </div>
   )
@@ -74,7 +74,7 @@ Card.Eyebrow = function CardEyebrow({
     <div
       className={clsx(
         className,
-        'relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-400',
+        'relative z-10 order-first mb-3 flex items-center text-sm font-mono text-zinc-400 dark:text-zinc-400',
         decorate && 'pl-3.5'
       )}
       {...props}

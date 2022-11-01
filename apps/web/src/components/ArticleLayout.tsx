@@ -61,10 +61,10 @@ export function ArticleLayout({
                   className="order-first flex items-center text-base text-zinc-500 dark:text-zinc-400"
                 >
                   <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                  <span className="ml-3 z-10 flex items-center text-sm text-zinc-400 dark:text-zinc-400">{formatDate(meta.date)}&nbsp;{stopwatch}&nbsp;{meta.estimatedReadingTime} minute read</span>
+                  <span className="ml-3 z-10 flex items-center font-mono text-sm text-zinc-400 dark:text-zinc-400">{formatDate(meta.date)}&nbsp;{stopwatch}&nbsp;{meta.estimatedReadingTime} minute read</span>
                 </time>
               </header>
-              <Prose className="text-zinc-700 dark:text-zinc-300 prose prose-xl mt-8">{children}</Prose>
+              <Prose className="text-zinc-700 dark:text-zinc-300 prose text-xl leading-9 mt-8">{children}</Prose>
             </article>
           </div>
         </div>

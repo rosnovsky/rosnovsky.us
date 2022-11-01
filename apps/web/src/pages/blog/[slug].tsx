@@ -72,8 +72,8 @@ export default function BlogPost(props: InferGetStaticPropsType<typeof getStatic
               <Card className="flex flex-row bg-gray-50 dark:bg-gray-800/50 p-5 rounded-xl">  
                     <Card.Link href={`/blog/${reference.slug.current}`}> {reference.title}</Card.Link>
                 <Card.Description>
-                  <div className="text-gray-500 dark:text-gray-400">{formatDate(reference.publishedAt)} &middot; {reference.estimatedReadingTime} min read</div>
-                  <PortableText value={reference.summary} /></Card.Description>
+                  <div className="text-gray-500 dark:text-gray-400 text-sm font-mono">{formatDate(reference.publishedAt)} &middot; {reference.estimatedReadingTime} min read</div>
+                  <div className='text-sm'><PortableText value={reference.summary} /></div></Card.Description>
                 </Card>
             ))}
           </div>
