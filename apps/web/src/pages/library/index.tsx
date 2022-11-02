@@ -8,11 +8,50 @@ import sanityClient from '@/lib/sanityClient'
 import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
 import { TopTen } from '@/components/Stats/TopTen'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
+import { InView } from 'react-intersection-observer'
 
 const readIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="okIconTitle" stroke="rgb(20 184 166)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="okIconTitle">Finished</title>  <polyline points="4 13 9 18 20 7" /></svg>
 
+const PAGE_SIZE = 50;
+
+const fetcher = (pageNumber: string) => {
+  const startLimit = parseInt(pageNumber) * PAGE_SIZE;
+  const books = sanityClient.fetch(`*
+  [_type == "book"] | order(publishedDate desc) [$startLimit...$endLimit]
+  {
+    title,
+    slug,
+    author-> {name},
+    publisher-> {name},
+    status, 
+    "cover": cover.asset->,
+    pages, 
+    "estimatedReadingTime": pages / 1.5
+}`, { startLimit, endLimit: startLimit + PAGE_SIZE })
+  return books
+};
+
 export default function Library({ library, allLibrary, allAuthors, allPublishers, allGenres }: { library: Book[], allLibrary: Book[], allAuthors: Author[], allPublishers: Publisher[], allGenres: Genre[] }) {
   const stats = new LibraryStats(allLibrary)
+  const [pageNumber, setPageNumber] = useState(1);
+  const [books, setBooks] = useState(library);
+
+  const { data } = useSWR(
+    `${pageNumber}`,
+    fetcher
+  );
+
+  useEffect(() => {
+    if (data) {
+      console.log(data)
+      const massagedData = data.filter((book: Book) => book.author !== null)
+
+      setBooks([...library, ...massagedData]);
+    }
+  }, [pageNumber, data, library]);
+
   return (
     <>
       <Head>
@@ -49,7 +88,7 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
           role="list"
           className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mt-10"
         >
-          {library.map((book) => (
+          {books.map((book) => (
 
             <Card className="flex flex-row space-y-4" key={book.title}>
               <div className="h-full flex flex-row space-x-4  content-between justify-between">
@@ -71,6 +110,12 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
               </div>
             </Card>
           ))}
+        <InView className="w-full mx-auto text-white" as="div" onChange={(inView) => {
+          if (inView) {
+            setPageNumber(pageNumber + 1)
+          }
+        }}>
+        </InView>
         </ul>
       </SimpleLayout>
     </>
@@ -79,9 +124,9 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
 
 export async function getStaticProps() {
   const library = await sanityClient.fetch(`
-    *[ _type == "book" ] | order(publishedDate desc)[0..$page] 
+    *[ _type == "book" ] | order(publishedDate desc)[0...$page] 
     {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.5}
-    `, { page: 11 })
+    `, { page: 10 })
   const allLibrary = await sanityClient.fetch(`*
   [_type == "book"]
   {

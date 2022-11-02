@@ -58,10 +58,8 @@ export const postQuery = groq`
     }
   `;
 
-export const commentQuery = groq`*[_type == "post" && slug.current == $slug][0] {comments}`;
-
-export const indexPagePostsQuery = groq`
-    *[_type == "post"] | order(publishedAt desc)[0...$pagePostsLimit] {
+export const blogPostsQuery = groq`
+    *[_type == "post"] | order(publishedAt desc)[$startLimit...$endLimit] {
       title,
       coverImage {
         ...,
@@ -289,3 +287,6 @@ export const categoryPagePathsQuery = groq`*[_type == "post" && categories[]->sl
 
 // Slug paths, refactorable
 export const pagePathsQuery = groq`*[_type == $type && defined(slug.current)][].slug.current`;
+
+export const commentQuery = groq`
+*[_type == "post" && slug.current == $slug][0] {comments}`;

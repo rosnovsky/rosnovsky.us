@@ -16,7 +16,7 @@ const Newsletter = dynamic(() => import("@/components/Newsletter"), { ssr: false
 import { SocialLink } from '../components/SocialLink'
 import { Photos } from '../components/Photos'
 import { BlogPostCard } from '@/components/Cards/BlogPostCard'
-import { indexPagePostsQuery } from '@/lib/queries';
+import { blogPostsQuery } from '@/lib/queries';
 import sanityClient from '@/lib/sanityClient';
 import { BlogPost, Book } from 'index';
 import { CurrentBook } from '@/components/Cards/CurrentBook';
@@ -104,11 +104,13 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
 }
 
 export async function getStaticProps() {
-  await generateRss();
-  await generateSitemap();
+  if (process.env.NODE_ENV === 'production') {
+    await generateRss();
+    await generateSitemap();
+  }
 
-  const posts: BlogPost[] = await sanityClient.fetch(indexPagePostsQuery, {
-    pagePostsLimit: 10
+  const posts: BlogPost[] = await sanityClient.fetch(blogPostsQuery, {
+    startLimit: 0, endLimit: 10
   })
 
   const currentBook: Book = await sanityClient.fetch(`*[_type == "book" && status == "reading"][0] {

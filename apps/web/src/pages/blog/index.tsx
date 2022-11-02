@@ -5,9 +5,24 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/helpers'
 import type { BlogPost } from 'index'
 import sanityClient from '@/lib/sanityClient'
-import { indexPagePostsQuery, totalPostsCountQuery } from '@/lib/queries'
+import { blogPostsQuery, totalPostsCountQuery } from '@/lib/queries'
 import { InferGetStaticPropsType } from 'next/types'
 import Search from '@/components/Search'
+import useSWR from 'swr'
+
+import { InView } from 'react-intersection-observer';
+import { useEffect, useState } from 'react'
+
+const stopwatch = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" stroke="rgb(20 184 166)" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="rgb(20 184 166)"> <circle cx="12" cy="13" r="8" /> <path d="M12 9L12 13M18 7L20 5M15 2L9 2" /></svg>
+
+const PAGE_SIZE = 20;
+
+const fetcher = (pageNumber: string) => {
+  const startLimit = parseInt(pageNumber) * PAGE_SIZE;
+  const posts = sanityClient.fetch(blogPostsQuery, { startLimit, endLimit: startLimit + PAGE_SIZE })
+  return posts
+};
+
 
 function BlogPost({ post }: { post: BlogPost }) {
   return (
@@ -22,7 +37,7 @@ function BlogPost({ post }: { post: BlogPost }) {
           className="md:hidden"
           decorate
         >
-          {formatDate(post.publishedAt)} ⏲️ {post.estimatedReadingTime} min read
+          {formatDate(post.publishedAt)} {stopwatch} {post.estimatedReadingTime} min read
         </Card.Eyebrow>
         <Card.Description>{post.summaryRaw}</Card.Description>
         <Card.Cta>Read post</Card.Cta>
@@ -39,7 +54,23 @@ function BlogPost({ post }: { post: BlogPost }) {
 }
 
 export default function BlogIndex(props: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { posts, totalPostsCount } = props
+  const [pageNumber, setPageNumber] = useState(1);
+  const [posts, setPosts] = useState(props.posts);
+
+  const { data, error } = useSWR(
+      `${pageNumber}`,
+    fetcher
+  );
+
+  const { totalPostsCount } = props
+  
+  useEffect(() => {
+    if (data) {
+      setPosts([...posts, ...data]);
+    }
+    console.log(error)
+  }, [pageNumber, data]);
+
   return (
     <>
       <Head>
@@ -60,14 +91,21 @@ export default function BlogIndex(props: InferGetStaticPropsType<typeof getStati
               <BlogPost key={post.slug.current} post={post} />
             ))}
           </div>
+          <InView className="w-full mx-auto text-white" as="div" onChange={(inView) => {
+        if (inView) {
+          setPageNumber(pageNumber + 1)
+        }
+      }}>
+        </InView>
         </div>
       </SimpleLayout>
+          
     </>
   )
 }
 
 export async function getStaticProps() {
-  const posts: BlogPost[] = await sanityClient.fetch(indexPagePostsQuery, { pagePostsLimit: 20 })
+  const posts: BlogPost[] = await sanityClient.fetch(blogPostsQuery, { startLimit: 0, endLimit: 20 })
   const totalPostsCount: number = await sanityClient.fetch(totalPostsCountQuery)
 
   return {
