@@ -12,16 +12,9 @@ import useSWR from 'swr'
 
 import { InView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react'
+import { fetcher } from '@/lib/libraryHelpers'
 
 const stopwatch = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" stroke="rgb(20 184 166)" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter" fill="none" color="rgb(20 184 166)"> <circle cx="12" cy="13" r="8" /> <path d="M12 9L12 13M18 7L20 5M15 2L9 2" /></svg>
-
-const PAGE_SIZE = 20;
-
-const fetcher = (pageNumber: string) => {
-  const startLimit = parseInt(pageNumber) * PAGE_SIZE;
-  const posts = sanityClient.fetch(blogPostsQuery, { startLimit, endLimit: startLimit + PAGE_SIZE })
-  return posts
-};
 
 
 function BlogPost({ post }: { post: BlogPost }) {
@@ -58,17 +51,16 @@ export default function BlogIndex(props: InferGetStaticPropsType<typeof getStati
   const [posts, setPosts] = useState(props.posts);
 
   const { data, error } = useSWR(
-      `${pageNumber}`,
+    { pageNumber, query: blogPostsQuery },
     fetcher
   );
 
   const { totalPostsCount } = props
-  
+
   useEffect(() => {
     if (data) {
       setPosts([...posts, ...data]);
     }
-    console.log(error)
   }, [pageNumber, data]);
 
   return (
@@ -92,14 +84,14 @@ export default function BlogIndex(props: InferGetStaticPropsType<typeof getStati
             ))}
           </div>
           <InView className="w-full mx-auto text-white" as="div" onChange={(inView) => {
-        if (inView) {
-          setPageNumber(pageNumber + 1)
-        }
-      }}>
-        </InView>
+            if (inView) {
+              setPageNumber(pageNumber + 1)
+            }
+          }}>
+          </InView>
         </div>
       </SimpleLayout>
-          
+
     </>
   )
 }

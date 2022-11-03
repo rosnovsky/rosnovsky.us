@@ -5,7 +5,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Author, Book, Genre, Publisher } from 'index'
 import sanityClient from '@/lib/sanityClient'
-import { bookStatus, LibraryStats } from '@/lib/libraryHelpers'
+import { bookStatus, fetcher, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
 import { TopTen } from '@/components/Stats/TopTen'
 import { useEffect, useState } from 'react'
@@ -16,22 +16,19 @@ const readIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px"
 
 const PAGE_SIZE = 50;
 
-const fetcher = (pageNumber: string) => {
-  const startLimit = parseInt(pageNumber) * PAGE_SIZE;
-  const books = sanityClient.fetch(`*
+const query = `*
   [_type == "book"] | order(publishedDate desc) [$startLimit...$endLimit]
   {
     title,
     slug,
     author-> {name},
     publisher-> {name},
+    publishedDate,
     status, 
     "cover": cover.asset->,
     pages, 
     "estimatedReadingTime": pages / 1.5
-}`, { startLimit, endLimit: startLimit + PAGE_SIZE })
-  return books
-};
+}`
 
 export default function Library({ library, allLibrary, allAuthors, allPublishers, allGenres }: { library: Book[], allLibrary: Book[], allAuthors: Author[], allPublishers: Publisher[], allGenres: Genre[] }) {
   const stats = new LibraryStats(allLibrary)
@@ -39,18 +36,22 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
   const [books, setBooks] = useState(library);
 
   const { data } = useSWR(
-    `${pageNumber}`,
+    { pageNumber, query },
     fetcher
   );
 
   useEffect(() => {
-    if (data) {
-      console.log(data)
+    // if (pageNumber > allLibrary.length / PAGE_SIZE) {
+    //   console.log(pageNumber, allLibrary.length / PAGE_SIZE)
+    //   return
+    // }
+    if (data && data.length > 0) {
+      console.log(books.length)
       const massagedData = data.filter((book: Book) => book.author !== null)
 
-      setBooks([...library, ...massagedData]);
+      setBooks([...books, ...massagedData]);
     }
-  }, [pageNumber, data, library]);
+  }, [pageNumber, data]);
 
   return (
     <>
@@ -90,32 +91,32 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
         >
           {books.map((book) => (
 
-            <Card className="flex flex-row space-y-4" key={book.title}>
+            <Card className="flex flex-row space-y-4" key={book?.title}>
               <div className="h-full flex flex-row space-x-4  content-between justify-between">
-                <Image
-                  src={book.cover.url}
-                  alt={`${book.title} cover`}
+                {book.cover && <Image
+                  src={book?.cover.url}
+                  alt={`${book?.title} cover`}
                   className="z-10 object-cover max-h-36 items-center justify-center rounded-md shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
                   width={100}
                   height={140}
                   placeholder="blur"
-                  blurDataURL={book.cover.metadata.lqip}
-                />
+                  blurDataURL={book.cover?.metadata.lqip}
+                />}
                 <div>
                   <h2 className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                    <Card.Link href={`/library/book/${book.slug.current}`}> {book.title}{bookStatus(book.status) === 'Finished' ? readIcon : ''}</Card.Link>
+                    <Card.Link href={`/library/book/${book.slug?.current}`}> {book.title}{bookStatus(book.status) === 'Finished' ? readIcon : ''}</Card.Link>
                   </h2>
                   <Card.Description>by {book.author?.name} <br /><span className="text-xs">{book.publisher?.name}, {book.publishedDate}</span></Card.Description>
                 </div>
               </div>
             </Card>
           ))}
-        <InView className="w-full mx-auto text-white" as="div" onChange={(inView) => {
-          if (inView) {
-            setPageNumber(pageNumber + 1)
-          }
-        }}>
-        </InView>
+          <InView className="w-full mx-auto text-white" as="div" onChange={(inView) => {
+            if (inView) {
+              setPageNumber(pageNumber + 1)
+            }
+          }}>
+          </InView>
         </ul>
       </SimpleLayout>
     </>
