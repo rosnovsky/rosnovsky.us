@@ -9,15 +9,16 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from 'next/types';
 import Head from 'next/head';
 import { Card } from '@/components/Card';
 import { formatDate } from '@/lib/helpers';
+import { Comment } from '@/components/Comment';
 
 export default function BlogPost(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const { post } = props
   const meta = {
-    title: post?.title,
-    description: post?.summaryRaw,
-    image: post?.mainImage,
-    date: post?.publishedAt,
-    estimatedReadingTime: post?.estimatedReadingTime,
+    title: post.title,
+    description: post.summaryRaw,
+    image: post.mainImage,
+    date: post.publishedAt,
+    estimatedReadingTime: post.estimatedReadingTime,
   }
 
   return (
@@ -76,7 +77,8 @@ export default function BlogPost(props: InferGetStaticPropsType<typeof getStatic
                   <div className='text-sm'><PortableText value={reference.summary} /></div></Card.Description>
                 </Card>
             ))}
-          </div>
+            </div>
+            <Comment />
         </div>
       )}
       </ArticleLayout>
