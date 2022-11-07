@@ -68,10 +68,6 @@ export interface BlogPost extends SanityDocument {
   summaryRaw: string
   bodyRaw: string
   estimatedReadingTime: number
-  location?: {
-    lat: number
-    lng: number
-  }
   categories: {
     title: string
     description: Block[] | string

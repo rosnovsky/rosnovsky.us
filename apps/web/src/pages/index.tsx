@@ -23,6 +23,7 @@ import { CurrentBook } from '@/components/Cards/CurrentBook';
 import { Suspense } from 'react';
 import { generateRss } from '@/scripts/generate-rss';
 import { generateSitemap } from '@/scripts/generate-sitemap';
+import { MastodonIcon } from '@/components/Icons/SocialIcons';
 
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -40,7 +41,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
         />
         <meta
           property="og:image"
-          content={`https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=a few weeks`}
+          content={`https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=a few weeks&summary=I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading.`}
         />
         <meta property="og:url" content="https://rosnovsky.us" />
         <meta property="og:type" content="website" />
@@ -53,7 +54,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
         <meta property="twitter:url" content="https://rosnovsky.us" />
         <meta name="twitter:title" content="Rosnovsky Park by Art Rosnovsky" />
         <meta name="twitter:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
-        <meta name="twitter:image" content="https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=good read" />
+        <meta name="twitter:image" content="https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=a few weeks&summary=I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading." />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
@@ -75,9 +76,9 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com/in/rosnovsky"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
+              href="https://art0.us/@rosnovsky"
+              aria-label="Follow on Mastodon"
+              icon={MastodonIcon}
             />
           </div>
         </div>

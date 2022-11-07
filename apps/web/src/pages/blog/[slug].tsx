@@ -78,7 +78,7 @@ export default function BlogPost(props: InferGetStaticPropsType<typeof getStatic
                 </Card>
             ))}
             </div>
-            <Comment />
+            {/* <Comment /> */}
         </div>
       )}
       </ArticleLayout>
