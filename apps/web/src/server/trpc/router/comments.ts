@@ -73,7 +73,6 @@ export const comments = router({
           });
           return newComment;
         });
-            console.log(postedComment());
     })
   
 });
