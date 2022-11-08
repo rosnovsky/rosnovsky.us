@@ -77,6 +77,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
             />
             <SocialLink
               href="https://art0.us/@rosnovsky"
+              rel="me"
               aria-label="Follow on Mastodon"
               icon={MastodonIcon}
             />
