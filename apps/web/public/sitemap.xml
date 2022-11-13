@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rosnovsky.us/</loc>
-    <lastmod>2022-11-08T02:29:48.463Z</lastmod>
+    <lastmod>2022-11-13T20:08:26.796Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1280,7 +1280,7 @@
 
   <url>
     <loc>https://rosnovsky.us/library/the-easy-way-to-stop-smoking</loc>
-    <lastmod>2022-11-04T17:40:25.000Z</lastmod>
+    <lastmod>2022-11-13T07:23:15.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1297,6 +1297,13 @@
       >https://rosnovsky.us/library/the-hill-we-climb-an-inaugural-poem-for-the-country</loc
     >
     <lastmod>2022-10-27T22:27:57.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rosnovsky.us/library/us-a</loc>
+    <lastmod>2022-11-13T07:20:46.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1769,6 +1776,13 @@
   <url>
     <loc>https://rosnovsky.us/library/public-parts</loc>
     <lastmod>2022-10-26T05:16:55.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rosnovsky.us/library/ready-player-two</loc>
+    <lastmod>2022-11-13T07:28:28.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

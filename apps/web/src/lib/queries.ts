@@ -1,4 +1,4 @@
-import groq from 'groq';
+import groq from 'groq'
 
 /* groq */
 export const postQuery = groq`
@@ -56,7 +56,72 @@ export const postQuery = groq`
       "estimatedWordCount": round(length(pt::text(body)) / 5),
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
     }
-  `;
+  `
+
+export const libraryPaginatedQuery = groq`*
+  [_type == "book"] | order(publishedDate desc) [$startLimit...$endLimit]
+  {
+    title,
+    slug,
+    author-> {name},
+    publisher-> {name},
+    publishedDate,
+    status, 
+    "cover": cover.asset->,
+    pages, 
+    "estimatedReadingTime": pages / 1.2 * 60
+}`
+
+export const libraryQuery = groq`
+    *[ _type == "book" ] | order(publishedDate desc)[0...$page] 
+    {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.2 / 60}
+    `
+
+export const allLibraryQuery = groq`*
+  [_type == "book"]
+  {
+    status, 
+    pages, 
+    "estimatedReadingTime": pages / 1.2,
+}`
+
+export const allAuthorsQuery = groq`*[_type=="author"]{
+  ...,
+  "books": *[_type=='book' && references(^._id)]{ title },
+  "totalBooks": count(*[_type=='book' && references(^._id)])
+}`
+
+export const allPublishersQuery = groq`*[_type == "publisher"]{
+    ...,
+    "books": * [_type == 'book' && references(^._id)]{ title },
+    "totalBooks": count(* [_type == 'book' && references(^._id)])
+}`
+
+export const allGenresQuery = groq`*[_type == "genre"]{
+    ...,
+    "books": * [_type == 'book' && references(^._id)]{ title },
+    "totalBooks": count(* [_type == 'book' && references(^._id)])
+}`
+
+export const publisherBooksQuery = groq`*[_type == "publisher" && slug.current == $slug][0] {
+      ...,
+      slug,
+      "books": * [_type == 'book' && references(^._id)] | order(publishedDate desc) { ..., "cover": cover.asset->, author->{name}, publisher->{name} },
+      "totalBooks": count(* [_type == 'book' && references(^._id)])
+  }`
+
+export const genreBooksQuery = groq`*[_type == "genre" && slug.current == $slug][0] {
+      ...,
+      slug,
+      "books": * [_type == 'book' && references(^._id)] | order(publishedDate desc) { ..., "cover": cover.asset->, author->{name}, publisher->{name} },
+      "totalBooks": count(* [_type == 'book' && references(^._id)])
+  }`
+export const authorBooksQUery = groq`*[_type == "author" && slug.current == $slug][0]{
+        ...,
+        slug,
+        "books": *[_type=='book' && references(^._id)] | order(publishedDate desc) { ..., "cover": cover.asset->, publisher->{name}, author->{name} },
+        "totalBooks": count(*[_type=='book' && references(^._id)])
+      }`
 
 export const blogPostsQuery = groq`
     *[_type == "post"] | order(publishedAt desc)[$startLimit...$endLimit] {
@@ -76,15 +141,15 @@ export const blogPostsQuery = groq`
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 ),
       "summaryRaw": pt::text(summary)
     }
-  `;
+  `
 
 export const totalPostsCountQuery = groq`
     count(*[_type == "post"])
-  `;
+  `
 
 export const totalCommentsCountQuery = groq`
     count(*[_type == "comment"])
-  `;
+  `
 
 export const categoriesQuery = groq`
     *[_type == "category"] {
@@ -92,7 +157,7 @@ export const categoriesQuery = groq`
       description,
       slug
     }
-  `;
+  `
 
 export const pageQuery = groq`
     *[_type == "page" && slug.current == $slug][0] {
@@ -110,7 +175,7 @@ export const pageQuery = groq`
         asset->
       }
     }
-  `;
+  `
 
 export const categoryPageQuery = groq`
     *[_type == "post" && $slug in categories[]->slug.current] | order(publishedAt desc)[0...15] {
@@ -131,15 +196,15 @@ export const categoryPageQuery = groq`
       "summaryRaw": pt::text(summary),
       "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
     }
-  `;
+  `
 
 export const categoryPostCountQuery = groq`
     count(*[_type == "post" && $slug in categories[]->slug.current])
-  `;
+  `
 
 export const commentCountQuery = groq`
     count(*[_type == "comment"])
-  `;
+  `
 
 export const hikeQuery = groq`
     *[_type == "hike" && slug.current == $slug][0] {
@@ -160,7 +225,7 @@ export const hikeQuery = groq`
         asset->
       }
     }
-  `;
+  `
 
 export const authorBooksQuery = groq`
     *[_type == "book" && author == $slug] {
@@ -174,70 +239,29 @@ export const authorBooksQuery = groq`
       isbn,
       status,
       pages,
-      "estimatedReadingTime": round(pages * 2 / 60)
+      "estimatedReadingTime": round(pages / 1.2 / 60)
     }
-  `;
+  `
 
 export const bookQuery = groq`
-    *[_type == "book" && isbn == $slug][0] {
+    *[_type == "book" && slug.current == $slug][0] {
       ...,
       _id,
-      cover {
-        asset-> {
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            },
-            lqip
-          }
-        }
-      },
+      "cover": cover.asset->,
       title,
-      author,
-      publisher,
+      author->,
+      publisher->,
       publishedDate,
       summary,
       pages,
-      socialCardImage {
-        asset->},
       own,
       read,
       status,
+      slug,
       review,
-      "estimatedReadingTime": round(pages * 2 / 60)
+      "estimatedReadingTime": round(pages / 1.2 / 60)
     }
-  `;
-
-export const publisherBooksQuery = groq`
-    *[_type == "book" && publisher == $slug] | order(publishedDate desc) {
-        cover {
-          asset->{
-            url,
-            metadata {
-              dimensions {
-                width,
-                height
-            }, 
-            lqip
-          }
-        }
-      },
-      title,
-      author,
-      publisher,
-      publishedDate,
-      pages,
-      status,
-      socialCardImage {
-        asset->},
-      read,
-      rating,
-      isbn,
-      "estimatedReadingTime": round(pages * 2 / 60)
-    }
-  `;
+  `
 
 export const booksQuery = groq`
     *[_type == "book"] | order(publishedDate desc) {
@@ -262,9 +286,9 @@ export const booksQuery = groq`
       title,
       author,
       rating,
-      "estimatedReadingTime": round(pages * 2 / 60)
+      "estimatedReadingTime": round(pages / 1.2 / 60)
     }
-  `;
+  `
 
 export const hikesQuery = groq`
     *[_type == "hike"] {
@@ -279,14 +303,14 @@ export const hikesQuery = groq`
       slug,
       elevationGain
     }
-  `;
+  `
 
-export const publisherPagePathsQuery = groq`*[_type == "book" && defined(publisher)][].publisher`;
-export const authorPagePathsQuery = groq`*[_type == "book"][].author`;
-export const categoryPagePathsQuery = groq`*[_type == "post" && categories[]->slug.current == slug.current][].slug.current`;
+export const publisherPagePathsQuery = groq`*[_type == "book" && defined(publisher)][].publisher`
+export const authorPagePathsQuery = groq`*[_type == "book"][].author`
+export const categoryPagePathsQuery = groq`*[_type == "post" && categories[]->slug.current == slug.current][].slug.current`
 
 // Slug paths, refactorable
-export const pagePathsQuery = groq`*[_type == $type && defined(slug.current)][].slug.current`;
+export const pagePathsQuery = groq`*[_type == $type && defined(slug.current)][].slug.current`
 
 export const commentQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {comments}`;
+*[_type == "post" && slug.current == $slug][0] {comments}`

@@ -7,6 +7,7 @@ import { GetStaticProps } from 'next/types'
 import { SanityDocument } from '@sanity/client'
 import { PortableText } from '@portabletext/react'
 import sanityClient from '@/lib/sanityClient'
+import { Meta } from '@/components/Meta'
 
 type ToolProps = {
   title: string
@@ -48,29 +49,7 @@ export default function Uses(props) {
 
   return (
     <>
-      <Head>
-        <title>Uses - Art Rosnovsky</title>
-        <meta
-          name="description"
-          content="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
-        />
-        <meta
-          property="og:image"
-          content={`https://rosnovsky.us/api/og?title=Uses&date=est. 2019&readTime=1 min read`}
-        />
-        <meta property="og:url" content="https://rosnovsky.us/uses" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="Art Rosnovsky: Uses" />
-        <meta property="og:description" content="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff." />
-        <meta property="og:image" content="https://rosnovsky.us/api/og?title=Uses&date=est. 2019&readTime=1 min read" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="rosnovsky.us" />
-        <meta property="twitter:url" content="https://rosnovsky.us/uses" />
-        <meta name="twitter:title" content="Art Rosnovsky: Uses" />
-        <meta name="twitter:description" content="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff." />
-        <meta name="twitter:image" content="https://rosnovsky.us/api/og?title=Uses&date=est. 2019&readTime=1 min read" />
-      </Head>
+      <Meta description="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff." slug={{ current: '/uses' }} type="website" title='Uses | Art Rosnovsky' />
       <SimpleLayout
         title="Software I use, gadgets I love, and other things I recommend."
         intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."

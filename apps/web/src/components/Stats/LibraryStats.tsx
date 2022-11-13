@@ -1,22 +1,12 @@
-const bookIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" aria-labelledby="notebookIconTitle" stroke="rgb(20 184 166)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="notebookIconTitle">Notebook</title> <path d="M9 8h5" /> <path d="M18 3v18H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12z" /> <path d="M5 19v-1a1 1 0 0 1 1-1h12" /> </svg>
+import { StatsCard } from 'index'
+import { bookIcon, openBookIcon, calendarIcon } from '../Icons/Icons'
 
-const openBookIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" aria-labelledby="bookOpenedIconTitle" stroke="rgb(20 184 166)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="bookOpenedIconTitle">Book</title> <path d="M12 6s-2-2-4-2-5 2-5 2v14s3-2 5-2 4 2 4 2c1.333-1.333 2.667-2 4-2 1.333 0 3 .667 5 2V6c-2-1.333-3.667-2-5-2-1.333 0-2.667.667-4 2z" /> <path strokeLinecap="round" d="M12 6v14" /> </svg>
-
-const calendarIcon = <svg width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-labelledby="calendarEventIconTitle" stroke="rgb(20 184 166)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="calendarEventIconTitle">Calendar event</title> <path d="M3 5H21V21H3V5Z" /> <path d="M21 9H3" /> <path d="M7 5V3" /> <path d="M17 5V3" /> <rect x="15" y="15" width="2" height="2" /> </svg>
-
-type StatsCard = {
-  id: number
-  name: "Total books" | "Total pages" | "Total reading time"
-  stat: number | string
-  icon: JSX.Element
-  secondStat: number | string
-}
 
 export default function LibraryStatsComponent({ stats }) {
   const statsCards: StatsCard[] = [
-    { id: 1, name: 'Total books', stat: stats.totalBooks, icon: bookIcon, secondStat: stats.totalRead, },
-    { id: 2, name: 'Total pages', stat: stats.totalPagesFormatted, icon: openBookIcon, secondStat: stats.totalPagesReadFormatted, },
-    { id: 3, name: 'Total reading time', stat: stats.totalReadingTimeInYears, icon: calendarIcon, secondStat: stats.totalReadTimeInYears }]
+    { id: 1, name: 'Total books', stat: stats.totalBooks, icon: bookIcon, secondStat: Math.ceil((stats.totalRead / stats.totalBooks) * 100), },
+    { id: 2, name: 'Total pages', stat: stats.totalPagesFormatted, icon: openBookIcon, secondStat: Math.ceil((stats.totalPagesRead / stats.totalPages) * 100), },
+    { id: 3, name: 'Total reading time', stat: `${stats.totalReadingTimeInYears} years`, icon: calendarIcon, secondStat: Math.ceil((stats.totalReadTimeInYears / stats.totalReadingTimeInYears) * 100) }]
 
   return (
     <div className='mb-20'>
@@ -36,7 +26,7 @@ export default function LibraryStatsComponent({ stats }) {
               <p className="text-2xl font-semibold text-gray-900 dark:text-zinc-200">{item.stat.toLocaleString()}</p>
               <p
                 className="text-teal-600 ml-2 flex items-baseline text-sm font-semibold">
-                {item.secondStat.toLocaleString()} finished
+                {item.secondStat.toLocaleString()}% finished
               </p>
             </dd>
           </div>

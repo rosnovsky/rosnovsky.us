@@ -118,13 +118,11 @@ export class LibraryStats {
   }
 
   get totalReadingTimeInYears() {
-    return `~${Math.ceil(this.totalTimeToRead / 24 / 365)}y
-    `
+    return Math.ceil(this.totalTimeToRead / 24 / 365)
   }
 
   get totalReadTimeInYears() {
-    return `${Math.ceil(this.totalTimeRead / 24 / 365)}y
-    `
+    return Math.ceil(this.totalTimeRead / 24 / 365)
   }
 }
 

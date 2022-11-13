@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {
   InferGetStaticPropsType,
 } from 'next';
@@ -6,8 +5,7 @@ import {
 import { Container } from '@/components/Container'
 import {
   TwitterIcon,
-  GitHubIcon,
-  LinkedInIcon,
+  GitHubIcon
 } from '@/components/Icons'
 import { Resume } from '../components/Resume'
 import dynamic from "next/dynamic";
@@ -24,6 +22,7 @@ import { Suspense } from 'react';
 import { generateRss } from '@/scripts/generate-rss';
 import { generateSitemap } from '@/scripts/generate-sitemap';
 import { MastodonIcon } from '@/components/Icons/SocialIcons';
+import { Meta } from '@/components/Meta';
 
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -31,31 +30,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
   const { posts, currentBook } = props;
   return (
     <>
-      <Head>
-        <title>
-          Rosnovsky Park by Art Rosnovsky
-        </title>
-        <meta
-          name="description"
-          content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. "
-        />
-        <meta
-          property="og:image"
-          content={`https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=a few weeks&summary=I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading.`}
-        />
-        <meta property="og:url" content="https://rosnovsky.us" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Rosnovsky Park by Art Rosnovsky" />
-        <meta property="og:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
-        <meta property="og:image" content="https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=good read" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="rosnovsky.us" />
-        <meta property="twitter:url" content="https://rosnovsky.us" />
-        <meta name="twitter:title" content="Rosnovsky Park by Art Rosnovsky" />
-        <meta name="twitter:description" content="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading. " />
-        <meta name="twitter:image" content="https://rosnovsky.us/api/og?title=Rosnovsky Park&date=est. 2019&readTime=a few weeks&summary=I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading." />
-      </Head>
+      <Meta title="Art Rosnovsky" description="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading." slug={{ "current": '/' }} type="website" />
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">

@@ -14,6 +14,35 @@ declare global {
   }
 }
 
+namespace BooksPages {
+  export type LibraryPageProps = {
+    books: {
+      name: string
+      totalBooks: number
+      slug: {
+        current: string
+      }
+      books: Book[]
+    }
+  }
+
+  export type LibraryProps = {
+    library: Book[]
+    allLibrary: Book[]
+    allAuthors: Author[]
+    allPublishers: Publisher[]
+    allGenres: Genre[]
+  }
+}
+
+export type StatsCard = {
+  id: number
+  name: "Total books" | "Total pages" | "Total reading time"
+  stat: number | string
+  icon: JSX.Element
+  secondStat: number | string
+}
+
 export type AppleMusicTrack = {
   data: {
     id: string
@@ -249,5 +278,5 @@ interface Book {
   publisher: Publisher
   publishedDate: string
   review?: Block[]
-  slug: { current: string}
+  slug: { current: string }
 }
