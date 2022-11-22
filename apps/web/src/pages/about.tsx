@@ -66,7 +66,7 @@ export default function About(props: InferGetStaticPropsType<typeof getStaticPro
               <SocialLink className="" href="https://rosnovsky.us/feed/feed.xml" icon={TwitterIcon}>
                 Subscribe to RSS
               </SocialLink>
-              <SocialLink href="https://art0.us/@rosnovsky" icon={MastodonIcon} className="mt-4">
+              <SocialLink href="https://lounge.town/@rosnovsky" icon={MastodonIcon} className="mt-4">
                 Follow on Mastodon
               </SocialLink>
               <SocialLink href="https://github.com/rosnovsky" icon={GitHubIcon} className="mt-4">
