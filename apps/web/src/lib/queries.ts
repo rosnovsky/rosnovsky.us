@@ -69,12 +69,12 @@ export const libraryPaginatedQuery = groq`*
     status, 
     "cover": cover.asset->,
     pages, 
-    "estimatedReadingTime": pages / 1.2 * 60
+    "estimatedReadingTime": pages * 1.2 * 60
 }`
 
 export const libraryQuery = groq`
     *[ _type == "book" ] | order(publishedDate desc)[0...$page] 
-    {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages / 1.2 / 60}
+    {..., "cover": cover.asset->, author->{name}, publisher->{name}, "estimatedReadingTime": pages * 1.2 / 60}
     `
 
 export const allLibraryQuery = groq`*
@@ -82,7 +82,7 @@ export const allLibraryQuery = groq`*
   {
     status, 
     pages, 
-    "estimatedReadingTime": pages / 1.2,
+    "estimatedReadingTime": pages * 1.2,
 }`
 
 export const allAuthorsQuery = groq`*[_type=="author"]{
@@ -239,7 +239,7 @@ export const authorBooksQuery = groq`
       isbn,
       status,
       pages,
-      "estimatedReadingTime": round(pages / 1.2 / 60)
+      "estimatedReadingTime": round(pages * 1.2 / 60)
     }
   `
 
@@ -259,7 +259,7 @@ export const bookQuery = groq`
       status,
       slug,
       review,
-      "estimatedReadingTime": round(pages / 1.2 / 60)
+      "estimatedReadingTime": round(pages * 1.2 / 60)
     }
   `
 
@@ -286,7 +286,7 @@ export const booksQuery = groq`
       title,
       author,
       rating,
-      "estimatedReadingTime": round(pages / 1.2 / 60)
+      "estimatedReadingTime": round(pages * 1.2 / 60)
     }
   `
 
