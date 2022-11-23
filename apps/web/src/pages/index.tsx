@@ -51,7 +51,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://lounge.town/@rosnovsky"
+              href="https://lounge.town/rosnovsky"
               rel="me"
               aria-label="Follow on Mastodon"
               icon={MastodonIcon}
