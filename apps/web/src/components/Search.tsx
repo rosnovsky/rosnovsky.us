@@ -20,7 +20,7 @@ import dynamic from 'next/dynamic';
 const Link = dynamic(() => import('next/link'));
 
 import '@algolia/autocomplete-theme-classic';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 export const searchClient = algoliasearch(
   'MX9C0DBFF5',

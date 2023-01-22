@@ -1,5 +1,5 @@
 import { Card } from '../Card';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { readIcon } from '../Icons/Icons';
 import { bookStatus } from '@/lib/libraryHelpers';
 

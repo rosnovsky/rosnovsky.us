@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { getImageDimensions } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
-import Image from 'next/future/image';
+import Image from "next/image";
 const MuxPlayer = lazy(() => import('@mux/mux-player-react'));
 import getYouTubeId from 'get-youtube-id';
 import type { SanityDocument, SanityImageAssetDocument } from '@sanity/client';

@@ -1,10 +1,10 @@
-import Image from 'next/future/image';
+import Image from "next/image";
 import { Button } from '@/components/Button';
 import logoMicrosoft from '@/images/logos/microsoft.svg';
 import logoAtt from '@/images/logos/att.svg';
 import logoOkta from '@/images/logos/okta.svg'
 import logoIntel from '@/images/logos/intel.svg';
-import { StaticImageData } from 'next/image';
+import { StaticImageData } from "next/legacy/image";
 
 const caseIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="suitcaseIconTitle" stroke="rgb(20 184 166)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="suitcaseIconTitle">Suitcase</title> <rect width="18" height="12" x="3" y="7" /> <rect width="8" height="4" x="8" y="3" /> </svg>
 
