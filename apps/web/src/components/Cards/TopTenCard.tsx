@@ -16,11 +16,11 @@ export const TopTenCard = ({ data }: { data: Author[] | Publisher[] | Genre[] })
         <ol className='ml-3 mb-0'>
           {topTenStats.map((kind) => (
             <li key={kind.name} className="prose">
-              <Link href={`/library/${kind._type}/${kind.slug?.current}`}>{kind.name}</Link>: <span className="text-zinc-800 dark:text-zinc-400">{pluralize(kind.totalBooks, "book")} </span>
+              <Link href={`/library/${kind._type}/${kind.slug?.current}`} legacyBehavior>{kind.name}</Link>: <span className="text-zinc-800 dark:text-zinc-400">{pluralize(kind.totalBooks, "book")} </span>
             </li>
           ))}
         </ol>
       </div>
     </div>
-  )
+  );
 } 

@@ -16,8 +16,8 @@ export function Button({ disabled = false, variant = 'primary', className, href,
   )
 
   return href ? (
-    <Link href={href} className={className} {...props}><>{children}</></Link>
+    <Link href={href} className={className} {...props} legacyBehavior><>{children}</></Link>
   ) : (
       <button disabled={disabled} className={className} {...props}><>{children}</></button>
-  )
+  );
 }

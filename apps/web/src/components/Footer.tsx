@@ -7,10 +7,10 @@ function NavLink({ href, children }) {
     <Link
       href={href}
       className="transition hover:text-teal-500 dark:hover:text-teal-400"
-    >
+      legacyBehavior>
       {children}
     </Link>
-  )
+  );
 }
 
 export function Footer() {
@@ -25,7 +25,7 @@ export function Footer() {
                 <NavLink href="/about">About</NavLink>
                 <NavLink href="/library">Library</NavLink>
                 <NavLink href="/uses">Uses</NavLink>
-                <Link href="https://status.rosnovsky.us" title='Site Status'>
+                <Link href="https://status.rosnovsky.us" title='Site Status' legacyBehavior>
                   <div className="flex pt-2">
                     <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-teal-400 opacity-75"><span className="sr-only">Site status</span></span>
                     <span className=" inline-flex relative rounded-full h-2 w-2 bg-teal-500"></span>
@@ -41,5 +41,5 @@ export function Footer() {
         </div>
       </Container.Outer>
     </footer>
-  )
+  );
 }
