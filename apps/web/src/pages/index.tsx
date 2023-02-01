@@ -1,18 +1,13 @@
 import { Suspense } from 'react';
-
 import { InferGetStaticPropsType } from 'next';
 
 import { GitHubIcon, MastodonIcon } from '@/components/Icons'
 import { RssIcon } from '@heroicons/react/20/solid';
-
 import { Container, SocialLink, Newsletter, Photos, Meta, Resume } from '@/components'
 import { BlogPostCard, CurrentBook } from '@/components/Cards'
 import { SanityClient, blogPostsQuery, currentBookQuery } from '@/lib/Sanity';
-
 import { generateRss, generateSitemap } from '@/scripts';
-
 import { BlogPost, Book } from 'index';
-
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
 

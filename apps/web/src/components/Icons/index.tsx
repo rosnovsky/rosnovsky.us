@@ -5,3 +5,4 @@ export { ChevronDownIcon } from './ChevronDownIcon';
 export { MoonIcon } from './MoonIcon';
 export { SunIcon } from './SunIcon';
 export { GitHubIcon, LinkedInIcon, MastodonIcon } from './SocialIcons';
+export { CaseIcon } from './CaseIcon';

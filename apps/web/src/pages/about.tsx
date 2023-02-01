@@ -2,21 +2,19 @@ import Image from "next/image";
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
 import {
   GitHubIcon,
   LinkedInIcon,
   MailIcon,
+  MastodonIcon
 } from '@/components/Icons'
 import portraitImage from '@/images/portrait.jpg'
 import { Page } from 'index'
 import { PortableText } from '@portabletext/react'
 import PortableTextComponents from '@/lib/PortableText'
-import { Prose } from '@/components/Prose'
+import { Prose, Meta, Container } from '@/components'
 import { SanityClient } from '@/lib/Sanity'
 import { InferGetStaticPropsType } from 'next'
-import { MastodonIcon } from '@/components/Icons/SocialIcons'
-import { Meta } from '@/components/Meta'
 import { RssIcon } from '@heroicons/react/20/solid';
 
 function SocialLink({ className, href, children, icon: Icon }) {

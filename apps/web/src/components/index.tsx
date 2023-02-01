@@ -9,7 +9,7 @@ export { Meta } from './Meta';
 export {Newsletter} from './Newsletter';
 export { Photos } from './Photos';
 export { Prose } from './Prose';
-export { Resume } from './Resume';
+export { Resume } from './Resume/Resume';
 export { Section } from './Section';
 export { Search } from './Search';
 export { SimpleLayout } from './SimpleLayout';
