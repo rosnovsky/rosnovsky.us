@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, ReactNode, Suspense } from 'react';
 import { getImageDimensions } from '@sanity/asset-utils';
 import imageUrlBuilder from '@sanity/image-url';
 import Image from "next/image";
@@ -102,11 +102,11 @@ export const PortableTextComponents = {
     },
   },
   marks: {
-    link: (props: { [x: string]: any; text?: any; value?: any; children?: any; }) => {
+    link: (props: { [x: string]: any; text?: string; value?: SanityDocument; children?: ReactNode; }) => {
       const { value, children, ...args } = props;
       return <>
         {value?.internal ? (
-          <Link href={value.internal.slug.current} {...args} legacyBehavior>
+          <Link href={value.internal.slug.current} {...args} >
             <span className="font-semibold cursor-pointer">
               {props.text}
             </span>
@@ -122,7 +122,7 @@ export const PortableTextComponents = {
             target="_blank"
             className="underline"
             rel="noreferrer"
-            href={value.href}
+            href={value?.href}
           >
             <span className="inline">
               <span className="underline">{children}</span>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import clsx from 'clsx';
 import image1 from '@/images/photos/image-1.jpg';
 import image2 from '@/images/photos/image-2.jpg';

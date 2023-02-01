@@ -4,7 +4,7 @@ import { SimpleLayout } from '@/components/SimpleLayout';
 import { bookQuery } from '@/lib/queries';
 import sanityClient from '@/lib/sanityClient';
 import { Book } from 'index';
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 export default function BookPage({ book }: { book: Book }) {
   const { title, author, estimatedReadingTime, pages, publisher, slug, cover, publishedDate } = book
