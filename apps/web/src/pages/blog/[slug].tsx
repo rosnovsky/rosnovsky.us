@@ -4,7 +4,7 @@ import type { BlogPost } from 'index'
 import sanityClient from '@/lib/sanityClient'
 import { pagePathsQuery, postQuery } from '@/lib/queries'
 import { ArticleLayout } from '@/components/ArticleLayout'
-import { PortableTextComponents } from '@/lib/portableText';
+import PortableTextComponents from '@/lib/PortableText';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next/types';
 import Head from 'next/head';
 import { Card } from '@/components/Card';

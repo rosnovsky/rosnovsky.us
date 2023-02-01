@@ -12,7 +12,7 @@ import {
 import portraitImage from '@/images/portrait.jpg'
 import { Page } from 'index'
 import { PortableText } from '@portabletext/react'
-import { PortableTextComponents } from '@/lib/portableText'
+import PortableTextComponents from '@/lib/PortableText'
 import { Prose } from '@/components/Prose'
 import sanityClient from '@/lib/sanityClient'
 import { InferGetStaticPropsType } from 'next'
