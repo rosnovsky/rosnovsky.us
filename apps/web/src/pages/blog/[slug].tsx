@@ -1,8 +1,8 @@
 import { PortableText } from '@portabletext/react';
 
 import type { BlogPost } from 'index'
-import sanityClient from '@/lib/sanityClient'
-import { pagePathsQuery, postQuery } from '@/lib/queries'
+import {SanityClient} from '@/lib/Sanity'
+import { pagePathsQuery, postQuery } from '@/lib/Sanity/queries'
 import { ArticleLayout } from '@/components/ArticleLayout'
 import PortableTextComponents from '@/lib/PortableText';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next/types';
@@ -87,7 +87,7 @@ export default function BlogPost(props: InferGetStaticPropsType<typeof getStatic
 }
 
 export async function getStaticPaths() {
-  const slugs: string[] = await sanityClient.fetch(pagePathsQuery, { type: 'post' });
+  const slugs: string[] = await SanityClient.fetch(pagePathsQuery, { type: 'post' });
   const paths = slugs.map((slug) => ({ params: { slug } }));
   return {
     paths,
@@ -98,7 +98,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: GetStaticPropsContext<{ slug: string }>) {
 
 
-  const post: BlogPost = await sanityClient.fetch(postQuery, { slug: context.params?.slug || '' });
+  const post: BlogPost = await SanityClient.fetch(postQuery, { slug: context.params?.slug || '' });
 
   return {
     props: {

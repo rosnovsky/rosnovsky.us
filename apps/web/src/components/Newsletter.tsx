@@ -5,7 +5,7 @@ import { useState } from 'react';
 const mailIcon = <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" aria-labelledby="envelopeAltIconTitle" stroke="rgb(20 184 166)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" fill="none" color="rgb(20 184 166)"> <title id="envelopeAltIconTitle">Envelope</title> <rect width="20" height="14" x="2" y="5" /> <path strokeLinecap="round" d="M2 5l10 9 10-9" /> </svg>
 
 
-const Newsletter = () => {
+export const Newsletter = () => {
   const [email, setEmail] = useState<string>('');
   const [error, setError] = useState<any>(false);
   const [success, setSuccess] = useState<any>(false);
@@ -56,5 +56,3 @@ const Newsletter = () => {
     </form>
   );
 };
-
-export default Newsletter;

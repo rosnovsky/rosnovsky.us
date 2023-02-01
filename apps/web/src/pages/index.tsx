@@ -1,28 +1,17 @@
-import {
-  InferGetStaticPropsType,
-} from 'next';
-
-import { Container } from '@/components/Container'
-import {
-  TwitterIcon,
-  GitHubIcon
-} from '@/components/Icons'
-import { Resume } from '../components/Resume'
-import dynamic from "next/dynamic";
-
-const Newsletter = dynamic(() => import("@/components/Newsletter"), { ssr: false });
-import { SocialLink } from '../components/SocialLink'
-import { Photos } from '../components/Photos'
-import { BlogPostCard } from '@/components/Cards/BlogPostCard'
-import { blogPostsQuery } from '@/lib/queries';
-import sanityClient from '@/lib/sanityClient';
-import { BlogPost, Book } from 'index';
-import { CurrentBook } from '@/components/Cards/CurrentBook';
 import { Suspense } from 'react';
-import { generateRss } from '@/scripts/generate-rss';
-import { generateSitemap } from '@/scripts/generate-sitemap';
-import { MastodonIcon } from '@/components/Icons/SocialIcons';
-import { Meta } from '@/components/Meta';
+
+import { InferGetStaticPropsType } from 'next';
+
+import { GitHubIcon, MastodonIcon } from '@/components/Icons'
+import { RssIcon } from '@heroicons/react/20/solid';
+
+import { Container, SocialLink, Newsletter, Photos, Meta, Resume } from '@/components'
+import { BlogPostCard, CurrentBook } from '@/components/Cards'
+import { SanityClient, blogPostsQuery, currentBookQuery } from '@/lib/Sanity';
+
+import { generateRss, generateSitemap } from '@/scripts';
+
+import { BlogPost, Book } from 'index';
 
 
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -42,8 +31,8 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
           <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://rosnovsky.us/feed/feed.xml"
-              aria-label="Follow on Twitter"
-              icon={TwitterIcon}
+              aria-label="Subscribe to RSS"
+              icon={RssIcon}
             />
             <SocialLink
               href="https://github.com/rosnovsky"
@@ -86,18 +75,11 @@ export async function getStaticProps() {
     await generateSitemap();
   }
 
-  const posts: BlogPost[] = await sanityClient.fetch(blogPostsQuery, {
+  const posts: BlogPost[] = await SanityClient.fetch(blogPostsQuery, {
     startLimit: 0, endLimit: 10
   })
 
-  const currentBook: Book = await sanityClient.fetch(`*[_type == "book" && status == "reading"][0] {
-                            title,
-                            slug,
-                            "author": author->{name},
-    "cover": cover.asset->,
-    "publisher": publisher->{name},
-                          publishedDate
-  }`);
+  const currentBook: Book = await SanityClient.fetch(currentBookQuery);
 
   return {
     props: {

@@ -1,8 +1,8 @@
 import { Container } from '@/components/Container';
 import { Meta } from '@/components/Meta';
 import { SimpleLayout } from '@/components/SimpleLayout';
-import { bookQuery } from '@/lib/queries';
-import sanityClient from '@/lib/sanityClient';
+import { bookQuery } from '@/lib/Sanity/queries';
+import {SanityClient} from '@/lib/Sanity';
 import { Book } from 'index';
 import Image from "next/image";
 
@@ -29,7 +29,7 @@ export default function BookPage({ book }: { book: Book }) {
 }
 
 export const getStaticPaths = async () => {
-  const booksPaths = await sanityClient.fetch(`*[_type == "book"].slug.current`);
+  const booksPaths = await SanityClient.fetch(`*[_type == "book"].slug.current`);
   const paths = booksPaths.filter(path => path !== null).map(book => {
     return `/library/book/${book}`;
   });
@@ -41,7 +41,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params || {};
-  const book = await sanityClient.fetch(
+  const book = await SanityClient.fetch(
     bookQuery,
     { slug }
   );

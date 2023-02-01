@@ -4,7 +4,6 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
-  TwitterIcon,
   GitHubIcon,
   LinkedInIcon,
   MailIcon,
@@ -14,10 +13,11 @@ import { Page } from 'index'
 import { PortableText } from '@portabletext/react'
 import PortableTextComponents from '@/lib/PortableText'
 import { Prose } from '@/components/Prose'
-import sanityClient from '@/lib/sanityClient'
+import { SanityClient } from '@/lib/Sanity'
 import { InferGetStaticPropsType } from 'next'
 import { MastodonIcon } from '@/components/Icons/SocialIcons'
 import { Meta } from '@/components/Meta'
+import { RssIcon } from '@heroicons/react/20/solid';
 
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
@@ -61,7 +61,7 @@ export default function About(props: InferGetStaticPropsType<typeof getStaticPro
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink className="" href="https://rosnovsky.us/feed/feed.xml" icon={TwitterIcon}>
+              <SocialLink className="" href="https://rosnovsky.us/feed/feed.xml" icon={RssIcon}>
                 Subscribe to RSS
               </SocialLink>
               <SocialLink href="https://lounge.town/@rosnovsky" icon={MastodonIcon} className="mt-4">
@@ -89,7 +89,7 @@ export default function About(props: InferGetStaticPropsType<typeof getStaticPro
 }
 
 export async function getStaticProps() {
-  const page: Page = await sanityClient.fetch(`*[_type == "page" && slug.current == "about"][0]{...}`)
+  const page: Page = await SanityClient.fetch(`*[_type == "page" && slug.current == "about"][0]{...}`)
 
   return {
     props: {

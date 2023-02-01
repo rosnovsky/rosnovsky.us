@@ -1,21 +1,21 @@
-import sanityClient from '@/lib/sanityClient';
+import {SanityClient} from '@/lib/Sanity';
 import fs from 'fs';
 
 import prettier from 'prettier';
 export async function generateSitemap() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   
-  const pages = await sanityClient.fetch(`*[_type == "page"]  {..., "slug": slug.current}`)
+  const pages = await SanityClient.fetch(`*[_type == "page"]  {..., "slug": slug.current}`)
 
-  const posts = await sanityClient.fetch(`*[_type == "post"] {..., "slug": slug.current}`)
+  const posts = await SanityClient.fetch(`*[_type == "post"] {..., "slug": slug.current}`)
 
-  const books = await sanityClient.fetch(`*[_type == "book"] {..., "slug": slug.current}`)
+  const books = await SanityClient.fetch(`*[_type == "book"] {..., "slug": slug.current}`)
 
-  const authors = await sanityClient.fetch(`*[_type == "author"] {..., "slug": slug.current}`)
+  const authors = await SanityClient.fetch(`*[_type == "author"] {..., "slug": slug.current}`)
 
-  const publishers = await sanityClient.fetch(`*[_type == "publisher"] {..., "slug": slug.current}`)
+  const publishers = await SanityClient.fetch(`*[_type == "publisher"] {..., "slug": slug.current}`)
   
-  const genre = await sanityClient.fetch(`*[_type == "genre"] {..., "slug": slug.current}`)
+  const genre = await SanityClient.fetch(`*[_type == "genre"] {..., "slug": slug.current}`)
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

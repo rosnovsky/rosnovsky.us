@@ -3,9 +3,8 @@ import { z } from "zod";
 import {
   withApiAuthRequired,
   getSession,
-  UserProfile,
 } from '@auth0/nextjs-auth0';
-import sanityClient from '@/lib/sanityClient'
+import {SanityClient} from '@/lib/Sanity'
 import { notify } from '@/lib/notifications/notify';
 import { NextApiRequest, NextApiResponse } from 'next/types';
 
@@ -47,8 +46,8 @@ export const comments = router({
             commentBody: commentContent,
             flags: { isFlagged: false, isHidden: false, isEdited: false },
           };
-          const newComment = await sanityClient.create(comment).then(async (res) => {
-            return await sanityClient
+          const newComment = await SanityClient.create(comment).then(async (res) => {
+            return await SanityClient
 
               .patch(postId)
               .setIfMissing({ comments: [] })

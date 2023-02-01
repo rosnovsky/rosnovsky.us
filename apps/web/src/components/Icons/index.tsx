@@ -1,9 +1,7 @@
-import { MailIcon } from './MailIcon';
-import { BriefcaseIcon } from './BriefcaseIcon';
-import { ArrowDownIcon } from './ArrowDownIcon';
-import { ChevronDownIcon } from './ChevronDownIcon';
-import { MoonIcon } from './MoonIcon';
-import { SunIcon } from './SunIcon';
-import { TwitterIcon, GitHubIcon, LinkedInIcon } from './SocialIcons';
-
-export { MailIcon, BriefcaseIcon, ArrowDownIcon, ChevronDownIcon, MoonIcon, SunIcon, TwitterIcon, GitHubIcon, LinkedInIcon };
+export { MailIcon } from './MailIcon';
+export { BriefcaseIcon } from './BriefcaseIcon';
+export { ArrowDownIcon } from './ArrowDownIcon';
+export { ChevronDownIcon } from './ChevronDownIcon';
+export { MoonIcon } from './MoonIcon';
+export { SunIcon } from './SunIcon';
+export { GitHubIcon, LinkedInIcon, MastodonIcon } from './SocialIcons';

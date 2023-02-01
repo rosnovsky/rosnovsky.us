@@ -1,6 +1,6 @@
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { Book, BooksPages } from 'index'
-import sanityClient from '@/lib/sanityClient'
+import {SanityClient} from '@/lib/Sanity'
 import { fetcher, LibraryStats } from '@/lib/libraryHelpers'
 import LibraryStatsComponent from '@/components/Stats/LibraryStats'
 import { TopTen } from '@/components/Stats/TopTen'
@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import { InView } from 'react-intersection-observer'
 import { Meta } from '@/components/Meta'
-import { libraryPaginatedQuery, libraryQuery, allLibraryQuery, allAuthorsQuery, allPublishersQuery, allGenresQuery } from '@/lib/queries'
+import { libraryPaginatedQuery, libraryQuery, allLibraryQuery, allAuthorsQuery, allPublishersQuery, allGenresQuery } from '@/lib/Sanity/queries'
 import { BookCard } from '@/components/Cards/BookCard'
 
 export default function Library({ library, allLibrary, allAuthors, allPublishers, allGenres }: BooksPages.LibraryProps) {
@@ -58,12 +58,12 @@ export default function Library({ library, allLibrary, allAuthors, allPublishers
 }
 
 export async function getStaticProps() {
-  const library = await sanityClient.fetch(libraryQuery, { page: 10 })
-  const allLibrary = await sanityClient.fetch(allLibraryQuery)
-  const allAuthors = await sanityClient.fetch(allAuthorsQuery)
-  const allPublishers = await sanityClient.fetch(allPublishersQuery)
+  const library = await SanityClient.fetch(libraryQuery, { page: 10 })
+  const allLibrary = await SanityClient.fetch(allLibraryQuery)
+  const allAuthors = await SanityClient.fetch(allAuthorsQuery)
+  const allPublishers = await SanityClient.fetch(allPublishersQuery)
 
-  const allGenres = await sanityClient.fetch(allGenresQuery)
+  const allGenres = await SanityClient.fetch(allGenresQuery)
   return {
     props: {
       library,

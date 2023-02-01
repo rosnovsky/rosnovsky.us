@@ -314,3 +314,12 @@ export const pagePathsQuery = groq`*[_type == $type && defined(slug.current)][].
 
 export const commentQuery = groq`
 *[_type == "post" && slug.current == $slug][0] {comments}`
+
+export const currentBookQuery = groq`*[_type == "book" && status == "reading"][0] {
+  title,
+  slug,
+  "author": author->{name},
+  "cover": cover.asset->,
+  "publisher": publisher->{name},
+  publishedDate
+}`

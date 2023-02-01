@@ -4,8 +4,8 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import { formatDate } from '@/lib/helpers'
 import type { BlogPost } from 'index'
-import sanityClient from '@/lib/sanityClient'
-import { blogPostsQuery, totalPostsCountQuery } from '@/lib/queries'
+import { SanityClient } from '@/lib/Sanity'; // configured Sanity client
+import { blogPostsQuery, totalPostsCountQuery } from '@/lib/Sanity/queries'
 import { InferGetStaticPropsType } from 'next/types'
 import Search from '@/components/Search'
 import useSWR from 'swr'
@@ -97,8 +97,8 @@ export default function BlogIndex(props: InferGetStaticPropsType<typeof getStati
 }
 
 export async function getStaticProps() {
-  const posts: BlogPost[] = await sanityClient.fetch(blogPostsQuery, { startLimit: 0, endLimit: 20 })
-  const totalPostsCount: number = await sanityClient.fetch(totalPostsCountQuery)
+  const posts: BlogPost[] = await SanityClient.fetch(blogPostsQuery, { startLimit: 0, endLimit: 20 })
+  const totalPostsCount: number = await SanityClient.fetch(totalPostsCountQuery)
 
   return {
     props: {

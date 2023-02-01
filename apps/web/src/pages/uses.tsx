@@ -4,7 +4,7 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import { GetStaticProps } from 'next/types'
 import { SanityDocument } from '@sanity/client'
 import { PortableText } from '@portabletext/react'
-import sanityClient from '@/lib/sanityClient'
+import { SanityClient } from '@/lib/Sanity'
 import { Meta } from '@/components/Meta'
 
 type ToolProps = {
@@ -74,8 +74,8 @@ export default function Uses(props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tools: Hardware[] = await sanityClient.fetch(`*[_type == "hardware"] {...} | order(year desc)`)
-  const apps = await sanityClient.fetch(`*[_type == "software"] {...}`)
+  const tools: Hardware[] = await SanityClient.fetch(`*[_type == "hardware"] {...} | order(year desc)`)
+  const apps = await SanityClient.fetch(`*[_type == "software"] {...}`)
 
   return {
     props: {

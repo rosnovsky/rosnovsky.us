@@ -1,4 +1,4 @@
-import sanity from '@/lib/sanityClient'; // configured Sanity client
+import { SanityClient as sanity } from '@/lib/Sanity'; // configured Sanity client
 import { SanityDocumentStub } from '@sanity/client';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import algoliasearch from 'algoliasearch';

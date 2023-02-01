@@ -1,12 +1,12 @@
 import { SimpleLayout } from '@/components/SimpleLayout';
 import { pluralize } from '@/lib/helpers';
-import sanityClient from '@/lib/sanityClient';
+import {SanityClient} from '@/lib/Sanity';
 import { BooksPages } from 'index';
 import { GetStaticProps } from 'next';
 import Error from '@/pages/_error'
 import { Container } from '@/components/Container';
 import { Meta } from '@/components/Meta';
-import { authorBooksQUery, genreBooksQuery, publisherBooksQuery } from '@/lib/queries';
+import { authorBooksQUery, genreBooksQuery, publisherBooksQuery } from '@/lib/Sanity/queries';
 import { BookCard } from '@/components/Cards/BookCard';
 
 export default function LibraryPage({ books }: BooksPages.LibraryPageProps) {
@@ -46,7 +46,7 @@ export default function LibraryPage({ books }: BooksPages.LibraryPageProps) {
 
 
 export const getStaticPaths = async () => {
-  const booksPaths = await sanityClient.fetch(`*[_type == "book"].slug.current`);
+  const booksPaths = await SanityClient.fetch(`*[_type == "book"].slug.current`);
   const paths = booksPaths.map(book => {
     return `/library/${book}`
   }
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // @ts-expect-error - this is a string
   const { slug } = params;
   if (slug[0] === 'author') {
-    const books = await sanityClient.fetch(authorBooksQUery, { slug: slug[1] })
+    const books = await SanityClient.fetch(authorBooksQUery, { slug: slug[1] })
     return {
       props: {
         books
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: 120
     }
   } else if (slug[0] === 'publisher') {
-    const books = await sanityClient.fetch(publisherBooksQuery, { slug: slug[1] })
+    const books = await SanityClient.fetch(publisherBooksQuery, { slug: slug[1] })
 
     return {
       props: {
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     }
   } else if (slug[0] === 'genre') {
-    const books = await sanityClient.fetch(genreBooksQuery, { slug: slug[1] })
+    const books = await SanityClient.fetch(genreBooksQuery, { slug: slug[1] })
 
     return {
       props: {

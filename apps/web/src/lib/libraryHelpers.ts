@@ -1,5 +1,5 @@
 import { Book } from 'index'
-import sanityClient from './sanityClient'
+import {SanityClient} from './Sanity'
 
 export const bookStatus = (status: Book['status']) => {
   switch (status) {
@@ -128,7 +128,7 @@ export class LibraryStats {
 
 export const fetcher = ({ pageNumber, query }) => {
   const startLimit = parseInt(pageNumber) * 20
-  const data = sanityClient.fetch(query, {
+  const data = SanityClient.fetch(query, {
     startLimit,
     endLimit: startLimit + 20,
   })

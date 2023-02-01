@@ -1,11 +1,11 @@
 import { getImageDimensions } from '@sanity/asset-utils';
 import { SanityDocument, SanityImageAssetDocument } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import sanityClient from '../sanityClient';
+import { SanityClient } from '@/lib/Sanity';
 import Image from "next/image";
 
 export const urlFor = (source: SanityDocument) => {
-  return imageUrlBuilder(sanityClient).image(source);
+  return imageUrlBuilder(SanityClient).image(source);
 };
 
 export const ImageComponent = ({ value }: { value: SanityImageAssetDocument }) => {

@@ -1,4 +1,4 @@
-import sanityClient from '@/lib/sanityClient'
+import {SanityClient} from '@/lib/Sanity'
 import { BlogPost } from 'index'
 import {promises as fs} from 'node:fs'
 import RSS from 'rss'
@@ -20,7 +20,7 @@ export async function generateRss() {
 
   console.warn('Fetching posts for RSS feed')
 
-  const posts: BlogPost[] = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc) {
+  const posts: BlogPost[] = await SanityClient.fetch(`*[_type == "post"] | order(publishedAt desc) {
       title,
       slug,
       summary,
