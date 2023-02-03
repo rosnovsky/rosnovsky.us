@@ -1,8 +1,0 @@
-{
-  "service": "dev",
-  "dockerComposeFile": "docker-compose.yml",
-  "forwardPorts": [
-    8080
-  ],
-  "workspaceFolder": "/workspace"
-}
