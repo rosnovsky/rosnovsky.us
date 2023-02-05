@@ -56,7 +56,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
               <Newsletter />
             </Suspense>
             <Resume />
-            <CurrentBook currentBook={currentBook} />
+            {currentBook ? <CurrentBook currentBook={currentBook} /> : null}
           </div>
         </div>
       </Container>
