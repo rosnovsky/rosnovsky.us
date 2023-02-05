@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rosnovsky.us/</loc>
-    <lastmod>2022-11-23T21:53:29.778Z</lastmod>
+    <lastmod>2023-02-05T21:35:32.887Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -30,7 +30,7 @@
 
   <url>
     <loc>https://rosnovsky.us/about</loc>
-    <lastmod>2022-11-07T22:09:44.000Z</lastmod>
+    <lastmod>2023-02-01T19:47:11.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -178,6 +178,13 @@
   </url>
 
   <url>
+    <loc>https://rosnovsky.us/blog/twitter-the-walking-dead</loc>
+    <lastmod>2022-11-25T21:04:19.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://rosnovsky.us/blog/building-this-website</loc>
     <lastmod>2022-06-01T23:32:49.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -243,6 +250,13 @@
   <url>
     <loc>https://rosnovsky.us/blog/boulder-river-hike</loc>
     <lastmod>2022-08-27T18:47:45.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rosnovsky.us/blog/amazon-s-the-peripheral-i-m-angry</loc>
+    <lastmod>2022-12-19T22:27:38.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -411,6 +425,13 @@
   <url>
     <loc>https://rosnovsky.us/blog/live-coding-vs-imposter-paralysis</loc>
     <lastmod>2022-06-01T23:53:06.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rosnovsky.us/blog/2022-a-year-in-review</loc>
+    <lastmod>2022-12-30T23:42:47.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1014,6 +1035,13 @@
   </url>
 
   <url>
+    <loc>https://rosnovsky.us/library/system-collapse</loc>
+    <lastmod>2023-02-05T20:04:54.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://rosnovsky.us/library/the-gemini-effect</loc>
     <lastmod>2022-10-26T01:22:39.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -1072,6 +1100,13 @@
   <url>
     <loc>https://rosnovsky.us/library/mistborn</loc>
     <lastmod>2022-10-25T04:56:57.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rosnovsky.us/library/out-there</loc>
+    <lastmod>2023-02-05T20:03:15.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1394,7 +1429,7 @@
 
   <url>
     <loc>https://rosnovsky.us/library/dune</loc>
-    <lastmod>2022-11-23T21:50:15.000Z</lastmod>
+    <lastmod>2023-02-05T19:55:19.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2085,7 +2120,7 @@
 
   <url>
     <loc>https://rosnovsky.us/library/agency</loc>
-    <lastmod>2022-11-23T21:49:57.000Z</lastmod>
+    <lastmod>2022-12-22T16:55:51.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3010,6 +3045,13 @@
   </url>
 
   <url>
+    <loc>https://rosnovsky.us/library/author/ariel-waldman</loc>
+    <lastmod>2023-02-05T19:59:13.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://rosnovsky.us/library/author/f-scott-fitzgerald</loc>
     <lastmod>2022-11-04T17:44:53.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -3355,6 +3397,13 @@
   <url>
     <loc>https://rosnovsky.us/library/publisher/business-plus-publishing</loc>
     <lastmod>2022-10-26T05:01:16.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://rosnovsky.us/library/publisher/running-press</loc>
+    <lastmod>2023-02-05T20:01:03.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
