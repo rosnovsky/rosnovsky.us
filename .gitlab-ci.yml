@@ -6,7 +6,7 @@ deploy_preview:
   except:
     - main
   script:
-    - npm install --global vercel
+    - npm install --location=global vercel pnpm
     - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
     - vercel build --token=$VERCEL_TOKEN
     - vercel deploy --prebuilt  --token=$VERCEL_TOKEN
@@ -16,7 +16,7 @@ deploy_production:
   only:
     - main
   script:
-    - npm install --global vercel
+    - npm install --location=global vercel pnpm
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
     - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
