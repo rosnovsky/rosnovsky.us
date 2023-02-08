@@ -35,7 +35,7 @@ yarn-error.log*
 _web/
 _salish/
 .vercel
-sitemap.xml
-feed.xml
+# sitemap.xml
+# feed.xml
 
-public/feed/
+# apps/public/feed/
