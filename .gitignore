@@ -38,4 +38,5 @@ _salish/
 sitemap.xml
 feed.xml
 
-apps/public/feed/
+/apps/web/public/feed/
+/apps/web/public/sitemap.xml

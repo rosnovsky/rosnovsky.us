@@ -39,5 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-public/feed/*
-sitemap.xml
+/public/feed/*
+/public/sitemap.xml
