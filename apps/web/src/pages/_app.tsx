@@ -13,6 +13,15 @@ import Error from '@/pages/_error'
 
 import { Analytics } from '@vercel/analytics/react';
 
+import { Atkinson_Hyperlegible as Hyperledgible } from "@next/font/google";
+
+const hyperledgible = Hyperledgible({
+  preload: true,
+  display: "swap",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 function usePrevious(value: any) {
   const ref = useRef<any>()
 
@@ -28,31 +37,10 @@ const RosnovskyPark: AppType = ({
   pageProps: { ...pageProps },
   router
 }) => {
-  useEffect(() => {
-    // Initialize Fathom when the app loads
-    // Example: yourdomain.com
-    //  - Do not include https://
-    //  - This must be an exact match of your domain.
-    //  - If you're using www. for your domain, make sure you include that here.
-    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-      includedDomains: ['rosnovsky.us'],
-    });
-
-    function onRouteChangeComplete() {
-      Fathom.trackPageview();
-    }
-    // Record a pageview when route changes
-    router.events.on('routeChangeComplete', onRouteChangeComplete);
-
-    // Unassign event listener
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete);
-    };
-  }, []);
 
   const previousPathname = usePrevious(router.pathname)
   return (
-    <>
+    <div className={`${hyperledgible.className}`}>
       <div className="fixed inset-0 flex justify-center sm:px-8">
         <div className="flex w-full max-w-7xl lg:px-8">
           <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
@@ -68,8 +56,7 @@ const RosnovskyPark: AppType = ({
         </main>
         <Footer />
       </div>
-      <Analytics />
-    </>
+    </div>
   );
 };
 

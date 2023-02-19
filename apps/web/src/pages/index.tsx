@@ -20,7 +20,7 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Software engineer, hiker, and avid reader.
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 text-xl text-zinc-600 dark:text-zinc-400">
             I&apos; m Art, and we need to talk. Or maybe we don&apos;t. In any case, I write about web development, hiking, and random hobbies I pick up every now and then.
           </p>
           <div className="mt-6 flex gap-6">
