@@ -40,6 +40,7 @@ export default function Document() {
     <Html className="h-full antialiased" lang="en">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
+        <script defer data-domain="rosnovsky.us" src="https://plausible-gmoeh-u2931.vm.elestio.app/js/script.js"></script>
         <link
           rel="alternate"
           type="application/rss+xml"
