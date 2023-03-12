@@ -2,7 +2,7 @@
 // import { Popover, Transition } from '@headlessui/react'
 // import { ChevronDownIcon } from './Icons/ChevronDownIcon'
 
-import Container from './Container.astro';
+import Container from '../Container.astro';
 import NavBar from './NavBar.astro';
 ---
 
@@ -25,10 +25,11 @@ import NavBar from './NavBar.astro';
         <div class="flex flex-1">
           <slot />
         </div>
-        <div class="flex flex-1 justify-end md:justify-center">
+        <div class="flex flex-1 justify-center">
           <NavBar class="pointer-events-auto hidden md:block" />
+          <NavBar class="pointer-events-auto md:hidden" />
         </div>
-        <div class="flex justify-end md:flex-1">
+        <div class="flex justify-center md:flex-1">
           <div class="pointer-events-auto"></div>
         </div>
       </div>

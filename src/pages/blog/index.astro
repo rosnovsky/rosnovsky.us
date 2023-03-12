@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Container from '../../components/Container.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
@@ -8,19 +9,21 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<MainLayout>
-  <section>
-    <ul class="list-none">
-      {
-        posts.map((post) => (
-          <li class="border-1 border-sky-100">
-            <div class="border-1 border-sky-300">
-              <FormattedDate date={post.data.pubDate} />
-              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+<MainLayout title="Blog">
+  <Container>
+    <section>
+      <ul class="list-none">
+        {
+          posts.map((post) => (
+            <li class="border-1 border-sky-100">
+              <div class="border-1 border-sky-300">
+                <FormattedDate date={post.data.pubDate} />
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </Container>
 </MainLayout>

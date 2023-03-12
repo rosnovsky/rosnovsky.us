@@ -1,9 +1,14 @@
 ---
 import Container from '../components/Container.astro';
+import SocialLink from '../components/SocialLink.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+
+import GitHubIcon from '../components/icons/GitHubIcon.astro';
+import MastodonIcon from '../components/icons/MastodonIcon.astro';
+import RssIcon from '../components/icons/RssIcon.astro';
 ---
 
-<MainLayout>
+<MainLayout title="Home">
   <Container class="mt-9">
     <div class="max-w-2xl">
       <h1
@@ -17,22 +22,22 @@ import MainLayout from '../layouts/MainLayout.astro';
         every now and then.
       </p>
       <div class="mt-6 flex gap-6">
-        <!-- <SocialLink
-        href="https://rosnovsky.us/feed/feed.xml"
-        aria-label="Subscribe to RSS"
-        icon={RssIcon}
-      />
-      <SocialLink
-        href="https://github.com/rosnovsky"
-        aria-label="Follow on GitHub"
-        icon={GitHubIcon}
-      />
-      <SocialLink
-        href="https://lounge.town/@rosnovsky"
-        rel="me"
-        aria-label="Follow on Mastodon"
-        icon={MastodonIcon}
-      /> -->
+        <SocialLink
+          href="https://rosnovsky.us/feed/feed.xml"
+          aria-label="Subscribe to RSS"
+          icon={RssIcon}
+        />
+        <SocialLink
+          href="https://github.com/rosnovsky"
+          aria-label="Follow on GitHub"
+          icon={GitHubIcon}
+        />
+        <SocialLink
+          href="https://lounge.town/@rosnovsky"
+          rel="me"
+          aria-label="Follow on Mastodon"
+          icon={MastodonIcon}
+        />
       </div>
     </div>
   </Container>
