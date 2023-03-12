@@ -2,7 +2,11 @@
 title: "Amazon's The Peripheral: I'm angry"
 description: "I'm often angry at Amazon, but this time it's for a reason not directly related to their terrible business practices. "
 pubDate: 2022-12-19
-heroImage: 'https://cdn.sanity.io/images/n3o7a5dl/prod/9c664088d179d996466bf7a89345af454ef2b0ed-960x540.jpg'
+heroImage: {
+  path: 'https://cdn.sanity.io/images/n3o7a5dl/prod/9c664088d179d996466bf7a89345af454ef2b0ed-960x540.jpg',
+  title: "Title",
+  alt: "Alt"
+  }
 ---
 
 I just finished watching "The Peripheral", an Amazon Prime original show loosely inspired by some aspects of the world and a few characters from the book ["The Peripheral" by William Gibson](https://rosnovsky.us/library/book/the-peripheral). It is my opinion that the show should absolutely have had a different title since it's not based on the book with the same title. So much so that the show perverted the book through and through.

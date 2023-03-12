@@ -102,18 +102,23 @@ module.exports = {
           },
 
           // Headings
+          h1: {
+            fontSize: theme('fontSize.4xl')[0],
+            fontWeight: theme('fontWeight.bold'),
+            lineHeight: theme('lineHeight.10'),
+          },
           'h2, h3': {
             color: 'var(--tw-prose-headings)',
-            fontWeight: theme('fontWeight.semibold'),
+            fontWeight: theme('fontWeight.bold'),
           },
           h2: {
-            fontSize: theme('fontSize.xl')[0],
+            fontSize: theme('fontSize.4xl')[0],
             lineHeight: theme('lineHeight.7'),
             marginTop: theme('spacing.20'),
             marginBottom: theme('spacing.4'),
           },
           h3: {
-            fontSize: theme('fontSize.base')[0],
+            fontSize: theme('fontSize.2xl')[0],
             lineHeight: theme('lineHeight.7'),
             marginTop: theme('spacing.16'),
             marginBottom: theme('spacing.4'),

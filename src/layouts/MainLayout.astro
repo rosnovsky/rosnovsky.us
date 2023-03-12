@@ -11,9 +11,9 @@ const { title, description } = Astro.props;
     <BaseHead title={title || 'Default'} description={description} />
   </head>
 
-  <body class="h-ful mx-auto flex max-w-7xl flex-col bg-zinc-50 dark:bg-black">
+  <body class="mx-auto flex h-full max-w-7xl flex-col bg-zinc-50 dark:bg-black">
     <Header />
-    <main class="container mt-36">
+    <main class="container mt-20">
       <slot />
     </main>
     <Footer />
