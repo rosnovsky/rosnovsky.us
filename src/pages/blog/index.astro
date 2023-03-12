@@ -18,14 +18,15 @@ const posts = (await getCollection('blog')).sort(
   </head>
   <body class="container prose prose-xl mx-auto">
     <Header />
-    <main>
+    <main class="container">
       <section>
-        <ul>
+        <ul class="list-none">
           {
             posts.map((post) => (
-              <li>
-                <FormattedDate date={post.data.pubDate} />
+              <li class="border-1 border-sky-100">
+                <div class="border-1 border-sky-300"><FormattedDate date={post.data.pubDate} />
                 <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </div>
               </li>
             ))
           }
