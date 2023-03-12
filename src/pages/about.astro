@@ -2,6 +2,7 @@
 import Container from '../components/Container.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from '@astrojs/image/components';
+import image from '../../public/placeholder-social.jpg';
 ---
 
 <MainLayout title="About">
@@ -12,7 +13,7 @@ import { Image } from '@astrojs/image/components';
       <div class="lg:pl-20">
         <div class="max-w-xs px-2.5 lg:max-w-none">
           <Image
-            src="./placeholder-social.jpg"
+            src={image}
             alt="Art Rosnovsky"
             width={600}
             height={600}
