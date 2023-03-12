@@ -2,6 +2,7 @@
 title: '2022: A Year In Review'
 description: 'Here goes a description'
 pubDate: 2022-12-31
+heroImage: '/concert.jpg'
 ---
 
 ## War in Ukraine
@@ -11,6 +12,8 @@ Without any doubt, the most important development of 2022 was Russian invasion a
 And while the global implications of the war are important and all, it's hard to overlook more immediate and personal effects it has on people. A peaceful country of Ukraine being shelled by the Russians affects very real people in very real ways. Quite a few of these people I know personally, some of them are friends. With this said, most of my family is in Russia; some friends are still in Russia, although a lot of them are now scattered around the world. And while it's easy for me to side with Ukrainians against the invaders, ties to the "invaders" don't help with peace of mind and make this war somewhat more complicated to process. I'm not complaining, mind you, just want to acknowledge this. What did German-born Americans with a lot of Jewish and Eastern European friends feel in the late 1930s? I think, I know.
 
 All in all, fuck Putin, fuck Russia, Glory to Ukraine.
+
+<img src='/concert.jpg' width="100%" lazy/>
 
 While nothing of importance happened in 2022 compared to the war, for posterity's sake here are some other notable events of this shit-pile of a year.
 

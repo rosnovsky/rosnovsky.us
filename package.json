@@ -1,7 +1,7 @@
 {
-    "name": "blog",
+    "name": "rosnovsky-park",
     "type": "module",
-    "version": "0.0.1",
+    "version": "6.0.0",
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
@@ -9,7 +9,7 @@
         "preview": "astro preview",
         "astro": "astro",
         "format": "prettier -w --plugin-search-dir=. .",
-        "test": "playwright test --reporter=html",
+        "test": "astro build && playwright test --reporter=html",
         "coverage": "playwright show-report"
     },
     "dependencies": {
@@ -26,7 +26,6 @@
         "playwright": "^1.31.2",
         "prettier": "^2.8.4",
         "prettier-plugin-astro": "^0.8.0",
-        "prettier-plugin-tailwindcss": "^0.2.4",
-        "v8-to-istanbul": "^9.1.0"
+        "prettier-plugin-tailwindcss": "^0.2.4"
     }
 }
