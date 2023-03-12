@@ -10,7 +10,7 @@ const { title, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <MainLayout>
-  <article class="prose-xl prose mx-auto max-w-3xl dark:prose-invert">
+  <article class="prose-xl prose mx-auto max-w-3xl px-4 dark:prose-invert">
     <h1 class="mb-2 text-5xl font-bold text-black">{title}</h1>
     Published on <FormattedDate date={pubDate} />
     {
@@ -34,6 +34,8 @@ const { title, pubDate, updatedDate, heroImage } = Astro.props;
     }
 
     <hr class="my-5" />
-    <slot />
+    <div class="text-xl">
+      <slot />
+    </div>
   </article>
 </MainLayout>
