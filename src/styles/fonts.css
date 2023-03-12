@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        font-size: large;
-    }
+  html {
+    font-size: large;
+  }
 }

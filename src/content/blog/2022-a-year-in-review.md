@@ -1,6 +1,6 @@
 ---
-title: "2022: A Year In Review"
-description: "Here goes a description"
+title: '2022: A Year In Review'
+description: 'Here goes a description'
 pubDate: 2022-12-31
 ---
 
@@ -44,7 +44,6 @@ In the wake of Twitter takeover by a petulant idiot man-baby, Mastodon (or more 
 
 Every year I set goals for myself, and every year at the end of December I review these goals. I mean, I look at them every day of the year and they guide my efforts, but in December I tally the results.
 
-
 Out of 7 goals I've set for myself, I've hit three and kinda sorta hit two more. Which is not terribly bad. There's a lot of room for improvement, though. I still want to speak at a conference, and I still want to release a great free OTP app for iOS (with iCloud sync, no lock-in, etc). So these two just roll over to 2023.
 
 Out of 6 guiding principals (or focus areas) for the year, I confidently maintained four. Again, not too bad, yet could be better. I failed completely "Time Outdoors": weather and general apathy ruined this hiking season, although we managed to squeeze some quality outdoors time, including one awesome vacation. I'm pretty happy with all the principles so I'm keeping them for 2023, probably adding a couple new ones.
@@ -52,7 +51,6 @@ Out of 6 guiding principals (or focus areas) for the year, I confidently maintai
 ## Best buy: Steam Deck
 
 I have to note this. I'm so very impressed with the device, with games that available for it, with pretty much everything surrounding it. I played a lot more this year than ever before, and I played way, way more different games than ever before. I think I get gaming, at last. My favorite games were in no particular order: "Horizon: Zero Dawn", "Detroit: Become Human", "Kena: Bridge of Spirits", "Life is Strange" and "Life is Strange: Before the Storm", "Superhot", and "Deep Rock Galactic" (which I mostly play with my son). An honorary mention goes to "Cities: Skylines" which I've been playing for years now and can't get enough of. I guess, I am what I play :)
-
 
 ### Best Buy, Honorary Mention: The Beast
 
