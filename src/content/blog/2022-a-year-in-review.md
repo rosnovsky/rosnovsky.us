@@ -2,7 +2,6 @@
 title: '2022: A Year In Review'
 description: 'Here goes a description'
 pubDate: 2022-12-31
-heroImage: '/concert.jpg'
 ---
 
 ## War in Ukraine
