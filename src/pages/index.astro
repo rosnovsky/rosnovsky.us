@@ -1,25 +1,60 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Container from '../components/Container.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="prose prose-xl mx-auto">
-    <Header title={SITE_TITLE} />
-    <main class="prose prose-xl">
-      <h1>Software engineer, hiker, and avid reader.</h1>
-      <p>
-        I' m Art, and we need to talk. Or maybe we don't. In any case, I write
-        about web development, hiking, and random hobbies I pick up every now
-        and then.
+<MainLayout>
+  <Container class="mt-9">
+    <div class="max-w-2xl">
+      <h1
+        class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+      >
+        Software engineer, hiker, and avid reader.
+      </h1>
+      <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+        I&apos; m Art, and we need to talk. Or maybe we don&apos;t. In any case,
+        I write about web development, hiking, and random hobbies I pick up
+        every now and then.
       </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+      <div class="mt-6 flex gap-6">
+        <!-- <SocialLink
+        href="https://rosnovsky.us/feed/feed.xml"
+        aria-label="Subscribe to RSS"
+        icon={RssIcon}
+      />
+      <SocialLink
+        href="https://github.com/rosnovsky"
+        aria-label="Follow on GitHub"
+        icon={GitHubIcon}
+      />
+      <SocialLink
+        href="https://lounge.town/@rosnovsky"
+        rel="me"
+        aria-label="Follow on Mastodon"
+        icon={MastodonIcon}
+      /> -->
+      </div>
+    </div>
+  </Container>
+</MainLayout>
+<!-- <Photos />
+  <Container class="mt-24 md:mt-28">
+    <div
+      class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="flex flex-col gap-16">
+        {
+          posts?.map((post) => (
+            <BlogPostCard key={post.slug.current} post={post} />
+          ))
+        }
+      </div>
+      <div class="space-y-10 lg:pl-16 xl:pl-24">
+        <Suspense fallback={(<div>Loading...</div>)}>
+          <Newsletter />
+        </Suspense>
+        <Resume />
+        <CurrentBook currentBook={currentBook} />
+      </div>
+    </div> -->
+<!-- </Container> -->

@@ -1,38 +1,26 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-  </head>
-  <body class="container prose prose-xl mx-auto">
-    <Header />
-    <main class="container">
-      <section>
-        <ul class="list-none">
-          {
-            posts.map((post) => (
-              <li class="border-1 border-sky-100">
-                <div class="border-1 border-sky-300"><FormattedDate date={post.data.pubDate} />
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+<MainLayout>
+  <section>
+    <ul class="list-none">
+      {
+        posts.map((post) => (
+          <li class="border-1 border-sky-100">
+            <div class="border-1 border-sky-300">
+              <FormattedDate date={post.data.pubDate} />
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</MainLayout>
