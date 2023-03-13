@@ -1,29 +1,29 @@
-import { visit } from 'unist-util-visit'
-import { Picture } from 'astro-imagetools/components'
+import { visit } from 'unist-util-visit';
+import { Picture } from 'astro-imagetools/components';
 
 function transformer(ast: any) {
-  visit(ast, 'image', visitor)
+  visit(ast, 'image', visitor);
 
   function visitor(node: any) {
-    const data = node.data || (node.data = {})
-    const props = data.hProperties || (data.hProperties = {})
-    let src = node.url
-    const alt = node.alt
+    const data = node.data || (node.data = {});
+    const props = data.hProperties || (data.hProperties = {});
+    let src = node.url;
+    const alt = node.alt;
 
-    const skipSrcSet = ['.gif', '.svg'].some(ext => src.includes(ext))
+    const skipSrcSet = ['.gif', '.svg'].some((ext) => src.includes(ext));
 
-    let newNode = null
+    let newNode = null;
     newNode = {
       type: 'html',
-      value: `<img src=${src} alt="${alt}" />`
-    }
+      value: `<img src=${src} alt="${alt}" style="margin-top: 2rem"/>`,
+    };
 
-    Object.assign(node, newNode)
+    Object.assign(node, newNode);
   }
 }
 
 function images() {
-  return transformer
+  return transformer;
 }
 
-export default images
+export default images;
