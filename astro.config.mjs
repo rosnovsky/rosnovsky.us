@@ -7,6 +7,7 @@ import netlify from '@astrojs/netlify/functions';
 import webmanifest from 'astro-webmanifest';
 import markdoc from '@astrojs/markdoc';
 import image from '@astrojs/image';
+import { astroImageTools } from 'astro-imagetools';
 
 // https://astro.build/config
 export default defineConfig({
@@ -37,6 +38,7 @@ export default defineConfig({
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
+    astroImageTools,
     tailwind(),
   ],
 });

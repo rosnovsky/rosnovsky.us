@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import MainLayout from './MainLayout.astro';
-import { Image } from '@astrojs/image/components';
+import { Picture as Image} from 'astro-imagetools/components';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -29,6 +29,8 @@ const { title, pubDate, updatedDate, heroImage } = Astro.props;
           aspectRatio="16:9"
           src={heroImage.path || heroImage.path}
           alt={heroImage.alt || title}
+          placeholder="tracedSVG"
+          loading="lazy"
         />
       )
     }
