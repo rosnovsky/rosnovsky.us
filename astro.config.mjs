@@ -5,6 +5,7 @@ import tailwind from '@astrojs/tailwind';
 import prefetch from '@astrojs/prefetch';
 import { astroImageTools } from 'astro-imagetools';
 import { VitePWA } from 'vite-plugin-pwa';
+import images from './src/utils/imagesRemark';
 
 // https://astro.build/config
 export default defineConfig({
