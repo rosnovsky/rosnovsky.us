@@ -9,7 +9,31 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [VitePWA()],
+    plugins: [
+      VitePWA({
+        registerType: 'autoUpdate',
+        manifest: {
+          start_url: '/',
+          background_color: '#ffffff',
+          name: 'Rosnovsky Park',
+          short_name: 'RPark',
+          description: 'My Awesome App description',
+          theme_color: '#ffffff',
+          icons: [
+            {
+              src: 'pwa-192x192.png',
+              sizes: '192x192',
+              type: 'image/png',
+            },
+            {
+              src: 'pwa-512x512.png',
+              sizes: '512x512',
+              type: 'image/png',
+            },
+          ],
+        },
+      }),
+    ],
   },
   site: 'https://rosnovsky.us',
   integrations: [mdx(), sitemap(), prefetch(), astroImageTools, tailwind()],
