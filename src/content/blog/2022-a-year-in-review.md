@@ -2,6 +2,8 @@
 title: '2022: A Year In Review'
 description: 'Here goes a description'
 pubDate: 2022-12-31
+draft: true
+tags: ['Ukraine', 'society']
 ---
 
 ## War in Ukraine
