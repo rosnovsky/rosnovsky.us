@@ -35,6 +35,9 @@ export default defineConfig({
       }),
     ],
   },
+  markdown: {
+    remarkPlugins: [images],
+  },
   site: 'https://rosnovsky.us',
   integrations: [mdx(), sitemap(), prefetch(), astroImageTools, tailwind()],
 });
