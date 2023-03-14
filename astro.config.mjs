@@ -4,41 +4,21 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import prefetch from '@astrojs/prefetch';
 import { astroImageTools } from 'astro-imagetools';
-import { VitePWA } from 'vite-plugin-pwa';
-import images from './src/utils/imagesRemark';
+import { replaceImgWithComponent } from './src/utils/replaceImgWithComponent';
+import image from '@astrojs/image';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [
-      VitePWA({
-        registerType: 'autoUpdate',
-        manifest: {
-          start_url: '/',
-          background_color: '#ffffff',
-          name: 'Rosnovsky Park',
-          short_name: 'RPark',
-          description: 'My Awesome App description',
-          theme_color: '#ffffff',
-          icons: [
-            {
-              src: 'pwa-192x192.png',
-              sizes: '192x192',
-              type: 'image/png',
-            },
-            {
-              src: 'pwa-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-            },
-          ],
-        },
-      }),
-    ],
-  },
   markdown: {
-    remarkPlugins: [images],
+    remarkPlugins: [replaceImgWithComponent],
   },
   site: 'https://rosnovsky.us',
-  integrations: [mdx(), sitemap(), prefetch(), astroImageTools, tailwind()],
+  integrations: [
+    image(),
+    mdx(),
+    sitemap(),
+    prefetch(),
+    astroImageTools,
+    tailwind(),
+  ],
 });

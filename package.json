@@ -13,33 +13,43 @@
         "coverage": "playwright show-report"
     },
     "dependencies": {
+        "@astrojs/image": "^0.16.1",
         "@astrojs/mdx": "^0.17.2",
         "@astrojs/prefetch": "^0.2.0",
+        "@astrojs/react": "^2.1.0",
         "@astrojs/rss": "^2.1.1",
         "@astrojs/sitemap": "^1.1.0",
         "@astrojs/tailwind": "^3.0.1",
         "@tailwindcss/typography": "^0.5.9",
+        "@types/react": "^18.0.21",
+        "@types/react-dom": "^18.0.6",
         "astro": "^2.1.2",
         "astro-icon": "^0.8.0",
         "astro-imagetools": "^0.8.1",
         "astro-mastodon-embed": "^0.0.4",
-        "vite-plugin-pwa": "^0.14.4",
         "astro-webmanifest": "^0.5.0",
-        "remark": "^14.0.2",
+        "file-type": "^18.2.1",
+        "find-cache-dir": "^4.0.0",
+        "next": "^13.2.4",
+        "object-hash": "^3.0.0",
+        "potrace": "^2.1.8",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
         "sharp": "^0.31.3",
         "tailwindcss": "^3.0.24",
         "unist-util-visit": "^4.1.2"
     },
     "devDependencies": {
         "@playwright/test": "^1.31.2",
-        "file-type": "^18.2.1",
-        "find-cache-dir": "^4.0.0",
-        "object-hash": "^3.0.0",
         "playwright": "^1.31.2",
-        "potrace": "^2.1.8",
         "prettier": "^2.8.4",
         "prettier-plugin-astro": "^0.8.0",
         "prettier-plugin-tailwindcss": "^0.2.4",
-        "rollup": "^3.19.1"
+        "remark": "^14.0.2",
+        "remark-parse": "^10.0.1",
+        "unist-builder": "^3.0.1"
+    },
+    "optionalDependencies": {
+        "fsevents": "^2.3.2"
     }
 }

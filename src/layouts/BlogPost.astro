@@ -25,13 +25,12 @@ const { title, pubDate, updatedDate, heroImage } = Astro.props;
         <Image
           fit="cover"
           height={500}
-          width={800}
+          width={900}
           src={heroImage.path || heroImage.path}
           alt={heroImage.alt || title}
-          placeholder="tracedSVG"
-          loading="lazy"
-          quality={80}
-          format="avif"
+          placeholder="dominantColor"
+          loading="eager"
+          format="webp"
         />
       )
     }
