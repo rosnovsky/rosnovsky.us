@@ -8,7 +8,7 @@ COPY pnpm-lock.yaml /home/app/
 
 RUN npm i -g pnpm
 
-RUN pnpm ci
+RUN pnpm i
 
 COPY . /home/app
 
