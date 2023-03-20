@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import BlogPostCard from '../../components/Cards/BlogPostCard.astro';
 import Container from '../../components/Container.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 const posts = (await getCollection('blog'))
@@ -11,15 +11,15 @@ const posts = (await getCollection('blog'))
 
 <MainLayout title="Blog | Rosnovsky Park™">
   <Container>
+    <h1 class="mb-10 text-5xl font-black tracking-tighter">
+      All things web development, hiking, camping, books, and more.
+    </h1>
     <section>
       <ul class="list-none">
         {
           posts.map((post) => (
-            <li class="border-1 border-sky-100">
-              <div class="border-1 border-sky-300">
-                <FormattedDate date={post.data.pubDate} />
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-              </div>
+            <li class="border-1 mb-10 border-sky-100">
+              <BlogPostCard {post} />
             </li>
           ))
         }

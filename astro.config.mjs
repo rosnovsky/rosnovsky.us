@@ -6,7 +6,7 @@ import prefetch from '@astrojs/prefetch';
 import { astroImageTools } from 'astro-imagetools';
 import image from '@astrojs/image';
 
-import netlify from '@astrojs/netlify/functions';
+import markdoc from '@astrojs/markdoc';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +17,7 @@ export default defineConfig({
     sitemap(),
     prefetch(),
     astroImageTools,
+    markdoc(),
     tailwind(),
   ],
 });

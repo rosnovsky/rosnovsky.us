@@ -9,6 +9,20 @@ module.exports = {
   corePlugins: {},
   plugins: [require('@tailwindcss/typography')],
   theme: {
+    fontFamily: {
+      sans: ['Atkinson Hyperlegible', 'sans-serif'],
+    },
+    fontWeight: {
+      thin: 100,
+      extralight: 200,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      extrabold: 800,
+      black: 900,
+    },
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
       sm: ['0.875rem', { lineHeight: '1.5rem' }],

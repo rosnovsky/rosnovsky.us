@@ -2,6 +2,10 @@
 import Container from '../components/Container.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { Picture as Image } from 'astro-imagetools/components';
+import GithubIcon from '../components/icons/GitHubIcon.astro';
+import MastodonIcon from '../components/icons/MastodonIcon.astro';
+import RssIcon from '../components/icons/RssIcon.astro';
+import SocialLink from '../components/SocialLink.astro';
 ---
 
 <MainLayout title="About">
@@ -70,9 +74,9 @@ import { Picture as Image } from 'astro-imagetools/components';
       </div>
       <div class="lg:pl-20">
         <ul role="list">
-          <!-- <SocialLink
+          <SocialLink
             class=""
-            href="https://rosnovsky.us/feed/feed.xml"
+            href="https://rosnovsky.us/rss.xml"
             icon={RssIcon}
           >
             Subscribe to RSS
@@ -80,31 +84,17 @@ import { Picture as Image } from 'astro-imagetools/components';
           <SocialLink
             href="https://lounge.town/@rosnovsky"
             icon={MastodonIcon}
-            class="mt-4"
+            class="mt-1"
           >
             Follow on Mastodon
           </SocialLink>
           <SocialLink
             href="https://github.com/rosnovsky"
-            icon={GitHubIcon}
-            class="mt-4"
+            icon={GithubIcon}
+            class="mt-1"
           >
             Follow on GitHub
           </SocialLink>
-          <SocialLink
-            href="https://linkedin.com/in/rosnovsky"
-            icon={LinkedInIcon}
-            class="mt-4"
-          >
-            Follow on LinkedIn
-          </SocialLink>
-          <SocialLink
-            href="mailto:artem@rosnovsky.us"
-            icon={MailIcon}
-            class="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-          >
-            artem@rosnovsky.us
-          </SocialLink> -->
         </ul>
       </div>
     </div>
