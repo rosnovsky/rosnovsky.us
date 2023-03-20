@@ -1,7 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{astro,jsx,ts,tsx}'],
+  content: [
+    './src/pages/**/*.astro',
+    './src/components/**/*.astro',
+    './src/layouts/**/*.astro',
+  ],
   darkMode: 'class',
+  corePlugins: {},
   plugins: [require('@tailwindcss/typography')],
   theme: {
     fontSize: {
