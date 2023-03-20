@@ -9,7 +9,7 @@ COPY pnpm-lock.yaml /home/app/
 RUN npm i -g pnpm
 
 RUN corepack enable
-RUN corepack prepare pnpm@latest-7 --activate
+RUN corepack prepare pnpm@latest --activate
 
 RUN pnpm i
 
