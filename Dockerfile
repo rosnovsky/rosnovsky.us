@@ -8,7 +8,7 @@ COPY pnpm-lock.yaml /home/app/
 
 RUN npm i -g pnpm
 
-RUN pnpm i
+RUN pnpm i --frozen-lockfile
 
 COPY . /home/app
 
