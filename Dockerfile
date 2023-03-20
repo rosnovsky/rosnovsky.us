@@ -4,14 +4,9 @@ EXPOSE 3000 9229
 WORKDIR /home/app
 
 COPY package.json /home/app/
-COPY pnpm-lock.yaml /home/app/
+COPY package-json.lock /home/app/
 
-RUN npm i -g pnpm
-
-RUN corepack enable
-RUN corepack prepare pnpm@7.0.0 --activate
-
-RUN pnpm i
+RUN npm ci
 
 COPY . /home/app
 
