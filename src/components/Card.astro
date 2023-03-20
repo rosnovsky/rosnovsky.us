@@ -1,0 +1,8 @@
+---
+import clsx from 'clsx';
+const props = Astro.props;
+---
+
+<div class={clsx(props.class, 'group relative flex flex-col items-start')}>
+  <slot />
+</div>

@@ -1,0 +1,50 @@
+---
+import clsx from 'clsx';
+import { Picture as Image } from 'astro-imagetools/components';
+
+const images: string[] = [
+  '/public/photos/image-1.jpg',
+  '/public/photos/image-2.jpg',
+  '/public/photos/image-3.jpg',
+  '/public/photos/image-4.jpg',
+  '/public/photos/image-5.jpg',
+];
+
+const rotations = [
+  'rotate-2',
+  '-rotate-2',
+  'rotate-2',
+  'rotate-2',
+  '-rotate-2',
+];
+---
+
+<div class="mt-10 sm:mt-20">
+  <div class="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+    {
+      images.map((image: string, imageIndex: number) => {
+        return (
+          <div
+            class={clsx(
+              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+              rotations[imageIndex % rotations.length]
+            )}
+          >
+            <Image
+              src={image}
+              alt="Art Rosnovsky"
+              width={400}
+              height={500}
+              placeholder="tracedSVG"
+              loading="eager"
+              format="avif"
+              attributes={{
+                class: 'rounded-full',
+              }}
+            />
+          </div>
+        );
+      })
+    }
+  </div>
+</div>

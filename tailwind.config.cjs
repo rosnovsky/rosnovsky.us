@@ -1,12 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{astro,ts,tsx}'],
+  content: ['./src/**/*.{astro,jsx,ts,tsx}'],
   darkMode: 'class',
   plugins: [require('@tailwindcss/typography')],
   theme: {
-    fontFamily: {
-      sans: ['Atkinson Hyperlegible', 'sans-serif'],
-    },
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
       sm: ['0.875rem', { lineHeight: '1.5rem' }],
@@ -102,23 +99,18 @@ module.exports = {
           },
 
           // Headings
-          h1: {
-            fontSize: theme('fontSize.4xl')[0],
-            fontWeight: theme('fontWeight.bold'),
-            lineHeight: theme('lineHeight.10'),
-          },
           'h2, h3': {
             color: 'var(--tw-prose-headings)',
-            fontWeight: theme('fontWeight.bold'),
+            fontWeight: theme('fontWeight.semibold'),
           },
           h2: {
-            fontSize: theme('fontSize.4xl')[0],
+            fontSize: theme('fontSize.xl')[0],
             lineHeight: theme('lineHeight.7'),
             marginTop: theme('spacing.20'),
             marginBottom: theme('spacing.4'),
           },
           h3: {
-            fontSize: theme('fontSize.2xl')[0],
+            fontSize: theme('fontSize.base')[0],
             lineHeight: theme('lineHeight.7'),
             marginTop: theme('spacing.16'),
             marginBottom: theme('spacing.4'),

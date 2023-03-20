@@ -6,24 +6,34 @@ import MainLayout from '../layouts/MainLayout.astro';
 import GitHubIcon from '../components/icons/GitHubIcon.astro';
 import MastodonIcon from '../components/icons/MastodonIcon.astro';
 import RssIcon from '../components/icons/RssIcon.astro';
+import Photos from '../components/Photos.astro';
+import { getCollection } from 'astro:content';
+import BlogPostCard from '../components/Cards/BlogPostCard.astro';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .filter((post) => !post.data.draft);
 ---
 
-<MainLayout title="Home">
+<MainLayout
+  title="Art Rosnovsky | Rosnovsky Park™"
+  description="I'm Art, software engineer living in the Pacific Norhtwest. I love coding, hiking, and reading."
+>
   <Container class="mt-9">
     <div class="max-w-2xl">
       <h1
-        class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+        class="prose-xl prose font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
       >
         Software engineer, hiker, and avid reader.
       </h1>
       <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-        I&apos; m Art, and we need to talk. Or maybe we don&apos;t. In any case,
+        I&apos;m Art, and we need to talk. Or maybe we don&apos;t. In any case,
         I write about web development, hiking, and random hobbies I pick up
         every now and then.
       </p>
       <div class="mt-6 flex gap-6">
         <SocialLink
-          href="https://rosnovsky.us/feed/feed.xml"
+          href="https://rosnovsky.us/rss.xml"
           aria-label="Subscribe to RSS"
           icon={RssIcon}
         />
@@ -41,25 +51,21 @@ import RssIcon from '../components/icons/RssIcon.astro';
       </div>
     </div>
   </Container>
-</MainLayout>
-<!-- <Photos />
+  <Photos />
   <Container class="mt-24 md:mt-28">
     <div
       class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2"
     >
       <div class="flex flex-col gap-16">
-        {
-          posts?.map((post) => (
-            <BlogPostCard key={post.slug.current} post={post} />
-          ))
-        }
+        {posts?.map((post) => <BlogPostCard post={post} />)}
       </div>
       <div class="space-y-10 lg:pl-16 xl:pl-24">
-        <Suspense fallback={(<div>Loading...</div>)}>
+        <!-- <Suspense fallback={(<div>Loading...</div>)}>
           <Newsletter />
         </Suspense>
         <Resume />
-        <CurrentBook currentBook={currentBook} />
+        <CurrentBook currentBook={currentBook} /> -->
       </div>
-    </div> -->
-<!-- </Container> -->
+    </div>
+  </Container>
+</MainLayout>

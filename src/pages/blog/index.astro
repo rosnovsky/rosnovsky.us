@@ -4,12 +4,12 @@ import Container from '../../components/Container.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).filter((post) => !post.data.draft);
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .filter((post) => !post.data.draft);
 ---
 
-<MainLayout title="Blog">
+<MainLayout title="Blog | Rosnovsky Park™">
   <Container>
     <section>
       <ul class="list-none">

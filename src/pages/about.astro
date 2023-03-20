@@ -7,12 +7,12 @@ import { Picture as Image } from 'astro-imagetools/components';
 <MainLayout title="About">
   <Container class="mt-16 sm:mt-32">
     <div
-      class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12 prose prose-xl"
+      class="prose-xl prose grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12"
     >
       <div class="lg:pl-20">
         <div class="max-w-xs px-2.5 lg:max-w-none">
           <Image
-            src="/src/images/placeholder-social.jpg"
+            src="/src/images/portrait.jpg"
             alt="Art Rosnovsky"
             width={600}
             height={600}
@@ -20,7 +20,7 @@ import { Picture as Image } from 'astro-imagetools/components';
             loading="eager"
             format="avif"
             attributes={{
-              class: "rounded-full"
+              class: 'rounded-full',
             }}
           />
         </div>
