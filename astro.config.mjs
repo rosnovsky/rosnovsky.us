@@ -19,7 +19,5 @@ export default defineConfig({
     astroImageTools,
     tailwind(),
   ],
-  adapter: netlify({
-    builders: true,
-  }),
+  adapter: netlify(),
 });
