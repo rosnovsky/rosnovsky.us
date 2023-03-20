@@ -8,7 +8,10 @@ COPY pnpm-lock.yaml /home/app/
 
 RUN npm i -g pnpm
 
-RUN pnpm i --frozen-lockfile
+RUN corepack enable
+RUN corepack prepare pnpm@latest-7 --activate
+
+RUN pnpm i
 
 COPY . /home/app
 
