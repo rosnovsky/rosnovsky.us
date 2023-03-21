@@ -1,9 +1,9 @@
 ---
 title: 'Lawns vs Meadows: post-summer update'
-description: ''
+description: "Here's a description for you!"
 pubDate: 2022-11-04
 tags: ['home', 'environment']
-heroImage: { path: '/9.jpeg', alt: 'Alt', title: "test" }
+heroImage: { path: '/9.jpeg', alt: 'Alt', title: 'test' }
 ---
 
 It's been a while since I posted a backyard update. So here goes.

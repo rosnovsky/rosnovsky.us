@@ -17,7 +17,9 @@ First, I should say that the show is really well done. It's strangely beautiful,
 
 The story, on the other hand, is quite disjointed, full of leaps and gaps, and loose ends. This is also entirely beside the point; the point is that this story has no relation to what happens in the book.
 
-# Spoilers ahead!
+> **Spoilers ahead!**
+
+---
 
 Don't get me wrong, I'm not some philosopher annoyed that the deeper meaning of a book was not reflected as such on the show. What I mean is that some plot elements of the show make no sense, while others go directly opposite the book.
 

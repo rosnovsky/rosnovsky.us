@@ -1,43 +1,83 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
 import MainLayout from './MainLayout.astro';
 import { Picture as Image } from 'astro-imagetools/components';
+import { formatDate, readingTime } from '../lib/helpers';
+import Container from '../components/Container.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>;
 
-const { title, pubDate, updatedDate, heroImage } = Astro.props;
+const { data, body } = Astro.props;
+
+const { title, pubDate, heroImage } = data as Props['data'];
 ---
 
 <MainLayout title={`${title} | Blog | Rosnovsky Park™`}>
-  <article class="prose-xl prose mx-auto max-w-3xl px-4 dark:prose-invert">
-    <h1 class="mb-2 text-5xl font-bold text-black">{title}</h1>
-    Published on <FormattedDate date={pubDate} />
-    {
-      updatedDate && (
-        <div class="mb-0 flex">
-          Last updated on <FormattedDate date={updatedDate} />
-        </div>
-      )
-    }
-    {
-      heroImage && (
-        <Image
-          fit="cover"
-          height={500}
-          width={900}
-          src={heroImage.path || heroImage.path}
-          alt={heroImage.alt || title}
-          placeholder="dominantColor"
-          loading="eager"
-          format="avif"
-        />
-      )
-    }
+  <Container class="mt-16 lg:mt-32">
+    <div class="xl:relative">
+      <div class="mx-auto max-w-3xl">
+        <article>
+          <header class="flex flex-col">
+            <h1
+              class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+            >
+              {title}
+            </h1>
+            <time
+              date-time={pubDate}
+              class="order-first flex items-center text-base text-zinc-500 dark:text-zinc-400"
+            >
+              <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
+              ></span>
+              <span
+                class="font-mono z-10 ml-3 flex items-center rounded-lg text-sm text-zinc-400 dark:text-zinc-400"
+                >{formatDate(pubDate)}
+                &nbsp;
+                <svg
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16px"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  stroke="rgb(20 184 166)"
+                  stroke-width="1.5"
+                  stroke-linecap="square"
+                  strokeline-join="miter"
+                  fill="none"
+                  color="rgb(20 184 166)"
+                >
+                  {' '}
+                  <circle cx="12" cy="13" r="8"></circle>
+                  <path d="M12 9L12 13M18 7L20 5M15 2L9 2"></path>{' '}
+                </svg>
+                &nbsp;{readingTime(body)} min read
+              </span>
+            </time>
 
-    <hr class="my-5" />
-    <div class="text-xl">
-      <slot />
+            {
+              heroImage && (
+                <div class="mt-8 overflow-hidden rounded-lg">
+                  <Image
+                    fit="cover"
+                    height={500}
+                    width={900}
+                    src={heroImage.path || heroImage.path}
+                    alt={heroImage.alt || title}
+                    placeholder="dominantColor"
+                    loading="eager"
+                    format="avif"
+                  />
+                </div>
+              )
+            }
+            <div
+              class={'prose mt-8 text-xl leading-9 text-zinc-700 dark:text-zinc-300'}
+            >
+              <slot />
+            </div>
+          </header>
+        </article>
+      </div>
     </div>
-  </article>
+  </Container>
 </MainLayout>
