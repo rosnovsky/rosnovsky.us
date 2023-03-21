@@ -9,7 +9,7 @@ import RssIcon from '../components/icons/RssIcon.astro';
 import Photos from '../components/Photos.astro';
 import { getCollection } from 'astro:content';
 import BlogPostCard from '../components/Cards/BlogPostCard.astro';
-import Resume from '../components/Resume/resume.astro';
+import Resume from '../components/Resume/Resume.astro';
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
