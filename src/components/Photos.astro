@@ -26,7 +26,7 @@ const rotations = [
         return (
           <div
             class={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+              'relative w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
               rotations[imageIndex % rotations.length]
             )}
           >
@@ -34,7 +34,7 @@ const rotations = [
               src={image}
               alt="Art Rosnovsky"
               width={400}
-              height={500}
+              height={400}
               loading="lazy"
             />
           </div>

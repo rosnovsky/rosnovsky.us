@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Atkinson Hyperlegible', 'sans-serif'],
+      serif: ['"Inter"', 'serif'],
     },
     fontWeight: {
       thin: 100,
@@ -118,12 +119,19 @@ module.exports = {
           },
 
           // Headings
-          'h2, h3': {
+          'h1, h2, h3': {
             color: 'var(--tw-prose-headings)',
-            fontWeight: theme('fontWeight.semibold'),
+            fontWeight: theme('fontWeight.bold'),
+            fontFamily: theme('fontFamily.sans'),
+          },
+          h1: {
+            fontSize: theme('fontSize.6xl')[0],
+            lineHeight: theme('lineHeight.7'),
+            marginTop: theme('spacing.20'),
+            marginBottom: theme('spacing.4'),
           },
           h2: {
-            fontSize: theme('fontSize.xl')[0],
+            fontSize: theme('fontSize.4xl')[0],
             lineHeight: theme('lineHeight.7'),
             marginTop: theme('spacing.20'),
             marginBottom: theme('spacing.4'),
