@@ -1,7 +1,7 @@
 ---
 import Container from '../components/Container.astro';
 import MainLayout from '../layouts/MainLayout.astro';
-import { Picture as Image } from 'astro-imagetools/components';
+import { Image } from 'astro:assets';
 import GithubIcon from '../components/icons/GitHubIcon.astro';
 import MastodonIcon from '../components/icons/MastodonIcon.astro';
 import RssIcon from '../components/icons/RssIcon.astro';
@@ -20,12 +20,8 @@ import SocialLink from '../components/SocialLink.astro';
             alt="Art Rosnovsky"
             width={600}
             height={600}
-            placeholder="blurred"
             loading="eager"
             format="avif"
-            attributes={{
-              class: 'rounded-full',
-            }}
           />
         </div>
       </div>

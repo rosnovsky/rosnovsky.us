@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import MainLayout from './MainLayout.astro';
-import { Picture as Image } from 'astro-imagetools/components';
+import { Image } from 'astro:assets';
 import { formatDate, readingTime } from '../lib/helpers';
 import Container from '../components/Container.astro';
 
@@ -58,12 +58,10 @@ const { title, pubDate, heroImage } = data as Props['data'];
               heroImage && (
                 <div class="mt-8 overflow-hidden rounded-lg">
                   <Image
-                    fit="cover"
                     height={500}
                     width={900}
                     src={heroImage.path || heroImage.path}
                     alt={heroImage.alt || title}
-                    placeholder="dominantColor"
                     loading="eager"
                     format="avif"
                   />
