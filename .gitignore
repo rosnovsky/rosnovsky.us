@@ -12,9 +12,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# test coverage
-playwright-report/
-
 
 # environment variables
 .env
@@ -22,7 +19,3 @@ playwright-report/
 
 # macOS-specific files
 .DS_Store
-
-.vercel
-.next
-.astro
