@@ -1,5 +1,6 @@
-import { books } from './books/books';
-import { blog } from './blog/blog';
+import { books } from './books/_books';
+import { blog } from './blog/_blog';
+import { author } from './authors/_author';
 
 export const collections = { blog, books };
 

@@ -2,6 +2,7 @@ import { defineCollection, reference, z } from 'astro:content';
 
 export const books = defineCollection({
   // Type-check frontmatter using a schema
+  type: 'content',
   schema: z.object({
     title: z.string(),
     author: reference('authors'),

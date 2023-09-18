@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogPost from '../../components/BlogPost.astro';
 import Container from '../../components/Container.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
+import Book from '../../components/Book.astro';
 
-const posts = (await getCollection('blog'))
+const books = (await getCollection('books'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .filter((post) => !post.data.draft);
 ---
@@ -20,10 +20,10 @@ const posts = (await getCollection('blog'))
     <section>
       <div class="list-none">
         {
-          posts.map((post) => (
+          books.map((book) => (
             <div class="my-16 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-              <div class="flex max-w-3xl flex-col space-y-16" >
-                <BlogPost {post} />
+              <div class="flex max-w-3xl flex-col space-y-16">
+                <Book {book} />
               </div>
             </div>
           ))

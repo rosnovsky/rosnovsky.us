@@ -1,0 +1,53 @@
+---
+import { formatDate, readingTime } from '../lib/helpers';
+import Card from './Card.astro';
+import CardCta from './Card/CardCta.astro';
+import CardDescription from './Card/CardDescription.astro';
+import CardEyebrow from './Card/CardEyebrow.astro';
+import CardTitle from './Card/CardTitle.astro';
+
+const { book = {} } = Astro.props;
+---
+
+<article class="md:grid md:grid-cols-4 md:items-baseline">
+  <Card class="md:col-span-3">
+    <CardTitle href={`/library/${book.slug}`}>
+      {book.data.title}
+    </CardTitle>
+    <CardEyebrow
+      as="time"
+      dateTime={book.data.pubDate}
+      class="md:hidden"
+      decorate
+    >
+      {formatDate(book.data.pubDate)}
+      <svg
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16px"
+        height="16px"
+        viewBox="0 0 24 24"
+        stroke="rgb(20 184 166)"
+        stroke-width="1.5"
+        stroke-linecap="square"
+        strokeline-join="miter"
+        fill="none"
+        color="rgb(20 184 166)"
+      >
+        {' '}
+        <circle cx="12" cy="13" r="8"></circle>
+        <path d="M12 9L12 13M18 7L20 5M15 2L9 2"></path>{' '}
+      </svg>
+      {readingTime(book.body)} min read
+    </CardEyebrow>
+    <CardDescription>{book.data.description}</CardDescription>
+    <CardCta>Read post</CardCta>
+  </Card>
+  <CardEyebrow
+    as="time"
+    dateTime={book.data.pubDate}
+    class="mt-1 hidden md:block"
+  >
+    {formatDate(book.data.pubDate)}<p>{readingTime(book.body)} min read</p>
+  </CardEyebrow>
+</article>

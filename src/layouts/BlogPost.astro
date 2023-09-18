@@ -4,6 +4,7 @@ import MainLayout from './MainLayout.astro';
 import { Image } from 'astro:assets';
 import { formatDate, readingTime } from '../lib/helpers';
 import Container from '../components/Container.astro';
+import { fade } from 'astro:transitions';
 
 type Props = CollectionEntry<'blog'>;
 
@@ -56,7 +57,7 @@ const { title, pubDate, heroImage } = data as Props['data'];
 
             {
               heroImage && (
-                <div class="mt-8 overflow-hidden rounded-lg rotate-2">
+                <div class="mt-8 overflow-hidden rounded-lg rotate-2" transition:animate={fade({duration: 500})}>
                   <Image
                     height={500}
                     width={900}
