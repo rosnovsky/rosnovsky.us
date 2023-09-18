@@ -6,6 +6,7 @@ import GithubIcon from '../components/icons/GitHubIcon.astro';
 import MastodonIcon from '../components/icons/MastodonIcon.astro';
 import RssIcon from '../components/icons/RssIcon.astro';
 import SocialLink from '../components/SocialLink.astro';
+import { fade } from 'astro:transitions';
 ---
 
 <MainLayout title="About">
@@ -16,13 +17,14 @@ import SocialLink from '../components/SocialLink.astro';
       <div class="lg:pl-20">
         <div class="max-w-xs px-2.5 lg:max-w-none">
           <Image
-            src="/src/images/portrait.jpg"
+            src="/portrait.jpg"
             alt="Art Rosnovsky"
             width={600}
             height={600}
             loading="lazy"
             format="avif"
             class="rounded-xl rotate-3"
+            transition:animate={fade({duration: 300})}
           />
         </div>
       </div>
