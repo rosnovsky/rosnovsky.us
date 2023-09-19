@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import MainLayout from './MainLayout.astro';
-import { Image } from 'astro:assets';
+import { Picture } from "astro-imagetools/components";
 import { formatDate, readingTime } from '../lib/helpers';
 import Container from '../components/Container.astro';
 import { fade } from 'astro:transitions';
@@ -57,14 +57,15 @@ const { title, pubDate, heroImage } = data as Props['data'];
 
             {
               heroImage && (
-                <div class="mt-8 overflow-hidden rounded-lg rotate-2" transition:animate={fade({duration: 500})}>
-                  <Image
+                <div class="mt-8 overflow-hidden rounded-lg rotate-2">
+                  <Picture
                     height={500}
                     width={900}
                     src={heroImage.path || heroImage.path}
                     alt={heroImage.alt || title}
-                    loading="eager"
+                    loading="lazy"
                     format="avif"
+                    placeholder="blurred"
                   />
                 </div>
               )

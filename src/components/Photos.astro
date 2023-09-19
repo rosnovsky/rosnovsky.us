@@ -1,7 +1,6 @@
 ---
 import clsx from 'clsx';
-import {Image} from 'astro:assets'
-import { fade } from 'astro:transitions';
+import { Picture } from "astro-imagetools/components";
 
 const images: string[] = [
   '/photos/image-1.jpg',
@@ -31,13 +30,14 @@ const rotations = [
               rotations[imageIndex % rotations.length]
             )}
           >
-            <Image
+            <Picture
               src={image}
               alt="Art Rosnovsky"
               width={400}
               height={400}
               loading="eager"
               format="avif"
+              placeholder="blurred"
             />
           </div>
         );

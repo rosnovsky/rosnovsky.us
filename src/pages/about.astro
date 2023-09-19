@@ -1,12 +1,11 @@
 ---
 import Container from '../components/Container.astro';
 import MainLayout from '../layouts/MainLayout.astro';
-import { Image } from 'astro:assets';
+import { Picture } from "astro-imagetools/components";
 import GithubIcon from '../components/icons/GitHubIcon.astro';
 import MastodonIcon from '../components/icons/MastodonIcon.astro';
 import RssIcon from '../components/icons/RssIcon.astro';
 import SocialLink from '../components/SocialLink.astro';
-import { fade } from 'astro:transitions';
 ---
 
 <MainLayout title="About">
@@ -15,16 +14,15 @@ import { fade } from 'astro:transitions';
       class="prose-xl prose grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12"
     >
       <div class="lg:pl-20">
-        <div class="max-w-xs px-2.5 lg:max-w-none">
-          <Image
+        <div class="max-w-xs px-2.5 lg:max-w-none rounded-xl rotate-3">
+          <Picture
             src="/portrait.jpg"
             alt="Art Rosnovsky"
             width={600}
             height={600}
             loading="lazy"
             format="avif"
-            class="rounded-xl rotate-3"
-            transition:animate={fade({duration: 300})}
+            placeholder="blurred"
           />
         </div>
       </div>
