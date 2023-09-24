@@ -18,17 +18,17 @@ const books = (await getCollection('books'))
       All things web development, hiking, camping, books, and more.
     </h1>
     <section>
-      <div class="list-none">
+      <div class="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      
         {
           books.map((book) => (
-            <div class="my-16 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-              <div class="flex max-w-3xl flex-col space-y-16">
                 <Book {book} />
               </div>
-            </div>
-          ))
-        }
+              </div>
+              ))
+            }
       </div>
+    </div>
     </section>
   </Container>
 </MainLayout>

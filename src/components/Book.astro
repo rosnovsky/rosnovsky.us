@@ -1,53 +1,35 @@
 ---
-import { formatDate, readingTime } from '../lib/helpers';
-import Card from './Card.astro';
-import CardCta from './Card/CardCta.astro';
-import CardDescription from './Card/CardDescription.astro';
-import CardEyebrow from './Card/CardEyebrow.astro';
-import CardTitle from './Card/CardTitle.astro';
-
-const { book = {} } = Astro.props;
+import { getEntry } from 'astro:content';
+import { Picture } from 'astro-imagetools/components';
+import type { CollectionEntry } from 'astro:content';
+const { book } = Astro.props;
+const author = await getEntry(book.data.author, "authors") as CollectionEntry<"authors">;
+const publisher = await getEntry(book.data.publisher) as CollectionEntry<"publishers">;
 ---
 
-<article class="md:grid md:grid-cols-4 md:items-baseline">
-  <Card class="md:col-span-3">
-    <CardTitle href={`/library/${book.slug}`}>
-      {book.data.title}
-    </CardTitle>
-    <CardEyebrow
-      as="time"
-      dateTime={book.data.pubDate}
-      class="md:hidden"
-      decorate
-    >
-      {formatDate(book.data.pubDate)}
-      <svg
-        role="img"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16px"
-        height="16px"
-        viewBox="0 0 24 24"
-        stroke="rgb(20 184 166)"
-        stroke-width="1.5"
-        stroke-linecap="square"
-        strokeline-join="miter"
-        fill="none"
-        color="rgb(20 184 166)"
-      >
-        {' '}
-        <circle cx="12" cy="13" r="8"></circle>
-        <path d="M12 9L12 13M18 7L20 5M15 2L9 2"></path>{' '}
-      </svg>
-      {readingTime(book.body)} min read
-    </CardEyebrow>
-    <CardDescription>{book.data.description}</CardDescription>
-    <CardCta>Read post</CardCta>
-  </Card>
-  <CardEyebrow
-    as="time"
-    dateTime={book.data.pubDate}
-    class="mt-1 hidden md:block"
-  >
-    {formatDate(book.data.pubDate)}<p>{readingTime(book.body)} min read</p>
-  </CardEyebrow>
-</article>
+<article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+        <img src=`/books/covers/${book.data.cover}` alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+        <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-md leading-6 text-gray-300">
+          <div class="flex gap-x-2.5">
+            {author.data.name}
+          </div>
+          <div class="mx-2 flex items-center gap-x-4">
+            <svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
+              <circle cx="1" cy="1" r="1" />
+            </svg>
+          </div>
+          
+          <div class="flex">
+            {publisher.data.name} (<time datetime={book.data.pubDate.getFullYear()}>{book.data.pubDate.getFullYear()}</time>)
+          </div>          
+        </div>
+        <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
+          <a href=`/library/${author.slug}/${book.slug}`>
+            <span class="absolute inset-0"></span>
+            {book.data.title}
+          </a>
+        </h3>
+      </article>

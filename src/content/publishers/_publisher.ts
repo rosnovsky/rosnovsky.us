@@ -1,15 +1,10 @@
 import { defineCollection, reference, z } from 'astro:content';
 
-export const authors = defineCollection({
+export const publishers = defineCollection({
   // Type-check frontmatter using a schema
   type: 'content',
   schema: z.object({
     name: z.string(),
     website: z.string().url(),
-    coverImage: z.object({
-      path: z.string(),
-      alt: z.string(),
-      title: z.string(),
-    }).optional(),
   }),
 });

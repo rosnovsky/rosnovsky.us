@@ -7,7 +7,9 @@ export const books = defineCollection({
     title: z.string(),
     author: reference('authors'),
     publisher: reference('publishers'),
-    genre: z.string(),
+    genre: z.enum(
+      ['fiction', 'non-fiction', 'poetry', 'sci-fi', 'biography', 'history'] as const
+    ),
     description: z.string(),
     pages: z.number(),
     // Transform string to Date object
@@ -20,6 +22,7 @@ export const books = defineCollection({
       alt: z.string(),
       title: z.string(),
     }).optional(),
+    cover: z.string().optional(),
     draft: z.boolean().optional(),
     tags: z.array(z.string())
   }),

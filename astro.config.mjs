@@ -6,14 +6,14 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.my-site.dev',
+  site: 'https://rosnovsky.us',
   buildOptions: {
     site: {
-      title: 'Astro',
-      description: 'The best way to build web apps in pure JavaScript.',
+      title: 'Rosnovsky Park',
+      description: 'Welcome to the Rosnovsky Park!',
       mastodon: '@rosnovsky@lounge.town',
       url: {
-        pathname: 'https://astro.build'
+        pathname: 'https://rosnovsky.us'
       }
     }
   },
