@@ -1,8 +1,7 @@
 import { registerSW } from 'virtual:pwa-register';
 
 const updateSW = registerSW({
-
-  onNeedRefresh() { },
+  onNeedRefresh() {},
   onOfflineReady() {
     console.log('Offline ready');
   },

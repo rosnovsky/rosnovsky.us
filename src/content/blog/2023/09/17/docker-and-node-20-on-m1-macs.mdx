@@ -18,7 +18,7 @@ When I got all the way to the `Dockerfile` update step, things started getting w
 
 Did I reboot my computer? Yes. Restart Docker multiple times? Yes. Read through a dozen of articles and however many StackOverflow pages? Sure, yes. Talk to more experienced folks on my team? You guessed it.
 
-The consensus at this point was that it's most likely something on "*my machine*". But what? I've got the correct Docker version, same as everybody else. I guess, I'll just go and turn settings in Docker on and off until I find the cause of this problem.
+The consensus at this point was that it's most likely something on "_my machine_". But what? I've got the correct Docker version, same as everybody else. I guess, I'll just go and turn settings in Docker on and off until I find the cause of this problem.
 
 And there it was. A while back, when trees were tall and Docker barely worked on M1 Macs, I've enabled this rather obscure experimental feature called "**Use Rosetta for x86/amd64 emulation on Apple Silicon**": it made something that didn't work at the time actually work. As it turned out, it also made something that was supposed to work now not work at all. Unchecking this feature resolved the issue, and I was able to finally finish the upgrade.
 

@@ -6,10 +6,12 @@ export const authors = defineCollection({
   schema: z.object({
     name: z.string(),
     website: z.string().url(),
-    coverImage: z.object({
-      path: z.string(),
-      alt: z.string(),
-      title: z.string(),
-    }).optional(),
+    coverImage: z
+      .object({
+        path: z.string(),
+        alt: z.string(),
+        title: z.string(),
+      })
+      .optional(),
   }),
 });

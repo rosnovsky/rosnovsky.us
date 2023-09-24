@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import { astroImageTools } from "astro-imagetools";
+import tailwind from '@astrojs/tailwind';
+import { astroImageTools } from 'astro-imagetools';
 
-import mdx from "@astrojs/mdx";
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,9 +13,9 @@ export default defineConfig({
       description: 'Welcome to the Rosnovsky Park!',
       mastodon: '@rosnovsky@lounge.town',
       url: {
-        pathname: 'https://rosnovsky.us'
-      }
-    }
+        pathname: 'https://rosnovsky.us',
+      },
+    },
   },
-  integrations: [tailwind(), mdx(), astroImageTools]
+  integrations: [tailwind(), mdx(), astroImageTools],
 });

@@ -8,28 +8,30 @@ const publisher = await getEntry(book.data.publisher) as CollectionEntry<"publis
 ---
 
 <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
-        <img src=`/books/covers/${book.data.cover}` alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+  {
+    book.data.cover && <div class="absolute inset-0 -z-10 h-full w-full object-cover"><Picture src={book.data.cover} alt="" placeholder="blurred"></div>
+    }
+  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+  <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
 
-        <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-md leading-6 text-gray-300">
-          <div class="flex gap-x-2.5">
-            {author.data.name}
-          </div>
-          <div class="mx-2 flex items-center gap-x-4">
-            <svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
-              <circle cx="1" cy="1" r="1" />
-            </svg>
-          </div>
-          
-          <div class="flex">
-            {publisher.data.name} (<time datetime={book.data.pubDate.getFullYear()}>{book.data.pubDate.getFullYear()}</time>)
-          </div>          
-        </div>
-        <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
-          <a href=`/library/${author.slug}/${book.slug}`>
-            <span class="absolute inset-0"></span>
-            {book.data.title}
-          </a>
-        </h3>
-      </article>
+  <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-md leading-6 text-gray-300">
+    <div class="flex gap-x-2.5">
+      {author.data.name}
+    </div>
+    <div class="mx-2 flex items-center gap-x-4">
+      <svg viewBox="0 0 2 2" class="-ml-0.5 h-0.5 w-0.5 flex-none fill-white/50">
+        <circle cx="1" cy="1" r="1" />
+      </svg>
+    </div>
+    
+    <div class="flex">
+      {publisher.data.name} (<time datetime={book.data.pubDate.getFullYear()}>{book.data.pubDate.getFullYear()}</time>)
+    </div>          
+  </div>
+  <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
+    <a href=`/library/${author.slug}/${book.slug}`>
+      <span class="absolute inset-0"></span>
+      {book.data.title}
+    </a>
+  </h3>
+</article>

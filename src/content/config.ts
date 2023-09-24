@@ -4,5 +4,3 @@ import { authors } from './authors/_author';
 import { publishers } from './publishers/_publisher';
 
 export const collections = { blog, books, authors, publishers };
-
-

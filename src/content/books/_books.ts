@@ -7,9 +7,14 @@ export const books = defineCollection({
     title: z.string(),
     author: reference('authors'),
     publisher: reference('publishers'),
-    genre: z.enum(
-      ['fiction', 'non-fiction', 'poetry', 'sci-fi', 'biography', 'history'] as const
-    ),
+    genre: z.enum([
+      'fiction',
+      'non-fiction',
+      'poetry',
+      'sci-fi',
+      'biography',
+      'history',
+    ] as const),
     description: z.string(),
     pages: z.number(),
     // Transform string to Date object
@@ -17,13 +22,16 @@ export const books = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
-    coverImage: z.object({
-      path: z.string(),
-      alt: z.string(),
-      title: z.string(),
-    }).optional(),
+    coverImage: z
+      .object({
+        path: z.string(),
+        alt: z.string(),
+        title: z.string(),
+      })
+      .optional(),
     cover: z.string().optional(),
     draft: z.boolean().optional(),
-    tags: z.array(z.string())
+    tags: z.array(z.string()),
+    ISBN: z.string().optional(),
   }),
 });
