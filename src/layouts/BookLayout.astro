@@ -2,7 +2,6 @@
 import MainLayout from './MainLayout.astro';
 import Container from '../components/Container.astro';
 import { getEntry, type CollectionEntry } from 'astro:content';
-import { Picture } from 'astro-imagetools/components';
 
 const { book } = Astro.props
 const author = await getEntry(book.data.author) as CollectionEntry<"authors">
@@ -19,13 +18,11 @@ const publisher = await getEntry(book.data.publisher) as CollectionEntry<"publis
           {
               book.data.cover && (
                 <div class="absolute inset-0 h-full w-full object-cover brightness-100 saturate-50">
-                  <Picture
+                  <img
                   width={1097}
                     src={book.data.cover}
                     alt={book.data.title}
                     loading="lazy"
-                    format="avif"
-                    placeholder="tracedSVG"
                   />
                   </div>
               )

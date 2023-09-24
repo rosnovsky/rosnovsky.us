@@ -1,6 +1,5 @@
 ---
 import { getEntry } from 'astro:content';
-import { Picture } from 'astro-imagetools/components';
 import type { CollectionEntry } from 'astro:content';
 const { book } = Astro.props;
 const author = await getEntry(book.data.author, "authors") as CollectionEntry<"authors">;
@@ -8,9 +7,7 @@ const publisher = await getEntry(book.data.publisher) as CollectionEntry<"publis
 ---
 
 <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
-  {
-    book.data.cover && <div class="absolute inset-0 -z-10 h-full w-full object-cover"><Picture src={book.data.cover} alt="" placeholder="blurred"></div>
-    }
+<div class="absolute inset-0 -z-10 h-full w-full object-cover"><img src={book.data.cover} alt=""></div>
   <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
   <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
 
