@@ -15,15 +15,17 @@ const books = (await getCollection('books')).sort(
       All my favorite books!
     </h1>
     <aside class="">
-      I've got a total of {books.length} books in my library by {
-        new Set(books.map((book) => book.data.author.slug)).size
-      } authors. I've read {
-        Math.floor(
-          (books.filter((book) => book.data.status === 'read').length /
-            books.length) *
-            100
-        )
-      }% of them.
+      I've got a total of <strong>{books.length} books</strong> by <strong
+        >{new Set(books.map((book) => book.data.author.slug)).size} authors</strong
+      > in my library. I've read <strong
+        >{
+          Math.floor(
+            (books.filter((book) => book.data.status === 'read').length /
+              books.length) *
+              100
+          )
+        }%</strong
+      > of them.
     </aside>
     <section>
       <div

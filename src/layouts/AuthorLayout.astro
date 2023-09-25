@@ -26,17 +26,19 @@ const authorsPublishers = allPpublishers.filter((publisher) =>
       <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
         Books by {author.data.name}
       </h1>
-       I've got {pluralize(books.length, 'book')} by <a
+       I've got <strong>{pluralize(books.length, 'book')}</strong> by <a
         href={author.data.website}>{author.data.name}</a
-      > in my library, with a total of {
-        books.reduce((total, book) => total + book.data.pages, 0)
-      } pages. I've read {
-        Math.floor(
-          (books.filter((book) => book.data.status === 'read').length /
-            books.length) *
-            100
-        )
-      }%.
+      > in my library, with a total of <strong
+        >{books.reduce((total, book) => total + book.data.pages, 0)} pages</strong
+      >. I've read <strong
+        >{
+          Math.floor(
+            (books.filter((book) => book.data.status === 'read').length /
+              books.length) *
+              100
+          )
+        }%</strong
+      > of them.
     </div>
     {
       books.map((book) => {
