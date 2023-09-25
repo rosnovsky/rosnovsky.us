@@ -18,9 +18,11 @@ const books = (await getCollection('books')).sort(
       I've got a total of {books.length} books in my library by {
         new Set(books.map((book) => book.data.author.slug)).size
       } authors. I've read {
-        (books.filter((book) => book.data.status === 'read').length /
-          books.length) *
-          100
+        Math.floor(
+          (books.filter((book) => book.data.status === 'read').length /
+            books.length) *
+            100
+        )
       }% of them.
     </aside>
     <section>

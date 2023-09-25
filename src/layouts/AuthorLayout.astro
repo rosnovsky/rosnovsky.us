@@ -29,11 +29,12 @@ const authorsPublishers = allPpublishers.filter((publisher) =>
       > in my library, with a total of {
         books.reduce((total, book) => total + book.data.pages, 0)
       } pages. I've read {
-        pluralize(
-          books.filter((book) => book.data.status === 'read').length,
-          'book'
+        Math.floor(
+          (books.filter((book) => book.data.status === 'read').length /
+            books.length) *
+            100
         )
-      }.
+      }%.
     </div>
     {
       books.map((book) => {
