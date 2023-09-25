@@ -1,7 +1,7 @@
 ---
 import Container from '../components/Container.astro';
 import MainLayout from '../layouts/MainLayout.astro';
-import { Picture } from "astro-imagetools/components";
+import { Picture } from 'astro-imagetools/components';
 import GithubIcon from '../components/icons/GitHubIcon.astro';
 import MastodonIcon from '../components/icons/MastodonIcon.astro';
 import RssIcon from '../components/icons/RssIcon.astro';
@@ -14,7 +14,7 @@ import SocialLink from '../components/SocialLink.astro';
       class="prose-xl prose grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12"
     >
       <div class="lg:pl-20">
-        <div class="max-w-xs px-2.5 lg:max-w-none rounded-xl rotate-3">
+        <div class="max-w-xs rotate-3 rounded-xl px-2.5 lg:max-w-none">
           <Picture
             src="/portrait.jpg"
             alt="Art Rosnovsky"
@@ -22,7 +22,7 @@ import SocialLink from '../components/SocialLink.astro';
             height={600}
             loading="lazy"
             format="avif"
-            placeholder="tracedSVG"
+            placeholder="blurred"
           />
         </div>
       </div>
@@ -49,9 +49,9 @@ import SocialLink from '../components/SocialLink.astro';
           <p>
             After short gigs at Intel, AT&T, and Microsoft, I ended up at <a
               href="https://auth0.com">Auth0</a
-            > (acquired by <a href="https://okta.com">Okta</a> in May 2021). Here
-            I work as a Software Engineer, building out Okta's Customer Identity
-            Cloud Digital Experience programs and tooling.
+            > (acquired by <a href="https://okta.com">Okta</a> in May 2021).
+            Here I work as a Software Engineer, building out Okta's Customer
+            Identity Cloud Digital Experience programs and tooling.
           </p>
 
           <p>

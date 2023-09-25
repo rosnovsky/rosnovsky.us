@@ -29,9 +29,8 @@ export const books = defineCollection({
         title: z.string(),
       })
       .optional(),
-    cover: z.string().optional(),
-    draft: z.boolean().optional(),
     tags: z.array(z.string()),
     ISBN: z.string().optional(),
+    status: z.enum(['read', 'reading', 'to-read'] as const),
   }),
 });

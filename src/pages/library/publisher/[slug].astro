@@ -1,0 +1,22 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import AuthorLayout from '../../../layouts/AuthorLayout.astro';
+import PublisherLayout from '../../../layouts/PublisherLayout.astro';
+
+export async function getStaticPaths() {
+  const publishers = (await getCollection(
+    'publishers'
+  )) as CollectionEntry<'publishers'>[];
+  return publishers.map((publisher) => ({
+    params: { slug: publisher.slug },
+    props: { publisher },
+  }));
+}
+
+const { publisher } = Astro.props;
+const { Content } = await publisher.render();
+---
+
+<PublisherLayout {publisher}>
+  <Content />
+</PublisherLayout>

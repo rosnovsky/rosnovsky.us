@@ -4,31 +4,31 @@ import Container from '../../components/Container.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import Book from '../../components/Book.astro';
 
-const books = (await getCollection('books'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .filter((post) => !post.data.draft);
+const books = (await getCollection('books')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
-<MainLayout
-  title="Library | Rosnovsky Park™"
-  description="My library."
->
+<MainLayout title="Library | Rosnovsky Park™" description="My library.">
   <Container>
     <h1 class="mb-10 text-5xl font-black tracking-tighter">
       All my favorite books!
     </h1>
+    <aside class="">
+      I've got a total of {books.length} books in my library by {
+        new Set(books.map((book) => book.data.author.slug)).size
+      } authors. I've read {
+        (books.filter((book) => book.data.status === 'read').length /
+          books.length) *
+          100
+      }% of them.
+    </aside>
     <section>
-      <div class="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-      
-        {
-          books.map((book) => (
-                <Book {book} />
-              </div>
-              </div>
-              ))
-            }
+      <div
+        class="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+      >
+        {books.map((book) => <Book {book} />)}
       </div>
-    </div>
     </section>
   </Container>
 </MainLayout>

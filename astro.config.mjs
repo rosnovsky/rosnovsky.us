@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://rosnovsky.us',
   buildOptions: {
     site: {
-      title: 'Rosnovsky Park',
+      title: 'Rosnovsky Park™',
       description: 'Welcome to the Rosnovsky Park!',
       mastodon: '@rosnovsky@lounge.town',
       url: {
