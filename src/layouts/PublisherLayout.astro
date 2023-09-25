@@ -7,9 +7,9 @@ import { pluralize } from '../lib/helpers';
 
 const { publisher } = Astro.props;
 const allBooks = await getCollection('books');
-const books = allBooks.filter(
-  (book) => book.data.publisher.slug === publisher.slug
-);
+const books = allBooks
+  .filter((book) => book.data.publisher.slug === publisher.slug)
+  .sort((a, b) => b.data.pubDate.getFullYear() - a.data.pubDate.getFullYear());
 const authors = (await getCollection(
   'authors'
 )) as CollectionEntry<'authors'>[];
