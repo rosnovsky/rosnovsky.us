@@ -3,8 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 import MainLayout from './MainLayout.astro';
 import { formatDate, readingTime } from '../lib/helpers';
 import Container from '../components/Container.astro';
-import { Image } from 'astro:assets'
-import { Picture } from 'astro-imagetools/components'
+import { Image } from 'astro:assets';
+import { Picture } from 'astro-imagetools/components';
 
 type Props = CollectionEntry<'blog'>;
 
@@ -33,7 +33,7 @@ const { title, pubDate, heroImage } = data as Props['data'];
               <span
                 class="font-mono z-10 ml-3 flex items-center rounded-lg text-sm text-zinc-400 dark:text-zinc-400"
                 >{formatDate(pubDate)}
-                &nbsp;
+                 &nbsp;
                 <svg
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
@@ -51,20 +51,18 @@ const { title, pubDate, heroImage } = data as Props['data'];
                   <circle cx="12" cy="13" r="8"></circle>
                   <path d="M12 9L12 13M18 7L20 5M15 2L9 2"></path>{' '}
                 </svg>
-                &nbsp;{readingTime(body)} min read
+                 &nbsp;{readingTime(body)} min read
               </span>
             </time>
 
             {
               heroImage && (
-                <div class="mt-8 overflow-hidden rounded-lg rotate-2">
+                <div class="mt-8 overflow-hidden rounded-lg shadow-md shadow-slate-300">
                   <Picture
                     height={500}
                     width={900}
                     src={heroImage.path}
                     alt={title}
-                    loading="eager"
-                    
                   />
                 </div>
               )

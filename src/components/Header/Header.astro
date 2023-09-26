@@ -2,38 +2,25 @@
 // import { Popover, Transition } from '@headlessui/react'
 // import { ChevronDownIcon } from './Icons/ChevronDownIcon'
 
-import { fade } from 'astro:transitions';
 import Container from '../Container.astro';
 import NavBar from './NavBar.astro';
 ---
 
-<header
-  class="pointer-events-none relative z-50 flex flex-col"
-  style={{
-    height: 'var(--header-height)',
-    marginBottom: 'var(--header-mb)',
-  }}
->
-  <div
-    class="top-0 z-10 h-16 pt-6"
-    style={{ position: 'var(--header-position)' as any }}
+<header>
+  <Container
+    class="top-[var(--header-top,theme(spacing.6))] w-full"
+    style={{ position: 'var(--header-inner-position)' }}
   >
-    <Container
-      class="top-[var(--header-top,theme(spacing.6))] w-full"
-      style={{ position: 'var(--header-inner-position)' }}
+    <nav
+      class="mx-auto mt-5 flex max-w-7xl flex-col items-center justify-between md:mt-0 md:flex-row"
+      aria-label="Global"
     >
-      <div class="relative flex gap-4">
-        <div class="flex flex-1">
-          <slot />
-        </div>
-        <div class="flex flex-1 justify-center">
-          <NavBar class="pointer-events-auto hidden md:block" />
-          <NavBar class="pointer-events-auto md:hidden" />
-        </div>
-        <div class="flex justify-center md:flex-1">
-          <div class="pointer-events-auto"></div>
-        </div>
+      <a href="/" class="-m-1.5 p-1.5 text-xl font-bold">
+        <span>Rosnovsky Park™</span>
+      </a>
+      <div class="lg:flex lg:gap-x-12">
+        <NavBar />
       </div>
-    </Container>
-  </div>
+    </nav>
+  </Container>
 </header>
