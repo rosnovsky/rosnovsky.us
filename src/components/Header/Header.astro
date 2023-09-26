@@ -6,7 +6,7 @@ import Container from '../Container.astro';
 import NavBar from './NavBar.astro';
 ---
 
-<header>
+<header class="shadow-sm shadow-slate-200">
   <Container
     class="top-[var(--header-top,theme(spacing.6))] w-full"
     style={{ position: 'var(--header-inner-position)' }}
@@ -15,8 +15,11 @@ import NavBar from './NavBar.astro';
       class="mx-auto mt-5 flex max-w-7xl flex-col items-center justify-between md:mt-0 md:flex-row"
       aria-label="Global"
     >
-      <a href="/" class="-m-1.5 p-1.5 text-xl font-bold">
-        <span>Rosnovsky Park™</span>
+      <a
+        href="/"
+        class="prose-xl font prose -m-1.5 p-1.5 font-sans text-2xl text-black"
+      >
+        <h1 class="mt-2 text-2xl sm:text-3xl">Rosnovsky Park™</h1>
       </a>
       <div class="lg:flex lg:gap-x-12">
         <NavBar />
