@@ -11,7 +11,7 @@ const { href, class: className, icon: Icon } = Astro.props as LinkProps;
 <a href={href} class:list={['group -m-1 p-1', className]} {...Astro.props}>
   <div class="flex">
     <Icon
-      class="mr-3 h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
+      class="mr-3 h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-700 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"
     /><slot />
   </div>
 </a>
