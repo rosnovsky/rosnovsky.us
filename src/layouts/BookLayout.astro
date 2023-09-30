@@ -6,6 +6,7 @@ import { Picture } from 'astro-imagetools/components';
 
 const { book } = Astro.props;
 const author = (await getEntry(book.data.author)) as CollectionEntry<'authors'>;
+const genre = book.data.genre;
 
 const publisher = (await getEntry(
   book.data.publisher
@@ -110,6 +111,14 @@ const publisher = (await getEntry(
               href=`/library/${author.slug}`
               class="text-base font-semibold leading-7 text-emerald-600"
               >More books by {author.data.name}
+              <span aria-hidden="true">&rarr;</span></a
+            >
+          </div>
+          <div class="mt-10 flex">
+            <a
+              href=`/library/genre/${genre}`
+              class="text-base font-semibold leading-7 text-emerald-600"
+              >More '{genre}' books
               <span aria-hidden="true">&rarr;</span></a
             >
           </div>
