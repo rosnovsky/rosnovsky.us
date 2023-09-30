@@ -10,6 +10,7 @@ import Photos from '../components/Photos.astro';
 import { getCollection } from 'astro:content';
 import BlogPostCard from '../components/Cards/BlogPostCard.astro';
 import Resume from '../components/Resume/Resume.astro';
+import CurrentlyReading from '../components/Cards/CurrentlyReading.astro';
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -60,9 +61,9 @@ const posts = (await getCollection('blog'))
       <div class="flex flex-col gap-16">
         {posts?.map((post) => <BlogPostCard post={post} />)}
       </div>
-      <div class="space-y-10 lg:pl-16 xl:pl-24">
+      <div class="space-y-5 lg:pl-16 xl:pl-24">
         <Resume />
-        <!-- <CurrentBook currentBook={currentBook} /> -->
+        <CurrentlyReading />
       </div>
     </div>
   </Container>
