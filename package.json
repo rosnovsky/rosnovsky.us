@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@astrojs/mdx": "^1.1.0",
+        "@astrojs/node": "^6.0.2",
         "@astrojs/rss": "^3.0.0",
         "@astrojs/tailwind": "^5.0.0",
         "@astropub/codecs": "^0.4.4",

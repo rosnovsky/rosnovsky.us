@@ -9,6 +9,8 @@ const studio = (await getEntry(
   game.data.studio,
   'studios'
 )) as CollectionEntry<'games'>;
+
+console.info('Indexing game: ', game.data.name);
 ---
 
 <article

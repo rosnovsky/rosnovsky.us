@@ -7,6 +7,8 @@ import CardEyebrow from './Card/CardEyebrow.astro';
 import CardTitle from './Card/CardTitle.astro';
 
 const { post = {} } = Astro.props;
+
+console.info('Indexing blog post: ', post.data.title);
 ---
 
 <article class="md:grid md:grid-cols-4 md:items-baseline">

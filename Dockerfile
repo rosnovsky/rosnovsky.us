@@ -9,27 +9,27 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install pnpm@8.7.4 --location=global --ddd
-RUN pnpm install --ignore-workspace
+# RUN npm install pnpm@8.7.4 --location=global --ddd
+RUN npm install
 
-# Copy the app source code to the working directory
 COPY . .
 
-# Build the Next.js application
-RUN pnpm build
+RUN npm run build
 
 FROM node:18-alpine
 
 WORKDIR /app
 
-RUN npm i pnpm --location=global
+# RUN npm i pnpm --location=global
 
-COPY --from=BUILD_IMAGE /app/.next ./.next
+COPY --from=BUILD_IMAGE /app/dist ./dist
+COPY --from=BUILD_IMAGE /app/public ./public
 COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
 COPY --from=BUILD_IMAGE /app/package.json ./package.json
 
-# Expose the port the app runs on
-EXPOSE 3000
+ENV HOST=0.0.0.0
+ENV PORT=4321
+EXPOSE 4321
 
 # Start the application
-CMD ["pnpm", "serve"]
+CMD ["node", "./dist/server/entry.mjs"]

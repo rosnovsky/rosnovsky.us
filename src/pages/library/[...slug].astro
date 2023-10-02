@@ -2,17 +2,20 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BookLayout from '../../layouts/BookLayout.astro';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
-  const books = await getCollection('books') as CollectionEntry<"books">[];
-  return books.map(book => ({
-    params: { slug: book.data.author.slug + "/" + book.slug }, props: { book },
+  const books = (await getCollection('books')) as CollectionEntry<'books'>[];
+  return books.map((book) => ({
+    params: { slug: book.data.author.slug + '/' + book.slug },
+    props: { book },
   }));
 }
 
 const { book } = Astro.props;
 const { Content } = await book.render();
-
 ---
+
 <BookLayout {book}>
   <Content />
 </BookLayout>

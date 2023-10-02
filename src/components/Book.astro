@@ -10,6 +10,8 @@ const author = (await getEntry(
 const publisher = (await getEntry(
   book.data.publisher
 )) as CollectionEntry<'publishers'>;
+
+console.info('Indexing book: ', book.data.title);
 ---
 
 <article

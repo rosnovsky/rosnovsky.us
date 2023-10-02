@@ -1,8 +1,7 @@
 ---
 import MainLayout from './MainLayout.astro';
 import Container from '../components/Container.astro';
-import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
-import { Picture } from 'astro-imagetools/components';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { pluralize } from '../lib/helpers';
 import Book from '../components/Book.astro';
 
@@ -11,9 +10,6 @@ const allBooks = await getCollection('books');
 const books = allBooks
   .filter((book) => book.data.publisher.slug === publisher.slug)
   .sort((a, b) => b.data.pubDate.getFullYear() - a.data.pubDate.getFullYear());
-const authors = (await getCollection(
-  'authors'
-)) as CollectionEntry<'authors'>[];
 ---
 
 <MainLayout>

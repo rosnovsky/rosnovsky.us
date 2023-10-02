@@ -2,6 +2,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import AuthorLayout from '../../layouts/AuthorLayout.astro';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const authors = (await getCollection(
     'authors'
