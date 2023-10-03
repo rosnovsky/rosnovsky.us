@@ -23,6 +23,7 @@ export default defineConfig({
   },
   integrations: [tailwind(), mdx(), astroImageTools],
   output: 'hybrid',
+  server: { port: 4321, host: true },
   adapter: node({
     mode: 'standalone',
   }),
