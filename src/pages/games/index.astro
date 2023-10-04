@@ -15,9 +15,16 @@ const games = (await getCollection('games')).sort(
       All my favorite games!
     </h1>
     <aside class="">
-      I've got a total of <strong>{games.length} games</strong> from <strong
-        >{new Set(games.map((book) => book.data.studio.slug)).size} studios</strong
-      > in my library.
+      <p>
+        Unlike with <a href="/library">books</a>, I don't have a specific genre
+        I like to play. I've got about 130 games in my Steam library, but here
+        I'll only list the ones I've played for a while and really enjoyed.
+      </p>
+      <p>
+        I've got a total of <strong>{games.length} favorite games</strong> from <strong
+          >{new Set(games.map((book) => book.data.studio.slug)).size} studios</strong
+        > in my library.
+      </p>
     </aside>
     <section>
       <div
