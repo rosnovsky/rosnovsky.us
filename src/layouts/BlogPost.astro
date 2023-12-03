@@ -1,80 +1,85 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import MainLayout from './MainLayout.astro';
-import { formatDate, readingTime } from '../lib/helpers';
-import Container from '../components/Container.astro';
-import { Image } from 'astro:assets';
-import { Picture } from 'astro-imagetools/components';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'blog'>['data'];
 
-const { data, body } = Astro.props;
-
-const { title, pubDate, heroImage } = data as Props['data'];
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<MainLayout title={`${title} | Blog | Rosnovsky Park™`}>
-  <Container class="mt-16 lg:mt-32">
-    <div class="xl:relative">
-      <div class="mx-auto max-w-3xl">
-        <article>
-          <header class="flex flex-col">
-            <h1
-              class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
-            >
-              {title}
-            </h1>
-            <time
-              date-time={pubDate}
-              class="order-first flex items-center text-base text-zinc-500 dark:text-zinc-400"
-            >
-              <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
-              ></span>
-              <span
-                class="font-mono z-10 ml-3 flex items-center rounded-lg text-sm text-zinc-400 dark:text-zinc-400"
-                >{formatDate(pubDate)}
-                 &nbsp;
-                <svg
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16px"
-                  height="16px"
-                  viewBox="0 0 24 24"
-                  stroke="rgb(20 184 166)"
-                  stroke-width="1.5"
-                  stroke-linecap="square"
-                  strokeline-join="miter"
-                  fill="none"
-                  color="rgb(20 184 166)"
-                >
-                  {' '}
-                  <circle cx="12" cy="13" r="8"></circle>
-                  <path d="M12 9L12 13M18 7L20 5M15 2L9 2"></path>{' '}
-                </svg>
-                 &nbsp;{readingTime(body)} min read
-              </span>
-            </time>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
 
-            {
-              heroImage && (
-                <div class="mt-8 overflow-hidden rounded-lg shadow-md shadow-slate-300">
-                  <Picture
-                    height={500}
-                    width={900}
-                    src={heroImage.path}
-                    alt={title}
-                  />
-                </div>
-              )
-            }
-            <div
-              class={'prose mt-8 text-xl leading-9 text-zinc-700 dark:text-zinc-300'}
-            >
-              <slot />
-            </div>
-          </header>
-        </article>
-      </div>
-    </div>
-  </Container>
-</MainLayout>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<div class="prose">
+					<div class="title">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

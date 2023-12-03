@@ -14,12 +14,13 @@ export const blog = defineCollection({
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
-    heroImage: z
+    heroImage: z.string()
+      .or(z
       .object({
         path: z.string(),
         alt: z.string(),
         title: z.string(),
-      })
+      }))
       .optional(),
     draft: z.boolean().optional(),
     tags: z.array(z.string()),
