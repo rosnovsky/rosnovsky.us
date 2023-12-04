@@ -1,16 +1,16 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Tag from "@components/Tag.astro";
-import Datetime from "@components/Datetime";
-import type { CollectionEntry } from "astro:content";
-import { slugifyStr } from "@utils/slugify";
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import Tag from '@components/Tag.astro';
+import Datetime from '@components/Datetime';
+import type { CollectionEntry } from 'astro:content';
+import { slugifyStr } from '@utils/slugify';
 
 export const prerender = true;
 
 export interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
@@ -20,9 +20,9 @@ const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } =
 
 const { Content } = await post.render();
 
-const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
+const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src;
 const ogUrl = new URL(
-  ogImageUrl ?? `/posts/${slugifyStr(title)}.png`,
+  ogImageUrl ?? `/blog/${slugifyStr(title)}.png`,
   Astro.url.origin
 ).href;
 ---
@@ -50,12 +50,16 @@ const ogUrl = new URL(
   <main id="main-content">
     <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
     <Datetime datetime={pubDatetime} size="lg" className="my-2" />
-    <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
+    <article
+      id="article"
+      role="article"
+      class="prose prose-xl mx-auto mt-8 max-w-3xl"
+    >
       <Content />
     </article>
 
     <ul class="tags-container">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+      {tags.map((tag) => <Tag name={slugifyStr(tag)} />)}
     </ul>
   </main>
   <Footer />
@@ -66,7 +70,7 @@ const ogUrl = new URL(
     @apply mx-auto w-full max-w-3xl px-4 pb-12;
   }
   .post-title {
-    @apply text-2xl font-semibold text-skin-accent;
+    @apply text-5xl font-semibold text-skin-accent;
   }
   .tags-container {
     @apply my-8;

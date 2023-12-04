@@ -1,5 +1,5 @@
 ---
-import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Breadcrumbs from '@components/Breadcrumbs.astro';
 
 interface StringTitleProp {
   pageTitle: string;
@@ -20,7 +20,7 @@ const { props } = Astro;
 <Breadcrumbs />
 <main id="main-content">
   {
-    "titleTransition" in props ? (
+    'titleTransition' in props ? (
       <h1>
         {props.pageTitle[0]}
         <span transition:name={props.titleTransition}>
@@ -37,10 +37,10 @@ const { props } = Astro;
 
 <style>
   #main-content {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12;
+    @apply  mx-auto w-full max-w-3xl px-4 pb-12;
   }
   #main-content h1 {
-    @apply text-2xl font-semibold sm:text-3xl;
+    @apply text-5xl font-semibold sm:text-3xl;
   }
   #main-content p {
     @apply mb-6 mt-2 italic;

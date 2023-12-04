@@ -2,7 +2,7 @@
 title: "Amazon's The Peripheral: I'm angry"
 description: "I'm often angry at Amazon, but this time it's for a reason not directly related to their terrible business practices. "
 pubDatetime: 2022-12-19
-tags: 
+tags:
   - TV
   - Books
 ---
@@ -16,6 +16,14 @@ The story, on the other hand, is quite disjointed, full of leaps and gaps, and l
 ## Spoilers ahead!
 
 ---
+
+```ts
+const t: string = "42"
+
+interface Test {
+  test: Record<string, unknown>
+}
+```
 
 Don't get me wrong, I'm not some philosopher annoyed that the deeper meaning of a book was not reflected as such on the show. What I mean is that some plot elements of the show make no sense, while others go directly opposite the book.
 

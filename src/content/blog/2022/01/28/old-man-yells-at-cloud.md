@@ -1,17 +1,11 @@
 ---
 title: 'Old Man Yells at Cloud'
-pubDatetime: '2022-01-28'
+pubDatetime: 2022-01-28T20:00:00Z
 description: "Effective immediately, I'm protected by the Age Discrimination Act of 1975 👴🏻"
-heroImage:
-  {
-    path: '/blog/posts/old-man-yells-at-cloud/face.jpg',
-    alt: 'Me',
-    title: 'Me',
-  }
-tags: 'personal', 'life']
+tags:
+  - personal
+  - life
 ---
-
-
 
 Despite my best efforts, I'm turning 40 today. It's a somber day for me, as I'm another year older...
 
@@ -58,4 +52,4 @@ P.S. Obligatory "get off my lawn, you darn kids"! Going to buy a Harley, a leath
 
 P.P.S. As a "class of '99" person, I shoud've really used more sunscreen :)
 
-{/* <YouTube youTubeId="sTJ7AzBIJoI" /> */}
+{/_ <YouTube youTubeId="sTJ7AzBIJoI" /> _/}

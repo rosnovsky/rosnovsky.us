@@ -1,5 +1,5 @@
 # Use the official Node.js base image
-FROM node:18-alpine AS BUILD_IMAGE
+FROM node:20-alpine AS BUILD_IMAGE
 
 # Set the working directory
 WORKDIR /app
@@ -9,14 +9,14 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 # Install dependencies
-# RUN npm install pnpm@8.7.4 --location=global --ddd
-RUN npm install
+RUN npm install pnpm@8.7.4 --location=global --ddd
+RUN pnpm install
 
 COPY . .
 
-RUN npm run build
+RUN pnpm build
 
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
