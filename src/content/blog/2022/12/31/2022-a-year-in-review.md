@@ -1,8 +1,8 @@
 ---
 title: '2022: A Year In Review'
-description: 'Here goes a description'
+description: 'My expectations for 2022 were really low, but holly hell, it managed to not live up even to these abysmally low expectations.'
 pubDatetime: 2022-12-31T20:59:00Z
-tags: 
+tags:
   - Ukraine
   - society
 ---

@@ -1,6 +1,6 @@
 ---
 title: Hello and welcome
-description: string
+description: Just wanted to say hi to those who found me here while rediscovering the internet outside of social media.
 pubDatetime: 2022-10-30T23:18:11Z
 tags:
   - 'blog'
