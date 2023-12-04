@@ -33,8 +33,9 @@ export default defineConfig({
       ],
     ],
     shikiConfig: {
-      theme: 'vitesse-dark',
+      theme: 'nord',
       wrap: true,
+      langs: ['javascript', 'typescript', 'bash', 'json', 'yaml'],
     },
   },
   vite: {
