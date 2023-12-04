@@ -4,7 +4,7 @@ description: Just wanted to say hi to those who found me here while rediscoverin
 pubDatetime: 2022-10-30T23:18:11Z
 tags:
   - 'blog'
-  - 'webdev'
+  - 'web development'
   - 'work'
   - 'travel'
   - 'books'

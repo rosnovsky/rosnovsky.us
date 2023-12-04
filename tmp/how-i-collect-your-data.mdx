@@ -1,0 +1,121 @@
+---
+title: 'How I collect your data'
+pubDatetime: '2020-05-07'
+description: 'This is how I collect and use your data when you visit my blog, sign up, sign in, become a paid member, cancel membership, or want to delete your account permanently.'
+---
+
+> **TL;DR**: I don't collect any of your data unless you explicitly and intentionally share it with me or it's required in order for this site to function and provide membership services.
+
+## Tracking and analytics
+
+I collect 100% anonymous analytics with [Fathom](https://usefathom.com/ref/NB77IT) — it helps me learn what is popular and how people find this blog. There's **no tracking you around, no recording of your IP address, no fingerprinting, no cookies (!)**. In other words, no BS.
+
+<img
+  alt="Fathom"
+  src="/blog/posts/how-i-collect-your-data/a6d308416ebc0f9232bf212458289108b66d045c-1094x1240.png"
+  width="1094"
+  height="1240"
+/>
+
+## Free membership
+
+When you [become a member](https://rosnovsky.us/signup), I will collect your **email address**, your **name** (if you decide to share it with me), the **date you've joined**, and your **country**. Your country is determined at signup by your IP address in the background, and I only get the result: what country you've joined from. I neither see nor store your IP address anywhere.
+
+<img
+  alt="Here's what your account information looks like to me"
+  src="/blog/posts/how-i-collect-your-data/1ce80ffa598fb0946cb5ef9715f0bac67c05ecbc-2404x1816.png"
+  width="2404"
+  height="1816"
+/>
+
+I will only use this information to send you new posts (if you've subscribed to this), address you by your name (if you shared it with me), and to know where most members are joining from (it helps me tailor content to the audience). When you unsubscribe, I will stop sending you any new emails immediately. **If you wish to delete your account, please** [**let me know**](mailto:art@rosnovsky.us?subject=Please%20delete%20my%20account) **and I will immediately delete all data about you, permanently and irreversibly.**
+
+## Paid membership
+
+When you become a [paid member](https://rosnovsky.us/signup/), my payment processor [Stripe](https://stripe.com/) will collect some essential data about you and your payment method; this data is required to process your payment. Both Stripe and I will get your **name**, **email address**, **country**, and **postal code** (in some cases).
+
+<img
+  alt="This is what your account information looks like to me in Stripe"
+  src="/blog/posts/how-i-collect-your-data/947b06ea9de0795780f2b98c02995b5d58883f0e-2208x574.png"
+  width="2208"
+  height="574"
+/>
+
+Stripe will also use some other data points to evaluate transaction risk, detect and prevent fraud, and ultimately protect both of us from unauthorized transactions. You can learn more about how it works [here](https://stripe.com/docs/radar/risk-evaluation). I have no access to any of the algorithms or data points they use in the process.
+
+**Stripe will also get your complete credit card information** in order to process your payment. I will only see the **last 4 digits** of the card number and its **expiration date**. This information will only be used in case you reach out to me and need to troubleshoot payment issues.
+
+<img
+  alt="This is what your credit card information looks like to me in Stripe"
+  src="/blog/posts/how-i-collect-your-data/db4f2f6064cf7c9dc04f454252e1df1f00a9cf2e-2198x1054.png"
+  width="2198"
+  height="1054"
+/>
+
+Stripe is [PCI-complaint](https://stripe.com/guides/pci-compliance) which means it's at least as secure and safe as your bank. Payment will show up in your bank statement as coming from `ROSNOVSKY.US`. Stripe will send you receipts and payment notifications; these emails will come from `@rosnovsky.us` domain and it will look something like this:
+
+<img
+  alt="reciept"
+  src="/blog/posts/how-i-collect-your-data/fa546b0078beeca938d379b0ccea86a89ae33793-1218x1678.png"
+  width="1218"
+  height="1678"
+/>
+
+## Emails
+
+If you're subscribed to new blog posts, you will receive them ~~by fax~~ via email. I use [Mailgun](https://mailgun.com/) to deliver emails, and in order to make this happen, I will give your email to Mailgun using their API. They do not store it or use it for any other purpose than to send my single email and only when I ask them to. They generate a programmatic receipt each time I send you an email, and it looks something like this:
+
+```json
+{
+	"tags": [],
+	"timestamp": 1588788068.559941,
+
+	[... some technical data ...]
+
+    "envelope": {
+		"transport": "smtp",
+		"sender": "artem@rosnovsky.us",
+		"sending-ip": "209.61.151.224",
+		"targets": "artem@rosnovsky.us"
+	},
+
+    	[... some technical data ...]
+
+    "recipient-domain": "rosnovsky.us",
+	"message": {
+		"headers": {
+			"to": "artem@rosnovsky.us",
+			"message-id": "3600660bfea1728e37c657d9149636@ghost",
+			"from": "Rosnovsky Park™ <artem@rosnovsky.us>",
+			"subject": "🔑 Secure sign in link for Rosnovsky Park™"
+		},
+		"attachments": [],
+		"size": 17961
+	},
+	"recipient": "artem@rosnovsky.us",
+	"event": "delivered",
+	"delivery-status": {
+		"tls": true,
+		"mx-host": "aspmx.l.google.com",
+		"code": 250,
+		"description": "",
+		"session-seconds": 11.486005067825317,
+		"utf8": true,
+		"attempt-no": 1,
+		"message": "OK",
+		"certificate-verified": true
+	}
+}
+```
+
+Mailgun stores 7 days of these logs for me and deletes them permanently after 7 days.
+
+## ️⚠️ How I share your information with others ⚠️
+
+I only use and share your information as described above.
+
+Outside of what I described above, under no circumstances will I ever share any of the information I gather about you without explicitly asking for your full and informed consent first. I will contact you personally and ask for permission to share any of this if I ever need to share your data with someone. The one and only exception would be a valid court subpoena, in which case I'll be forced to provide the court with the information I have about you.
+
+That's it.
+
+P.S. Please understand that this is my best good-faith effort to disclose complete information about what data I collect about you and how I use it to offer you this blog. I'm constantly monitoring this space and will update this post accordingly.

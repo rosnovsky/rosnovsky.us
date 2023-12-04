@@ -3,7 +3,7 @@ title: Using AI vision to generate alt text for images
 description: Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision.
 pubDatetime: 2021-07-07
 tags:
-  - 'webdev'
+  - 'web development'
   - 'nextjs'
   - 'accessibility'
   - how-to

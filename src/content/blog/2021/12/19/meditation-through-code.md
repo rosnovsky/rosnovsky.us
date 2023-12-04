@@ -4,7 +4,7 @@ description: "It's funny how I spend a lot of my free time on tweaking this webs
 pubDatetime: 2021-12-19
 tags:
   - 'blog'
-  - 'webdev'
+  - 'web development'
   - mental health
 ---
 

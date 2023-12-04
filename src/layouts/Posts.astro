@@ -13,9 +13,10 @@ export interface Props {
   pageNum: number;
   totalPages: number;
   posts: CollectionEntry<'blog'>[];
+  totalPosts: number;
 }
 
-const { pageNum, totalPages, posts } = Astro.props;
+const { pageNum, totalPages, totalPosts, posts } = Astro.props;
 
 const prev = pageNum > 1 ? '' : 'disabled';
 const next = pageNum < totalPages ? '' : 'disabled';
@@ -23,7 +24,10 @@ const next = pageNum < totalPages ? '' : 'disabled';
 
 <Layout title={`Posts | ${SITE.title}`}>
   <Header activeNav="blog" />
-  <Main pageTitle="Blog Posts" pageDesc="All the blog posts I've posted.">
+  <Main
+    pageTitle="Blog Posts"
+    pageDesc={`All ~${totalPages * SITE.postPerPage} blog posts I've posted.`}
+  >
     <ul>
       {
         posts.map(({ data }) => (

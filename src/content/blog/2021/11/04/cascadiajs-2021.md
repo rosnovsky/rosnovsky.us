@@ -4,7 +4,7 @@ description: For years I wanted to attend CascadiaJS 2021, a PNW-native JavaScri
 pubDatetime: 2021-11-04
 tags:
   - 'blog'
-  - 'webdev'
+  - 'web development'
 ---
 
 For years I wanted to attend [CascadiaJS 2021](https://cascadiajs.com), a PNW-native JavaScript conference. And for a while, I either couldn't afford it, didn't have the time, or had more immediate priorities.
