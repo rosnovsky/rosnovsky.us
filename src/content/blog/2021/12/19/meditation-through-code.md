@@ -5,6 +5,7 @@ pubDatetime: 2021-12-19
 tags:
   - 'blog'
   - 'webdev'
+  - mental health
 ---
 
 It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected.
