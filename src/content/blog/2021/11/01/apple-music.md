@@ -211,6 +211,4 @@ export default function Track({track}) {
 
 That's about it. The result looks like this:
 
-![](assets/blog/posts/apple-music/song.png)
-
 That's about it. Oh, I've also went ahead and spun up a repo for this specific thing, feel free to check it out: [current-apple-music](https://github.com/rosnovsky/current-apple-music). This one generates an image of the current song playing on Apple Music that you can use in your website or in your Github profile's README ;)
