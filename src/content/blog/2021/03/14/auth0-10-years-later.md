@@ -8,95 +8,35 @@ tags:
 
 I joined Auth0 in December 2019. A few months later the COVID pandemic started to take shape. Now, over a year later, I can say with confidence: it was no ordinary year. Confusion, uncertainty, adaptation to the new work paradigm, burnout, finding my routine, and just generally trying to fit this square "2020" peg into... well, into anything, really.
 
-<img
-  alt="Giant pizza"
-  src="/blog/posts/auth0-10-years-later/3e5c23c7013f209da5c0824ca1e5791e730ecc67-4032x3024.jpg"
-  width="4032"
-  height="3024"
-/>
+![Giant pizza](assets/blog/posts/auth0-10-years-later/3e5c23c7013f209da5c0824ca1e5791e730ecc67-4032x3024.jpg)
 
 It's been a wild ride. As wild as it gets. Looking back to our occasional lunches (I wish we had had more of them!), our cozy corner of the office, light-hearted chats, massive all hands meetings... I miss it. A lot.
 
-<img
-  alt="Good old days"
-  src="/blog/posts/auth0-10-years-later/1f563170f9afa312129edde009224fc31af9700d-4032x3024.jpg"
-  width="4032"
-  height="3024"
-/>
+![Good old days](assets/blog/posts/auth0-10-years-later/1f563170f9afa312129edde009224fc31af9700d-4032x3024.jpg)
 
-<img
-  alt="Pride"
-  src="/blog/posts/auth0-10-years-later/b74f04a4baa56f64460f233f9e4874b0b7e9c3a5-1024x593.png"
-  width="1024"
-  height="593"
-/>
+![Pride](assets/blog/posts/auth0-10-years-later/b74f04a4baa56f64460f233f9e4874b0b7e9c3a5-1024x593.png)
 
-<img
-  alt="IT"
-  src="/blog/posts/auth0-10-years-later/6289fc3795489d358424fea4c9c1b2195ca68c51-4032x3024.jpg"
-  width="4032"
-  height="3024"
-/>
+![IT](assets/blog/posts/auth0-10-years-later/6289fc3795489d358424fea4c9c1b2195ca68c51-4032x3024.jpg)
 
-<img
-  alt="Context please?"
-  src="/blog/posts/auth0-10-years-later/3b132ce294b221065139b22b51aa9e41940111cc-1125x306.jpg"
-  width="1125"
-  height="306"
-/>
+![Context please?](assets/blog/posts/auth0-10-years-later/3b132ce294b221065139b22b51aa9e41940111cc-1125x306.jpg)
 
-<img
-  alt="All Hands"
-  src="/blog/posts/auth0-10-years-later/2c5d3eb3dc0168c99f24182768c15a73e9b9fc4f-10814x3688.jpg"
-  width="10814"
-  height="3688"
-/>
+![All Hands](assets/blog/posts/auth0-10-years-later/2c5d3eb3dc0168c99f24182768c15a73e9b9fc4f-10814x3688.jpg)
 
 The shift towards all-remote work wasn't particularly difficult: I mean, we all have some remote work experience, and I have years and years of it. And we are lucky that we were able to work through the entire 2020 without skipping a bit. It took its toll, sure, and it was never easy mentally, but overall it could be much worse.
 
-<img
-  alt="Auth0 Commons"
-  src="/blog/posts/auth0-10-years-later/7bd1735faa7c1df1cfab9c6564cd5ac3981a9732-4032x2268.jpg"
-  width="4032"
-  height="2268"
-/>
+![Auth0 Commons](assets/blog/posts/auth0-10-years-later/7bd1735faa7c1df1cfab9c6564cd5ac3981a9732-4032x2268.jpg)
 
 We had our U++ event last summer (not a replacement for a company offsite in Mexico, but still), Security++, Auth0 Unite, incidents, fantastic new features, painful teachable moments, and a lot of fun together yet apart.
 
-<img
-  alt="Auth0 Unite"
-  src="/blog/posts/auth0-10-years-later/4289e7970b6e3b991c6fdf0b759bcb9707cbde53-4032x3024.jpg"
-  width="4032"
-  height="3024"
-/>
+![Auth0 Unite](assets/blog/posts/auth0-10-years-later/4289e7970b6e3b991c6fdf0b759bcb9707cbde53-4032x3024.jpg)
 
-<img
-  alt="Me"
-  src="/blog/posts/auth0-10-years-later/d5700edad24f33195be13a0513eef3db4610f0c8-2320x3088.jpg"
-  width="2320"
-  height="3088"
-/>
+![Me](assets/blog/posts/auth0-10-years-later/d5700edad24f33195be13a0513eef3db4610f0c8-2320x3088.jpg)
 
-<img
-  alt="Mystery box"
-  src="/blog/posts/auth0-10-years-later/8bb89f25128f14e891eab9129c5cd7327f94adc9-4032x3024.jpg"
-  width="4032"
-  height="3024"
-/>
+![Mystery box](assets/blog/posts/auth0-10-years-later/8bb89f25128f14e891eab9129c5cd7327f94adc9-4032x3024.jpg)
 
-<img
-  alt="Avocado Labs"
-  src="/blog/posts/auth0-10-years-later/4d92718e653486ec7bb69560c5d5a77e7319f5c2-4032x3024.jpg"
-  width="4032"
-  height="3024"
-/>
+![Avocado Labs](assets/blog/posts/auth0-10-years-later/4d92718e653486ec7bb69560c5d5a77e7319f5c2-4032x3024.jpg)
 
-<img
-  alt="2020"
-  src="/blog/posts/auth0-10-years-later/47c89c36ca1fdb51287beb42de868e1c3f6fded1-2208x1188.jpg"
-  width="2208"
-  height="1188"
-/>
+![2020](assets/blog/posts/auth0-10-years-later/47c89c36ca1fdb51287beb42de868e1c3f6fded1-2208x1188.jpg)
 
 Last year I posted some of my observation made on the job, and in all honesty, there's not much to add. Processes are critically important, keeping promises is key, working together we are unstoppable. There's no such thing as "difficult customers", and if you know something or learned something — share with the group! Aside from these remarks, I stand by my year-old observations.
 

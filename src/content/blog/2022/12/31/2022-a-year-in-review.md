@@ -15,7 +15,7 @@ And while the global implications of the war are important and all, it's hard to
 
 All in all, fuck Putin, fuck Russia, Glory to Ukraine.
 
-![image](/blog/posts/2022-a-year-in-review/concert.jpg)
+![image](assets/blog/posts/2022-a-year-in-review/concert.jpg)
 
 While nothing of importance happened in 2022 compared to the war, for posterity's sake here are some other notable events of this shit-pile of a year.
 

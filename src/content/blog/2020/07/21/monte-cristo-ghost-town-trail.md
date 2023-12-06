@@ -20,95 +20,30 @@ The trickiest part is crossing the Sauk early on: the bridge and old road got wa
 
 In all honesty, the township itself is underwhelming. Just a few buildings (all of them are "new"), an old mining cart, a railroad turntable, and a few artifacts from the old town. It would be better if the trail was called "Old Monte Cristo Road" to establish proper expectations.
 
-<img
-  alt="Trail"
-  src="/blog/posts/monte-cristo-ghost-town-trail/ccff93a6b8d4801033f33bb7e02bec919d05c950-1600x2134.jpg"
-  width="1600"
-  height="2134"
-/>
+![Trail](assets/blog/posts/monte-cristo-ghost-town-trail/ccff93a6b8d4801033f33bb7e02bec919d05c950-1600x2134.jpg)
 
-<img
-  alt="Silvertip Peak (?) says peek-a-boo"
-  src="/blog/posts/monte-cristo-ghost-town-trail/017bd6980f3669985da79348192f5667d01b4c46-1600x2134.jpg"
-  width="1600"
-  height="2134"
-/>
+![Silvertip Peak (?) says peek-a-boo](assets/blog/posts/monte-cristo-ghost-town-trail/017bd6980f3669985da79348192f5667d01b4c46-1600x2134.jpg)
 
-<img
-  alt="Glacier Creek"
-  src="/blog/posts/monte-cristo-ghost-town-trail/ca3b8ac0e9c3d2ec4a203b750bd8d53ef4d51776-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Glacier Creek](assets/blog/posts/monte-cristo-ghost-town-trail/ca3b8ac0e9c3d2ec4a203b750bd8d53ef4d51776-2000x1500.jpg)
 
-<img
-  alt="Trail"
-  src="/blog/posts/monte-cristo-ghost-town-trail/a4742e5bb0c0ab4b6e9a5bf79442337b00df2199-1600x1200.jpg"
-  width="1600"
-  height="1200"
-/>
+![Trail](assets/blog/posts/monte-cristo-ghost-town-trail/a4742e5bb0c0ab4b6e9a5bf79442337b00df2199-1600x1200.jpg)
 
-<img
-  alt="Monte Cristo"
-  src="/blog/posts/monte-cristo-ghost-town-trail/0264985420173b56dc090380f960a23abc4a4129-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Monte Cristo](assets/blog/posts/monte-cristo-ghost-town-trail/0264985420173b56dc090380f960a23abc4a4129-2000x1500.jpg)
 
-<img
-  alt="Town"
-  src="/blog/posts/monte-cristo-ghost-town-trail/72721b76c625f9cd4bece20a1ef0854ed8b4bb72-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Town](assets/blog/posts/monte-cristo-ghost-town-trail/72721b76c625f9cd4bece20a1ef0854ed8b4bb72-2000x1500.jpg)
 
-<img
-  alt="Remains of Monte Cristo"
-  src="/blog/posts/monte-cristo-ghost-town-trail/fe2492c14424ce640749d9a0fea0a99624e79fcd-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Remains of Monte Cristo](assets/blog/posts/monte-cristo-ghost-town-trail/fe2492c14424ce640749d9a0fea0a99624e79fcd-2000x1500.jpg)
 
-<img
-  alt="Seventysix Creek"
-  src="/blog/posts/monte-cristo-ghost-town-trail/8d0e359a58dc207da9236ad0a4c68ee235e5de8f-1600x2134.jpg"
-  width="1600"
-  height="2134"
-/>
+![Seventysix Creek](assets/blog/posts/monte-cristo-ghost-town-trail/8d0e359a58dc207da9236ad0a4c68ee235e5de8f-1600x2134.jpg)
 
-<img
-  alt="Obligatory lunch by the Seventysix Creek"
-  src="/blog/posts/monte-cristo-ghost-town-trail/1dfc04fe4800b9d85cb9c688320849061d119e55-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Obligatory lunch by the Seventysix Creek](assets/blog/posts/monte-cristo-ghost-town-trail/1dfc04fe4800b9d85cb9c688320849061d119e55-2000x1500.jpg)
 
-<img
-  alt="Seventysix Creek"
-  src="/blog/posts/monte-cristo-ghost-town-trail/9e4d299d47758c57a9a9060ca736838e28ee8dcd-1600x2134.jpg"
-  width="1600"
-  height="2134"
-/>
+![Seventysix Creek](assets/blog/posts/monte-cristo-ghost-town-trail/9e4d299d47758c57a9a9060ca736838e28ee8dcd-1600x2134.jpg)
 
-<img
-  alt="This is Perry the chipmunk. They were keeping me company over lunch."
-  src="/blog/posts/monte-cristo-ghost-town-trail/7d26a084d88e3168fe2b6f3b6f6bad3f4e5bae4f-1600x1200.jpg"
-  width="1600"
-  height="1200"
-/>
+![This is Perry the chipmunk. They were keeping me company over lunch.](assets/blog/posts/monte-cristo-ghost-town-trail/7d26a084d88e3168fe2b6f3b6f6bad3f4e5bae4f-1600x1200.jpg)
 
-<img
-  alt="Find Perry"
-  src="/blog/posts/monte-cristo-ghost-town-trail/e1646db3d51a9104b5f9870f1cb1716ab488c86b-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Find Perry](assets/blog/posts/monte-cristo-ghost-town-trail/e1646db3d51a9104b5f9870f1cb1716ab488c86b-2000x1500.jpg)
 
-<img
-  alt="Not much left of old Monte Cristo"
-  src="/blog/posts/monte-cristo-ghost-town-trail/ba46b54c40ef6bbb6322361dec3cdef11786d360-1600x1200.jpg"
-  width="1600"
-  height="1200"
-/>
+![Not much left of old Monte Cristo](assets/blog/posts/monte-cristo-ghost-town-trail/ba46b54c40ef6bbb6322361dec3cdef11786d360-1600x1200.jpg)
 
 All in all, a nice relaxing hike perfect for a lazy day-off. It's worth mentioning that there's plenty of camping spots and campgrounds along the trail, so I may be checking it out again for a quick overnight someday.

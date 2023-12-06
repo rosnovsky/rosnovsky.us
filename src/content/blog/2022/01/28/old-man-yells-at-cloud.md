@@ -9,7 +9,7 @@ tags:
 
 Despite my best efforts, I'm turning 40 today. It's a somber day for me, as I'm another year older...
 
-<img src="/blog/posts/old-man-yells-at-cloud/old.jpg" alt="Old" />
+![](assets/blog/posts/old-man-yells-at-cloud/old.jpg)
 
 Nah, just kidding. It's literally just a number, and I'm totally comfortable with it :) My back hurts, but it's been like this for decades so no changes here.
 
@@ -19,37 +19,32 @@ First, the best way to be permanently unhappy is to compare yourself to others. 
 
 Second, I'm doing fine. I've got my family, a place to live (and call [my own](/blog/june-2021-update) at that!), a job I like, and a bunch of hobbies. I have my books, my [journals](/blog/journaling), and a firepit in my backyard. I do my little things trying to make the world a better place even if in a small way.
 
-<img src="/blog/posts/old-man-yells-at-cloud/hitfm.jpg" alt="2006" />
+![](assets/blog/posts/old-man-yells-at-cloud/hitfm.jpg)
 
-<img src="/blog/posts/old-man-yells-at-cloud/mayak.jpg" alt="2010" />
+![](assets/blog/posts/old-man-yells-at-cloud/mayak.jpg)
 
 I was born in the Soviet Union, lived most of my adult life in Russia, moved to Canada, then to the U.S., and made it here too. In total, I've moved ~13 times since turning 18 (including 2 immigrations). I've made some friends along the way, and only a few enemies.
 
-<img
-  src="/blog/posts/old-man-yells-at-cloud/landed-canada.jpg"
-  alt="2011"
-/>
-<img src="/blog/posts/old-man-yells-at-cloud/landed.jpg" alt="2012" />
+![](assets/blog/posts/old-man-yells-at-cloud/landed-canada.jpg)
+![](assets/blog/posts/old-man-yells-at-cloud/landed.jpg)
 
 I almost got my private pilot license (and I still may get it at some point). I [hiked around a volcano](/blog/loowit-trail), piloted an airplane over the Hoover Dam, joined, started and failed a few businesses, and had a podcast for over 14 years. I helped a few good people meet each other, and I'm mostly proud of folks in my close circle.
 
 I'd worked as a paper delivery carrier, a reporter (and a frontline one at that), an editor of a magazine, radio host, editor, producer, DJ; I'd been a college student in my 30s and the oldest person in my class. I'd been unemployed, been a landlord, a contractor at three different _Fortune 50_ companies, and a full-time software engineer.
 
-<img src="/blog/posts/old-man-yells-at-cloud/intel.jpg" alt="2016" />
-<img src="/blog/posts/old-man-yells-at-cloud/att.jpg" alt="2018" />
-<img src="/blog/posts/old-man-yells-at-cloud/microsoft.jpg" alt="2019" />
+![](assets/blog/posts/old-man-yells-at-cloud/intel.jpg)
+![](assets/blog/posts/old-man-yells-at-cloud/att.jpg)
+![](assets/blog/posts/old-man-yells-at-cloud/microsoft.jpg)
 
 Most importantly, I'm not embarrased by how I live my life. I stand with those less privileged and less fortunate than me. I think I'm on the side of justice more often than not, and I'm not afraid of the future generations' eventual scrutiny of my life. I try to live my life honestly, give back whenever I can, and I'm convinced that this is a big part of why I'm so organically comfortable with myself. I've got a head full of gray hair, and I'm going bald, and it's ok with me :)
 
 Here's to the next 40 years!
 
-<img
-  src="/blog/posts/old-man-yells-at-cloud/mugshot.jpg"
-  alt="2021 Mugshot"
+![](assets/blog/posts/old-man-yells-at-cloud/mugshot.jpg)
 />
 
 P.S. Obligatory "get off my lawn, you darn kids"! Going to buy a Harley, a leather jacket and suspenders, and join other old farts in bitching about the good old days. Just watch me! :))
 
 P.P.S. As a "class of '99" person, I shoud've really used more sunscreen :)
 
-{/_ <YouTube youTubeId="sTJ7AzBIJoI" /> _/}
+<!-- <YouTube youTubeId="sTJ7AzBIJoI" /> -->

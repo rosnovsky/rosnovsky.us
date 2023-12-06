@@ -109,12 +109,7 @@ Leo Laporte is a true legend and one of the pioneers of podcasting. His [TWiT](h
 
 P.S. I’ve met with Leo once a while back, it was fun :)
 
-<img
-  src="/blog/posts/tech-podcasts-in-2019/48898b458c771b1c327d452d017b7912ab0e73d8-1179x667.jpg"
-  alt="Me and Leo Laporte"
-  width="1179"
-  height="667"
-/>
+![Me and Leo Laporte](assets/blog/posts/tech-podcasts-in-2019/48898b458c771b1c327d452d017b7912ab0e73d8-1179x667.jpg)
 
 This Week in Tech [iTunes](https://podcasts.apple.com/us/podcast/this-week-in-tech-mp3/id73329404?uo=10) | This Week in Tech [RSS](http://feeds.twit.tv/twit.xml)​
 

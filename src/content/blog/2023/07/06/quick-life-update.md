@@ -2,8 +2,8 @@
 title: 'Quick Life Update'
 description: It's been quite a while since my last update, and I just want to post something to say that I'm alive :)
 pubDatetime: 2023-07-06
-tags: 
-  - blog 
+tags:
+  - blog
   - web development
   - work
   - travel
@@ -11,8 +11,6 @@ tags:
   - tv
   - mastodon
 ---
-
-
 
 So, it's been a while. Just wanted to let those of you interested that I'm alive and well, just a bit bored with the blog and distracted by other shiny things.
 
@@ -28,11 +26,7 @@ Work has been busier than ever. It feels especially good to not only deliver rea
 
 These are some of the actual shiny things that I abandoned this blog for :)) I'm poking around different ways I can use LLM/GPT here and there, I low-key build my smart Todoist rescheduling tool, and I've built a thing where I upload a voice note to a cloud drive, and this note magically turns into a useful page in Notion. Stuff is fun!
 
-<img
-  src="https://cdn.sanity.io/images/n3o7a5dl/prod/0b4b2981c7591b169d779c6860d940afc37649e0-1929x1283.png"
-  alt="image"
-  placeholder="blurred"
-/>
+![](https://cdn.sanity.io/images/n3o7a5dl/prod/0b4b2981c7591b169d779c6860d940afc37649e0-1929x1283.png)
 
 ## Camping
 
@@ -40,21 +34,9 @@ My spouse discovered what we call "black market" for camping sites: people book 
 
 Later this month we are going to San Juan Island for a stay on a farm, and I can't wait!
 
-<img
-  src="/blog/posts/quick-life-update/53ab0a3b7d0da1429d432c01b65d9224daca3d8d-4032x2268.avif"
-  alt="image"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/quick-life-update/95d7e092c3dc38cf92aef03dcbdc4366c34c0cdf-4032x2268.avif"
-  alt="image"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/quick-life-update/bbbc0e2650389bdaeee08dd048a5fa5114225857-3690x2764.avif"
-  alt="image"
-  placeholder="blurred"
-/>
+![](assets/blog/posts/quick-life-update/53ab0a3b7d0da1429d432c01b65d9224daca3d8d-4032x2268.avif)
+![](assets/blog/posts/quick-life-update/95d7e092c3dc38cf92aef03dcbdc4366c34c0cdf-4032x2268.avif)
+![](assets/blog/posts/quick-life-update/bbbc0e2650389bdaeee08dd048a5fa5114225857-3690x2764.avif)
 
 ## Books / TV Shows
 

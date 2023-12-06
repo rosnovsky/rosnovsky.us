@@ -20,9 +20,4 @@ A wise man once said: "_A riot is the language of the unheard_". I wholeheartedl
 
 I don't post about civil matters too often. But sometimes I just can't keep quiet.
 
-<img
-  alt="Quote"
-  src="/blog/posts/black-lives-matter/4875790946877cdbc25bfc40390fda0eefddec43-2000x917.png"
-  width="2000"
-  height="917"
-/>
+![Quote](assets/blog/posts/black-lives-matter/4875790946877cdbc25bfc40390fda0eefddec43-2000x917.png)

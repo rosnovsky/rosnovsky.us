@@ -45,11 +45,7 @@ That's it. Now, whenever I include ImageWithAlt component in my MDX, it gets an 
 
 Check this out:
 
-<img
-  src="/blog/posts/alt-text/1661cf98394e1a5dacfc6b00cdd70e9e25ca9b0e-1134x2016.avif"
-  alt="what a failure :("
-  placeholder="blurred"
-/>
+![](assets/blog/posts/alt-text/1661cf98394e1a5dacfc6b00cdd70e9e25ca9b0e-1134x2016.avif)
 
 This image had no alt text so Azure generated one for us.
 

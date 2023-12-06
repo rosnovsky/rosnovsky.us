@@ -13,17 +13,9 @@ Time for another weekly update. Not that my life is so packed with events that i
 
 Just over a week ago I received an email from Washington Health Department that all of a sudden I’m eligible to get my COVID vaccine. This is not the kind of situation where you ask ”why” or ”are you sure?”. I immediately went ahead and tried to book an appointment. The only place that still had one was Walgreens in Bremerton. Bremerton is a town around Naval Base Kitsap; it’s about 50 miles and a ferry ride from home. But if it's literally the last available appointment within 50 miles from home, I'll take it. And so I did. I took a day off work, and all in all, got myself a nice little road trip, 2 cruises (go ahead, convince me that taking a ferry is nothing like a cruise, I dare you!); I had my shot, lunch in a nice restaurant, and a ton of awesome pictures. My next visit to Bremerton for my second shot is scheduled for May 4.
 
-<img src="/blog/posts/weekly-update-2/elliot-bay.jpg" width="4032" height="2268" />
-<img
-src='/blog/posts/weekly-update-2/seattle-skyline.jpg'
-width="4032"
-height="2268"
-/>
-<img
-src='/blog/posts/weekly-update-2/olympic-mountains.jpg'
-width="4032"
-height="2268"
-/>
+![](assets/blog/posts/weekly-update-2/elliot-bay.jpg)
+![](assets/blog/posts/weekly-update-2/seattle-skyline.jpg)
+![](assets/blog/posts/weekly-update-2/olympic-mountains.jpg)
 
 A couple of quick notes about the shot itself:
 

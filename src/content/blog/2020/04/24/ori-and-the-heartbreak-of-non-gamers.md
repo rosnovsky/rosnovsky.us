@@ -17,21 +17,13 @@ I was thrilled! A friend helped me get a copy of the game right away, and I've o
 
 And then everything fell apart...
 
-<img
-  src="https://cdn.sanity.io/images/n3o7a5dl/prod/20cd1416a9bb05e0de5f8abfbe76330a2e9f8090-1200x675.jpg"
-  alt="image"
-  placeholder="blurred"
-/>
+![](https://cdn.sanity.io/images/n3o7a5dl/prod/20cd1416a9bb05e0de5f8abfbe76330a2e9f8090-1200x675.jpg)
 
 ## Ori and the Will of the Wisps
 
 First, without any reservations, **Ori and the Will of the Wisps** is absolutely fantastic. It's unbelievably beautiful, and every frame, every scene is a true gem. The details are just beyond anything I've ever seen on a TV screen. The spirit and overall atmosphere of the game is truly captivating.
 
-<img
-  src="https://cdn.sanity.io/images/n3o7a5dl/prod/e6f2fafe5f089de05aa42e3be50ce6a289d9faad-1920x1080.jpg"
-  alt="image"
-  placeholder="blurred"
-/>
+![](https://cdn.sanity.io/images/n3o7a5dl/prod/e6f2fafe5f089de05aa42e3be50ce6a289d9faad-1920x1080.jpg)
 
 Music... It's otherworldly. It just takes you away in a swirl of themes and you just float there, weightless and enchanted. My descriptions don't do OST justice it deserves. Here, enjoy!
 
@@ -53,11 +45,7 @@ What happened with a straightforward, logical, easy to follow story? Who are the
 
 This was the last straw. There are like 5 screens of different types of achievements, abilities, collectible items, tokes, coins, a variety of energy points, combinations of different things. I just couldn't follow it all. What goes where? Do I need more tokens, icons, coins, or keys? How do I get each, and where do I spend it? Do I exchange tokens for abilities or energy? Unsurprisingly, all of this made it definitively impossible to keep playing the game.
 
-<img
-  src="https://cdn.sanity.io/images/n3o7a5dl/prod/d6dc9ac7a750fd86be6527bfa71bc0fbc4ce0d4b-1920x1080.jpg"
-  alt="image"
-  placeholder="blurred"
-/>
+![](https://cdn.sanity.io/images/n3o7a5dl/prod/d6dc9ac7a750fd86be6527bfa71bc0fbc4ce0d4b-1920x1080.jpg)
 
 As much as I loved **Ori and the Blind Forest**, I just can't play **Ori and the Will of the Wisps**. It's way too complicated, convoluted, overly complex, full of interruptions, and non-linear intermissions. It's way more work and effort. It's not a smooth flow that just takes you along with the story, it's a struggle to keep up with controls, track resources, managing abilities, and purchase achievements.
 

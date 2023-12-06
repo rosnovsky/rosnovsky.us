@@ -17,14 +17,6 @@ The story, on the other hand, is quite disjointed, full of leaps and gaps, and l
 
 ---
 
-```ts
-const t: string = "42"
-
-interface Test {
-  test: Record<string, unknown>
-}
-```
-
 Don't get me wrong, I'm not some philosopher annoyed that the deeper meaning of a book was not reflected as such on the show. What I mean is that some plot elements of the show make no sense, while others go directly opposite the book.
 
 Say, cloaking cars in the stub. It makes no sense; they were barely able to fab the crown, how the hell would the stub end up with the latest future London tech?!

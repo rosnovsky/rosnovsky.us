@@ -11,7 +11,7 @@ Let me begin by saying that I basically gave up on these weekly updates. I mean,
 
 ## House
 
-<img src="/blog/posts/weekly-update-4/home.jpg" width="4032" height="2268" />
+![](assets/blog/posts/weekly-update-4/home.jpg)
 
 So, this happened.
 
@@ -27,25 +27,17 @@ Then one day in early April I went to view two houses in Arlington. They were fo
 
 The house ended up being in a decent condition, but required a bunch of interior work. We visited it, walked around, and decided that it's good enough for the price. We made an offer $5K over their asking price, with home inspection and financing contangancies — something very rare in Seattle metro area. Our thinking was that if we think this house is not worth more, and we want to fully inspect it and have it properly appraised. We liked the neighborhood a lot, even though Arlington itself is waaay further than what we considered perfect.
 
-<img
-  src="/blog/posts/weekly-update-4/neighborhood.jpg"
-  width="4032"
-  height="2268"
-/>
+![](assets/blog/posts/weekly-update-4/neighborhood.jpg)
 
 In mid-May, we closed the sale and are getting ready to move in by the end of June. I drive there almost daily after work, doing minor repairs, working with contractors that do major upgrades, meeting neighbors, etc. My wife had painted the garage last week, and overall things are coming together pretty nicely.
 
-<img src="/blog/posts/weekly-update-4/garage.jpg" width="4032" height="2268" />
+![](assets/blog/posts/weekly-update-4/garage.jpg)
 
-<img
-  src="/blog/posts/weekly-update-4/neighborhood2.jpg"
-  width="4032"
-  height="2268"
-/>
+![](assets/blog/posts/weekly-update-4/neighborhood2.jpg)
 
-<img src="/blog/posts/weekly-update-4/sunset.jpg" width="4032" height="2268" />
+![](assets/blog/posts/weekly-update-4/sunset.jpg)
 
-<img src="/blog/posts/weekly-update-4/radish.jpg" width="4032" height="2268" />
+![](assets/blog/posts/weekly-update-4/radish.jpg)
 
 ## Fully Vaccinated
 
@@ -73,10 +65,6 @@ I've updated it to use Typescript, added [Algolia](https://algolia.com)-powered 
 
 One of the reasons to draw inspiration from an expert is that not only do you get exposed to the best practices right away, it gives you a chance to see where you can do better than someone you respect. You know, good artists copy, great artists steal. I don't know what decent artists do, but I like to think that copying some, stealing some, and then using either as inspiration for something truly yours makes me a decent artist ;)
 
-<img
-  src="/blog/posts/weekly-update-4/lighthouse.jpg"
-  width="1887"
-  height="498"
-/>
+![](assets/blog/posts/weekly-update-4/lighthouse.jpg)
 
-Comments are coming soon, [RSS](https://rosnovsky.us/feed.xml) is available already, podcast pages are in the works, but in the meantime, feel free to subscribe to the newsletter. If you see a typo, feel free to make a [pull request](https://github.com/rosnovsky/rosnovsky.us). Cheers!
+Comments are coming soon, [RSS](https://rosnovsky.us/feed/feed.xml) is available already, podcast pages are in the works, but in the meantime, feel free to subscribe to the newsletter. If you see a typo, feel free to make a [pull request](https://github.com/rosnovsky/rosnovsky.us). Cheers!

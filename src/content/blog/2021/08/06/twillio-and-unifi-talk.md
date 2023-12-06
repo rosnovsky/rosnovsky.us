@@ -7,10 +7,7 @@ tags:
   - how-to
 ---
 
-<img
-  alt="Unifi Talk Interface"
-  src="/blog/posts/twillio-and-unifi-talk/dashboard.png"
-/>
+![Unifi Talk Interface](assets/blog/posts/twillio-and-unifi-talk/dashboard.png)
 
 For those of us in the Unifi ecosystem, Unifi Talk is a cheap and really nice way to add home or home office phone to your network. I'm not 100% sure if a lot of folks still _require_ a home phone, but I thought "why not" and went ahead and configured it.
 

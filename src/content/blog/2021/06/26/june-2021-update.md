@@ -7,11 +7,7 @@ tags:
   - personal
 ---
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0004.jpg"
-  width="1000"
-  height="666"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0004.jpg)
 
 ## New Home
 
@@ -21,75 +17,25 @@ The floors were in pretty terrible condition, and it looks and feels so much nic
 
 With this being said, there's so much more to be done here. Paint the walls, replace a couple of windows, replace most interior doors, remodel the kitchen, and don't even get me started on the bathrooms!..
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0011.jpg"
-  width="1000"
-  height="666"
-  caption="New floors"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0011.jpg)
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0013.jpg"
-  width="1000"
-  height="1263"
-  caption="For posterity"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0013.jpg)
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0014.jpg"
-  width="1000"
-  height="666"
-  caption="Bedroom: Before"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0014.jpg)
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0015.jpg"
-  width="1000"
-  height="666"
-  caption="Bedroom: After"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0015.jpg)
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0017.jpg"
-  width="1000"
-  height="666"
-  caption="Downstairs: Before"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0017.jpg)
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0016.jpg"
-  width="1000"
-  height="666"
-  caption="Downstairs: After"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0016.jpg)
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0006.jpg"
-  width="1000"
-  height="666"
-  caption="Garage = finished!"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0006.jpg)
 
 All in all, we knew exactly what we were in for with this house, and so far it's been better than expected.
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0005.jpg"
-  width="1000"
-  height="666"
-  caption="Backyard Roses"
-/>
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0007.jpg"
-  width="1000"
-  height="666"
-  caption="Got strawberries?"
-/>
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0010.jpg"
-  width="1000"
-  height="666"
-  caption="We've got Siberian Lillies"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0005.jpg)
+![](assets/blog/posts/june-2021-update/june-2021-update0007.jpg)
+![](assets/blog/posts/june-2021-update/june-2021-update0010.jpg)
 
 ## Moving out
 
@@ -97,9 +43,4 @@ We've moved 10 times and lived in 3 different countries in the past 15 years or 
 
 It's also worth mentioning that due to work and renovations at the new home, we haven't started packing yet. As of this moment, we have 4 days to pack the entire 2-bedroom + office townhouse. It's going to be stressful 4 days, for sure. Oh, and it's going to be **HOT**!
 
-<img
-  src="/blog/posts/june-2021-update/june-2021-update0012.jpg"
-  width="841"
-  height="1563"
-  caption="🔥 It's going to be HOT 🔥"
-/>
+![](assets/blog/posts/june-2021-update/june-2021-update0012.jpg)

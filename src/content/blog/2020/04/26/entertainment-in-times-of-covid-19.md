@@ -111,9 +111,4 @@ Books are awesome. Fight me! Here's a list of books I am reading, will be readin
 
 Nah, I'm not the kind of person who's into DIY. But I've got a pretty serious urge to make our back room into a proper office and _lounge_ space.
 
-<img
-  alt="Lounge"
-  src="/blog/posts/entertainment-in-times-of-covid-19/d77c6d5950fb53a84bbff3f664418876161c4ae6-2000x1500.jpg"
-  width="2000"
-  height="1500"
-/>
+![Lounge](assets/blog/posts/entertainment-in-times-of-covid-19/d77c6d5950fb53a84bbff3f664418876161c4ae6-2000x1500.jpg)

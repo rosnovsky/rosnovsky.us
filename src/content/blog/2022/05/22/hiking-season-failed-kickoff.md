@@ -20,13 +20,13 @@ I must say that in two years I haven’t been there, Mountain Loop highway got s
 
 Anywho, we arrived at the trailhead at around 5 pm, which is most certainly not what we wanted. Given that the trail is roughly 9 miles roundtrip, in the best of circumstances it would’ve taken us 3 to 4 hours to finish. Which put us returning to the car after dark. So, even before we started, we knew that we were probably not going to finish the trail. But wait, it gets worse.
 
-![Crossing South Fork Sauk river](/blog/posts/hiking-season-failed-kickoff/6d15d0821bc7c449d6e45f7ded3c5d7ceedfab20-3024x4032.avif)
+![Crossing South Fork Sauk river](/assets/blog/posts/hiking-season-failed-kickoff/6d15d0821bc7c449d6e45f7ded3c5d7ceedfab20-3024x4032.avif)
 
 The first obstacle was The Log. This trail is known for this fairly prominent feature: to get to the actual trail, you need to cross South Fork Sauk river via an old fallen tree. This time around, a lot of other dead trees were laying on top of The Log, which made it somewhat more difficult to cross. But wait, it gets worse.
 
 The feature of this trail is that it’s easy. It’s not even a trail, it’s a path. It’s wide, mostly flat, with just a few segments where you go over some rocks and such. From what I’ve learned, historically, by the end of May there are still some sno patches on the trail but it’s totally passable. Well, not this year.
 
-![Walking on a snow path on the Old Monte Cristo road](/blog/posts/hiking-season-failed-kickoff/1f0d9bb5405b2b05b59900dc15cbdcda75d7f2cc-3024x4032.avif)
+![Walking on a snow path on the Old Monte Cristo road](/assets/blog/posts/hiking-season-failed-kickoff/1f0d9bb5405b2b05b59900dc15cbdcda75d7f2cc-3024x4032.avif)
 
 This year, it’s a snow trail with very rare patches of land mostly on its sides. Hiking in the snow is not as fun as it may sound; it requires a lot more effort and poses some additional risks. So we hiked for about an hour and decided to turn back. At least it wasn’t raining anymore!
 

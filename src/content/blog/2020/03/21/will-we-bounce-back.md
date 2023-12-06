@@ -36,9 +36,4 @@ We’ll bounce back, scarred and battered, but stronger and more resilient. Mill
 
 It's going to be bad. But we will bounce back 💪
 
-<img
-  alt="COVID chart"
-  src="/blog/posts/will-we-bounce-back/bad879662702dc5d43d81cde729ea68b1a9f71ba-948x948.jpg"
-  width="948"
-  height="948"
-/>
+![COVID chart](assets/blog/posts/will-we-bounce-back/bad879662702dc5d43d81cde729ea68b1a9f71ba-948x948.jpg)

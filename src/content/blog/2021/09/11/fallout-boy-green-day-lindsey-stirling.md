@@ -22,164 +22,51 @@ Hella Mega Tour was supposed to stop by in Seattle in July 2020. Obviously, it w
 
 The show opened with Weezer set. I'm not a fan, but there are a couple of songs that I like.
 
-<img
-  alt="Weezer"
-  src="/blog/posts/concerts-sep21/concerts0001.jpeg"
-  width="2899"
-  height="1839"
-  caption="Pork and beans"
-/>
-
-<img
-  alt="Weezer"
-  src="/blog/posts/concerts-sep21/concerts0004.jpeg"
-  width="2899"
-  height="1839"
-  caption="Island in the sun"
-/>
-
-<img
-  alt="Weezer"
-  src="/blog/posts/concerts-sep21/concerts0006.jpeg"
-  width="2899"
-  height="1839"
-  caption="Africa"
-/>
-
-<img
-  alt="Weezer"
-  src="/blog/posts/concerts-sep21/concerts0007.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Weezer](assets/blog/posts/concerts-sep21/concerts0001.jpeg)
+![Weezer](assets/blog/posts/concerts-sep21/concerts0004.jpeg)
+![Weezer](assets/blog/posts/concerts-sep21/concerts0006.jpeg)
+![Weezer](assets/blog/posts/concerts-sep21/concerts0007.jpeg)
 
 ## Fall Out Boy
 
 Fall Out Boy is a different story. We've seen them in concert in 2018, and it was awesome. I really like that not only they're good at music but they also stand for what's right.
 
-<img
-  alt="Fall Out Boy"
-  src="/blog/posts/concerts-sep21/6E043EFE-823F-4CC1-AAB7-BC1A889FF475_1_105_c.jpeg"
-  width="2899"
-  height="1839"
-  caption='"Centuries", 2018 @ Key Arena'
-/>
+![Fall Out Boy](assets/blog/posts/concerts-sep21/6E043EFE-823F-4CC1-AAB7-BC1A889FF475_1_105_c.jpeg)
 
 Last time, I was a little bit surprised by how the band sounded at Key Arena. The sound was a bit weird, somewhat off. I've written it off as a poor seats issue: our seats were to the side of the stage and quite far from it, so it's possible that the sound wasn't off and it were our seats to blame.
 
 I guess I was wrong. The difference is sound between the 2018 concert and this one was so drastic that it's evident: last time the sound was off indeed.
 
-<img
-  alt="Fall Out Boy"
-  src="/blog/posts/concerts-sep21/concerts0021.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Fall Out Boy](assets/blog/posts/concerts-sep21/concerts0021.jpeg)
 
-<img
-  alt="Fall Out Boy"
-  src="/blog/posts/concerts-sep21/concerts0019.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Fall Out Boy](assets/blog/posts/concerts-sep21/concerts0019.jpeg)
 
 Not sure if this fact is interesting, but when I illegally acquired an iTunes account in 2008 (I was in Russia back then, and iTunes didn't work there), the first album I bought was FOB's "Infinity on High". The second one was "All-American Rejects", but they are out of scope for this post.
 
-<img
-  alt="Fall Out Boy"
-  src="/blog/posts/concerts-sep21/concerts0023.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Fall Out Boy"
-  src="/blog/posts/concerts-sep21/concerts0024.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Fall Out Boy"
-  src="/blog/posts/concerts-sep21/concerts0025.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Fall Out Boy](assets/blog/posts/concerts-sep21/concerts0023.jpeg)
+![Fall Out Boy](assets/blog/posts/concerts-sep21/concerts0024.jpeg)
+![Fall Out Boy](assets/blog/posts/concerts-sep21/concerts0025.jpeg)
 
 ## Green Day
 
 Finally, Green Day. It's safe to say that they are my favorite band right now. I missed their show in Seattle in 2018 and this time I was set on actually making it to see them in concert.
 
-<img
-  alt="Green Day"
-  src="/blog/posts/concerts-sep21/concerts0027.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Green Day"
-  src="/blog/posts/concerts-sep21/concerts0028.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Green Day"
-  src="/blog/posts/concerts-sep21/CAC97862-40A9-456B-B9AC-45398C01B81C_1_102_a.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Green Day"
-  src="/blog/posts/concerts-sep21/06CAFCA6-07B9-4C65-BD97-EC7790066A93_1_102_a.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Green Day"
-  src="/blog/posts/concerts-sep21/concerts0029.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Green Day](assets/blog/posts/concerts-sep21/concerts0027.jpeg)
+![Green Day](assets/blog/posts/concerts-sep21/concerts0028.jpeg)
+![Green Day](assets/blog/posts/concerts-sep21/CAC97862-40A9-456B-B9AC-45398C01B81C_1_102_a.jpeg)
+![Green Day](assets/blog/posts/concerts-sep21/06CAFCA6-07B9-4C65-BD97-EC7790066A93_1_102_a.jpeg)
+![Green Day](assets/blog/posts/concerts-sep21/concerts0029.jpeg)
 
 ## Lindsey Stirling
 
 Lindsey Stirling holds a special place in my heart. Her music is pearcing yet gentle and energetic at the same time. I've seen her perform with Evanesence a couple of years ago, and absolutely loved her sincerity, her ability to be openly vulnarable, yet strong and sweet and wise and positive.
 
-<img
-  alt="Lindsey Stirling"
-  src="/blog/posts/concerts-sep21/concerts0032.jpeg"
-  width="2899"
-  height="1839"
-  caption="Pre-show meet and greet"
-/>
-<img
-  alt="Lindsey Stirling"
-  src="/blog/posts/concerts-sep21/concerts0033.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Lindsey Stirling"
-  src="/blog/posts/concerts-sep21/concerts0034.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Lindsey Stirling"
-  src="/blog/posts/concerts-sep21/concerts0036.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Lindsey Stirling"
-  src="/blog/posts/concerts-sep21/concerts0040.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Lindsey Stirling"
-  src="/blog/posts/concerts-sep21/concerts0041.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Lindsey Stirling](assets/blog/posts/concerts-sep21/concerts0032.jpeg)
+![Lindsey Stirling](assets/blog/posts/concerts-sep21/concerts0033.jpeg)
+![Lindsey Stirling](assets/blog/posts/concerts-sep21/concerts0034.jpeg)
+![Lindsey Stirling](assets/blog/posts/concerts-sep21/concerts0036.jpeg)
+![Lindsey Stirling](assets/blog/posts/concerts-sep21/concerts0040.jpeg)
+![Lindsey Stirling](assets/blog/posts/concerts-sep21/concerts0041.jpeg)
 
 # Bonus
 

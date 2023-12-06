@@ -46,8 +46,4 @@ So here goes: _the purpose of this website is to be a place where I can write an
 
 As a bonus, here's a sketchnote of Michelle's talk. Prior to this, I didn't even know sketchnoting was a thing. Now I do, and I find it fascinating. To learn more, check out [Mind's Eye Creative](https://www.mindseyecreative.ca/) website. Ashton also offers a great [course on sketchnoting](https://store.mindseyecreative.ca/sketchnote)! I've been enjoying it so far, and you will too!
 
-<img
-  src="/blog/posts/meditation-through-code/a6c000b0fc811e60303aaa9d24cc42ecf0379c7a-7000x4247.avif"
-  alt="image"
-  placeholder="blurred"
-/>
+![](assets/blog/posts/meditation-through-code/a6c000b0fc811e60303aaa9d24cc42ecf0379c7a-7000x4247.avif)

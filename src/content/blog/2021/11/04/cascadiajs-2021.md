@@ -15,11 +15,7 @@ It was a blast! Worth every penny, every minute, and I'm so glad I attended. Fan
 
 I've got a few general takeaways, a bunch of specific things I want to share, and some notes on what I learned.
 
-<img
-  src="/blog/posts/cascadiajs-2021/08b8509e78d22e88095a33dac1f3229dc36494ac-1086x724.avif"
-  alt="Notes from CascadiaJS 2021"
-  placeholder="blurred"
-/>
+![](assets/blog/posts/cascadiajs-2021/08b8509e78d22e88095a33dac1f3229dc36494ac-1086x724.avif)Notes from CascadiaJS 2021)
 
 > All talks, slides, and graphic recordings will be available on [CascadiaJS 2021 website](https://2021.cascadiajs.com/) within the next couple of weeks. Don't miss it!
 
@@ -70,52 +66,21 @@ I missed two awesome talks and I'll update this page as I get them.
 
 ## CascadiaJS 2022
 
-<img
-  src="/blog/posts/cascadiajs-2021/4db36590c9ab23332ebe1b4e4c6b87da94b534e5-3500x1882.avif"
-  alt="CascadiaJS 2022"
-  placeholder="blurred"
-/>
+![](assets/blog/posts/cascadiajs-2021/4db36590c9ab23332ebe1b4e4c6b87da94b534e5-3500x1882.avif)
+
 I don't know if I'll be able to make it, but that's the plan.
 
 ## Notes
 
 ### Day 1
 
-<img
-  src="/blog/posts/cascadiajs-2021/ef2922758eb0777d1b6e8a3cd37b4964fd766929-1000x1468.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/cascadiajs-2021/7e9458bf0ebd514e89197c5f7756fa94e3f9f67d-1000x1426.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/cascadiajs-2021/a62f12d0febaa0920f6f8ce2959e49a563ebae8c-1000x1473.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
+![](assets/blog/posts/cascadiajs-2021/ef2922758eb0777d1b6e8a3cd37b4964fd766929-1000x1468.avif)
+![](assets/blog/posts/cascadiajs-2021/7e9458bf0ebd514e89197c5f7756fa94e3f9f67d-1000x1426.avif)
+![](assets/blog/posts/cascadiajs-2021/a62f12d0febaa0920f6f8ce2959e49a563ebae8c-1000x1473.avif)
 
 ### Day 2
 
-<img
-  src="/blog/posts/cascadiajs-2021/043d93499e585ef79237cdd82b4636d209b0a9be-1000x1442.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/cascadiajs-2021/2184f74e42bc7fde1804f637bd1ba4904b004d19-1000x1419.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/cascadiajs-2021/f32a113652ad3d13190749e4f548ef3b44eafc2b-1000x1451.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
-<img
-  src="/blog/posts/cascadiajs-2021/8cc1dc33c41ac5643aea8ea916a4f6f408a89d72-1000x1559.avif"
-  alt="CascadiaJS 2021"
-  placeholder="blurred"
-/>
+![](assets/blog/posts/cascadiajs-2021/043d93499e585ef79237cdd82b4636d209b0a9be-1000x1442.avif)
+![](assets/blog/posts/cascadiajs-2021/2184f74e42bc7fde1804f637bd1ba4904b004d19-1000x1419.avif)
+![](assets/blog/posts/cascadiajs-2021/f32a113652ad3d13190749e4f548ef3b44eafc2b-1000x1451.avif)
+![](assets/blog/posts/cascadiajs-2021/8cc1dc33c41ac5643aea8ea916a4f6f408a89d72-1000x1559.avif)

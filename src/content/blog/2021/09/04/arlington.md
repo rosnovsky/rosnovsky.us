@@ -16,85 +16,16 @@ As many small towns do, Arlington has to walk this fine line between keeping its
 
 P.S. I'm learning to type on my new Moonlander keyboard, and it's been tricky so far.
 
-<img
-  alt="Stillaguamish Pioneer Museum"
-  src="/blog/posts/arlington/IMG_0012.jpeg"
-  width="2899"
-  height="1839"
-  caption="Sillaguamish Pioneer Museum"
-/>
-<img
-  alt="The sound garden"
-  src="/blog/posts/arlington/IMG_0013.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="The sound garden"
-  src="/blog/posts/arlington/IMG_0014.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Legion Memoril Park"
-  src="/blog/posts/arlington/IMG_0015.jpeg"
-  width="2899"
-  height="1839"
-  caption="Legion Memoril Park"
-/>
-<img
-  alt="Legion Memorial Park"
-  src="/blog/posts/arlington/IMG_0016.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Bike"
-  src="/blog/posts/arlington/IMG_0017.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Stillaguamish river"
-  src="/blog/posts/arlington/IMG_0018.jpeg"
-  width="2899"
-  height="1839"
-  caption="Stillaguamish river"
-/>
-<img
-  alt="Stillaguamish river"
-  src="/blog/posts/arlington/IMG_0019.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Stillaguamish river"
-  src="/blog/posts/arlington/IMG_0020.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="View from the trail"
-  src="/blog/posts/arlington/IMG_0021.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Trail"
-  src="/blog/posts/arlington/IMG_0022.jpeg"
-  width="2899"
-  height="1839"
-/>
-<img
-  alt="Dining"
-  src="/blog/posts/arlington/IMG_0023.jpeg"
-  width="2899"
-  height="1839"
-  caption="Burgers and shakes"
-/>
-<img
-  alt="Dining"
-  src="/blog/posts/arlington/IMG_0025.jpeg"
-  width="2899"
-  height="1839"
-/>
+![Stillaguamish Pioneer Museum](assets/blog/posts/arlington/IMG_0012.jpeg)
+![The sound garden](assets/blog/posts/arlington/IMG_0013.jpeg)
+![The sound garden](assets/blog/posts/arlington/IMG_0014.jpeg)
+![Legion Memoril Park](assets/blog/posts/arlington/IMG_0015.jpeg)
+![Legion Memorial Park](assets/blog/posts/arlington/IMG_0016.jpeg)
+![Bike](assets/blog/posts/arlington/IMG_0017.jpeg)
+![Stillaguamish river](assets/blog/posts/arlington/IMG_0018.jpeg)
+![Stillaguamish river](assets/blog/posts/arlington/IMG_0019.jpeg)
+![Stillaguamish river](assets/blog/posts/arlington/IMG_0020.jpeg)
+![View from the trail](assets/blog/posts/arlington/IMG_0021.jpeg)
+![Trail](assets/blog/posts/arlington/IMG_0022.jpeg)
+![Dining](assets/blog/posts/arlington/IMG_0023.jpeg)
+![Dining](assets/blog/posts/arlington/IMG_0025.jpeg)
