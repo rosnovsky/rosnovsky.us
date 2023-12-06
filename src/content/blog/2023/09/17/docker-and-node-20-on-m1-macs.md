@@ -4,7 +4,7 @@ description: "If you trying to build a Node 20 image with Docker on Apple Silico
 pubDatetime: 2023-09-17
 featured: false
 draft: false
-tags: 
+tags:
   - Work
   - Web Development
   - Kubernetes

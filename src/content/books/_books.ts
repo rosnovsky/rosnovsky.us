@@ -1,6 +1,6 @@
 import { defineCollection, reference, z } from 'astro:content';
 
-export const books = defineCollection({
+export const book = defineCollection({
   // Type-check frontmatter using a schema
   type: 'content',
   schema: z.object({
@@ -14,7 +14,7 @@ export const books = defineCollection({
       'sci-fi',
       'biography',
       'history',
-    ] as const),
+    ]),
     description: z.string(),
     pages: z.number(),
     // Transform string to Date object
@@ -31,6 +31,6 @@ export const books = defineCollection({
       .optional(),
     tags: z.array(z.string()),
     ISBN: z.string().optional(),
-    status: z.enum(['read', 'reading', 'to-read'] as const),
+    status: z.enum(['read', 'reading', 'to-read']),
   }),
 });

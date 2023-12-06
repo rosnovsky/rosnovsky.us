@@ -1,6 +1,6 @@
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 
-export const games = defineCollection({
+export const studio = defineCollection({
   // Type-check frontmatter using a schema
   type: 'content',
   schema: z.object({

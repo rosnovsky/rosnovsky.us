@@ -1,6 +1,6 @@
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 
-export const authors = defineCollection({
+export const author = defineCollection({
   // Type-check frontmatter using a schema
   type: 'content',
   schema: z.object({
