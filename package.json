@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && jampack ./dist",
+    "build": "astro build",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
@@ -34,7 +34,6 @@
     "@astrojs/react": "^3.0.2",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
-    "@divriots/jampack": "^0.22.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/github-slugger": "^2.0.0",
     "@types/react": "^18.2.22",
