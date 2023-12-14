@@ -1,0 +1,41 @@
+name: Build and publish Docker Image and Deploy
+on:
+  release:
+    types: [published]
+
+  push:
+    branches:
+      - main
+      - astro
+
+jobs:
+  docker_publish:
+    name: Build and publish Docker image to ghcr.io
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build and publish Docker image
+        run: |
+          docker build \
+          -t ghcr.io/${{ github.repository }}:latest .
+          docker push ghcr.io/${{ github.repository }}:latest
+
+  deploy:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: docker_publish
+    env:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+    steps:
+      - run: |
+          KUBECTL_VERSION=$(curl --silent "https://storage.googleapis.com/kubernetes-release/release/stable.txt")
+          curl -LO "https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          mv kubectl /usr/local/bin/
+          echo "$KUBECONFIG" > ./kubeconfig.yaml
+          kubectl config use-context hostinger -n web --kubeconfig ./kubeconfig.yaml
+          kubectl rollout restart deployment/rosnovskyus-deployment -n web --kubeconfig ./kubeconfig.yaml

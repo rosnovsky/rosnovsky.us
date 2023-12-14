@@ -1,0 +1,30 @@
+---
+export interface Props {
+  name: string;
+  size?: 'sm' | 'lg';
+}
+
+const { name, size = 'sm' } = Astro.props;
+---
+
+<li
+  class={`inline-block ${
+    size === 'sm' ? 'my-1 underline-offset-4' : 'my-3 mx-1 underline-offset-8'
+  }`}
+>
+  <a
+    href={`/tags/${name.toLowerCase()}`}
+    transition:name={name.toLowerCase()}
+    class={`${size === 'sm' ? 'text-sm' : 'text-lg'} pr-2 group`}
+    ><span class="ml-3">{name.toLowerCase()}</span>
+  </a>
+</li>
+
+<style>
+  a {
+    @apply relative underline decoration-dashed hover:-top-0.5 hover:text-skin-accent focus-visible:p-1;
+  }
+  a svg {
+    @apply -mr-5 h-6 w-6 scale-95 text-skin-base opacity-80 group-hover:fill-skin-accent;
+  }
+</style>
