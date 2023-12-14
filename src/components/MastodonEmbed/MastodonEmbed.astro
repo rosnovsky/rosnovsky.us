@@ -1,0 +1,86 @@
+---
+// Inspired by https://github.com/ghall89/astro-mastodon-embed
+import { Markup } from "astro-remote";
+
+// TODO: Add support for icons
+// import Icon from "./src/svg/Icon.astro";
+
+interface Props {
+  url: string;
+  variant?: "dark" | "light";
+}
+
+const { url, variant } = Astro.props;
+
+const instance = new URL(url).hostname;
+const splitPathname = url.split("/");
+const tootId = splitPathname[splitPathname.length - 1];
+
+let toot;
+let userUrl;
+
+try {
+  const res = await fetch(`https://${instance}/api/v1/statuses/${tootId}`);
+  console.log(res);
+  toot = (await res.json()) || [];
+  userUrl = new URL(toot?.account?.url)?.hostname;
+} catch (err) {
+  console.log(err);
+  throw new Error("Unable to fetch toot");
+}
+---
+
+<div class:list={["container", variant || null]}>
+  {
+    !toot ? (
+      <p>Post not found.</p>
+    ) : (
+      <aside class="flex flex-col max-w-md border-2 border-gray-200 dark:border-gray-800 rounded-md p-4 prose prose-md">
+        <div class="flex flex-row border border-gray-200 dark:border-gray-800 rounded-md p-4">
+          <div class="border border-red-200 flex flex-col text-center">
+            <a href={toot.account.url} class="justify-end" target="_blank">
+            <img
+            class="rounded-full w-20 h-20"
+              src={toot.account.avatar}
+              alt={`${toot.account.username}'s avatar`}
+            />
+            {`@${toot.account.username}`}
+            <br />
+            <span>{`@${userUrl}`}</span>
+          </a>
+          </div>
+          <div class="post-body">
+            <Markup content={toot.content} />
+          </div>
+          {toot.media_attachments.length === 0 ? null : (
+            <div class="post-img">
+              <img
+                src={toot.media_attachments[0].url}
+                alt={toot.media_attachments[0].description}
+              />
+            </div>
+          )}
+        </div>
+        <div class="footer">
+          <div class="toot-stats">
+            <span>
+              <!-- <Icon icon="reply-fill" /> -->
+              Replies: {toot.replies_count}
+            </span>
+            <span>
+              <!-- <Icon icon="repeat" /> --> 
+                Boosts: {toot.reblogs_count}
+            </span>
+            <span>
+              <!--<Icon icon="star-fill" /> -->
+              Stars: {toot.favourites_count}
+            </span>
+          </div>
+          <a href={toot.url} target="_blank">
+            View Original Post
+          </a>
+        </div>
+      </aside>
+    )
+  }
+</div>

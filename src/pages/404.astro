@@ -4,6 +4,8 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
+import MastodonEmbed from '@components/MastodonEmbed/MastodonEmbed.astro'
+
 ---
 
 <Layout title={`404 Not Found | ${SITE.title}`}>
@@ -20,6 +22,7 @@ import LinkButton from "@components/LinkButton.astro";
       >
         Go back home
       </LinkButton>
+      <MastodonEmbed url="https://lounge.town/@georgetakei@universeodon.com/111569344662211740" />
     </div>
   </main>
 
