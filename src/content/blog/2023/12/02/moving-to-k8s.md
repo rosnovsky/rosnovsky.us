@@ -72,3 +72,9 @@ There's still more to do.
 I do have [TypeSense](https://typesense.org) running but I'm not indexing blog posts yet. Authentication is not implemented yet (and I'm going to try and run [Logto](https://logto.io) for it), there're no comments implemented (but a fully configured Postgres DB is running in the cluster, ready to accept and store those comments). The CMS is no longer something I want to deal with so it's just `mdx` files now (again). 
 
 All in all, it's going pretty good and the end result is in sight. 
+
+---
+
+**UPDATE**: A few days after posting this, I had shut down my Civo cluster and moved to a VPS by [Hostinger](https://hostinger.com?REFERRALCODE=1ART641) (referal link, 20% off). I installed `Debian` and `k3s` there, and that's where my cluster is hosted now.
+
+---
