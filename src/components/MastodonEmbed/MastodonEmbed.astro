@@ -7,10 +7,9 @@ import { Markup } from "astro-remote";
 
 interface Props {
   url: string;
-  variant?: "dark" | "light";
 }
 
-const { url, variant } = Astro.props;
+const { url } = Astro.props;
 
 const instance = new URL(url).hostname;
 const splitPathname = url.split("/");
@@ -21,7 +20,6 @@ let userUrl;
 
 try {
   const res = await fetch(`https://${instance}/api/v1/statuses/${tootId}`);
-  console.log(res);
   toot = (await res.json()) || [];
   userUrl = new URL(toot?.account?.url)?.hostname;
 } catch (err) {
@@ -30,13 +28,13 @@ try {
 }
 ---
 
-<div class:list={["container", variant || null]}>
+<div class:list={["container"]}>
   {
     !toot ? (
       <p>Post not found.</p>
     ) : (
-      <aside class="flex flex-col max-w-md border-2 border-gray-200 dark:border-gray-800 rounded-md p-4 prose prose-md">
-        <div class="flex flex-row border border-gray-200 dark:border-gray-800 rounded-md p-4">
+      <aside class="container flex flex-col max-w-md border-2 border-gray-200 dark:border-gray-800 rounded-md p-4 prose prose-md">
+        <div class="flex flex-row  dark:border-gray-800 rounded-md">
           <div class="border border-red-200 flex flex-col text-center">
             <a href={toot.account.url} class="justify-end" target="_blank">
             <img
