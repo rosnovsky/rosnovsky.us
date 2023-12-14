@@ -9,8 +9,8 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install pnpm@8.7.4 --location=global --ddd
-RUN pnpm install
+RUN npm install pnpm --location=global
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
@@ -19,8 +19,6 @@ RUN pnpm build
 FROM node:20-alpine
 
 WORKDIR /app
-
-# RUN npm i pnpm --location=global
 
 COPY --from=BUILD_IMAGE /app/dist ./dist
 COPY --from=BUILD_IMAGE /app/public ./public
