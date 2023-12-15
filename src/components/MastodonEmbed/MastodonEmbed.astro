@@ -1,9 +1,9 @@
 ---
 // Inspired by https://github.com/ghall89/astro-mastodon-embed
 import { Markup } from "astro-remote";
+import { FaStar, FaRetweet, FaReply } from 'react-icons/fa'
+import type { MastodonPost } from 'types';
 
-// TODO: Add support for icons
-// import Icon from "./src/svg/Icon.astro";
 
 interface Props {
   url: string;
@@ -15,69 +15,77 @@ const instance = new URL(url).hostname;
 const splitPathname = url.split("/");
 const tootId = splitPathname[splitPathname.length - 1];
 
-let toot;
+let toot: MastodonPost | undefined;
 let userUrl;
 
 try {
   const res = await fetch(`https://${instance}/api/v1/statuses/${tootId}`);
-  toot = (await res.json()) || [];
+  if(res.status !== 200 ) throw new Error;
+  toot = await res.json()
+  if(!toot) throw new Error("Unable to load the post")
   userUrl = new URL(toot?.account?.url)?.hostname;
+  console.log(toot)
 } catch (err) {
   console.log(err);
-  throw new Error("Unable to fetch toot");
 }
 ---
 
 <div class:list={["container"]}>
   {
     !toot ? (
-      <p>Post not found.</p>
+      <div class="border border-1 rounded-md bg-grey-100 border-gray-500 p-5 max-w-1/4 text-center prose prose-sm">
+      <p>A Mastodon post was supposed to be here, alas I couldn't find it for you. Was it deleted perhaps? It happens more often than you think!</p>
+      </div>
     ) : (
-      <aside class="container flex flex-col max-w-md border-2 border-gray-200 dark:border-gray-800 rounded-md p-4 prose prose-md">
-        <div class="flex flex-row  dark:border-gray-800 rounded-md">
-          <div class="border border-red-200 flex flex-col text-center">
-            <a href={toot.account.url} class="justify-end" target="_blank">
-            <img
-            class="rounded-full w-20 h-20"
-              src={toot.account.avatar}
-              alt={`${toot.account.username}'s avatar`}
-            />
-            {`@${toot.account.username}`}
-            <br />
-            <span>{`@${userUrl}`}</span>
-          </a>
-          </div>
-          <div class="post-body">
-            <Markup content={toot.content} />
-          </div>
-          {toot.media_attachments.length === 0 ? null : (
-            <div class="post-img">
+      <aside class="container min-w-sm max-w-lg bg-grey-100 border border-gray-500 rounded-md p-4 prose">
+        <div class="flex flex-col ">
+          <div class="flex max-w-20">
+            <div class="flex flex-row text-center w-1/4">
+              <a href={toot.account.url} class="text-sm" target="_blank">
               <img
-                src={toot.media_attachments[0].url}
-                alt={toot.media_attachments[0].description}
+              class="rounded-full w-20 h-20"
+                src={toot.account.avatar}
+                alt={`${toot.account.username}'s avatar`}
               />
+              {`@${toot.account.username}`}
+              <br />
+              <span>{`@${userUrl}`}</span>
+            </a>
             </div>
-          )}
-        </div>
-        <div class="footer">
-          <div class="toot-stats">
-            <span>
-              <!-- <Icon icon="reply-fill" /> -->
-              Replies: {toot.replies_count}
-            </span>
-            <span>
-              <!-- <Icon icon="repeat" /> --> 
-                Boosts: {toot.reblogs_count}
-            </span>
-            <span>
-              <!--<Icon icon="star-fill" /> -->
-              Stars: {toot.favourites_count}
-            </span>
+            <div class="p-2 m-0 prose prose-md w-3/4">
+              <Markup content={toot.content} />
+              <div class="flex flex-row flex-wrap">
+              {toot.media_attachments && (
+                toot.media_attachments.map(image => 
+                  <img
+                    class="w-40 h-40 object-cover"
+                    src={image.url}
+                    alt={image.description}
+                  />
+                  )
+                )}
+              </div>
+            </div>
           </div>
-          <a href={toot.url} target="_blank">
-            View Original Post
-          </a>
         </div>
+        <footer>
+          <div class="mt-10 flex flex-row w-full text-gray-500 justify-between align-center">
+            <div>
+              <span class="mr-2">
+                <FaReply /> {toot.replies_count}
+              </span>
+              <span class="mr-2">
+                <FaRetweet /> {toot.reblogs_count}
+              </span>
+              <span>
+                <FaStar /> {toot.favourites_count}
+              </span>
+            </div>
+            <a href={toot.url} target="_blank" class="text-sm">
+              View Original Post
+            </a>
+          </div>
+        </footer>
       </aside>
     )
   }
