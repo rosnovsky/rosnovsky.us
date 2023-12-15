@@ -20,9 +20,112 @@ export type SocialIcons = {
 };
 
 export type SocialMedia =
-  | "Github"
-  | "LinkedIn"
-  | "Mail"
-  | "GitLab"
-  | "Steam"
-  | "Mastodon";
+  | 'Github'
+  | 'LinkedIn'
+  | 'Mail'
+  | 'GitLab'
+  | 'Steam'
+  | 'Mastodon';
+
+// Mastodon post types
+type Emoji = {
+  shortcode: string;
+  static_url: string;
+  url: string;
+  visible_in_picker: boolean;
+};
+
+type Account = {
+  id: string;
+  username: string;
+  acct: string;
+  display_name: string;
+  locked: boolean;
+  bot: boolean;
+  discoverable: boolean;
+  group: boolean;
+  created_at: string;
+  note: string;
+  url: string;
+  uri: string;
+  avatar: string;
+  avatar_static: string;
+  header: string;
+  header_static: string;
+  followers_count: number;
+  following_count: number;
+  statuses_count: number;
+  last_status_at: string;
+  noindex: boolean;
+  emojis: Emoji[]; // Adjust to match  emojis types
+  roles: any[]; // Specify (or figure out) types of roles
+  fields: any[]; // Specify the type (what is it?..)
+};
+
+type Tag = {
+  name: string;
+  url: string;
+};
+
+type Poll = {
+  id: string,
+  expires_at:string,
+  expired: boolean,
+  multiple: boolean,
+  votes_count: number,
+  voters_count: number,
+  options: [
+  { title: string, votes_count: number }
+  ],
+  emojis: Emoji[]
+}
+
+type Card = {
+  url: string;
+  title: string;
+  description: string;
+  language: string;
+  type: string;
+  author_name: string;
+  author_url: string;
+  provider_name: string;
+  provider_url: string;
+  html: string;
+  width: number;
+  height: number;
+  image: string;
+  image_description: string;
+  embed_url: string;
+  blurhash: string;
+  published_at: string | null; // when is it ever null?!
+};
+
+export type MastodonPost = {
+  id: string;
+  created_at: string;
+  in_reply_to_id: string | null;
+  in_reply_to_account_id: string | null;
+  sensitive: boolean;
+  spoiler_text: string;
+  visibility: string;
+  language: string;
+  uri: string;
+  url: string;
+  replies_count: number;
+  reblogs_count: number;
+  favourites_count: number;
+  edited_at: string | null;
+  content: string;
+  reblog: any; // Specify the type for reblog
+  application: {
+    name: string;
+    website: string;
+  };
+  account: Account;
+  media_attachments: any[]; // Specify the type/structure for media attachments
+  mentions: any[]; // Specify the type/ structure for mentions
+  tags: Tag[];
+  emojis: Emoji[];
+  card: Card | null;
+  poll: Poll | null;
+};
