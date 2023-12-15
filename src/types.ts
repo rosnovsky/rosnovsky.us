@@ -28,6 +28,13 @@ export type SocialMedia =
   | 'Mastodon';
 
 // Mastodon post types
+type Emoji = {
+  shortcode: string;
+  static_url: string;
+  url: string;
+  visible_in_picker: boolean;
+};
+
 type Account = {
   id: string;
   username: string;
@@ -50,7 +57,7 @@ type Account = {
   statuses_count: number;
   last_status_at: string;
   noindex: boolean;
-  emojis: any[]; // Adjust to match  emojis types
+  emojis: Emoji[]; // Adjust to match  emojis types
   roles: any[]; // Specify (or figure out) types of roles
   fields: any[]; // Specify the type (what is it?..)
 };
@@ -59,6 +66,19 @@ type Tag = {
   name: string;
   url: string;
 };
+
+type Poll = {
+  id: string,
+  expires_at:string,
+  expired: boolean,
+  multiple: boolean,
+  votes_count: number,
+  voters_count: number,
+  options: [
+  { title: string, votes_count: number }
+  ],
+  emojis: Emoji[]
+}
 
 type Card = {
   url: string;
@@ -105,7 +125,7 @@ export type MastodonPost = {
   media_attachments: any[]; // Specify the type/structure for media attachments
   mentions: any[]; // Specify the type/ structure for mentions
   tags: Tag[];
-  emojis: any[]; // Adjust to  specific type for emojis
+  emojis: Emoji[];
   card: Card | null;
-  poll: any | null; // Specify the type/ structure for poll
+  poll: Poll | null;
 };

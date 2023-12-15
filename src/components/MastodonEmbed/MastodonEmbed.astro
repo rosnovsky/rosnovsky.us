@@ -4,7 +4,6 @@ import { Markup } from "astro-remote";
 import { FaStar, FaRetweet, FaReply } from 'react-icons/fa'
 import type { MastodonPost } from 'types';
 
-
 interface Props {
   url: string;
 }
@@ -13,18 +12,18 @@ const { url } = Astro.props;
 
 const instance = new URL(url).hostname;
 const splitPathname = url.split("/");
-const tootId = splitPathname[splitPathname.length - 1];
+const postId = splitPathname[splitPathname.length - 1];
 
-let toot: MastodonPost | undefined;
+let post: MastodonPost | undefined;
 let userUrl;
 
 try {
-  const res = await fetch(`https://${instance}/api/v1/statuses/${tootId}`);
+  const res = await fetch(`https://${instance}/api/v1/statuses/${postId}`);
   if(res.status !== 200 ) throw new Error;
-  toot = await res.json()
-  if(!toot) throw new Error("Unable to load the post")
-  userUrl = new URL(toot?.account?.url)?.hostname;
-  console.log(toot)
+  post = await res.json()
+  if(!post) throw new Error("Unable to load the post")
+  userUrl = new URL(post?.account?.url)?.hostname;
+  console.log(post)
 } catch (err) {
   console.log(err);
 }
@@ -32,31 +31,31 @@ try {
 
 <div class:list={["container"]}>
   {
-    !toot ? (
-      <div class="border border-1 rounded-md bg-grey-100 border-gray-500 p-5 max-w-1/4 text-center prose prose-sm">
+    !post ? (
+      <div class="my-5 border border-1 rounded-md bg-grey-100 border-gray-500 p-5 max-w-1/4 text-center prose prose-sm">
       <p>A Mastodon post was supposed to be here, alas I couldn't find it for you. Was it deleted perhaps? It happens more often than you think!</p>
       </div>
     ) : (
-      <aside class="container min-w-sm max-w-lg bg-grey-100 border border-gray-500 rounded-md p-4 prose">
+      <aside class="my-5 container min-w-sm max-w-lg bg-grey-100 border border-gray-500 rounded-md p-4 prose">
         <div class="flex flex-col ">
           <div class="flex max-w-20">
             <div class="flex flex-row text-center w-1/4">
-              <a href={toot.account.url} class="text-sm" target="_blank">
+              <a href={post.account.url} class="text-sm" target="_blank">
               <img
               class="rounded-full w-20 h-20"
-                src={toot.account.avatar}
-                alt={`${toot.account.username}'s avatar`}
+                src={post.account.avatar}
+                alt={`${post.account.username}'s avatar`}
               />
-              {`@${toot.account.username}`}
+              {`@${post.account.username}`}
               <br />
               <span>{`@${userUrl}`}</span>
             </a>
             </div>
             <div class="p-2 m-0 prose prose-md w-3/4">
-              <Markup content={toot.content} />
+              <Markup content={post.content} />
               <div class="flex flex-row flex-wrap">
-              {toot.media_attachments && (
-                toot.media_attachments.map(image => 
+              {post.media_attachments && (
+                post.media_attachments.map(image => 
                   <img
                     class="w-40 h-40 object-cover"
                     src={image.url}
@@ -72,16 +71,16 @@ try {
           <div class="mt-10 flex flex-row w-full text-gray-500 justify-between align-center">
             <div>
               <span class="mr-2">
-                <FaReply /> {toot.replies_count}
+                <FaReply /> {post.replies_count}
               </span>
               <span class="mr-2">
-                <FaRetweet /> {toot.reblogs_count}
+                <FaRetweet /> {post.reblogs_count}
               </span>
               <span>
-                <FaStar /> {toot.favourites_count}
+                <FaStar /> {post.favourites_count}
               </span>
             </div>
-            <a href={toot.url} target="_blank" class="text-sm">
+            <a href={post.url} target="_blank" class="text-sm">
               View Original Post
             </a>
           </div>
