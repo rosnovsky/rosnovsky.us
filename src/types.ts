@@ -20,12 +20,12 @@ export type SocialIcons = {
 };
 
 export type SocialMedia =
-  | "Github"
-  | "LinkedIn"
-  | "Mail"
-  | "GitLab"
-  | "Steam"
-  | "Mastodon";
+  | 'Github'
+  | 'LinkedIn'
+  | 'Mail'
+  | 'GitLab'
+  | 'Steam'
+  | 'Mastodon';
 
 // Mastodon post types
 type Account = {
@@ -50,9 +50,9 @@ type Account = {
   statuses_count: number;
   last_status_at: string;
   noindex: boolean;
-  emojis: any[]; // Adjust if you have a specific type for emojis
-  roles: any[]; // Specify the type if you have a structure for roles
-  fields: any[]; // Specify the type if you have a structure for fields
+  emojis: any[]; // Adjust to match  emojis types
+  roles: any[]; // Specify (or figure out) types of roles
+  fields: any[]; // Specify the type (what is it?..)
 };
 
 type Tag = {
@@ -77,7 +77,7 @@ type Card = {
   image_description: string;
   embed_url: string;
   blurhash: string;
-  published_at: string | null;
+  published_at: string | null; // when is it ever null?!
 };
 
 export type MastodonPost = {
@@ -96,16 +96,16 @@ export type MastodonPost = {
   favourites_count: number;
   edited_at: string | null;
   content: string;
-  reblog: any | null; // Specify the type if you have a structure for reblog
+  reblog: any; // Specify the type for reblog
   application: {
     name: string;
     website: string;
   };
   account: Account;
-  media_attachments: any[]; // Specify the type if you have a structure for media attachments
-  mentions: any[]; // Specify the type if you have a structure for mentions
+  media_attachments: any[]; // Specify the type/structure for media attachments
+  mentions: any[]; // Specify the type/ structure for mentions
   tags: Tag[];
-  emojis: any[]; // Adjust if you have a specific type for emojis
+  emojis: any[]; // Adjust to  specific type for emojis
   card: Card | null;
-  poll: any | null; // Specify the type if you have a structure for poll
+  poll: any | null; // Specify the type/ structure for poll
 };
