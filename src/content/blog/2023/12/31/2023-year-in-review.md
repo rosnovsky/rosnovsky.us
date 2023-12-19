@@ -2,7 +2,7 @@
 title: '2023: Year in Review'
 pubDatetime: 2023-12-31T15:00:00Z
 description: Another year is coming to an end. Time to count the chickens (or something like that)
-draft: true
+draft: false
 tags:
   - personal
   - work
@@ -26,9 +26,17 @@ got quiet, too quiet perhaps
   - Dune (finally)
   - System Collapse
   - Lost in Time
-  - ???
+  
 
 ## Games
+
+![deck](/src/assets/blog/posts/2023-a-year-in-review/deck.png)
+
+![horizon zero dawn](/src/assets/blog/posts/2023-a-year-in-review/aloy.jpg)
+![compare](/src/assets/blog/posts/2023-a-year-in-review/compare.png)
+![hades](/src/assets/blog/posts/2023-a-year-in-review/hades.jpg)
+![rose](/src/assets/blog/posts/2023-a-year-in-review/rose.png)
+![systems](/src/assets/blog/posts/2023-a-year-in-review/systems.png)
 
 ray of sunlight
   - Horizon Zero Dawn on Ultrahard
@@ -36,7 +44,15 @@ ray of sunlight
   - Dredge
   - Starfield
   - Cities: Skylines II
+  - Dome Keeper
   - Last of Us
+  - Cult of the Lamb
+  - Cassette Beasts
+  - Elden Ring (just a bit)
+  - Forza Horizon 4 (a little)
+  - Stardeus
+  - Life Is Strange: True Colors (a bit)
+  - Cyberpunk 2077 (a little bit)
 
 ## 2024
 
