@@ -20,7 +20,7 @@ const { noMarginTop = false } = Astro.props;
     <div class="copyright-wrapper">
       <span>Copyright &#169; 2003-{currentYear} Art Rosnovsky</span>
       <span class="separator">&nbsp;|&nbsp;</span>
-      <span>All rights reserved. {commitSha && <small>[{commitSha}]</small>}</span>
+      <span>All rights reserved. {commitSha && <small title="Commit SHA">[<a href={`https://github.com/rosnovsky/rosnovsky.us/commit/${commitSha}`} target="_blank">{commitSha.slice(0, 8)}</a>]</small>}</span>
     </div>
   </div>
 </footer>
