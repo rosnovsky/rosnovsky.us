@@ -1,41 +1,106 @@
-name: Build and publish Docker Image and Deploy
-on:
-  release:
-    types: [published]
+name: CI/CD Workflow
 
+on:
+  pull_request:
+    branches:
+      - '*'
   push:
     branches:
       - main
-      - astro
 
 jobs:
-  docker_publish:
-    name: Build and publish Docker image to ghcr.io
+  build_and_publish:
+    name: Build and Publish Docker Image
     runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.set_tag.outputs.tag }}
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set Image Tag
+        id: set_tag
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "::set-output name=tag::development"
+          elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "::set-output name=tag::latest"
+          else
+            echo "::set-output name=tag::$(echo $GITHUB_SHA | cut -c1-7)"
+          fi
 
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build and publish Docker image
+      - name: Build and Publish Docker Image
         run: |
-          docker build \
-          -t ghcr.io/${{ github.repository }}:latest .
-          docker push ghcr.io/${{ github.repository }}:latest
+          docker build -t ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }} .
+          docker push ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }}
 
   deploy:
     name: Deploy to Kubernetes
+    needs: build_and_publish
     runs-on: ubuntu-latest
-    needs: docker_publish
+    if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
     env:
       KUBECONFIG: ${{ secrets.KUBECONFIG }}
     steps:
-      - run: |
+      - name: Setup kubectl
+        run: |
           KUBECTL_VERSION=$(curl --silent "https://storage.googleapis.com/kubernetes-release/release/stable.txt")
           curl -LO "https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl"
           chmod +x kubectl
           mv kubectl /usr/local/bin/
+
+      - name: Determine Environment
+        id: set_env
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "development"
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "production"
+          else
+            echo "staging"
+          fi
+          echo ::set-output name=environment::$GITHUB_ENV
+
+      - name: Create GitHub Deployment
+        id: create_deployment
+        run: |
+          DEPLOYMENT_RESPONSE=$(curl \
+            -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/deployments \
+            -d "{\"ref\": \"${{ github.sha }}\", \"environment\": \"${{ steps.set_env.outputs.environment }}\", \"required_contexts\": [], \"description\": \"Deploying to Kubernetes\"}")
+          echo DEPLOYMENT_ID=$(echo $DEPLOYMENT_RESPONSE | jq '.id') >> $GITHUB_ENV
+
+
+      - name: Deploy to Kubernetes
+        run: |
           echo "$KUBECONFIG" > ./kubeconfig.yaml
-          kubectl config use-context hostinger -n web --kubeconfig ./kubeconfig.yaml
-          kubectl rollout restart deployment/rosnovskyus-deployment -n web --kubeconfig ./kubeconfig.yaml
+          context="hostinger"
+          namespace="web"
+          deployment_name="rosnovskyus-deployment"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Logic for dev deployment
+            kubectl config use-context $context -n $namespace --kubeconfig ./kubeconfig.yaml
+            kubectl rollout restart deployment/$deployment_name-dev -n $namespace --kubeconfig ./kubeconfig.yaml
+          else
+            # Logic for prod deployment
+            kubectl config use-context $context -n $namespace --kubeconfig ./kubeconfig.yaml
+            kubectl rollout restart deployment/$deployment_name -n $namespace --kubeconfig ./kubeconfig.yaml
+          fi
+
+      - name: Update GitHub Deployment Status
+        if: always()
+        run: |
+          DEPLOYMENT_STATUS="success"
+          if [ ${{ job.status }} != 'success' ]; then
+            DEPLOYMENT_STATUS="failure"
+          fi
+          curl \
+            -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/deployments/${{ env.DEPLOYMENT_ID }}/statuses \
+            -d "{\"state\": \"$DEPLOYMENT_STATUS\"}"
