@@ -55,13 +55,12 @@ jobs:
         id: set_env
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "dev"
+            echo "environment=dev" >> $GITHUB_ENV
           elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "production"
+            echo "environment=production" >> $GITHUB_ENV
           else
-            echo "staging"
+            echo "environment=staging" >> $GITHUB_ENV
           fi
-          echo "name=environment" >> $GITHUB_ENV
 
       - name: Create GitHub Deployment
         id: create_deployment
