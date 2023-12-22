@@ -4,9 +4,19 @@ on:
   pull_request:
     branches:
       - '*'
+    paths-ignore:
+      - '.github/**'
+      - '.vscode/**'
+      - '.astro/**'
+      - '.gitignore'
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/**'
+      - '.vscode/**'
+      - '.astro/**'
+      - '.gitignore'
 
 jobs:
   build_and_publish:
@@ -71,7 +81,7 @@ jobs:
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/deployments \
-            -d "{\"ref\": \"${{ github.sha }}\", \"environment\": \"$environment\", \"required_contexts\": [], \"description\": \"Deploying to Kubernetes\"}")
+            -d "{\"ref\": \"${{ github.sha }}\", \"environment\": \"Cluster - $environment\", \"required_contexts\": [], \"description\": \"Deploying to Kubernetes\"}")
           echo DEPLOYMENT_ID=$(echo $DEPLOYMENT_RESPONSE | jq '.id') >> $GITHUB_ENV
 
 
