@@ -4,7 +4,7 @@ import Socials from './Socials.astro';
 
 const currentYear = new Date().getFullYear();
 
-const commitSha = process.env.GITHUB_ACTION_BUILD ? process.env.GITHUB_SHA : false;
+const commitSha = process.env.GITHUB_ACTION_BUILD ? process.env.COMMIT_SHA : false;
 
 export interface Props {
   noMarginTop?: boolean;
