@@ -3,7 +3,7 @@ title: Moving away from Vercel to Kubernetes
 author: Art Rosnovsky
 pubDatetime: 2023-12-02T20:59:00Z
 postSlug: vercel-to-kubernetes
-featured: true
+featured: false
 draft: false
 tags:
   - Next.js
