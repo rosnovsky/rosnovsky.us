@@ -21,7 +21,7 @@ jobs:
         id: set_tag
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "::set-output name=tag::development"
+            echo "::set-output name=tag::dev"
           elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "::set-output name=tag::latest"
           else
@@ -55,7 +55,7 @@ jobs:
         id: set_env
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "development"
+            echo "dev"
           elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "production"
           else
@@ -66,12 +66,13 @@ jobs:
       - name: Create GitHub Deployment
         id: create_deployment
         run: |
+          echo "Deployment environment: $environment"
           DEPLOYMENT_RESPONSE=$(curl \
             -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/deployments \
-            -d "{\"ref\": \"${{ github.sha }}\", \"environment\": \"${{ steps.set_env.outputs.environment }}\", \"required_contexts\": [], \"description\": \"Deploying to Kubernetes\"}")
+            -d "{\"ref\": \"${{ github.sha }}\", \"environment\": \"$environment\", \"required_contexts\": [], \"description\": \"Deploying to Kubernetes\"}")
           echo DEPLOYMENT_ID=$(echo $DEPLOYMENT_RESPONSE | jq '.id') >> $GITHUB_ENV
 
 
