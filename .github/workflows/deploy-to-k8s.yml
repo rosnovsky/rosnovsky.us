@@ -21,11 +21,11 @@ jobs:
         id: set_tag
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "::set-output name=tag::dev"
+            echo "tag=dev" >> $GITHUB_OUTPUT
           elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "::set-output name=tag::latest"
+            echo "tag=latest" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=tag::$(echo $GITHUB_SHA | cut -c1-7)"
+            echo "tag=$(echo $GITHUB_SHA | cut -c1-7)"
           fi
 
       - name: Log in to GitHub Container Registry
@@ -61,7 +61,7 @@ jobs:
           else
             echo "staging"
           fi
-          echo ::set-output name=environment::$GITHUB_ENV
+          echo "name=environment" >> $GITHUB_ENV
 
       - name: Create GitHub Deployment
         id: create_deployment
