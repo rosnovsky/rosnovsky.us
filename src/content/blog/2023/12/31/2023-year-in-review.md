@@ -2,7 +2,7 @@
 title: '2023: a Year in Review'
 pubDatetime: 2023-12-31T15:00:00Z
 description: Another year is coming to an end. Time to count the chickens (or something like that)
-draft: true
+draft: false
 tags:
   - personal
   - work
