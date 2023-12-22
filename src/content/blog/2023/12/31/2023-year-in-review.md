@@ -44,25 +44,25 @@ The old site used to have a library of all my books, so once I re-empliment this
 
 Games were a bright spot in 2023. I enjoyed playing on my Deck, primarily, and a little bit on my monster of a desktop:
 
-![deck](/src/assets/blog/posts/2023-a-year-in-review/deck.png)
+![deck](../../../../../assets/blog/posts/2023-a-year-in-review/deck.png)
 
-![systems](/src/assets/blog/posts/2023-a-year-in-review/systems.png)
+![systems](../../../../../assets/blog/posts/2023-a-year-in-review/systems.png)
 
 Really loved Horizon Zero Dawn:
 
-![horizon zero dawn](/src/assets/blog/posts/2023-a-year-in-review/aloy.jpg)
+![horizon zero dawn](../../../../../assets/blog/posts/2023-a-year-in-review/aloy.jpg)
 
 Hades is another amazing game:
 
-![hades](/src/assets/blog/posts/2023-a-year-in-review/hades.jpg)
+![hades](../../../../../assets/blog/posts/2023-a-year-in-review/hades.jpg)
 
 It turns out, I played quite a lot. I mean, I know I played for hundreds of hours, but didn't realize _how much_ it was! 
 
-![compare](/src/assets/blog/posts/2023-a-year-in-review/compare.png)
+![compare](../../../../../assets/blog/posts/2023-a-year-in-review/compare.png)
 
 You are what you play, I guess:
 
-![rose](/src/assets/blog/posts/2023-a-year-in-review/rose.png)
+![rose](../../../../../assets/blog/posts/2023-a-year-in-review/rose.png)
 
 These are my favorite games this year:
 
