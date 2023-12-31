@@ -43,7 +43,11 @@ jobs:
 
       - name: Build and Publish Docker Image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }} .
+          export COMMIT_SHA=${{ github.sha }}
+          docker build \
+          --build-arg COMMIT_SHA=${{ github.sha }} \
+          --build-arg GITHUB_ACTION_BUILD=true \
+          -t ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }} .
           docker push ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }}
 
   deploy:
