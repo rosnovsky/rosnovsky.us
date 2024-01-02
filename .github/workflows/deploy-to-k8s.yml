@@ -30,7 +30,7 @@ jobs:
       - name: Set Image Tag
         id: set_tag
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ github.ref }}" != "refs/heads/main"; then
+          if [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ github.ref }}" != "refs/heads/main" ]; then
             echo "tag=dev" >> $GITHUB_OUTPUT
           elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "tag=latest" >> $GITHUB_OUTPUT

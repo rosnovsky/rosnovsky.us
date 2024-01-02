@@ -1,5 +1,5 @@
 ---
-title: Using GPT as rubber ducky
+title: Using GPT as a rubber ducky
 pubDatetime: 2024-01-05T16:42:51Z
 featured: false
 draft: false
