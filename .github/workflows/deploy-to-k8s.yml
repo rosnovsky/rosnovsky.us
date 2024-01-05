@@ -94,7 +94,7 @@ jobs:
           echo "$KUBECONFIG" > ./kubeconfig.yaml
           context="hostinger"
           namespace="web"
-          deployment_name="rosnovskyus-deployment"
+          deployment_name="rosnovsky-us-deployment"
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             # Logic for dev deployment
             kubectl config use-context $context -n $namespace --kubeconfig ./kubeconfig.yaml
@@ -102,7 +102,7 @@ jobs:
           else
             # Logic for prod deployment
             kubectl config use-context $context -n $namespace --kubeconfig ./kubeconfig.yaml
-            kubectl rollout restart deployment/$deployment_name -n $namespace --kubeconfig ./kubeconfig.yaml
+            kubectl rollout restart deployment/rosnovskyus-deployment -n $namespace --kubeconfig ./kubeconfig.yaml
           fi
 
       - name: Update GitHub Deployment Status
