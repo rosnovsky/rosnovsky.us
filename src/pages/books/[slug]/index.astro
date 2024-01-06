@@ -1,0 +1,48 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Books from "@layouts/Books.astro";
+// import BookDetails from "@layouts/BookDetails.astro";
+import getPageNumbers from "@utils/getPageNumbers";
+import {slugifyBook} from "@utils/slugify";
+import { SITE } from "@config";
+
+export interface Props {
+  book: CollectionEntry<"books">;
+}
+
+export async function getStaticPaths() {
+  const books = await getCollection("books");
+
+  const bookResult = books.map(book => ({
+    params: { slug: slugifyBook(book.data) },
+    props: { book },
+  }));
+
+  const pagePaths = getPageNumbers(books.length).map(pageNum => ({
+    params: { slug: String(pageNum) },
+  }));
+
+  return [...bookResult, ...pagePaths];
+}
+
+const { slug } = Astro.params;
+const { book } = Astro.props;
+
+const books = await getCollection("books");
+
+const totalPages = getPageNumbers(books.length);
+
+const currentPage =
+  slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug))
+    ? Number(slug)
+    : 0;
+const lastBook = currentPage * SITE.postPerPage;
+const startBook = lastBook - SITE.postPerPage;
+
+const paginatedBooks = books.slice(startBook, lastBook);
+---
+    <Books
+      books={paginatedBooks}
+      pageNum={currentPage}
+      totalPages={totalPages.length}
+    />

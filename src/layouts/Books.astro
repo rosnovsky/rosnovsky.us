@@ -4,34 +4,40 @@ import Layout from '@layouts/Layout.astro';
 import Main from '@layouts/Main.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import Card from '@components/Card';
+import BookCard from '@components/Books/BookCard.astro';
 import LinkButton from '@components/LinkButton.astro';
-import {slugifyPost} from '@utils/slugify';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
   pageNum: number;
   totalPages: number;
-  posts: CollectionEntry<'blog'>[];
-  totalPosts: number;
+  books: CollectionEntry<'books'>[];
+  totalBooks: number;
 }
 
-const { pageNum, totalPages, totalPosts, posts } = Astro.props;
+const { pageNum, totalPages, totalBooks, books } = Astro.props;
 
 const prev = pageNum > 1 ? '' : 'disabled';
 const next = pageNum < totalPages ? '' : 'disabled';
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
+<Layout title={`Books | ${SITE.title}`}>
   <Header activeNav="blog" />
   <Main
-    pageTitle="Blog Posts"
-    pageDesc={`All ~${totalPages * SITE.postPerPage} blog posts I've posted.`}
+    pageTitle="Books"
+    pageDesc={`All ~${totalPages * SITE.postPerPage} books in my library.`}
   >
     <ul>
       {
-        posts.map(({ data }) => (
-          <Card href={`/blog/${slugifyPost(data)}`} frontmatter={data} />
+        books.map(({ data }) => (
+          <ul
+          role="list"
+          class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mt-10"
+        >
+          {books.map((book) => (
+            <BookCard book={book} key={book.data.title} />
+          ))}
+        </ul>
         ))
       }
     </ul>
