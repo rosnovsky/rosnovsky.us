@@ -2,7 +2,7 @@
 import { Card } from '@components/Books/Card'
 import { readIcon } from '@components/Books/Icons'
 import type { CollectionEntry } from 'astro:content'
-// import { Image } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 type BookCardProps = {
   book: CollectionEntry<"books">
@@ -14,13 +14,12 @@ const { data, slug } = book
 
 const { title, author, publisher, coverImage, status } = data
 
-console.log(title)
 ---
 
 <Card className="flex flex-row space-y-4">
       <div class="h-full flex flex-row space-x-4  content-between justify-between">
-        {coverImage && <img
-          src={`${coverImage.path}`}
+        {coverImage && <Image
+          src={coverImage.path}
           alt={`${title} cover`}
           class="z-10 object-cover max-h-36 items-center justify-center rounded-md shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
           width={100}

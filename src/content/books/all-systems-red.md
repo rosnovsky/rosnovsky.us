@@ -10,7 +10,7 @@ tags:
 pubDatetime: May 2, 2017
 coverImage:
   {
-    path: '/src/assets/books/covers/all-systems-red.jpg',
+    path: ./covers/all-systems-red.jpg,
     alt: 'All Systems Red Cover',
     title: 'All Systems Red Cover',
   }

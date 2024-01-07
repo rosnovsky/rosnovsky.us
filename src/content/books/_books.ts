@@ -3,7 +3,7 @@ import { defineCollection, reference, z } from 'astro:content';
 export const books = defineCollection({
   // Type-check frontmatter using a schema
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     author: reference('authors'),
     publisher: reference('publishers'),
@@ -24,11 +24,10 @@ export const books = defineCollection({
       .transform((val) => new Date(val)),
     coverImage: z
       .object({
-        path: z.string(),
+        path: image(),
         alt: z.string(),
         title: z.string(),
-      })
-      .optional(),
+      }),
     tags: z.array(z.string()),
     ISBN: z.string().optional(),
     status: z.enum(['read', 'reading', 'to-read']),
