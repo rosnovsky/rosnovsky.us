@@ -10,7 +10,7 @@ tags:
 pubDatetime: August 7, 2018
 coverImage:
   {
-    path: '/books/covers/rogue-protocol.jpg',
+    path: './covers/rogue-protocol.jpg',
     alt: 'Rogue Protocol Cover',
     title: 'Rogue Protocol Cover',
   }

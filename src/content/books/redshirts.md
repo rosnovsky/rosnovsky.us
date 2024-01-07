@@ -5,10 +5,10 @@ publisher: tor-books
 description: A Novel with Three Codas.
 pages: 292
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/redshirts.jpg',
+    path: './covers/redshirts.jpg',
     alt: 'Redshirts cover',
     title: 'Redshirts',
   }

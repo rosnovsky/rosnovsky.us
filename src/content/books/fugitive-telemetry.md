@@ -10,7 +10,7 @@ tags:
 pubDatetime: May 5, 2020
 coverImage:
   {
-    path: '/books/covers/network-effect.jpg',
+    path: './covers/network-effect.jpg',
     alt: 'Network Effect Cover Art',
     title: 'Network Effect Cover Art',
   }

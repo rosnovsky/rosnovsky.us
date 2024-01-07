@@ -5,10 +5,10 @@ publisher: riddle
 description: 'In Antarctica, researchers discover a mysterious structure, buried in ice.'
 pages: 439
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/atlantis-gene.jpg',
+    path: './covers/atlantis-gene.jpg',
     alt: 'The Atlantis Gene cover',
     title: 'The Atlantis Gene',
   }

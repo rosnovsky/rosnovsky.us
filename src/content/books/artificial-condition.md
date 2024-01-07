@@ -10,7 +10,7 @@ tags:
 pubDatetime: May 8, 2018
 coverImage:
   {
-    path: '/books/covers/artificial-condition.jpg',
+    path: './covers/artificial-condition.jpg',
     alt: 'Artificial Condition Cover',
     title: 'Artificial Condition Cover',
   }

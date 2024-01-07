@@ -5,10 +5,10 @@ publisher: tor-books
 description: Book 1 of the Old Man's War Series.
 pages: 342
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/old-man-s-war.jpg',
+    path: './covers/old-man-s-war.jpg',
     alt: "Old Man's War cover",
     title: "Old Man's War",
   }

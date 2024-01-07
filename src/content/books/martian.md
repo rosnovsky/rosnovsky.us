@@ -10,7 +10,7 @@ pages: 393
 tags:
   ['Space', 'AI', 'Sci-fi', ]
 pubDatetime: February 11, 2014
-coverImage: { path: "/books/covers/the-martian.jpg", alt: "The Martian", title: "The Martian" }
+coverImage: { path: "./covers/the-martian.jpg", alt: "The Martian", title: "The Martian" }
 ISBN: "9780804139038"
 status: read
 ---

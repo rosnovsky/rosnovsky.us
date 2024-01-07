@@ -10,7 +10,7 @@ tags:
 pubDatetime: October 2, 2018
 coverImage:
   {
-    path: '/books/covers/exit-strategy.jpg',
+    path: './covers/exit-strategy.jpg',
     alt: 'Exit Strategy Cover',
     title: 'Exit Strategy Cover',
   }

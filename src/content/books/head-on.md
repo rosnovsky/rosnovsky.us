@@ -5,11 +5,11 @@ publisher: tor-books
 genre: sci-fi
 description: A Novel of the Near Future
 pages: 296
-tags: 'Space', 'Sci-fi']
+tags: ['Space', 'Sci-fi']
 pubDatetime: April 17, 2018
 coverImage:
   {
-    path: '/books/covers/head-on.jpg',
+    path: './covers/head-on.jpg',
     alt: 'Head On Cover',
     title: 'Head On Cover',
   }

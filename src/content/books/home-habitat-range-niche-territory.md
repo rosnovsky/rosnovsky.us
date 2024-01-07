@@ -10,7 +10,7 @@ tags:
 pubDatetime: April 19, 2021
 coverImage:
   {
-    path: '/books/covers/home-habitat-range-niche-territory.jpg',
+    path: './covers/home-habitat-range-niche-territory.jpg',
     alt: 'Home: Habitat, Range, Niche, Territory Cover',
     title: 'Home: Habitat, Range, Niche, Territory Cover',
   }

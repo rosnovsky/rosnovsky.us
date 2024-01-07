@@ -10,7 +10,7 @@ tags:
 pubDatetime: April 27, 2021
 coverImage:
   {
-    path: '/books/covers/fugitive-telemetry.jpg',
+    path: './covers/fugitive-telemetry.jpg',
     alt: 'Cover of Fugitive Telemetry',
     title: 'Fugitive Telemetry',
   }

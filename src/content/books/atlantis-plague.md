@@ -5,11 +5,11 @@ publisher: legion-books
 genre: sci-fi
 description: Another wild adventure from the mind of A.G. Riddle.
 pages: 455
-tags: 'Sci-fi']
+tags: ['Sci-fi']
 pubDatetime: November 16, 2013
 coverImage:
   {
-    path: '/books/covers/atlantis-plague.jpg',
+    path: './covers/atlantis-plague.jpg',
     alt: 'The Atlantis Plague Cover',
     title: 'The Atlantis Plague Cover',
   }

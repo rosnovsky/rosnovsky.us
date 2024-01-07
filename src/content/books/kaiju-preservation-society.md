@@ -5,10 +5,10 @@ publisher: tor-books
 description: When COVID-19 sweeps through New York City, Jamie Gray is stuck as a dead-end driver for food delivery apps. That is, until Jamie makes a delivery to an old acquaintance, Tom, who works at what he calls “an animal rights organization.” Tom’s team needs a last-minute grunt to handle things on their next field visit. Jamie, eager to do anything, immediately signs on.
 pages: 287
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/the-kaiju-preservation-society.jpg',
+    path: './covers/the-kaiju-preservation-society.jpg',
     alt: 'The Kaiju Preservation Society cover',
     title: 'The Kaiju Preservation Society',
   }

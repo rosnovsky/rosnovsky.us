@@ -10,7 +10,7 @@ tags:
 pubDatetime: May 4, 2021
 coverImage:
   {
-    path: '/books/covers/project-hail-mary.jpg',
+    path: './covers/project-hail-mary.jpg',
     title: 'Project Hail Mary',
     alt: 'Project Hail Mary',
   }

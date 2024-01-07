@@ -5,10 +5,10 @@ publisher: tor-books
 description: Book 6 of the Old Man's War Series.
 pages: 410
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/end-of-all-things.jpg',
+    path: './covers/end-of-all-things.jpg',
     alt: The End of All Things cover,
     title: The End of All Things cover,
   }

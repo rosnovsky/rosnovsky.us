@@ -5,11 +5,11 @@ publisher: tor-books
 genre: sci-fi
 description: Book 2 of the Interdependency Series
 pages: 310
-tags: 'Space', 'Sci-fi']
+tags: ['Space', 'Sci-fi']
 pubDatetime: October 16, 2018
 coverImage:
   {
-    path: '/books/covers/the-consuming-fire.jpg',
+    path: './covers/the-consuming-fire.jpg',
     alt: 'Consuming Fire Cover',
     title: 'Consuming Fire Cover',
   }

@@ -5,10 +5,10 @@ publisher: tor-books
 description: Book 3 of the Old Man's War Series.
 pages: 341
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/last-colony.jpg',
+    path: './covers/last-colony.jpg',
     alt: 'The Last Colony cover',
     title: 'The Last Colony',
   }

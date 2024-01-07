@@ -5,10 +5,10 @@ publisher: harper-collins
 description: "From the author of the #1 bestselling The Atlantis Gene comes a new novel in which the world’s past and future rests in the hands of five unwitting strangers in this definitive edition of A. G. Riddle's time-traveling, mind-bending speculative thriller."
 pages: 317
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/departure.jpg',
+    path: './covers/departure.jpg',
     alt: 'The Departure cover',
     title: 'The Departure',
   }

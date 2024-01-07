@@ -10,7 +10,7 @@ tags:
 pubDatetime: November 14, 2023
 coverImage:
   {
-    path: '/books/covers/system-collapse.jpg',
+    path: './covers/system-collapse.jpg',
     alt: 'System Collapse Cover',
     title: 'System Collapse Cover',
   }

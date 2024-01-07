@@ -5,11 +5,11 @@ publisher: legion-books
 genre: sci-fi
 description: A mysterious signal from deep space may hold humanity's last chance of survival.
 pages: 378
-tags: 'Sci-fi']
+tags: ['Sci-fi']
 pubDatetime: May 15, 2014
 coverImage:
   {
-    path: '/books/covers/atlantis-world.jpg',
+    path: './covers/atlantis-world.jpg',
     alt: 'The Atlantis World Cover',
     title: 'The Atlantis World Cover',
   }

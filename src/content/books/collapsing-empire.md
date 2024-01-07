@@ -5,11 +5,11 @@ publisher: tor-books
 genre: sci-fi
 description: Book 1 of the Interdependency Series
 pages: 318
-tags: 'Space', 'Sci-fi']
+tags: ['Space', 'Sci-fi']
 pubDatetime: March 21, 2017
 coverImage:
   {
-    path: '/books/covers/the-collapsing-empire.jpg',
+    path: './covers/the-collapsing-empire.jpg',
     alt: 'Collapsing Empire Cover',
     title: 'Collapsing Empire Cover',
   }

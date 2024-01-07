@@ -5,11 +5,11 @@ publisher: tor-books
 genre: sci-fi
 description: Book 3 of the Interdependency Series
 pages: 295
-tags: 'Space', 'Sci-fi']
+tags: ['Space', 'Sci-fi']
 pubDatetime: April 14, 2020
 coverImage:
   {
-    path: '/books/covers/the-last-emperox.jpg',
+    path: './covers/the-last-emperox.jpg',
     alt: 'Last Emperox Cover',
     title: 'Last Emperox Cover',
   }

@@ -5,10 +5,10 @@ publisher: tor-books
 description: Book 2 of the Old Man's War Series.
 pages: 351
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/ghost-brigades.jpg',
+    path: './covers/ghost-brigades.jpg',
     alt: 'The Ghost Brigades cover',
     title: 'The Ghost Brigades',
   }

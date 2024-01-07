@@ -3,16 +3,33 @@ import { Card } from '@components/Books/Card'
 import { readIcon } from '@components/Books/Icons'
 import type { CollectionEntry } from 'astro:content'
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 type BookCardProps = {
   book: CollectionEntry<"books">
+}
+
+type PublisherProps = {
+  publisher: CollectionEntry<"publishers">
 }
 
 const { book } = Astro.props as BookCardProps;
 
 const { data, slug } = book
 
-const { title, author, publisher, coverImage, status } = data
+const { title, coverImage, pubDatetime, status } = data
+
+const publisherName = await getCollection("publishers").then((collection) => {
+  console.log(data.publisher)
+  const publisher = collection.find((entry) => entry.slug === data.publisher.slug)
+  return publisher?.data.name
+})
+
+const authorName = await getCollection("authors").then((collection) => {
+  console.log(data.author)
+  const author = collection.find((entry) => entry.slug === data.author.slug)
+  return author?.data.name
+})
 
 ---
 
@@ -27,9 +44,9 @@ const { title, author, publisher, coverImage, status } = data
         />}
         <div>
           <h2 class="text-base font-semibold text-zinc-800 dark:text-zinc-100">
-            <Card.Link href={`/library/book/${slug}`}> {title}{status === 'read' ? readIcon : ''}</Card.Link>
+            <Card.Link href={`/library/book/${slug}`}> {title}</Card.Link>
           </h2>
-          <!-- <Card.Description>by {author} <br /><span class="text-xs">{publisher?.name}, {publishedDate}</span></Card.Description> -->
+          <Card.Description>by {authorName} <br /><span class="text-xs">{publisherName}, {pubDatetime.getFullYear()}</span></Card.Description>
         </div>
       </div>
     </Card>

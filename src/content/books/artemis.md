@@ -5,11 +5,11 @@ publisher: random-house
 genre: sci-fi
 description: Another wild adventure from the mind of Andy Weir.
 pages: 315
-tags: 'Space', 'Sci-fi']
+tags: ['Space', 'Sci-fi']
 pubDatetime: November 14, 2017
 coverImage:
   {
-    path: '/books/covers/artemis.jpg',
+    path: './covers/artemis.jpg',
     alt: 'Artemis Cover',
     title: 'Artemis Cover',
   }

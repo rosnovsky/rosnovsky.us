@@ -5,10 +5,10 @@ publisher: tor-books
 description: Book 4 of the Old Man's War Series.
 pages: 364
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/zoe-s-tale.jpg',
+    path: './covers/zoe-s-tale.jpg',
     alt: Zoe's Tale cover,
     title: Zoe's Tale,
   }

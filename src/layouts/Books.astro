@@ -7,7 +7,6 @@ import Footer from '@components/Footer.astro';
 import BookCard from '@components/Books/BookCard.astro';
 import LinkButton from '@components/LinkButton.astro';
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 
 export interface Props {
   pageNum: number;
@@ -24,26 +23,17 @@ const next = pageNum < totalPages ? '' : 'disabled';
 
 <Layout title={`Books | ${SITE.title}`}>
   <Header activeNav="blog" />
-  <Main
-    pageTitle="Books"
-    pageDesc={`All ~${totalPages * SITE.postPerPage} books in my library.`}
-  >
-    <ul>
-      {
-        books.map(({ data }) => (
+  <div class="container max-w-5xl mx-auto px-10">
           <ul
           role="list"
-          class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 mt-10"
+          class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-3 lg:grid-cols-3 mt-10"
         >
           {books.map((book) => (
             <BookCard book={book} key={book.data.title} />
           ))}
         </ul>
-        ))
-      }
-    </ul>
-  </Main>
-
+  
+</div>
   {
     totalPages > 1 && (
       <nav class="pagination-wrapper" aria-label="Pagination">

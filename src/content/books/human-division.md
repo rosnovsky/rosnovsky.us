@@ -5,10 +5,10 @@ publisher: tor-books
 description: Book 5 of the Old Man's War Series.
 pages: 537
 genre: sci-fi
-tags: 'sci-fi']
+tags: ['sci-fi']
 coverImage:
   {
-    path: '/books/covers/human-division.jpg',
+    path: './covers/human-division.jpg',
     alt: Human Division cover,
     title: Human Division,
   }
