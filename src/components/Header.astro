@@ -2,6 +2,8 @@
 import { LOGO_IMAGE, SITE } from '@config';
 import Hr from './Hr.astro';
 import LinkButton from './LinkButton.astro';
+import favicon from '../../public/favicon-32x32.png';
+import { Image } from 'astro:assets';
 
 export interface Props {
   activeNav?: 'blog' | 'tags' | 'about' | 'search';
@@ -14,19 +16,8 @@ const { activeNav } = Astro.props;
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo whitespace-nowrap">
-        {
-          LOGO_IMAGE.enable ? (
-            <img
-              src={`/assets/${LOGO_IMAGE.svg ? 'logo.svg' : 'logo.png'}`}
-              alt={SITE.title}
-              width={LOGO_IMAGE.width}
-              height={LOGO_IMAGE.height}
-            />
-          ) : (
-            SITE.title
-          )
-        }
+      <a href="/" class="w-full inline-flex logo whitespace-nowrap">
+        <Image class="mr-3 w-6 h-6" src={favicon} alt={SITE.title} /> {SITE.title} 
       </a>
       <nav id="nav-menu">
         <button
@@ -126,7 +117,7 @@ const { activeNav } = Astro.props;
     @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
   }
   .logo {
-    @apply absolute py-1 text-xl font-semibold sm:static sm:text-2xl;
+    @apply absolute py-1 text-xl font-bold sm:static sm:text-2xl;
   }
   .hamburger-menu {
     @apply self-end p-2 sm:hidden;
