@@ -1,0 +1,22 @@
+---
+import { SITE } from '@config';
+import Books from '@layouts/Books.astro';
+import getPageNumbers from '@utils/getPageNumbers';
+
+import { getCollection } from 'astro:content';
+
+const books = await getCollection('books');
+
+const totalPages = getPageNumbers(books.length);
+
+const paginatedBooks = books.slice(0, SITE.postPerPage);
+
+const totalBooks = books.length;
+---
+
+<Books
+  books={paginatedBooks}
+  totalBooks={totalBooks}
+  pageNum={1}
+  totalPages={totalPages.length}
+/>

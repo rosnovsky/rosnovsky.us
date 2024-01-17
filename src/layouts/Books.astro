@@ -4,45 +4,42 @@ import Layout from '@layouts/Layout.astro';
 import Main from '@layouts/Main.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import Card from '@components/Card';
+import BookCard from '@components/Books/BookCard.astro';
 import LinkButton from '@components/LinkButton.astro';
-import {slugifyPost} from '@utils/slugify';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
   pageNum: number;
   totalPages: number;
-  posts: CollectionEntry<'blog'>[];
-  totalPosts: number;
+  books: CollectionEntry<'books'>[];
+  totalBooks: number;
 }
 
-const { pageNum, totalPages, totalPosts, posts } = Astro.props;
+const { pageNum, totalPages, totalBooks, books } = Astro.props;
 
 const prev = pageNum > 1 ? '' : 'disabled';
 const next = pageNum < totalPages ? '' : 'disabled';
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
+<Layout title={`Books | ${SITE.title}`}>
   <Header activeNav="blog" />
-  <Main
-    pageTitle="Blog Posts"
-    pageDesc={`All ~${totalPages * SITE.postPerPage} blog posts I've posted.`}
-  >
-    <ul>
-      {
-        posts.map(({ data }) => (
-          <Card href={`/blog/${slugifyPost(data)}`} frontmatter={data} />
-        ))
-      }
-    </ul>
-  </Main>
-
+  <div class="container max-w-5xl mx-auto px-10">
+          <ul
+          role="list"
+          class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-3 lg:grid-cols-3 mt-10"
+        >
+          {books.map((book) => (
+            <BookCard book={book} key={book.data.title} />
+          ))}
+        </ul>
+  
+</div>
   {
     totalPages > 1 && (
       <nav class="pagination-wrapper" aria-label="Pagination">
         <LinkButton
           disabled={prev === 'disabled'}
-          href={`/blog${pageNum - 1 !== 1 ? '/' + (pageNum - 1) : ''}`}
+          href={`/books${pageNum - 1 !== 1 ? '/' + (pageNum - 1) : ''}`}
           className={`mr-4 select-none ${prev}`}
           ariaLabel="Previous"
         >
@@ -53,7 +50,7 @@ const next = pageNum < totalPages ? '' : 'disabled';
         </LinkButton>
         <LinkButton
           disabled={next === 'disabled'}
-          href={`/blog/${pageNum + 1}`}
+          href={`/books/${pageNum + 1}`}
           className={`ml-4 select-none ${next}`}
           ariaLabel="Next"
         >
