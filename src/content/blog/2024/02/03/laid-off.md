@@ -2,7 +2,7 @@
 title: Laid Off
 pubDatetime: 2024-02-04T06:42:51Z
 featured: true
-draft: false
+draft: true
 tags:
   - work
   - productivity
@@ -10,7 +10,7 @@ tags:
   - life
   - personal
   - tech
-description: "This is not the post I was planning. On February 1st, I recieved an email stating that I'm one of 400 people being laid off by Okta. It took Okta almost 3 years to realize that they have no clue what to do with a competitor they acquired for 6.5 billion dollars."
+description: "This is not the post I was planning. On February 1st, I recieved an email stating that I'm one of 400 people being laid off by Okta."
 ---
 
 > This post is somewhat of a public processing of what just happened. Be nice.
