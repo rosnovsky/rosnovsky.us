@@ -1,7 +1,7 @@
 ---
 title: Laid Off
-pubDatetime: 2024-02-04T06:42:51Z
-featured: true
+pubDatetime: 2024-02-04
+featured: false
 draft: true
 tags:
   - work
