@@ -6,7 +6,7 @@ export const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       author: z.string().default(SITE.author),
-      pubDatetime: z.date(),
+      pubDatetime: z.string().or(z.date()).optional(),
       title: z.string(),
       postSlug: z.string().optional(),
       featured: z.boolean().optional(),
