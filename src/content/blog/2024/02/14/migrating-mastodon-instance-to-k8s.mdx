@@ -11,6 +11,8 @@ tags:
 description: "I run a small Mastodon instance, and recently I've migrated it from a Docker container in Digital Ocean to my own Kubernetes cluster on Hostinger VPS. Here's how I did it."
 ---
 
+`@rosnovsky@lounge.town:111858815717219956`
+
 # Why
 
 Let me start here so that there are no misunderstandings down the road. I've been running a small instance of Mastodon for just over a year. It was hosted in Digital Ocean, and it worked very well. There were two key reasons to migrate, though:
@@ -18,7 +20,7 @@ Let me start here so that there are no misunderstandings down the road. I've bee
 - Cost of hosting on Digital Ocean
 - Learning opportunity
 
-![Containers FTW!](../../../../../assets/blog/posts/migrating-mastodon-instance-to-k8s/containers.jpg)
+![Containers FTW!](assets/blog/posts/migrating-mastodon-instance-to-k8s/containers.jpg)
 
 ## Cost of hosting on Digital Ocean
 
@@ -74,7 +76,7 @@ Anywho, I went ahead:
 3. Prior to deploying the chart, I've created a `dev` domain where I could try things first and make sure everything works.
 4. Deploying the chart was as simple as a single `helm install` command (with some flags and options, of course).
 
-![Status log of the migration](../../../../../assets/blog/posts/migrating-mastodon-instance-to-k8s/status-log.png)
+![Status log of the migration](assets/blog/posts/migrating-mastodon-instance-to-k8s/status-log.png)
 
 Immediately, I've got all the things humming: a web server, a streaming server, a background worker, and a database, all this good stuff: I had a newly installed, clean, brand new Mastodon instance. Great, this worked!
 
@@ -91,10 +93,10 @@ Surprisingly, everything worked! I mean, there were a few hiccups here and there
 As a funny side effect of this whole migration, I've discovered that the media storage had 1.4 TB of cached media just sitting there, doing nothing. I've cleaned it up, and now it's down to a more reasonable 165 GB. The cleanup took a few days, but it was worth it.
 
 Before:
-![Before](../../../../../assets/blog/posts/migrating-mastodon-instance-to-k8s/before.png)
+![Before](assets/blog/posts/migrating-mastodon-instance-to-k8s/before.png)
 
 After:
-![After](../../../../../assets/blog/posts/migrating-mastodon-instance-to-k8s/after.png)
+![After](assets/blog/posts/migrating-mastodon-instance-to-k8s/after.png)
 
 # Now what?
 
@@ -102,6 +104,6 @@ Now I'm paying $300 per year for the entire instance (down from almost $1K!). Is
 
 Sometimes the instance gets wonky, not sure why. In fact, it's been available and fully functional this entire time, yet I've got a bunch of notifications from the monitoring system that it's down. I blame [global wobbling](https://en.wikipedia.org/wiki/Milankovitch_cycles)!
 
-![Sometime it's pretty wonky for no good reason](../../../../../assets/blog/posts/migrating-mastodon-instance-to-k8s/stress.png)
+![Sometime it's pretty wonky for no good reason](assets/blog/posts/migrating-mastodon-instance-to-k8s/stress.png)
 
 I tried to keep it brief and generic, but if you have specific questions about the migration, feel free to [ask me anything](https://lounge.town/@rosnovsky). I'd be happy to help!

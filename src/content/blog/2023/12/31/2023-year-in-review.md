@@ -8,6 +8,8 @@ tags:
   - gaming
 ---
 
+`@TypeScript@fosstodon.org:111976626154372447`
+
 There’s this tradition I’ve been following for over 2 decades now. At the end of every year, I’d make a post with a brief summary of what happened, how it all went down, and what are my hopes for the year ahead. Let’s get started, shall we?
 
 ## Work
