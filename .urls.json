@@ -1,28 +1,28 @@
 [
   {
-    "url": "https://fosstodon.org/api/v1/statuses/111976626154372447",
+    "url": "https://lounge.town/api/v1/statuses/111661042046785422",
     "embedData": {
-      "content": "<p>The release candidate of TypeScript 5.4 is now ready to download!</p><p>Read up on what&#39;s coming in TypeScript 5.4 👀<br /><a href=\"https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-rc/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"ellipsis\">devblogs.microsoft.com/typescr</span><span class=\"invisible\">ipt/announcing-typescript-5-4-rc/</span></a></p>",
-      "url": "https://fosstodon.org/@TypeScript/111976626154372447",
-      "created_at": "2024-02-22T18:48:38.420Z",
-      "favourites_count": 7,
-      "replies_count": 0,
-      "reblogs_count": 7,
-      "accountUrl": "https://fosstodon.org/@TypeScript",
-      "username": "TypeScript",
-      "display_name": "TypeScript",
-      "avatar": "https://cdn.fosstodon.org/accounts/avatars/110/470/955/844/953/946/original/48448b5649f31299.png"
+      "content": "<p>It is done. <a href=\"https://lounge.town/tags/LoungeTown\" class=\"mention hashtag\" rel=\"tag\">#<span>LoungeTown</span></a> is now residing in a cozy little <a href=\"https://lounge.town/tags/kubernetes\" class=\"mention hashtag\" rel=\"tag\">#<span>kubernetes</span></a> cluster. </p><p>Removed ~30GB of orphaned cached media. Re-downloading 65K+ media attachments (will take 10+ hours!)</p><p>Is it going to be faster now? Not likely. It might be slightly slower than before the migration.  </p><p>My hosting costs will go from ~$90/mo down to ~$300/year. That was the ultimate purpose of the migration.</p><p>If you want to throw some coins my way, I&#39;m not going to object: <a href=\"https://buy.stripe.com/14k2c0amp7njgRqbIJ\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"><span class=\"invisible\">https://</span><span class=\"ellipsis\">buy.stripe.com/14k2c0amp7njgRq</span><span class=\"invisible\">bIJ</span></a></p>",
+      "url": "https://lounge.town/@rosnovsky/111661042046785422",
+      "created_at": "2023-12-29T01:11:27.092Z",
+      "favourites_count": 3,
+      "replies_count": 1,
+      "reblogs_count": 0,
+      "accountUrl": "https://lounge.town/@rosnovsky",
+      "username": "rosnovsky",
+      "display_name": "Art Rosnovsky",
+      "avatar": "https://s3.us-west-1.wasabisys.com/lounge-town/accounts/avatars/109/363/435/781/395/161/original/a5032cbee1588e41.jpeg"
     }
   },
   {
-    "url": "https://lounge.town/api/v1/statuses/111858815717219956",
+    "url": "https://lounge.town/api/v1/statuses/111994284450336426",
     "embedData": {
-      "content": "<p>Hey y’all! Just got hit with an acute case of <a href=\"https://lounge.town/tags/layoffs\" class=\"mention hashtag\" rel=\"tag\">#<span>layoffs</span></a>. My entire team at Okta was laid off (including yours truly), and a few sibling teams were sacked as well; dozens of people I used to work with, gone in a day. Still processing it all.</p><p>If you know of a good company looking for a solid Software Engineer (Node, JS/TS, Tailwind, edge, k8s, CI/CD, you name it), please let me know. </p><p>Boost if you can, please. </p><p><a href=\"https://lounge.town/tags/FediHire\" class=\"mention hashtag\" rel=\"tag\">#<span>FediHire</span></a> <a href=\"https://lounge.town/tags/fedihelp\" class=\"mention hashtag\" rel=\"tag\">#<span>fedihelp</span></a> <a href=\"https://lounge.town/tags/jobsearch\" class=\"mention hashtag\" rel=\"tag\">#<span>jobsearch</span></a></p>",
-      "url": "https://lounge.town/@rosnovsky/111858815717219956",
-      "created_at": "2024-02-01T23:27:53.813Z",
-      "favourites_count": 86,
-      "replies_count": 12,
-      "reblogs_count": 271,
+      "content": "<p>This is a post of <a href=\"https://lounge.town/tags/gratitude\" class=\"mention hashtag\" rel=\"tag\">#<span>gratitude</span></a> to <span class=\"h-card\" translate=\"no\"><a href=\"https://hachyderm.io/@molly0xfff\" class=\"u-url mention\">@<span>molly0xfff</span></a></span>, who single-handedly just turned yours truly into a <a href=\"https://lounge.town/tags/wikipedia\" class=\"mention hashtag\" rel=\"tag\">#<span>wikipedia</span></a> editor. Got my account and my first 6 edits (!!!!!! SIX, I can&#39;t stress this enough!!!): added citations, wikilinks, improved phrasing, etc.</p><p>Check this out, it&#39;s worth its bandwidth in gold: <a href=\"https://www.citationneeded.news/become-a-wikipedian-in-30-minutes/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" translate=\"no\"><span class=\"invisible\">https://www.</span><span class=\"ellipsis\">citationneeded.news/become-a-w</span><span class=\"invisible\">ikipedian-in-30-minutes/</span></a></p>",
+      "url": "https://lounge.town/@rosnovsky/111994284450336426",
+      "created_at": "2024-02-25T21:39:22.654Z",
+      "favourites_count": 0,
+      "replies_count": 1,
+      "reblogs_count": 0,
       "accountUrl": "https://lounge.town/@rosnovsky",
       "username": "rosnovsky",
       "display_name": "Art Rosnovsky",
