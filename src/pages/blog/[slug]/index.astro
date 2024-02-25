@@ -6,7 +6,7 @@ import getSortedPosts from "@utils/getSortedPosts";
 import getPageNumbers from "@utils/getPageNumbers";
 import slugify from "@utils/slugify";
 import { SITE } from "@config";
-import '/node_modules/astro-mastodon/dist/output.css'
+import 'astro-mastodon/dist/output.css'
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -51,6 +51,7 @@ const paginatedPosts = sortedPosts.slice(startPost, lastPost);
     <PostDetails post={post} />
   ) : (
     <Posts
+      totalPosts={posts.length}
       posts={paginatedPosts}
       pageNum={currentPage}
       totalPages={totalPages.length}
