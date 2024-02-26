@@ -27,15 +27,12 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,
-      langs: ['javascript', 'typescript', 'bash', 'json', 'yaml', 'markdown']
+      langs: ['javascript', 'typescript', 'bash', 'json', 'yaml', 'markdown', 'mdx']
     }
   },
   vite: {
     optimizeDeps: {
       exclude: ['@resvg/resvg-js']
-    },
-    ssr: {
-      noExternal: ['astro-mastodon']
     }
   },
   scopedStyleStrategy: 'where',
