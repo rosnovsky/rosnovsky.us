@@ -19,6 +19,8 @@ Anyway, [@anny](https://www.youtube.com/@securitips) suggested we hack for a few
 
 My hack was a niche one. Now that this site runs on [Astro](https://astro.build), and my social networking happens exclusively at [Lounge.town](https://lounge.town/@rosnovsky) on Mastodon, it got me thinking about bridging the two. When I was writing about [migrating Lounge.town to Kubernetes](/blog/migrating-mastodon-instance-to-kubernetes), I really wanted to embed some of my mastodon posts but there were no good options to do so. So I've built one.
 
+![Astro Mastodon](assets/blog/posts/astro-mastodon/integration-live.png)
+
 ## A tale of `astro-mastodon`
 
 How do you build a thing when you don’t even know where to begin? 
