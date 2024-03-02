@@ -8,7 +8,7 @@ import { SITE } from './src/config';
 import node from '@astrojs/node';
 import mdx from "@astrojs/mdx";
 
-import mastodon, { remarkMastodonEmbed } from "astro-mastodon";
+import { remarkMastodonEmbed } from "astro-mastodon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,7 +19,7 @@ export default defineConfig({
   site: SITE.website,
   integrations: [tailwind({
     applyBaseStyles: false
-  }), react(), sitemap(), mdx(), mastodon()],
+  }), react(), sitemap(), mdx()],
   markdown: {
     remarkPlugins: [remarkMastodonEmbed, remarkToc, [remarkCollapse, {
       test: 'Table of contents'
