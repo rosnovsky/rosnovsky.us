@@ -1,10 +1,11 @@
 ---
 title: 'Saturday Helicopter Fun @ Seaside'
-pubDatetime: 2013-08-26
+publishDate: 2013-08-26
 description: 'A quick review of my experience with **Seaside Helicopters **and where I ended up flying with them just once.'
-tags:
-  - travel
-  - family
+category: "Travel"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 Oh, there’s a funny story here. So, this one is from the time when we just moved to America from Canada and decided to treat ourselves to a helicopter ride. Apparently, helicopter rides are **expensive**. A 15-minute ride for a family of 3 cost us a few hundred dollars. Well, I thought it was ridiculous and an outrage, and decided to go to take some piloting lessons to be able to take my family on such trips whenever I want, 5-10 times cheaper. It didn’t work out exactly the way I wanted, but I did indeed had a great time flying with them in Nevada and along the Columbia River.

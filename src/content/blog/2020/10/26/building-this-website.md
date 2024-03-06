@@ -1,11 +1,11 @@
 ---
 title: 'Building this website'
-pubDatetime: 2020-10-26
+publishDate: 2020-10-26
 description: 'I’m rebuilding my site, again. This time, though, I decided to do it in public and share what I do, how, and why.'
-tags:
-  - gatsby
-  - web development
-  - mental health
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 For years, I've been rebuilding this website to learn new things and to have a nice website for myself. Year after year, I try different tech stacks, design approaches and platforms, and this time around I decided to do something differently.

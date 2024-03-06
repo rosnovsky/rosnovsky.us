@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@components/Container.astro'
+import type { Project } from '@types'
+
+interface Props {
+  project: Project
+}
+
+const {
+  project: {
+    data: { images },
+  },
+} = Astro.props
+---
+
+<section class="overflow-hidden bg-slate-50 py-16 sm:py-24 lg:py-28 xl:py-32">
+  <Container>
+    <div
+      class="mx-auto grid max-w-lg gap-8 sm:max-w-2xl sm:grid-cols-2 lg:mx-0 lg:max-w-none"
+    >
+      {
+        images.map((image) => (
+          <div class="aspect-h-2 aspect-w-3 w-full overflow-hidden sm:aspect-h-3 sm:aspect-w-4">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="w-full rounded-3xl bg-slate-100 object-cover object-center"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

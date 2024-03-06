@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets'
+import Container from '@components/Container.astro'
+import { slugify } from '@utils/slugs'
+import type { Project } from '@types'
+
+interface Props {
+  project: Project
+}
+
+const {
+  project: {
+    data: { title, subtitle, tags, coverImage },
+    slug,
+  },
+} = Astro.props
+---
+
+<section
+  class="overflow-hidden bg-white pt-16 sm:pt-20 lg:pt-28"
+  transition:name={slug}
+>
+  <Container>
+    <div class="mx-auto max-w-lg sm:max-w-3xl lg:mx-0 lg:max-w-none">
+      <h1
+        class="font-display text-4xl font-semibold leading-tight text-slate-900 sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight"
+      >
+        {title} - {subtitle}
+      </h1>
+      <ul class="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+        {
+          tags.map((tag) => (
+            <li>
+              <a
+                href={`/projects/${slugify(tag)}`}
+                class="inline-block rounded-full bg-slate-50 px-6 py-2 text-sm font-medium text-slate-800 ring-1 ring-slate-100/80 transition duration-200 ease-in-out hover:bg-slate-100/95 hover:text-slate-900 lg:text-md"
+              >
+                {tag}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+  <div
+    class="aspect-h-9 aspect-w-16 relative mt-16 block w-full overflow-hidden md:aspect-h-2 md:aspect-w-5 lg:mt-20"
+  >
+    <Image
+      src={coverImage.src}
+      alt={coverImage.alt}
+      class="w-full bg-slate-100 object-cover"
+      transition:name={`${slug}-image`}
+    />
+  </div>
+</section>

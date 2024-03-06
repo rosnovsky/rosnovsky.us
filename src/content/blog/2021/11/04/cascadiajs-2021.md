@@ -1,10 +1,11 @@
 ---
 title: CascadiaJS 2021
 description: For years I wanted to attend CascadiaJS 2021, a PNW-native JavaScript conference. And for a while, I either couldn’t afford it, didn’t have the time, or had more immediate priorities.
-pubDatetime: 2021-11-04
-tags:
-  - 'blog'
-  - 'web development'
+publishDate: 2021-11-04
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/cascadiajs-2021/08b8509e78d22e88095a33dac1f3229dc36494ac-1086x724.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 For years I wanted to attend [CascadiaJS 2021](https://cascadiajs.com), a PNW-native JavaScript conference. And for a while, I either couldn't afford it, didn't have the time, or had more immediate priorities.
@@ -22,7 +23,7 @@ I've got a few general takeaways, a bunch of specific things I want to share, an
 ## General takeaways
 
 - If you want to attend a virtual conference, **take time off work** to do so. I've been making the mistake of watching talks on a second screen while working in the past; never again. Engaging, being fully emerged, and being able to take notes without the distraction of work is priceless.
-- **Taking notes is key**. Watching passively is fun and all, but if you really want to take something away from the presentation, take notes. Not going to lie, I love [taking notes](/blog/2021/10/14/journaling), but I bet you'll find it to be valuable too!
+- **Taking notes is key**. Watching passively is fun and all, but if you really want to take something away from the presentation, take notes. Not going to lie, I love [taking notes](/blog/journaling), but I bet you'll find it to be valuable too!
 - If you're attending a workshop, don't think that a question you have is stupid or irrelevant; **others have this same question as well, or had this question in the past**. ASK AWAY!
 - If you're following along during a workshop and something goes wrong, figure out whether it's something you can fix later. If so, **keep following along** and fix the issue later. Just assume that everything is working as presented. However, if it's something you can't fix or don't know how to fix, absolutely ASK FOR HELP! This is the entire reason for the workshop in question!
 

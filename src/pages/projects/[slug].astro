@@ -1,0 +1,47 @@
+---
+import Layout from '@layouts/Layout.astro'
+import ProjectCoponent from '@components/projects/Project.astro'
+import ProjectDetails from '@components/projects/ProjectDetails.astro'
+import ProjectGallery from '@components/projects/ProjectGallery.astro'
+import ProjectNavigation from '@components/projects/ProjectNavigation.astro'
+import { SITE } from '@config'
+import { getCollection } from 'astro:content'
+import type { Project } from '@types'
+import ProjectHero from '@components/projects/ProjectHero.astro'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }))
+}
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+
+const {
+  title,
+  description,
+  thumbnail: { src: ogImage },
+} = project.data
+
+const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src
+const { Content } = await project.render()
+---
+
+<Layout
+  title={`${title} | ${SITE.title}`}
+  description={description}
+  ogImage={ogImageUrl}
+>
+  <ProjectHero project={project} />
+  <ProjectDetails project={project}>
+    <Content />
+  </ProjectDetails>
+  <ProjectGallery project={project} />
+  <ProjectNavigation projectSlug={project.slug} />
+</Layout>

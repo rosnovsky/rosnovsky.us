@@ -1,10 +1,11 @@
 ---
 title: 'New OS, Who Dis: Going Linux after 15 years on Mac'
-pubDatetime: 2019-08-25
+publishDate: 2019-08-25
 description: 'A story of a hardcore Mac user of 15 years switching to Linux and loving it.'
-tags:
-  - open-source
-  - linux
+category: "Open Source"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 the In 2005, I bought my first Mac mini. It had 1.25 Ghz G3 processor, like, 256 Mb of RAM, and a 40 Gb HDD. At the moment, it was the most exciting device I’ve ever owned. Mac OS X was such a blow of fresh air after Windows XP! It was well-designed, friendly, relatively fast, quiet. It had all the apps I wanted to use, and since I’ve never been a gamer, lack of gaming titles didn’t bother me at all. I was in love with Apple. In the years since, I owned a bunch of Macbooks, a couple of iMacs, all kinds of iPhones, iPads, and a pair of Apple Watches. My family is a full Apple house.

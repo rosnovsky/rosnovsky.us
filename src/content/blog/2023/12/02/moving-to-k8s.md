@@ -1,15 +1,11 @@
 ---
 title: Moving away from Vercel to Kubernetes
-author: Art Rosnovsky
-pubDatetime: 2023-12-02T20:59:00Z
-postSlug: vercel-to-kubernetes
-featured: false
-draft: false
-tags:
-  - Next.js
-  - Kubernetes
-  - Web Development
-  - Astro
+publishDate: 2023-12-02T20:59:00Z
+featured: true
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 description:
   After years and years of hosting this blog on Vercel, I'm moving away to my own Kubernetes cluster. Here's how (and why).
 ---

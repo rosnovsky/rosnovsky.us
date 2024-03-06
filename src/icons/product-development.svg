@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <g
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.75"
+    transform="translate(0.5 0.5)"
+    fill="none"
+    stroke="currentColor"
+  >
+    <rect x="2" y="2" width="20" height="20"></rect>
+    <polyline points="7 8 11 12 7 16" stroke="currentColor"></polyline>
+    <line x1="13" y1="8" x2="17" y2="8" stroke="currentColor"></line>
+    <line x1="13" y1="16" x2="17" y2="16" stroke="currentColor"></line>
+    <line x1="15" y1="12" x2="17" y2="12" stroke="currentColor"></line>
+  </g>
+</svg>

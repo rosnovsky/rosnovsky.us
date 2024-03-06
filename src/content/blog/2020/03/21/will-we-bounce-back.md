@@ -1,9 +1,11 @@
 ---
 title: 'Will we bounce back?'
-pubDatetime: 2020-03-21
+publishDate: 2020-03-21
 description: 'We’ll bounce back, scarred and battered, but stronger and more resilient.'
-tags:
-  - covid
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/will-we-bounce-back/bad879662702dc5d43d81cde729ea68b1a9f71ba-948x948.jpg'
+  alt: 'Diagram'
 ---
 
 We have a #coronavirus-questions channel in Auth0 Slack that evolved from HR Q&A into some kind of _Coronavirus Lounge_. And today someone asked linking to an article:

@@ -1,14 +1,14 @@
 ---
 title: 'Summer Time'
-pubDatetime: 2021-07-13
+publishDate: 2021-07-13
 description: "The summer is different this year. Let's take a look at what's going on this time around."
-tags:
-  - personal
+category: "Family"
+image:
+  src: '@assets/blog/posts/summer-time/summer-time0004.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 ## New Home
-
-![Overview](assets/blog/posts/summer-time/summer-time0004.jpg)
 
 So, we finally moved to our new home. It's really nice here, but a lot of work remains.
 

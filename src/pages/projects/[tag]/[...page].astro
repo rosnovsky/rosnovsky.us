@@ -1,0 +1,40 @@
+---
+import ProjectsLayout from '@layouts/ProjectsLayout.astro'
+import { getCollection } from 'astro:content'
+import { sortProjects } from '@utils/projects'
+import { slugify, reverseSlug } from '@utils/slugs'
+import { SITE } from '@config'
+import type { Page, PaginateFunction } from 'astro'
+import type { Project } from '@types'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const projects = await getCollection('projects')
+  const tags = projects
+    .flatMap((project) => project.data.tags)
+    .filter((category, index, self) => self.indexOf(category) === index)
+
+  return tags.flatMap((tag) => {
+    // filter case studies by tag
+    const filteredProjects = projects.filter((project) =>
+      project.data.tags.includes(tag),
+    )
+    return paginate(sortProjects(filteredProjects), {
+      params: { tag: slugify(tag) },
+      pageSize: SITE.projectsPerPage,
+    })
+  })
+}
+
+interface Props {
+  page: Page<Project>
+}
+
+const { page } = Astro.props
+const tag = reverseSlug(Astro.params.tag ?? '')
+---
+
+<ProjectsLayout page={page} title={`Work | ${tag} | ${SITE.title}`} />

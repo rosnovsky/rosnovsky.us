@@ -1,0 +1,114 @@
+---
+import Container from '@components/Container.astro'
+import HeroGradient from '@components/illustrations/HeroGradient.astro'
+import Underline from '@components/illustrations/Underline.astro'
+import { SOCIALS } from '@config'
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import heroPortrait from '@images/hero-portrait.jpg'
+import typescript from '@images/logos/icons/typescript.svg'
+import react from '@images/logos/icons/react.svg'
+import nodejs from '@images/logos/icons/nodejs.svg'
+---
+
+<section class="relative overflow-hidden py-20 lg:py-24">
+  <HeroGradient />
+
+  <Container
+    class="relative z-10 grid items-center gap-16 lg:grid-cols-2 lg:gap-8"
+  >
+    <div class="mx-auto flex max-w-2xl flex-col items-center lg:items-start">
+      <h1
+        class="text-center font-display text-5xl font-semibold text-slate-900 dark:text-slate-200 sm:text-6xl lg:text-left"
+      >
+        <span class="relative">
+          <Underline />
+          <span class="relative">Welcome!</span>
+        </span>
+        Happy to see you here.
+      </h1>
+      <p
+        class="mt-6 text-center text-lg leading-8 text-slate-700 dark:text-slate-200 lg:text-left"
+      >
+        Listen, we need to talk. Or maybe we don't. In any case, I write about
+        web development, hiking, and random hobbies I pick up every now and
+        then.
+      </p>
+      <div
+        class="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 lg:justify-start"
+      >
+        <div class="flex gap-3 sm:gap-4">
+          {
+            SOCIALS.filter((social) => social.showInHero).map((socialLink) => (
+              <a
+                href={socialLink.href}
+                aria-label={socialLink.ariaLabel}
+                class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 duration-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-950"
+              >
+                <Icon
+                  name={socialLink.name}
+                  class="h-4 w-4 fill-slate-600 transition group-hover:fill-slate-700 dark:fill-slate-400 dark:group-hover:fill-slate-300"
+                />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto w-full max-w-lg lg:mr-0">
+      <div
+        class="aspect-h-5 aspect-w-4 relative rounded-2xl bg-slate-50 dark:bg-slate-950"
+      >
+        <Image
+          class="h-full w-full rounded-2xl object-cover object-center"
+          src={heroPortrait}
+          alt=""
+        />
+        <div>
+          <div
+            class="absolute hidden w-max md:left-full md:top-16 md:block lg:-left-28 lg:-top-8 2xl:left-full 2xl:top-16"
+          >
+            <span
+              class="inline-block transform font-writing text-2xl tracking-wide text-slate-600 dark:text-slate-300 md:rotate-[16deg] lg:translate-x-6 lg:rotate-[-18deg] 2xl:rotate-12"
+            >
+              Hey, I'm Art!
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="103"
+              height="102"
+              viewBox="0 0 103 102"
+              fill="none"
+              class="h-auto w-28 text-slate-600 dark:text-slate-300 md:-translate-x-1/2 md:-translate-y-6 md:rotate-0 lg:-translate-y-3 lg:translate-x-3/4 lg:rotate-12 lg:-scale-x-100 2xl:-translate-x-1/2 2xl:-translate-y-6 2xl:rotate-0 2xl:scale-x-100"
+            >
+              <g>
+                <path
+                  d="M100.676 26.5417C93.9574 46.1137 83.3723 65.5204 62.3048 74.1115C51.0557 78.6989 36.7215 76.3709 36.7673 62.5332C36.7985 53.1087 42.243 38.3844 53.849 37.3949C66.6654 36.3021 46.8111 57.0334 44.2548 58.8791C32.2897 67.5184 20.2216 71.4112 5.76428 74.151C0.348605 75.1774 3.24474 76.5966 6.85897 77.2296C9.99484 77.7788 13.5771 78.3248 16.755 78.0657C17.7243 77.9867 11.502 77.2793 10.5148 77.213C6.28171 76.9284 1.40658 76.4418 2.9682 71.2948C3.21916 70.4678 6.25335 62.9691 7.53037 63.112C8.19484 63.1864 9.21134 68.8129 9.5344 69.5548C11.6329 74.3731 14.1134 76.5032 19.3253 77.6737"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"></path>
+              </g>
+            </svg>
+          </div>
+          <div
+            class="absolute -top-6 right-12 inline-flex h-12 w-max items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:-left-28 md:top-14 lg:-top-6 lg:left-44 lg:px-10 2xl:-left-24 2xl:top-14"
+          >
+            <Image src={typescript} alt="" class="h-auto w-4" />❤️❤️❤️
+          </div>
+          <div
+            class="absolute left-12 top-full inline-flex h-12 w-max -translate-y-6 items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 lg:px-10 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32"
+          >
+            <Image src={react} alt="" class="h-6 w-auto" />🔥🔥🔥
+          </div>
+          <div
+            class="absolute top-[350px] hidden h-12 w-max items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/50 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-full md:inline-flex md:-translate-x-32 lg:left-48 lg:hidden lg:px-10 2xl:left-full 2xl:inline-flex 2xl:-translate-x-28"
+          >
+            <Image src={nodejs} alt="" class="h-auto w-7" />
+            <span class="">🎉🎉🎉</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

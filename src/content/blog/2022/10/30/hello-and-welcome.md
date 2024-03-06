@@ -1,14 +1,11 @@
 ---
 title: Hello and welcome
 description: Just wanted to say hi to those who found me here while rediscovering the internet outside of social media.
-pubDatetime: 2022-10-30T23:18:11Z
-tags:
-  - 'blog'
-  - 'web development'
-  - 'work'
-  - 'travel'
-  - 'books'
-  - 'tv'
+publishDate: 2022-10-30T23:18:11Z
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It was long coming, the day when something happens - and all of a sudden, many people find themselves without a “home” online. Who could’ve guessed even a year ago that an [idiot nazi narcissist man-baby](https://twitter.com/elonmusk) would buy all of Twitter and [immediately start](https://www.theverge.com/2022/10/30/23430008/elon-musk-twitter-homepage-subscriptions-changes) [turning it into](https://www.theverge.com/2022/10/30/23431931/twitter-paid-verification-elon-musk-blue-monthly-subscription) [a shithole of](https://twitter.com/daveyalba/status/1586788146578178049?s=20&t=nUUx_AXtlQH8f1Eqilc_JA) [his dreams](https://www.theverge.com/2022/10/30/23431337/twitter-hateful-tweets-elon-musk-takeover-free-speech)?! Not me, I didn’t see this coming.

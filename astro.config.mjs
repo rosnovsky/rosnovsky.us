@@ -1,43 +1,54 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
-import remarkToc from 'remark-toc';
-import remarkCollapse from 'remark-collapse';
+import alpinejs from '@astrojs/alpinejs';
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
 import sitemap from '@astrojs/sitemap';
 import { SITE } from './src/config';
+import { remarkMastodonEmbed } from 'astro-mastodon';
+import icon from "astro-icon";
 import node from '@astrojs/node';
-import mdx from "@astrojs/mdx";
 
-import { remarkMastodonEmbed } from "astro-mastodon";
+function remarkReadingTime() {
+  return function (tree, {
+    data
+  }) {
+    const textOnPage = toString(tree);
+    const readingTime = getReadingTime(textOnPage);
+    // readingTime.text will give us minutes read as a friendly string,
+    // i.e. "3 min read"
+    data.astro.frontmatter.minutesRead = readingTime.text;
+  };
+}
 
 // https://astro.build/config
 export default defineConfig({
-  server: {
-    port: 4321,
-    host: true
-  },
   site: SITE.website,
+  trailingSlash: 'never',
+  markdown: {
+    syntaxHighlight: 'prism',
+    // shikiConfig: {
+    //   theme: 'github-dark',
+    //   wrap: true,
+    //   langs: ['javascript', 'typescript', 'bash', 'json', 'yaml', 'markdown', 'mdx']
+    // },
+    remarkPlugins: [remarkReadingTime, remarkMastodonEmbed]
+  },
+  
+  prefetch: {
+    defaultStrategy: 'viewport'
+  },
   integrations: [tailwind({
     applyBaseStyles: false
-  }), react(), sitemap(), mdx()],
-  markdown: {
-    remarkPlugins: [remarkMastodonEmbed, remarkToc, [remarkCollapse, {
-      test: 'Table of contents'
-    }]],
-    shikiConfig: {
-      theme: 'github-dark',
-      wrap: true,
-      langs: ['javascript', 'typescript', 'bash', 'json', 'yaml', 'markdown', 'mdx']
-    }
-  },
-  vite: {
-    optimizeDeps: {
-      exclude: ['@resvg/resvg-js']
-    }
-  },
+  }), alpinejs(), sitemap(), icon()],
   scopedStyleStrategy: 'where',
   output: 'hybrid',
   adapter: node({
     mode: 'standalone'
-  })
+  }),
+  server: {
+    port: 4321,
+    host: true
+  },
 });
+

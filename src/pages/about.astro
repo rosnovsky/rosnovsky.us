@@ -1,0 +1,21 @@
+---
+import Layout from '@layouts/Layout.astro'
+import AboutHero from '@components/AboutHero.astro'
+import WorkExperience from '@components/WorkExperience.astro'
+import Workstation from '@components/Workstation.astro'
+// import Stack2 from '@components/Stack2.astro'
+// import Press from '@components/Press.astro'
+import { SITE } from '@config'
+---
+
+<Layout
+  title={`About | ${SITE.title}`}
+  description="Software Engineer, recovering imposter. I read more than I hike."
+  transition:name='about'
+>
+  <AboutHero />
+  <WorkExperience />
+  <Workstation />
+  <!-- <Stack2 /> -->
+  <!-- <Press /> -->
+</Layout>

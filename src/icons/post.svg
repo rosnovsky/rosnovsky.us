@@ -1,0 +1,27 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  viewBox="0 0 16 16"
+>
+  <g
+    stroke-width="1.25"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M2.5,15.5L2.5,15.5 c-1.105,0-2-0.895-2-2v-5h4v5C4.5,14.605,3.605,15.5,2.5,15.5z"></path>
+    <path d="M4.5,8.5v-8h11v13 c0,1.105-0.895,2-2,2h-11"></path>
+    <line x1="7.5" y1="3.5" x2="12.5" y2="3.5" stroke="currentColor"></line>
+    <line x1="7.5" y1="6.5" x2="12.5" y2="6.5" stroke="currentColor"></line>
+    <line x1="7.5" y1="9.5" x2="12.5" y2="9.5" stroke="currentColor"></line>
+    <line
+      x1="7.5"
+      y1="12.5"
+      x2="9.5"
+      y2="12.5"
+      stroke="currentColor"
+    ></line>
+  </g>
+</svg>

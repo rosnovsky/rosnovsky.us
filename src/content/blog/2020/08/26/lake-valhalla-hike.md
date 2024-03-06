@@ -1,9 +1,11 @@
 ---
 title: 'Lake Valhalla Hike'
-pubDatetime: 2020-08-26
+publishDate: 2020-08-26
 description: "A story about a washed away road, how I couldn't find a trail, night hike on the Pacific Crest Trail, and killer-mosquitoes 🦟"
-tags:
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/lake-valhalla-hike/f8126d4d58f577a682160bf8ea22314f89cb0dd1-1600x2134.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 I took a week off from hiking and planned to resume my adventures last Wednesday after work. I've got two days off (Thursday and Friday) and decided it's a great opportunity to try and go on a 3-night & 23-mile backpacking trip near Glacier Peak. Let me just say that it ended up being a 12-mile 2-night trip... 20 miles away from the trail I've initially planned to hike. It's a funny story, actually.

@@ -1,10 +1,11 @@
 ---
 title: 'Arlington: bike ride'
-pubDatetime: 2021-09-04
+publishDate: 2021-09-04
 description: 'Just a few photos from the bike ride through Arlington, Washington.'
-tags:
-  - biking
-  - life
+category: "Travel"
+image:
+  src: '@assets/blog/posts/arlington/IMG_0022.jpeg'
+  alt: 'Generic blog post cover image'
 ---
 
 Went for a quick bike ride last night. We moved to Arlington a couple of months ago, and still didn't have a chance to explore it. Well, better late than never.

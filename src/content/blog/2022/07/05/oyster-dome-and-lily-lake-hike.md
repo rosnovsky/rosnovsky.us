@@ -1,11 +1,11 @@
 ---
 title: Oyster Dome and Lily Lake Hike
-pubDatetime: 2022-07-05
+publishDate: 2022-07-05
 description: Another week, another hike. I almost forgot how rewarding it is to spend a few hours just walking through a forest, alone with my own thoughts!
-tags:
-  - travel
-  - family
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/oyster-dome-and-lily-lake-hike/1372c8ccdfcb968bab42c5de5dd5c2473d853e01-4032x3024.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 This week’s hike was finally a win. I hiked with my family, and I think we got to the point where we can hike together. For me, it’s always a challenge to hike with other people:

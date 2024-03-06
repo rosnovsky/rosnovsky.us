@@ -1,13 +1,12 @@
 ---
 title: 'Configure Twilio SIP Trunk with Unifi Talk'
-pubDatetime: 2021-08-06
+publishDate: 2021-08-06
 description: "Unifi Talk by Ubiquity is a very promising service. However, so far it's been lacking documentation. Here's how to configure Twilio SIP Trunk with Unifi Talk."
-tags:
-  - tech
-  - how-to
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/twillio-and-unifi-talk/dashboard.png'
+  alt: 'Generic blog post cover image'
 ---
-
-![Unifi Talk Interface](assets/blog/posts/twillio-and-unifi-talk/dashboard.png)
 
 For those of us in the Unifi ecosystem, Unifi Talk is a cheap and really nice way to add home or home office phone to your network. I'm not 100% sure if a lot of folks still _require_ a home phone, but I thought "why not" and went ahead and configured it.
 

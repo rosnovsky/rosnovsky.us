@@ -1,0 +1,27 @@
+---
+import BlogLayout from '@layouts/BlogLayout.astro'
+import { getSortedPosts } from '@utils/posts'
+import { SITE } from '@config'
+import type { Page, PaginateFunction } from 'astro'
+import type { Post } from '@types'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const posts = await getSortedPosts()
+
+  return paginate(posts, {
+    pageSize: SITE.postsPerPage,
+  })
+}
+
+interface Props {
+  page: Page<Post>
+}
+
+const { page } = Astro.props
+---
+
+<BlogLayout page={page} />

@@ -1,11 +1,11 @@
 ---
 title: "You don't have to follow a passion"
-pubDatetime: 2020-01-23
+publishDate: 2020-01-23
 description: 'Stop reducing people to two-dimensional single-passion beings'
-tags:
-  - work
-  - life
-  - personal
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 I was driving to work this morning, looking forward to a weekly Q&A with Nico (deep dive into HAR files this week), when I realized that it’s my day off. Whenever we work on weekends, we can then take a day off during the week. Well, today was the day, and I forgot about it.

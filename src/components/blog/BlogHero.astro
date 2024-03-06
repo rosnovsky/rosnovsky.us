@@ -1,0 +1,85 @@
+---
+import Container from '@components/Container.astro'
+import Underline from '@components/illustrations/Underline.astro'
+import { Image } from 'astro:assets'
+
+import bgGradient from '@images/blog-hero-bg.png'
+---
+
+<section class="relative overflow-hidden bg-white lg:px-8">
+  <Container
+    class="relative bg-slate-50 py-16 sm:py-24 lg:rounded-b-3xl lg:py-32"
+  >
+    <Image
+      src={bgGradient}
+      alt=""
+      class="absolute inset-0 h-full w-full opacity-75"
+    />
+    <div class="relative flex flex-col items-center justify-center">
+      <h1
+        class="text-center font-display text-5xl font-semibold text-slate-900 sm:text-6xl"
+      >
+        Welcome to
+        <span class="relative whitespace-nowrap">
+          <Underline
+            class="absolute left-0 top-2/3 h-[0.6em] w-full scale-110 fill-emerald-200/75"
+          />
+          <span class="relative">my blog</span>
+        </span>
+      </h1>
+      <p
+        class="mx-auto mt-6 max-w-xl text-center text-lg leading-8 text-slate-700"
+      >
+        Join me on my journey as I share my insights and experiences on web
+        development, business, and content creation.
+      </p>
+      <form action="#" method="post" class="relative mt-12 w-full max-w-lg">
+        <div class="absolute -left-48 -top-12 hidden lg:flex xl:-left-72">
+          <span
+            class="inline-block max-w-[175px] -rotate-12 transform font-writing text-2xl text-slate-600"
+          >
+            Subscribe to my newsletter
+          </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="91"
+            height="49"
+            viewBox="0 0 91 49"
+            fill="none"
+            class="relative -top-5 left-0 h-auto w-20 text-slate-600"
+          >
+            <g clip-path="url(#clip0_324_1142)">
+              <path
+                d="M1.69238 27.312C20.3067 17.6575 42.2779 13.0915 62.6792 20.3817C68.653 22.5164 74.9261 26.8457 79.7975 31.004C80.8268 31.8828 81.6964 32.9264 82.5869 33.944C83.4001 34.8733 83.6539 26.1696 83.7375 25.1594C84.6308 14.3591 83.4075 25.9604 83.6012 30.1072C83.7516 33.3254 84.9068 36.8047 84.5415 40.0293C84.2474 42.6259 79.3878 40.8403 77.6335 40.5719C75.8298 40.2959 63.737 40.239 66.2469 36.714C70.7498 30.3895 77.2856 27.0444 83.4264 22.7486"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_324_1142">
+                <rect
+                  width="85"
+                  height="29"
+                  fill="white"
+                  transform="translate(83 49) rotate(-165.831)"></rect>
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <input
+          type="email"
+          class="h-12 w-full rounded-full border-0 bg-white/95 py-3.5 pl-5 pr-32 text-sm leading-5 text-slate-900 placeholder-slate-400 shadow-md shadow-emerald-100/50 outline-none ring-1 ring-slate-900/5 duration-200 ease-in-out focus:border-0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-900/20 sm:pl-6 sm:text-md"
+          required
+          placeholder="Enter your email"
+          auto-complete="email"
+        />
+        <button
+          type="submit"
+          class="absolute right-1 top-1 inline-flex h-10 items-center rounded-full bg-slate-900 px-5 text-sm font-semibold text-emerald-50 outline-none transition duration-200 ease-in-out hover:bg-emerald-800 focus:outline-none sm:px-7 sm:text-md"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </Container>
+</section>

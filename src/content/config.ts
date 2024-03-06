@@ -1,8 +1,59 @@
-import { blog } from './blog/_blog';
-// import { book } from './books/_books';
-// import { author } from './authors/_author';
-// import { game } from '../todo/games/_game';
-// import { publisher } from '../todo/publishers/_publisher';
-// import { studio } from '../todo/studios/_studio';
+import { z, defineCollection } from 'astro:content'
 
-export const collections = { blog };
+const blogCollection = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      image: z.object({
+        src: image(),
+        alt: z.string(),
+      }),
+      category: z.enum([
+        'Family',
+        'Travel',
+        'Web Development',
+        'Open Source',
+        'Music',
+        'Books',
+        'Personal',
+        "Covid",
+        'Gaming',
+      ]),
+      description: z.string(),
+      publishDate: z.date()
+    }),
+})
+
+const projectsCollection = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      subtitle: z.string(),
+      tags: z.array(z.string()),
+      thumbnail: z.object({
+        src: image(),
+        alt: z.string(),
+      }),
+      coverImage: z.object({
+        src: image(),
+        alt: z.string(),
+      }),
+      images: z.array(
+        z.object({
+          src: image(),
+          alt: z.string(),
+        }),
+      ),
+      timeline: z.object({
+        start: z.date(),
+        end: z.date(),
+      }),
+      projectURL: z.string().url(),
+      description: z.string(),
+    }),
+})
+
+export const collections = {
+  blog: blogCollection,
+  projects: projectsCollection,
+}

@@ -1,9 +1,11 @@
 ---
 title: 'Auth0: 10 Years Later'
-pubDatetime: 2021-03-14
+publishDate: 2021-03-14
 description: "It's hard to believe that it's been over a year since I joined Auth0. It's time to do some reflection. Shall we?"
-tags:
-  - work
+category: "Personal"
+image:
+  src: '@assets/blog/posts/auth0-10-years-later/b74f04a4baa56f64460f233f9e4874b0b7e9c3a5-1024x593.png'
+  alt: 'Generic blog post cover image'
 ---
 
 I joined Auth0 in December 2019. A few months later the COVID pandemic started to take shape. Now, over a year later, I can say with confidence: it was no ordinary year. Confusion, uncertainty, adaptation to the new work paradigm, burnout, finding my routine, and just generally trying to fit this square "2020" peg into... well, into anything, really.

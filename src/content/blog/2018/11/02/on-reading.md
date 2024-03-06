@@ -1,9 +1,11 @@
 ---
 title: 'On Reading'
-pubDatetime: 2018-11-02
+publishDate: 2018-11-02
 description: 'Definition of reading is evolving.'
-tags:
-  - books
+category: "Books"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 We all read a lot without even giving it a second thought. We read the news, Facebook feeds, Twitter, Reddit, Stack Overflow, that tutorial you’ve been keeping in an a tab for a weeks, text messages, you name it. If anything, we probably read more than before the **interwebs**, not less. The actual issue is that as a result of such reading overload we generally read way fewer books, then we used to.

@@ -1,0 +1,113 @@
+---
+import type { Page } from 'astro'
+
+interface Props {
+  hash?: string
+  page: Page
+}
+
+const { page, hash = '' } = Astro.props
+
+// A helper function to determine whether to show ellipsis
+function shouldShowEllipsis(index: number, currentPage: number) {
+  return index > currentPage + 2 || index < currentPage - 2
+}
+
+function appendHash(url?: string) {
+  if (url && hash) {
+    return `${url}${hash}`
+  }
+  return url
+}
+
+function getUrlBase() {
+  const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
+  const collection = pathSegments[0]
+
+  // If second segment is not a number, it's a category.
+  if (pathSegments.length >= 2 && isNaN(Number(pathSegments[1]))) {
+    return `/${collection}/${pathSegments[1]}`
+  }
+
+  return `/${collection}`
+}
+
+function getPageUrl(pageNumber: number) {
+  const baseUrl = getUrlBase()
+  if (pageNumber === 1) {
+    return appendHash(baseUrl)
+  }
+  return appendHash(`${baseUrl}/${pageNumber}`)
+}
+---
+
+<div class="mt-16 flex items-center justify-center gap-4 sm:mt-20 sm:gap-2">
+  <!-- Prev Button -->
+  <a
+    transition:name={page.url.prev}
+    href={appendHash(page.url.prev)}
+    class={`inline-flex h-10 w-20 items-center justify-center rounded-full text-sm font-medium shadow-sm ring-1 ring-slate-900/5 bg-slate-50 
+      ${
+        page.currentPage === 1
+          ? 'text-slate-500/60'
+          : 'text-slate-700 hover:bg-slate-100 hover:text-emerald-700 transition duration-200 ease-in-out'
+      }`}
+  >
+    Prev
+  </a>
+
+  <!-- Page Numbers -->
+  {
+    Array.from({ length: page.lastPage }).map((_, index) => {
+      const pageNumber = index + 1
+      const isCurrentPage = pageNumber === page.currentPage
+      if (
+        pageNumber === 1 ||
+        pageNumber === page.lastPage ||
+        !shouldShowEllipsis(pageNumber, page.currentPage)
+      ) {
+        return (
+          <a
+          transition:name={page.url.current}
+            href={getPageUrl(pageNumber)}
+            class={`hidden h-10 w-10 items-center justify-center rounded-full text-sm font-medium shadow-sm ring-1 ring-slate-900/5 sm:inline-flex 
+            ${
+              isCurrentPage
+                ? 'bg-emerald-600 text-emerald-50'
+                : 'bg-slate-50 text-slate-700 transition duration-200 ease-in-out hover:bg-slate-100 hover:text-emerald-700'
+            }`}
+          >
+            {pageNumber}
+          </a>
+        )
+      }
+      if (
+        pageNumber === page.currentPage + 3 ||
+        pageNumber === page.currentPage - 3
+      ) {
+        return (
+          <span class="hidden h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-sm font-medium text-slate-500/60 shadow-sm shadow-emerald-100/50 ring-1 ring-slate-900/5 sm:inline-flex">
+            ...
+          </span>
+        )
+      }
+    })
+  }
+  <span class="text-md text-slate-500 sm:hidden"
+    >Page {page.currentPage} of {page.lastPage}</span
+  >
+
+  <!-- Next Button -->
+  <a
+    transition:name={page.url.next}
+    href={appendHash(page.url.next)}
+    class={`inline-flex h-10 w-20 items-center justify-center rounded-full text-sm font-medium shadow-sm ring-1 ring-slate-900/5 bg-slate-50 
+      ${
+        page.currentPage === page.lastPage
+          ? 'text-slate-500/60'
+          : 'text-slate-700 hover:bg-slate-100 hover:text-emerald-700 transition duration-200 ease-in-out'
+      }`}
+  >
+    Next
+  </a>
+</div>

@@ -1,11 +1,11 @@
 ---
 title: 'Building this website: Part 2'
-pubDatetime: 2021-01-02T20:20:20Z
+publishDate: 2021-01-02T20:20:20Z
 description: 'For the past few months, I’ve been rebuilding my website. This time, I’ve built it from scratch, with these two hands. In this post, I want to take a deep dive into what and how I built, and what’s next.'
-tags:
-  - web development
-  - next.js
-  - mental health
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/building-this-website-part-2/ccf00c415ef6dcb0fa914b907352d765b3b5c2b4-2024x2498.png'
+  alt: 'Generic blog post cover image'
 ---
 
 Since my previous post about rebuilding this site, I’ve made enough progress to actually launch the site. You’re looking at it right now :)

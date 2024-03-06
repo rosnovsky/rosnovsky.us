@@ -1,10 +1,11 @@
 ---
 title: 'Live Coding vs Imposter Paralysis'
-pubDatetime: 2019-06-08
+publishDate: 2019-06-08
 description: "I've struggled with imposter paralysis for a while. Then I found a cure."
-tags:
-  - personal
-  - web development
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It baffles me to say this out loud, but for the last month, I’ve been working at [Microsoft](https://microsoft.com/). I’ve been building a proof-of-concept for an internal client search application and an interface for it. It’s been a journey, that’s for sure. From getting proper access and setting things up in general to acquiring specific permissions to databases, figuring out hosting and deployment with [Azure](https://portal.azure.com/), solving AAD authentication issues and burning the midnight oil when some stupid bug prevented the app from running.

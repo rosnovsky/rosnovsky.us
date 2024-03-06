@@ -1,0 +1,57 @@
+---
+import Layout from './Layout.astro'
+import Tabs from '@components/collections/Tabs.astro'
+import Pagination from '@components/collections/Pagination.astro'
+import Container from '@components/Container.astro'
+import Projects from '@components/projects/Projects.astro'
+import { SITE } from '@config'
+import { getFeaturedTags } from '@utils/projects'
+import type { Page } from 'astro'
+import type { Project } from '@types'
+
+interface Props {
+  title?: string
+  description?: string
+  page: Page<Project>
+}
+
+const {
+  page,
+  title = `Work | ${SITE.title}`,
+  description = 'Explore an impressive collection of case studies showcasing a my diverse skill set, innovative solutions, and successful projects.',
+} = Astro.props
+
+const { data: projects } = page;
+const featuredTags = await getFeaturedTags()
+---
+
+<Layout title={title} description={description} transition:name={title}>
+  <section class="overflow-hidden bg-white py-16 sm:pt-24 lg:pt-32">
+    <Container>
+      <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+        <div
+          class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+        >
+          <h2
+            class="font-display text-5xl font-semibold text-slate-900 sm:text-6xl lg:leading-none"
+          >
+            Projects
+          </h2>
+
+          <p class="text-lg text-slate-700 lg:ml-auto lg:max-w-lg">
+            Dive into my diverse range of projects, showcasing my expertise in
+            software development, design, and dedication to delivering
+            exceptional results.
+          </p>
+        </div>
+        <Tabs
+          class="mt-14 gap-x-1.5 gap-y-4 md:gap-x-1 lg:mt-16 lg:gap-2"
+          tabs={featuredTags}
+          directory={'work'}
+        />
+        <Projects projects={projects} />
+        {page.lastPage > 1 && <Pagination page={page} />}
+      </div>
+    </Container>
+  </section>
+</Layout>

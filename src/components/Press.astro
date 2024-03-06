@@ -1,0 +1,152 @@
+---
+import { Icon } from 'astro-icon/components'
+import Container from './Container.astro'
+
+const items = [
+  {
+    title: 'The Future of Software Engineering with Jane Doe',
+    category: 'Podcast',
+    icon: 'podcast',
+    link: {
+      href: '#',
+      label: 'Listen to podcast',
+      displayUrl: 'spotify.com',
+    },
+  },
+  {
+    title:
+      'Building a Sense of Community Around Your Business - with Duncan Jones Junior',
+    category: 'Podcast',
+    icon: 'podcast',
+    link: {
+      href: '#',
+      label: 'Listen to podcast',
+      displayUrl: 'spotify.com',
+    },
+  },
+  {
+    title: '14 Things You Should Know Before Starting With Ruby On Rails',
+    category: 'Post',
+    icon: 'post',
+    link: {
+      href: '#',
+      label: 'Read the post',
+      displayUrl: 'gorails.com',
+    },
+  },
+  {
+    title:
+      "Why Service Objects Aren't Evil (And Why You Should Start Using Them)",
+    category: 'RailsConf 2022',
+    icon: 'conference',
+    link: {
+      href: '#',
+      label: 'Watch the talk',
+      displayUrl: 'youtube.com',
+    },
+  },
+  {
+    title: 'Meet the top 10 developers to watch in 2021',
+    category: 'Post',
+    icon: 'post',
+    link: {
+      href: '#',
+      label: 'Read the post',
+      displayUrl: 'hackernews.com',
+    },
+  },
+  {
+    title:
+      'Flow State for Software Engineers – Cultivate flow with the people who build software',
+    category: 'Podcast',
+    icon: 'podcast',
+    link: {
+      href: '#',
+      label: 'Listen to podcast',
+      displayUrl: 'youtube.com',
+    },
+  },
+  {
+    title:
+      'Building a Sense of Community Around Your Business - with Duncan Jones Junior',
+    category: 'Podcast',
+    icon: 'podcast',
+    link: {
+      href: '#',
+      label: 'Listen to podcast',
+      displayUrl: 'spotify.com',
+    },
+  },
+  {
+    title:
+      'How much money can a web developer with 100k subscribers on Youtube make with AdSense, affiliates and sponsors?',
+    category: 'Press',
+    icon: 'post',
+    link: {
+      href: '#',
+      label: 'Read the post',
+      displayUrl: 'businessinsider.com',
+    },
+  },
+  {
+    title:
+      'Extending and Embedding Rich Media in the Rails Universe with the Trix Editor',
+    category: 'RailsConf 2021',
+    icon: 'conference',
+    link: {
+      href: '#',
+      label: 'Watch the talk',
+      displayUrl: 'youtube.com',
+    },
+  },
+]
+---
+
+<section class="overflow-hidden bg-white py-16 sm:py-24 lg:pt-32">
+  <Container>
+    <div class="text-center">
+      <h2
+        class="font-display text-4xl font-semibold text-slate-900 sm:text-5xl"
+      >
+        Press and Interviews
+      </h2>
+      <p class="mx-auto mt-6 max-w-md text-lg leading-8 text-slate-700">
+        Recognitions are like tattoos, you only show them off to people you want
+        to impress.
+      </p>
+    </div>
+    <div
+      class="mx-auto mt-14 max-w-lg columns-1 gap-6 space-y-6 sm:mt-16 sm:max-w-2xl sm:columns-2 lg:mx-0 lg:max-w-none lg:columns-3 xl:gap-8 xl:space-y-8"
+    >
+      {
+        items.map((item) => (
+          <div class="break-inside-avoid-column rounded-xl bg-slate-50/75 p-7 shadow-sm shadow-emerald-100/50 ring-1 ring-slate-900/5 lg:p-10">
+            <div class="flex items-center gap-2 text-md text-slate-600">
+              <Icon name={item.icon} class="h-4 w-4 text-slate-500" />
+
+              {item.category}
+            </div>
+            <h3 class="mt-6 font-display text-lg font-medium text-slate-900 lg:text-xl">
+              {item.title}
+            </h3>
+            <div class="mt-9 space-y-1">
+              <a
+                href={item.link.href}
+                class="group flex items-center gap-2 text-md font-medium text-emerald-600 duration-200 ease-in-out hover:text-emerald-700"
+              >
+                {item.link.label}
+                <Icon
+                  name="arrow-up-right"
+                  class="h-5 w-5 text-emerald-500 duration-300 ease-in-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-emerald-600"
+                />
+              </a>
+              <p class="text-xs text-slate-500 sm:text-[13px]">
+                {item.link.displayUrl}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

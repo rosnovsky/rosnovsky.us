@@ -1,10 +1,11 @@
 ---
 title: '5 Tools in 5 Minutes'
-pubDatetime: 2020-12-23
+publishDate: 2020-12-23
 description: 'These are some of my favorite tools that make my day-to-day job so much easier.'
-tags:
-  - 'work'
-  - 'productivity'
+category: "Open Source"
+image:
+  src: '@assets/blog/posts/5-tools-in-5-minutes/da96c948586c772d42c16edb4f52302d7a8fd0c9-2899x1839.png'
+  alt: 'Generic blog post cover image'
 ---
 
 Practically every week at Auth0 there’s a talk or presentation about something related to our products or technologies we use. My Americas developer support team now has its own talk, every week during team meetings. This past week was the first one of these, and I opened it with a quick talk “5 tools in 5 minutes”. I realize that’s a fairly low-effort topic, but a) you gotta start somewhere, b) Low effort `!==` low quality, and c) I really do save hours of my life every month with these tools. Since you may also find some value in this, I decided to make a quick blog post about these tools.

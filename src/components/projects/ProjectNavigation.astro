@@ -1,0 +1,79 @@
+---
+import Container from '@components/Container.astro'
+import { Icon } from 'astro-icon/components'
+import { getCollection } from 'astro:content'
+
+interface Props {
+  projectSlug: string
+}
+
+const { projectSlug } = Astro.props
+
+async function getSortedProjectsAndIndex(projectSlug: string) {
+  const projects = (await getCollection('projects')).sort(
+    (a, b) => b.data.timeline.end.valueOf() - a.data.timeline.end.valueOf(),
+  )
+
+  const index = projects.findIndex((p) => p.slug === projectSlug)
+  return { projects, index }
+}
+
+async function findAdjacentProject(projectSlug: string, offset: number) {
+  const { projects, index } = await getSortedProjectsAndIndex(projectSlug)
+  const newIndex = (index + offset + projects.length) % projects.length
+  return projects[newIndex]
+}
+
+const prevProject = await findAdjacentProject(projectSlug, -1)
+const nextProject = await findAdjacentProject(projectSlug, 1)
+---
+
+<section class="border-t border-slate-200 py-8">
+  <Container>
+    <div class="flex items-center justify-between">
+      <a href={`/projects/${prevProject.slug}`} class="group space-y-1.5">
+        <div
+          class="flex items-center gap-1 text-slate-500 duration-200 group-hover:text-emerald-500"
+        >
+          <Icon name="chevron-left" class="h-5 w-5" />
+          Previous
+        </div>
+
+        <div class="hidden sm:block">
+          <h4
+            class="font-display text-lg font-medium text-slate-900 md:text-xl"
+          >
+            {prevProject.data.title}
+          </h4>
+        </div>
+      </a>
+
+      <a
+        href="/work"
+        class="group flex h-12 w-12 items-center justify-center rounded-full bg-slate-50 shadow-sm ring-1 ring-slate-100/80 duration-200 hover:bg-emerald-600 md:h-14 md:w-14"
+      >
+        <Icon
+          name="square-2x2"
+          class="h-4 w-4 text-slate-500 duration-200 group-hover:text-emerald-50 md:h-5 md:w-5"
+        />
+      </a>
+
+      <a href={`/projects/${nextProject.slug}`} class="group space-y-1.5">
+        <div
+          class="flex items-center justify-end gap-1 text-slate-500 duration-200 group-hover:text-emerald-500"
+        >
+          Next
+          <Icon name="chevron-right" class="h-5 w-5" />
+        </div>
+
+        <div class="hidden sm:block">
+          <h4
+            class="font-display text-lg font-medium text-slate-900 md:text-xl"
+          >
+            {nextProject.data.title}
+          </h4>
+        </div>
+      </a>
+    </div>
+  </Container>
+</section>

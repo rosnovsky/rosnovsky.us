@@ -1,10 +1,11 @@
 ---
 title: Ori and the Heartbreak of Non-Gamers
 description: 'I’ve been toying with this side project for a couple of months, and I’m pretty happy about how it’s been going so far.'
-pubDatetime: 2020-04-24
-tags:
-  - 'gaming'
-  - 'review'
+publishDate: 2020-04-24
+category: "Gaming"
+image:
+  src: '@assets/blog/posts/ori-and-the-heartbreak-of-non-gamers/e6f2fafe5f089de05aa42e3be50ce6a289d9faad-1920x1080.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 I'm not a gamer. Normally, I don't play video games, casually or otherwise. However, from time to time I enjoy certain titles. I loved **Call of Duty: Modern Warfare 4**, spent countless hours playing **Max Payne 2**, **Portal** (1 & 2), **GTA 2**, **Doom**, an assortment of **Need for Speed** games. I played **Factorio** for a while; I absolutely love **Sayonara Wild Hearts** and played a ton of **Asphalt** 8 and 9. This is a more or less complete history of my relationship with video games. So when I say that I consider **Ori and the Blind Forest** to be the greatest game of all time, take it with a grain of salt.

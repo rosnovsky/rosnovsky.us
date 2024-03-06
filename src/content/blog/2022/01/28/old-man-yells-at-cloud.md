@@ -1,15 +1,14 @@
 ---
 title: 'Old Man Yells at Cloud'
-pubDatetime: 2022-01-28T20:00:00Z
+publishDate: 2022-01-28T20:00:00Z
 description: "Effective immediately, I'm protected by the Age Discrimination Act of 1975 👴🏻"
-tags:
-  - personal
-  - life
+category: "Personal"
+image:
+  src: '@assets/blog/posts/old-man-yells-at-cloud/old.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 Despite my best efforts, I'm turning 40 today. It's a somber day for me, as I'm another year older...
-
-![](assets/blog/posts/old-man-yells-at-cloud/old.jpg)
 
 Nah, just kidding. It's literally just a number, and I'm totally comfortable with it :) My back hurts, but it's been like this for decades so no changes here.
 

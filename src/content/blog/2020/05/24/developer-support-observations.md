@@ -1,10 +1,11 @@
 ---
 title: 'Developer Support Observations'
-pubDatetime: 2020-05-24
+publishDate: 2020-05-24
 description: "I've been working as a Developer Support Engineer at Auth0 for the past six months. Here're a few things I learned along the way."
-tags:
-  - work
-  - tech
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It's been just over 6 months since I joined [Auth0](https://auth0.com/) as their newest Developer Support Engineer. A bunch of my highbrow friends was very condescending. "Oh, tech support. Good for you. With time, you'll become a real engineer". I shrugged these comments off back then, but now I think it was cute of them to say things like this. As in "Aww, honey. You have _no idea_ what you're talking about" :)

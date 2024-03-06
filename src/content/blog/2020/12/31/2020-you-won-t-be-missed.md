@@ -1,12 +1,11 @@
 ---
 title: "2020 won't be missed"
-pubDatetime: 2020-12-31T20:20:20Z
+publishDate: 2020-12-31T20:20:20Z
 description: "This by far the worst year in generations is coming to a close. It won't be missed, yet it will remain in our memory, history books, and our shared trauma will take decades to heal. Here's to 2021, hopefully, a better year."
-tags:
-  - 'covid'
-  - personal
-  - work
-  - mental health
+category: "Personal"
+image:
+  src: '@assets/blog/posts/2020-you-won-t-be-missed/419e8b815b0024e4e5e79a3de390121e43c32f74-2744x3662.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 There's no need to reiterate that 2020 was absolutely terribly awful in every way possible. Dead relatives, friends, and acquaintances, sick loved ones, ruined lives, and futures altered forever. In whatever scheme of things you look at 2020, it was abysmally horrible. Yet humans do human things: we adapt, regroup, process, and move on. And we have hope. Hope that 2021 will be better. That we will persevere, and come out of this whole mess stronger and more resilient, individually and as species. Today, though, I want to take a moment and take a look back at _my_ 2020.

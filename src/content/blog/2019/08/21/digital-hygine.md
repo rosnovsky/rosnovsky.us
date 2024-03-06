@@ -1,11 +1,11 @@
 ---
 title: 'Digital Hygiene'
-pubDatetime: 2019-08-21
+publishDate: 2019-08-21
 description: 'Wash your hands with soap after visiting Facebook. No exceptions!'
-tags:
-  - 'blog'
-  - 'personal'
-  - 'social media'
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 I’ve been cleaning up my digital life for the past couple of months. The deeply underlying reasons are not important (let’s just say, it’s all a part of a bigger self-care and mental health regimen), so I’ll go with the more on the surface ones here.

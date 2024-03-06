@@ -1,13 +1,12 @@
 ---
 title: 'June 2021 Update'
-pubDatetime: 2021-06-26
+publishDate: 2021-06-26
 description: "It's been such an exhausting yet exciting month. The new house stuff is coming along, moving out is on track, work is buzzing. I'm tired, pumped up, sleepy, and on fire!"
-tags:
-  - blog
-  - personal
+category: "Family"
+image:
+  src: '@assets/blog/posts/june-2021-update/june-2021-update0004.jpg'
+  alt: 'Generic blog post cover image'
 ---
-
-![](assets/blog/posts/june-2021-update/june-2021-update0004.jpg)
 
 ## New Home
 

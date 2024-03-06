@@ -1,0 +1,40 @@
+---
+import BlogLayout from '@layouts/BlogLayout.astro'
+import { getCollection } from 'astro:content'
+import { sortPosts } from '@utils/posts'
+import { SITE } from '@config'
+import { slugify, reverseSlug } from '@utils/slugs'
+import type { Page, PaginateFunction } from 'astro'
+import type { Post } from '@types'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const blogPosts = await getCollection('blog')
+  const categories = blogPosts
+    .map((post) => post.data.category)
+    .filter((category, index, self) => self.indexOf(category) === index)
+
+  return categories.flatMap((category) => {
+    const filteredPosts = blogPosts.filter(
+      (post) => post.data.category === category,
+    )
+
+    return paginate(sortPosts(filteredPosts), {
+      params: { category: slugify(category) },
+      pageSize: SITE.postsPerPage,
+    })
+  })
+}
+
+interface Props {
+  page: Page<Post>
+}
+
+const { page } = Astro.props
+const category = reverseSlug(Astro.params.category ?? '')
+---
+
+<BlogLayout page={page} title={`Blog | ${category} | ${SITE.title}`} />

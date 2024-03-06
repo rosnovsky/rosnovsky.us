@@ -1,0 +1,28 @@
+---
+import ProjectsLayout from '@layouts/ProjectsLayout.astro'
+import { getSortedProjects } from '@utils/projects'
+import { SITE } from '@config'
+import type { Page, PaginateFunction } from 'astro'
+import type { Project } from '@types'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const sortedCaseStudies = await getSortedProjects()
+
+  return paginate(sortedCaseStudies, {
+    pageSize: SITE.projectsPerPage,
+  })
+}
+
+interface Props {
+  page: Page<Project>
+}
+
+const { page } = Astro.props
+
+---
+
+<ProjectsLayout page={page} />

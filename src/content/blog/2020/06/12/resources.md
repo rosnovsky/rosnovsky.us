@@ -1,9 +1,11 @@
 ---
 title: 'Resources'
-pubDatetime: 2020-06-12
+publishDate: 2020-06-12
 description: 'Sharing some helpful anti-racism resources. It''s your "red pill": learn the truth, and after this, there is no turning back or choose a life of deliberate, aggressive ignorance.'
-tags:
-  - society
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 In recent days, I was brutally humbled into this realization that I have not a clue about what’s going on in this country. I've been calling America my home for the past 8 years, but apparently, I know _nothing_ about its history, culture, struggles, and pain; how it came about, who built it, and what happened along the way. I’ve been looking for resources that could help me learn and understand more. I want to share some of these resources: I can’t be the only person who had no idea how deep and systemic racism is in America and elsewhere.

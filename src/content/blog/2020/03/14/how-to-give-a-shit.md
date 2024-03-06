@@ -1,10 +1,11 @@
 ---
 title: 'How To Give a Shit'
-pubDatetime: 2020-03-14
+publishDate: 2020-03-14
 description: 'True values become evident in times of crisis.'
-tags:
-  - work
-  - covid
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/how-to-give-a-shit/fb332fa05c5f79caccf196e722503d7fa1b23db6-1738x744.png'
+  alt: 'Generic blog post cover image'
 ---
 
 Originally, I wanted to post about my daily routine. How I come to work early to have breakfast, how I enjoy working in the office in general and with this team in particular, but it all changed now (the routine, I mean). We are fully remote at the moment, and generally speaking, it was a relatively easy transition for most of us. Auth0 is remote-friendly by design and from the very beginning, and it definitely helps.

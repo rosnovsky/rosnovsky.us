@@ -1,12 +1,11 @@
 ---
 title: Using AI vision to generate alt text for images
 description: Let's make sure that you never miss an alt text in your image tags using Azure Computer Vision.
-pubDatetime: 2021-07-07
-tags:
-  - 'web development'
-  - 'nextjs'
-  - 'accessibility'
-  - how-to
+publishDate: 2021-07-07
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/alt-text/1661cf98394e1a5dacfc6b00cdd70e9e25ca9b0e-1134x2016.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 I'm not proud of it, but sometimes I forget to add alt text to the images I post. This flaw makes these images invisible for people who access the web using screen readers. So I decided to fix this using AI, computer vision, and serverless functions.

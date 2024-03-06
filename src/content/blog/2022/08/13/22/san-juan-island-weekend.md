@@ -1,10 +1,11 @@
 ---
 title: San Juan Island Weekend
-pubDatetime: 2022-08-13
+publishDate: 2022-08-13
 description: For the first time in a while, a trip felt truly like a proper vacation. The one that doesn't require another vacation to recover from it :))
-tags:
-  - travel
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/san-juan-island-weekend/bc6cd2176aa0088f5247a8961824dcbd58b6d342-4032x2268.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 It's pretty funny that for the longest time my "vacations" were exhausting. Like, after I come back home, I felt so tired that my only thought was "when would I be able to rest after this?" This time was different: I came back home refreshed, somewhat rested, relaxed, and calm. And the thing is, it was just a bit longer than a weekend.

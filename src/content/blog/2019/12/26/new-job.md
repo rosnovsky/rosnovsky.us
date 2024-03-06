@@ -1,9 +1,11 @@
 ---
 title: 'New Job: Auth0'
-pubDatetime: 2019-12-26
+publishDate: 2019-12-26
 description: 'I started this year with a resolution, that I will upgrade my job, and will not compromise on anything in the process.'
-tags:
-  - work
+category: "Personal"
+image:
+  src: '@assets/blog/posts/new-job/6f5f2dded1630d2b10cca8b291533425ecb5c5c7-900x506.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 I started this year with a resolution, that I will upgrade my job, and will not compromise on anything in the process.

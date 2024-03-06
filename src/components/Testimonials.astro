@@ -1,0 +1,313 @@
+---
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+
+import microsoft from '@images/logos/microsoft.svg'
+
+import Container from './Container.astro'
+import avatarImage1 from '@images/avatars/avatar-1.png'
+import avatarImage2 from '@images/avatars/avatar-2.png'
+import avatarImage3 from '@images/avatars/avatar-3.png'
+import avatarImage4 from '@images/avatars/avatar-4.png'
+import avatarImage5 from '@images/avatars/avatar-5.png'
+
+const testimonials = [
+  {
+    headline: '“Highly skilled and professional”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Katy Jackson',
+      role: 'Designer at Mailgorilla',
+      image: avatarImage1,
+    },
+  },
+  {
+    headline: '“I highly recommend him”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Sean Murphy',
+      role: 'Founder of North Agency',
+      image: avatarImage2,
+    },
+  },
+  {
+    headline: '“I’m so lucky I found John!”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Elaine Foster',
+      role: 'CEO of Wakatech',
+      image: avatarImage3,
+    },
+  },
+  {
+    headline: '“I’m really impressed with the quality of his work”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Jeff Bick',
+      role: 'Developer at Bad Inc.',
+      image: avatarImage4,
+    },
+  },
+  {
+    headline: '“Seriously awesome!”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Jason Cosmo',
+      role: 'CEO of Eastern Digital',
+      image: avatarImage5,
+    },
+  },
+  {
+    headline: '“Highly skilled and professional”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Katy Jackson',
+      role: 'Designer at Mailgorilla',
+      image: avatarImage1,
+    },
+  },
+  {
+    headline: '“I highly recommend him”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Sean Murphy',
+      role: 'Founder of North Agency',
+      image: avatarImage2,
+    },
+  },
+  {
+    headline: '“I’m so lucky I found John!”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Elaine Foster',
+      role: 'CEO of Wakatech',
+      image: avatarImage3,
+    },
+  },
+  {
+    headline: '“I’m really impressed with the quality of his work”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Jeff Bick',
+      role: 'Developer at Bad Inc.',
+      image: avatarImage4,
+    },
+  },
+  {
+    headline: '“Seriously awesome!”',
+    content:
+      'And robusta french bar luwak extra caffeine cup filter macchiato skinny shop cream that variety. Caramel black affogato con frappuccino mocha sweet milk and.',
+    author: {
+      name: 'Jason Cosmo',
+      role: 'CEO of Eastern Digital',
+      image: avatarImage5,
+    },
+  },
+]
+
+const companies = [{ name: 'Microsoft', logo: microsoft }]
+---
+
+<section class="relative overflow-hidden bg-slate-50 py-20 sm:py-24 lg:pt-32">
+  <Container class="relative">
+    <div
+      class="mx-auto grid max-w-xl gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-16"
+    >
+      <div>
+        <h2
+          class="font-display text-4xl font-semibold text-slate-900 sm:text-5xl"
+        >
+          Here’s what past clients are saying about me
+        </h2>
+        <div
+          class="mt-10 hidden h-[7px] w-full rounded-full bg-slate-200 lg:mt-16 lg:block"
+        >
+          <div
+            id="progress-bar"
+            class="h-full w-0 rounded-full bg-slate-900 duration-200"
+          >
+          </div>
+        </div>
+      </div>
+      <div class="lg:ml-auto lg:max-w-sm">
+        <p class="text-lg text-slate-700">
+          Iced pumpkin ristretto irish trifecta robusta trade froth affogato
+          barista con barista cappuccino filter roast.
+        </p>
+        <div class="mt-14 flex gap-2.5 lg:mt-12">
+          <button
+            class="carousel-prev inline-flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm shadow-emerald-200/75 ring-1 ring-slate-200/60 duration-200 hover:bg-emerald-50/50"
+            aria-label="Previous testimonials"
+          >
+            <Image
+              alt=""
+              name="chevron-left"
+              class="h-6 w-6 text-emerald-700/70"
+            />
+          </button>
+          <button
+            class="carousel-next inline-flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm shadow-emerald-200/75 ring-1 ring-slate-200/60 duration-200 hover:bg-emerald-50/50"
+            aria-label="Next testimonials"
+          >
+            <Image
+              alt=""
+              name="chevron-right"
+              class="h-6 w-6 text-emerald-700/70"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </Container>
+  <div class="relative mt-8 lg:mt-24">
+    <Container class="relative">
+      <div class="swiper !overflow-visible">
+        <div class="swiper-wrapper flex w-full">
+          {
+            testimonials.map((testimonial) => (
+              <div class="swiper-slide !h-auto !w-auto shrink-0 border-b border-l border-t border-slate-200 p-10 shadow-sm shadow-emerald-100/50 first:rounded-l-2xl last:rounded-r-2xl last:border-r">
+                <div class="flex h-full w-full max-w-[272px] flex-1 flex-col">
+                  <div class="flex-1">
+                    <div class="flex gap-0.5">
+                      {[...Array(5)].map((i) => (
+                        <Image
+                          alt=""
+                          name="star"
+                          class="h-5 w-5 text-yellow-400"
+                        />
+                      ))}
+                    </div>
+                    <p class="mt-7 font-display text-xl font-medium text-slate-900">
+                      {testimonial.headline}
+                    </p>
+                    <p class="mt-3 text-sm leading-7 text-slate-700">
+                      {testimonial.content}
+                    </p>
+                  </div>
+                  <div>
+                    <hr class="my-6 h-px w-full bg-slate-200" />
+                    <div class="flex items-center justify-between">
+                      <div class="">
+                        <p class="font-display text-md font-medium text-slate-900">
+                          {testimonial.author.name}
+                        </p>
+                        <p class="mt-1.5 text-sm text-slate-600">
+                          {testimonial.author.role}
+                        </p>
+                      </div>
+                      <Image
+                        src={testimonial.author.image}
+                        alt={testimonial.author.name}
+                        class="h-14 w-14 rounded-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+    <div
+      class="absolute inset-y-0 right-0 z-10 hidden bg-gradient-to-r from-slate-50/0 to-slate-50/80 2xl:block 2xl:w-64"
+    >
+    </div>
+  </div>
+  <Container class="mt-16 sm:mt-20">
+    <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-none">
+      <h3
+        class="relative max-w-xs font-writing text-[27px] tracking-wide text-slate-600"
+      >
+        These are some <span class="text-emerald-700">companies</span> I have worked
+        with
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="124"
+          height="101"
+          viewBox="0 0 124 101"
+          fill="none"
+          class="absolute -right-1 top-0 hidden h-auto w-28 translate-x-full text-slate-600 sm:block"
+        >
+          <g clip-path="url(#clip0_46_948)">
+            <path
+              d="M13.1589 30.5605C25.87 29.4569 33.2606 30.8618 39.6091 42.3857C43.633 49.6899 46.4183 59.3311 46.3238 67.7073C46.2691 72.5626 42.2892 65.9515 41.6704 64.6273C34.5099 49.3076 36.8933 29.794 50.6002 18.9635C59.5333 11.9051 68.6204 16.8471 75.1399 24.5336C85.0823 36.2557 86.6911 53.2905 83.9281 67.8963C83.0089 72.755 81.0734 87.6248 74.4798 88.4661C69.0168 89.1631 70.7054 79.5464 71.3591 76.6577C72.2912 72.5391 74.6187 63.7152 78.7577 61.7025C84.694 58.8161 90.7263 68.0342 92.566 72.2364C96.0595 80.2162 97.0519 90.0519 98.5548 98.5871C98.6653 99.2155 96.1022 96.1168 95.6489 95.5787C94.3499 94.0379 92.4806 93.0934 91.3132 91.4383C90.4471 90.2104 87.3106 82.7634 91.0886 86.4645C92.4201 87.7691 96.7405 98.7863 97.1778 98.7038C98.9644 98.3683 102.67 87.2815 103.339 85.227C104.949 80.2795 94.9776 86.3346 93.782 87.3542"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+          </g>
+          <defs>
+            <clip-path id="clip0_46_948">
+              <rect
+                width="106"
+                height="67"
+                fill="white"
+                transform="matrix(0.932551 0.361039 0.361039 -0.932551 0 62.481)"
+              ></rect>
+            </clip-path>
+          </defs>
+        </svg>
+      </h3>
+
+      <div
+        class="mt-12 grid grid-cols-2 gap-2.5 sm:mt-14 lg:mt-20 lg:grid-cols-5"
+      >
+        {
+          companies.map((company) => (
+            <div class="flex items-center justify-center rounded-xl border border-slate-200/90 py-7 shadow-sm shadow-emerald-100/50">
+              <Image
+                src={company.logo}
+                alt={company.name}
+                class="h-auto w-32 sm:w-36"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>
+
+<script>
+  import SwiperInstance from 'swiper'
+  import { Navigation } from 'swiper/modules'
+  import type { Swiper, SwiperOptions } from 'swiper/types'
+  import 'swiper/css'
+
+  document.addEventListener('astro:page-load', () => {
+    const progressBar = document.getElementById('progress-bar')
+    const swiperParams: SwiperOptions = {
+      modules: [Navigation],
+      navigation: {
+        nextEl: '.carousel-next',
+        prevEl: '.carousel-prev',
+      },
+      scrollbar: {
+        draggable: true,
+      },
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      grabCursor: true,
+      loop: false,
+      centeredSlides: false,
+      initialSlide: 0,
+      on: {
+        slideChange: (swiper: Swiper) => {
+          if (progressBar) progressBar.style.width = `${swiper.progress * 100}%`
+        },
+      },
+    }
+
+    new SwiperInstance('.swiper', swiperParams)
+  })
+</script>
+../../src/@images/avatars/avatar-1.png

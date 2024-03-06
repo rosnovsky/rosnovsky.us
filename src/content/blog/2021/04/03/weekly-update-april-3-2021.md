@@ -1,10 +1,11 @@
 ---
 title: 'Weekly Update #1'
-pubDatetime: 2021-04-03
+publishDate: 2021-04-03
 description: "In order to keep myself accounatble and to develop some writing consistency, I'm going to start posting weekly updates. Here's the first one."
-tags:
-  - personal
-  - work
+category: "Covid"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 Looks like I'm more excited about fiddling with this blog than about actually writing. This is a known phenomenon, and to overcome it, I'm going to post something at least every week.

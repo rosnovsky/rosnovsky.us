@@ -1,10 +1,11 @@
 ---
 title: 'Byteconf React 2020'
-pubDatetime: 2020-05-03
+publishDate: 2020-05-03
 description: "Online-only conferences are going to be huge in the coming months and years. Here's one I enjoyed recently."
-tags:
-  - web development
-  - tech
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 2020 is a special year in so many ways, mostly pretty terrible and sad ways to be honest. However, there are some silver linings there, and one of them I mentioned earlier in a [post about staying entertained during Covid-19](/blog/entertainment-in-times-of-covid-19/): tech conferences moving online. Not only that but as a result of increased accessibility, we are getting exposed to a wide and fantastic variety of speakers from across the globe. Every conference now can have any speaker at any time!

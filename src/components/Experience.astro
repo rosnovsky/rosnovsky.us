@@ -1,0 +1,214 @@
+---
+import Container from '@components/Container.astro'
+import DownloadResumeSpinner from '@components/illustrations/DownloadResumeSpinner.astro'
+import HighlightDoodle from '@components/illustrations/HighlightDoodle.astro'
+import Underline from '@components/illustrations/Underline.astro'
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import image from '@images/experience-image.jpg'
+
+const features = [
+  {
+    iconName: 'stamp',
+    title: 'Excellence',
+    description:
+      'I take pride in doing things well. All client work is done with the best quality possible.',
+  },
+  {
+    iconName: 'hourglass',
+    title: 'Speed',
+    description:
+      'I like to work hard and fast. I know how important deadlines are to my clients.',
+  },
+  {
+    iconName: 'users-meeting',
+    title: 'Responsiveness',
+    description:
+      'You can rely on me to be responsive and clear whenever we work together.',
+  },
+]
+---
+
+<section
+  class="relative overflow-hidden bg-gradient-to-b from-slate-50 via-slate-50 to-white pb-40 pt-20 sm:pt-24 lg:pb-64 lg:pt-32"
+>
+  <Container>
+    {/* Section header */}
+    <div
+      class="mx-auto grid max-w-xl items-center gap-6 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-16"
+    >
+      <div>
+        <h2
+          class="font-display text-4xl font-semibold text-slate-900 sm:text-5xl"
+        >
+          I'm your
+          <span class="relative whitespace-nowrap">
+            <Underline />
+
+            <span class="relative text-emerald-700">all-in-one</span>
+          </span>
+          project solution
+        </h2>
+      </div>
+      <div>
+        <p class="text-lg leading-8 text-slate-700">
+          Experience the advantage of an all-inclusive project solution, where
+          excellence, speed, and responsiveness converge to ensure the highest
+          quality outcome.
+        </p>
+      </div>
+    </div>
+
+    {/* Content */}
+    <div
+      class="mx-auto mt-16 grid max-w-xl gap-14 lg:mx-0 lg:mt-24 lg:max-w-none lg:grid-cols-12 lg:gap-7"
+    >
+      {/* Features with icons */}
+      <div class="max-w-lg lg:col-span-4">
+        <ul class="relative">
+          {
+            features.map(({ iconName, title, description }, index) => (
+              <li>
+                <div
+                  class:list={[
+                    {
+                      'relative pb-24 lg:pb-20': index !== features.length - 1,
+                    },
+                  ]}
+                >
+                  {index !== features.length - 1 && (
+                    <span
+                      class="absolute bottom-4 left-10 top-24 -ml-px border border-dashed border-slate-300"
+                      aria-hidden="true"
+                    />
+                  )}
+
+                  <div class="relative flex space-x-7">
+                    <div>
+                      <span class="flex h-20 w-20 items-center justify-center rounded-full bg-slate-900 shadow-lg">
+                        <Image
+                          alt=""
+                          src={iconName}
+                          class="h-6 w-6 text-emerald-50"
+                          width={24}
+                          height={24}
+                        />
+                      </span>
+                    </div>
+                    <div>
+                      <h3 class="font-display text-xl font-medium text-slate-900">
+                        {title}
+                      </h3>
+                      <p class="mt-2.5 text-base text-slate-700">
+                        {description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+
+          {/* Floating handwritten text with arrow */}
+          <div class="absolute -bottom-36 -right-8 hidden gap-6 lg:flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="81"
+              height="83"
+              viewBox="0 0 81 83"
+              fill="none"
+              class="relative -top-2 h-auto w-20 text-slate-600"
+            >
+              <g clip-path="url(#clip0_112_68)">
+                <path
+                  d="M79.0279 62.2024C58.1227 60.567 37.0551 52.8379 23.5836 35.8709C19.6389 30.9027 16.5994 23.913 14.6598 17.809C14.25 16.519 14.0629 15.1736 13.8444 13.8392C13.6447 12.6204 8.83154 19.8767 8.22696 20.6903C1.76323 29.3888 8.93024 20.1844 10.9563 16.5611C12.5286 13.7492 13.3857 10.1847 15.3992 7.63962C17.0205 5.59024 20.2035 9.67344 21.5513 10.8281C22.9371 12.0152 33.1749 18.4514 29.1817 20.1187C22.0175 23.1101 14.7009 22.4979 7.21764 22.9016"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_112_68">
+                  <rect
+                    width="85"
+                    height="29"
+                    fill="white"
+                    transform="translate(21.4469 0.837036) rotate(46.0556)"
+                  ></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <span
+              class="inline-block max-w-[220px] -rotate-12 transform font-writing text-2xl tracking-wide text-slate-600"
+            >
+              What differentiates me from others
+            </span>
+          </div>
+        </ul>
+      </div>
+
+      {/* Graphics */}
+      <div class="lg:col-span-8 lg:pl-8 xl:pl-24">
+        <div class="aspect-h-2 aspect-w-3 relative w-full">
+          <Image
+            class="h-full w-full rounded-3xl object-cover object-center"
+            src={image}
+            alt=""
+            sizes="(min-width: 1280px) 45rem, (min-width: 1024px) calc(66.67vw - 4rem), (min-width: 640px) 36rem, calc(100vw - 2.5rem)"
+          />
+          <div>
+            <div
+              class="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/50 backdrop-blur-sm lg:h-44 lg:w-44"
+            >
+              {/* Spinning 'Download Resume' text */}
+              <DownloadResumeSpinner />
+
+              <!-- Download button -->
+              <button
+                class="relative left-1/2 top-1/2 inline-flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-slate-900 duration-200 hover:bg-slate-800 lg:h-20 lg:w-20"
+                aria-label="Download resume"
+              >
+                <Image
+                  alt=""
+                  src=""
+                  class="h-5 w-5 text-white lg:h-7 lg:w-7"
+                  stroke-width="2.2"
+                  width={28}
+                  height={28}
+                />
+              </button>
+            </div>
+
+            <!-- Stats -->
+            <dl
+              class="absolute bottom-0 right-1/2 grid w-max translate-x-1/2 translate-y-3/4 grid-cols-2 gap-5 rounded-2xl bg-emerald-700/90 px-6 py-8 text-center backdrop-blur-sm sm:translate-y-1/2 sm:gap-12 sm:p-10 lg:right-20 lg:translate-x-0"
+            >
+              <div class="flex flex-col gap-1">
+                <dt class="text-sm font-semibold leading-6 text-emerald-50">
+                  Years of experience
+                </dt>
+                <dd
+                  class="order-first text-3xl font-extrabold text-white sm:text-4xl"
+                >
+                  10
+                </dd>
+              </div>
+
+              <div class="flex flex-col gap-1">
+                <dt class="text-sm font-semibold leading-6 text-emerald-50">
+                  Projects completed
+                </dt>
+                <dd
+                  class="order-first text-3xl font-extrabold text-white sm:text-4xl"
+                >
+                  150
+                </dd>
+              </div>
+            </dl>
+
+            <HighlightDoodle />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,205 +1,165 @@
 ---
-import { LOGO_IMAGE, SITE } from '@config';
-import Hr from './Hr.astro';
-import LinkButton from './LinkButton.astro';
-import favicon from '../../public/favicon-32x32.png';
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
+import logo from '@images/apple-touch-icon.png'
+import logoIcon from '@images/favicon-32x32.png'
+// import { ViewTransitions, fade } from 'astro:transitions'
 
-export interface Props {
-  activeNav?: 'blog' | 'tags' | 'about' | 'search';
-}
+const pathname = Astro.url.pathname.replace(/(?<=.)\/$/, '')
 
-const { activeNav } = Astro.props;
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  // { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
+  // { label: 'Contact', href: '/contact' },
+]
+
 ---
 
-<header>
-  <a id="skip-to-content" href="#main-content">Skip to content</a>
-  <div class="nav-container">
-    <div class="top-nav-wrap">
-      <a href="/" class="w-full inline-flex logo whitespace-nowrap">
-        <Image class="mr-3 w-6 h-6" src={favicon} alt={SITE.title} /> {SITE.title} 
-      </a>
-      <nav id="nav-menu">
-        <button
-          class="hamburger-menu focus-outline"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          aria-controls="menu-items"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="menu-icon"
-          >
-            <line x1="7" y1="12" x2="21" y2="12" class="line"></line>
-            <line x1="3" y1="6" x2="21" y2="6" class="line"></line>
-            <line x1="12" y1="18" x2="21" y2="18" class="line"></line>
-            <line x1="18" y1="6" x2="6" y2="18" class="close"></line>
-            <line x1="6" y1="6" x2="18" y2="18" class="close"></line>
-          </svg>
-        </button>
-        <ul id="menu-items" class="display-none sm:flex">
-          <li>
-            <a href="/blog" class={activeNav === 'blog' ? 'active' : ''}>
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="/tags" class={activeNav === 'tags' ? 'active' : ''}>
-              Tags
-            </a>
-          </li>
-          <li>
-            <a href="/about" class={activeNav === 'about' ? 'active' : ''}>
-              About
-            </a>
-          </li>
-          <li>
-            <LinkButton
-              href="/search"
-              className={`focus-outline p-3 sm:p-1 ${
-                activeNav === 'search' ? 'active' : ''
-              } flex`}
-              ariaLabel="search"
-              title="Search"
+<header
+  class="h-24 border-b border-slate-200/80 bg-white text-slate-800 dark:border-slate-900/20 dark:bg-slate-950 dark:text-slate-200" 
+>
+  <div
+    class="mx-auto flex h-full w-full max-w-screen-xl items-center px-5 sm:px-6 lg:px-8"
+  >
+    <nav class="relative z-50 flex min-w-full items-center justify-between">
+      <!-- Logo -->
+      <div class="flex shrink-0 items-center">
+        <a href="/" aria-label="Home" class="flex flex-shrink-0 items-center">
+          <Image
+            src={logo}
+            alt=""
+            class="h-8 w-auto sm:h-9 md:hidden lg:block lg:h-10"
+            loading={"eager"}
+          />
+          <Image
+            src={logoIcon}
+            alt=""
+            class="hidden h-8 w-auto md:block lg:hidden"
+            loading={"eager"}
+          />
+          <h1 class="ml-5 text-xl font-bold">Rosnovsky Park</h1>
+        </a>
+      </div>
+
+      <!-- Desktop navigation links -->
+      <div class="hidden items-center md:flex md:space-x-6 lg:space-x-8">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'relative duration-200 after:absolute after:-bottom-2.5 after:left-1/2 after:h-0.5 after:w-4 after:-translate-x-1/2 after:rounded-full after:bg-slate-900 after:opacity-0 after:content-[""]',
+                pathname === link.href
+                  ? 'font-semibold text-slate-900 after:opacity-100 dark:text-slate-200'
+                  : 'font-medium text-slate-700 hover:text-slate-900 hover:after:opacity-25 dark:text-slate-400 dark:hover:text-slate-200',
+              ]}
+              data-pathname={pathname}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="scale-125 sm:scale-100"
-                ><path
-                  d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"
-                ></path>
-              </svg>
-            </LinkButton>
-          </li>
-          <li>
-            {
-              SITE.lightAndDarkMode && (
-                <button
-                  id="theme-btn"
-                  class="focus-outline"
-                  title="Toggles light & dark"
-                  aria-label="auto"
-                  aria-live="polite"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" id="moon-svg">
-                    <path d="M20.742 13.045a8.088 8.088 0 0 1-2.077.271c-2.135 0-4.14-.83-5.646-2.336a8.025 8.025 0 0 1-2.064-7.723A1 1 0 0 0 9.73 2.034a10.014 10.014 0 0 0-4.489 2.582c-3.898 3.898-3.898 10.243 0 14.143a9.937 9.937 0 0 0 7.072 2.93 9.93 9.93 0 0 0 7.07-2.929 10.007 10.007 0 0 0 2.583-4.491 1.001 1.001 0 0 0-1.224-1.224zm-2.772 4.301a7.947 7.947 0 0 1-5.656 2.343 7.953 7.953 0 0 1-5.658-2.344c-3.118-3.119-3.118-8.195 0-11.314a7.923 7.923 0 0 1 2.06-1.483 10.027 10.027 0 0 0 2.89 7.848 9.972 9.972 0 0 0 7.848 2.891 8.036 8.036 0 0 1-1.484 2.059z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" id="sun-svg">
-                    <path d="M6.993 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007S14.761 6.993 12 6.993 6.993 9.239 6.993 12zM12 8.993c1.658 0 3.007 1.349 3.007 3.007S13.658 15.007 12 15.007 8.993 13.658 8.993 12 10.342 8.993 12 8.993zM10.998 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2h-3zm17 0h3v2h-3zM4.219 18.363l2.12-2.122 1.415 1.414-2.12 2.122zM16.24 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.342 7.759 4.22 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z" />
-                  </svg>
-                </button>
-              )
-            }
-          </li>
-        </ul>
-      </nav>
-    </div>
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="flex items-center md:hidden">
+        <!-- Mobile menu button -->
+        <div class="ml-4 md:hidden" x-data="{ mobileMenuOpen: false }">
+          <button
+            class="group relative z-50 flex cursor-pointer items-center justify-center rounded-full bg-slate-100/80 p-3 shadow-sm shadow-emerald-100/50 ring-1 ring-slate-900/5 transition duration-300 ease-in-out hover:bg-slate-200/60 focus:outline-none dark:bg-slate-900/20 dark:shadow-emerald-900/50 dark:ring-slate-100/5 md:hidden"
+            aria-label="Toggle Navigation"
+            @click="mobileMenuOpen=!mobileMenuOpen"
+          >
+            <span
+              class="relative h-3.5 w-4 transform transition duration-500 ease-in-out"
+            >
+              <span
+                class="absolute block h-0.5 rotate-0 transform rounded-full bg-slate-700 opacity-100 transition-all duration-300 ease-in-out group-hover:bg-slate-900 dark:bg-slate-300"
+                :class="mobileMenuOpen ? 'top-1.5 left-1/2 w-0': 'top-0 left-0 w-full'"
+              ></span>
+              <span
+                class="absolute left-0 top-1.5 block h-0.5 w-full transform rounded-full bg-slate-700 opacity-100 transition-all duration-300 ease-in-out group-hover:bg-slate-900 dark:bg-slate-300"
+                :class="mobileMenuOpen ? 'rotate-45': 'rotate-0'"></span>
+              <span
+                class="absolute left-0 top-1.5 block h-0.5 w-full transform rounded-full bg-slate-700 opacity-100 transition-all duration-300 ease-in-out group-hover:bg-slate-900 dark:bg-slate-300"
+                :class="mobileMenuOpen ? '-rotate-45': 'rotate-0'"></span>
+              <span
+                class="absolute block h-0.5 rotate-0 transform rounded-full bg-slate-700 opacity-100 transition-all duration-300 ease-in-out group-hover:bg-slate-900 dark:bg-slate-300"
+                :class="mobileMenuOpen ? 'top-1.5 left-1/2 w-0': 'left-0 top-3 w-full'"
+              ></span>
+            </span>
+          </button>
+
+          <!-- Mobile menu container -->
+          <div class="md:hidden">
+            <!-- Background dark overlay when mobile menu is open -->
+            <div
+              x-show="mobileMenuOpen"
+              x-transition:enter="duration-200 ease-out"
+              x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100"
+              x-transition:leave="duration-150 ease-in"
+              x-transition:leave-start="opacity-100"
+              x-transition:leave-end="opacity-0"
+              class="fixed inset-0 z-20 bg-slate-900 bg-opacity-50"
+              style="display: none"
+            >
+            </div>
+
+            <!-- Mobile menu popover -->
+            <div
+              x-show="mobileMenuOpen"
+              x-transition:enter="duration-300 ease-out"
+              x-transition:enter-start="opacity-0 scale-90"
+              x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="duration-200 ease-in"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-90"
+              class="absolute inset-x-0 top-full z-30 mt-4 origin-top overflow-hidden rounded-2xl bg-slate-50 px-6 py-7 shadow-xl shadow-emerald-100/40 ring-1 ring-slate-900/5 dark:bg-slate-900 dark:shadow-emerald-900/60 dark:ring-slate-100/5"
+              style="display: none"
+              @click.away="mobileMenuOpen = false"
+            >
+              <div>
+                <!-- Mobile menu links -->
+                <div class="flex flex-col space-y-4">
+                  {
+                    links.map((link) => (
+                      <a
+                        href={link.href}
+                        class="block text-base font-semibold text-slate-700 duration-200 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+                      >
+                        {link.label}
+                      </a>
+                    ))
+                  }
+
+                  <!-- Dropdown library list -->
+                  <!-- <ul
+                      style="display: none"
+                      class="z-20 space-y-4 px-3"
+                      x-show.transition="open"
+                    >
+                      {
+                        pages.map((link) => (
+                          <li class="mt-4">
+                            <a
+                              href={link.href}
+                              class="block text-md font-medium text-slate-700 transition duration-200 ease-in-out hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-200"
+                            >
+                              {link.label}
+                            </a>
+                          </li>
+                        ))
+                      }
+                    </ul> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-  <Hr />
 </header>
 
-<style>
-  #skip-to-content {
-    @apply absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4;
-  }
-  .nav-container {
-    @apply mx-auto flex max-w-3xl flex-col items-center justify-between sm:flex-row;
-  }
-  .top-nav-wrap {
-    @apply relative flex w-full items-start justify-between p-4 sm:items-center sm:py-8;
-  }
-  .logo {
-    @apply absolute py-1 text-xl font-bold sm:static sm:text-2xl;
-  }
-  .hamburger-menu {
-    @apply self-end p-2 sm:hidden;
-  }
-  .hamburger-menu svg {
-    @apply h-6 w-6 scale-125 fill-skin-base;
-  }
 
-  nav {
-    @apply flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
-  }
-  nav ul {
-    @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-x-2 gap-y-2 sm:ml-0 sm:mt-0 sm:w-auto sm:gap-x-5 sm:gap-y-0;
-  }
-  nav ul li {
-    @apply col-span-2 flex items-center justify-center;
-  }
-  nav ul li a {
-    @apply w-full px-4 py-3 text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
-  }
-  nav ul li:nth-last-child(2) a {
-    @apply w-auto;
-  }
-  nav ul li:nth-last-child(1),
-  nav ul li:nth-last-child(2) {
-    @apply col-span-1;
-  }
-  nav a.active {
-    @apply underline decoration-wavy decoration-2 underline-offset-4;
-  }
-  nav a.active svg {
-    @apply fill-skin-accent;
-  }
-
-  nav button {
-    @apply p-1;
-  }
-  nav button svg {
-    @apply h-6 w-6 fill-skin-base hover:fill-skin-accent;
-  }
-  #theme-btn {
-    @apply p-3 sm:p-1;
-  }
-  #theme-btn svg {
-    @apply scale-125 hover:rotate-12 sm:scale-100;
-  }
-
-  .menu-icon line {
-    @apply transition-opacity duration-75 ease-in-out;
-  }
-  .menu-icon .close {
-    opacity: 0;
-  }
-  .menu-icon.is-active .line {
-    @apply opacity-0;
-  }
-  .menu-icon.is-active .close {
-    @apply opacity-100;
-  }
-</style>
-
-<script>
-  function toggleNav() {
-    // Toggle menu
-    const menuBtn = document.querySelector('.hamburger-menu');
-    const menuIcon = document.querySelector('.menu-icon');
-    const menuItems = document.querySelector('#menu-items');
-
-    menuBtn?.addEventListener('click', () => {
-      const menuExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuIcon?.classList.toggle('is-active');
-      menuBtn.setAttribute('aria-expanded', menuExpanded ? 'false' : 'true');
-      menuBtn.setAttribute(
-        'aria-label',
-        menuExpanded ? 'Open Menu' : 'Close Menu'
-      );
-      menuItems?.classList.toggle('display-none');
-    });
-  }
-
-  toggleNav();
-
-  // Runs on view transitions navigation
-  document.addEventListener('astro:after-swap', toggleNav);
-</script>

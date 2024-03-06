@@ -1,9 +1,11 @@
 ---
 title: 'Goat Lake Hike'
-pubDatetime: 2020-07-29
+publishDate: 2020-07-29
 description: 'A perfect hike featuring creeks, streams, waterfalls, all kinds of forests, from birch to brush to old growth, and the payoff is one of the most beautiful lakes out there.'
-tags:
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/goat-lake-hike/4df7745096afe6f593b9f7e78f28443e972c0637-1600x1200.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 Time for my weekly hiking report. For further accountability, I'm planning a week-long PCT hike from Stevens Pass to Snoqualmie Pass in early September, and that's a big reason why I'm trying to stick to this weekly training schedule. The hike I'll attempt is a 63-mile stretch of the Pacific Crest Trail with a total elevation gain of over 15,000 ft, so it makes sense to give my best shot at shorter and easier hikes at first, and gradually increase difficulty. Unsurprisingly, ever hike is much easier to hike than the one a week earlier: it's like my body really missed this kind of thing, and soaks it all in. Also, there's certainly a kind of low base effect: my fitness level is barely above zero, so it's fairly easy to make progress :)

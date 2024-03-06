@@ -1,10 +1,11 @@
 ---
 title: 'Weekly Update #2'
-pubDatetime: 2021-04-12
+publishDate: 2021-04-12
 description: 'An exciting week, full of driving around and anticipation of change.'
-tags:
-  - personal
-  - covid
+category: "Covid"
+image:
+  src: '@assets/blog/posts/weekly-update-2/seattle-skyline.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 Time for another weekly update. Not that my life is so packed with events that it warrants a weekly post about what’s going on. This week, however, was pretty exciting.

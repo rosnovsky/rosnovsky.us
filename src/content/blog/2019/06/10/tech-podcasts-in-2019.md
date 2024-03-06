@@ -1,10 +1,11 @@
 ---
 title: '30 Best Tech and Dev Podcasts'
-pubDatetime: 2019-06-10
+publishDate: 2019-06-10
 description: "I've been podcasting for 15+ years. Here's my list of top 30 podcasts of all times... of 2019."
-tags:
-  - 'podcasting'
-  - tech
+category: "Family"
+image:
+  src: '@assets/blog/posts/tech-podcasts-in-2019/48898b458c771b1c327d452d017b7912ab0e73d8-1179x667.jpg'
+  alt: 'Me sitting at the table next to Leo Laporte at TWiT studio'
 ---
 
 It’s hard to believe, but I’ve been listening to podcasts for almost 15 years, and been podcasting myself since April 2006. Just think about it: back then Youtube had just pivoted from being [a dating site](https://www.cnet.com/news/youtube-started-as-an-online-dating-site/), Twitter had like 150 active users, Uber won’t exist for another 3 years or so, and the most innovative mobile phone companies in the world are Nokia and Blackberry. Blockbuster was huge, and Lost was the biggest TV show of all time, still in Season 3 :)

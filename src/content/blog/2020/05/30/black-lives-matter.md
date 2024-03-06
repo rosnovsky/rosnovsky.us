@@ -1,9 +1,11 @@
 ---
 title: 'Black Lives Matter'
-pubDatetime: 2020-05-30
+publishDate: 2020-05-30
 description: 'Silence is complicity.'
-tags:
-  - society
+category: "Personal"
+image:
+  src: '@assets/blog/posts/black-lives-matter/4875790946877cdbc25bfc40390fda0eefddec43-2000x917.png'
+  alt: 'Generic blog post cover image'
 ---
 
 I can't believe this has to be said out loud again and again in 2020.

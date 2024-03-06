@@ -1,47 +1,127 @@
 ---
-import Hr from './Hr.astro';
-import Socials from './Socials.astro';
+import { Icon } from 'astro-icon/components'
+import Container from '@components/Container.astro'
+import newsletterBg from '@images/newsletter-bg.png'
+import { SOCIALS } from '@config'
 
-const currentYear = new Date().getFullYear();
-
-const commitSha = process.env.GITHUB_ACTION_BUILD ? process.env.COMMIT_SHA : false;
-
-export interface Props {
-  noMarginTop?: boolean;
+interface Props {
+  newsletter?: boolean
 }
 
-const { noMarginTop = false } = Astro.props;
+const { newsletter = false } = Astro.props
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  // { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
+  // { label: 'Contact', href: '/contact' },
+]
 ---
 
-<footer class={`${noMarginTop ? '' : 'mt-auto'}`}>
-  <Hr noPadding />
-  <div class="footer-wrapper">
-    <Socials centered />
-    <div class="copyright-wrapper">
-      <span>Copyright &#169; 2003-{currentYear} Art Rosnovsky</span>
-      <span class="separator">&nbsp;|&nbsp;</span>
-      <span>All rights reserved. {commitSha && <small title="Commit SHA">[<a href={`https://github.com/rosnovsky/rosnovsky.us/commit/${commitSha}`} target="_blank">{commitSha.slice(0, 8)}</a>]</small>}</span>
-    </div>
-  </div>
-</footer>
-
-<style>
-  footer {
-    @apply w-full;
+<section class:list={[newsletter && 'pt-12 sm:pt-16']}>
+  {
+    newsletter && (
+      <div class="relative">
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-slate-900" />
+        <div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+          <div class="relative overflow-hidden rounded-2xl bg-emerald-700 px-5 py-12 dark:bg-emerald-300 sm:px-16 lg:py-14">
+            <div class="absolute inset-0 h-full w-full bg-emerald-400 object-cover object-right dark:bg-emerald-600" />
+            <div class="relative flex w-full flex-col items-center lg:flex-row">
+              <div class="max-w-2xl text-center lg:pr-4 lg:text-left">
+                <h3 class="font-display text-4xl font-semibold text-white dark:text-slate-900 sm:text-5xl">
+                  Subscribe to my newsletter
+                </h3>
+                <p class="mx-auto mt-4 max-w-lg text-lg text-emerald-50 dark:text-emerald-950 lg:mx-0 lg:mt-6">
+                  Join 10,000+ designers and get creative site breakdowns,
+                  design musings and tips every Monday.
+                </p>
+              </div>
+              <form
+                action="#"
+                method="post"
+                class="relative mt-10 w-full max-w-lg lg:mt-0"
+              >
+                <input
+                  type="email"
+                  class="dark:palceholder-emerald-900/90 h-14 w-full rounded-full border-0 bg-white/10 py-3.5 pl-5 pr-32 text-sm leading-5 text-emerald-50 placeholder-emerald-100/90 outline-none ring-1 ring-white/25  backdrop-blur duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-white/30 dark:bg-slate-950/10 dark:ring-slate-950/25 dark:focus:ring-slate-950/30 sm:pl-6"
+                  required
+                  placeholder="Enter your email"
+                  auto-complete="email"
+                />
+                <button
+                  type="submit"
+                  class="absolute right-1.5 top-1.5 inline-flex h-11 items-center rounded-full bg-emerald-900 px-5 py-3 text-sm font-semibold text-emerald-50 outline-none transition duration-200 ease-in-out hover:bg-emerald-800 focus:outline-none sm:px-7 sm:text-md"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
-  .footer-wrapper {
-    @apply flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4;
-  }
-  .link-button {
-    @apply my-1 p-2 hover:rotate-6;
-  }
-  .link-button svg {
-    @apply scale-125;
-  }
-  .copyright-wrapper {
-    @apply my-2 flex flex-col items-center whitespace-nowrap sm:flex-row;
-  }
-  .separator {
-    @apply hidden sm:inline;
-  }
-</style>
+  <footer
+    class="overflow-hidden bg-slate-950 pb-8 pt-20 text-slate-50 sm:pb-12 sm:pt-24 lg:pt-32"
+  >
+    <Container>
+      <div
+        class="mx-auto grid max-w-xl items-center gap-5 lg:mx-0 lg:max-w-none lg:grid-cols-12 lg:gap-12 xl:gap-20"
+      >
+        <div class="lg:col-span-7">
+          <h3
+            class="text-center font-display text-3xl font-semibold text-slate-100 dark:text-slate-50 sm:text-5xl lg:max-w-xl lg:text-left"
+          >
+            It costs nothing to be kind.
+          </h3>
+        </div>
+        <div class="flex flex-col items-center lg:col-span-5 lg:items-start">
+          <p class="text-center text-lg text-slate-50 lg:max-w-sm lg:text-left">
+            Everything is so expensive these days. But kindness is free. So is
+            being an asshole. Choose wisely.
+          </p>
+          <div
+            class="mt-16 grid w-full max-w-sm grid-cols-2 gap-3.5 sm:max-w-none sm:grid-cols-3 lg:mt-8 lg:gap-2.5 xl:gap-3.5"
+          >
+            {
+              SOCIALS.map((socialLink) => (
+                <>
+                  <a
+                    class="flex items-center justify-center gap-2.5 rounded-full border border-slate-600/90 py-2.5 text-sm text-slate-50 duration-200 ease-in-out hover:bg-slate-800 hover:text-white lg:gap-2 xl:gap-2.5"
+                    href={socialLink.href}
+                  >
+                    <Icon
+                      name={socialLink.name}
+                      class="h-4 w-4 shrink-0 text-slate-200 duration-200 ease-in-out group-hover:fill-slate-100"
+                    />
+                    {socialLink.label}
+                  </a>
+                </>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <hr
+        class="mb-6 mt-12 h-px w-full border-slate-600/90 sm:mb-10 sm:mt-16"
+      />
+      <div class="flex flex-col items-center justify-between md:flex-row">
+        <div class="flex items-center gap-6">
+          {
+            links.map((link) => (
+              <a
+                href={link.href}
+                class="text-base font-medium text-slate-300 duration-200 ease-in-out hover:text-white "
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+        <p class="mt-8 text-base text-slate-400/90 md:mt-0">
+          © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved.
+        </p>
+      </div>
+    </Container>
+  </footer>
+</section>

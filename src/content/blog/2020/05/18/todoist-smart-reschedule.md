@@ -1,9 +1,11 @@
 ---
 title: 'Todoist Smart Reschedule'
-pubDatetime: 2020-05-18
+publishDate: 2020-05-18
 description: 'Instead of looking for Todoist alternatives, I decided to implement my own Smart Reschedule feature, which they removed from the app not long ago.'
-tags:
-  - web development
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/todoist-smart-reschedule/8456d51f10b50af9a5d7a9c83e56a22ba7c00718-2000x1517.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 I've been sad recently since Todoist removed the Smart Reschedule feature from the application. For me personally, it was one of the most used features. Whenever I get overwhelmed with overdue tasks, usually on Fridays, I'd just hit "Reschedule". Todoist would just move all overdue tasks to the next week, minding their priority, existing daily task load, and so forth. Now that it's gone, my first instinct was to look for a different tool. Unfortunately, there's nothing there that I like enough to switch. And then I thought: wait a second, why can't I implement something like this myself? I mean, there's an [API available from Todoist](https://developer.todoist.com/sync/v8/), I've got my VS Code and some spare time on my hands... So here goes.

@@ -1,9 +1,11 @@
 ---
 title: 'Monroe 4.6 magnitude earthquake 2019'
-pubDatetime: 2019-07-22
+publishDate: 2019-07-22
 description: "The day that shook Monroe, WA. And my house. And a bunch of other people's houses."
-tags:
-  - personal
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It’s been a few weeks since I’d been woken up in the middle of the night by an earthquake. I just want to write this down since this was one of my first encounters with this natural phenomenon. I think I’ve been through a light earthquake when I was visiting California in 1996, but I can’t be sure, and I couldn’t find any archival information (it was sometime in August 1996, somewhere either in Sacramento or in the LA area).

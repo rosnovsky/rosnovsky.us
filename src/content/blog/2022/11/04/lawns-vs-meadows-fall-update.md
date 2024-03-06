@@ -1,10 +1,11 @@
 ---
 title: 'Lawns vs Meadows: post-summer update'
 description: "This year I've run an experiment: I replaced the lawn in our backyard with a meadow. And it went pretty well!"
-pubDatetime: 2022-11-04T20:00:00Z
-tags:
-  - 'home'
-  - 'environment'
+publishDate: 2022-11-04T20:00:00Z
+category: "Family"
+image:
+  src: '@assets/blog/posts/lawns-vs-meadows/10.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 It's been a while since I posted a backyard update. So here goes.

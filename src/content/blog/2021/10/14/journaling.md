@@ -1,11 +1,11 @@
 ---
 title: Journaling
 description: I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a game-changer in the past few months.
-pubDatetime: 2021-10-14
-tags:
-  - 'blog'
-  - 'journaling'
-  - 'writing'
+publishDate: 2021-10-14
+category: "Personal"
+image:
+  src: '@assets/blog/posts/journaling/7d5aecc45d9d076d60778e0485260af6782ea21d-2615x1885.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 For the longest time I've been blogging into the void. I appreciate those of you actually reading this, but by and large there are very few people who came here to read my stuff. Arguably, it's not too profound or deep or insightful, so it's totally fine; it's obscure by design, I guess.

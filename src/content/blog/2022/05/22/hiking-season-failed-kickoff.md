@@ -1,11 +1,11 @@
 ---
 title: Hiking season failed kickoff
-pubDatetime: 2022-05-22
+publishDate: 2022-05-22
 description: 'The 2022 hiking season is off to a rough start: out of two hikes we attempted as a family, one ended with an impassable road about two miles prior to the trailhead, and the second one… well, let’s just say that we had to turn back sooner than expected.'
-tags:
-  - hiking
-  - family
-  - travel
+category: "Travel"
+image:
+  src: '@assets/blog/posts/hiking-season-failed-kickoff/1f0d9bb5405b2b05b59900dc15cbdcda75d7f2cc-3024x4032.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 So, it’s finally and officially 2022 hiking season. As soon as Snohomish county reopens the Mountain Loop Highway (or rather its section between roughly Silverton and Old Monte Cristo road), I consider the season to be open. Many of my favorite hikes are somewhere along this highway, including the one we’ve attempted yesterday.
