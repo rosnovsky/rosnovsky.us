@@ -1,0 +1,26 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <g
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.75"
+    transform="translate(0.5 0.5)"
+    fill="none"
+    stroke="currentColor"
+  >
+    <path
+      d="M10,11.01l8.378-8.389a2.122,2.122,0,0,1,3,0h0a2.122,2.122,0,0,1,0,3L13,14"
+      stroke="currentColor"
+    ></path>
+    <path
+      d="M7.514,11.941a3.214,3.214,0,1,1,4.545,4.545C10.8,17.74,6,18,6,18S6.26,13.2,7.514,11.941Z"
+      stroke="currentColor"
+    ></path>
+    <polyline points="12 2 2 2 2 22 22 22 22 12"></polyline>
+  </g>
+</svg>

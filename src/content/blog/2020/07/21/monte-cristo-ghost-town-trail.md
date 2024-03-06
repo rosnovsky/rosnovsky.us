@@ -1,9 +1,11 @@
 ---
 title: 'Monte Cristo Ghost Town Trail'
-pubDatetime: 2020-07-21
+publishDate: 2020-07-21
 description: "There's plenty of ghost towns in Washington. Monte Cristo is one of them. But to get there, you have to hike 🤷‍♂️"
-tags:
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/monte-cristo-ghost-town-trail/72721b76c625f9cd4bece20a1ef0854ed8b4bb72-2000x1500.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 Just got back from my weekly hike. This one was fairly relaxing, and I'd even say it was more of a walk in a park but with extra steps (and obstacles). The first obstacle was the drive: the trailhead is 1.5 hours away from my house, but it's an easy and nice drive on a day like this.

@@ -1,0 +1,128 @@
+---
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import { getCollection } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+import PostFooter from '@components/PostFooter.astro'
+import { slugify } from '@utils/slugs'
+import type { Post } from '@types'
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog')
+  return blogEntries.map((postEntry) => ({
+    params: { slug: postEntry.slug.split('/').pop() },
+    props: { postEntry },
+  }))
+}
+
+interface Props {
+  postEntry: Post
+}
+
+const { postEntry } = Astro.props
+const { Content, remarkPluginFrontmatter } = await postEntry.render()
+const post = {
+  ...postEntry.data,
+  minutesRead: remarkPluginFrontmatter.minutesRead,
+  slug: postEntry.slug,
+}
+
+const ogImage = post.image.src
+const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src
+const categorySlug = slugify(post.category)
+---
+
+<Layout title={post.title} description={post.description} ogImage={ogImageUrl}>
+  <main>
+    <post>
+      {/* Post Header */}
+      <header
+        class="relative bg-slate-50 py-16 dark:bg-slate-900 sm:pt-24 lg:pt-28"
+      >
+        <div
+          class="absolute inset-x-0 bottom-0 h-1/4 bg-white dark:bg-slate-950"
+        >
+        </div>
+        <div
+          class="relative mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8"
+          transition:name={post.slug}
+        >
+          <a
+            href={`/blog/${categorySlug}`}
+            class="group inline-flex items-center justify-center gap-3.5 text-base leading-5 tracking-wide text-emerald-700 transition duration-200 ease-in-out hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-400 sm:text-lg"
+          >
+            <Icon
+              name={categorySlug}
+              class="h-[18px] w-[18px] text-emerald-700/90 transition duration-200 group-hover:text-emerald-600 dark:text-emerald-400/90 dark:group-hover:text-emerald-600 sm:h-5 sm:w-5"
+            />
+            {post.category}
+          </a>
+          <h1
+            class="mt-6 text-center font-display text-4xl font-semibold leading-tight text-slate-900 dark:text-slate-100 sm:text-5xl sm:leading-tight"
+          >
+            {post.title}
+          </h1>
+          <p
+            class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-slate-700 dark:text-slate-300"
+          >
+            {post.description}
+          </p>
+          <div
+            class="mt-8 flex items-center justify-center gap-4 text-md text-slate-600 dark:text-slate-400"
+          >
+            <span class="flex items-center gap-2">
+              <Icon
+                name="calendar"
+                class="h-6 w-6 text-slate-400"
+                stroke-width="1.75"
+              />
+              <date datetime={post.publishDate}>
+                {
+                  post.publishDate.toLocaleString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                }
+              </date>
+            </span>
+            <span class="flex items-center gap-2">
+              <Icon
+                name="clock"
+                class="h-6 w-6 text-slate-400"
+                stroke-width="1.75"
+              />
+              {post.minutesRead}
+            </span>
+          </div>
+          <div class="mx-auto mt-16 w-full max-w-4xl">
+            <div
+              class="aspect-h-9 aspect-w-16 relative block w-full overflow-hidden rounded-3xl shadow-lg shadow-emerald-100/50 md:aspect-h-2 md:aspect-w-3 dark:shadow-emerald-950/50"
+            >
+              <Image
+                src={post.image.src}
+                alt={post.image.alt}
+                class="w-full rounded-3xl bg-slate-100 object-cover dark:bg-slate-900"
+                transition:name={`${post.slug}-image`}
+              />
+              <div
+                class="absolute inset-0 rounded-3xl ring-1 ring-inset ring-slate-900/10 dark:ring-slate-100/10"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Post Content */}
+      <div class="bg-white px-4 dark:bg-slate-950 sm:px-6 lg:px-8">
+        <div
+          class="prose prose-lg mx-auto max-w-3xl text-slate-900 dark:text-slate-100"
+        >
+          <Content />
+        </div>
+        <PostFooter slug={post.slug} />
+      </div>
+    </post>
+  </main>
+</Layout>

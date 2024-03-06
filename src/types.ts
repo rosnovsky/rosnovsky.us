@@ -1,28 +1,41 @@
+import type { ImageMetadata } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+
+export type Post = CollectionEntry<'blog'>
+export type Project = CollectionEntry<'projects'>
+
 export type Site = {
-  website: string;
-  author: string;
-  desc: string;
-  title: string;
-  ogImage?: string;
-  lightAndDarkMode: boolean;
-  postPerPage: number;
-};
+  website: string
+  author: string
+  description: string
+  title: string
+  ogImage: string
+  postsPerPage: number
+  projectsPerPage: number
+}
 
 export type SocialObjects = {
-  name: SocialMedia;
-  href: string;
-  active: boolean;
-  linkTitle: string;
-}[];
-
-export type SocialIcons = {
-  [social in SocialMedia]: string;
-};
+  name: SocialMedia
+  href: string
+  showInHero: boolean
+  label: string
+  ariaLabel: string
+}[]
 
 export type SocialMedia =
-  | "Github"
-  | "LinkedIn"
-  | "Mail"
-  | "GitLab"
-  | "Steam"
-  | "Mastodon";
+  | 'github'
+  | 'linkedin'
+  | 'mail'
+  | 'twitch'
+  | 'youTube'
+  | 'tikTok'
+  | 'discord'
+  | 'gitLab'
+  | 'steam'
+  | 'mastodon'
+
+export type StackObjects = {
+  name: string
+  logo: ImageMetadata
+  experience?: string
+}[]

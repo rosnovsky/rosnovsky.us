@@ -1,0 +1,62 @@
+---
+import Detail from './Detail.astro'
+import Button from '@components/Button.astro'
+import type { Project } from '@types'
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  project: Project
+}
+
+const {
+  project: {
+    data: { description, timeline, projectURL },
+  },
+} = Astro.props
+
+function getFormattedTimeline(timeline: { start: Date; end: Date }) {
+  const monthDifference =
+    (timeline.end.getFullYear() - timeline.start.getFullYear()) * 12 +
+    (timeline.end.getMonth() - timeline.start.getMonth())
+
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    year: 'numeric',
+  })
+  const startFormatted = formatter.format(timeline.start)
+  const endFormatted = formatter.format(timeline.end)
+
+  // Handle pluralization
+  const monthLabel = monthDifference === 1 ? 'month' : 'months'
+
+  const formattedTimeline = `${monthDifference} ${monthLabel} (${startFormatted} - ${endFormatted})`
+
+  return formattedTimeline
+}
+---
+
+<section class="overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
+  <div
+    class="mx-auto grid max-w-lg px-5 sm:max-w-2xl sm:px-6 lg:max-w-6xl lg:grid-cols-10 lg:px-8 xl:px-12"
+  >
+    <div
+      class="order-2 mt-8 border-t border-slate-200 pt-8 lg:order-1 lg:col-span-3 lg:mt-0 lg:border-0 lg:pr-8 lg:pt-0"
+    >
+      <Button href={projectURL} target="_blank" class="mt-14 !font-medium">
+        Visit Website
+        <Icon
+          name="arrow-up-right"
+          class="h-5 w-5 text-slate-50 duration-200 ease-in-out group-hover:text-white"
+        />
+      </Button>
+    </div>
+    <div class="order-1 lg:order-2 lg:col-span-7 lg:pl-16">
+      <h3
+        class="font-display text-xl font-medium leading-8 text-slate-900 sm:text-2xl sm:leading-10"
+      >
+        {description}
+      </h3>
+      <div class="prose mt-6 sm:prose-lg sm:mt-8"><slot /></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+---
+import TextField from './TextField.astro'
+import CheckboxField from './CheckboxField.astro'
+import Button from '../Button.astro'
+---
+
+<form action="#" method="POST" class="mt-10">
+  <div class="space-y-7">
+    <TextField
+      label="Name"
+      name="name"
+      auto-complete="name"
+      placeholder="Jane Doe"
+    />
+    <TextField
+      label="Email"
+      name="email"
+      type="email"
+      auto-complete="email"
+      placeholder="foobar@email.com"
+    />
+    <TextField
+      label="Phone"
+      name="phone"
+      type="tel"
+      auto-complete="tel"
+      aria-describedby="phone-description"
+      placeholder="+1 (800) 123-4567"
+      description="Optional"
+    />
+    <TextField
+      label="Message"
+      name="message"
+      elementType="textarea"
+      aria-describedby="message-description"
+      placeholder="Tell me a little bit about your project..."
+      description="Max 500 characters"
+    />
+    <fieldset>
+      <legend class="block text-md font-medium leading-6 text-slate-900">
+        Expected services
+      </legend>
+      <div class="mt-4 space-y-3">
+        <CheckboxField label="Web development" name="web-development" />
+        <CheckboxField label="Web design" name="web-design" />
+        <CheckboxField label="Consulting" name="consulting" />
+        <CheckboxField label="Other" name="other" />
+      </div>
+    </fieldset>
+  </div>
+  <div class="mt-10 border-t border-slate-200 pt-8">
+    <Button type="submit" class="w-full !text-base sm:!text-lg">
+      Get started
+    </Button>
+  </div>
+</form>

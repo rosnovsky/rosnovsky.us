@@ -1,9 +1,11 @@
 ---
 title: 'FREE HAND SANITIZER'
-pubDatetime: 2020-03-13
+publishDate: 2020-03-13
 description: "Running low on hand sanitizer? Here's how you can get some!"
-tags:
-  - covid
+category: "Covid"
+image:
+  src: '@assets/blog/posts/free-hands-sanitizer/1cff2de970e57af3bffbbdf173413dd80410a841-2000x2667.jpg'
+  alt: 'Free hand sanitizer'
 ---
 
 🔥 GIVE BLOOD — GET HAND SANITIZER\* 🔥

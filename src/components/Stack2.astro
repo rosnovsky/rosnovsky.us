@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets'
+import { STACK } from '@config'
+import Container from './Container.astro'
+import image from '@images/portrait-02.jpg'
+import avatar1 from '@images/avatars/avatar-1.png'
+import avatar2 from '@images/avatars/avatar-2.png'
+import avatar3 from '@images/avatars/avatar-3.png'
+import avatar4 from '@images/avatars/avatar-4.png'
+import avatar5 from '@images/avatars/avatar-5.png'
+
+const clientAvatars = [avatar1, avatar2, avatar3, avatar4, avatar5]
+---
+
+<section class="overflow-hidden bg-white py-16 sm:py-24 lg:py-32">
+  <Container>
+    <div class="grid grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:grid-cols-2">
+      <div class="lg:order-2">
+        <div class="mx-auto max-w-2xl lg:mx-0">
+          <h2
+            class="font-display text-4xl font-semibold text-slate-900 sm:text-5xl"
+          >
+            A simple stack that you can
+            <span class="relative whitespace-nowrap">
+              <svg
+                width="329"
+                height="31"
+                viewBox="0 0 329 31"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute left-1/2 top-[70%] h-[0.62em] w-auto -translate-x-1/2 fill-emerald-200/90"
+              >
+                <mask
+                  id="mask0_239_1189"
+                  style="mask-type: luminance"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="329"
+                  height="31"
+                >
+                  <path
+                    d="M0.147461 0.918457H328.121V30.1173H0.147461V0.918457Z"
+                    fill="white"></path>
+                </mask>
+                <g mask="url(#mask0_239_1189)">
+                  <path
+                    d="M270.105 20.3507C253.379 18.442 236.624 16.7484 219.848 15.2738C229.174 15.8156 238.495 16.3968 247.81 17.0606C247.836 17.0606 247.86 17.0642 247.883 17.0642C255.302 18.0796 262.713 19.1667 270.105 20.3507ZM156.373 6.05272C158.594 6.05272 160.812 6.04913 163.033 6.06348C169.547 6.10295 176.056 6.19982 182.566 6.34334C179.715 6.32181 176.867 6.29311 174.02 6.26799C169.368 6.22853 164.72 6.21059 160.068 6.19623C158.835 6.14242 157.604 6.09577 156.373 6.05272ZM84.3602 5.72621C100.973 4.66059 117.611 4.05063 134.252 3.89635C117.603 4.20491 100.975 4.84357 84.3602 5.72621ZM163.46 10.3583C154.324 10.0533 145.184 9.83802 136.042 9.6658C128.219 9.30341 120.391 8.97691 112.563 8.69704C119.414 8.59658 126.263 8.52482 133.112 8.47818C156.739 8.73651 180.358 9.9636 203.899 12.0769C190.42 11.3737 176.935 10.8068 163.46 10.3583ZM327.139 22.9484C305.186 20.096 283.134 17.8105 261.033 15.9555C240.91 12.9416 220.683 10.5377 200.396 8.79392C216.731 9.01996 233.09 9.41105 249.412 10.1968C260.803 11.5531 272.171 13.1102 283.502 14.9042C285.249 15.1805 285.777 13.2968 283.989 13.0134C281.621 12.6402 279.245 12.3101 276.874 11.9549C290.335 13.2466 303.779 14.7392 317.193 16.4506C319.3 16.7197 319.603 14.4844 317.512 14.1795C304.748 12.2994 291.913 10.9036 279.037 9.83802C261.243 8.09068 243.41 6.72366 225.554 5.71903C164.598 0.0608174 103.074 0.505725 42.18 7.15422C31.7917 7.49508 21.5097 8.49971 11.6034 10.8426C9.98643 11.2266 9.96311 12.2527 10.7275 12.877C10.2792 12.938 9.83355 13.0026 9.38785 13.0672C7.00132 13.3793 4.61997 13.713 2.24122 14.079C-0.793126 14.549 -0.15568 17.8069 2.87348 17.3476C44.6805 10.9754 87.848 10.8355 130.458 11.8365C142.142 12.3532 153.821 12.9667 165.492 13.7058C217.335 16.9852 268.968 22.3851 320.337 29.6507C322.697 29.988 324.089 27.4226 321.345 26.8414C310.086 24.4661 298.772 22.2811 287.425 20.2718C287.71 20.2969 287.995 20.322 288.283 20.3472C295.025 20.9607 301.76 21.6173 308.497 22.299C311.936 22.647 315.377 22.9735 318.818 23.3036C320.298 23.4436 321.78 23.5907 323.259 23.7342C323.384 23.8347 323.542 23.9064 323.718 23.9172C324.944 23.9925 326.164 24.0679 327.385 24.1396C328.47 24.2042 327.921 23.0489 327.139 22.9484Z"
+                  ></path>
+                </g>
+              </svg>
+
+              <span class="relative text-emerald-700">always trust</span>
+            </span>
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-slate-700">
+            I've been a software developer for over 13 years, and while my stack
+            has shifted over the years, I kept coming back to the same
+            technologies. The following is the stack that I've developed & honed
+            over the years as a software developer.
+          </p>
+          <div class="mt-12 grid grid-cols-2 gap-2 sm:gap-3">
+            {
+              STACK.filter((tech) => tech.experience).map((tech) => (
+                <div class="overflow-hidden rounded-lg bg-slate-50 px-4 py-6 ring-1 ring-slate-900/5 sm:px-6">
+                  <div class="flex gap-4 sm:gap-6">
+                    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm shadow-emerald-100/75 ring-1 ring-slate-100/95 sm:h-11 sm:w-11">
+                      <Image
+                        src={tech.logo}
+                        alt={tech.name}
+                        class="h-auto w-5 shrink-0 sm:w-[22px]"
+                      />
+                    </div>
+                    <div class="overflow-hidden">
+                      <p class="font-display text-base font-semibold text-slate-900 sm:text-lg">
+                        {tech.name}
+                      </p>
+                      <p class="mt-1 truncate text-md text-slate-600 sm:text-base">
+                        {tech.experience}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative mx-auto w-full max-w-xl pb-24 lg:order-1 lg:mx-0 lg:max-w-none"
+      >
+        <div class="relative mx-auto w-full max-w-lg lg:ml-0 lg:mr-auto">
+          <div class="aspect-h-7 aspect-w-5">
+            <Image
+              src={image}
+              alt=""
+              class="h-full w-full rounded-2xl object-cover object-left"
+            />
+          </div>
+          <div
+            class="absolute -bottom-16 right-6 max-w-xs rounded-2xl bg-emerald-700/95 p-8 backdrop-blur-sm xl:bottom-10 xl:right-0 xl:translate-x-1/4"
+          >
+            <p class="font-display text-2xl font-medium text-emerald-50">
+              <span class="text-[28px] font-bold text-white">55+</span>
+              Clients have loved my work
+            </p>
+            <div class="mt-6 flex -space-x-1.5 overflow-hidden">
+              {
+                clientAvatars.map((avatar) => (
+                  <Image
+                    class="inline-block h-8 w-8 rounded-full ring-2 ring-emerald-700/95"
+                    src={avatar}
+                    alt=""
+                  />
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

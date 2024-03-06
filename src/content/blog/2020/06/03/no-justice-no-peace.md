@@ -1,9 +1,11 @@
 ---
 title: 'No Justice, No Peace'
-pubDatetime: 2020-06-03
+publishDate: 2020-06-03
 description: 'Seattle Protests against police brutality.'
-tags:
-  - society
+category: "Personal"
+image:
+  src: '@assets/blog/posts/no-justice-no-peace/8044a8d99f4db7dd27b7c325a71a8180e3f2fedc-2000x1500.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 ![](assets/blog/posts/no-justice-no-peace/961e04d9339c057dcdcb8c2cc92903ead1d76582-2000x1500.jpg)

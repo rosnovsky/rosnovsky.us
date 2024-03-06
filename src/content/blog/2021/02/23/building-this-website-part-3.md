@@ -1,11 +1,11 @@
 ---
 title: 'Building this website: Part 3'
-pubDatetime: 2021-02-23
+publishDate: 2021-02-23
 description: 'In this installment, let’s talk about what it takes to start over and why perfect is indeed the enemy of good.'
-tags:
-  - next.js
-  - web development
-  - mental health
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It's been a journey. Never before I was able to stick with the website I've developed for myself for so long :)

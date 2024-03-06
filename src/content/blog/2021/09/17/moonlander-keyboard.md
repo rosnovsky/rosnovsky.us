@@ -1,10 +1,11 @@
 ---
 title: 'Moonlander Keyboard'
-pubDatetime: 2021-09-17
+publishDate: 2021-09-17
 description: "I've upgraded my keyboard recently. It's been a frustraring, fullfilling, and invigorating experience so far."
-tags:
-  - tech
-  - personal
+category: "Personal"
+image:
+  src: '@assets/blog/posts/moonlander/moonlander0008.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 I've ventured into the world of mechanical keyboards a couple of times. The first one was relatively successful: I've got a 60% board with ok keys and had been using it for a couple of years alongside my Apple Magic Keyboard. Probably because of a fairly regular layout and barely noticible differences between the two keyboards, I didn't really get all the hype around mechanical keyboards. Yes, they are more clicky, a bit nicer to type on due to physical and audible feedback, but that's about it.

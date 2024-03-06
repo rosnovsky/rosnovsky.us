@@ -1,9 +1,11 @@
 ---
 title: 'Smart Reschedule: TypeScript?'
-pubDatetime: 2020-05-25
+publishDate: 2020-05-25
 description: 'A quick status update, and how I got distracted by TypeScript ♥️'
-tags:
-  - web development
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 So, I guess it's a series now. In our last installment, we walked through the reason behind the project and my vague ideas about how to go about it.

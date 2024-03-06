@@ -1,0 +1,23 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+>
+  <g
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.75"
+    transform="translate(0.5 0.5)"
+    fill="none"
+    stroke="currentColor"
+  >
+    <polyline points="8.333,14 1,14 1,1 23,1 23,14 20,14 "></polyline>
+    <line x1="13" y1="14" x2="19" y2="20" stroke="currentColor"></line>
+    <polygon
+      points=" 6,7 10,19 13,14 18,11 "
+      stroke="currentColor"
+    ></polygon>
+  </g>
+</svg>

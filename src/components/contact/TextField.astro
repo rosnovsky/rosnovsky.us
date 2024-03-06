@@ -1,0 +1,53 @@
+---
+import Label from './Label.astro'
+import type { HTMLAttributes } from 'astro/types'
+
+interface CustomProps {
+  label?: string
+  name: string
+  description?: string
+  elementType?: 'input' | 'textarea'
+  rows?: number
+  className?: string
+}
+
+type Props = CustomProps & HTMLAttributes<'input'> & HTMLAttributes<'textarea'>
+
+const {
+  label,
+  name,
+  description,
+  rows = 5,
+  elementType = 'input',
+  className,
+  ...attrs
+} = Astro.props
+
+const inputClasses =
+  'block w-full px-4 py-4 leading-4 transition-colors duration-200 ease-in-out border-0 shadow-sm rounded-xl bg-slate-50 text-md text-slate-900 shadow-emerald-100/50 ring-1 ring-inset ring-slate-200 placeholder:text-slate-400 hover:bg-white focus:border-0 focus:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-600/60'
+---
+
+<div class={className}>
+  {
+    label && (
+      <Label name={name} description={description}>
+        {label}
+      </Label>
+    )
+  }
+  <div class="mt-2">
+    {
+      elementType === 'textarea' ? (
+        <textarea
+          id={name}
+          name={name}
+          rows={rows}
+          class={inputClasses}
+          {...attrs}
+        />
+      ) : (
+        <input id={name} name={name} class={inputClasses} {...attrs} />
+      )
+    }
+  </div>
+</div>

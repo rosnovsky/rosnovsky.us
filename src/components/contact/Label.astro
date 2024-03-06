@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string
+  description?: string
+}
+
+const { name, description } = Astro.props
+---
+
+<div class="flex justify-between text-md leading-6">
+  <label for={name} class="block font-medium text-slate-900">
+    <slot />
+  </label>
+  {
+    description && (
+      <p id={`${name}-description`} class="text-slate-500/80">
+        {description}
+      </p>
+    )
+  }
+</div>

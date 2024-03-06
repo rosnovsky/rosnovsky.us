@@ -1,9 +1,11 @@
 ---
 title: 'Heather Lake Hike'
-pubDatetime: 2020-07-15
+publishDate: 2020-07-15
 description: 'Painful ascent but spectacular payoff.'
-tags:
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/heather-lake-hike/c3770848c86edc986509654f97c51eb94c9c708a-2000x2667.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 The Heather Lake trail is located in the North Cascades' [Mt. Baker-Snoqualmie National Forest](https://www.fs.usda.gov/mbs), one of the most visited forests in the country. The trail itself goes over ancestral lands of the [Stillaguamish](https://www.stillaguamish.com/about-us/) people, and climbs along and across the hill, mostly along the Heather creek. The trail features old-growth forest, waterfalls, a few streams along, across, and on the trail, and finally a fairly nice lake in a quite spectacular setting.

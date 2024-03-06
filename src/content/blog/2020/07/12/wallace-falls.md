@@ -1,9 +1,11 @@
 ---
 title: 'Wallace Falls Hike'
-pubDatetime: 2020-07-12
+publishDate: 2020-07-12
 description: "Recently, I started hiking again with a goal to do an overnight hike in the North Cascades by the end of summer. Here's a bunch of photos from Wallace Falls trail."
-tags:
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/wallace-falls/e26bb5dfcbc302ca762ef72087349e06e55d79e7-2000x2667.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 A few years ago, I broke my leg. It happened just a few months before my wife and I were supposed to hike to the rim of Mt. St. Helens (originally known as Loowit by the [Cowlitz ](https://www.cowlitz.org/)and [Klickitat](https://en.wikipedia.org/wiki/Klickitat_people) people). I haven't hiked ever since. I'd even go as far as to say that I haven't hiked since we moved from Portland area to Seattle.

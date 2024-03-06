@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets'
+import Container from './Container.astro'
+import AboutGradient from './illustrations/AboutGradient.astro'
+import CurvyLines from './illustrations/CurvyLines.astro'
+import Underline from '@components/illustrations/Underline.astro'
+import heroImage from '@images/portrait-2.jpg'
+---
+
+<section class="relative bg-slate-50/50 dark:bg-slate-900">
+  <AboutGradient />
+
+  <Container class="relative py-16 sm:py-24 lg:py-32">
+    <div
+      class="mx-auto max-w-3xl px-4 sm:px-6 lg:mx-0 lg:w-2/3 lg:max-w-none lg:px-8 lg:pr-16"
+    >
+      <h1
+        class="font-display text-5xl font-semibold text-slate-900 dark:text-slate-100 sm:text-6xl"
+      >
+        Hey,
+        <span class="relative whitespace-nowrap">
+          <Underline />
+          <span class="relative">I’m Art</span>
+        </span>{' '}.
+      </h1>
+      <p class="mt-8 text-lg leading-8 text-slate-700 dark:text-slate-200">
+        I'm a web developer based in Western Washington. I live about 50 miles
+        north of Seattle in a small town called Arlington.
+      </p>
+
+      <blockquote
+        class="my-5 pl-5 font-mono italic text-slate-500 dark:text-slate-300"
+      >
+        For a while, I lived in London (not that one, but the one in Ontario,
+        Canada) before moving to Vancouver (not that one, but the one in
+        Washington; not that Washington, but Washington state). Now I live in
+        Arlington (and not the one in Virginia, mind you!)
+      </blockquote>
+
+      <p class="mt-8 text-lg leading-8 text-slate-700 dark:text-slate-200">
+        After short gigs at Intel, AT&T, and Microsoft, I ended up at <a
+          class="underline"
+          href="https://auth0.com/">Auth0</a
+        > (acquired by Okta in May 2021). I worked there in a couple of different
+        roles, the latest one being `Software Engineer`. I've built Auth0's enterprise
+        customer onboarding program, surrounding internal and external tooling, a
+        bunch of high-profile customer facing features, and more. I was laid off
+        in February 2024.
+      </p>
+
+      <p class="mt-8 text-lg leading-8 text-slate-700 dark:text-slate-200">
+        Feel free to connect with me on <a
+          href="https://lounge.town/@rosnovsky"
+          class="underline">Mastodon</a
+        > or <a href="https://github.com/rosnovsky" class="underline">Github</a
+        >.
+      </p>
+
+      <blockquote
+        class="my-5 pl-5 font-mono italic text-slate-500 dark:text-slate-300"
+      >
+        For the longest time, I'd been a podcaster. In my previous life, I even
+        was a minor radio celebrity, worked as a television producer and
+        correspondent, and have done a bunch of front-line reporting from
+        terrorist attacks, riots, and hostage situations. Yet here we are.
+      </blockquote>
+
+      <p
+        class="mt-16 text-right font-cursive text-3xl text-slate-700 dark:text-slate-300"
+      >
+        Art Rosnovsky
+      </p>
+    </div>
+  </Container>
+  <div
+    class="relative h-96 w-full md:h-[600px] lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/3"
+  >
+    <Image
+      src={heroImage}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover object-top dark:brightness-50"
+      loading="lazy"
+    />
+    <CurvyLines />
+  </div>
+</section>

@@ -1,11 +1,11 @@
 ---
 title: 'Dynamic comments for a static website'
-pubDatetime: 2021-02-13
+publishDate: 2021-02-13
 description: "For the past couple of months, I've been working on a comment feature for this blog. Now that it's almost finished, I invite you to check it out along with some implementation details."
-tags:
-  - web development
-  - how-to
-  - next.js
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It’s safe to say that for the first time in a long time, I actually finished something. Well, not 100% finished, but got this _something_ into a usable state.

@@ -1,0 +1,78 @@
+---
+import Layout from './Layout.astro'
+import BlogGrid from '@components/blog/BlogGrid.astro'
+import Tabs from '@components/collections/Tabs.astro'
+import Container from '@components/Container.astro'
+import Pagination from '@components/collections/Pagination.astro'
+import { getTopCategories } from '@utils/posts'
+import { SITE } from '@config'
+import type { Page } from 'astro'
+import type { Post } from '@types'
+import Underline from '@components/illustrations/Underline.astro'
+import AboutGradient from '@components/illustrations/AboutGradient.astro'
+// import "astro-mastodon/dist/output.css" // Styles are leaking. Need to fix `astro-mastodon` package.
+
+interface Props {
+  page: Page<Post>
+  title?: string
+  description?: string
+}
+
+const {
+  page,
+  title = `Blog | ${SITE.title}`,
+  description = 'Posts about web development, software engineering, hiking, music, concerts, books, and more',
+} = Astro.props
+
+const posts = page.data
+const topCategories = await getTopCategories()
+---
+
+<Layout title={title} description={description}>
+  <!-- <BlogHero /> -->
+  <section
+    class="relative overflow-hidden bg-white dark:bg-slate-950/30 lg:px-2"
+  >
+    <Container class="lg:py-18 relative py-16 sm:py-24 lg:rounded-b-3xl">
+      <div class="relative flex flex-col items-center justify-center">
+        <h1
+          class="text-center font-display text-5xl font-semibold text-slate-900 dark:text-slate-100 sm:text-6xl"
+        >
+          Welcome to
+          <span class="relative whitespace-nowrap">
+            <Underline
+              class="absolute left-0 top-2/3 h-[0.6em] w-full scale-110 fill-emerald-200/75"
+            />
+            <span class="relative">Rosnovsky Park</span>
+          </span>
+        </h1>
+        <p
+          class="mx-auto mt-6 max-w-xl text-center text-lg leading-8 text-slate-700 dark:text-slate-300"
+        >
+          <span class="font-bold">Rosnovsky Park</span> has been my personal blog
+          since about 2003. It went through many iterations, changes, experiments,
+          and reboots. Here's the latest and greatest I've got for you!
+        </p>
+      </div>
+    </Container>
+  </section>
+  <section
+    id="posts"
+    class="lg:py-18 overflow-hidden bg-white py-16 dark:bg-slate-900 sm:py-24"
+  >
+    <Container>
+      <h2
+        class="text-center font-display text-4xl font-semibold text-slate-900 dark:text-slate-100 sm:text-5xl"
+      >
+        Latest Posts
+      </h2>
+      <Tabs
+        tabs={topCategories}
+        directory="blog"
+        class="mt-9 justify-center gap-2"
+      />
+      <BlogGrid posts={posts} transition:name='blog-grid'/>
+      {page.lastPage > 1 && <Pagination page={page} hash={'#posts'} />}
+    </Container>
+  </section>
+</Layout>

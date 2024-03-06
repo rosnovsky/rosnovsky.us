@@ -1,11 +1,11 @@
 ---
 title: 'Middle School Football'
-pubDatetime: 2018-10-21
+publishDate: 2018-10-21
 description: 'School football is such a thrill!'
-tags:
-  - personal
-  - football
-  - family
+category: "Family"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 I haven’t been blogging properly in like a decade, and I really miss this sometimes. So here goes.

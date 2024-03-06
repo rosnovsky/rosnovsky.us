@@ -1,9 +1,11 @@
 ---
 title: 'Do you want to build a service?'
-pubDatetime: 2020-02-02T20:20:20Z
+publishDate: 2020-02-02T20:20:20Z
 description: "A quick announcement of a new educational and mental-health focused project. Join the team, it's fun!"
-tags:
-  - web development
+category: "Open Source"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 It’s Saturday, and I’m at work. I worked last Saturday as well and will be working tomorrow too. I do this 100% voluntarily, because believe it or not, I enjoy my job. I don’t have to be here, I don’t have to come to the office every day or even most days, but I do nonetheless. Because I like it, it brings me joy, I have fun, I learn, my team is awesome, and I get free granola and coffee :)

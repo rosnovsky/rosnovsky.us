@@ -1,10 +1,11 @@
 ---
 title: 'Weekly Update #4'
-pubDatetime: 2021-06-05
+publishDate: 2021-06-05
 description: 'A a lot had happend in the past month. We closed on the house, got fully vaccinated, I won a hackathon at work, and once again updated this website. '
-tags:
-  - personal
-  - work
+category: "Family"
+image:
+  src: '@assets/blog/posts/weekly-update-4/neighborhood.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 Let me begin by saying that I basically gave up on these weekly updates. I mean, it's been over a month since the latest one. But here's the thing: streaks make us give up stuff. Like, here I am with a broken streak, I can't post the 4th weekly update because the last truly weekly update happened over a months ago. And you know what? Screw this. Just because I failed to keep it up I'm not giving up. I will do my best to post more regularly now :)

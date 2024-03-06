@@ -1,9 +1,11 @@
 ---
 title: 'White Pass Hike'
-pubDatetime: 2020-08-09
+publishDate: 2020-08-09
 description: "60,000+ steps, 20 miles round trip, 600 floors climbed. What doesn't kill you makes you back hurt. Also, I've got blisters on my thumbs 🤦‍♂️"
-tags:
-  - hiking
+category: "Travel"
+image:
+  src: '@assets/blog/posts/white-pass-hike/4a24bbb209d69385fb17482d086ca100ed9b3c54-2000x2667.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 This week my report comes a bit late but for a good reason. I just returned from my 2-night hike to White Pass, and jeesh was it rough! Now I'm thinking it would be madness to attempt the [Stevens Pass to Snoqualmie Pass](https://www.wta.org/go-hiking/hikes/pacific-crest-trail-section-j-snoqualmie-pass-to-stevens-pass-east), _Section J,_ of the PCT this year. Hell, I'm not even sure I can do my _Plan B_, the [Loowit Trail](https://www.wta.org/go-hiking/hikes/loowit) anymore! But hey, let me decompress a little, think, plan some more, and see how it goes.

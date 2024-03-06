@@ -1,11 +1,11 @@
 ---
 title: 'Building this website: meditation through code'
 description: "It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected."
-pubDatetime: 2021-12-19
-tags:
-  - 'blog'
-  - 'web development'
-  - mental health
+publishDate: 2021-12-19
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/meditation-through-code/a6c000b0fc811e60303aaa9d24cc42ecf0379c7a-7000x4247.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected.
@@ -14,7 +14,7 @@ This fact ("_I don't use my blog for, well, blogging_") made me think about why 
 
 No matter how rare the blog posts are, I still write them. I write them for a couple of reasons: to capture a thought or something I learned or something helpful that I use, to record an experience I had,or to practice my writing skills. It happens roughly once a month, but it's ok, nobody really expects me to post anything anyway :)
 
-So while this is a blog, blogging is really a side effect of... what? I struggled to put it into words until I saw [Michelle Bakels' talk](https://2021.cascadiajs.com/speakers/michelle-bakels) at CascadiaJS earlier this year. (my takeaways from the conference itself [are here](/blog/2021/11/04/cascadiajs-2021)).
+So while this is a blog, blogging is really a side effect of... what? I struggled to put it into words until I saw [Michelle Bakels' talk](https://2021.cascadiajs.com/speakers/michelle-bakels) at CascadiaJS earlier this year. (my takeaways from the conference itself [are here](/blog/cascadiajs-2021)).
 
 <iframe
   width="100%"

@@ -1,15 +1,11 @@
 ---
 title: 'Quick Life Update'
 description: It's been quite a while since my last update, and I just want to post something to say that I'm alive :)
-pubDatetime: 2023-07-06
-tags:
-  - blog
-  - web development
-  - work
-  - travel
-  - books
-  - tv
-  - mastodon
+publishDate: 2023-07-06
+category: "Personal"
+image:
+  src: '@assets/blog/posts/quick-life-update/bbbc0e2650389bdaeee08dd048a5fa5114225857-3690x2764.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 So, it's been a while. Just wanted to let those of you interested that I'm alive and well, just a bit bored with the blog and distracted by other shiny things.

@@ -1,11 +1,11 @@
 ---
 title: 'Fall Out Boy, Green Day, Lindsey Stirling'
-pubDatetime: 2021-09-11
+publishDate: 2021-09-11
 description: '2020 was a year of, among other things, missed concerts. I missed live music so much that as soon as I got a chance to go to concerts again, I went nuts.'
-heroImage: '/blog/posts/concerts-sep21/concerts0029.jpeg'
-tags:
-  - concerts
-  - music
+category: "Music"
+image:
+  src: '@assets/blog/posts/concerts-sep21/concerts0028.jpeg'
+  alt: 'Generic blog post cover image'
 ---
 
 In a normal year, my wife and I would go to 5-10 live concerts. Not only it's something that we love and do, but also something that we can hardly live without. It's not a huge streatch to say that last year sucked in this regard. I recognize that we are very fortunate to have "live concerts" as one of the biggest dissapointments of 2020.

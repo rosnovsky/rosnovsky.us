@@ -1,10 +1,11 @@
 ---
 title: 'The Walking Dead: Twitter'
 description: "I've deactivated my twitter account recently in favor of Mastodon. Here's why."
-pubDatetime: 2022-11-24T20:00:00Z
-tags:
-  - 'society'
-  - 'mastodon'
+publishDate: 2022-11-24T20:00:00Z
+category: "Personal"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 I joined Twitter in 2007. I had my share of concerns and complaints about it, but unlike some other social media websites, Twitter appeared to at least try and do better. Even those anemic attempts at stopping dis/misinformation and suspending a few literal Nazis seemed like huge steps in the right direction. Twitter internal culture had all signs of moving in the right direction as well. And then Elon Musk happened. And it all disappeared in just a couple of weeks.

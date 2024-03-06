@@ -1,12 +1,11 @@
 ---
 title: Fathers Day 2022
-pubDatetime: 2022-07-21
+publishDate: 2022-07-21
 description: I can't remember how this tradition started exactly, but every year since, like, 2015 we've been doing this camping thing right around Father's Day.
-tags:
-  - camping
-  - family
-  - hiking
-  - travel
+category: "Travel"
+image:
+  src: '@assets/blog/posts/fathers-day-2022/118799f42e12ff3eba003a17dbd0946ac4fbdc42-4032x3024.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 I can't remember how this tradition started exactly, but every year since, like, 2015 we've been doing this camping thing right around Father's Day. We camp either at the Ilwaco KOA or at Astoria KOA.

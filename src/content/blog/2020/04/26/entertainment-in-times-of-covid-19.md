@@ -1,13 +1,11 @@
 ---
 title: 'Entertainment in times of Covid-19'
-pubDatetime: 2020-04-26
+publishDate: 2020-04-26
 description: 'Bookmark this!'
-tags:
-  - covid
-  - movies
-  - tv
-  - podcasts
-  - gaming
+category: "Covid"
+image:
+  src: '@assets/blog/posts/entertainment-in-times-of-covid-19/d77c6d5950fb53a84bbff3f664418876161c4ae6-2000x1500.jpg'
+  alt: 'Generic blog post cover image'
 ---
 
 Just wanted to throw together some things that help me and may help you enjoy the physical distancing a little more.

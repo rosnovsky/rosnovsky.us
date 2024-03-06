@@ -1,10 +1,11 @@
 ---
 title: 'Generating Blog Social Images'
-pubDatetime: 2021-01-03
+publishDate: 2021-01-03
 description: 'Since I launched my new blog, I discovered that social images were broken; they were an afterthought after all, and I decided to fix it permanently.'
-tags:
-  - how-to
-  - web development
+category: "Web Development"
+image:
+  src: '@assets/blog/posts/generating-blog-social-images/c05ee73d6a6f6f5ecb72a78795feaddf7cf4cd25-1200x675.png'
+  alt: 'Generic blog post cover image'
 ---
 
 I was planning to add social images to my posts for a long time, and when I launched this version of the website, I didn't really put any effort into making this happen. As soon as I shared the launch post, I discovered that many things were broken with social images, from errors in URL encoding to a wrong background image on each social image.

@@ -1,11 +1,11 @@
 ---
 title: 'Listening now: Apple Music'
-pubDatetime: 2021-11-01
+publishDate: 2021-11-01
 description: "At the bottom of this page you can find the latest song I've listened to on Apple Music. Here's how I made it works."
-tags:
-  - web development
-  - how-to
-  - tech
+category: "Web Development"
+image:
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 ---
 
 > This whole thing requires that you have an active paid Apple Developer account. It's $100/yr and is not worth it unless you plan on using it for something else besides "current music"

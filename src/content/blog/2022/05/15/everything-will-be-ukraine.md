@@ -1,12 +1,12 @@
 ---
 title: Все буде Україна 🇺🇦
-pubDatetime: 2022-05-15
+publishDate: 2022-05-15
 description: "This is unspeakable: Russia is bombing Ukraine. I'm Russian-American, and most of my family remains in Russia. I love Ukraine with all my heart, and most of my friends are Ukrainian."
 postSlug: everyting-will-be-ukraine
-tags:
-  - society
-  - Ukraine
-  - russia
+category: "Personal"
+image:
+  src: '@assets/blog/posts/everyting-will-be-ukraine/bc35ecae44658fa0ded7e75f46e2aa0cf20fd374-720x537.avif'
+  alt: 'Generic blog post cover image'
 ---
 
 I left Russia in 2011. It took me almost three years to make it happen: we began serious preparation immediately after Russia invaded Georgia in August 2008. I want to talk about it.
@@ -99,7 +99,7 @@ This long-ass intro is important for setting some context.
 Now, Ukraine. Somehow, it just so happened that many, if not most of my friends, are Ukrainians. Ukrainian-Canadians, Ukrainian-Americans, just Ukrainians. I've been to Kyiv a few times, drove there from Moscow once, and I sincerely fell in love with the city, the people, and the country. And it almost physically pains me to think that someone, anyone, would wage actual war against Ukraine. It's unthinkable, unspeakable, yet here we are. And 100% of my sympathy and support is with Ukraine, with no reservations. Смерть ворогам!
 
 ![Outside of Kyiv Borispil International Airport. Shot this on my way to Toronto in 2010](assets/blog/posts/everyting-will-be-ukraine/bc35ecae44658fa0ded7e75f46e2aa0cf20fd374-720x537.avif)
-![With internet palls in Kyiv on my way back to Moscow from Toronto, 2010](assets/blog/posts/everyting-will-be-ukraine/1e271b37bad16dbf02d08d71154b34a88b1089ba-720x538.avif)
+![With internet pals in Kyiv on my way back to Moscow from Toronto, 2010](assets/blog/posts/everyting-will-be-ukraine/1e271b37bad16dbf02d08d71154b34a88b1089ba-720x538.avif)
 
 I wish for a complete and devastating defeat of nazi Russia with all my heart. I want to see it destroyed, utterly and completely. I'd be a little sad to see Kremlin in ruins, but I'd be totally fine with it. I want to see Russia [denazified](https://en.wikipedia.org/wiki/Denazification) and deputinified as the Allies did in Germany after WWII. I sincerely hope that the entire Russian project is dismantled and broken into smaller countries so that people in those countries could literally break up with the Russian imperialist past. I wish that every Russian soldier who enters Ukraine returns home in a body bag. I swear I'll have the biggest celebration when P\*tin dies a painful and gruesome death — it will be a great day for Eastern Europe and the world.
 
