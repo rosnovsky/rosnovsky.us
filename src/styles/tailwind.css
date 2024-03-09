@@ -8,7 +8,7 @@
     @apply dark:text-emerald-500 text-emerald-900 underline !important;
   }
   .prose h1,h2,h3,h4,h5,h6,strong,em,pre,code,blockquote {
-    @apply dark:text-slate-300 text-slate-700 !important;
+    @apply dark:text-slate-300 text-slate-700;
   }
 
   img {

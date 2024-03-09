@@ -44,7 +44,7 @@
     "alpinejs": "^3.13.6",
     "astro": "^4.4.11",
     "astro-icon": "^1.1.0",
-    "astro-mastodon": "0.3.0-beta5",
+    "astro-mastodon": "^0.3.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
     "swiper": "^11.0.7",

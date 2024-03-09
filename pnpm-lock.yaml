@@ -78,8 +78,8 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0
   astro-mastodon:
-    specifier: 0.3.0-beta5
-    version: 0.3.0-beta5(astro@4.4.13)
+    specifier: ^0.3.0
+    version: 0.3.1(astro@4.4.13)(tailwindcss@3.4.1)
   fuse.js:
     specifier: ^7.0.0
     version: 7.0.0
@@ -2198,12 +2198,13 @@ packages:
       - supports-color
     dev: false
 
-  /astro-mastodon@0.3.0-beta5(astro@4.4.13):
-    resolution: {integrity: sha512-N0oopGUD6Xill6dUW06KLu83FZf4lwXBrIi3ir6TlXEa4o79mR2KGD0kmGBNdaz6rdYitQeixOAS9kWDtgc5Fw==}
+  /astro-mastodon@0.3.1(astro@4.4.13)(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-UKBbSjmWdzGpmVttIBHdD6KS/kN5/WgtsQ6sBq7jXk8E4jqtgHCg7PfumrqEk7w0E97wpRyubpUGJVfQKj8SMA==}
     engines: {node: '>=20.5.1'}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
+      '@tailwindcss/typography': 0.5.10(tailwindcss@3.4.1)
       astro: 4.4.13(@types/node@20.11.24)(typescript@5.3.3)
       fast-glob: 3.3.2
       isomorphic-dompurify: 2.4.0
@@ -2214,6 +2215,7 @@ packages:
       - bufferutil
       - canvas
       - supports-color
+      - tailwindcss
       - utf-8-validate
     dev: false
 
