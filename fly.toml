@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for rosnovsky-us on 2024-03-10T18:56:13-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'rosnovsky-us'
+primary_region = 'sea'
+
+[build]
+
+[http_service]
+  internal_port = 4321
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
