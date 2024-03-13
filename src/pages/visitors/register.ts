@@ -1,10 +1,9 @@
-
+export const prerender = false;
 
 import crypto from 'node:crypto';
 import { db, Visits, eq, and } from 'astro:db';
 import type { APIRoute } from 'astro';
 
-export const prerender = false;
 export const GET: APIRoute = async (data) => {
   const hash = (data: any) => crypto.createHash('sha256').update(data).digest('hex');
 

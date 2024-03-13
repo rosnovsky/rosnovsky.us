@@ -1,22 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
 import Container from '@components/Container.astro'
 // import newsletterBg from '@images/newsletter-bg.png'
 import { SOCIALS } from '@config'
-import { db, Visits, eq, and } from 'astro:db'
-
+import { Views } from '@components/Views'
 
 const currentPage = Astro.url.pathname.split('/')
 currentPage.shift()
-console.log(currentPage)
-
-const visitsData = await db.select().from(Visits).where(and(eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]), eq(Visits.content, currentPage[1] ? currentPage[1] : 'none')))
-// remove the first item in the array
-
-const visits = visitsData.reduce((acc, item) => {
-  return acc + item.visitor_count
-}, 0)
-
 
 interface Props {
   newsletter?: boolean
@@ -133,8 +124,8 @@ const links = [
           }
         </div>
         
-        <p class="mt-8 text-base text-slate-400/90 md:mt-0"><img src={`/visitors/register?page=${currentPage}`} alt="" width="1" height="1"/>
-        Folks viewed this page {visits} times.</p>
+        <div><Image src={`/visitors/register?page=${currentPage}`} loading="eager" alt="" width="1" height="1"/>
+        <Views client:only currentPage={currentPage} /></div>
         <p class="mt-8 text-base text-slate-400/90 md:mt-0">
           © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved.
         </p>

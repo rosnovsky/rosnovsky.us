@@ -92,6 +92,9 @@ dependencies:
   mdast-util-to-string:
     specifier: ^4.0.0
     version: 4.0.0
+  preact:
+    specifier: ^10.19.6
+    version: 10.19.6
   reading-time:
     specifier: ^1.5.0
     version: 1.5.0

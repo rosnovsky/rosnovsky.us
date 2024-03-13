@@ -32,7 +32,7 @@ It's not specific to software development; it's a fairly good framework in gener
 
 I started with what I knew. I knew that you can use custom components in [`MDX`](https://mdxjs.com/) files, and that these components get rendered on the page when it loads:
 
-```mdx
+```markdown
 ---
 title: some frontmatter
 ---

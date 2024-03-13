@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build --remote",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
@@ -44,6 +44,7 @@
     "fuse.js": "^7.0.0",
     "github-slugger": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
+    "preact": "^10.19.6",
     "reading-time": "^1.5.0",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^9.0.0",

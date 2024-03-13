@@ -9,6 +9,8 @@ import { remarkMastodonEmbed } from 'astro-mastodon';
 import icon from "astro-icon";
 import node from '@astrojs/node';
 import db from "@astrojs/db";
+import preact from "@astrojs/preact";
+
 function remarkReadingTime() {
   return function (tree, {
     data
@@ -20,7 +22,6 @@ function remarkReadingTime() {
     data.astro.frontmatter.minutesRead = readingTime.text;
   };
 }
-
 
 // https://astro.build/config
 export default defineConfig({
@@ -40,11 +41,11 @@ export default defineConfig({
   },
   integrations: [tailwind({
     applyBaseStyles: false
-  }), alpinejs(), sitemap(), icon(), db()],
+  }), alpinejs(), sitemap(), icon(), db(), preact()],
   scopedStyleStrategy: 'where',
   output: 'hybrid',
   adapter: node({
-    mode: 'standalone'
+    mode: 'standalone',
   }),
   server: {
     port: 4321,

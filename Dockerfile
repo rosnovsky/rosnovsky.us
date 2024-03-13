@@ -1,5 +1,5 @@
 # Use the official Node.js base image
-FROM node:20-alpine AS BUILD_IMAGE
+FROM node:21 AS BUILD_IMAGE
 
 # Set the working directory
 WORKDIR /app
@@ -9,6 +9,7 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 # Install dependencies
+
 RUN npm install pnpm --location=global
 RUN pnpm install --frozen-lockfile
 
@@ -21,7 +22,7 @@ ENV GITHUB_ACTION_BUILD=$GITHUB_ACTION_BUILD
 
 RUN pnpm build
 
-FROM node:20-alpine
+FROM node:21
 
 WORKDIR /app
 
