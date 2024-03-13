@@ -5,7 +5,7 @@ const ViewsCount = ({ currentPage }: { currentPage: string[] }): JSX.Element => 
 
   useEffect(() => {
     const fetchViews = async () => {
-      const visitsData = await fetch(`/visitors/count?${currentPage}`)
+      const visitsData = await fetch(`/visitors/count?page=${currentPage}`)
       const visits = await visitsData.json()
 
       setViews(visits)

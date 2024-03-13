@@ -4,7 +4,12 @@ import type { APIRoute } from 'astro';
 export const prerender = false;
 
 export const GET: APIRoute = async (data) => {
-  const currentPage = data.request.url.split('?')[1].split(',')
+  let currentPage;
+  if (!data.request.url.includes('page=')) {
+    currentPage = ['home', 'none']
+  } else {
+    currentPage = data.request.url.split('=')[1].split(',')
+  }
 
   const visitsData = await db.select().from(Visits).where(and(eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]), eq(Visits.content, currentPage[1] ? currentPage[1] : 'none')))
 

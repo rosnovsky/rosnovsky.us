@@ -13,8 +13,8 @@ Yesterday, the [Astro](https://astro.build) team announced [Astro DB](https://as
 - Astro becomes more "batteries included"
 - Local DX involving running a local database gets much easier
 - It's just SQL so you can take it out at any moment and move to any other DB provider. The package for working with Astro DB, [@astrojs/db](https://www.npmjs.com/package/@astrojs/db), includes [Drizzle ORM](https://orm.drizzle.team/) so migration to a different provider should be relatively painless
-- Astro DB's free tier is generous but not _outragesly_ so (yes, it's a jab at [PlanetScale](https://planetscale.com/blog/planetscale-forever), I'm still salty); paid usage is _very_ reasonably priced
-- It's easier than ever to add "advanced" dynamic fearutes to static sites
+- Astro DB's free tier is generous but not _outrageously_ so (yes, it's a jab at [PlanetScale](https://planetscale.com/blog/planetscale-forever), I'm still salty); paid usage is _very_ reasonably priced
+- It's easier than ever to add "advanced" dynamic features to static sites
 
 You may have a different set of reasons why it's worth talking about Astro DB, but we can probably agree that in this space, this is great news. The only thing to keep in mind is that it's still in "Early Preview" stage, so I wouldn't recommend relying on Astro DB for critical production workloads. 
 
@@ -66,7 +66,7 @@ export default defineDb({
 });
 ```
 
-Pretty self-explainatory: we import `defineDb` from `astro:db` so that we can define our database, `defineTable` so that we can define this database's tables, and `column`, you guessed it, so that we can define this table's columns. There's more we can do, but for now that's all we need.
+Pretty self-explanatory: we import `defineDb` from `astro:db` so that we can define our database, `defineTable` so that we can define this database's tables, and `column`, you guessed it, so that we can define this table's columns. There's more we can do, but for now that's all we need.
 
 Now, if you've ever worked with a local database, you know you now need to actually start the local database, create tables, and seed it. Well, with Astro DB, you only need to do the last step - seed the db. And _need_ is really _want_: you're not _required_ to seed the database, it just makes life easier down the line.
 
