@@ -33,6 +33,7 @@ export type SocialMedia =
   | 'gitLab'
   | 'steam'
   | 'mastodon'
+  | 'rss'
 
 export type StackObjects = {
   name: string

@@ -7,7 +7,7 @@ export const SITE: Site = {
   website: 'https://rosnovsky.us', // replace this with your deployed domain
   author: 'Art Rosnovsky',
   description:
-    "My description",
+    "Blog by Art Rosnovsky, a software engineer, about technology, hiking, books, movies, and other things.",
   title: 'Rosnovsky Park',
   ogImage: 'jane-og.png',
   postsPerPage: 9,
@@ -41,6 +41,13 @@ export const SOCIALS: SocialObjects = [
     href: 'https://lounge.town/@rosnovsky',
     label: 'Mastodon',
     ariaLabel: 'Follow on Mastodon',
+    showInHero: true,
+  },
+  {
+    name: "rss",
+    href: "/feed/feed.xml",
+    label: "RSS",
+    ariaLabel: "RSS Feed",
     showInHero: true,
   }
 ]
