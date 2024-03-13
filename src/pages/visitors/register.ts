@@ -11,7 +11,7 @@ export const GET: APIRoute = async (data) => {
   const ip: string = data.clientAddress;
   const pagePathName: string = data.request.url.split('=')[1];
 
-  const pagePaths = pagePathName.split(',')
+  const pagePaths = pagePathName ? pagePathName.split(',') : [];
 
   let page = "home";
   let content = "none";
