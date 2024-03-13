@@ -47,6 +47,7 @@ jobs:
           docker build \
           --build-arg COMMIT_SHA=${{ github.sha }} \
           --build-arg GITHUB_ACTION_BUILD=true \
+          --build-arg ASTRO_STUDIO_APP_TOKEN=${{ secrets.ASTRO_STUDIO_APP_TOKEN }} \
           -t ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }} .
           docker push ghcr.io/${{ github.repository }}:${{ steps.set_tag.outputs.tag }}
 
