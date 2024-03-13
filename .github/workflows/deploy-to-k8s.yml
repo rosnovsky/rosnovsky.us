@@ -5,7 +5,6 @@ on:
     branches:
       - '*'
     paths-ignore:
-      - '.github/**'
       - '.vscode/**'
       - '.astro/**'
       - '.gitignore'
@@ -13,10 +12,12 @@ on:
     branches:
       - main
     paths-ignore:
-      - '.github/**'
       - '.vscode/**'
       - '.astro/**'
       - '.gitignore'
+
+env:
+  ASTRO_STUDIO_APP_TOKEN: ${{secrets.ASTRO_STUDIO_APP_TOKEN }}
 
 jobs:
   build_and_publish:
