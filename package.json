@@ -1,6 +1,7 @@
 {
-  "name": "cyan-cloud",
-  "version": "3.0.0",
+  "name": "rosnovsky.us",
+  "version": "7.0.0",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
