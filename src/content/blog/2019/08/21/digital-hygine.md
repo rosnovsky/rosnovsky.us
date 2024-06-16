@@ -1,5 +1,5 @@
 ---
-title: 'Digital Hygiene'
+title: 'Digital Hygine'
 publishDate: 2019-08-21
 description: 'Wash your hands with soap after visiting Facebook. No exceptions!'
 category: "Personal"
