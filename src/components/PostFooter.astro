@@ -1,5 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
+import Button from './Button.astro'
+const shareUrl = Astro.url.pathname
 ---
 
 <footer class="mx-auto max-w-3xl pb-20">
@@ -13,9 +15,8 @@ import { Icon } from 'astro-icon/components'
       Share post
     </p>
     <div class="mt-2.5 flex gap-3 sm:mt-0 sm:gap-4">
-      <button
-        class="group flex h-10 items-center justify-center gap-3 rounded-full border border-slate-200 px-6 text-sm font-medium text-slate-600 duration-200 ease-in-out hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
-        data-share-url
+      <Button
+        class="group flex h-10 items-center justify-center gap-3 rounded-full border border-slate-200 px-6 text-sm font-medium text-slate-600 duration-200 ease-in-out hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 share-button"
       >
         <Icon
           name="copy"
@@ -23,7 +24,18 @@ import { Icon } from 'astro-icon/components'
           stroke-width="1.25"
         />
         Copy link
-      </button>
+      </Button>
     </div>
   </div>
 </footer>
+
+<script>
+  const shareUrl = window.location.href
+  const shareButton = document.querySelector('.share-button')
+
+  if(shareButton) {
+    shareButton.addEventListener('click', () => {
+      navigator.clipboard.writeText(shareUrl)
+    })
+  }
+</script>

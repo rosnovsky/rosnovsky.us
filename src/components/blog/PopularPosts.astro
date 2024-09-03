@@ -2,10 +2,9 @@
 import Container from '@components/Container.astro'
 import BlogGrid from '@components/blog/BlogGrid.astro'
 import Underline from '@components/illustrations/Underline.astro'
-import { db, Visits, ne, and, desc } from 'astro:db'
-import { getSortedPosts } from '@utils/posts'
 import type { Post } from '@types'
-import { getCollection } from 'astro:content'
+import { getSortedPosts } from '@utils/posts'
+import { db, desc, ne, Visits } from 'astro:db'
 
 const featuredPosts: Post[] = (await getSortedPosts()).slice(0, 3)
 
@@ -17,11 +16,12 @@ const popularPostsByVisits = new Set(await db.selectDistinct().from(Visits).wher
 
 const featuredPostsSlugs = featuredPosts.map((post) => post.slug.split('/').pop())
 
-const popularPostsSlugs = Array.from(popularPostsByVisits).filter((slug) => !featuredPostsSlugs.includes(slug)).slice(0, 3)
+const popularPostsSlugs = Array.from(popularPostsByVisits).filter((slug) => !featuredPostsSlugs.includes(slug)).slice(0, 6)
 
 const allPosts: Post[] = await getSortedPosts();
 
 const popularPosts = allPosts.filter((post) => popularPostsSlugs.includes(post.slug.split('/').pop()!))
+
 ---
 
 <section

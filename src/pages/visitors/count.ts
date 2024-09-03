@@ -1,5 +1,5 @@
-import { Visits, db, eq, and } from 'astro:db';
 import type { APIRoute } from 'astro';
+import { Visits, and, db, eq } from 'astro:db';
 
 export const prerender = false;
 

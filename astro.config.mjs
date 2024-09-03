@@ -1,16 +1,17 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import alpinejs from '@astrojs/alpinejs';
-import getReadingTime from 'reading-time';
-import { toString } from 'mdast-util-to-string';
-import sitemap from '@astrojs/sitemap';
-import { SITE } from './src/config';
-import { remarkMastodonEmbed } from 'astro-mastodon';
-import icon from "astro-icon";
-import node from '@astrojs/node';
 import db from "@astrojs/db";
+import node from '@astrojs/node';
 import preact from "@astrojs/preact";
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
 import webVitals from "@astrojs/web-vitals";
+import icon from "astro-icon";
+import { remarkMastodonEmbed } from 'astro-mastodon';
+import { defineConfig } from 'astro/config';
+import { toString } from 'mdast-util-to-string';
+import getReadingTime from 'reading-time';
+import { SITE } from './src/config';
+import mdx from '@astrojs/mdx';
 function remarkReadingTime() {
   return function (tree, {
     data
@@ -42,7 +43,7 @@ export default defineConfig({
   },
   integrations: [tailwind({
     applyBaseStyles: false
-  }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals()],
+  }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
   scopedStyleStrategy: 'where',
   output: 'hybrid',
   adapter: node({
