@@ -3,8 +3,8 @@ import Container from '@components/Container.astro'
 import BlogGrid from '@components/blog/BlogGrid.astro'
 import Underline from '@components/illustrations/Underline.astro'
 import type { Post } from '@types'
-import { db, desc, ne, Visits } from 'astro:db'
 import { getSortedPosts } from '@utils/posts'
+import { db, desc, ne, Visits } from 'astro:db'
 
 const featuredPosts: Post[] = (await getSortedPosts()).slice(0, 3)
 
@@ -21,7 +21,7 @@ const popularPostsSlugs = Array.from(popularPostsByVisits).filter((slug) => !fea
 const allPosts: Post[] = await getSortedPosts();
 
 const popularPosts = allPosts.filter((post) => popularPostsSlugs.includes(post.slug.split('/').pop()!))
-console.log(popularPostsSlugs)
+
 ---
 
 <section
