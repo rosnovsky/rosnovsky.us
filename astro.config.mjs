@@ -1,9 +1,10 @@
 import alpinejs from '@astrojs/alpinejs';
 import db from "@astrojs/db";
-import node from '@astrojs/node';
+import mdx from '@astrojs/mdx';
 import preact from "@astrojs/preact";
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/serverless';
 import webVitals from "@astrojs/web-vitals";
 import icon from "astro-icon";
 import { remarkMastodonEmbed } from 'astro-mastodon';
@@ -11,16 +12,13 @@ import { defineConfig } from 'astro/config';
 import { toString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
 import { SITE } from './src/config';
-import mdx from '@astrojs/mdx';
-import vercel from '@astrojs/vercel';
+
 function remarkReadingTime() {
   return function (tree, {
     data
   }) {
     const textOnPage = toString(tree);
     const readingTime = getReadingTime(textOnPage);
-    // readingTime.text will give us minutes read as a friendly string,
-    // i.e. "3 min read"
     data.astro.frontmatter.minutesRead = readingTime.text;
   };
 }
@@ -47,7 +45,18 @@ export default defineConfig({
   }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
   scopedStyleStrategy: 'where',
   output: 'hybrid',
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    imagesConfig: {
+      sizes: [320, 640, 1280],
+      domains: ["*"]
+    },
+    imageService: true,
+    isr: true,
+    // edgeMiddleware: true
+  }),
   server: {
     port: 4321,
     host: true

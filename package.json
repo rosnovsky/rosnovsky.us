@@ -6,13 +6,14 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build --remote",
+    "studio:login": "astro login",
+    "studio:link": "astro link",
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
     "format:check": "prettier --plugin-search-dir=. --check .",
     "format": "prettier --plugin-search-dir=. --write .",
     "cz": "cz",
-    "prepare": "husky install",
     "lint": "eslint ."
   },
   "dependencies": {
