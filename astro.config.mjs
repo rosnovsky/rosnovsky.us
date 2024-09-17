@@ -12,6 +12,7 @@ import { toString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
 import { SITE } from './src/config';
 import mdx from '@astrojs/mdx';
+import vercel from '@astrojs/vercel';
 function remarkReadingTime() {
   return function (tree, {
     data
@@ -46,9 +47,7 @@ export default defineConfig({
   }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
   scopedStyleStrategy: 'where',
   output: 'hybrid',
-  adapter: node({
-    mode: 'standalone'
-  }),
+  adapter: vercel(),
   server: {
     port: 4321,
     host: true
