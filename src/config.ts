@@ -1,14 +1,14 @@
-import type { Site, SocialObjects, StackObjects } from './types'
-import typescript from './images/logos/icons/typescript.svg'
 import react from './images/logos/icons/react.svg'
 import tailwind from './images/logos/icons/tailwindcss.png'
+import typescript from './images/logos/icons/typescript.svg'
+import type { Site, SocialObjects, StackObjects } from './types'
 
 export const SITE: Site = {
-  website: 'https://rosnovsky.us', // replace this with your deployed domain
+  website: 'https://rosnovsky.us',
   author: 'Art Rosnovsky',
   description:
     "Blog by Art Rosnovsky, a software engineer, about technology, hiking, books, movies, and other things.",
-  title: 'Rosnovsky Park',
+  title: 'Rosnovsky Park™',
   ogImage: 'jane-og.png',
   postsPerPage: 9,
   projectsPerPage: 3,
