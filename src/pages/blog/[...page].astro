@@ -1,9 +1,11 @@
 ---
-import BlogLayout from '@layouts/BlogLayout.astro'
-import { getSortedPosts } from '@utils/posts'
 import { SITE } from '@config'
-import type { Page, PaginateFunction } from 'astro'
+import BlogLayout from '@layouts/BlogLayout.astro'
 import type { Post } from '@types'
+import { getSortedPosts } from '@utils/posts'
+import type { Page, PaginateFunction } from 'astro'
+
+export const prerender = true;
 
 export async function getStaticPaths({
   paginate,

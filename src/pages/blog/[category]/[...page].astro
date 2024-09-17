@@ -1,11 +1,13 @@
 ---
-import BlogLayout from '@layouts/BlogLayout.astro'
-import { getCollection } from 'astro:content'
-import { sortPosts } from '@utils/posts'
 import { SITE } from '@config'
-import { slugify, reverseSlug } from '@utils/slugs'
-import type { Page, PaginateFunction } from 'astro'
+import BlogLayout from '@layouts/BlogLayout.astro'
 import type { Post } from '@types'
+import { sortPosts } from '@utils/posts'
+import { reverseSlug, slugify } from '@utils/slugs'
+import type { Page, PaginateFunction } from 'astro'
+import { getCollection } from 'astro:content'
+
+export const prerender = true;
 
 export async function getStaticPaths({
   paginate,

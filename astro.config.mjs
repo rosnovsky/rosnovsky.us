@@ -23,7 +23,6 @@ function remarkReadingTime() {
   };
 }
 
-
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
@@ -44,7 +43,7 @@ export default defineConfig({
     applyBaseStyles: false
   }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
   scopedStyleStrategy: 'where',
-  output: 'hybrid',
+  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
@@ -55,7 +54,7 @@ export default defineConfig({
     },
     imageService: true,
     isr: true,
-    // edgeMiddleware: true
+    edgeMiddleware: true
   }),
   server: {
     port: 4321,

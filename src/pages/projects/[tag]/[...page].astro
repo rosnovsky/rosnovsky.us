@@ -1,11 +1,13 @@
 ---
-import ProjectsLayout from '@layouts/ProjectsLayout.astro'
-import { getCollection } from 'astro:content'
-import { sortProjects } from '@utils/projects'
-import { slugify, reverseSlug } from '@utils/slugs'
 import { SITE } from '@config'
-import type { Page, PaginateFunction } from 'astro'
+import ProjectsLayout from '@layouts/ProjectsLayout.astro'
 import type { Project } from '@types'
+import { sortProjects } from '@utils/projects'
+import { reverseSlug, slugify } from '@utils/slugs'
+import type { Page, PaginateFunction } from 'astro'
+import { getCollection } from 'astro:content'
+
+export const prerender = true;
 
 export async function getStaticPaths({
   paginate,
