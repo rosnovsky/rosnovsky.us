@@ -20,6 +20,8 @@ interface Props {
   postEntry: Post
 }
 
+export const prerender = true;
+
 const { postEntry } = Astro.props
 const { Content, remarkPluginFrontmatter } = await postEntry.render()
 const post = {

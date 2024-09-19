@@ -48,7 +48,7 @@ export const GET: APIRoute = async (data) => {
     })
   }
 
-  return new Response(JSON.stringify(visits), {
+  return new Response(Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==", 'base64'), {
     status: 200,
     headers: {
       "Content-Type": "image/png"
