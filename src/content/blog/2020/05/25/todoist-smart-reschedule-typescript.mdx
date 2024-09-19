@@ -8,6 +8,8 @@ image:
   alt: 'Generic blog post cover image'
 ---
 
+import { YouTube } from 'astro-embed';
+
 So, I guess it's a series now. In our last installment, we walked through the reason behind the project and my vague ideas about how to go about it.
 
 ​Now, I've been tinkering with the project for a little bit and want to share some of my observations and where things stand at the moment.
@@ -32,11 +34,11 @@ Next, I need to figure out how to go about, well, rescheduling tasks. As of this
 
 I get distracted by shiny new objects really easily. Last night, I came across two fairly old talks on TypeScript:
 
-<!-- <YouTube youTubeId="AQOEZVG2WY0" /> -->
+<YouTube id="AQOEZVG2WY0" className="mx-auto min-w-full" />
 
 This talk is so old that arrow functions, classes, and string literals had already made their way into JavaScript! In this one, TypeScript 3.8 is announced. We are at 4.0 already!
 
-<!-- <YouTube youTubeId="jmPZztKIFf4" /> -->
+<YouTube id="jmPZztKIFf4" className="mx-auto min-w-full" />
 
 As a result, I've completely rewritten my little serverless fetchTasks.js in TypeScript. It's a fantastic low-pressure introduction. Since TypeScript compiles to plain JavaScript, it remains a valid serverless lambda function, while I get to take full advantage of TypeScript: types, amazing IDE support, suggestions, and so on. And since I'm at the ground level of this project, it was really easy to figure out what types and interfaces I need and where I can get the most benefits moving forward.
 
