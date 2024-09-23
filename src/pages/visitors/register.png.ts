@@ -7,6 +7,8 @@ import crypto from 'node:crypto';
 export const GET: APIRoute = async (data) => {
   const hash = (data: any) => crypto.createHash('sha256').update(data).digest('hex');
 
+  console.log({ data: data.request.url })
+
   const userAgent: string = data.request.headers.get('User-Agent') || '';
   const ip: string = data.clientAddress;
   const pagePathName: string = data.request.url.split('=')[1];
