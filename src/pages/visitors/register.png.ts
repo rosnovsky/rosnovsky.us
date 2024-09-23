@@ -48,7 +48,15 @@ export const GET: APIRoute = async (data) => {
     })
   }
 
-  return new Response(Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==", 'base64'), {
+  console.log("Visitor registered!", {
+    page,
+    content,
+    pagination,
+    visitor_ip_hash: ipHash,
+    visitor_user_agent_hash: userAgentHash
+  })
+
+  return new Response(new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, 8, 6, 0, 0, 0, 31, 21, 196, 137, 0, 0, 0, 13, 73, 68, 65, 84, 120, 156, 99, 248, 255, 159, 161, 7, 0, 7, 130, 2, 127, 61, 200, 72, 239, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130]), {
     status: 200,
     headers: {
       "Content-Type": "image/png",
