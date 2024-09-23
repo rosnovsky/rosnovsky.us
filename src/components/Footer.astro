@@ -5,6 +5,8 @@ import { Icon } from 'astro-icon/components'
 import { Views } from '@components/Views'
 import { SOCIALS } from '@config'
 
+export const prerender = false;
+
 const currentPage = Astro.url.pathname.split('/')
 currentPage.shift()
 
