@@ -1,13 +1,13 @@
 ---
-import '@styles/tailwind.css';
-import '@fontsource/atkinson-hyperlegible';
-import '@fontsource-variable/lexend';
-import '@fontsource/gochi-hand';
-import '@fontsource/mr-dafoe';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import { SITE } from '@config';
-import { ClientRouter, fade } from 'astro:transitions';
+import '@styles/tailwind.css'
+import '@fontsource/atkinson-hyperlegible'
+import '@fontsource-variable/lexend'
+import '@fontsource/gochi-hand'
+import '@fontsource/mr-dafoe'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import { SITE } from '@config'
+import { ClientRouter, ViewTransitions, fade } from 'astro:transitions'
 
 interface Props {
   title?: string;
@@ -59,11 +59,12 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:image" content={socialImageURL} />
 
     <ClientRouter transition:animate={'fade'} />
+
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-200">
     <Header />
     <slot />
-    <Footer />
+    <Footer server:defer />
   </body>
 </html>
 
