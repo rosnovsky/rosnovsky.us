@@ -5,13 +5,16 @@ export const prerender = false;
 
 export const GET: APIRoute = async (data) => {
   let currentPage;
-  if (!data.request.url.includes('page=')) {
+
+  if (!data.url.searchParams.has('page')) {
     currentPage = ['home', 'none']
   } else {
-    currentPage = data.request.url.split('=')[1].split(',')
+    currentPage = data.url.searchParams.get('page')?.split(',')!
   }
 
-  const visitsData = await db.select().from(Visits).where(and(eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]), eq(Visits.content, currentPage[1] ? currentPage[1] : 'none')))
+  console.log({ currentPage })
+
+  const visitsData = await db.select().from(Visits).where(and(eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]), eq(Visits.content, currentPage[1] ?? 'none')))
 
   const visits = visitsData.reduce((acc, item) => {
     return acc + item.visitor_count
