@@ -20,7 +20,7 @@ export const GET: APIRoute = async (data) => {
   let pagination = 1;
 
 
-  if (pagePathName.length === 0) {
+  if (pagePathName?.length === 0 || !pagePathName.length) {
     page = 'home'
   } else if (pagePaths.length === 1) {
     page = pagePaths[0]
