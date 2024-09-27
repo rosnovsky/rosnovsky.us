@@ -10,8 +10,6 @@ export const prerender = false;
 const currentPage = Astro.url.pathname.split('/')
 currentPage.shift()
 
-console.log({currentPage, url: Astro.url})
-
 interface Props {
   newsletter?: boolean
 }

@@ -12,8 +12,6 @@ export const GET: APIRoute = async (data) => {
     currentPage = data.url.searchParams.get('page')?.split(',')!
   }
 
-  console.log({ currentPage })
-
   const visitsData = await db.select().from(Visits).where(and(eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]), eq(Visits.content, currentPage[1] ?? 'none')))
 
   const visits = visitsData.reduce((acc, item) => {
