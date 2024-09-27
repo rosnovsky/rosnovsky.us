@@ -55,7 +55,7 @@ export default defineConfig({
     isr: false,
     edgeMiddleware: true
   }),
-  output: 'server',
+  output: "server",
   server: {
     port: 4321,
     host: true
