@@ -57,6 +57,7 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" async defer></script>
 
     <ClientRouter transition:animate={'fade'} />
 
