@@ -16,15 +16,15 @@ Yesterday, the [Astro](https://astro.build) team announced [Astro DB](https://as
 - Astro DB's free tier is generous but not _outrageously_ so (yes, it's a jab at [PlanetScale](https://planetscale.com/blog/planetscale-forever), I'm still salty); paid usage is _very_ reasonably priced
 - It's easier than ever to add "advanced" dynamic features to static sites
 
-You may have a different set of reasons why it's worth talking about Astro DB, but we can probably agree that in this space, this is great news. The only thing to keep in mind is that it's still in "Early Preview" stage, so I wouldn't recommend relying on Astro DB for critical production workloads. 
+You may have a different set of reasons why it's worth talking about Astro DB, but we can probably agree that in this space, this is great news. The only thing to keep in mind is that it's still in "Early Preview" stage, so I wouldn't recommend relying on Astro DB for critical production workloads.
 
-Anyway, as soon as I saw the announcement, I jumped right in and tried to implement a feature for my blog: a basic page views counter. How hard could it be? 
+Anyway, as soon as I saw the announcement, I jumped right in and tried to implement a feature for my blog: a basic page views counter. How hard could it be?
 
 ## Page views counter
 
-I admit, it's not a very creative idea. My goal was to explore Astro DB, see how it works, so that I can actually use it for something fun later. So, page views counter it is. 
+I admit, it's not a very creative idea. My goal was to explore Astro DB, see how it works, so that I can actually use it for something fun later. So, page views counter it is.
 
-The plan was simple: 
+The plan was simple:
 - Whenever somebody visits any page on my website, I'd record their visit in the database
 - To make this counter a little more resilient, I'd also record hashed user IP address and their hashed user agent (I don't want to collect or store _actual_ IPs and user agents, but I do want to be able to identify whether somebody is just hitting refresh or actually visiting a page)
 - I also need to record that page is being visited
@@ -91,9 +91,9 @@ What's important here is that you now have access to `Visits` and `db` anywhere 
 
 ### Accessing Astro Studio
 
-Before moving forward with the views counter implementation, let me quickly note a few things about local and remote databases. 
+Before moving forward with the views counter implementation, let me quickly note a few things about local and remote databases.
 
-When you develop locally, the database is reset every time you restart the development server. 
+When you develop locally, the database is reset every time you restart the development server.
 
 When you're happy with the schema, you can push this schema to the remote database, the one that's going to be used when you deploy your project. The CLI is pretty straightforward here: you login to Astro Studio, link your local database to a (new) project, push local changes to this remote DB.
 
@@ -108,7 +108,7 @@ astro db push # Tell the remote DB what you want it to look like
 As an added feature, you could also seed the remote database:
 
 ```sh
-astro db execute db/seed.ts --remote # "db/seed.ts" here is just a path to the file where your seed data is. 
+astro db execute db/seed.ts --remote # "db/seed.ts" here is just a path to the file where your seed data is.
 ```
 
 Oh, and you _can_ use the remote database locally! Just be _very_ careful.
@@ -130,7 +130,7 @@ As you can see, Astro Studio is pretty limited in what you can see and do there,
 
 Aaaanyway, after I got my Astro DB all set up, I got to the actual implementation of the page views counter. I don't want to bore you with the details that are _very_ specific to my particular website, so I'd boil it down to more generic steps.
 
-The first step is to figure out how we are going to register visits. There are multiple ways to approach this depending on what Astro [rendering `mode`](https://docs.astro.build/en/basics/rendering-modes/) you're using: 
+The first step is to figure out how we are going to register visits. There are multiple ways to approach this depending on what Astro [rendering `mode`](https://docs.astro.build/en/basics/rendering-modes/) you're using:
 
 - in `static` or `hybrid` mode, you could load a counter `pixel` (a 1x1 pixel image pointing to an [endpoint](https://docs.astro.build/en/guides/endpoints/))
 - in `server` or `hybrid` mode with `export const prerender = false`, you could make a call directly to the endpoint that counts visits
@@ -143,15 +143,15 @@ I've added my `pixel` to the footer of my site along with a `Views` component:
 // Footer.astro
 ---
 const currentPage = Astro.url.pathname.split('/') // naive "give me the current page url" kind of thing
-currentPage.shift() // oh, and remove the leading `/` 
+currentPage.shift() // oh, and remove the leading `/`
 ---
 
-<Image 
-  src={`/visitors/register?page=${currentPage}`} 
-  loading="eager" 
-  aria-hidden="true" 
-  alt="tracking pixel" 
-  width="1" 
+<Image
+  src={`/visitors/register.png?page=${currentPage}`}
+  loading="eager"
+  aria-hidden="true"
+  alt="tracking pixel"
+  width="1"
   height="1" />
 <Views client:only currentPage={currentPage} />
 ```
@@ -204,10 +204,10 @@ export const GET: APIRoute = async (data) => {
     .from(Visits)
     .where(
       and(
-        eq(Visits.visitor_ip_hash, ipHash), 
-        eq(Visits.visitor_user_agent_hash, userAgentHash), 
-        eq(Visits.page, page), 
-        eq(Visits.content, content), 
+        eq(Visits.visitor_ip_hash, ipHash),
+        eq(Visits.visitor_user_agent_hash, userAgentHash),
+        eq(Visits.page, page),
+        eq(Visits.content, content),
         eq(Visits.pagination, pagination)
       )
     )
@@ -215,8 +215,8 @@ export const GET: APIRoute = async (data) => {
   if (visits) {
     await db
       .update(Visits)
-      .set({ 
-        visitor_count: visits.visitor_count + 1 
+      .set({
+        visitor_count: visits.visitor_count + 1
         })
       .where(
         eq(Visits.id, visits.id))
@@ -241,14 +241,14 @@ export const GET: APIRoute = async (data) => {
 }
 ```
 
-I first check if a visit from this prticular visitor to this specific page has been registered already, and if so, I increase the count (I should also be checking for a timestamp here, come to think of it). If it's a brand new visit, I do `db.insert`. 
+I first check if a visit from this prticular visitor to this specific page has been registered already, and if so, I increase the count (I should also be checking for a timestamp here, come to think of it). If it's a brand new visit, I do `db.insert`.
 
 Now, how do we display the number of view? Here's what my `Views.tsx` looks like. NB: I'd very much prefer for this "dynamic" component to be an Astro component, alas it has to be (p)react (I'm using the official [preact integration](https://docs.astro.build/en/guides/integrations-guide/preact/)).
 
 ```tsx
 // Views.tsx
 import { Suspense, lazy } from 'preact/compat'
-const ViewsCount = lazy(() => import('./ViewsCount')) 
+const ViewsCount = lazy(() => import('./ViewsCount'))
 
 export const Views = ({ currentPage }: { currentPage: string[] }) => {
   return (
@@ -311,7 +311,7 @@ export const GET: APIRoute = async (data) => {
     .where(
       and(
         // this is the part where some wierd specifics of my site come into play
-        eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]), 
+        eq(Visits.page, currentPage[0] === '' ? "home" : currentPage[0]),
         eq(Visits.content, currentPage[1] ? currentPage[1] : 'none')
       )
     )

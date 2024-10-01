@@ -18,14 +18,14 @@ export const GET: APIRoute = async (data) => {
   let pagination = 1;
 
 
-  if (pagePathName.length === 0) {
+  if (pagePathName?.length === 0 || !pagePathName?.length) {
     page = 'home'
-  } else if (pagePaths.length === 1) {
+  } else if (pagePaths?.length === 1) {
     page = pagePaths[0]
-  } else if (pagePaths.length === 2) {
+  } else if (pagePaths?.length === 2) {
     page = pagePaths[0]
     content = pagePaths[1]
-  } else if (pagePaths.length === 3) {
+  } else if (pagePaths?.length === 3) {
     page = pagePaths[0]
     content = pagePaths[1]
     pagination = Number(pagePaths[2])
@@ -51,7 +51,10 @@ export const GET: APIRoute = async (data) => {
   return new Response(Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==", 'base64'), {
     status: 200,
     headers: {
-      "Content-Type": "image/png"
+      "Content-Type": "image/png",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0"
     }
   });
 }

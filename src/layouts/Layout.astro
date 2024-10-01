@@ -7,7 +7,7 @@ import '@fontsource/mr-dafoe'
 import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
 import { SITE } from '@config'
-import { ViewTransitions, fade } from 'astro:transitions'
+import { ClientRouter, ViewTransitions, fade } from 'astro:transitions'
 
 interface Props {
   title?: string
@@ -58,8 +58,9 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player" async defer></script>
 
-    <ViewTransitions transition:animate={'fade'}/>
+    <ClientRouter transition:animate={'fade'}/>
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-200">
     <Header  />
