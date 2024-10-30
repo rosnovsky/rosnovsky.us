@@ -43,6 +43,7 @@ export default defineConfig({
     applyBaseStyles: false
   }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
   scopedStyleStrategy: 'where',
+  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,

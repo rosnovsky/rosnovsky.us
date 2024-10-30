@@ -1,14 +1,14 @@
 ---
-import Container from '@components/Container.astro'
-import HeroGradient from '@components/illustrations/HeroGradient.astro'
-import Underline from '@components/illustrations/Underline.astro'
-import { SOCIALS } from '@config'
-import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
-import heroPortrait from '@images/hero-portrait.jpg'
-import typescript from '@images/logos/icons/typescript.svg'
-import react from '@images/logos/icons/react.svg'
-import nodejs from '@images/logos/icons/nodejs.svg'
+import Container from '@components/Container.astro';
+import HeroGradient from '@components/illustrations/HeroGradient.astro';
+import Underline from '@components/illustrations/Underline.astro';
+import { SOCIALS } from '@config';
+import heroPortrait from '@images/hero-portrait.jpg';
+import nodejs from '@images/logos/icons/nodejs.svg';
+import typescript from '@images/logos/icons/typescript.svg';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import LastPlayedSong from '../components/LastPlayedSong.astro';
 ---
 
 <section class="relative overflow-hidden py-20 lg:py-24">
@@ -96,13 +96,9 @@ import nodejs from '@images/logos/icons/nodejs.svg'
           >
             <Image src={typescript} alt="" class="h-auto w-4" />❤️❤️❤️
           </div>
+          <LastPlayedSong />
           <div
-            class="absolute left-12 top-full inline-flex h-12 w-max -translate-y-6 items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 lg:px-10 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32"
-          >
-            <Image src={react} alt="" class="h-6 w-auto" />🔥🔥🔥
-          </div>
-          <div
-            class="absolute top-[350px] hidden h-12 w-max items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/50 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-full md:inline-flex md:-translate-x-32 lg:left-48 lg:hidden lg:px-10 2xl:left-full 2xl:inline-flex 2xl:-translate-x-28"
+            class="absolute top-[250px] hidden h-12 w-max items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/50 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-full md:inline-flex md:-translate-x-32 lg:left-48 lg:hidden lg:px-10 2xl:left-full 2xl:inline-flex 2xl:-translate-x-28"
           >
             <Image src={nodejs} alt="" class="h-auto w-7" />
             <span class="">🎉🎉🎉</span>

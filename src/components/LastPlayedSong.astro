@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import react from '@images/logos/icons/react.svg';
+
+interface CurrentMusic {
+  albumArt: string;
+  title: string;
+  grandparentTitle: string;
+}
+
+interface APIResponse {
+  currentMusic: CurrentMusic[] | null;
+}
+
+const getMusicData = async () => {
+  try {
+    const response = await fetch(
+      'https://music.rosnovsky.us/api/songs?sort=lastViewedAt:desc&limit=1',
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=1800',
+        },
+      }
+    );
+    const data: APIResponse = await response.json();
+    return { currentMusic: data[0] };
+  } catch (error) {
+    console.error('Error fetching music data:', error);
+    return { currentMusic: null };
+  }
+};
+
+const { currentMusic } = await getMusicData();
+---
+
+{
+  currentMusic ? (
+    <a href="https://music.rosnovsky.us">
+      <div class="absolute left-12 top-full flex h-24 w-max -translate-y-6 rounded-2xl bg-white/90 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32">
+        {/* Vertical "Last Played" label */}
+        <div class="flex h-24 items-center rounded-l-2xl">
+          <span
+            class="-rotate-180 px-2 text-[11px] font-thin tracking-wide text-yellow-900/70 dark:text-yellow-100/80"
+            style="writing-mode: vertical-lr;"
+          >
+            LAST PLAYED
+          </span>
+        </div>
+
+        {/* Main content */}
+        <div class="flex flex-col items-center justify-center gap-3.5 px-8 lg:px-10">
+          <div class="flex items-center gap-3">
+            <img
+              src={`https://music.rosnovsky.us/${currentMusic.albumArt}`}
+              alt={`Album art for ${currentMusic.title}`}
+              class="h-12 w-12 rounded-lg"
+            />
+            <div class="flex flex-col">
+              <span class="truncate text-sm font-semibold">
+                {currentMusic.title}
+              </span>
+              <span class="truncate text-xs text-slate-500 dark:text-slate-200">
+                {currentMusic.grandparentTitle}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  ) : (
+    <div class="absolute left-12 top-full inline-flex h-12 w-max -translate-y-6 items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 lg:px-10 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32">
+      <Image src={react} alt="" class="h-6 w-auto" />
+      🔥🔥🔥
+    </div>
+  )
+}
+
+<script>
+  // Client-side refresh every 30 minutes
+  setInterval(() => {
+    window.location.reload();
+  }, 1800000); // 30 minutes in milliseconds
+</script>
