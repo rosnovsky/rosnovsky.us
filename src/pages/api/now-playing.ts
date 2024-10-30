@@ -1,14 +1,19 @@
-export async function GET() {
+
+export const prerender = false
+
+export async function GET({ request }: { request: Request }) {
   try {
     const response = await fetch(
       'https://music.rosnovsky.us/api/songs?sort=lastViewedAt:desc&limit=1',
       {
         headers: {
-          'Cache-Control': 'public, s-maxage=1800',
+          'Cache-Control': 'public, s-maxage=1',
+          'x-fun': Date.now().toLocaleString()
         },
       }
     );
     const data = await response.json();
+    console.log({ data })
     return new Response(JSON.stringify(data), {
       headers: {
         'Content-Type': 'application/json',

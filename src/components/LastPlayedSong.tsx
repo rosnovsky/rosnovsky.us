@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
 
+// This is NOT how it works. Don't ask.
+export const prerender = false;
+
 interface CurrentMusic {
   albumArt: string;
   title: string;
@@ -10,8 +13,8 @@ const getMusicData = async (): Promise<CurrentMusic | null> => {
   try {
     const response = await fetch('https://rosnovsky.us/api/now-playing');
     const data = await response.json();
-    return data[0];
     console.log(data[0])
+    return data[0];
   } catch (error) {
     console.error('Error fetching music data:', error);
     return null;

@@ -43,7 +43,6 @@ export default defineConfig({
     applyBaseStyles: false
   }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
   scopedStyleStrategy: 'where',
-  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
@@ -53,9 +52,10 @@ export default defineConfig({
       domains: ["*"]
     },
     imageService: true,
-    isr: true,
+    isr: false,
     edgeMiddleware: true
   }),
+  output: 'server',
   server: {
     port: 4321,
     host: true
