@@ -53,6 +53,7 @@
     "remark-toc": "^9.0.0",
     "satori": "^0.10.14",
     "swiper": "^11.1.11",
+    "swr": "^2.2.5",
     "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
