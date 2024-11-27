@@ -1,20 +1,20 @@
 ---
-import '@styles/tailwind.css'
-import '@fontsource/atkinson-hyperlegible'
-import '@fontsource-variable/lexend'
-import '@fontsource/gochi-hand'
-import '@fontsource/mr-dafoe'
-import Header from '@components/Header.astro'
-import Footer from '@components/Footer.astro'
-import { SITE } from '@config'
-import { ViewTransitions, fade } from 'astro:transitions'
+import '@styles/tailwind.css';
+import '@fontsource/atkinson-hyperlegible';
+import '@fontsource-variable/lexend';
+import '@fontsource/gochi-hand';
+import '@fontsource/mr-dafoe';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { SITE } from '@config';
+import { ClientRouter, fade } from 'astro:transitions';
 
 interface Props {
-  title?: string
-  author?: string
-  description?: string
-  ogImage?: string
-  canonicalURL?: string,
+  title?: string;
+  author?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
 }
 
 const {
@@ -24,10 +24,9 @@ const {
   ogImage = SITE.ogImage,
   canonicalURL = new URL(Astro.url.pathname.replace(/\/$/, ''), Astro.site)
     .href,
-} = Astro.props
+} = Astro.props;
 
-const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href
-
+const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
 ---
 
 <html lang="en">
@@ -59,10 +58,10 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
-    <ViewTransitions transition:animate={'fade'}/>
+    <ClientRouter transition:animate={'fade'} />
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-200">
-    <Header  />
+    <Header />
     <slot />
     <Footer />
   </body>
@@ -71,29 +70,32 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href
 <script is:inline>
   document.addEventListener('astro:page-load', () => {
     const theme = (() => {
-      if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-        return localStorage.getItem("theme");
+      if (
+        typeof localStorage !== 'undefined' &&
+        localStorage.getItem('theme')
+      ) {
+        return localStorage.getItem('theme');
       }
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
       }
-      return "light";
+      return 'light';
     })();
 
-    if (theme === "light") {
-      document.documentElement.classList.remove("dark");
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark');
     } else {
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.add('dark');
     }
 
-    window.localStorage.setItem("theme", theme);
+    window.localStorage.setItem('theme', theme);
 
     const handleToggleClick = () => {
       const element = document.documentElement;
-      element.classList.toggle("dark");
+      element.classList.toggle('dark');
 
-      const isDark = element.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+      const isDark = element.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     };
 
     // document

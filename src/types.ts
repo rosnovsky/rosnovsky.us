@@ -26,7 +26,7 @@ export type SocialMedia =
   | 'github'
   | 'linkedin'
   | 'mail'
-  | 'twitch'
+  | 'bluesky'
   | 'youTube'
   | 'tikTok'
   | 'discord'
