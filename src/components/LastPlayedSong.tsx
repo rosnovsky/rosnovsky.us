@@ -13,12 +13,17 @@ const getMusicData = async (): Promise<CurrentMusic | null> => {
   try {
     const response = await fetch('https://rosnovsky.us/api/now-playing');
     const data = await response.json();
-    console.log(data[0])
+
     return data[0];
   } catch (error) {
     console.error('Error fetching music data:', error);
     return null;
   }
+};
+
+const getAlbumArtUrl = (path: string) => {
+  const baseUrl = 'https://music.rosnovsky.us';
+  return new URL(path, baseUrl).toString();
 };
 
 export default function LastPlayedSong() {
@@ -48,12 +53,15 @@ export default function LastPlayedSong() {
   }
 
   return (
-    <a href="https://music.rosnovsky.us">
+    <a
+      href="https://music.rosnovsky.us"
+      aria-label={`Now playing: ${currentMusic.title} by ${currentMusic.grandparentTitle}`}
+    >
       <div className="absolute left-12 top-full md:top-[580px] flex h-24 w-max -translate-y-6 rounded-2xl bg-white/90 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32 ">
         <div className="flex h-24 items-center rounded-l-2xl">
           <span
             className="-rotate-180 px-2 text-[11px] font-thin tracking-wide text-yellow-900/70 dark:text-yellow-100/80"
-            style={{ writingMode: 'vertical-lr' }}
+            style={{ writingMode: 'vertical-lr' }} aria-hidden="true"
           >
             LAST PLAYED
           </span>
@@ -61,9 +69,10 @@ export default function LastPlayedSong() {
         <div className="flex flex-col items-center justify-center gap-3.5 px-8 lg:px-10">
           <div className="flex items-center gap-3">
             <img
-              src={`https://music.rosnovsky.us/${currentMusic.albumArt}`}
+              src={getAlbumArtUrl(currentMusic.albumArt)}
               alt={`Album art for ${currentMusic.title}`}
               className="h-12 w-12 rounded-lg"
+              loading="lazy"
             />
             <div className="flex flex-col">
               <span className="truncate text-sm font-semibold">
