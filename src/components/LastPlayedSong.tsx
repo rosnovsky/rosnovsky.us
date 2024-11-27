@@ -52,7 +52,6 @@ export default function LastPlayedSong() {
   }
 
   return (
-
     <a
       href="https://music.rosnovsky.us"
       aria-label={`Now playing: ${currentMusic.title} by ${currentMusic.grandparentTitle}`}

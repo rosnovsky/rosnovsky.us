@@ -49,6 +49,7 @@
     "mdast-util-to-string": "^4.0.0",
     "react-icons": "^5.3.0",
     "preact": "^10.25.3",
+    "react-icons": "^5.3.0",
     "reading-time": "^1.5.0",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^9.0.0",
@@ -86,5 +87,5 @@
       "prettier --plugin-search-dir=. --write"
     ]
   },
-  "packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631"
+  "packageManager": "pnpm@9.15.0"
 }
