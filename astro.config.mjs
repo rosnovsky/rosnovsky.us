@@ -52,9 +52,10 @@ export default defineConfig({
       domains: ["*"]
     },
     imageService: true,
-    isr: true,
+    isr: false,
     edgeMiddleware: true
   }),
+  output: 'server',
   server: {
     port: 4321,
     host: true
