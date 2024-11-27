@@ -1,7 +1,7 @@
-import react from './images/logos/icons/react.svg'
-import tailwind from './images/logos/icons/tailwindcss.png'
-import typescript from './images/logos/icons/typescript.svg'
-import type { Site, SocialObjects, StackObjects } from './types'
+import react from './images/logos/icons/react.svg';
+import tailwind from './images/logos/icons/tailwindcss.png';
+import typescript from './images/logos/icons/typescript.svg';
+import type { Site, SocialObjects, StackObjects } from './types';
 
 export const SITE: Site = {
   website: 'https://rosnovsky.us',
@@ -41,6 +41,13 @@ export const SOCIALS: SocialObjects = [
     href: 'https://lounge.town/@rosnovsky',
     label: 'Mastodon',
     ariaLabel: 'Follow on Mastodon',
+    showInHero: true,
+  },
+  {
+    name: 'bluesky',
+    href: 'https://bsky.app/profile/rosnovsky.us',
+    label: 'Bluesky',
+    ariaLabel: 'Follow on Bluesky',
     showInHero: true,
   },
   {
