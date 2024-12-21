@@ -40,7 +40,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@types/alpinejs": "^3.13.10",
     "alpinejs": "^3.14.1",
-    "astro": "5.0.0-beta.1",
+    "astro": "5.0.8",
     "astro-embed": "^0.7.2",
     "astro-icon": "^1.1.1",
     "astro-mastodon": "^0.3.2",
