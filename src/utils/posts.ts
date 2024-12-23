@@ -1,5 +1,5 @@
-import { getCollection } from 'astro:content'
 import type { Post } from '@types'
+import { getCollection } from 'astro:content'
 
 export async function getTopCategories() {
   const posts = await getCollection('blog')
@@ -27,9 +27,13 @@ export async function getTopCategories() {
   return categories.slice(0, 4)
 }
 
+export function getNonDraftPosts(posts: Post[]) {
+  return posts.filter((post) => !post.data.draft)
+}
+
 export function sortPosts(posts: Post[]) {
-  return posts.sort(
-    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+  return getNonDraftPosts(posts).filter(Boolean).sort(
+    (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
   )
 }
 
