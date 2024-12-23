@@ -8,7 +8,7 @@ import nodejs from '@images/logos/icons/nodejs.svg';
 import typescript from '@images/logos/icons/typescript.svg';
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
-import LastPlayedSong from '../components/LastPlayedSong';
+import LastPlayedSong from './LastPlayedSong.tsx';
 ---
 
 <section class="relative overflow-hidden py-20 lg:py-24">
@@ -96,7 +96,7 @@ import LastPlayedSong from '../components/LastPlayedSong';
           >
             <Image src={typescript} alt="" class="h-auto w-4" />❤️❤️❤️
           </div>
-          <LastPlayedSong />
+          <LastPlayedSong client:load />
           <div
             class="absolute top-[250px] hidden h-12 w-max items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/50 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-full md:inline-flex md:-translate-x-32 lg:left-48 lg:hidden lg:px-10 2xl:left-full 2xl:inline-flex 2xl:-translate-x-28"
           >
