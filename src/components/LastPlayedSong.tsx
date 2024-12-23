@@ -13,7 +13,6 @@ const getMusicData = async (): Promise<CurrentMusic | null> => {
   try {
     const response = await fetch('https://rosnovsky.us/api/now-playing');
     const data = await response.json();
-
     return data[0];
   } catch (error) {
     console.error('Error fetching music data:', error);
