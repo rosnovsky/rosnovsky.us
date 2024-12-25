@@ -264,7 +264,7 @@ And the actual counter:
 ```tsx
 // ViewsCount.tsx
 
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect, useState } from 'react'
 
 const ViewsCount = ({ currentPage }: { currentPage: string[] }): JSX.Element => {
   const [views, setViews] = useState()

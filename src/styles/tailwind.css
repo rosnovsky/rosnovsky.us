@@ -2,16 +2,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 @layer base {
   .prose a {
     @apply dark:text-emerald-500 text-emerald-900 underline !important;
   }
-  .prose h1,h2,h3,h4,h5,h6,strong,em,pre,code,blockquote {
+
+  .prose h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  em,
+  pre,
+  code,
+  blockquote {
     @apply dark:text-slate-300 text-slate-700;
   }
 
   img {
     @apply rounded-md !important;
   }
+
+}
+
+.link-preview {
+  @apply dark:bg-slate-800/30 z-10 w-3/4 mx-auto dark:text-white rounded-3xl relative;
+}
+
+.link-preview::after {
+  @apply absolute -inset-5 -z-10 bg-slate-800/30 rounded-3xl backdrop-blur-xl;
+  content: '';
+}
+
+.link-preview a {
+  @apply dark:text-white font-semibold decoration-wavy decoration-emerald-800;
 }

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'preact/hooks'
-import type { JSX } from 'preact'
+import type { JSX } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function ThemeToggle(): JSX.Element | null {
   const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light')

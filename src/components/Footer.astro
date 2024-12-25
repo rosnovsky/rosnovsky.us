@@ -2,13 +2,13 @@
 import Container from '@components/Container.astro'
 import { Icon } from 'astro-icon/components'
 // import newsletterBg from '@images/newsletter-bg.png'
-import { Views } from '@components/Views'
+// import { Views } from '@components/Views'
 import { SOCIALS } from '@config'
 
-export const prerender = false;
+// export const prerender = false;
 
-const currentPage = Astro.url.pathname.split('/')
-currentPage.shift()
+// const currentPage = Astro.url.pathname.split('/')
+// currentPage.shift()
 
 interface Props {
   newsletter?: boolean
@@ -125,8 +125,10 @@ const links = [
           }
         </div>
 
-        <div><img src={`/visitors/register?page=${currentPage}`} loading="eager" aria-hidden="true" alt="" width="1" height="1"  />
-        <Views client:load currentPage={currentPage} /></div>
+        <!-- <div>
+        <img src={`/visitors/register?page=${currentPage}`} loading="eager" aria-hidden="true" alt="" width="1" height="1"  />
+        <Views client:load currentPage={currentPage} />
+        </div> -->
         <p class="mt-8 text-base text-slate-400/90 md:mt-0">
           © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved.
         </p>

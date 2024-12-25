@@ -1,5 +1,5 @@
-import { Suspense, lazy } from 'preact/compat'
-const ViewsCount = lazy(() => import('./ViewsCount')) 
+import { Suspense, lazy } from 'react'
+const ViewsCount = lazy(() => import('./ViewsCount'))
 
 export const Views = ({ currentPage }: { currentPage: string[] }) => {
   return (

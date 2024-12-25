@@ -1,7 +1,6 @@
 import alpinejs from '@astrojs/alpinejs';
 import db from "@astrojs/db";
 import mdx from '@astrojs/mdx';
-import preact from "@astrojs/preact";
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/serverless';
@@ -12,6 +11,8 @@ import { defineConfig } from 'astro/config';
 import { toString } from 'mdast-util-to-string';
 import getReadingTime from 'reading-time';
 import { SITE } from './src/config';
+
+import react from '@astrojs/react';
 
 function remarkReadingTime() {
   return function (tree, {
@@ -41,7 +42,7 @@ export default defineConfig({
   },
   integrations: [tailwind({
     applyBaseStyles: false
-  }), alpinejs(), sitemap(), icon(), db(), preact(), webVitals(), mdx()],
+  }), alpinejs(), sitemap(), icon(), db(), webVitals(), mdx(), react()],
   scopedStyleStrategy: 'where',
   adapter: vercel({
     webAnalytics: {

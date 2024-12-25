@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
-
-// This is NOT how it works. Don't ask.
-export const prerender = false;
+import { useEffect, useState } from 'react';
 
 interface CurrentMusic {
   albumArt: string;
