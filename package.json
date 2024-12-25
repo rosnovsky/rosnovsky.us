@@ -21,6 +21,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/db": "0.14.5",
     "@astrojs/mdx": "4.0.3",
+    "@astrojs/netlify": "^6.0.1",
     "@astrojs/node": "9.0.0",
     "@astrojs/prism": "3.2.0",
     "@astrojs/rss": "^4.0.10",
