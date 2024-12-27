@@ -1,2 +1,2 @@
-declare module 'swiper'
-declare module 'swiper/modules'
+declare module 'swiper';
+declare module 'swiper/modules';

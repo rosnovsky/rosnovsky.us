@@ -2,7 +2,7 @@
 title: '2022: A Year In Review'
 description: 'My expectations for 2022 were really low, but holly hell, it managed to not live up even to these abysmally low expectations.'
 publishDate: 2022-12-31T20:59:00Z
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/2022-a-year-in-review/concert.jpg'
   alt: 'Generic blog post cover image'

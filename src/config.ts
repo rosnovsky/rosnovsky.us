@@ -7,12 +7,12 @@ export const SITE: Site = {
   website: 'https://rosnovsky.us',
   author: 'Art Rosnovsky',
   description:
-    "Blog by Art Rosnovsky, a software engineer, about technology, hiking, books, movies, and other things.",
+    'Blog by Art Rosnovsky, a software engineer, about technology, hiking, books, movies, and other things.',
   title: 'Rosnovsky Park™',
   ogImage: 'jane-og.png',
   postsPerPage: 9,
   projectsPerPage: 3,
-}
+};
 
 export const SOCIALS: SocialObjects = [
   {
@@ -51,13 +51,13 @@ export const SOCIALS: SocialObjects = [
     showInHero: true,
   },
   {
-    name: "rss",
-    href: "/feed/feed.xml",
-    label: "RSS",
-    ariaLabel: "RSS Feed",
+    name: 'rss',
+    href: '/feed/feed.xml',
+    label: 'RSS',
+    ariaLabel: 'RSS Feed',
     showInHero: true,
-  }
-]
+  },
+];
 
 export const STACK: StackObjects = [
   {
@@ -75,4 +75,4 @@ export const STACK: StackObjects = [
     experience: '5+ years',
     logo: tailwind,
   },
-]
+];

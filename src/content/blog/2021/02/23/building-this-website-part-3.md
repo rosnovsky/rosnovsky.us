@@ -2,7 +2,7 @@
 title: 'Building this website: Part 3'
 publishDate: 2021-02-23
 description: 'In this installment, let’s talk about what it takes to start over and why perfect is indeed the enemy of good.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

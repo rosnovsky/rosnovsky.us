@@ -1,9 +1,9 @@
 ---
-import Container from '@components/Container.astro'
-import FeaturedProject from './FeaturedProject.astro'
-import { getSortedProjects } from '@utils/projects'
+import Container from '@components/Container.astro';
+import FeaturedProject from './FeaturedProject.astro';
+import { getSortedProjects } from '@utils/projects';
 
-const featuredProjects = (await getSortedProjects()).slice(0, 4)
+const featuredProjects = (await getSortedProjects()).slice(0, 4);
 ---
 
 <section class="overflow-x-clip bg-white pb-16 pt-8 sm:pb-24 sm:pt-12 md:pt-16">

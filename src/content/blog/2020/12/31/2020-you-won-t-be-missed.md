@@ -2,7 +2,7 @@
 title: "2020 won't be missed"
 publishDate: 2020-12-31T20:20:20Z
 description: "This by far the worst year in generations is coming to a close. It won't be missed, yet it will remain in our memory, history books, and our shared trauma will take decades to heal. Here's to 2021, hopefully, a better year."
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/2020-you-won-t-be-missed/419e8b815b0024e4e5e79a3de390121e43c32f74-2744x3662.jpg'
   alt: 'Generic blog post cover image'

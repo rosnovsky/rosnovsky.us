@@ -2,7 +2,7 @@
 title: 'Will we bounce back?'
 publishDate: 2020-03-21
 description: 'We’ll bounce back, scarred and battered, but stronger and more resilient.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/will-we-bounce-back/bad879662702dc5d43d81cde729ea68b1a9f71ba-948x948.jpg'
   alt: 'Diagram'

@@ -2,7 +2,7 @@
 title: 'Building this website: Part 2'
 publishDate: 2021-01-02T20:20:20Z
 description: 'For the past few months, I’ve been rebuilding my website. This time, I’ve built it from scratch, with these two hands. In this post, I want to take a deep dive into what and how I built, and what’s next.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/building-this-website-part-2/ccf00c415ef6dcb0fa914b907352d765b3b5c2b4-2024x2498.png'
   alt: 'Generic blog post cover image'

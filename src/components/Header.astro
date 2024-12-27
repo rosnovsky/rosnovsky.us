@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets'
-import logo from '@images/apple-touch-icon.png'
-import logoIcon from '@images/favicon-32x32.png'
+import { Image } from 'astro:assets';
+import logo from '@images/apple-touch-icon.png';
+import logoIcon from '@images/favicon-32x32.png';
 // import { ViewTransitions, fade } from 'astro:transitions'
 
-const pathname = Astro.url.pathname.replace(/(?<=.)\/$/, '')
+const pathname = Astro.url.pathname.replace(/(?<=.)\/$/, '');
 
 const links = [
   { label: 'Home', href: '/' },
@@ -12,12 +12,11 @@ const links = [
   { label: 'Blog', href: '/blog' },
   // { label: 'Projects', href: '/projects' },
   // { label: 'Contact', href: '/contact' },
-]
-
+];
 ---
 
 <header
-  class="h-24 border-b border-slate-200/80 bg-white text-slate-800 dark:border-slate-900/20 dark:bg-slate-950 dark:text-slate-200" 
+  class="h-24 border-b border-slate-200/80 bg-white text-slate-800 dark:border-slate-900/20 dark:bg-slate-950 dark:text-slate-200"
 >
   <div
     class="mx-auto flex h-full w-full max-w-screen-xl items-center px-5 sm:px-6 lg:px-8"
@@ -30,13 +29,13 @@ const links = [
             src={logo}
             alt=""
             class="h-8 w-auto sm:h-9 md:hidden lg:block lg:h-10"
-            loading={"eager"}
+            loading={'eager'}
           />
           <Image
             src={logoIcon}
             alt=""
             class="hidden h-8 w-auto md:block lg:hidden"
-            loading={"eager"}
+            loading={'eager'}
           />
           <h1 class="ml-5 text-xl font-bold">Rosnovsky Park</h1>
         </a>
@@ -161,5 +160,3 @@ const links = [
     </nav>
   </div>
 </header>
-
-

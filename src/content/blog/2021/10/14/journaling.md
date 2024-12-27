@@ -2,7 +2,7 @@
 title: Journaling
 description: I've been writing stuff that nobody reads for a long time. Now I not only do it here but also in a private paper-based journal. And it's been a game-changer in the past few months.
 publishDate: 2021-10-14
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/journaling/7d5aecc45d9d076d60778e0485260af6782ea21d-2615x1885.avif'
   alt: 'Generic blog post cover image'

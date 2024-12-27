@@ -1,26 +1,27 @@
 ---
-import Container from '@components/Container.astro'
-import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
+import Container from '@components/Container.astro';
+import { Icon } from 'astro-icon/components';
 // import newsletterBg from '@images/newsletter-bg.png'
-import { Views } from '@components/Views'
-import { SOCIALS } from '@config'
+// import { Views } from '@components/Views'
+import { SOCIALS } from '@config';
 
-const currentPage = Astro.url.pathname.split('/')
-currentPage.shift()
+// export const prerender = false;
+
+// const currentPage = Astro.url.pathname.split('/')
+// currentPage.shift()
 
 interface Props {
-  newsletter?: boolean
+  newsletter?: boolean;
 }
 
-const { newsletter = false } = Astro.props
+const { newsletter = false } = Astro.props;
 const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   // { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   // { label: 'Contact', href: '/contact' },
-]
+];
 ---
 
 <section class:list={[newsletter && 'pt-12 sm:pt-16']}>
@@ -48,7 +49,7 @@ const links = [
               >
                 <input
                   type="email"
-                  class="dark:palceholder-emerald-900/90 h-14 w-full rounded-full border-0 bg-white/10 py-3.5 pl-5 pr-32 text-sm leading-5 text-emerald-50 placeholder-emerald-100/90 outline-none ring-1 ring-white/25  backdrop-blur duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-white/30 dark:bg-slate-950/10 dark:ring-slate-950/25 dark:focus:ring-slate-950/30 sm:pl-6"
+                  class="dark:palceholder-emerald-900/90 h-14 w-full rounded-full border-0 bg-white/10 py-3.5 pl-5 pr-32 text-sm leading-5 text-emerald-50 placeholder-emerald-100/90 outline-none ring-1 ring-white/25 backdrop-blur duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-white/30 dark:bg-slate-950/10 dark:ring-slate-950/25 dark:focus:ring-slate-950/30 sm:pl-6"
                   required
                   placeholder="Enter your email"
                   auto-complete="email"
@@ -116,7 +117,7 @@ const links = [
             links.map((link) => (
               <a
                 href={link.href}
-                class="text-base font-medium text-slate-300 duration-200 ease-in-out hover:text-white "
+                class="text-base font-medium text-slate-300 duration-200 ease-in-out hover:text-white"
               >
                 {link.label}
               </a>
@@ -124,8 +125,6 @@ const links = [
           }
         </div>
 
-        <div><Image src={`/visitors/register?page=${currentPage}`} loading="eager" alt="" width="1" height="1"/>
-        <Views client:load currentPage={currentPage} /></div>
         <p class="mt-8 text-base text-slate-400/90 md:mt-0">
           © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved.
         </p>

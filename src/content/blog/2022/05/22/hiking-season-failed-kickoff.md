@@ -2,7 +2,7 @@
 title: Hiking season failed kickoff
 publishDate: 2022-05-22
 description: 'The 2022 hiking season is off to a rough start: out of two hikes we attempted as a family, one ended with an impassable road about two miles prior to the trailhead, and the second one… well, let’s just say that we had to turn back sooner than expected.'
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/hiking-season-failed-kickoff/1f0d9bb5405b2b05b59900dc15cbdcda75d7f2cc-3024x4032.avif'
   alt: 'Generic blog post cover image'

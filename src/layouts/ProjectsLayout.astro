@@ -1,28 +1,28 @@
 ---
-import Layout from './Layout.astro'
-import Tabs from '@components/collections/Tabs.astro'
-import Pagination from '@components/collections/Pagination.astro'
-import Container from '@components/Container.astro'
-import Projects from '@components/projects/Projects.astro'
-import { SITE } from '@config'
-import { getFeaturedTags } from '@utils/projects'
-import type { Page } from 'astro'
-import type { Project } from '@types'
+import Layout from './Layout.astro';
+import Tabs from '@components/collections/Tabs.astro';
+import Pagination from '@components/collections/Pagination.astro';
+import Container from '@components/Container.astro';
+import Projects from '@components/projects/Projects.astro';
+import { SITE } from '@config';
+import { getFeaturedTags } from '@utils/projects';
+import type { Page } from 'astro';
+import type { Project } from '@types';
 
 interface Props {
-  title?: string
-  description?: string
-  page: Page<Project>
+  title?: string;
+  description?: string;
+  page: Page<Project>;
 }
 
 const {
   page,
   title = `Work | ${SITE.title}`,
   description = 'Explore an impressive collection of case studies showcasing a my diverse skill set, innovative solutions, and successful projects.',
-} = Astro.props
+} = Astro.props;
 
 const { data: projects } = page;
-const featuredTags = await getFeaturedTags()
+const featuredTags = await getFeaturedTags();
 ---
 
 <Layout title={title} description={description} transition:name={title}>

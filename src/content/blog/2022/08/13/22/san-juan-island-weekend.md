@@ -2,7 +2,7 @@
 title: San Juan Island Weekend
 publishDate: 2022-08-13
 description: For the first time in a while, a trip felt truly like a proper vacation. The one that doesn't require another vacation to recover from it :))
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/san-juan-island-weekend/bc6cd2176aa0088f5247a8961824dcbd58b6d342-4032x2268.avif'
   alt: 'Generic blog post cover image'

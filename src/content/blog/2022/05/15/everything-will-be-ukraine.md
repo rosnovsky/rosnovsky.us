@@ -3,7 +3,7 @@ title: Все буде Україна 🇺🇦
 publishDate: 2022-05-15
 description: "This is unspeakable: Russia is bombing Ukraine. I'm Russian-American, and most of my family remains in Russia. I love Ukraine with all my heart, and most of my friends are Ukrainian."
 postSlug: everyting-will-be-ukraine
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/everyting-will-be-ukraine/bc35ecae44658fa0ded7e75f46e2aa0cf20fd374-720x537.avif'
   alt: 'Generic blog post cover image'

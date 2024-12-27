@@ -2,7 +2,7 @@
 title: 'How To Give a Shit'
 publishDate: 2020-03-14
 description: 'True values become evident in times of crisis.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/how-to-give-a-shit/fb332fa05c5f79caccf196e722503d7fa1b23db6-1738x744.png'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: Weekend in Port Angeles and the Olympic mountains
 publishDate: 2022-07-20
 description: I've managed to squeeze quite a few vacation days into this weird summer, and just over a week ago my wife and I went camping at the foothills of the Olympic mountains in Western Washington.
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/weekend-in-port-angeles-and-the-olympic-mountains/3626fd28cc2064809fe0b25c3b01443212cfa952-4032x3024.avif'
   alt: 'Generic blog post cover image'

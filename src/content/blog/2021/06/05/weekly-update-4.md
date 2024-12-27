@@ -2,7 +2,7 @@
 title: 'Weekly Update #4'
 publishDate: 2021-06-05
 description: 'A a lot had happend in the past month. We closed on the house, got fully vaccinated, I won a hackathon at work, and once again updated this website. '
-category: "Family"
+category: 'Family'
 image:
   src: '@assets/blog/posts/weekly-update-4/neighborhood.jpg'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: '20-minute bike commute in 5 minutes'
 publishDate: 2018-08-01
 description: 'Biking!!!'
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

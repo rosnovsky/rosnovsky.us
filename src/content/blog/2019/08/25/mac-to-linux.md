@@ -2,7 +2,7 @@
 title: 'New OS, Who Dis: Going Linux after 15 years on Mac'
 publishDate: 2019-08-25
 description: 'A story of a hardcore Mac user of 15 years switching to Linux and loving it.'
-category: "Open Source"
+category: 'Open Source'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

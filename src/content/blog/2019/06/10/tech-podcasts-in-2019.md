@@ -2,7 +2,7 @@
 title: '30 Best Tech and Dev Podcasts'
 publishDate: 2019-06-10
 description: "I've been podcasting for 15+ years. Here's my list of top 30 podcasts of all times... of 2019."
-category: "Family"
+category: 'Family'
 image:
   src: '@assets/blog/posts/tech-podcasts-in-2019/48898b458c771b1c327d452d017b7912ab0e73d8-1179x667.jpg'
   alt: 'Me sitting at the table next to Leo Laporte at TWiT studio'

@@ -2,7 +2,7 @@
 title: 'White Pass Hike'
 publishDate: 2020-08-09
 description: "60,000+ steps, 20 miles round trip, 600 floors climbed. What doesn't kill you makes you back hurt. Also, I've got blisters on my thumbs 🤦‍♂️"
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/white-pass-hike/4a24bbb209d69385fb17482d086ca100ed9b3c54-2000x2667.jpg'
   alt: 'Generic blog post cover image'

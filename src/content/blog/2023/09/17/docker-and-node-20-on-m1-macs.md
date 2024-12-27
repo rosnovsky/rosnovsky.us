@@ -2,7 +2,7 @@
 title: 'Docker and Node 20 on M1 Macs'
 description: "If you trying to build a Node 20 image with Docker on Apple Silicon while upgrading from an older Node versions, you may get stuck on the `npm install` step. There's an easy fix for it."
 publishDate: 2023-09-17
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/docker-and-node-20-on-m1-macs.png'
   alt: 'Generic blog post cover image'

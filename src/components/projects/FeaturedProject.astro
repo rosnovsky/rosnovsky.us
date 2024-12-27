@@ -1,16 +1,16 @@
 ---
-import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
-import CaseStudyGradient from '@components/illustrations/CaseStudyGradient.astro'
-import { slugify } from '@utils/slugs'
-import type { Project } from '@types'
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import CaseStudyGradient from '@components/illustrations/CaseStudyGradient.astro';
+import { slugify } from '@utils/slugs';
+import type { Project } from '@types';
 
 interface Props {
-  project: Project
+  project: Project;
 }
 
-const { project } = Astro.props
-const categorySlug = slugify(project.data.tags[0])
+const { project } = Astro.props;
+const categorySlug = slugify(project.data.tags[0]);
 ---
 
 <div

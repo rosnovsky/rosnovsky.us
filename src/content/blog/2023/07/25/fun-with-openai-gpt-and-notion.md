@@ -2,7 +2,7 @@
 title: 'Fun with OpenAI, GPT, and Notion'
 description: 'I’ve been toying with this side project for a couple of months, and I’m pretty happy about how it’s been going so far.'
 publishDate: 2023-07-25
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

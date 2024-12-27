@@ -1,27 +1,40 @@
 ---
-import Container from '@components/Container.astro'
-import BlogGrid from '@components/blog/BlogGrid.astro'
-import Underline from '@components/illustrations/Underline.astro'
-import type { Post } from '@types'
-import { getSortedPosts } from '@utils/posts'
-import { db, desc, ne, Visits } from 'astro:db'
+import Container from '@components/Container.astro';
+import BlogGrid from '@components/blog/BlogGrid.astro';
+import Underline from '@components/illustrations/Underline.astro';
+import type { Post } from '@types';
+import { getSortedPosts } from '@utils/posts';
+import { db, desc, ne, Visits } from 'astro:db';
 
-const featuredPosts: Post[] = (await getSortedPosts()).slice(0, 3)
+const featuredPosts: Post[] = (await getSortedPosts()).slice(0, 3);
 
-const popularPostsByVisits = new Set(await db.selectDistinct().from(Visits).where(ne(Visits.content, "none")).orderBy(desc(Visits.visitor_count)).limit(6).then((rows) => {
-  return rows.map((row) => {
-    return row.content
-  })
-}))
+const popularPostsByVisits = new Set(
+  await db
+    .selectDistinct()
+    .from(Visits)
+    .where(ne(Visits.content, 'none'))
+    .orderBy(desc(Visits.visitor_count))
+    .limit(6)
+    .then((rows) => {
+      return rows.map((row) => {
+        return row.content;
+      });
+    })
+);
 
-const featuredPostsSlugs = featuredPosts.map((post) => post.slug.split('/').pop())
+const featuredPostsSlugs = featuredPosts.map((post) =>
+  post.slug.split('/').pop()
+);
 
-const popularPostsSlugs = Array.from(popularPostsByVisits).filter((slug) => !featuredPostsSlugs.includes(slug)).slice(0, 6)
+const popularPostsSlugs = Array.from(popularPostsByVisits)
+  .filter((slug) => !featuredPostsSlugs.includes(slug))
+  .slice(0, 6);
 
 const allPosts: Post[] = await getSortedPosts();
 
-const popularPosts = allPosts.filter((post) => popularPostsSlugs.includes(post.slug.split('/').pop()!))
-
+const popularPosts = allPosts.filter((post) =>
+  popularPostsSlugs.includes(post.slug.split('/').pop()!)
+);
 ---
 
 <section

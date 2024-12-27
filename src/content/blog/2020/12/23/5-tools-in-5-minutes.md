@@ -2,7 +2,7 @@
 title: '5 Tools in 5 Minutes'
 publishDate: 2020-12-23
 description: 'These are some of my favorite tools that make my day-to-day job so much easier.'
-category: "Open Source"
+category: 'Open Source'
 image:
   src: '@assets/blog/posts/5-tools-in-5-minutes/da96c948586c772d42c16edb4f52302d7a8fd0c9-2899x1839.png'
   alt: 'Generic blog post cover image'

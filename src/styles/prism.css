@@ -66,7 +66,7 @@
 
 .token.deleted,
 .token.inserted {
-  @apply relative -mx-9 block border-l-4 pl-8 pr-5 before:absolute before:top-0 before:left-4;
+  @apply relative -mx-9 block border-l-4 pl-8 pr-5 before:absolute before:left-4 before:top-0;
 }
 
 .token.inserted {

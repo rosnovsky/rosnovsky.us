@@ -2,7 +2,7 @@
 title: 'Weekly Update #1'
 publishDate: 2021-04-03
 description: "In order to keep myself accounatble and to develop some writing consistency, I'm going to start posting weekly updates. Here's the first one."
-category: "Covid"
+category: 'Covid'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: Boulder river hike
 publishDate: 2022-05-29
 description: After our failed first hike of the season, we've managed to get one recorded yesterday.
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/boulder-river-hike/78de433f2d229f3aea99be8795d3d976a8f122b2-4032x3024.avif'
   alt: 'Generic blog post cover image'

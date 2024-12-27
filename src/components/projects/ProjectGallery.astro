@@ -1,17 +1,17 @@
 ---
-import { Image } from 'astro:assets'
-import Container from '@components/Container.astro'
-import type { Project } from '@types'
+import { Image } from 'astro:assets';
+import Container from '@components/Container.astro';
+import type { Project } from '@types';
 
 interface Props {
-  project: Project
+  project: Project;
 }
 
 const {
   project: {
     data: { images },
   },
-} = Astro.props
+} = Astro.props;
 ---
 
 <section class="overflow-hidden bg-slate-50 py-16 sm:py-24 lg:py-28 xl:py-32">

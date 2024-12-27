@@ -2,7 +2,7 @@
 title: 'Wallace Falls Hike'
 publishDate: 2020-07-12
 description: "Recently, I started hiking again with a goal to do an overnight hike in the North Cascades by the end of summer. Here's a bunch of photos from Wallace Falls trail."
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/wallace-falls/e26bb5dfcbc302ca762ef72087349e06e55d79e7-2000x2667.jpg'
   alt: 'Generic blog post cover image'

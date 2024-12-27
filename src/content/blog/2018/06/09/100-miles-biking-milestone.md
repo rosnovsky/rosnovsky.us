@@ -2,7 +2,7 @@
 title: '100 miles biking milestone'
 publishDate: 2018-06-09
 description: "Ebiking is a pretty fantastic thing. Here's a quick overview of my first 100 miles."
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

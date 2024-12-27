@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content'
+import { defineCollection, z } from 'astro:content';
 
 const blogCollection = defineCollection({
   schema: ({ image }) =>
@@ -16,13 +16,14 @@ const blogCollection = defineCollection({
         'Music',
         'Books',
         'Personal',
-        "Covid",
+        'Covid',
         'Gaming',
       ]),
       description: z.string(),
-      publishDate: z.date()
+      publishDate: z.date(),
+      draft: z.boolean().optional(),
     }),
-})
+});
 
 const projectsCollection = defineCollection({
   schema: ({ image }) =>
@@ -42,7 +43,7 @@ const projectsCollection = defineCollection({
         z.object({
           src: image(),
           alt: z.string(),
-        }),
+        })
       ),
       timeline: z.object({
         start: z.date(),
@@ -51,9 +52,9 @@ const projectsCollection = defineCollection({
       projectURL: z.string().url(),
       description: z.string(),
     }),
-})
+});
 
 export const collections = {
   blog: blogCollection,
   projects: projectsCollection,
-}
+};

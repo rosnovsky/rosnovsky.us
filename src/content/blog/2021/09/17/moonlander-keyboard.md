@@ -2,7 +2,7 @@
 title: 'Moonlander Keyboard'
 publishDate: 2021-09-17
 description: "I've upgraded my keyboard recently. It's been a frustraring, fullfilling, and invigorating experience so far."
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/moonlander/moonlander0008.jpg'
   alt: 'Generic blog post cover image'

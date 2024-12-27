@@ -2,7 +2,7 @@
 title: 'Arlington: bike ride'
 publishDate: 2021-09-04
 description: 'Just a few photos from the bike ride through Arlington, Washington.'
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/arlington/IMG_0022.jpeg'
   alt: 'Generic blog post cover image'

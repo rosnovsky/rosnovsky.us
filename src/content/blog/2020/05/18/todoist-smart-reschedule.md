@@ -2,7 +2,7 @@
 title: 'Todoist Smart Reschedule'
 publishDate: 2020-05-18
 description: 'Instead of looking for Todoist alternatives, I decided to implement my own Smart Reschedule feature, which they removed from the app not long ago.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/todoist-smart-reschedule/8456d51f10b50af9a5d7a9c83e56a22ba7c00718-2000x1517.jpg'
   alt: 'Generic blog post cover image'

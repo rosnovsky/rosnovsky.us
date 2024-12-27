@@ -2,7 +2,7 @@
 title: Hello and welcome
 description: Just wanted to say hi to those who found me here while rediscovering the internet outside of social media.
 publishDate: 2022-10-30T23:18:11Z
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

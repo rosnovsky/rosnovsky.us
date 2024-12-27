@@ -2,7 +2,7 @@
 title: 'Summer Time'
 publishDate: 2021-07-13
 description: "The summer is different this year. Let's take a look at what's going on this time around."
-category: "Family"
+category: 'Family'
 image:
   src: '@assets/blog/posts/summer-time/summer-time0004.jpg'
   alt: 'Generic blog post cover image'

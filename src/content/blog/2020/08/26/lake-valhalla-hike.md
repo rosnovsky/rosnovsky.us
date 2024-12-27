@@ -2,7 +2,7 @@
 title: 'Lake Valhalla Hike'
 publishDate: 2020-08-26
 description: "A story about a washed away road, how I couldn't find a trail, night hike on the Pacific Crest Trail, and killer-mosquitoes 🦟"
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/lake-valhalla-hike/f8126d4d58f577a682160bf8ea22314f89cb0dd1-1600x2134.jpg'
   alt: 'Generic blog post cover image'

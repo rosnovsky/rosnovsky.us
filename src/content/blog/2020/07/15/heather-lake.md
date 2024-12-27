@@ -2,7 +2,7 @@
 title: 'Heather Lake Hike'
 publishDate: 2020-07-15
 description: 'Painful ascent but spectacular payoff.'
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/heather-lake-hike/c3770848c86edc986509654f97c51eb94c9c708a-2000x2667.jpg'
   alt: 'Generic blog post cover image'

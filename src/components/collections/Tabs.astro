@@ -1,38 +1,40 @@
 ---
-import Tab from './Tab.astro'
-import { slugify } from '@utils/slugs'
-import type { HTMLAttributes } from 'astro/types'
+import Tab from './Tab.astro';
+import { slugify } from '@utils/slugs';
+import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'ul'> {
-  tabs: string[]
-  directory: string
+  tabs: string[];
+  directory: string;
 }
 
-const { tabs, directory, class: className } = Astro.props
+const { tabs, directory, class: className } = Astro.props;
 
-const IS_BLOG = isBlog(directory)
-const defaultTabLabel = IS_BLOG ? 'All Posts' : 'All Projects'
-const defaultPath = IS_BLOG ? `/${directory}#posts` : `/${directory}`
+const IS_BLOG = isBlog(directory);
+const defaultTabLabel = IS_BLOG ? 'All Posts' : 'All Projects';
+const defaultPath = IS_BLOG ? `/${directory}#posts` : `/${directory}`;
 
 function getTabPath(tab: string): string {
-  const tabSlug = slugify(tab)
-  return IS_BLOG ? `/${directory}/${tabSlug}#posts` : `/${directory}/${tabSlug}`
+  const tabSlug = slugify(tab);
+  return IS_BLOG
+    ? `/${directory}/${tabSlug}#posts`
+    : `/${directory}/${tabSlug}`;
 }
 
 function isActive(tabPath: string): boolean {
-  const pathname = Astro.url.pathname.replace(/\/$/, '')
+  const pathname = Astro.url.pathname.replace(/\/$/, '');
 
   if (tabPath === defaultPath) {
-    const regexPattern = new RegExp(`^\\/${directory}(\\/\\d+)?$`)
-    return regexPattern.test(pathname)
+    const regexPattern = new RegExp(`^\\/${directory}(\\/\\d+)?$`);
+    return regexPattern.test(pathname);
   }
 
-  const basePath = tabPath.replace(/#.*$/, '')
-  return pathname.startsWith(basePath)
+  const basePath = tabPath.replace(/#.*$/, '');
+  return pathname.startsWith(basePath);
 }
 
 function isBlog(directory: string): boolean {
-  return directory === 'blog'
+  return directory === 'blog';
 }
 ---
 

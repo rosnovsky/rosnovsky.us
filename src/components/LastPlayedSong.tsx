@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
-
-// This is NOT how it works. Don't ask.
-export const prerender = false;
+import { useEffect, useState } from 'react';
 
 interface CurrentMusic {
   albumArt: string;
@@ -43,10 +40,9 @@ export default function LastPlayedSong() {
 
   if (!currentMusic) {
     return (
-      <div
-        className="absolute left-12 top-full inline-flex h-12 w-max -translate-y-6 items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 lg:px-10 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32"
-      >
-        <img src="/react.svg" alt="" className="h-6 w-auto" />🔥🔥🔥
+      <div className="absolute left-12 top-full inline-flex h-12 w-max -translate-y-6 items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 lg:px-10 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32">
+        <img src="/react.svg" alt="" className="h-6 w-auto" />
+        🔥🔥🔥
       </div>
     );
   }
@@ -56,11 +52,12 @@ export default function LastPlayedSong() {
       href="https://music.rosnovsky.us"
       aria-label={`Now playing: ${currentMusic.title} by ${currentMusic.grandparentTitle}`}
     >
-      <div className="absolute left-12 top-full md:top-[580px] flex h-24 w-max -translate-y-6 rounded-2xl bg-white/90 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32 ">
+      <div className="absolute left-12 top-full flex h-24 w-max -translate-y-6 rounded-2xl bg-white/90 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:top-[580px] md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32">
         <div className="flex h-24 items-center rounded-l-2xl">
           <span
             className="-rotate-180 px-2 text-[11px] font-thin tracking-wide text-yellow-900/70 dark:text-yellow-100/80"
-            style={{ writingMode: 'vertical-lr' }} aria-hidden="true"
+            style={{ writingMode: 'vertical-lr' }}
+            aria-hidden="true"
           >
             LAST PLAYED
           </span>

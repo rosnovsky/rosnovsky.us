@@ -3,11 +3,11 @@ title: 'Sanity Autocomplete Tags'
 subtitle: 'A Culture, Business, and Science Magazine'
 tags: ['Consulting', 'Product Design', 'Custom Website', 'Branding']
 thumbnail:
-    src: '@assets/blog/covers/generic.webp'
-    alt: 'Generic blog post cover image'
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 coverImage:
-    src: '@assets/blog/covers/generic.webp'
-    alt: 'Generic blog post cover image'
+  src: '@assets/blog/covers/generic.webp'
+  alt: 'Generic blog post cover image'
 images:
   - src: '@assets/blog/covers/generic.webp'
     alt: 'Generic blog post cover image'

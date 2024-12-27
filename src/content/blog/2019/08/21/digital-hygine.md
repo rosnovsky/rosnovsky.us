@@ -2,7 +2,7 @@
 title: 'Digital Hygine'
 publishDate: 2019-08-21
 description: 'Wash your hands with soap after visiting Facebook. No exceptions!'
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

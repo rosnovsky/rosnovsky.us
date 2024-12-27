@@ -1,36 +1,37 @@
 ---
-import Layout from '@layouts/Layout.astro'
-import ProjectCoponent from '@components/projects/Project.astro'
-import ProjectDetails from '@components/projects/ProjectDetails.astro'
-import ProjectGallery from '@components/projects/ProjectGallery.astro'
-import ProjectNavigation from '@components/projects/ProjectNavigation.astro'
-import { SITE } from '@config'
-import { getCollection } from 'astro:content'
-import type { Project } from '@types'
-import ProjectHero from '@components/projects/ProjectHero.astro'
+import ProjectDetails from '@components/projects/ProjectDetails.astro';
+import ProjectGallery from '@components/projects/ProjectGallery.astro';
+import ProjectHero from '@components/projects/ProjectHero.astro';
+import ProjectNavigation from '@components/projects/ProjectNavigation.astro';
+import { SITE } from '@config';
+import Layout from '@layouts/Layout.astro';
+import type { Project } from '@types';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects')
+  const projects = await getCollection('projects');
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
-  }))
+  }));
 }
 
 interface Props {
-  project: Project
+  project: Project;
 }
 
-const { project } = Astro.props
+const { project } = Astro.props;
 
 const {
   title,
   description,
   thumbnail: { src: ogImage },
-} = project.data
+} = project.data;
 
-const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src
-const { Content } = await project.render()
+const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src;
+const { Content } = await project.render();
 ---
 
 <Layout
