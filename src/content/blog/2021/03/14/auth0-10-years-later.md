@@ -2,7 +2,7 @@
 title: 'Auth0: 10 Years Later'
 publishDate: 2021-03-14
 description: "It's hard to believe that it's been over a year since I joined Auth0. It's time to do some reflection. Shall we?"
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/auth0-10-years-later/b74f04a4baa56f64460f233f9e4874b0b7e9c3a5-1024x593.png'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: 'Goat Lake Hike'
 publishDate: 2020-07-29
 description: 'A perfect hike featuring creeks, streams, waterfalls, all kinds of forests, from birch to brush to old growth, and the payoff is one of the most beautiful lakes out there.'
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/goat-lake-hike/4df7745096afe6f593b9f7e78f28443e972c0637-1600x1200.jpg'
   alt: 'Generic blog post cover image'

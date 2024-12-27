@@ -3,7 +3,7 @@ title: 'Weekly Update #3'
 publishDate: 2021-04-20
 description: 'This one is short: house hunting is over & family is in town!'
 heroImage: '/blog/covers/weekly-update-3/cover.jpg'
-category: "Family"
+category: 'Family'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

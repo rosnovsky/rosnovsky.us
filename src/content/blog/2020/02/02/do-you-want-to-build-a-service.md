@@ -2,7 +2,7 @@
 title: 'Do you want to build a service?'
 publishDate: 2020-02-02T20:20:20Z
 description: "A quick announcement of a new educational and mental-health focused project. Join the team, it's fun!"
-category: "Open Source"
+category: 'Open Source'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

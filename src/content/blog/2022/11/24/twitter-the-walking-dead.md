@@ -2,7 +2,7 @@
 title: 'The Walking Dead: Twitter'
 description: "I've deactivated my twitter account recently in favor of Mastodon. Here's why."
 publishDate: 2022-11-24T20:00:00Z
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

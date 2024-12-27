@@ -1,24 +1,24 @@
 ---
-import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
-import type { Project } from '@types'
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import type { Project } from '@types';
 
 interface Props {
-  project: Project
-  index: number
+  project: Project;
+  index: number;
 }
 
-const { index, project } = Astro.props
+const { index, project } = Astro.props;
 
 async function getProjectData(project: Project) {
   return {
     ...project.data,
     path: `/projects/${project.slug}`,
     slug: project.slug,
-  }
+  };
 }
 
-const projectData = await getProjectData(project)
+const projectData = await getProjectData(project);
 ---
 
 <div

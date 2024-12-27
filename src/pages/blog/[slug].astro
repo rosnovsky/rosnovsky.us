@@ -1,38 +1,38 @@
 ---
-import PostFooter from '@components/PostFooter.astro'
-import Layout from '@layouts/Layout.astro'
-import type { Post } from '@types'
-import { slugify } from '@utils/slugs'
-import { Icon } from 'astro-icon/components'
-import "astro-mastodon/dist/output.css"
-import { Image } from 'astro:assets'
-import { getCollection } from 'astro:content'
+import PostFooter from '@components/PostFooter.astro';
+import Layout from '@layouts/Layout.astro';
+import type { Post } from '@types';
+import { slugify } from '@utils/slugs';
+import { Icon } from 'astro-icon/components';
+import 'astro-mastodon/dist/output.css';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog')
+  const blogEntries = await getCollection('blog');
   return blogEntries.map((postEntry) => ({
     params: { slug: postEntry.slug.split('/').pop() },
     props: { postEntry },
-  }))
+  }));
 }
 
 interface Props {
-  postEntry: Post
+  postEntry: Post;
 }
 
 export const prerender = true;
 
-const { postEntry } = Astro.props
-const { Content, remarkPluginFrontmatter } = await postEntry.render()
+const { postEntry } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await postEntry.render();
 const post = {
   ...postEntry.data,
   minutesRead: remarkPluginFrontmatter.minutesRead,
   slug: postEntry.slug,
-}
+};
 
-const ogImage = post.image.src
-const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src
-const categorySlug = slugify(post.category)
+const ogImage = post.image.src;
+const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src;
+const categorySlug = slugify(post.category);
 ---
 
 <Layout title={post.title} description={post.description} ogImage={ogImageUrl}>

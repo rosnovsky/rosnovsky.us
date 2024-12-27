@@ -2,7 +2,7 @@
 title: 'Listening now: Apple Music'
 publishDate: 2021-11-01
 description: "At the bottom of this page you can find the latest song I've listened to on Apple Music. Here's how I made it works."
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'
@@ -43,25 +43,28 @@ Not very intuitive, but it works. Now you have 6 months to use this token, and a
 As for the Developer token, I used Auth0's `jsonwebtoken` library. It allows you to both sign and verify JWT tokens. I store my private and public keys in environment variables, and sign the token like this:
 
 ```typescript
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 
 const generateToken = async (): string => {
-  const privateKey = process.env.PRIVATE_KEY
-  const keyId = process.env.KEY_ID
-  const teamId = process.env.TEAM_ID
+  const privateKey = process.env.PRIVATE_KEY;
+  const keyId = process.env.KEY_ID;
+  const teamId = process.env.TEAM_ID;
 
-  const developerToken = jwt.sign({},
+  const developerToken = jwt.sign(
+    {},
     `-----BEGIN PRIVATE KEY-----\n` +
-    privateKey +
-    `\n-----END PRIVATE KEY-----`, {
+      privateKey +
+      `\n-----END PRIVATE KEY-----`,
+    {
       algorithm: 'ES256',
       keyid: keyId,
       issuer: teamId,
-      expiresIn: '5s'
-    });
+      expiresIn: '5s',
+    }
+  );
 
   return developerToken;
-}
+};
 ```
 
 That's about it. Now, that you've got both tokens, everything else is pretty straightforward.

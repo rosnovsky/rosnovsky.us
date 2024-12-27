@@ -2,7 +2,7 @@
 title: 'Fall Out Boy, Green Day, Lindsey Stirling'
 publishDate: 2021-09-11
 description: '2020 was a year of, among other things, missed concerts. I missed live music so much that as soon as I got a chance to go to concerts again, I went nuts.'
-category: "Music"
+category: 'Music'
 image:
   src: '@assets/blog/posts/concerts-sep21/concerts0028.jpeg'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: 'Live Coding vs Imposter Paralysis'
 publishDate: 2019-06-08
 description: "I've struggled with imposter paralysis for a while. Then I found a cure."
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

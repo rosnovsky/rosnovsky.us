@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -23,7 +23,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Atkinson Hyperlegible', 'Inter', ...defaultTheme.fontFamily.sans],
+        sans: [
+          'Atkinson Hyperlegible',
+          'Inter',
+          ...defaultTheme.fontFamily.sans,
+        ],
         display: ['Lexend Variable', ...defaultTheme.fontFamily.sans],
         writing: ['Gochi Hand', ...defaultTheme.fontFamily.sans],
         cursive: ['Mr Dafoe', 'mono'],
@@ -41,4 +45,4 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
   ],
-}
+};

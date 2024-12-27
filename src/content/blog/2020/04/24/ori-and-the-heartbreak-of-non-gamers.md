@@ -2,7 +2,7 @@
 title: Ori and the Heartbreak of Non-Gamers
 description: 'I’ve been toying with this side project for a couple of months, and I’m pretty happy about how it’s been going so far.'
 publishDate: 2020-04-24
-category: "Gaming"
+category: 'Gaming'
 image:
   src: '@assets/blog/posts/ori-and-the-heartbreak-of-non-gamers/e6f2fafe5f089de05aa42e3be50ce6a289d9faad-1920x1080.jpg'
   alt: 'Generic blog post cover image'

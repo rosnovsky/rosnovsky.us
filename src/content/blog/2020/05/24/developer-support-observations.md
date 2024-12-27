@@ -2,7 +2,7 @@
 title: 'Developer Support Observations'
 publishDate: 2020-05-24
 description: "I've been working as a Developer Support Engineer at Auth0 for the past six months. Here're a few things I learned along the way."
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

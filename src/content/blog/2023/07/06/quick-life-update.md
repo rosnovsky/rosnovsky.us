@@ -2,7 +2,7 @@
 title: 'Quick Life Update'
 description: It's been quite a while since my last update, and I just want to post something to say that I'm alive :)
 publishDate: 2023-07-06
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/posts/quick-life-update/bbbc0e2650389bdaeee08dd048a5fa5114225857-3690x2764.avif'
   alt: 'Generic blog post cover image'

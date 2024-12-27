@@ -2,7 +2,7 @@
 title: 'Configure Twilio SIP Trunk with Unifi Talk'
 publishDate: 2021-08-06
 description: "Unifi Talk by Ubiquity is a very promising service. However, so far it's been lacking documentation. Here's how to configure Twilio SIP Trunk with Unifi Talk."
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/twillio-and-unifi-talk/dashboard.png'
   alt: 'Generic blog post cover image'

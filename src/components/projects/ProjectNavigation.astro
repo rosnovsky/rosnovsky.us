@@ -1,31 +1,31 @@
 ---
-import Container from '@components/Container.astro'
-import { Icon } from 'astro-icon/components'
-import { getCollection } from 'astro:content'
+import Container from '@components/Container.astro';
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
 
 interface Props {
-  projectSlug: string
+  projectSlug: string;
 }
 
-const { projectSlug } = Astro.props
+const { projectSlug } = Astro.props;
 
 async function getSortedProjectsAndIndex(projectSlug: string) {
   const projects = (await getCollection('projects')).sort(
-    (a, b) => b.data.timeline.end.valueOf() - a.data.timeline.end.valueOf(),
-  )
+    (a, b) => b.data.timeline.end.valueOf() - a.data.timeline.end.valueOf()
+  );
 
-  const index = projects.findIndex((p) => p.slug === projectSlug)
-  return { projects, index }
+  const index = projects.findIndex((p) => p.slug === projectSlug);
+  return { projects, index };
 }
 
 async function findAdjacentProject(projectSlug: string, offset: number) {
-  const { projects, index } = await getSortedProjectsAndIndex(projectSlug)
-  const newIndex = (index + offset + projects.length) % projects.length
-  return projects[newIndex]
+  const { projects, index } = await getSortedProjectsAndIndex(projectSlug);
+  const newIndex = (index + offset + projects.length) % projects.length;
+  return projects[newIndex];
 }
 
-const prevProject = await findAdjacentProject(projectSlug, -1)
-const nextProject = await findAdjacentProject(projectSlug, 1)
+const prevProject = await findAdjacentProject(projectSlug, -1);
+const nextProject = await findAdjacentProject(projectSlug, 1);
 ---
 
 <section class="border-t border-slate-200 py-8">

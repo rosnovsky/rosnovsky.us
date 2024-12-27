@@ -2,7 +2,7 @@
 title: 'Building this website'
 publishDate: 2020-10-26
 description: 'I’m rebuilding my site, again. This time, though, I decided to do it in public and share what I do, how, and why.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

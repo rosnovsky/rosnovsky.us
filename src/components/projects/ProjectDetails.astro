@@ -1,37 +1,37 @@
 ---
-import Detail from './Detail.astro'
-import Button from '@components/Button.astro'
-import type { Project } from '@types'
-import { Icon } from 'astro-icon/components'
+import Detail from './Detail.astro';
+import Button from '@components/Button.astro';
+import type { Project } from '@types';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
-  project: Project
+  project: Project;
 }
 
 const {
   project: {
     data: { description, timeline, projectURL },
   },
-} = Astro.props
+} = Astro.props;
 
 function getFormattedTimeline(timeline: { start: Date; end: Date }) {
   const monthDifference =
     (timeline.end.getFullYear() - timeline.start.getFullYear()) * 12 +
-    (timeline.end.getMonth() - timeline.start.getMonth())
+    (timeline.end.getMonth() - timeline.start.getMonth());
 
   const formatter = new Intl.DateTimeFormat('en-US', {
     month: 'short',
     year: 'numeric',
-  })
-  const startFormatted = formatter.format(timeline.start)
-  const endFormatted = formatter.format(timeline.end)
+  });
+  const startFormatted = formatter.format(timeline.start);
+  const endFormatted = formatter.format(timeline.end);
 
   // Handle pluralization
-  const monthLabel = monthDifference === 1 ? 'month' : 'months'
+  const monthLabel = monthDifference === 1 ? 'month' : 'months';
 
-  const formattedTimeline = `${monthDifference} ${monthLabel} (${startFormatted} - ${endFormatted})`
+  const formattedTimeline = `${monthDifference} ${monthLabel} (${startFormatted} - ${endFormatted})`;
 
-  return formattedTimeline
+  return formattedTimeline;
 }
 ---
 

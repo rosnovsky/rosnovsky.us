@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props {
+  type: string;
+  title: string;
+  children: any;
+}
+
+const { title, type = 'note', children } = Astro.props;
+---
+
+<div
+  class="container rounded-lg border border-slate-600 p-6 dark:border-slate-400 dark:bg-slate-800"
+>
+  <div class="flex max-h-20 flex-row place-items-center gap-x-4">
+    <Icon
+      name="material-symbols:info-rounded"
+      class="max-h-5 w-5 text-slate-600 dark:text-slate-400"
+    />
+
+    <slot />
+  </div>
+</div>

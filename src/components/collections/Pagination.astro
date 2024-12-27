@@ -1,43 +1,43 @@
 ---
-import type { Page } from 'astro'
+import type { Page } from 'astro';
 
 interface Props {
-  hash?: string
-  page: Page
+  hash?: string;
+  page: Page;
 }
 
-const { page, hash = '' } = Astro.props
+const { page, hash = '' } = Astro.props;
 
 // A helper function to determine whether to show ellipsis
 function shouldShowEllipsis(index: number, currentPage: number) {
-  return index > currentPage + 2 || index < currentPage - 2
+  return index > currentPage + 2 || index < currentPage - 2;
 }
 
 function appendHash(url?: string) {
   if (url && hash) {
-    return `${url}${hash}`
+    return `${url}${hash}`;
   }
-  return url
+  return url;
 }
 
 function getUrlBase() {
-  const pathSegments = Astro.url.pathname.split('/').filter(Boolean)
-  const collection = pathSegments[0]
+  const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+  const collection = pathSegments[0];
 
   // If second segment is not a number, it's a category.
   if (pathSegments.length >= 2 && isNaN(Number(pathSegments[1]))) {
-    return `/${collection}/${pathSegments[1]}`
+    return `/${collection}/${pathSegments[1]}`;
   }
 
-  return `/${collection}`
+  return `/${collection}`;
 }
 
 function getPageUrl(pageNumber: number) {
-  const baseUrl = getUrlBase()
+  const baseUrl = getUrlBase();
   if (pageNumber === 1) {
-    return appendHash(baseUrl)
+    return appendHash(baseUrl);
   }
-  return appendHash(`${baseUrl}/${pageNumber}`)
+  return appendHash(`${baseUrl}/${pageNumber}`);
 }
 ---
 
@@ -59,8 +59,8 @@ function getPageUrl(pageNumber: number) {
   <!-- Page Numbers -->
   {
     Array.from({ length: page.lastPage }).map((_, index) => {
-      const pageNumber = index + 1
-      const isCurrentPage = pageNumber === page.currentPage
+      const pageNumber = index + 1;
+      const isCurrentPage = pageNumber === page.currentPage;
       if (
         pageNumber === 1 ||
         pageNumber === page.lastPage ||
@@ -68,10 +68,9 @@ function getPageUrl(pageNumber: number) {
       ) {
         return (
           <a
-          transition:name={page.url.current}
+            transition:name={page.url.current}
             href={getPageUrl(pageNumber)}
-            class={`hidden h-10 w-10 items-center justify-center rounded-full text-sm font-medium shadow-sm ring-1 ring-slate-900/5 sm:inline-flex 
-            ${
+            class={`hidden h-10 w-10 items-center justify-center rounded-full text-sm font-medium shadow-sm ring-1 ring-slate-900/5 sm:inline-flex ${
               isCurrentPage
                 ? 'bg-emerald-600 text-emerald-50'
                 : 'bg-slate-50 text-slate-700 transition duration-200 ease-in-out hover:bg-slate-100 hover:text-emerald-700'
@@ -79,7 +78,7 @@ function getPageUrl(pageNumber: number) {
           >
             {pageNumber}
           </a>
-        )
+        );
       }
       if (
         pageNumber === page.currentPage + 3 ||
@@ -89,7 +88,7 @@ function getPageUrl(pageNumber: number) {
           <span class="hidden h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-sm font-medium text-slate-500/60 shadow-sm shadow-emerald-100/50 ring-1 ring-slate-900/5 sm:inline-flex">
             ...
           </span>
-        )
+        );
       }
     })
   }

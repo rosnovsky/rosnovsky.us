@@ -1,31 +1,31 @@
 ---
-import Layout from './Layout.astro'
-import BlogGrid from '@components/blog/BlogGrid.astro'
-import Tabs from '@components/collections/Tabs.astro'
-import Container from '@components/Container.astro'
-import Pagination from '@components/collections/Pagination.astro'
-import { getTopCategories } from '@utils/posts'
-import { SITE } from '@config'
-import type { Page } from 'astro'
-import type { Post } from '@types'
-import Underline from '@components/illustrations/Underline.astro'
-import AboutGradient from '@components/illustrations/AboutGradient.astro'
+import Layout from './Layout.astro';
+import BlogGrid from '@components/blog/BlogGrid.astro';
+import Tabs from '@components/collections/Tabs.astro';
+import Container from '@components/Container.astro';
+import Pagination from '@components/collections/Pagination.astro';
+import { getTopCategories } from '@utils/posts';
+import { SITE } from '@config';
+import type { Page } from 'astro';
+import type { Post } from '@types';
+import Underline from '@components/illustrations/Underline.astro';
+import AboutGradient from '@components/illustrations/AboutGradient.astro';
 // import "astro-mastodon/dist/output.css" // Styles are leaking. Need to fix `astro-mastodon` package.
 
 interface Props {
-  page: Page<Post>
-  title?: string
-  description?: string
+  page: Page<Post>;
+  title?: string;
+  description?: string;
 }
 
 const {
   page,
   title = `Blog | ${SITE.title}`,
   description = 'Posts about web development, software engineering, hiking, music, concerts, books, and more',
-} = Astro.props
+} = Astro.props;
 
-const posts = page.data
-const topCategories = await getTopCategories()
+const posts = page.data;
+const topCategories = await getTopCategories();
 ---
 
 <Layout title={title} description={description}>
@@ -71,7 +71,7 @@ const topCategories = await getTopCategories()
         directory="blog"
         class="mt-9 justify-center gap-2"
       />
-      <BlogGrid posts={posts} transition:name='blog-grid'/>
+      <BlogGrid posts={posts} transition:name="blog-grid" />
       {page.lastPage > 1 && <Pagination page={page} hash={'#posts'} />}
     </Container>
   </section>

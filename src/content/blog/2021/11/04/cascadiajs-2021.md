@@ -2,7 +2,7 @@
 title: CascadiaJS 2021
 description: For years I wanted to attend CascadiaJS 2021, a PNW-native JavaScript conference. And for a while, I either couldn’t afford it, didn’t have the time, or had more immediate priorities.
 publishDate: 2021-11-04
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/cascadiajs-2021/08b8509e78d22e88095a33dac1f3229dc36494ac-1086x724.avif'
   alt: 'Generic blog post cover image'

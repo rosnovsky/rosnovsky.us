@@ -1,8 +1,8 @@
 ---
-title: "Resume automation"
+title: 'Resume automation'
 publishDate: 2024-02-06
-description: "Being recently laid off, I expect to send out hundreds of job applications in coming weeks and months. Why not make working with resume updates as convenient as possible?"
-category: "Web Development"
+description: 'Being recently laid off, I expect to send out hundreds of job applications in coming weeks and months. Why not make working with resume updates as convenient as possible?'
+category: 'Web Development'
 image:
   src: '@assets/blog/covers/resume.png'
   alt: 'Generic blog post cover image'
@@ -25,9 +25,9 @@ So, here's what I came up with when it comes to my _resume workflow_ for this ro
 
 ## Markdown FTW
 
-Markdown is great. It's easy to write, it's readable to both humans and machines, it's easy to convert to other formats too, and there are a ton of tools to work with it. 
+Markdown is great. It's easy to write, it's readable to both humans and machines, it's easy to convert to other formats too, and there are a ton of tools to work with it.
 
-So let me write my resume in Markdown. 
+So let me write my resume in Markdown.
 
 ```markdown
 # Art Rosnovsky
@@ -62,17 +62,17 @@ export const markdownToPdf = async (inputFilePath: string) => {
     const pdf = await mdToPdf({ path: inputFilePath });
     return pdf;
   } catch (error: any) {
-      console.error(`Error occurred: ${error.message}`);
-      throw error;
+    console.error(`Error occurred: ${error.message}`);
+    throw error;
   }
-}
+};
 ```
 
-> If a recruiter asks for a resume in `.docx` or some other exotic/proprietary format, it's a huge red flag. I'll pretend I'm bad at following instructions and send them a PDF anyway. 
+> If a recruiter asks for a resume in `.docx` or some other exotic/proprietary format, it's a huge red flag. I'll pretend I'm bad at following instructions and send them a PDF anyway.
 
 ## Git for version control
 
-Now that I've got my resume in Markdown, converted it to PDF, I need to store it somewhere. Just kidding, it's right there in a folder in the Github repo. I can download the PDF to send it over to someone, or I can just send them a link to the repo (or directly to the `.pdf` file). 
+Now that I've got my resume in Markdown, converted it to PDF, I need to store it somewhere. Just kidding, it's right there in a folder in the Github repo. I can download the PDF to send it over to someone, or I can just send them a link to the repo (or directly to the `.pdf` file).
 
 I can have branches for every job I'm applying for. I can go back in time to a particular version of the resume that performed better. I can see changes made over time. It's all there, in the repo.
 
@@ -86,15 +86,15 @@ name: Generate PDF from resume
 on:
   push:
     paths:
-    # I don't want the workflow to run UNLESS I've updated the actual resume content
-      - "resume.md" 
+      # I don't want the workflow to run UNLESS I've updated the actual resume content
+      - 'resume.md'
   # I want to be able to trigger the workflow manually, if needed
   workflow_dispatch:
     inputs:
       reason:
-        description: "Re-generate resume PDF"
+        description: 'Re-generate resume PDF'
         required: false
-        default: "Manual trigger"
+        default: 'Manual trigger'
 
 permissions:
   contents: write
@@ -110,13 +110,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.5.0"
+          node-version: '20.5.0'
 
       - name: Install dependencies
         run: npm install -g pnpm && pnpm install
-      
+
       - name: Generate PDF
-        run: pnpm build 
+        run: pnpm build
 
       - name: Commit PDF
         run: |

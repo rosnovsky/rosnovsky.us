@@ -2,7 +2,7 @@
 title: 'On Reading'
 publishDate: 2018-11-02
 description: 'Definition of reading is evolving.'
-category: "Books"
+category: 'Books'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

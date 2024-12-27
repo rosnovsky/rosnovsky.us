@@ -1,15 +1,15 @@
 ---
-import { Image } from 'astro:assets'
-import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
-import microsoft from '@images/logos/microsoft.svg'
+import microsoft from '@images/logos/microsoft.svg';
 
-import Container from './Container.astro'
-import avatarImage1 from '@images/avatars/avatar-1.png'
-import avatarImage2 from '@images/avatars/avatar-2.png'
-import avatarImage3 from '@images/avatars/avatar-3.png'
-import avatarImage4 from '@images/avatars/avatar-4.png'
-import avatarImage5 from '@images/avatars/avatar-5.png'
+import Container from './Container.astro';
+import avatarImage1 from '@images/avatars/avatar-1.png';
+import avatarImage2 from '@images/avatars/avatar-2.png';
+import avatarImage3 from '@images/avatars/avatar-3.png';
+import avatarImage4 from '@images/avatars/avatar-4.png';
+import avatarImage5 from '@images/avatars/avatar-5.png';
 
 const testimonials = [
   {
@@ -112,9 +112,9 @@ const testimonials = [
       image: avatarImage5,
     },
   },
-]
+];
 
-const companies = [{ name: 'Microsoft', logo: microsoft }]
+const companies = [{ name: 'Microsoft', logo: microsoft }];
 ---
 
 <section class="relative overflow-hidden bg-slate-50 py-20 sm:py-24 lg:pt-32">
@@ -278,13 +278,13 @@ const companies = [{ name: 'Microsoft', logo: microsoft }]
 </section>
 
 <script>
-  import SwiperInstance from 'swiper'
-  import { Navigation } from 'swiper/modules'
-  import type { Swiper, SwiperOptions } from 'swiper/types'
-  import 'swiper/css'
+  import SwiperInstance from 'swiper';
+  import { Navigation } from 'swiper/modules';
+  import type { Swiper, SwiperOptions } from 'swiper/types';
+  import 'swiper/css';
 
   document.addEventListener('astro:page-load', () => {
-    const progressBar = document.getElementById('progress-bar')
+    const progressBar = document.getElementById('progress-bar');
     const swiperParams: SwiperOptions = {
       modules: [Navigation],
       navigation: {
@@ -302,12 +302,13 @@ const companies = [{ name: 'Microsoft', logo: microsoft }]
       initialSlide: 0,
       on: {
         slideChange: (swiper: Swiper) => {
-          if (progressBar) progressBar.style.width = `${swiper.progress * 100}%`
+          if (progressBar)
+            progressBar.style.width = `${swiper.progress * 100}%`;
         },
       },
-    }
+    };
 
-    new SwiperInstance('.swiper', swiperParams)
-  })
+    new SwiperInstance('.swiper', swiperParams);
+  });
 </script>
 ../../src/@images/avatars/avatar-1.png

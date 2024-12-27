@@ -2,7 +2,7 @@
 title: 'Monroe 4.6 magnitude earthquake 2019'
 publishDate: 2019-07-22
 description: "The day that shook Monroe, WA. And my house. And a bunch of other people's houses."
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: 'Generating Blog Social Images'
 publishDate: 2021-01-03
 description: 'Since I launched my new blog, I discovered that social images were broken; they were an afterthought after all, and I decided to fix it permanently.'
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/generating-blog-social-images/c05ee73d6a6f6f5ecb72a78795feaddf7cf4cd25-1200x675.png'
   alt: 'Generic blog post cover image'
@@ -70,20 +70,22 @@ All this is is an HTML page dynamically generated based on passed parameters. It
 Now we need to turn this page into an image. I use a serverless function to do this. This function accepts required parameters, passes them to the social card page, takes and returns a screenshot. There are different ways of doing this, and I opted for a headless Chrome. I've written a function that loads the page generated in the previous step and takes a screenshot of a viewport of the size I like (780x420 in my case). Again, without going into obscure details, here's what it looks like:
 
 ```typescript
-const takeScreenshot = async function(url) {
-  const browser = await chromium.puppeteer.launch({executablePath: local
-    ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-    : await chromium.executablePath,
-  args: chromium.args,
-  defaultViewport: chromium.defaultViewport,
-  headless: chromium.headless,})
-  const page = await browser.newPage()
-  await page.setViewport({ height: 420, width: 780 })
-  await page.goto(url)
-  const buffer = await page.screenshot()
-  await browser.close()
-  return `data:image/png;base64,${buffer.toString('base64')}`
-}
+const takeScreenshot = async function (url) {
+  const browser = await chromium.puppeteer.launch({
+    executablePath: local
+      ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+      : await chromium.executablePath,
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    headless: chromium.headless,
+  });
+  const page = await browser.newPage();
+  await page.setViewport({ height: 420, width: 780 });
+  await page.goto(url);
+  const buffer = await page.screenshot();
+  await browser.close();
+  return `data:image/png;base64,${buffer.toString('base64')}`;
+};
 ```
 
 Depending on whether I'm developing or this runs in production, this function takes a URL to the card page, launches headless Chrome, takes a screenshot, and returns a base64-encoded image.
@@ -93,14 +95,15 @@ Depending on whether I'm developing or this runs in production, this function ta
 This is the easiest and the most arbitrary step. I wanted to use Cloudinary in some way to learn more about it, and although here I only use it as image hosting, I was able to poke around it for a bit. Anyway, in this step, we take the image we got in the previous step and just upload it to Cloudinary:
 
 ```typescript
-const uploadImage = async function(title, buffer) {
+const uploadImage = async function (title, buffer) {
   const cloudinaryOptions = {
     public_id: `social-images/${title}`,
-    unique_filename: false
-  }
-  return await cloudinary.uploader.upload(buffer, cloudinaryOptions)
-    .then(response => response.url)
-}
+    unique_filename: false,
+  };
+  return await cloudinary.uploader
+    .upload(buffer, cloudinaryOptions)
+    .then((response) => response.url);
+};
 ```
 
 ## Step Four: return something

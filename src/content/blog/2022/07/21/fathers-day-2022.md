@@ -2,7 +2,7 @@
 title: Fathers Day 2022
 publishDate: 2022-07-21
 description: I can't remember how this tradition started exactly, but every year since, like, 2015 we've been doing this camping thing right around Father's Day.
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/fathers-day-2022/118799f42e12ff3eba003a17dbd0946ac4fbdc42-4032x3024.avif'
   alt: 'Generic blog post cover image'

@@ -2,7 +2,7 @@
 title: 'Monte Cristo Ghost Town Trail'
 publishDate: 2020-07-21
 description: "There's plenty of ghost towns in Washington. Monte Cristo is one of them. But to get there, you have to hike 🤷‍♂️"
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/monte-cristo-ghost-town-trail/72721b76c625f9cd4bece20a1ef0854ed8b4bb72-2000x1500.jpg'
   alt: 'Generic blog post cover image'

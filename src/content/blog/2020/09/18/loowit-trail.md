@@ -2,7 +2,7 @@
 title: 'Loowit Trail'
 publishDate: 2020-09-18
 description: "It was a terrible mistake and I shouldn't have done this trail. Sheer luck and generosity of other hikers are the only two reasons I'm not a hero of an article about local Search and Rescue trying to airlift a hiker from Mt. St. Helens."
-category: "Travel"
+category: 'Travel'
 image:
   src: '@assets/blog/posts/loowit-trail/f5f59e06d0ac3ebaee567e3398b594b343daec49-1024x768.jpg'
   alt: 'Generic blog post cover image'

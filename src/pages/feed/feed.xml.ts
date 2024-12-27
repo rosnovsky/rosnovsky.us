@@ -1,9 +1,9 @@
-import rss from '@astrojs/rss'
-import { getSortedPosts } from '@utils/posts'
-import { SITE } from '@config'
+import rss from '@astrojs/rss';
+import { getSortedPosts } from '@utils/posts';
+import { SITE } from '@config';
 
 export async function GET() {
-  const posts = await getSortedPosts()
+  const posts = await getSortedPosts();
 
   return rss({
     title: SITE.title,
@@ -15,5 +15,5 @@ export async function GET() {
       description: post.data.description,
       link: `/blog/${post.slug}/`,
     })),
-  })
+  });
 }

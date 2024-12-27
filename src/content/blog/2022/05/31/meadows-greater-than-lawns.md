@@ -3,7 +3,7 @@ title: Meadows > Lawns
 publishDate: 2022-05-31
 description: Lawns are bad. Bad for the environment, bad for local wildlife, they are useless, thirsty, and require a lot of maintenance just to keep them useless.
 postSlug: meadows-greater-than-lawns
-category: "Family"
+category: 'Family'
 image:
   src: '@assets/blog/posts/meadows-greater-than-lawns/9f8f8172c69407c3a79685a47d291891cc30ed68-4032x3024.avif'
   alt: 'Generic blog post cover image'

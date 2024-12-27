@@ -2,7 +2,7 @@
 title: "Amazon's The Peripheral: I'm angry"
 description: "I'm often angry at Amazon, but this time it's for a reason not directly related to their terrible business practices. "
 publishDate: 2022-12-19
-category: "Books"
+category: 'Books'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

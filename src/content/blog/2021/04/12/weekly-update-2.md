@@ -2,7 +2,7 @@
 title: 'Weekly Update #2'
 publishDate: 2021-04-12
 description: 'An exciting week, full of driving around and anticipation of change.'
-category: "Covid"
+category: 'Covid'
 image:
   src: '@assets/blog/posts/weekly-update-2/seattle-skyline.jpg'
   alt: 'Generic blog post cover image'

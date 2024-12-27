@@ -2,7 +2,7 @@
 title: 'Resources'
 publishDate: 2020-06-12
 description: 'Sharing some helpful anti-racism resources. It''s your "red pill": learn the truth, and after this, there is no turning back or choose a life of deliberate, aggressive ignorance.'
-category: "Personal"
+category: 'Personal'
 image:
   src: '@assets/blog/covers/generic.webp'
   alt: 'Generic blog post cover image'

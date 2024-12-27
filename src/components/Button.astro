@@ -1,24 +1,24 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import type { HTMLAttributes } from 'astro/types';
 
 interface CustomProps {
-  variant?: 'primary' | 'secondary' | 'primaryOnDark'
-  href?: string
+  variant?: 'primary' | 'secondary' | 'primaryOnDark';
+  href?: string;
 }
 
-type Props = CustomProps & HTMLAttributes<'a'> & HTMLAttributes<'button'>
+type Props = CustomProps & HTMLAttributes<'a'> & HTMLAttributes<'button'>;
 
-const { variant = 'primary', href, class: className, ...attrs } = Astro.props
+const { variant = 'primary', href, class: className, ...attrs } = Astro.props;
 
 const variantStyles = {
   primaryClassName: 'bg-slate-900 text-white hover:bg-emerald-800',
   secondaryClassName:
     'text-slate-900 shadow-sm shadow-emerald-100/50 ring-1 ring-slate-100 hover:bg-slate-200/60 hover:shadow-emerald-100/50 bg-slate-100/80',
   primaryOnDarkClassName: 'bg-white hover:bg-emerald-50 text-slate-700',
-}
+};
 
 const defaultClassName =
-  'inline-flex items-center rounded-full gap-2.5 justify-center px-7 py-3 text-md font-semibold leading-none outline-offset-2 transition-all duration-200 ease-in-out active:transition-none'
+  'inline-flex items-center rounded-full gap-2.5 justify-center px-7 py-3 text-md font-semibold leading-none outline-offset-2 transition-all duration-200 ease-in-out active:transition-none';
 ---
 
 {/* Render link if href exists otherwise render button */}

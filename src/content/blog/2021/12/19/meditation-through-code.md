@@ -2,7 +2,7 @@
 title: 'Building this website: meditation through code'
 description: "It's funny how I spend a lot of my free time on tweaking this website, improving this or that, adding a random feature, or falling down a rabbit hole of some technology I may eventually want to use here. Yet its main purpose - it's a blog, damn it! - happens to be mostly neglected."
 publishDate: 2021-12-19
-category: "Web Development"
+category: 'Web Development'
 image:
   src: '@assets/blog/posts/meditation-through-code/a6c000b0fc811e60303aaa9d24cc42ecf0379c7a-7000x4247.avif'
   alt: 'Generic blog post cover image'

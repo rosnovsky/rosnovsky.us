@@ -1,12 +1,12 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'input'> {
-  label: string
-  name: string
+  label: string;
+  name: string;
 }
 
-const { label, name, ...attrs } = Astro.props
+const { label, name, ...attrs } = Astro.props;
 ---
 
 <div class="flex items-start">
