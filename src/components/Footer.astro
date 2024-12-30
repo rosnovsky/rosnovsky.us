@@ -1,26 +1,18 @@
 ---
 import Container from '@components/Container.astro';
 import { Icon } from 'astro-icon/components';
-// import newsletterBg from '@images/newsletter-bg.png'
-// import { Views } from '@components/Views'
 import { SOCIALS } from '@config';
-
-// export const prerender = false;
-
-// const currentPage = Astro.url.pathname.split('/')
-// currentPage.shift()
 
 interface Props {
   newsletter?: boolean;
+  buildDate?: string;
 }
 
-const { newsletter = false } = Astro.props;
+const { newsletter = false, buildDate } = Astro.props;
 const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  // { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
-  // { label: 'Contact', href: '/contact' },
 ];
 ---
 
@@ -126,7 +118,11 @@ const links = [
         </div>
 
         <p class="mt-8 text-base text-slate-400/90 md:mt-0">
-          © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved.
+          © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved. Updated on {new Date(buildDate!).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </p>
       </div>
     </Container>

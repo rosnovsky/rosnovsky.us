@@ -9,7 +9,7 @@ export const SITE: Site = {
   description:
     'Blog by Art Rosnovsky, a software engineer, about technology, hiking, books, movies, and other things.',
   title: 'Rosnovsky Park™',
-  ogImage: 'jane-og.png',
+  ogImage: 'og.png',
   postsPerPage: 9,
   projectsPerPage: 3,
 };

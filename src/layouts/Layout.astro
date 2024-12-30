@@ -8,6 +8,7 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import { SITE } from '@config';
 import { ClientRouter, ViewTransitions, fade } from 'astro:transitions';
+import { pwaInfo } from 'virtual:pwa-info';
 
 interface Props {
   title?: string;
@@ -26,6 +27,8 @@ const {
     .href,
 } = Astro.props;
 
+const buildDate = __DATE__;
+
 const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
 ---
 
@@ -35,7 +38,11 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/favicon-32x32.png" color="#FFFFFF" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- General Meta Tags -->
     <title>{title}</title>
@@ -59,11 +66,14 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:image" content={socialImageURL} />
 
     <ClientRouter transition:animate={'fade'} />
+
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+    <script src="/src/pwa.ts"></script>
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-200">
     <Header />
     <slot />
-    <Footer />
+    <Footer buildDate={buildDate} />
   </body>
 </html>
 
