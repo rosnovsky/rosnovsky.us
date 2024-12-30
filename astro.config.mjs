@@ -13,7 +13,7 @@ import react from '@astrojs/react';
 
 import netlify from '@astrojs/netlify';
 
-import markdoc from '@astrojs/markdoc';
+// import markdoc from '@astrojs/markdoc';
 
 function remarkReadingTime() {
   return function (tree, { data }) {
@@ -28,8 +28,11 @@ export default defineConfig({
   site: SITE.website,
   trailingSlash: 'never',
   markdown: {
-    syntaxHighlight: 'prism',
     remarkPlugins: [remarkReadingTime, remarkMastodonEmbed],
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: true,
+    },
   },
   prefetch: {
     defaultStrategy: 'viewport',
@@ -43,7 +46,7 @@ export default defineConfig({
     icon(),
     mdx(),
     react(),
-    markdoc(),
+    // markdoc(),
   ],
   scopedStyleStrategy: 'where',
   adapter: netlify(),
