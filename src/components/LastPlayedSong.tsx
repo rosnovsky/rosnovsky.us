@@ -41,7 +41,7 @@ export default function LastPlayedSong() {
   if (!currentMusic) {
     return (
       <div className="absolute left-12 top-full inline-flex h-12 w-max -translate-y-6 items-center justify-center gap-3.5 rounded-2xl bg-white/90 px-8 text-sm font-semibold text-slate-700 shadow-lg shadow-emerald-100/50 ring-1 ring-slate-900/5 backdrop-blur-md dark:bg-slate-950/30 dark:text-slate-400 dark:shadow-emerald-950/50 dark:ring-slate-100/5 md:left-0 md:-translate-x-20 md:-translate-y-24 lg:-left-3 lg:-translate-y-24 lg:px-10 xl:-left-6 xl:-translate-x-28 xl:-translate-y-32">
-        <img src="/react.svg" alt="" className="h-6 w-auto" />
+        <img src="/react.svg" alt="" className="h-6 w-auto" width="16" />
         🔥🔥🔥
       </div>
     );
