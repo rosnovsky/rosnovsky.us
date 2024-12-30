@@ -2,7 +2,7 @@
 import type { Post } from '@types';
 import { slugify } from '@utils/slugs';
 import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 
 interface Props {
   post: Post;
@@ -30,14 +30,18 @@ const categorySlug = slugify(post.category);
 >
   <div class="w-full px-4 pt-4">
     <a
+      aria-label={`Read ${post.title}`}
       href={`/blog/${post.slug}`}
       class="group aspect-h-9 aspect-w-16 relative block w-full overflow-hidden rounded-xl md:aspect-h-2 md:aspect-w-3"
     >
-      <Image
+      <Picture
         src={post.image.src}
         alt={post.image.alt}
-        class="w-full rounded-xl bg-slate-100 object-cover transition duration-300 group-hover:scale-105"
+        class="w-full h-64 rounded-xl bg-slate-100 object-cover transition duration-300 group-hover:scale-105"
         transition:name={`${post.slug}-image`}
+        width={375}
+        loading={'lazy'}
+
       />
       <div
         class="absolute inset-0 rounded-xl ring-1 ring-inset ring-slate-900/5 dark:ring-slate-100/5"
