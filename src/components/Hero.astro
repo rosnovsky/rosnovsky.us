@@ -41,6 +41,9 @@ import { Image, Picture } from 'astro:assets';
           {
             SOCIALS.filter((social) => social.showInHero).map((socialLink) => (
               <a
+                data-umami-event={`click-social-link`}
+                data-umami-event-location={`hero`}
+                data-umami-event-link={`${socialLink.name}`}
                 href={socialLink.href}
                 aria-label={socialLink.ariaLabel}
                 class="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 duration-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-950"

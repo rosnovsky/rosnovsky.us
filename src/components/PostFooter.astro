@@ -16,6 +16,8 @@ const shareUrl = Astro.url.pathname;
     </p>
     <div class="mt-2.5 flex gap-3 sm:mt-0 sm:gap-4">
       <Button
+        data-umami-event={`copy-link-to-post`}
+        data-umami-event-link={`${shareUrl}`}
         class="share-button group flex h-10 items-center justify-center gap-3 rounded-full border border-slate-200 px-6 text-sm font-medium text-slate-600 duration-200 ease-in-out hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
       >
         <Icon

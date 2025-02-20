@@ -85,6 +85,9 @@ const links = [
               SOCIALS.map((socialLink) => (
                 <>
                   <a
+                    data-umami-event={`click-social-link`}
+                    data-umami-event-location={`footer`}
+                    data-umami-event-link={`${socialLink.name}`}
                     class="flex items-center justify-center gap-2.5 rounded-full border border-slate-600/90 py-2.5 text-sm text-slate-50 duration-200 ease-in-out hover:bg-slate-800 hover:text-white lg:gap-2 xl:gap-2.5"
                     href={socialLink.href}
                   >
@@ -118,11 +121,14 @@ const links = [
         </div>
 
         <p class="mt-8 text-base text-slate-400/90 md:mt-0">
-          © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved. Updated on {new Date(buildDate!).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          © 2003-{new Date().getFullYear()} Art Rosnovsky. All rights reserved.
+          Updated on {
+            new Date(buildDate!).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          }
         </p>
       </div>
     </Container>
