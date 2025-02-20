@@ -69,6 +69,10 @@ const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
 
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <script src="/src/pwa.ts"></script>
+    <script
+      defer
+      src="https://umami.art0.dev/script.js"
+      data-website-id="5a7cdc58-f62d-4822-b469-62c54fae7736"></script>
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-200">
     <Header />
