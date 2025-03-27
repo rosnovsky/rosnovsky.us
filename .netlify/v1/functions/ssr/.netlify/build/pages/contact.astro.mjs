@@ -1,9 +1,9 @@
 import { d as createAstro, c as createComponent, r as renderTemplate, m as maybeRenderHead, f as addAttribute, g as renderSlot, a as renderComponent, s as spreadAttributes } from '../chunks/astro/server_COLE3fTq.mjs';
 import 'kleur/colors';
 import { $ as $$Image } from '../chunks/_astro_assets_D6TztbRf.mjs';
-import { $ as $$Icon } from '../chunks/Icon_Dq2hKnsC.mjs';
+import { $ as $$Icon } from '../chunks/Icon_C__ULjGf.mjs';
 import { S as SITE } from '../chunks/config_yD4LyyLu.mjs';
-import { a as $$Layout } from '../chunks/Layout_CKuX3dl7.mjs';
+import { a as $$Layout } from '../chunks/Layout_B-69kDX-.mjs';
 import 'clsx';
 import { $ as $$Button } from '../chunks/Button_VVr1D_bW.mjs';
 export { renderers } from '../renderers.mjs';

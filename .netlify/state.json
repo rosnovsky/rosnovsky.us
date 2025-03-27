@@ -1,0 +1,21 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Arlington",
+			"country": {
+				"code": "US",
+				"name": "United States"
+			},
+			"subdivision": {
+				"code": "WA",
+				"name": "Washington"
+			},
+			"timezone": "America/Los_Angeles",
+			"latitude": 48.1987,
+			"longitude": -122.1251,
+			"postalCode": "98223"
+		},
+		"timestamp": 1735571753769
+	},
+	"siteId": "bd8d4483-d95b-4ba3-a19b-65040a4cfe52"
+}

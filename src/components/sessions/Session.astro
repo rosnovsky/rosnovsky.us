@@ -1,0 +1,72 @@
+---
+import type { Session } from '@types';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+interface Props {
+  session: Session;
+  index: number;
+}
+
+const { index, session } = Astro.props;
+
+async function getProjectData(project: Session) {
+  return {
+    ...session.data,
+    path: `/sessions/${session.slug}`,
+    slug: session.slug,
+  };
+}
+
+const sessionData = await getProjectData(session);
+---
+
+<div
+  class:list={[
+    'flex flex-col gap-12 rounded-3xl bg-slate-50 px-7 py-12 sm:gap-14 sm:p-16 lg:px-10 lg:py-14 xl:gap-16 xl:p-16',
+    index % 2 === 0
+      ? 'rounded-tl-[64px]'
+      : 'transform rounded-br-[64px] lg:translate-y-24 xl:translate-y-32',
+  ]}
+  transition:name={sessionData.slug}
+>
+  <a
+    href={sessionData.path}
+    class:list={[
+      'group aspect-h-9 aspect-w-16 relative block w-full overflow-hidden rounded-xl md:aspect-h-2 md:aspect-w-3',
+      index % 2 === 0 ? 'order-1' : 'order-2',
+    ]}
+  >
+    <Image
+      src={sessionData.images[0].src}
+      alt={sessionData.images[0].alt}
+      class="w-full rounded-xl bg-slate-100 object-cover object-top transition duration-300 group-hover:scale-105"
+      transition:name={`${sessionData.slug}-image`}
+    />
+    <div class="absolute inset-0 rounded-xl ring-1 ring-inset ring-slate-900/5">
+    </div>
+  </a>
+  <div
+    class:list={[
+      'flex flex-col items-center',
+      index % 2 === 0 ? 'order-2' : 'order-1',
+    ]}
+  >
+    <h3 class="text-center font-display text-[28px] font-medium text-slate-900">
+      {sessionData.title}
+    </h3>
+    <p class="mt-5 text-center text-base leading-8 text-slate-700">
+      {sessionData.description}
+    </p>
+    <a
+      href={sessionData.path}
+      class="group mt-12 inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-3 text-md font-medium text-emerald-900 shadow-sm shadow-emerald-100/50 ring-1 ring-slate-100/90 transition duration-300 hover:bg-white/60 hover:text-emerald-700 hover:shadow-md hover:shadow-emerald-100"
+    >
+      View Session
+      <Icon
+        name="arrow-up-right"
+        class="h-5 w-5 text-emerald-800 duration-300 ease-in-out group-hover:text-emerald-700"
+      />
+    </a>
+  </div>
+</div>

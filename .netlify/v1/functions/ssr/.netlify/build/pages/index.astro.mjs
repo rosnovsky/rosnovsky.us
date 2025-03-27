@@ -1,15 +1,15 @@
 import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as renderComponent, f as addAttribute } from '../chunks/astro/server_COLE3fTq.mjs';
 import 'kleur/colors';
-import { $ as $$Container, a as $$Layout } from '../chunks/Layout_CKuX3dl7.mjs';
+import { $ as $$Container, a as $$Layout } from '../chunks/Layout_B-69kDX-.mjs';
 import 'clsx';
 import { $ as $$Underline } from '../chunks/Underline_B63ksl2C.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
 import { a as SOCIALS, t as typescript, S as SITE } from '../chunks/config_yD4LyyLu.mjs';
-import { $ as $$Icon } from '../chunks/Icon_Dq2hKnsC.mjs';
+import { $ as $$Icon } from '../chunks/Icon_C__ULjGf.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_D6TztbRf.mjs';
-import { $ as $$BlogGrid } from '../chunks/BlogGrid_CcpcPGrW.mjs';
-import { g as getSortedPosts } from '../chunks/posts_-IYf2ASY.mjs';
+import { $ as $$BlogGrid } from '../chunks/BlogGrid_CHQWrsOm.mjs';
+import { g as getSortedPosts } from '../chunks/posts_C0j9thMD.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$HeroGradient = createComponent(($$result, $$props, $$slots) => {

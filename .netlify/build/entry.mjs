@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_CvSoi7hX.mjs';
-import { manifest } from './manifest_BCCsfKci.mjs';
+import { manifest } from './manifest_3BogksEQ.mjs';
 import { createExports } from '@astrojs/netlify/ssr-function.js';
 
 const serverIslandMap = new Map([
@@ -14,11 +14,8 @@ const _page4 = () => import('./pages/blog/_category_/_---page_.astro.mjs');
 const _page5 = () => import('./pages/blog/_---page_.astro.mjs');
 const _page6 = () => import('./pages/contact.astro.mjs');
 const _page7 = () => import('./pages/feed/feed.xml.astro.mjs');
-const _page8 = () => import('./pages/projects/_slug_.astro.mjs');
-const _page9 = () => import('./pages/projects/_tag_/_---page_.astro.mjs');
-const _page10 = () => import('./pages/projects/_---page_.astro.mjs');
-const _page11 = () => import('./pages/rss.xml.astro.mjs');
-const _page12 = () => import('./pages/index.astro.mjs');
+const _page8 = () => import('./pages/rss.xml.astro.mjs');
+const _page9 = () => import('./pages/index.astro.mjs');
 const pageMap = new Map([
     ["node_modules/.pnpm/astro@5.1.1_@types+node@22.10.2_jiti@2.4.2_rollup@4.29.1_typescript@5.7.2_yaml@2.6.1/node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["src/pages/about.astro", _page1],
@@ -28,11 +25,8 @@ const pageMap = new Map([
     ["src/pages/blog/[...page].astro", _page5],
     ["src/pages/contact.astro", _page6],
     ["src/pages/feed/feed.xml.ts", _page7],
-    ["src/pages/projects/[slug].astro", _page8],
-    ["src/pages/projects/[tag]/[...page].astro", _page9],
-    ["src/pages/projects/[...page].astro", _page10],
-    ["src/pages/rss.xml.ts", _page11],
-    ["src/pages/index.astro", _page12]
+    ["src/pages/rss.xml.ts", _page8],
+    ["src/pages/index.astro", _page9]
 ]);
 
 const _manifest = Object.assign(manifest, {
@@ -42,7 +36,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "7da2a6ac-1eff-46dd-bac9-2ca8e1f84465"
+    "middlewareSecret": "635115c2-285f-4e79-b3aa-003534bbb27d"
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;

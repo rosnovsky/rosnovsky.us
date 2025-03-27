@@ -1,0 +1,23 @@
+---
+import type { Session } from '@types';
+import SessionComponent from './Session.astro';
+
+interface Props {
+  sessions: Session[];
+}
+
+const { sessions } = Astro.props;
+---
+
+<div
+  class:list={[
+    'mx-auto mt-12 grid max-w-xl gap-12 sm:mt-16 lg:mx-0 lg:mt-24 lg:max-w-none lg:grid-cols-2 lg:gap-10 xl:gap-24',
+    sessions.length % 2 === 0 && 'lg:pb-32',
+  ]}
+>
+  {
+    sessions.map(async (session, index) => (
+      <SessionComponent session={session} index={index} />
+    ))
+  }
+</div>

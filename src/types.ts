@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro';
 import type { CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'blog'>;
-export type Project = CollectionEntry<'projects'>;
+export type Session = CollectionEntry<'sessions'>;
 
 export type Site = {
   website: string;
