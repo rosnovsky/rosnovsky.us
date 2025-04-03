@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import { g as getSortedPosts } from '../chunks/posts_C0j9thMD.mjs';
+import { g as getSortedPosts } from '../chunks/posts_Dud9KTpI.mjs';
 import { S as SITE } from '../chunks/config_yD4LyyLu.mjs';
 export { renderers } from '../renderers.mjs';
 
