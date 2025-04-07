@@ -2,7 +2,7 @@ import type { Post } from '@types';
 import { getCollection } from 'astro:content';
 
 export async function getTopCategories() {
-  const posts = await getCollection('blog');
+  const posts: Post[] = await getCollection('blog');
   const repeatingCategories = posts.map((post) => post.data.category);
   const categoryCount = new Map();
 
