@@ -1,0 +1,146 @@
+---
+title: 'This Week in My Head'
+description: '.'
+publishDate: 2025-04-14T00:00:00.000-08:00
+image: { src: 'assets/blog/posts/this-week-in-my-head/cover-img.jpg', alt: '' }
+category: 'Personal'
+draft: true
+---
+
+import { YouTube } from 'astro-embed';
+import MuxPlayer from '@mux/mux-player-react/lazy';
+import { LinkPreview } from 'astro-embed';
+import { FaWikipediaW } from 'react-icons/fa6';
+import { FaImdb } from 'react-icons/fa6';
+import { GiBookCover } from 'react-icons/gi';
+import { Image } from 'astro:assets';
+import allSystemsRed from '/src/assets/blog/posts/is-this-journaling/all_systems_red.jpg';
+
+intro
+
+---
+
+## Movie of the Week
+
+<h3 className="flex gap-5">
+Nimona (2023)
+  <div className="inline-flex gap-4">
+    <>
+      [<FaWikipediaW className="inline w-8 h-8 hover:animate-pulse" />
+      ](https://en.wikipedia.org/wiki/Nimona_(film))
+
+      [<FaImdb className="inline w-8 h-8 hover:animate-pulse" />](https://www.imdb.com/title/tt19500164/)
+    </>
+
+  </div>
+</h3>
+
+<YouTube id="f_fuHRyQbOc" className="mx-auto min-w-full rounded-md py-5" />
+
+This is officially one of my all-time favorite movies. Period. No notes.
+
+---
+
+## Music of the Week
+
+MUSIC
+
+<YouTube id="8woy5IPHojY" className="mx-auto min-w-full rounded-md py-5" />
+
+---
+
+MORE MUSIC
+
+<MuxPlayer
+  playbackId="o5FYe02OYwar4oQxE01ePQzLP5RtYYerDyeGYvlCbL00eU"
+  style={{ aspectRatio: 9 / 16 }}
+  className="max-h-screen"
+  loading="viewport"
+  thumbnailTime="11"
+  title="Papa with his roaches"
+  accentColor="#f97316"
+  preload="none"
+  client:load
+/>
+
+---
+
+## TV Show of the Week
+
+<h3 className="flex gap-5">
+Arcane (2021 - 2024)
+  <div className="inline-flex gap-4">
+    <>
+      [<FaWikipediaW className="inline w-8 h-8 hover:animate-pulse hover:animate-pulse" />
+      ](https://en.wikipedia.org/wiki/Arcane_(TV_series))
+
+      [<FaImdb className="inline w-8 h-8 hover:animate-pulse" />](https://www.imdb.com/title/tt11126994/)
+    </>
+
+  </div>
+</h3>
+
+<YouTube id="fXmAurh012s" className="mx-auto min-w-full rounded-md py-5" />
+
+## Book of the Week
+
+<h3 className="flex gap-5">
+BOOK
+  <div className="inline-flex gap-4">
+    <>
+      [<FaWikipediaW className="inline w-8 h-8 hover:animate-pulse" />
+      ](https://en.wikipedia.org/wiki/The_Murderbot_Diaries)
+
+      [<GiBookCover className="inline w-8 h-8 hover:animate-pulse" />](https://bookshop.org/p/books/all-systems-red-martha-wells/7104100?ean=9780765397539&next=t/)
+    </>
+
+  </div>
+</h3>
+<div className="flex flex gap-4">
+  <Image src={allSystemsRed} alt="All Systems Red book cover" width={300} className="rounded-md p-2 m-1" />
+  <div>
+    <p>In a very different but almost identical way that Scrubs can be the show of the week every week, the Murderbot Diaries can be the book of the week every week. [Martha Wells](https://marthawells.dreamwidth.org/) published "[_All Systems Red_](https://bookshop.org/p/books/all-systems-red-martha-wells/7104100?ean=9780765397539&next=t/)" in 2017, and the latest follow-up in the series - "[_System Collapse_](https://bookshop.org/p/books/system-collapse-martha-wells/19538545?ean=9781250826978&next=t)" - came out in late 2023. She is awesome, the books are great (even when they are too short), and... _I hate planets_ too!</p>
+    <p>Oh, oh, almost forgot! It's also going to be an [Apple TV+ series soon](https://tv.apple.com/us/show/murderbot/umc.cmc.5owrzntj9v1gpg31wshflud03)! I don't know if the show will be as good as the books, but the cast alone makes me thrilled for May 16, 2025!</p>
+  </div>
+</div>
+
+And for those familiar with the book series, here's a wonderfully touching [animatic](https://www.youtube.com/watch?v=yDMSHgQY5rM):
+
+<MuxPlayer
+  playbackId="vpDQP7ZCdV00tbhnn2cgj02UpogRaWLwW6YIwMbSG01uL4"
+  style={{ aspectRatio: 16 / 9 }}
+  className="max-h-screen"
+  loading="viewport"
+  thumbnailTime="1"
+  title="I'm Not Your Hero - The Murderbot Diaries Animatic"
+  accentColor="#f97316"
+  preload="none"
+  client:load
+/>
+
+---
+
+## Drums of the Week
+
+Now, here's a person 4x younger than me does fantastic job covering this song. There are some questionable moments, but hey, they are, like, ten, give me a break!
+
+<YouTube id="yRJBYh7oM6A" className="mx-auto min-w-full rounded-md py-5" />
+
+---
+
+## Dopamine of the Week
+
+This one is personal. Somebody reminded me of this hike the other day, and I can't wait to go back there. I've hiked this trail a few times, and the last hike there last year was the most relaxing day of all of 2024 for me. I ended up reading a book (one of the [Old Man's War series](https://bookshop.org/p/books/old-man-s-war-series-old-man-s-war-the-ghost-brigades-the-last-colony-zoe-s-tale-the-human-division-the-end-of-all-things-john-scalzi/7c497534c41eab9b?ean=9780765396761&next=t) by [John Scalzi](https://whatever.scalzi.com/)) in the meadow, which I think used to be a town square :)
+
+<br />
+<LinkPreview id="https://rosnovsky.us/blog/loowit-trail" />
+
+---
+
+Oh, there's more. Linkin Park just released a new song "Up From The Bottom" (coming out on their delux edition of "_From Zero_" in mid-May 2025).
+
+<YouTube id="97Mj6pXYMd8" className="mx-auto min-w-full rounded-md py-5" />
+
+---
+
+And finally, a real place _full_ of pure dopomine: ["Wit's End" bookstore in Stanwood, WA](https://www.witsendbookstore.com/). Be sure to stop by when you're in the area!
