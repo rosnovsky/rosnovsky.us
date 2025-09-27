@@ -12,15 +12,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.4.1",
+    "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.4",
-    "@astrojs/markdoc": "^0.12.4",
-    "@astrojs/mdx": "4.3.0",
-    "@astrojs/netlify": "^6.3.4",
-    "@astrojs/node": "9.2.2",
+    "@astrojs/markdoc": "^0.15.7",
+    "@astrojs/mdx": "4.3.6",
+    "@astrojs/netlify": "^6.5.11",
+    "@astrojs/node": "9.4.4",
     "@astrojs/prism": "3.3.0",
     "@astrojs/rss": "^4.0.12",
-    "@astrojs/solid-js": "5.1.0",
+    "@astrojs/solid-js": "5.1.1",
     "@fontsource-variable/fira-code": "^5.2.6",
     "@fontsource-variable/inter": "^5.2.6",
     "@fontsource-variable/lexend": "^5.2.9",
@@ -36,7 +36,7 @@
     "@types/alpinejs": "^3.13.11",
     "@types/react-dom": "^19.1.6",
     "alpinejs": "^3.14.9",
-    "astro": "5.9.3",
+    "astro": "5.14.1",
     "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.5",
     "astro-mastodon": "^0.3.2",
@@ -59,9 +59,9 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/sitemap": "^3.4.1",
-    "@astrojs/tailwind": "^5.1.4",
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@iconify-json/material-symbols": "^1.2.26",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^19.1.8",
@@ -89,5 +89,5 @@
       "prettier --plugin-search-dir=. --write"
     ]
   },
-  "packageManager": "pnpm@10.12.4"
+  "packageManager": "pnpm@10.17.1"
 }
