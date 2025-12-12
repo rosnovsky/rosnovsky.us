@@ -22,7 +22,7 @@ const getMusicData = async (): Promise<CurrentMusic | null> => {
     }
     
     // Handle direct object response
-    if (data && data.albumArt) {
+    if (data && data.albumArt && data.title && data.grandparentTitle) {
       return data;
     }
     
@@ -33,7 +33,7 @@ const getMusicData = async (): Promise<CurrentMusic | null> => {
   }
 };
 
-const getAlbumArtUrl = (path: string) => {
+const getAlbumArtUrl = (path: string | undefined | null) => {
   if (!path) {
     return '';
   }
