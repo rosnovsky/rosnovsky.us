@@ -10,16 +10,37 @@ const getMusicData = async (): Promise<CurrentMusic | null> => {
   try {
     const response = await fetch('https://rosnovsky.us/api/now-playing');
     const data = await response.json();
-    return data[0];
+    
+    // Handle different response formats
+    if (Array.isArray(data)) {
+      return data[0] || null;
+    }
+    
+    // Handle object with currentMusic property
+    if (data && data.currentMusic) {
+      return data.currentMusic;
+    }
+    
+    // Handle direct object response
+    if (data && data.albumArt && data.title && data.grandparentTitle) {
+      return data;
+    }
+    
+    return null;
   } catch (error) {
     console.error('Error fetching music data:', error);
     return null;
   }
 };
 
-const getAlbumArtUrl = (path: string) => {
+const getAlbumArtUrl = (path: string | undefined | null) => {
+  if (!path) {
+    return '';
+  }
   const baseUrl = 'https://music.rosnovsky.us';
-  return new URL(path, baseUrl).toString();
+  // Ensure path starts with / for proper URL construction
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return new URL(normalizedPath, baseUrl).toString();
 };
 
 export default function LastPlayedSong() {
