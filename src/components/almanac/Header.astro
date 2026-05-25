@@ -1,0 +1,30 @@
+---
+interface Props {
+  current?: 'home' | 'about' | 'blog';
+}
+const { current } = Astro.props;
+
+const links: { href: string; label: string; key: Props['current'] }[] = [
+  { href: '/',      label: 'Home',  key: 'home'  },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/blog',  label: 'Blog',  key: 'blog'  },
+];
+---
+
+<header class="header" role="banner">
+  <a class="wordmark" href="/" aria-label="Rosnovsky Park — home">
+    <span class="name">Rosnovsky</span>
+    <span class="tm">park<em>™</em></span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        aria-current={current === link.key ? 'page' : undefined}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="/feed/feed.xml">RSS</a>
+  </nav>
+</header>

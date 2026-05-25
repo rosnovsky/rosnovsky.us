@@ -1,0 +1,40 @@
+---
+import { SOCIALS } from '@config';
+
+// Stable order: email first (primary), then GitHub/LinkedIn/Mastodon/Bluesky/RSS.
+const reachOrder = ['mail', 'linkedin', 'github', 'mastodon', 'bluesky', 'rss'];
+const reach = reachOrder
+  .map((name) => SOCIALS.find((s) => s.name === name))
+  .filter((s): s is (typeof SOCIALS)[number] => Boolean(s));
+---
+
+<section class="closer" aria-label="Get in touch">
+  <h2>
+    It costs nothing<br />
+    to be <em>kind.</em>
+  </h2>
+  <div class="body">
+    <p>
+      Everything is so expensive these days.
+      <strong>But kindness is free.</strong> So is being an asshole. Choose
+      wisely.
+    </p>
+    <div class="reach">
+      {
+        reach.map((s) => {
+          const isMail = s.name === 'mail';
+          const label = isMail ? 'job@rosnovsky.us ↗' : s.label;
+          return (
+            <a
+              href={s.href}
+              class={isMail ? 'primary' : undefined}
+              aria-label={s.ariaLabel}
+            >
+              {label}
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

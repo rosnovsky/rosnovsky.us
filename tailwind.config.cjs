@@ -101,6 +101,12 @@ module.exports = {
         display: ['Lexend Variable', ...defaultTheme.fontFamily.sans],
         writing: ['Gochi Hand', ...defaultTheme.fontFamily.sans],
         cursive: ['Mr Dafoe', 'mono'],
+
+        /* Almanac design system — exposed via CSS vars so the
+           next redesign is a one-file swap (src/styles/almanac/tokens.css). */
+        almanac: ['var(--font-sans)'],
+        'almanac-mono': ['var(--font-mono)'],
+        'almanac-display': ['var(--display)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -154,6 +160,21 @@ module.exports = {
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))',
         },
+
+        /* Almanac semantic tokens — backed by CSS custom properties
+           in src/styles/almanac/tokens.css. Use these in components
+           (bg-paper, text-jade, border-rule) so the next redesign is
+           a one-file token swap. */
+        paper: 'var(--paper)',
+        'paper-deep': 'var(--paper-deep)',
+        'paper-soft': 'var(--paper-soft)',
+        ink: 'var(--ink)',
+        'ink-soft': 'var(--ink-soft)',
+        'ink-quiet': 'var(--ink-quiet)',
+        jade: 'var(--jade)',
+        'jade-deep': 'var(--jade-deep)',
+        rule: 'var(--rule)',
+        'rule-soft': 'var(--rule-soft)',
       },
     },
   },

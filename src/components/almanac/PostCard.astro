@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import type { Post } from '@types';
+
+interface Props {
+  post: Post;
+  /** Sequential card number — drives the No. 00X corner mark */
+  index: number;
+}
+
+const { post, index } = Astro.props;
+
+const fileSlug = post.slug.split('/').pop();
+const href = `/blog/${fileSlug}`;
+
+// Category → gradient hook in home.css. Falls back to `personal`.
+const catSlug = post.data.category
+  .toLowerCase()
+  .replace(/\s+/g, '-');
+const coverClassMap: Record<string, string> = {
+  music: 'music',
+  'web-development': 'dev',
+  personal: 'personal',
+  travel: 'travel',
+  family: 'family',
+  books: 'books',
+  'open-source': 'open-source',
+};
+const coverClass = coverClassMap[catSlug] ?? 'personal';
+
+const dateLabel = post.data.publishDate.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+const dateISO = post.data.publishDate.toISOString();
+
+const { remarkPluginFrontmatter } = await post.render();
+const minutesRead: string =
+  remarkPluginFrontmatter?.minutesRead ?? '1 min read';
+
+const cornerNum = `No. ${String(index + 1).padStart(3, '0')}`;
+---
+
+<a class="post" href={href}>
+  <div class={`cover ${coverClass}`}>
+    <Image
+      class="real-cover"
+      src={post.data.image.src}
+      alt={post.data.image.alt}
+      widths={[320, 640, 960]}
+      sizes="(min-width: 1080px) 33vw, (min-width: 760px) 50vw, 100vw"
+    />
+    <div class="cover-overlay" aria-hidden="true"></div>
+    <span class="cat">{post.data.category}</span>
+    <span class="arrow" aria-hidden="true">↗</span>
+    <div class="ct">{post.data.title}</div>
+    <span class="corner-mark">{cornerNum}</span>
+  </div>
+
+  <div class="p-meta">
+    <span class="cat">{post.data.category}</span>
+    <span class="dot" aria-hidden="true"></span>
+    <time datetime={dateISO}>{dateLabel}</time>
+    <span class="dot" aria-hidden="true"></span>
+    <span>{minutesRead}</span>
+  </div>
+  <h3 class="p-title">{post.data.title}</h3>
+  <p class="p-excerpt">{post.data.description}</p>
+</a>

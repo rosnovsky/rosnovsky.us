@@ -1,0 +1,558 @@
+/* ============================================================
+   Rosnovsky.us — Almanac edition · HOME PAGE
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   HERO
+---------------------------------------------------------- */
+.almanac .hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 80px 0 90px;
+  isolation: isolate;
+}
+
+.almanac .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 36px;
+}
+.almanac .hero-eyebrow .tick {
+  width: 28px;
+  height: 1px;
+  background: var(--jade);
+  display: inline-block;
+}
+.almanac .hero-eyebrow .tag { color: var(--ink-quiet); }
+.almanac .hero-eyebrow .tag em {
+  color: var(--ink);
+  font-style: normal;
+}
+
+.almanac h1.display {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(64px, 8.4vw, 124px);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+  text-wrap: balance;
+  position: relative;
+  z-index: 2;
+}
+.almanac h1.display em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 0 0 24px var(--jade-glow);
+}
+.almanac h1.display .punct { color: var(--jade); }
+
+.almanac .lede {
+  margin: 42px 0 0;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 540px;
+  text-wrap: pretty;
+}
+.almanac .lede strong { color: var(--ink); font-weight: 500; }
+
+.almanac .cta-row {
+  margin-top: 36px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.almanac .social-row {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.almanac .social-row a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 18px 8px 0;
+  margin-right: 16px;
+  transition: color 160ms ease;
+}
+.almanac .social-row a + a {
+  border-left: 1px solid var(--rule-soft);
+  padding-left: 18px;
+}
+.almanac .social-row a:hover { color: var(--jade); }
+
+/* ----------------------------------------------------------
+   PORTRAIT — duotone, edges bleed into the page
+---------------------------------------------------------- */
+.almanac .portrait-bleed {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 540px;
+  margin-left: auto;
+  z-index: 1;
+  background: radial-gradient(ellipse 60% 55% at 55% 40%,
+    oklch(0.80 0.19 158 / 0.08) 0%,
+    transparent 70%);
+}
+.almanac .portrait-bleed .photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.almanac .portrait-bleed .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 32%;
+  display: block;
+  filter: grayscale(1) contrast(1.15) brightness(0.9);
+  text-indent: -9999px;
+  -webkit-mask-image:
+    radial-gradient(ellipse 62% 66% at 52% 38%,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.78) 28%,
+      rgba(0,0,0,0.42) 55%,
+      rgba(0,0,0,0.12) 78%,
+      rgba(0,0,0,0)    100%);
+          mask-image:
+    radial-gradient(ellipse 62% 66% at 52% 38%,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.78) 28%,
+      rgba(0,0,0,0.42) 55%,
+      rgba(0,0,0,0.12) 78%,
+      rgba(0,0,0,0)    100%);
+}
+.almanac .portrait-bleed .duotone {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 52% at 52% 36%,
+    oklch(0.80 0.19 158 / 0.28) 0%,
+    oklch(0.80 0.19 158 / 0.14) 35%,
+    transparent 70%);
+  mix-blend-mode: screen;
+}
+.almanac .portrait-bleed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 75% at 52% 38%,
+    transparent 30%,
+    oklch(0.155 0.022 145 / 0.4) 65%,
+    oklch(0.155 0.022 145 / 0.92) 92%,
+    oklch(0.155 0.022 145 / 1) 100%);
+  z-index: 2;
+}
+.almanac .portrait-bleed::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 60%;
+  top: 12%;
+  left: 18%;
+  background: radial-gradient(circle, oklch(0.80 0.19 158 / 0.16), transparent 65%);
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.almanac .portrait-tick {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.almanac .portrait-tick::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--jade);
+}
+.almanac .portrait-tick.tl { top: 8%; left: -6px; }
+.almanac .portrait-tick.br {
+  bottom: 14%;
+  right: -6px;
+  flex-direction: row-reverse;
+}
+.almanac .portrait-tick.br::before { background: var(--ink-quiet); }
+
+/* ----------------------------------------------------------
+   CURRENTLY band
+---------------------------------------------------------- */
+.almanac .currently {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.almanac .currently .label {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  line-height: 1;
+}
+.almanac .currently .label .punct { color: var(--jade); }
+.almanac .currently .label small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-top: 6px;
+}
+.almanac .currently .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+.almanac .now-item .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 8px;
+}
+.almanac .now-item .v {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.almanac .now-item .v small {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ink-quiet);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+.almanac .now-item.live .v::after {
+  content: "● live";
+  display: inline-block;
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--jade);
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+.almanac .stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.almanac .stack-chips .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px 4px 6px;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.almanac .stack-chips .chip .ic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 2px;
+}
+.almanac .stack-chips .chip.ts .ic {
+  background: #3178c6;
+  color: #fff;
+  padding-top: 1px;
+}
+.almanac .stack-chips .chip.react .ic {
+  background: oklch(0.80 0.19 158 / 0.18);
+  border: 1px solid var(--jade);
+  color: var(--jade);
+  border-radius: 50%;
+  font-size: 11px;
+}
+.almanac .stack-chips .chip .hearts {
+  color: oklch(0.72 0.2 25);
+  letter-spacing: -0.04em;
+  font-size: 10px;
+}
+.almanac .stack-chips .chip .fires { font-size: 10px; }
+
+/* ----------------------------------------------------------
+   LATEST POSTS
+---------------------------------------------------------- */
+.almanac .section { padding: 80px 0 40px; }
+.almanac .section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 44px;
+  gap: 32px;
+}
+.almanac .section-head h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(40px, 4.5vw, 64px);
+  line-height: 1;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+}
+.almanac .section-head h2 em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+}
+.almanac .section-head .right {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  line-height: 1.7;
+}
+.almanac .section-head .right a {
+  color: var(--jade);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+
+.almanac .posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.almanac .post {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 280ms ease;
+}
+.almanac .post:hover { transform: translateY(-3px); }
+.almanac .post:hover .p-title { color: var(--jade); }
+.almanac .post:hover .cover { border-color: oklch(0.80 0.19 158 / 0.55); }
+.almanac .post:hover .cover .arrow {
+  transform: translate(2px, -2px);
+  color: var(--jade);
+}
+
+.almanac .cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  overflow: hidden;
+  margin-bottom: 18px;
+  transition: border-color 280ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 18px 16px;
+}
+.almanac .cover .cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--jade);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 2;
+  position: relative;
+}
+.almanac .cover .arrow {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--ink-quiet);
+  transition: transform 280ms ease, color 280ms ease;
+  z-index: 2;
+}
+.almanac .cover .ct {
+  font-family: var(--display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  line-height: 0.92;
+  z-index: 2;
+  position: relative;
+  text-wrap: balance;
+  font-size: 42px;
+}
+.almanac .cover .ct em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+}
+.almanac .cover .corner-mark {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.almanac .cover .bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.almanac .cover.music    { background: linear-gradient(135deg, oklch(0.16 0.04 30) 0%,  oklch(0.115 0.018 145) 80%); }
+.almanac .cover.dev      { background: linear-gradient(135deg, oklch(0.16 0.03 250) 0%, oklch(0.115 0.018 145) 80%); }
+.almanac .cover.personal { background: linear-gradient(135deg, oklch(0.16 0.03 200) 0%, oklch(0.115 0.018 145) 80%); }
+.almanac .cover.travel   { background: linear-gradient(135deg, oklch(0.16 0.04 100) 0%, oklch(0.115 0.018 145) 80%); }
+.almanac .cover.family   { background: linear-gradient(135deg, oklch(0.16 0.04 60)  0%, oklch(0.115 0.018 145) 80%); }
+.almanac .cover.books    { background: linear-gradient(135deg, oklch(0.16 0.04 70)  0%, oklch(0.115 0.018 145) 80%); }
+.almanac .cover.open-source { background: linear-gradient(135deg, oklch(0.16 0.04 280) 0%, oklch(0.115 0.018 145) 80%); }
+.almanac .cover.year     { background: linear-gradient(135deg, oklch(0.08 0.015 145) 0%, oklch(0.115 0.018 145) 100%); }
+
+.almanac .cover .real-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: saturate(0.85) brightness(0.95);
+}
+.almanac .cover .real-cover + .cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    oklch(0.05 0.015 145 / 0.15) 0%,
+    oklch(0.05 0.015 145 / 0.65) 70%,
+    oklch(0.05 0.015 145 / 0.92) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.almanac .cover:has(.real-cover) .bg-svg { display: none; }
+
+.almanac .p-title {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 4px 0 10px;
+  text-wrap: pretty;
+  transition: color 200ms ease;
+}
+.almanac .p-excerpt {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ----------------------------------------------------------
+   Home responsive
+---------------------------------------------------------- */
+@media (max-width: 1240px) {
+  .almanac .hero {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 32px;
+    padding: 64px 0 72px;
+  }
+  .almanac .portrait-bleed { max-width: 480px; }
+  .almanac .currently { gap: 40px; }
+  .almanac .currently .label { font-size: 28px; }
+  .almanac .currently .grid { gap: 24px; }
+  .almanac .posts { gap: 24px; }
+  .almanac .section-head h2 { font-size: 44px; }
+}
+@media (max-width: 1080px) {
+  .almanac .hero {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 48px 0 56px;
+  }
+  .almanac .portrait-bleed { max-width: 420px; margin: 0 auto; }
+  .almanac .portrait-tick.tl,
+  .almanac .portrait-tick.br { display: none; }
+  .almanac .currently { grid-template-columns: 1fr; gap: 24px; }
+  .almanac .currently .grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .almanac .posts { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .almanac h1.display { font-size: clamp(48px, 12vw, 92px); }
+  .almanac .currently .grid { grid-template-columns: 1fr; }
+  .almanac .social-row a + a { padding-left: 14px; }
+  .almanac .social-row a {
+    padding: 8px 14px 8px 0;
+    margin-right: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .almanac .posts { grid-template-columns: 1fr; }
+  .almanac .cta-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

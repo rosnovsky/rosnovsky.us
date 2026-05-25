@@ -1,0 +1,45 @@
+/* ============================================================
+   Rosnovsky.us — Almanac edition · DESIGN TOKENS
+   Single source of truth. Swap this file to retheme the site.
+   - Color: OKLCH, warm-dark base, jade accent
+   - Type:  Oswald display + Inter sans + Space Mono mono
+   ============================================================ */
+
+:root {
+  /* Surfaces ----------------------------------------------- */
+  --paper:        oklch(0.155 0.022 145);   /* page background */
+  --paper-deep:   oklch(0.115 0.018 145);   /* recessed surface */
+  --paper-soft:   oklch(0.19 0.022 145);    /* raised surface */
+
+  /* Ink (text) -------------------------------------------- */
+  --ink:          oklch(0.97 0.008 100);    /* primary */
+  --ink-soft:     oklch(0.80 0.015 110);    /* body */
+  --ink-quiet:    oklch(0.66 0.018 115);    /* tertiary, WCAG AA */
+
+  /* Rules / dividers -------------------------------------- */
+  --rule:         oklch(0.40 0.018 130 / 0.6);
+  --rule-soft:    oklch(0.40 0.018 130 / 0.32);
+
+  /* Brand accent ------------------------------------------ */
+  --jade:         oklch(0.80 0.19 158);
+  --jade-deep:    oklch(0.62 0.18 158);
+  --jade-glow:    oklch(0.80 0.19 158 / 0.35);
+
+  /* Interaction ------------------------------------------- */
+  --focus:        oklch(0.85 0.19 158);
+
+  /* Typography -------------------------------------------- */
+  --font-sans:    "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "Space Mono", "Fira Code", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --display:      "Oswald", "Inter Tight", system-ui, sans-serif;
+}
+
+/* Higher-contrast preference: brighten quiet ink, firmer rules */
+@media (prefers-contrast: more) {
+  :root {
+    --ink-soft:  oklch(0.92 0.012 110);
+    --ink-quiet: oklch(0.80 0.018 115);
+    --rule:      oklch(0.55 0.02 130 / 0.85);
+    --rule-soft: oklch(0.55 0.02 130 / 0.5);
+  }
+}

@@ -53,6 +53,12 @@ importers:
       '@fontsource/mr-dafoe':
         specifier: ^5.2.6
         version: 5.2.6
+      '@fontsource/oswald':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/space-mono':
+        specifier: ^5.2.9
+        version: 5.2.9
       '@mux/mux-player-react':
         specifier: ^3.4.1
         version: 3.4.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -935,6 +941,12 @@ packages:
 
   '@fontsource/mr-dafoe@5.2.6':
     resolution: {integrity: sha512-sxRQ8EXD3vibAYT0jZJ9W/6zh/CB9xydegN9+WYM8j538bbz0RPWqEVWkFPqOppiDbjDab+wMhRCHv4jHq26gw==}
+
+  '@fontsource/oswald@5.2.8':
+    resolution: {integrity: sha512-DFoPK1BqsFIQhVjs2xgO/oL9veF9oUJgFojEWIU+nazUrfqsBDtAMI4n9L9CZFX3kQNDLcCyzKx1xoEDvQT4WQ==}
+
+  '@fontsource/space-mono@5.2.9':
+    resolution: {integrity: sha512-b61faFOHEISQ/pD25G+cfGY9o/WW6lRv6hBQQfpWvEJ4y1V+S4gmth95EVyBE2VL3qDYHeVQ8nBzrplzdXTDDg==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -6957,6 +6969,10 @@ snapshots:
   '@fontsource/gochi-hand@5.2.6': {}
 
   '@fontsource/mr-dafoe@5.2.6': {}
+
+  '@fontsource/oswald@5.2.8': {}
+
+  '@fontsource/space-mono@5.2.9': {}
 
   '@humanfs/core@0.19.1': {}
 

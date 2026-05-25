@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import heroPortrait from '@images/hero-portrait.jpg';
+---
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="tick" aria-hidden="true"></span>
+      <span class="tag">
+        Software engineer, <em>recovering imposter</em>. I read more than I
+        hike.
+      </span>
+    </div>
+
+    <h1 class="display">
+      Welcome<span class="punct">!</span><br />
+      Happy to see <em>you</em><br />
+      here.
+    </h1>
+
+    <p class="lede">
+      <strong>Listen, we need to talk.</strong> Or maybe we don't. In any case,
+      I write about web&nbsp;development, hiking, and random hobbies I pick up
+      every now and then.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/blog">
+        Read the blog <span class="arr" aria-hidden="true">→</span>
+      </a>
+      <a class="btn btn-ghost" href="/about">About me</a>
+    </div>
+
+    <div class="social-row">
+      <a href="https://github.com/rosnovsky">Github</a>
+      <a href="https://www.linkedin.com/in/rosnovsky/">LinkedIn</a>
+      <a href="https://lounge.town/@rosnovsky">Mastodon</a>
+      <a href="https://bsky.app/profile/rosnovsky.us">Bluesky</a>
+      <a href="/feed/feed.xml">RSS</a>
+    </div>
+  </div>
+
+  <!-- Portrait — duotone, edges bleed into the page (no frame) -->
+  <div class="portrait-bleed">
+    <span class="portrait-tick tl">N · 48.1990°</span>
+    <span class="portrait-tick br">Art · est. 2003</span>
+    <div class="photo">
+      <Image
+        src={heroPortrait}
+        alt=""
+        role="presentation"
+        loading="eager"
+        width={1024}
+        height={1280}
+      />
+    </div>
+    <div class="duotone" aria-hidden="true"></div>
+  </div>
+</section>

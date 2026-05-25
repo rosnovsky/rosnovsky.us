@@ -1,0 +1,465 @@
+/* ============================================================
+   Rosnovsky.us — Almanac edition · SHARED BASE
+   Header / Footer / Buttons / Closer / a11y / Print.
+   Page-specific styles live next to their page (e.g. home.css).
+   ============================================================ */
+
+::selection {
+  background: oklch(0.80 0.19 158 / 0.35);
+  color: var(--ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.mono,
+time,
+.post-row .row-num,
+.post-row .row-read,
+.year-head .num,
+.stats .v .num,
+.now-item .v,
+.post-strip,
+.crumb {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----------------------------------------------------------
+   Skip-to-content + visible focus
+---------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 8px;
+  z-index: 1000;
+  padding: 14px 20px;
+  background: var(--jade);
+  color: var(--paper-deep);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--paper-deep);
+  transition: top 160ms ease;
+}
+.skip-link:focus {
+  top: 8px;
+  outline: 3px solid var(--paper-deep);
+  outline-offset: 0;
+}
+
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: none;
+}
+.btn:focus-visible,
+.chip-btn:focus-visible,
+.channels a:focus-visible,
+.closer .reach a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px oklch(0.80 0.19 158 / 0.2);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   Body & layout reset (scoped to .almanac to avoid leaking
+   into other parts of the site that still use the old design)
+---------------------------------------------------------- */
+.almanac,
+.almanac * {
+  box-sizing: border-box;
+}
+.almanac {
+  background:
+    radial-gradient(1100px 700px at 92% 0%, oklch(0.80 0.19 158 / 0.05), transparent 65%),
+    var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.almanac a { color: inherit; }
+
+.almanac .page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 56px;
+  position: relative;
+}
+
+.almanac .mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ----------------------------------------------------------
+   HEADER
+---------------------------------------------------------- */
+.almanac .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 30px;
+  border-bottom: 1px solid var(--rule);
+}
+.almanac .wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.almanac .wordmark .name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.almanac .wordmark .tm {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.almanac .wordmark .tm em { color: var(--jade); font-style: normal; }
+
+.almanac .nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.almanac .nav a {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 160ms ease;
+}
+.almanac .nav a:hover { color: var(--jade); }
+.almanac .nav a[aria-current="page"] { color: var(--ink); }
+.almanac .nav a[aria-current="page"]::before {
+  content: "// ";
+  color: var(--jade);
+}
+
+/* ----------------------------------------------------------
+   BUTTONS
+---------------------------------------------------------- */
+.almanac .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 16px 22px;
+  text-decoration: none;
+  transition: all 200ms ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.almanac .btn:active { transform: translateY(1px); }
+.almanac .btn-primary {
+  background: var(--jade);
+  color: var(--paper-deep);
+}
+.almanac .btn-primary:hover { background: oklch(0.85 0.19 158); }
+.almanac .btn-ghost {
+  color: var(--ink);
+  border-color: var(--rule);
+  background: transparent;
+}
+.almanac .btn-ghost:hover { border-color: var(--jade); color: var(--jade); }
+.almanac .btn .arr { opacity: 0.7; }
+
+/* ----------------------------------------------------------
+   CLOSER (kindness signoff)
+---------------------------------------------------------- */
+.almanac .closer {
+  margin-top: 60px;
+  padding: 90px 0 50px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.almanac .closer h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(50px, 6.2vw, 96px);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.almanac .closer h2 em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 0 0 28px var(--jade-glow);
+}
+.almanac .closer p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  max-width: 460px;
+  text-wrap: pretty;
+}
+.almanac .closer p strong { color: var(--ink); font-weight: 500; }
+.almanac .closer .reach {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.almanac .closer .reach a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 12px 16px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all 200ms ease;
+}
+.almanac .closer .reach a:hover { border-color: var(--jade); color: var(--jade); }
+.almanac .closer .reach a.primary {
+  background: var(--jade);
+  color: var(--paper-deep);
+  border-color: var(--jade);
+}
+.almanac .closer .reach a.primary:hover { background: oklch(0.85 0.19 158); }
+
+/* ----------------------------------------------------------
+   FOOTER
+---------------------------------------------------------- */
+.almanac footer {
+  margin-top: 60px;
+  padding: 36px 0 24px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 50px;
+}
+.almanac footer h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+.almanac footer p,
+.almanac footer a {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin: 0;
+  text-decoration: none;
+}
+.almanac footer a {
+  display: block;
+  transition: color 160ms ease;
+}
+.almanac footer a:hover { color: var(--jade); }
+.almanac footer .place { max-width: 320px; }
+.almanac footer .place .name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 0 10px;
+}
+
+.almanac .legal {
+  border-top: 1px solid var(--rule-soft);
+  padding: 22px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* ----------------------------------------------------------
+   Shared post metadata strip (also used in cards)
+---------------------------------------------------------- */
+.almanac .p-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.almanac .p-meta .dot {
+  width: 3px;
+  height: 3px;
+  background: var(--ink-quiet);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+.almanac .p-meta .cat { color: var(--jade); }
+
+/* ----------------------------------------------------------
+   Responsive — shared
+---------------------------------------------------------- */
+@media (max-width: 1240px) {
+  .almanac .page { padding: 0 40px; }
+  .almanac .closer { gap: 48px; padding: 70px 0 40px; }
+}
+@media (max-width: 1080px) {
+  .almanac .closer {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 60px;
+  }
+  .almanac footer { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .almanac .page { padding: 0 28px; }
+  .almanac .header {
+    padding: 22px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .almanac .nav { flex-wrap: wrap; }
+  .almanac footer { grid-template-columns: 1fr; }
+  .almanac .legal { flex-direction: column; gap: 10px; }
+}
+@media (max-width: 480px) {
+  .almanac .page { padding: 0 20px; }
+  .almanac .btn { padding: 14px 18px; font-size: 10px; }
+  .almanac .closer .reach a { padding: 10px 12px; font-size: 10px; }
+}
+
+/* ----------------------------------------------------------
+   Off-site link arrow (long-form prose only)
+---------------------------------------------------------- */
+.almanac .article a[href^="http"]:not([href*="rosnovsky"])::after,
+.almanac .bio .body a[href^="http"]:not([href*="rosnovsky"])::after,
+.almanac .tl-item a[href^="http"]:not([href*="rosnovsky"])::after,
+.almanac .scard a[href^="http"]:not([href*="rosnovsky"])::after {
+  content: " ↗";
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  opacity: 0.7;
+  display: inline-block;
+  margin-left: 1px;
+  transform: translateY(-1px);
+}
+
+/* ----------------------------------------------------------
+   PRINT
+---------------------------------------------------------- */
+@media print {
+  :root {
+    --paper: #fff;
+    --paper-deep: #fff;
+    --paper-soft: #f7f7f5;
+    --ink: #111;
+    --ink-soft: #2a2a2a;
+    --ink-quiet: #555;
+    --rule: #c2c2c2;
+    --rule-soft: #e5e5e5;
+    --jade: #156c4d;
+    --jade-deep: #156c4d;
+    --jade-glow: transparent;
+  }
+  *, *::before, *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -webkit-mask-image: none !important;
+            mask-image: none !important;
+  }
+  html, body, .almanac {
+    background: #fff !important;
+    color: #111 !important;
+    overflow: visible;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  .almanac .page { max-width: 100%; padding: 0 12mm; }
+  .skip-link,
+  .almanac .header .nav,
+  .almanac .closer,
+  .almanac footer,
+  .almanac .legal,
+  .almanac .portrait-bleed,
+  .almanac .currently { display: none !important; }
+  .almanac .hero,
+  .almanac .posts,
+  .almanac .section-head { display: block !important; }
+  h1, h2, h3 { page-break-after: avoid; color: #111 !important; }
+  figure, blockquote { page-break-inside: avoid; }
+  p { orphans: 3; widows: 3; }
+  a { color: #156c4d !important; text-decoration: underline; }
+}

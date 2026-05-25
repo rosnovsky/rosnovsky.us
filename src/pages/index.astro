@@ -1,21 +1,52 @@
 ---
-import Hero from '@components/Hero.astro';
-import Layout from '@layouts/Layout.astro';
-// import Experience from '@components/Experience.astro'
-// import Stack from '@components/Stack.astro'
-// import FeaturedProjects from '@components/projects/FeaturedProjects.astro'
-import FeaturedPosts from '@components/blog/FeaturedPosts.astro';
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Hero from '@components/almanac/Hero.astro';
+import Currently from '@components/almanac/Currently.astro';
+import PostCard from '@components/almanac/PostCard.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Footer from '@components/almanac/Footer.astro';
+import { getSortedPosts } from '@utils/posts';
 import { SITE } from '@config';
+
+import '@styles/almanac/home.css';
+
+const allPosts = await getSortedPosts();
+const featured = allPosts.slice(0, 6);
+const totalPosts = allPosts.length;
+const since = Math.min(
+  ...allPosts.map((p) => p.data.publishDate.getFullYear())
+);
 ---
 
-<Layout
+<AlmanacLayout
   title={`Software Engineer, recovering imposter. I read more than I hike. | ${SITE.title}`}
+  description="Notes on web development, books, live music, and the occasional hike — from a small town at the forks of the Stillaguamish. Writing since 2003."
+  pageClass="home"
 >
-  <Hero />
-  <FeaturedPosts />
-  <!-- <PopularPosts /> -->
-  <!-- <Stack /> -->
-  <!-- <Experience /> -->
-  <!-- <FeaturedProjects /> -->
-  <!-- <Testimonials /> -->
-</Layout>
+  <Header current="home" />
+
+  <main id="main">
+    <Hero />
+
+    <Currently />
+
+    <section class="section" aria-labelledby="latest-posts">
+      <div class="section-head">
+        <h2 id="latest-posts">Latest <em>posts</em> from the blog</h2>
+        <div class="right">
+          {totalPosts}+ entries · since {since}<br />
+          <a href="/blog">View the full archive →</a>
+        </div>
+      </div>
+
+      <div class="posts">
+        {featured.map((post, i) => <PostCard post={post} index={i} />)}
+      </div>
+    </section>
+
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>

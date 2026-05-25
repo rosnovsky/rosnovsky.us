@@ -1,0 +1,108 @@
+---
+/**
+ * AlmanacLayout — base layout for the Almanac-edition redesign.
+ *
+ * Only the Home page uses this for now; About/Blog/Post still ride
+ * Layout.astro. Once all four pages are migrated, this can replace
+ * Layout.astro entirely.
+ *
+ * Design tokens live in src/styles/almanac/tokens.css (one-file swap
+ * for the next redesign). Components read tokens via either Tailwind
+ * utilities (bg-paper, text-jade, font-almanac-display) or CSS class
+ * names that the design system already ships.
+ */
+import { SITE } from '@config';
+
+// Self-host Almanac fonts via fontsource (no Google Fonts CDN dep).
+import '@fontsource-variable/inter';
+import '@fontsource/oswald/400.css';
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/600.css';
+// Oswald has no italic — browser synthesizes for h1 em accents.
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+
+// Almanac stylesheets — order matters: tokens → base → page-specific
+import '@styles/almanac/tokens.css';
+import '@styles/almanac/base.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  /** Page wrapper class for page-specific CSS hooks (e.g. "home", "about") */
+  pageClass?: string;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  ogImage = SITE.ogImage,
+  canonicalURL = new URL(Astro.url.pathname.replace(/\/$/, ''), Astro.site)
+    .href,
+  pageClass = '',
+} = Astro.props;
+
+const socialImageURL = new URL(ogImage ?? SITE.ogImage, Astro.url.origin).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Match the page chrome to the design (warm-dark paper) -->
+    <meta name="theme-color" content="#1e2920" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Inline SVG favicon: jade dot on warm-dark square -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231e2920'/><circle cx='16' cy='16' r='7' fill='%2300d39e'/></svg>"
+    />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Rosnovsky Park"
+      href="/feed/feed.xml"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:site_name" content="Rosnovsky Park™" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+
+    <!-- Analytics (matches existing Layout) -->
+    <script
+      is:inline
+      defer
+      src="https://umami.art0.dev/script.js"
+      data-website-id="5a7cdc58-f62d-4822-b469-62c54fae7736"></script>
+  </head>
+  <body class={`almanac ${pageClass}`.trim()}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <slot />
+    </div>
+  </body>
+</html>

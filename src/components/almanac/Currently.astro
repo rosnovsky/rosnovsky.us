@@ -1,0 +1,47 @@
+---
+/**
+ * Currently band — sits between the hero and the posts grid.
+ * Four "now" data cards: Listening / Stack / Writing / Where.
+ * "Listening" is marked .live to get the jade dot. Edit the data
+ * inline here as it shifts — there's no CMS hook (yet).
+ */
+---
+
+<section class="currently" aria-label="Currently">
+  <div class="label">
+    Currently<span class="punct">…</span>
+    <small>· updated weekly-ish</small>
+  </div>
+  <div class="grid">
+    <div class="now-item live">
+      <div class="k">Listening</div>
+      <div class="v">
+        Linkin Park<small>From Zero · on loop</small>
+      </div>
+    </div>
+    <div class="now-item">
+      <div class="k">Stack</div>
+      <div class="v">Daily drivers</div>
+      <div class="stack-chips">
+        <span class="chip ts">
+          <span class="ic">TS</span>TypeScript<span class="hearts">❤❤❤</span>
+        </span>
+        <span class="chip react">
+          <span class="ic">⚛</span>React<span class="fires">🔥🔥🔥</span>
+        </span>
+      </div>
+    </div>
+    <div class="now-item">
+      <div class="k">Writing</div>
+      <div class="v">
+        Slowly<small>weekly-ish dispatches</small>
+      </div>
+    </div>
+    <div class="now-item">
+      <div class="k">Where</div>
+      <div class="v">
+        Arlington, WA<small>at the forks of the Stillaguamish</small>
+      </div>
+    </div>
+  </div>
+</section>
