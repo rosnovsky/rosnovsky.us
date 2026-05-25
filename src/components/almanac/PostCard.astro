@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import type { Post } from '@types';
 
 interface Props {
@@ -44,12 +43,14 @@ const cornerNum = `No. ${String(index + 1).padStart(3, '0')}`;
 
 <a class="post" href={href}>
   <div class={`cover ${coverClass}`}>
-    <Image
+    <img
       class="real-cover"
-      src={post.data.image.src}
+      src={post.data.image.src.src}
+      width={post.data.image.src.width}
+      height={post.data.image.src.height}
       alt={post.data.image.alt}
-      widths={[320, 640, 960]}
-      sizes="(min-width: 1080px) 33vw, (min-width: 760px) 50vw, 100vw"
+      loading="lazy"
+      decoding="async"
     />
     <div class="cover-overlay" aria-hidden="true"></div>
     <span class="cat">{post.data.category}</span>

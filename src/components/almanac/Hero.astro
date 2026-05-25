@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import heroPortrait from '@images/hero-portrait.jpg';
 ---
 
@@ -46,13 +45,14 @@ import heroPortrait from '@images/hero-portrait.jpg';
     <span class="portrait-tick tl">N · 48.1990°</span>
     <span class="portrait-tick br">Art · est. 2003</span>
     <div class="photo">
-      <Image
-        src={heroPortrait}
+      <img
+        src={heroPortrait.src}
+        width={heroPortrait.width}
+        height={heroPortrait.height}
         alt=""
         role="presentation"
         loading="eager"
-        width={1024}
-        height={1280}
+        decoding="async"
       />
     </div>
     <div class="duotone" aria-hidden="true"></div>
