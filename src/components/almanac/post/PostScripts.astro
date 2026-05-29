@@ -1,0 +1,111 @@
+---
+/**
+ * Three small client-side enhancements for the Almanac blog post:
+ *   1. Relative-time on the post-strip date ("Posted 3 mo ago",
+ *      full date in the tooltip).
+ *   2. Reading-progress bar that fills as the article scrolls past.
+ *   3. TOC scroll-spy: highlights the section currently in view.
+ *   4. "Copy link" buttons in the share row + sidebar.
+ *
+ * All three degrade gracefully without JS:
+ *   - Date stays at its short-format text.
+ *   - Progress bar sits at 0%, hidden visually nothing breaks.
+ *   - TOC stays a flat list of anchor links.
+ *   - "Copy link" buttons become noop (link is already in the URL bar).
+ */
+---
+
+<script is:inline>
+  // 1. Relative-time formatter ----------------------------------
+  function relTime(then) {
+    const ms = Date.now() - then.getTime();
+    const day = 86400000;
+    const days = Math.floor(ms / day);
+    if (days < 1) return 'today';
+    if (days < 7) return days + ' day' + (days === 1 ? '' : 's') + ' ago';
+    if (days < 30) {
+      const w = Math.floor(days / 7);
+      return w + ' week' + (w === 1 ? '' : 's') + ' ago';
+    }
+    if (days < 365) {
+      const m = Math.floor(days / 30);
+      return m + ' month' + (m === 1 ? '' : 's') + ' ago';
+    }
+    const yrs = days / 365;
+    const y = Math.floor(yrs);
+    const m = Math.round((yrs - y) * 12);
+    if (m === 0) return y + ' year' + (y === 1 ? '' : 's') + ' ago';
+    if (m === 12) return y + 1 + ' year' + (y + 1 === 1 ? '' : 's') + ' ago';
+    return y + ' yr ' + m + ' mo ago';
+  }
+  document.querySelectorAll('time[datetime]').forEach((el) => {
+    const dt = new Date(el.getAttribute('datetime'));
+    if (Number.isNaN(dt.getTime())) return;
+    // Only rewrite text on elements that asked for relative time
+    if (el.id === 'post-date' || el.dataset.relative === 'true') {
+      el.textContent = relTime(dt);
+    }
+    if (!el.title) {
+      el.title = dt.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    }
+  });
+
+  // 2. Reading-progress bar -------------------------------------
+  const bar = document.getElementById('progress');
+  const track = document.getElementById('progress-track');
+  const article = document.querySelector('.article');
+  if (bar && article) {
+    const update = () => {
+      const r = article.getBoundingClientRect();
+      const total = r.height + window.innerHeight - 200;
+      const seen = Math.min(Math.max(window.innerHeight - r.top, 0), total);
+      const pct = Math.max(0, Math.min(100, Math.round((seen / total) * 100)));
+      bar.style.width = pct + '%';
+      if (track) track.setAttribute('aria-valuenow', String(pct));
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
+  // 3. TOC scroll-spy -------------------------------------------
+  const tocLinks = document.querySelectorAll('.toc a');
+  const sections = [...document.querySelectorAll('.article h2[id]')];
+  if (tocLinks.length && sections.length) {
+    const onScroll = () => {
+      const y = window.scrollY + 120;
+      let current = sections[0];
+      sections.forEach((s) => {
+        if (s.offsetTop <= y) current = s;
+      });
+      tocLinks.forEach((a) => {
+        const isCurrent = a.getAttribute('href') === '#' + current.id;
+        a.classList.toggle('current', isCurrent);
+        if (isCurrent) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // 4. Copy-link buttons ----------------------------------------
+  document.querySelectorAll('[data-share="copy"]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const original = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 1600);
+      } catch {
+        // Clipboard API blocked (insecure context, etc.) — ignore;
+        // the URL is already in the address bar.
+      }
+    });
+  });
+</script>

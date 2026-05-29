@@ -1,15 +1,23 @@
 ---
-import PostFooter from '@components/PostFooter.astro';
-import Layout from '@layouts/Layout.astro';
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import PostHead from '@components/almanac/post/PostHead.astro';
+import PostTOC from '@components/almanac/post/PostTOC.astro';
+import PostSidebar from '@components/almanac/post/PostSidebar.astro';
+import PrevNext from '@components/almanac/post/PrevNext.astro';
+import PostScripts from '@components/almanac/post/PostScripts.astro';
+import { getSortedPosts } from '@utils/posts';
 import type { Post } from '@types';
-import { slugify } from '@utils/slugs';
-import { Icon } from 'astro-icon/components';
+
+// Astro-Mastodon embed styles are still used by some MDX posts
 import 'astro-mastodon/dist/output.css';
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+
+import '@styles/almanac/post.css';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogEntries = await getSortedPosts();
   return blogEntries.map((postEntry) => ({
     params: { slug: postEntry.slug.split('/').pop() },
     props: { postEntry },
@@ -23,109 +31,83 @@ interface Props {
 export const prerender = true;
 
 const { postEntry } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await postEntry.render();
-const post = {
-  ...postEntry.data,
-  minutesRead: remarkPluginFrontmatter.minutesRead,
-  slug: postEntry.slug,
-};
+const { Content, headings, remarkPluginFrontmatter } = await postEntry.render();
 
-const ogImage = post.image.src;
+const minutesRead: string =
+  remarkPluginFrontmatter?.minutesRead ?? '1 min read';
+
+// Determine prev/next + post number based on global sort order.
+const allPosts = await getSortedPosts();
+const totalPosts = allPosts.length;
+const idx = allPosts.findIndex((p) => p.slug === postEntry.slug);
+const postNum = totalPosts - idx; // newest = totalPosts, oldest = 1
+const next = idx > 0 ? allPosts[idx - 1] : undefined; // newer in time
+const prev = idx < allPosts.length - 1 ? allPosts[idx + 1] : undefined; // older
+const nextNum = next ? postNum + 1 : undefined;
+const prevNum = prev ? postNum - 1 : undefined;
+
+// Nearby post for the sidebar — pick the closer of prev/next by date.
+const nearby: Post | undefined = (() => {
+  if (!prev && !next) return undefined;
+  if (!prev) return next;
+  if (!next) return prev;
+  const thisTime = postEntry.data.publishDate.getTime();
+  const prevDelta = Math.abs(thisTime - prev.data.publishDate.getTime());
+  const nextDelta = Math.abs(thisTime - next.data.publishDate.getTime());
+  return prevDelta <= nextDelta ? prev : next;
+})();
+
+const ogImage = postEntry.data.image.src;
 const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src;
-const categorySlug = slugify(post.category);
 ---
 
-<Layout title={post.title} description={post.description} ogImage={ogImageUrl}>
-  <main>
-    <post>
-      {/* Post Header */}
-      <header
-        class="relative bg-slate-50 py-16 dark:bg-slate-900 sm:pt-24 lg:pt-28"
-      >
-        <div
-          class="absolute inset-x-0 bottom-0 h-1/4 bg-white dark:bg-slate-950"
-        >
-        </div>
-        <div
-          class="relative mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8"
-          transition:name={post.slug}
-        >
-          <a
-            href={`/blog/${categorySlug}`}
-            class="group inline-flex items-center justify-center gap-3.5 text-base leading-5 tracking-wide text-emerald-700 transition duration-200 ease-in-out hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-400 sm:text-lg"
-          >
-            <Icon
-              name={categorySlug}
-              class="h-[18px] w-[18px] text-emerald-700/90 transition duration-200 group-hover:text-emerald-600 dark:text-emerald-400/90 dark:group-hover:text-emerald-600 sm:h-5 sm:w-5"
-            />
-            {post.category}
-          </a>
-          <h1
-            class="mt-6 text-center font-display text-4xl font-semibold leading-tight text-slate-900 dark:text-slate-100 sm:text-5xl sm:leading-tight"
-          >
-            {post.title}
-          </h1>
-          <p
-            class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-slate-700 dark:text-slate-300"
-          >
-            {post.description}
-          </p>
-          <div
-            class="mt-8 flex items-center justify-center gap-4 text-md text-slate-600 dark:text-slate-400"
-          >
-            <span class="flex items-center gap-2">
-              <Icon
-                name="calendar"
-                class="h-6 w-6 text-slate-400"
-                stroke-width="1.75"
-              />
-              <date datetime={post.publishDate}>
-                {
-                  post.publishDate.toLocaleString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                  })
-                }
-              </date>
-            </span>
-            <span class="flex items-center gap-2">
-              <Icon
-                name="clock"
-                class="h-6 w-6 text-slate-400"
-                stroke-width="1.75"
-              />
-              {post.minutesRead}
-            </span>
-          </div>
-          <div class="mx-auto mt-16 w-full max-w-4xl">
-            <div
-              class="aspect-h-9 aspect-w-16 relative block w-full overflow-hidden rounded-3xl shadow-lg shadow-emerald-100/50 md:aspect-h-2 md:aspect-w-3 dark:shadow-emerald-950/50"
-            >
-              <Image
-                src={post.image.src}
-                alt={post.image.alt}
-                class="w-full rounded-3xl bg-slate-100 object-cover dark:bg-slate-900"
-                transition:name={`${post.slug}-image`}
-              />
-              <div
-                class="absolute inset-0 rounded-3xl ring-1 ring-inset ring-slate-900/10 dark:ring-slate-100/10"
-              >
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+<AlmanacLayout
+  title={postEntry.data.title}
+  description={postEntry.data.description}
+  ogImage={ogImageUrl}
+  pageClass="post"
+>
+  <Header current="blog" />
 
-      {/* Post Content */}
-      <div class="bg-white px-4 dark:bg-slate-950 sm:px-6 lg:px-8">
-        <div
-          class="prose prose-xl mx-auto max-w-4xl text-slate-900 dark:text-slate-100"
-        >
+  <main id="main">
+    <article aria-labelledby="post-title">
+      <PostHead post={postEntry} num={postNum} minutesRead={minutesRead} />
+
+      {/* Hero image — full-bleed cover above the article body */}
+      <figure class="hero-image">
+        <img
+          src={postEntry.data.image.src.src}
+          width={postEntry.data.image.src.width}
+          height={postEntry.data.image.src.height}
+          alt={postEntry.data.image.alt}
+          loading="eager"
+          decoding="async"
+        />
+        <figcaption class="caption">
+          <span class="credit">
+            <span aria-hidden="true">↳</span> {postEntry.data.image.alt}
+          </span>
+          <span class="plate">PLATE 01 · COVER</span>
+        </figcaption>
+      </figure>
+
+      <div class="article-wrap">
+        <PostTOC headings={headings} />
+
+        <div class="article">
           <Content />
         </div>
-        <PostFooter slug={post.slug} />
+
+        <PostSidebar post={postEntry} minutesRead={minutesRead} nearby={nearby} />
       </div>
-    </post>
+    </article>
+
+    <PrevNext prev={prev} next={next} prevNum={prevNum} nextNum={nextNum} />
+
+    <Closer />
   </main>
-</Layout>
+
+  <Footer />
+
+  <PostScripts />
+</AlmanacLayout>

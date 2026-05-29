@@ -1,0 +1,47 @@
+---
+import type { Post } from '@types';
+
+interface Props {
+  /** The post older than the current one (lower post number). */
+  prev?: Post;
+  /** The post newer than the current one (higher post number). */
+  next?: Post;
+  /** Sequential post numbers for the "№ XXX" annotations. */
+  prevNum?: number;
+  nextNum?: number;
+}
+const { prev, next, prevNum, nextNum } = Astro.props;
+
+const hrefOf = (p: Post) => `/blog/${p.slug.split('/').pop()}`;
+const fmtNum = (n?: number) =>
+  typeof n === 'number' ? String(n).padStart(3, '0') : '';
+---
+
+{(prev || next) && (
+  <nav class="post-foot" aria-label="Previous and next post">
+    <div class="prev-next">
+      {prev ? (
+        <a class="prev" href={hrefOf(prev)} rel="prev">
+          <div class="pn-dir">
+            <span class="jade" aria-hidden="true">←</span> Previous{' '}
+            {prevNum !== undefined && <>· № {fmtNum(prevNum)}</>}
+          </div>
+          <div class="pn-title">{prev.data.title}</div>
+        </a>
+      ) : (
+        <span></span>
+      )}
+      {next ? (
+        <a class="next" href={hrefOf(next)} rel="next">
+          <div class="pn-dir">
+            Next {nextNum !== undefined && <>· № {fmtNum(nextNum)}</>}{' '}
+            <span class="jade" aria-hidden="true">→</span>
+          </div>
+          <div class="pn-title">{next.data.title}</div>
+        </a>
+      ) : (
+        <span></span>
+      )}
+    </div>
+  </nav>
+)}

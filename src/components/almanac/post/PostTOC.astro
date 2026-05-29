@@ -1,0 +1,24 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  /** Headings from `post.render().headings`. We render h2s only. */
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+
+const h2s = headings.filter((h) => h.depth === 2);
+---
+
+{h2s.length > 0 && (
+  <nav class="toc" aria-label="In this article">
+    <div class="head" id="toc-head">In this piece</div>
+    <ol aria-labelledby="toc-head">
+      {h2s.map((h) => (
+        <li>
+          <a href={`#${h.slug}`}>{h.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

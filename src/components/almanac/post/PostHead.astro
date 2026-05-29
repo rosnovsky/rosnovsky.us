@@ -1,0 +1,88 @@
+---
+import { slugify } from '@utils/slugs';
+import type { Post } from '@types';
+
+interface Props {
+  post: Post;
+  /** Sequential post number across the whole archive (newest = largest). */
+  num: number;
+  /** "5 min read" from remarkPluginFrontmatter.minutesRead. */
+  minutesRead: string;
+}
+
+const { post, num, minutesRead } = Astro.props;
+const categorySlug = slugify(post.data.category);
+
+const date = post.data.publishDate;
+const dateISO = date.toISOString();
+const fullDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const shortDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="/blog"><span aria-hidden="true">←</span> Blog</a>
+  <span class="sep" aria-hidden="true">/</span>
+  <a class="cat" href={`/blog/${categorySlug}`}>{post.data.category}</a>
+  <span class="sep" aria-hidden="true">/</span>
+  <span><time datetime={dateISO}>{shortDate}</time></span>
+</nav>
+
+<header class="post-head">
+  <div class="eyebrow">
+    <span class="pill">№ {String(num).padStart(3, '0')}</span>
+    <span>{post.data.category}</span>
+    <span class="dot" aria-hidden="true"></span>
+    <span>{minutesRead}</span>
+  </div>
+
+  <h1 id="post-title">{post.data.title}</h1>
+
+  {post.data.description && (
+    <p class="dek">{post.data.description}</p>
+  )}
+
+  <div class="post-strip">
+    <span>
+      Posted
+      <time datetime={dateISO} id="post-date" title={fullDate}>
+        {shortDate}
+      </time>
+    </span>
+    <span class="sep" aria-hidden="true">·</span>
+    <span>
+      under <a class="cat" href={`/blog/${categorySlug}`}>{post.data.category}</a>
+    </span>
+    <span class="sep" aria-hidden="true">|</span>
+    <span>{minutesRead}</span>
+    <span class="spacer" aria-hidden="true"></span>
+    <div class="share" aria-label="Share this post">
+      <button type="button" data-share="copy" aria-label="Copy link to this post">
+        Copy link
+      </button>
+      <a
+        href={`https://mastodon.social/share?text=${encodeURIComponent(post.data.title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on Mastodon"
+      >
+        Mastodon
+      </a>
+      <a
+        href={`https://bsky.app/intent/compose?text=${encodeURIComponent(post.data.title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on Bluesky"
+      >
+        Bluesky
+      </a>
+    </div>
+  </div>
+</header>

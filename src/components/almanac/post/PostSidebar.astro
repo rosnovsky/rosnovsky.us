@@ -1,0 +1,91 @@
+---
+import { slugify } from '@utils/slugs';
+import type { Post } from '@types';
+
+interface Props {
+  post: Post;
+  /** "9 min read" — displayed under "Reading progress". */
+  minutesRead: string;
+  /** The post closest in time (newer or older) — surfaced as
+      "Around the same time". Optional. */
+  nearby?: Post;
+}
+
+const { post, minutesRead, nearby } = Astro.props;
+
+const categorySlug = slugify(post.data.category);
+
+const nearbyHref = nearby
+  ? `/blog/${nearby.slug.split('/').pop()}`
+  : undefined;
+const nearbyDate = nearby?.data.publishDate;
+const nearbyLabel = nearbyDate?.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<aside class="side" aria-label="Article metadata">
+  <div class="block">
+    <div class="k" id="prog-label">Reading progress</div>
+    <div class="v" aria-labelledby="prog-label">~{minutesRead}</div>
+    <div
+      class="progress-track"
+      role="progressbar"
+      aria-labelledby="prog-label"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      id="progress-track"
+    >
+      <div class="progress-bar" id="progress"></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="k">Filed under</div>
+    <div class="tags">
+      <a href={`/blog/${categorySlug}`}>{post.data.category}</a>
+    </div>
+  </div>
+
+  {nearby && (
+    <div class="block">
+      <div class="k">Around the same time</div>
+      <div class="v">
+        <a href={nearbyHref}>{nearby.data.title}</a>
+        <small>{nearbyLabel}</small>
+      </div>
+    </div>
+  )}
+
+  <div class="block">
+    <div class="k">Share</div>
+    <div class="v">
+      <button
+        type="button"
+        data-share="copy"
+        style="background:transparent; border:none; padding:0; color:var(--jade); cursor:pointer; display:block; font-family:inherit; font-size:inherit; text-align:left;"
+      >
+        ↗ Copy link
+      </button>
+      <a
+        href={`https://mastodon.social/share?text=${encodeURIComponent(post.data.title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color:var(--ink-soft); display:block; margin-top:6px;"
+      >
+        ↗ Mastodon
+      </a>
+      <a
+        href={`https://bsky.app/intent/compose?text=${encodeURIComponent(post.data.title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color:var(--ink-soft); display:block; margin-top:6px;"
+      >
+        ↗ Bluesky
+      </a>
+    </div>
+  </div>
+</aside>
