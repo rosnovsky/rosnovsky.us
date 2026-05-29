@@ -1,0 +1,84 @@
+---
+import type { Post } from '@types';
+
+interface Props {
+  posts: Post[];
+  /** Earliest year the blog spans (copyright-aligned). */
+  sinceYear: number;
+  /** Category being viewed, if filtered server-side. */
+  currentCategory?: string;
+}
+const { posts, sinceYear, currentCategory } = Astro.props;
+
+const totalPosts = posts.length;
+const currentYear = new Date().getFullYear();
+const yearsSpanning = currentYear - sinceYear;
+
+const fmtMonthYear = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+const first = posts[posts.length - 1];
+const latest = posts[0];
+
+const eyebrowSuffix = currentCategory
+  ? `· filtered: ${currentCategory.toLowerCase()}`
+  : `· writing since ${sinceYear}`;
+---
+
+<section class="intro-grid">
+  <div class="left">
+    <div class="eyebrow">
+      <span class="tick" aria-hidden="true"></span>
+      <span>/blog</span>
+      <span class="sep" aria-hidden="true">·</span>
+      <span class="dim">{eyebrowSuffix}</span>
+    </div>
+    <h1>The <em>blog</em>.</h1>
+    <p class="sub">
+      <strong>{yearsSpanning} years of dispatches</strong> on web&nbsp;development,
+      hiking, books, live music, and whatever rabbit hole I've fallen into
+      lately. Filter by category below, or just scroll.
+    </p>
+  </div>
+
+  <aside class="stats" aria-label="Blog stats">
+    <div class="row">
+      <div class="k">Posts</div>
+      <div class="v">
+        <span class="num">{totalPosts}</span>
+        <small>spanning {yearsSpanning} years</small>
+      </div>
+    </div>
+    {first && (
+      <div class="row">
+        <div class="k">First here</div>
+        <div class="v">
+          {fmtMonthYear(first.data.publishDate)}
+          <small>{first.data.title}</small>
+        </div>
+      </div>
+    )}
+    {latest && (
+      <div class="row">
+        <div class="k">Latest</div>
+        <div class="v">
+          {fmtMonthYear(latest.data.publishDate)}
+          <small>· {latest.data.title}</small>
+        </div>
+      </div>
+    )}
+    <div class="row">
+      <div class="k">Cadence</div>
+      <div class="v">
+        Irregular
+        <small>when the muse shows up</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Feed</div>
+      <div class="v" style="font-size:14px;">
+        <a href="/feed/feed.xml">feed.xml ↗</a>
+      </div>
+    </div>
+  </aside>
+</section>

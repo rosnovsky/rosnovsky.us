@@ -1,0 +1,39 @@
+---
+import type { Post } from '@types';
+import { slugify } from '@utils/slugs';
+
+interface Props {
+  post: Post;
+  /** Sequential post number across the whole archive (most-recent = highest). */
+  num: number;
+}
+const { post, num } = Astro.props;
+
+const fileSlug = post.slug.split('/').pop();
+const href = `/blog/${fileSlug}`;
+const catSlug = slugify(post.data.category);
+
+const date = post.data.publishDate;
+const dateISO = date.toISOString();
+const dateLabel = date.toLocaleDateString('en-US', {
+  month: 'short',
+  day: '2-digit',
+});
+
+const { remarkPluginFrontmatter } = await post.render();
+const minutesText: string =
+  remarkPluginFrontmatter?.minutesRead ?? '1 min read';
+// "5 min read" → "5 min" (strip trailing "read" for the tight row)
+const minutesShort = minutesText.replace(/\s*read\s*$/i, '');
+---
+
+<a class="post-row" href={href} data-cat={catSlug}>
+  <span class="row-num">№ {String(num).padStart(3, '0')}</span>
+  <time class="row-date" datetime={dateISO}>{dateLabel}</time>
+  <span class="row-title">{post.data.title}</span>
+  <span class="row-cat">{post.data.category}</span>
+  <span class="row-read">
+    {minutesShort}
+    <span class="row-arr" aria-hidden="true">→</span>
+  </span>
+</a>

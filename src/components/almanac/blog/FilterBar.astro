@@ -1,0 +1,98 @@
+---
+import { slugify } from '@utils/slugs';
+
+interface CategoryChip {
+  label: string;
+  /** Slug used as data-cat on chips and in /blog/{slug} URLs. */
+  slug: string;
+  count: number;
+}
+
+interface Props {
+  /** Category chips with counts. "All" gets prepended automatically. */
+  categories: CategoryChip[];
+  /** Total post count for the "All" chip. */
+  totalCount: number;
+  /** Slug of the currently-active category (server-side) or "all". */
+  active: string;
+}
+
+const { categories, totalCount, active } = Astro.props;
+
+const chips = [
+  { label: 'All', slug: 'all', count: totalCount, href: '/blog' },
+  ...categories.map((c) => ({
+    label: c.label,
+    slug: c.slug,
+    count: c.count,
+    href: `/blog/${slugify(c.label)}`,
+  })),
+];
+---
+
+<div class="filter-bar" role="toolbar" aria-label="Filter posts by category">
+  <span class="label" id="filter-label">Filter</span>
+
+  {chips.map((c) => (
+    <a
+      class={`chip-btn${c.slug === active ? ' active' : ''}`}
+      data-cat={c.slug}
+      href={c.href}
+      aria-pressed={c.slug === active ? 'true' : 'false'}
+      aria-controls="posts-list"
+    >
+      {c.label}
+      <span class="count" aria-label={`${c.count} posts`}>{c.count}</span>
+    </a>
+  ))}
+
+  <span class="spacer"></span>
+  <span class="sort">Sort · newest first <span aria-hidden="true">↓</span></span>
+</div>
+
+<script>
+  // Progressive enhancement: when JS is present, chip clicks filter
+  // the visible posts client-side instead of navigating to a new page.
+  // Without JS the chips behave as plain links to /blog/{category}.
+  const chips = document.querySelectorAll<HTMLAnchorElement>('.chip-btn');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', (e) => {
+      // Only hijack the click when the chip is a same-page filter, not
+      // when the user is on a server-filtered category page.
+      const onIndex = window.location.pathname.replace(/\/$/, '') === '/blog';
+      if (!onIndex) return;
+
+      e.preventDefault();
+      const cat = chip.dataset.cat;
+      chips.forEach((c) => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed', 'true');
+
+      document
+        .querySelectorAll<HTMLElement>('.post-row, .featured')
+        .forEach((row) => {
+          const show = cat === 'all' || row.dataset.cat === cat;
+          row.classList.toggle('hidden', !show);
+        });
+
+      document.querySelectorAll<HTMLElement>('.year-group').forEach((g) => {
+        const visible = g.querySelectorAll('.post-row:not(.hidden)').length;
+        g.classList.toggle('hidden', visible === 0);
+      });
+    });
+
+    // Arrow-key nav between chips
+    chip.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      const dir = e.key === 'ArrowRight' ? 1 : -1;
+      const i = Array.from(chips).indexOf(chip);
+      const next = chips[(i + dir + chips.length) % chips.length];
+      next.focus();
+    });
+  });
+</script>

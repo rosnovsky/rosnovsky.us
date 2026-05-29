@@ -1,0 +1,473 @@
+/* ============================================================
+   Rosnovsky.us — Almanac edition · BLOG INDEX
+   Intro masthead + almanac stats panel → sticky filter bar →
+   featured post → year-grouped magazine-TOC archive → end mark.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   INTRO — 2-col with stats on the right
+---------------------------------------------------------- */
+.almanac .intro-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 64px;
+  align-items: end;
+  padding: 64px 0 56px;
+}
+.almanac .intro-grid .left .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.almanac .intro-grid .left .eyebrow .tick {
+  width: 28px;
+  height: 1px;
+  background: var(--jade);
+  display: inline-block;
+}
+.almanac .intro-grid .left .eyebrow .sep { color: var(--rule); }
+.almanac .intro-grid .left .eyebrow .dim { color: var(--ink-quiet); }
+.almanac .intro-grid .left h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(72px, 9vw, 168px);
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 12px 0 0;
+  color: var(--ink);
+}
+.almanac .intro-grid .left h1 em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+  text-shadow: 0 0 24px var(--jade-glow);
+}
+.almanac .intro-grid .left .sub {
+  margin: 26px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 540px;
+  text-wrap: pretty;
+}
+.almanac .intro-grid .left .sub strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Right column — almanac stats card */
+.almanac .stats {
+  border-left: 1px solid var(--rule);
+  padding: 6px 0 6px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.almanac .stats .row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+.almanac .stats .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.almanac .stats .v {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.almanac .stats .v small {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ink-quiet);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 3px;
+}
+.almanac .stats .v .num {
+  font-feature-settings: "tnum" 1;
+  color: var(--jade);
+}
+.almanac .stats .v a {
+  color: var(--jade);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+
+/* ----------------------------------------------------------
+   FILTER BAR — sticky chip strip
+---------------------------------------------------------- */
+.almanac .filter-bar {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 0;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  background: oklch(0.155 0.022 145 / 0.92);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  margin-bottom: 32px;
+}
+.almanac .filter-bar .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding-right: 14px;
+  margin-right: 8px;
+  border-right: 1px solid var(--rule-soft);
+}
+.almanac .chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--rule-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: all 160ms ease;
+  text-decoration: none;
+}
+.almanac .chip-btn:hover {
+  color: var(--ink);
+  border-color: var(--rule);
+}
+.almanac .chip-btn.active {
+  color: var(--paper-deep);
+  background: var(--jade);
+  border-color: var(--jade);
+  font-weight: 700;
+}
+.almanac .chip-btn .count {
+  font-size: 10px;
+  color: var(--ink-quiet);
+  letter-spacing: 0;
+}
+.almanac .chip-btn.active .count { color: oklch(0.2 0.05 145); }
+.almanac .filter-bar .spacer { flex: 1; }
+.almanac .filter-bar .sort {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.almanac .filter-bar .sort a {
+  color: var(--jade);
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------------
+   FEATURED POST
+---------------------------------------------------------- */
+.almanac .featured {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+  margin-bottom: 56px;
+  text-decoration: none;
+  color: inherit;
+}
+.almanac .featured .cover-img {
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background: oklch(0.16 0.04 30);
+  position: relative;
+}
+.almanac .featured .cover-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9) brightness(0.95);
+  transition: transform 600ms ease;
+}
+.almanac .featured:hover .cover-img img { transform: scale(1.02); }
+.almanac .featured .cover-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 50%, oklch(0.115 0.018 145 / 0.4));
+}
+.almanac .featured .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+.almanac .featured .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+.almanac .featured .eyebrow .pill {
+  background: var(--jade);
+  color: var(--paper-deep);
+  padding: 3px 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.almanac .featured h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(36px, 4vw, 60px);
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+  text-wrap: balance;
+  transition: color 200ms ease;
+}
+.almanac .featured h2 em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+}
+.almanac .featured:hover h2 { color: var(--jade); }
+.almanac .featured .excerpt {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+  max-width: 480px;
+}
+
+/* ----------------------------------------------------------
+   YEAR GROUP + POST ROW
+---------------------------------------------------------- */
+.almanac .year-group { margin-bottom: 48px; }
+.almanac .year-head {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 18px 0 14px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 4px;
+}
+.almanac .year-head .num {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 42px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.almanac .year-head .num em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+}
+.almanac .year-head .count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.almanac .post-row {
+  display: grid;
+  grid-template-columns: 60px 110px 1fr 110px 80px;
+  gap: 24px;
+  align-items: baseline;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--rule-soft);
+  text-decoration: none;
+  color: inherit;
+  transition: background 200ms ease, padding 200ms ease;
+  position: relative;
+}
+.almanac .post-row:hover {
+  background: oklch(0.19 0.022 145 / 0.5);
+  padding-left: 18px;
+}
+.almanac .post-row:hover .row-title { color: var(--jade); }
+.almanac .post-row:hover .row-arr {
+  color: var(--jade);
+  transform: translateX(4px);
+}
+.almanac .post-row .row-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.14em;
+}
+.almanac .post-row .row-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.almanac .post-row .row-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  text-wrap: pretty;
+  transition: color 200ms ease;
+}
+.almanac .post-row .row-title em {
+  color: var(--jade);
+  font-style: italic;
+}
+.almanac .post-row .row-cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--jade);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.almanac .post-row .row-read {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.almanac .post-row .row-arr {
+  color: var(--ink-quiet);
+  font-family: var(--font-mono);
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+/* Client-side category filter — JS toggles .hidden */
+.almanac .post-row.hidden,
+.almanac .year-group.hidden,
+.almanac .featured.hidden { display: none; }
+
+/* ----------------------------------------------------------
+   END MARK
+---------------------------------------------------------- */
+.almanac .end-mark {
+  margin: 60px 0 40px;
+  padding: 28px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.almanac .end-mark .marker {
+  color: var(--jade);
+  font-weight: 700;
+  margin: 0 12px;
+}
+.almanac .end-mark .first-post {
+  display: block;
+  margin-top: 14px;
+  color: var(--ink-soft);
+  font-size: 10px;
+}
+.almanac .end-mark .first-post a {
+  color: var(--jade);
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------------
+   Responsive
+---------------------------------------------------------- */
+@media (max-width: 1240px) {
+  .almanac .intro-grid { gap: 40px; padding: 56px 0 48px; }
+  .almanac .stats { padding-left: 28px; }
+  .almanac .featured { gap: 32px; }
+  .almanac .post-row {
+    grid-template-columns: 56px 96px 1fr 90px 70px;
+    gap: 18px;
+  }
+}
+@media (max-width: 1080px) {
+  .almanac .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .almanac .stats {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .almanac .stats .row { grid-template-columns: 80px 1fr; }
+  .almanac .featured {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .almanac .featured .cover-img { aspect-ratio: 16 / 9; }
+  .almanac .post-row {
+    grid-template-columns: 90px 1fr 100px;
+    gap: 18px;
+  }
+  .almanac .post-row .row-num,
+  .almanac .post-row .row-cat { display: none; }
+}
+@media (max-width: 760px) {
+  .almanac .stats { grid-template-columns: 1fr; }
+  .almanac .filter-bar {
+    padding: 14px 0;
+    gap: 4px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .almanac .filter-bar .label { display: none; }
+  .almanac .filter-bar .sort { display: none; }
+  .almanac .chip-btn { flex-shrink: 0; }
+  .almanac .post-row {
+    grid-template-columns: 1fr 70px;
+    gap: 12px;
+    padding: 18px 4px;
+  }
+  .almanac .post-row:hover { padding-left: 8px; }
+  .almanac .post-row .row-date { display: none; }
+  .almanac .featured h2 { font-size: 32px; }
+  .almanac .year-head .num { font-size: 32px; }
+}

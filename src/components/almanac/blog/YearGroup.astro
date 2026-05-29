@@ -1,0 +1,29 @@
+---
+import type { Post } from '@types';
+import PostRow from './PostRow.astro';
+
+interface Props {
+  year: number;
+  posts: Post[];
+  /** Highest post number in this group (most-recent post on top). */
+  startNum: number;
+}
+const { year, posts, startNum } = Astro.props;
+const count = posts.length;
+const yearStr = String(year);
+const hi = yearStr.slice(0, 2);
+const tail = yearStr.slice(2);
+---
+
+<section class="year-group" data-year={year} aria-labelledby={`year-${year}`}>
+  <div class="year-head">
+    <span class="num" id={`year-${year}`}>
+      <em>{hi}</em>{tail}
+    </span>
+    <span class="count">{count} {count === 1 ? 'post' : 'posts'}</span>
+  </div>
+
+  {posts.map((post, i) => (
+    <PostRow post={post} num={startNum - i} />
+  ))}
+</section>

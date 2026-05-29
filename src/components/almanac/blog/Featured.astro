@@ -1,0 +1,49 @@
+---
+import type { Post } from '@types';
+import { slugify } from '@utils/slugs';
+
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+
+const fileSlug = post.slug.split('/').pop();
+const href = `/blog/${fileSlug}`;
+const catSlug = slugify(post.data.category);
+
+const dateLabel = post.data.publishDate.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+const dateISO = post.data.publishDate.toISOString();
+
+const { remarkPluginFrontmatter } = await post.render();
+const minutesRead: string =
+  remarkPluginFrontmatter?.minutesRead ?? '1 min read';
+---
+
+<a class="featured" href={href} data-cat={catSlug}>
+  <div class="cover-img">
+    <img
+      src={post.data.image.src.src}
+      width={post.data.image.src.width}
+      height={post.data.image.src.height}
+      alt={post.data.image.alt}
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class="body">
+    <div class="eyebrow">
+      <span class="pill">● Latest</span>
+      <span>{post.data.category}</span>
+      <span aria-hidden="true">·</span>
+      <time datetime={dateISO}>{dateLabel}</time>
+      <span aria-hidden="true">·</span>
+      <span>{minutesRead}</span>
+    </div>
+    <h2>{post.data.title}</h2>
+    <p class="excerpt">{post.data.description}</p>
+  </div>
+</a>

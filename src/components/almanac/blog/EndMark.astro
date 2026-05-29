@@ -1,0 +1,33 @@
+---
+import type { Post } from '@types';
+
+interface Props {
+  showingCount: number;
+  totalCount: number;
+  /** Earliest post in the collection — surfaced as a "first-ever post" callback. */
+  firstPost?: Post;
+}
+const { showingCount, totalCount, firstPost } = Astro.props;
+
+const firstHref = firstPost
+  ? `/blog/${firstPost.slug.split('/').pop()}`
+  : undefined;
+const firstDate = firstPost?.data.publishDate;
+const firstISO = firstDate?.toISOString();
+const firstLabel = firstDate?.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<div class="end-mark">
+  <span>showing {showingCount} of {totalCount} posts</span>
+  {firstPost && (
+    <span class="first-post">
+      First post in the collection:{' '}
+      <a href={firstHref}>{firstPost.data.title}</a> ·{' '}
+      <time datetime={firstISO}>{firstLabel}</time>
+    </span>
+  )}
+</div>

@@ -1,0 +1,14 @@
+# The Almanac redesign collapses the paginated /blog archive into a
+# single year-grouped TOC at /blog. Send old pagination URLs back to
+# the index so external links don't 404. Category routes (/blog/<cat>)
+# remain unchanged.
+/blog/2     /blog   301
+/blog/3     /blog   301
+/blog/4     /blog   301
+/blog/5     /blog   301
+/blog/6     /blog   301
+/blog/7     /blog   301
+/blog/8     /blog   301
+/blog/9     /blog   301
+/blog/10    /blog   301
+/blog/11    /blog   301

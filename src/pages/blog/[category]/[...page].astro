@@ -1,42 +1,130 @@
 ---
-import { SITE } from '@config';
-import BlogLayout from '@layouts/BlogLayout.astro';
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Intro from '@components/almanac/blog/Intro.astro';
+import FilterBar from '@components/almanac/blog/FilterBar.astro';
+import Featured from '@components/almanac/blog/Featured.astro';
+import YearGroup from '@components/almanac/blog/YearGroup.astro';
+import EndMark from '@components/almanac/blog/EndMark.astro';
 import type { Post } from '@types';
-import { sortPosts } from '@utils/posts';
+import { sortPosts, getSortedPosts, getTopCategories } from '@utils/posts';
 import { reverseSlug, slugify } from '@utils/slugs';
-import type { Page, PaginateFunction } from 'astro';
+import { SITE } from '@config';
 import { getCollection } from 'astro:content';
+
+import '@styles/almanac/blog.css';
 
 export const prerender = true;
 
-export async function getStaticPaths({
-  paginate,
-}: {
-  paginate: PaginateFunction;
-}) {
+// One static page per known category — no pagination. Older
+// /blog/<cat>/2..N URLs no longer exist (they were lightly trafficked
+// and the new archive is a single-page TOC).
+export async function getStaticPaths() {
   const blogPosts = await getCollection('blog');
-  const categories = blogPosts
-    .map((post) => post.data.category)
-    .filter((category, index, self) => self.indexOf(category) === index);
-
-  return categories.flatMap((category) => {
-    const filteredPosts = blogPosts.filter(
-      (post) => post.data.category === category
-    );
-
-    return paginate(sortPosts(filteredPosts), {
-      params: { category: slugify(category) },
-      pageSize: SITE.postsPerPage,
-    });
-  });
+  const categories = Array.from(
+    new Set(blogPosts.map((p) => p.data.category))
+  );
+  return categories.map((category) => ({
+    params: { category: slugify(category), page: undefined },
+    props: { categoryLabel: category },
+  }));
 }
 
 interface Props {
-  page: Page<Post>;
+  categoryLabel: string;
 }
+const { categoryLabel } = Astro.props;
+const categorySlug = slugify(categoryLabel);
 
-const { page } = Astro.props;
-const category = reverseSlug(Astro.params.category ?? '');
+// All posts in this category (sorted newest first), plus the global
+// archive for the Intro stats panel + EndMark first-post callback.
+const allInCategory = sortPosts(
+  await getCollection('blog').then((all) =>
+    all.filter((p) => p.data.category === categoryLabel)
+  )
+);
+const allPosts = await getSortedPosts();
+const totalInCategory = allInCategory.length;
+const sinceYear = 2003;
+
+const [featured, ...rest] = allInCategory;
+
+// Chip counts come from the FULL archive (not the filtered set) so
+// users can see "Music · 5" while viewing Personal.
+const topCats = await getTopCategories();
+const counts = new Map<string, number>();
+allPosts.forEach((p) => {
+  counts.set(p.data.category, (counts.get(p.data.category) ?? 0) + 1);
+});
+const categoryChips = topCats.map((label) => ({
+  label,
+  slug: slugify(label),
+  count: counts.get(label) ?? 0,
+}));
+
+// Group by year
+const groupedByYear = new Map<number, Post[]>();
+rest.forEach((p) => {
+  const y = p.data.publishDate.getFullYear();
+  if (!groupedByYear.has(y)) groupedByYear.set(y, []);
+  groupedByYear.get(y)!.push(p);
+});
+const yearsDescending = Array.from(groupedByYear.keys()).sort((a, b) => b - a);
+
+// Numbering within the category (newest = totalInCategory)
+const yearStartNums = new Map<number, number>();
+let cursor = totalInCategory - 1;
+yearsDescending.forEach((y) => {
+  yearStartNums.set(y, cursor);
+  cursor -= groupedByYear.get(y)!.length;
+});
+
+const firstInCategory = allInCategory[allInCategory.length - 1];
+const displayCategory = reverseSlug(categorySlug);
 ---
 
-<BlogLayout page={page} title={`Blog | ${category} | ${SITE.title}`} />
+<AlmanacLayout
+  title={`Blog · ${displayCategory} | ${SITE.title}`}
+  description={`${totalInCategory} posts filed under ${displayCategory}.`}
+  pageClass="blog"
+>
+  <Header current="blog" />
+
+  <main id="main">
+    <Intro
+      posts={allInCategory}
+      sinceYear={sinceYear}
+      currentCategory={displayCategory}
+    />
+
+    <FilterBar
+      categories={categoryChips}
+      totalCount={allPosts.length}
+      active={categorySlug}
+    />
+
+    <div id="posts-list" aria-live="polite" aria-atomic="false">
+      {featured && <Featured post={featured} />}
+
+      {yearsDescending.map((year) => (
+        <YearGroup
+          year={year}
+          posts={groupedByYear.get(year)!}
+          startNum={yearStartNums.get(year)!}
+        />
+      ))}
+    </div>
+
+    <EndMark
+      showingCount={totalInCategory}
+      totalCount={totalInCategory}
+      firstPost={firstInCategory}
+    />
+
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>
