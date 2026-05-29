@@ -15,14 +15,15 @@ import '@styles/almanac/about.css';
 
 const allPosts = await getSortedPosts();
 const totalPosts = allPosts.length;
-const sinceYear = Math.min(
-  ...allPosts.map((p) => p.data.publishDate.getFullYear())
-);
+// Hard-coded to match the source-of-truth copyright on rosnovsky.us
+// (the blog content collection only goes back to 2013; earlier posts
+// pre-date the current Astro site and aren't in the collection).
+const sinceYear = 2003;
 ---
 
 <AlmanacLayout
   title={`About | ${SITE.title}`}
-  description="Software engineer, recovering imposter, longtime Pacific Northwesterner. I write here weekly-ish — a small open notebook since 2003."
+  description="Web developer based in Western Washington, about 50 miles north of Seattle. Writing here since 2003."
   pageClass="about"
 >
   <Header current="about" />

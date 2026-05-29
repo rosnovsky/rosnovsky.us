@@ -5,13 +5,11 @@ interface Props {
   /** Total post count for the meta card. Computed once at build time
       in about.astro from the blog collection. */
   totalPosts: number;
-  /** Earliest publish year — drives the "23 years" badge. */
+  /** Earliest publish year — drives the "Since 20XX" line. */
   sinceYear: number;
 }
 
 const { totalPosts, sinceYear } = Astro.props;
-const currentYear = new Date().getFullYear();
-const yearsWriting = currentYear - sinceYear;
 ---
 
 <section class="bio" aria-label="About Art">
@@ -32,40 +30,45 @@ const yearsWriting = currentYear - sinceYear;
     </figure>
 
     <p>
-      I'm a <strong>software engineer</strong> who has been writing about
-      technology, hiking, books, movies, and other things on this little
-      corner of the web since <em>{sinceYear}</em>.
+      I'm a <strong>web developer</strong> based in Western Washington. I
+      live about 50 miles north of Seattle in a small town called
+      <em>Arlington</em>.
+    </p>
+
+    <blockquote>
+      <p>
+        For a while, I lived in London (not that one, but the one in
+        Ontario, Canada) before moving to Vancouver (not that one, but the
+        one in Washington; not that Washington, but Washington state). Now I
+        live in Arlington (and not the one in Virginia, mind you!)
+      </p>
+    </blockquote>
+
+    <p>
+      After short gigs at Intel, AT&amp;T, and Microsoft, I ended up at
+      <a href="https://auth0.com/">Auth0</a> (acquired by Okta in May 2021).
+      I worked there in a couple of different roles, the latest one being
+      Software Engineer. I've built Auth0's enterprise customer onboarding
+      program, surrounding internal and external tooling, a bunch of
+      high-profile customer facing features, and more. I was laid off in
+      February 2024.
     </p>
 
     <p>
-      I was born and raised in Russia, and
-      <a href="/blog/2010-2020">moved to the United States in 2011</a>.
-      I live in <strong>Arlington, Washington</strong> — a small town at the
-      forks of the Stillaguamish River, in the foothills of the Cascade
-      Mountains — with my wife Helen.
+      Feel free to connect with me on
+      <a href="https://lounge.town/@rosnovsky">Mastodon</a> or
+      <a href="https://github.com/rosnovsky">Github</a>.
     </p>
 
-    <p>
-      Professionally, I've spent the last several years building developer
-      tools and platforms. I <a href="/blog/new-job">joined Auth0 in
-        December 2019</a> as a Developer Support Engineer, and stayed long
-      enough to write a
-      <a href="/blog/auth0-10-years-later">retrospective on that decade of
-        identity</a>.
-    </p>
-
-    <p>
-      Outside of work I read more than I hike (the joke is in the meta
-      description), maintain a self-hosted
-      <a href="https://lounge.town/@rosnovsky">Mastodon instance</a>,
-      replaced my lawn with a meadow, and have an opinion about nearly
-      everything Linkin Park does.
-    </p>
-
-    <p>
-      This blog runs on Astro, lives on my own Kubernetes cluster, and gets
-      new posts <em>weekly-ish</em> — when the muse shows up.
-    </p>
+    <blockquote>
+      <p>
+        For the longest time, I'd been a podcaster. In my previous life, I
+        even was a minor radio celebrity, worked as a television producer
+        and correspondent, and have done a bunch of front-line reporting
+        from terrorist attacks, riots, and hostage situations. Yet here we
+        are.
+      </p>
+    </blockquote>
   </div>
 
   <aside class="meta-card" aria-label="Profile">
@@ -76,28 +79,21 @@ const yearsWriting = currentYear - sinceYear;
     <div class="row">
       <div class="k">Role</div>
       <div class="v">
-        Software<br />Engineer<small>full-stack · web platforms</small>
+        Web<br />Developer<small>most recently: Auth0 / Okta</small>
       </div>
     </div>
     <div class="row">
       <div class="k">Lives in</div>
       <div class="v">
         Arlington<br />Washington<small
-          ><span class="jade">48.1990° N · 122.1252° W</span></small
+          ><span class="jade">~50 mi north of Seattle</span></small
         >
       </div>
     </div>
     <div class="row">
-      <div class="k">From</div>
-      <div class="v">Moscow<small>moved to the US in 2011</small></div>
-    </div>
-    <div class="row">
       <div class="k">Writing here</div>
       <div class="v">
-        Since {sinceYear}<small
-          ><span class="jade">{yearsWriting} years</span> · {totalPosts}+
-          posts</small
-        >
+        Since {sinceYear}<small>{totalPosts}+ posts</small>
       </div>
     </div>
     <div class="row">

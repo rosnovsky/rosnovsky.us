@@ -141,12 +141,28 @@
 }
 .almanac .bio .body p strong { color: var(--ink); font-weight: 500; }
 .almanac .bio .body p em { color: var(--jade); font-style: italic; }
-.almanac .bio .body p a {
+.almanac .bio .body p a,
+.almanac .bio .body blockquote a {
   color: var(--jade);
   text-decoration: none;
   border-bottom: 1px solid oklch(0.80 0.19 158 / 0.35);
 }
-.almanac .bio .body p a:hover { border-bottom-color: var(--jade); }
+.almanac .bio .body p a:hover,
+.almanac .bio .body blockquote a:hover { border-bottom-color: var(--jade); }
+
+/* Editorial blockquote — italic, jade left rule, quieter ink */
+.almanac .bio .body blockquote {
+  margin: 0 0 28px;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid var(--jade);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-quiet);
+  text-wrap: pretty;
+}
+.almanac .bio .body blockquote p { margin: 0 0 12px; font-size: inherit; }
+.almanac .bio .body blockquote p:last-child { margin-bottom: 0; }
 
 .almanac .bio .meta-card {
   align-self: start;
