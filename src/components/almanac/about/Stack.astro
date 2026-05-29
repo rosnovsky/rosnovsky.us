@@ -1,0 +1,82 @@
+---
+/**
+ * The 6-card "everyday stack" section. Edit the cards array to
+ * rearrange. `name` supports HTML for the jade-italic accent words
+ * (e.g. `Type<em>Script</em>`).
+ */
+type Card = {
+  label: string;
+  /** Inline HTML — wrap accent words in <em> for the jade italic treatment. */
+  name: string;
+  /** Inline HTML — links to blog posts get the jade underline. */
+  why: string;
+  heart: string;
+};
+
+const cards: Card[] = [
+  {
+    label: 'Language',
+    name: 'Type<em>Script</em>',
+    why:
+      "For everything that isn't already JavaScript. Types make refactors survivable.",
+    heart: '❤❤❤',
+  },
+  {
+    label: 'Framework',
+    name: 'React',
+    why:
+      'Twelve-ish years in and still the right default for UI work that has to ship.',
+    heart: '🔥🔥🔥',
+  },
+  {
+    label: 'This site',
+    name: 'Astro',
+    why:
+      'Static-first, MDX-friendly, plays well with React when you need it.',
+    heart: '★★★',
+  },
+  {
+    label: 'Editor',
+    name: 'Neovim',
+    why: 'Daily driver since switching off Mac in 2019.',
+    heart: '★★★',
+  },
+  {
+    label: 'Keyboard',
+    name: 'Moon<em>lander</em>',
+    why:
+      '<a href="/blog/moonlander-keyboard">Split, ortholinear, programmable.</a> Frustrating, fulfilling, invigorating.',
+    heart: '★★☆',
+  },
+  {
+    label: 'Hosting',
+    name: 'Kubernetes',
+    why:
+      '<a href="/blog/vercel-to-kubernetes">Moved off Vercel in 2023.</a> Self-hosted, self-inflicted.',
+    heart: '★★☆',
+  },
+];
+---
+
+<section class="stack-section" aria-labelledby="stack-h">
+  <div class="stack-grid">
+    <div>
+      <h2 id="stack-h">My everyday <em>stack</em></h2>
+      <p class="lede-s">
+        The tools I reach for daily, ordered roughly by how much I'd miss
+        them if they vanished tomorrow.
+      </p>
+    </div>
+
+    <div class="stack-cards">
+      {cards.map((c) => (
+        <div class="scard">
+          <span class="lbl">{c.label}</span>
+          <span class="name"><Fragment set:html={c.name} /></span>
+          <p class="why"><Fragment set:html={c.why} /></p>
+          <span class="heart">{c.heart}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

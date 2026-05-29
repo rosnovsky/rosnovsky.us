@@ -1,0 +1,110 @@
+---
+import heroPortrait from '@images/hero-portrait.jpg';
+
+interface Props {
+  /** Total post count for the meta card. Computed once at build time
+      in about.astro from the blog collection. */
+  totalPosts: number;
+  /** Earliest publish year — drives the "23 years" badge. */
+  sinceYear: number;
+}
+
+const { totalPosts, sinceYear } = Astro.props;
+const currentYear = new Date().getFullYear();
+const yearsWriting = currentYear - sinceYear;
+---
+
+<section class="bio" aria-label="About Art">
+  <div class="body">
+    <figure class="portrait-inset" aria-hidden="true">
+      <img
+        src={heroPortrait.src}
+        width={heroPortrait.width}
+        height={heroPortrait.height}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        <span class="jade">·</span> Art Rosnovsky
+        <span class="jade">·</span>
+      </figcaption>
+    </figure>
+
+    <p>
+      I'm a <strong>software engineer</strong> who has been writing about
+      technology, hiking, books, movies, and other things on this little
+      corner of the web since <em>{sinceYear}</em>.
+    </p>
+
+    <p>
+      I was born and raised in Russia, and
+      <a href="/blog/2010-2020">moved to the United States in 2011</a>.
+      I live in <strong>Arlington, Washington</strong> — a small town at the
+      forks of the Stillaguamish River, in the foothills of the Cascade
+      Mountains — with my wife Helen.
+    </p>
+
+    <p>
+      Professionally, I've spent the last several years building developer
+      tools and platforms. I <a href="/blog/new-job">joined Auth0 in
+        December 2019</a> as a Developer Support Engineer, and stayed long
+      enough to write a
+      <a href="/blog/auth0-10-years-later">retrospective on that decade of
+        identity</a>.
+    </p>
+
+    <p>
+      Outside of work I read more than I hike (the joke is in the meta
+      description), maintain a self-hosted
+      <a href="https://lounge.town/@rosnovsky">Mastodon instance</a>,
+      replaced my lawn with a meadow, and have an opinion about nearly
+      everything Linkin Park does.
+    </p>
+
+    <p>
+      This blog runs on Astro, lives on my own Kubernetes cluster, and gets
+      new posts <em>weekly-ish</em> — when the muse shows up.
+    </p>
+  </div>
+
+  <aside class="meta-card" aria-label="Profile">
+    <div class="row">
+      <div class="k">Name</div>
+      <div class="v">Art Rosnovsky<small>he / him</small></div>
+    </div>
+    <div class="row">
+      <div class="k">Role</div>
+      <div class="v">
+        Software<br />Engineer<small>full-stack · web platforms</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Lives in</div>
+      <div class="v">
+        Arlington<br />Washington<small
+          ><span class="jade">48.1990° N · 122.1252° W</span></small
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">From</div>
+      <div class="v">Moscow<small>moved to the US in 2011</small></div>
+    </div>
+    <div class="row">
+      <div class="k">Writing here</div>
+      <div class="v">
+        Since {sinceYear}<small
+          ><span class="jade">{yearsWriting} years</span> · {totalPosts}+
+          posts</small
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="k">Pronouns</div>
+      <div class="v">
+        He / Him<small>🏳️‍⚧️ 🏳️‍🌈 ✊🏿 🇺🇦 🇵🇸</small>
+      </div>
+    </div>
+  </aside>
+</section>

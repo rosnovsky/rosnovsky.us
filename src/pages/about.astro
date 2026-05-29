@@ -1,21 +1,40 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import AboutHero from '@components/AboutHero.astro';
-import WorkExperience from '@components/WorkExperience.astro';
-import Workstation from '@components/Workstation.astro';
-// import Stack2 from '@components/Stack2.astro'
-// import Press from '@components/Press.astro'
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Intro from '@components/almanac/about/Intro.astro';
+import Bio from '@components/almanac/about/Bio.astro';
+import Timeline from '@components/almanac/about/Timeline.astro';
+import Stack from '@components/almanac/about/Stack.astro';
+import Contact from '@components/almanac/about/Contact.astro';
+import { getSortedPosts } from '@utils/posts';
 import { SITE } from '@config';
+
+import '@styles/almanac/about.css';
+
+const allPosts = await getSortedPosts();
+const totalPosts = allPosts.length;
+const sinceYear = Math.min(
+  ...allPosts.map((p) => p.data.publishDate.getFullYear())
+);
 ---
 
-<Layout
+<AlmanacLayout
   title={`About | ${SITE.title}`}
-  description="Software Engineer, recovering imposter. I read more than I hike."
-  transition:name="about"
+  description="Software engineer, recovering imposter, longtime Pacific Northwesterner. I write here weekly-ish — a small open notebook since 2003."
+  pageClass="about"
 >
-  <AboutHero />
-  <WorkExperience />
-  <Workstation />
-  <!-- <Stack2 /> -->
-  <!-- <Press /> -->
-</Layout>
+  <Header current="about" />
+
+  <main id="main">
+    <Intro />
+    <Bio totalPosts={totalPosts} sinceYear={sinceYear} />
+    <Timeline />
+    <Stack />
+    <Contact />
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>

@@ -1,0 +1,22 @@
+---
+interface Props {
+  /** Volume tag — Almanac vol. xxiii references the 23rd year of writing */
+  volume?: string;
+}
+const { volume = 'vol. xxiii' } = Astro.props;
+---
+
+<section class="about-hero" aria-labelledby="about-hi">
+  <div class="eyebrow">
+    <span class="tick" aria-hidden="true"></span>
+    <span>/about · {volume}</span>
+  </div>
+
+  <h1 id="about-hi">Hi,&nbsp;I'm&nbsp;<em>Art</em>.</h1>
+
+  <p class="standfirst">
+    Software engineer, recovering imposter, longtime Pacific Northwesterner.
+    I write here <strong>weekly-ish</strong> — a small open notebook since
+    2003.
+  </p>
+</section>

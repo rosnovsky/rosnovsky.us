@@ -1,0 +1,113 @@
+---
+/**
+ * About → Timeline. Hand-curated; not derived from the blog.
+ * The "now" entry's year auto-syncs to today so the page never
+ * goes stale just because you forgot to bump a number.
+ *
+ * Edit the events array to add/remove entries. The first item
+ * (now=true) gets the jade glow dot + "● now" label.
+ */
+type Entry = {
+  year: number | string;
+  /** Mark exactly one entry as `now: true`. */
+  now?: boolean;
+  /** Highlighted prefix of the year (e.g. "20" so 2026 = 20+26 with 20 in jade). */
+  yearHi?: string;
+  place: string;
+  /** Inline HTML allowed for links/em accents. */
+  what: string;
+  desc?: string;
+};
+
+const currentYear = new Date().getFullYear();
+
+const events: Entry[] = [
+  {
+    year: currentYear,
+    now: true,
+    yearHi: '20',
+    place: 'Arlington, WA · weekly-ish',
+    what: 'Writing, working, hiking less than reading.',
+    desc:
+      "Currently obsessed with the Linkin Park reunion tour, self-hosting everything that'll stand still, and turning over half my yard back into a meadow.",
+  },
+  {
+    year: 2024,
+    yearHi: '20',
+    place: 'Laid off · Feb 2024',
+    what:
+      'Wrote <a href="/blog/resume-automation">a resume-automation pipeline</a>; built astro-mastodon library; migrated this site to Kubernetes.',
+  },
+  {
+    year: 2019,
+    yearHi: '20',
+    place: 'Auth0 · Developer Support Engineer',
+    what:
+      'Joined Auth0. Wrote about identity, support, and what 10 years of OAuth taught me.',
+  },
+  {
+    year: 2019,
+    yearHi: '20',
+    place: 'macOS → Linux',
+    what: 'Switched off Mac after 15 years. Loved it.',
+  },
+  {
+    year: 2017,
+    yearHi: '20',
+    place: 'Seattle, WA',
+    what:
+      'Organized a public memorial for Chester Bennington at Centennial Park.',
+    desc:
+      'The first time many of us realized strangers could grieve together in public.',
+  },
+  {
+    year: 2011,
+    yearHi: '20',
+    place: 'Moscow → Pacific Northwest',
+    what: 'Moved out of Russia. Started over.',
+  },
+  {
+    year: 2003,
+    yearHi: '20',
+    place: 'A first post',
+    what: 'Started a blog. Never stopped.',
+    desc:
+      "23 years and 236 posts later, you're reading the latest iteration of it.",
+  },
+];
+
+const yearTail = (y: number | string, hi: string | undefined) => {
+  const s = String(y);
+  if (!hi || !s.startsWith(hi)) return { hi: '', tail: s };
+  return { hi, tail: s.slice(hi.length) };
+};
+---
+
+<section class="timeline" aria-labelledby="tl-h">
+  <div class="timeline-head">
+    <h2 id="tl-h">A loose <em>timeline</em></h2>
+    <div class="legend">
+      partial · ground-truth from<br />
+      <a href="/blog">/blog →</a>
+    </div>
+  </div>
+
+  <div class="tl-track">
+    {events.map((e) => {
+      const { hi, tail } = yearTail(e.year, e.yearHi);
+      return (
+        <div class={`tl-item${e.now ? ' now' : ''}`}>
+          <div class="year">
+            {hi && <em>{hi}</em>}
+            {tail}
+          </div>
+          <div class="what">
+            <span class="place">{e.place}</span>
+            <Fragment set:html={e.what} />
+            {e.desc && <p class="desc">{e.desc}</p>}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>

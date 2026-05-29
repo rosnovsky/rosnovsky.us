@@ -1,0 +1,69 @@
+---
+type Channel = {
+  platform: string;
+  name: string;
+  handle: string;
+  href: string;
+  primary?: boolean;
+};
+
+const channels: Channel[] = [
+  {
+    platform: 'Email · best',
+    name: 'Send a note',
+    handle: 'job@rosnovsky.us ↗',
+    href: 'mailto:job@rosnovsky.us',
+    primary: true,
+  },
+  {
+    platform: 'Mastodon',
+    name: '@rosnovsky',
+    handle: 'lounge.town ↗',
+    href: 'https://lounge.town/@rosnovsky',
+  },
+  {
+    platform: 'Bluesky',
+    name: '@rosnovsky.us',
+    handle: 'bsky.app ↗',
+    href: 'https://bsky.app/profile/rosnovsky.us',
+  },
+  {
+    platform: 'GitHub',
+    name: '/rosnovsky',
+    handle: 'github.com ↗',
+    href: 'https://github.com/rosnovsky',
+  },
+  {
+    platform: 'LinkedIn · work',
+    name: '/in/rosnovsky',
+    handle: 'linkedin.com ↗',
+    href: 'https://www.linkedin.com/in/rosnovsky/',
+  },
+  {
+    platform: 'RSS feed',
+    name: 'feed.xml',
+    handle: 'subscribe ↗',
+    href: '/feed/feed.xml',
+  },
+];
+---
+
+<section class="contact" aria-labelledby="contact-h">
+  <div>
+    <h2 id="contact-h">Want to talk?<br />I'm <em>around</em>.</h2>
+    <p class="sub">
+      Email is best for anything substantive. The others are for everything
+      else. I am, on principle, never on Twitter.
+    </p>
+  </div>
+
+  <div class="channels">
+    {channels.map((c) => (
+      <a href={c.href} class={c.primary ? 'primary' : undefined}>
+        <span class="ch-platform">{c.platform}</span>
+        <span class="ch-name">{c.name}</span>
+        <span class="ch-handle">{c.handle}</span>
+      </a>
+    ))}
+  </div>
+</section>
