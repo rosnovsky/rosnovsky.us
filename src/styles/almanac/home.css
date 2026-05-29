@@ -528,12 +528,29 @@
   .almanac .section-head h2 { font-size: 44px; }
 }
 @media (max-width: 1080px) {
+  /* Collapse the 2-col grid so the text takes the full width, but
+     KEEP the portrait visible — pin it absolutely in the upper-right
+     so it lives behind the headline as ambient background, instead
+     of stacking awkwardly below the hero copy. The existing radial
+     mask + edge-fade already dissolve it into the page, so text
+     stays legible without extra overlays. */
   .almanac .hero {
     grid-template-columns: 1fr;
     gap: 12px;
     padding: 48px 0 56px;
   }
-  .almanac .portrait-bleed { max-width: 420px; margin: 0 auto; }
+  .almanac .hero-left { position: relative; z-index: 1; }
+  .almanac .portrait-bleed {
+    position: absolute;
+    top: 0;
+    right: -4%;
+    width: 62%;
+    max-width: 520px;
+    margin: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.85;
+  }
   .almanac .portrait-tick.tl,
   .almanac .portrait-tick.br { display: none; }
   .almanac .currently { grid-template-columns: 1fr; gap: 24px; }
@@ -542,6 +559,13 @@
 }
 @media (max-width: 760px) {
   .almanac h1.display { font-size: clamp(48px, 12vw, 92px); }
+  /* Pull the background portrait further off-screen and dim it so
+     it reads as a quiet wash on phones, not a competing element. */
+  .almanac .portrait-bleed {
+    width: 75%;
+    right: -18%;
+    opacity: 0.6;
+  }
   .almanac .currently .grid { grid-template-columns: 1fr; }
   .almanac .social-row a + a { padding-left: 14px; }
   .almanac .social-row a {
@@ -550,6 +574,9 @@
   }
 }
 @media (max-width: 480px) {
+  /* Hide the background portrait on true small screens — there's no
+     room for it to read as anything but visual noise behind the text. */
+  .almanac .portrait-bleed { display: none; }
   .almanac .posts { grid-template-columns: 1fr; }
   .almanac .cta-row .btn {
     width: 100%;
