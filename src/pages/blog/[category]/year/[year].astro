@@ -1,0 +1,131 @@
+---
+/**
+ * /blog/<category>/year/<year> — all posts in this category for
+ * a single year. Mirrors /blog/year/[year] but scoped.
+ */
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Intro from '@components/almanac/blog/Intro.astro';
+import FilterBar from '@components/almanac/blog/FilterBar.astro';
+import YearGroup from '@components/almanac/blog/YearGroup.astro';
+import { sortPosts, getSortedPosts, getCategoryChips } from '@utils/posts';
+import { reverseSlug, slugify } from '@utils/slugs';
+import { SITE } from '@config';
+import { getCollection } from 'astro:content';
+
+import '@styles/almanac/blog.css';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  const categories = Array.from(
+    new Set(blogPosts.map((p) => p.data.category))
+  );
+
+  return categories.flatMap((category) => {
+    const inCategory = blogPosts.filter((p) => p.data.category === category);
+    const years = Array.from(
+      new Set(inCategory.map((p) => p.data.publishDate.getFullYear()))
+    );
+    return years.map((year) => ({
+      params: { category: slugify(category), year: String(year) },
+      props: { categoryLabel: category, yearNum: year },
+    }));
+  });
+}
+
+interface Props {
+  categoryLabel: string;
+  yearNum: number;
+}
+const { categoryLabel, yearNum } = Astro.props;
+const categorySlug = slugify(categoryLabel);
+const displayCategory = reverseSlug(categorySlug);
+
+const allInCategory = sortPosts(
+  await getCollection('blog').then((all) =>
+    all.filter((p) => p.data.category === categoryLabel)
+  )
+);
+const yearPosts = allInCategory.filter(
+  (p) => p.data.publishDate.getFullYear() === yearNum
+);
+const totalInCategory = allInCategory.length;
+
+const allPosts = await getSortedPosts();
+const sinceYear = 2003;
+
+const { chips: categoryChips } = await getCategoryChips({
+  mustInclude: categoryLabel,
+});
+
+// Numbering scoped to the category
+const newerThanThisYear = allInCategory.filter(
+  (p) => p.data.publishDate.getFullYear() > yearNum
+).length;
+const startNum = totalInCategory - newerThanThisYear;
+
+// Adjacent years within this category
+const allYearsInCategory = Array.from(
+  new Set(allInCategory.map((p) => p.data.publishDate.getFullYear()))
+).sort((a, b) => b - a);
+const idx = allYearsInCategory.indexOf(yearNum);
+const newerYear = idx > 0 ? allYearsInCategory[idx - 1] : null;
+const olderYear =
+  idx < allYearsInCategory.length - 1 ? allYearsInCategory[idx + 1] : null;
+---
+
+<AlmanacLayout
+  title={`${yearNum} · ${displayCategory} | Blog | ${SITE.title}`}
+  description={`${yearPosts.length} posts filed under ${displayCategory} in ${yearNum}.`}
+  pageClass="blog blog-year"
+>
+  <Header current="blog" />
+
+  <main id="main">
+    <Intro
+      posts={allInCategory}
+      sinceYear={sinceYear}
+      currentCategory={`${displayCategory} · ${yearNum}`}
+    />
+
+    <FilterBar
+      categories={categoryChips}
+      totalCount={allPosts.length}
+      active={categorySlug}
+    />
+
+    <div id="posts-list">
+      <YearGroup year={yearNum} posts={yearPosts} startNum={startNum} />
+    </div>
+
+    <nav class="year-nav" aria-label="Adjacent years in this category">
+      <div class="prev">
+        {olderYear ? (
+          <a href={`/blog/${categorySlug}/year/${olderYear}`}>
+            <span aria-hidden="true">←</span> {olderYear}
+          </a>
+        ) : (
+          <span class="dim">— end of the line —</span>
+        )}
+      </div>
+      <a href={`/blog/${categorySlug}/archive`} class="back">All years</a>
+      <div class="next">
+        {newerYear ? (
+          <a href={`/blog/${categorySlug}/year/${newerYear}`}>
+            {newerYear} <span aria-hidden="true">→</span>
+          </a>
+        ) : (
+          <a href={`/blog/${categorySlug}`}>Latest →</a>
+        )}
+      </div>
+    </nav>
+
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>

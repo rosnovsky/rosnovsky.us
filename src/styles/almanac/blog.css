@@ -380,6 +380,159 @@
 .almanac .featured.hidden { display: none; }
 
 /* ----------------------------------------------------------
+   YEAR INDEX (used on /blog/archive) — one big row per year
+---------------------------------------------------------- */
+.almanac .year-index { display: block; margin-top: 8px; }
+.almanac .year-index-row {
+  display: grid;
+  grid-template-columns: 140px 110px 110px 1fr 40px;
+  gap: 28px;
+  align-items: baseline;
+  padding: 28px 4px;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: background 200ms ease, padding 200ms ease;
+}
+.almanac .year-index-row:hover {
+  background: oklch(0.19 0.022 145 / 0.5);
+  padding-left: 18px;
+}
+.almanac .year-index-row:hover .num em { text-shadow: 0 0 24px var(--jade-glow); }
+.almanac .year-index-row:hover .arr {
+  color: var(--jade);
+  transform: translateX(4px);
+}
+.almanac .year-index-row .num {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 48px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.almanac .year-index-row .num em {
+  color: var(--jade);
+  font-style: italic;
+  font-weight: 500;
+  transition: text-shadow 200ms ease;
+}
+.almanac .year-index-row .count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--jade);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.almanac .year-index-row .span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.almanac .year-index-row .latest {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.almanac .year-index-row .latest strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.almanac .year-index-row .arr {
+  color: var(--ink-quiet);
+  font-family: var(--font-mono);
+  text-align: right;
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+@media (max-width: 1080px) {
+  .almanac .year-index-row {
+    grid-template-columns: 110px 90px 1fr 32px;
+    gap: 20px;
+    padding: 22px 4px;
+  }
+  .almanac .year-index-row .span { display: none; }
+  .almanac .year-index-row .num { font-size: 40px; }
+}
+@media (max-width: 760px) {
+  .almanac .year-index-row {
+    grid-template-columns: 80px 1fr 24px;
+    gap: 14px;
+    padding: 18px 4px;
+  }
+  .almanac .year-index-row .count { display: none; }
+  .almanac .year-index-row .num { font-size: 32px; }
+  .almanac .year-index-row .latest { font-size: 13px; }
+}
+
+/* Prev/next year nav at the bottom of /blog/year/<n> */
+.almanac .year-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  margin: 48px 0 16px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.almanac .year-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.almanac .year-nav a:hover { color: var(--jade); }
+.almanac .year-nav .prev { text-align: left; }
+.almanac .year-nav .next { text-align: right; }
+.almanac .year-nav .back {
+  color: var(--ink-quiet);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+.almanac .year-nav .back:hover { border-bottom-color: var(--jade); }
+.almanac .year-nav .dim { color: var(--ink-quiet); }
+
+/* "Load older →" pill at the bottom of /blog */
+.almanac .load-older {
+  display: flex;
+  justify-content: center;
+  margin: 48px 0 8px;
+}
+.almanac .load-older a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 18px 32px;
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 200ms ease;
+}
+.almanac .load-older a:hover {
+  border-color: var(--jade);
+  color: var(--jade);
+  background: oklch(0.19 0.022 145 / 0.3);
+}
+.almanac .load-older a .arr {
+  font-size: 14px;
+  opacity: 0.7;
+  transition: transform 200ms ease;
+}
+.almanac .load-older a:hover .arr { transform: translateX(3px); opacity: 1; }
+
+/* ----------------------------------------------------------
    END MARK
 ---------------------------------------------------------- */
 .almanac .end-mark {

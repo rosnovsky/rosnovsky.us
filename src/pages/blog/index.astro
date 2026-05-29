@@ -1,4 +1,12 @@
 ---
+/**
+ * /blog — the magazine front-of-book.
+ *
+ * Shows the N most-recent posts grouped by year, with a "Load older →"
+ * link at the bottom that drills into /blog/archive (the full year
+ * index). Designed to stay performant at thousands of posts: only the
+ * recent slice renders here; deep history lives behind one click.
+ */
 import AlmanacLayout from '@layouts/AlmanacLayout.astro';
 import Header from '@components/almanac/Header.astro';
 import Footer from '@components/almanac/Footer.astro';
@@ -8,67 +16,52 @@ import FilterBar from '@components/almanac/blog/FilterBar.astro';
 import Featured from '@components/almanac/blog/Featured.astro';
 import YearGroup from '@components/almanac/blog/YearGroup.astro';
 import EndMark from '@components/almanac/blog/EndMark.astro';
-import { getSortedPosts, getTopCategories } from '@utils/posts';
-import { slugify } from '@utils/slugs';
+import { getSortedPosts, getCategoryChips } from '@utils/posts';
 import { SITE } from '@config';
 
 import '@styles/almanac/blog.css';
 
 export const prerender = true;
 
-// The Almanac redesign renders the entire archive on one page (no
-// pagination); the [...page] catch-all stays as the route file so
-// the existing /blog URL is generated. Old /blog/2..11 URLs are
-// 301'd to /blog via public/_redirects.
-export function getStaticPaths() {
-  return [{ params: { page: undefined } }];
-}
+/** Posts to show on the landing page before "load older →" kicks in.
+    Bump or lower as the archive grows. */
+const RECENT_LIMIT = 50;
 
 const allPosts = await getSortedPosts();
 const totalPosts = allPosts.length;
-// Source-of-truth copyright start (the blog content collection itself
-// only goes back to 2013; earlier posts pre-date the current site).
 const sinceYear = 2003;
 
-// Featured = newest post; the rest of the list excludes it.
-const [featured, ...rest] = allPosts;
+const recentSlice = allPosts.slice(0, RECENT_LIMIT);
+const [featured, ...recentRest] = recentSlice;
 
-// Top categories + counts for the filter chips.
-const topCats = await getTopCategories();
-const counts = new Map<string, number>();
-allPosts.forEach((p) => {
-  counts.set(p.data.category, (counts.get(p.data.category) ?? 0) + 1);
-});
-const categoryChips = topCats.map((label) => ({
-  label,
-  slug: slugify(label),
-  count: counts.get(label) ?? 0,
-}));
+// Top-category chip counts come from the FULL archive so they don't
+// shapeshift based on what's currently visible.
+const { chips: categoryChips } = await getCategoryChips();
 
-// Group remaining posts by publish year for the magazine-TOC layout.
-const groupedByYear = new Map<number, typeof rest>();
-rest.forEach((p) => {
+// Group the recent slice by year.
+const groupedByYear = new Map<number, typeof recentRest>();
+recentRest.forEach((p) => {
   const y = p.data.publishDate.getFullYear();
   if (!groupedByYear.has(y)) groupedByYear.set(y, []);
   groupedByYear.get(y)!.push(p);
 });
 const yearsDescending = Array.from(groupedByYear.keys()).sort((a, b) => b - a);
 
-// Each year-group needs its highest post number so PostRow numbering
-// stays descending across the whole archive (newest = totalPosts).
+// PostRow numbering — descending across the whole archive
+// (newest = totalPosts). Featured took the highest number.
 const yearStartNums = new Map<number, number>();
-let cursor = totalPosts - 1; // featured took the highest number; -1
+let cursor = totalPosts - 1;
 yearsDescending.forEach((y) => {
   yearStartNums.set(y, cursor);
   cursor -= groupedByYear.get(y)!.length;
 });
 
-const firstEver = allPosts[allPosts.length - 1];
+const olderCount = Math.max(0, totalPosts - recentSlice.length);
 ---
 
 <AlmanacLayout
   title={`Blog | ${SITE.title}`}
-  description={`The full ${totalPosts}-post archive — web development, hiking, music, books, and whatever else. Writing since ${sinceYear}.`}
+  description={`${totalPosts}-post archive — web development, hiking, music, books, and whatever rabbit hole I've fallen into. Writing since ${sinceYear}.`}
   pageClass="blog"
 >
   <Header current="blog" />
@@ -94,11 +87,15 @@ const firstEver = allPosts[allPosts.length - 1];
       ))}
     </div>
 
-    <EndMark
-      showingCount={totalPosts}
-      totalCount={totalPosts}
-      firstPost={firstEver}
-    />
+    {olderCount > 0 && (
+      <div class="load-older">
+        <a href="/blog/archive">
+          Load {olderCount} older <span class="arr" aria-hidden="true">→</span>
+        </a>
+      </div>
+    )}
+
+    <EndMark showingCount={recentSlice.length} totalCount={totalPosts} />
 
     <Closer />
   </main>

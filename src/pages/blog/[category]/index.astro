@@ -1,0 +1,136 @@
+---
+/**
+ * /blog/<category> — recent N posts in this category + load-older link
+ * to /blog/<category>/archive (the year index for the category).
+ *
+ * Mirrors /blog's structure so categories scale the same way the
+ * top-level archive does.
+ */
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Intro from '@components/almanac/blog/Intro.astro';
+import FilterBar from '@components/almanac/blog/FilterBar.astro';
+import Featured from '@components/almanac/blog/Featured.astro';
+import YearGroup from '@components/almanac/blog/YearGroup.astro';
+import EndMark from '@components/almanac/blog/EndMark.astro';
+import type { Post } from '@types';
+import { sortPosts, getSortedPosts, getCategoryChips } from '@utils/posts';
+import { reverseSlug, slugify } from '@utils/slugs';
+import { SITE } from '@config';
+import { getCollection } from 'astro:content';
+
+import '@styles/almanac/blog.css';
+
+export const prerender = true;
+
+/** Same cap as the top-level archive. */
+const RECENT_LIMIT = 50;
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  const categories = Array.from(
+    new Set(blogPosts.map((p) => p.data.category))
+  );
+  return categories.map((category) => ({
+    params: { category: slugify(category) },
+    props: { categoryLabel: category },
+  }));
+}
+
+interface Props {
+  categoryLabel: string;
+}
+const { categoryLabel } = Astro.props;
+const categorySlug = slugify(categoryLabel);
+
+const allInCategory = sortPosts(
+  await getCollection('blog').then((all) =>
+    all.filter((p) => p.data.category === categoryLabel)
+  )
+);
+const allPosts = await getSortedPosts();
+const totalInCategory = allInCategory.length;
+const sinceYear = 2003;
+
+const recentSlice = allInCategory.slice(0, RECENT_LIMIT);
+const [featured, ...recentRest] = recentSlice;
+
+// Chip counts from the global archive — consistency across pages.
+// Force the current category into the chip list so the active chip
+// always renders (even if it's outside the top N).
+const { chips: categoryChips } = await getCategoryChips({
+  mustInclude: categoryLabel,
+});
+
+const groupedByYear = new Map<number, Post[]>();
+recentRest.forEach((p) => {
+  const y = p.data.publishDate.getFullYear();
+  if (!groupedByYear.has(y)) groupedByYear.set(y, []);
+  groupedByYear.get(y)!.push(p);
+});
+const yearsDescending = Array.from(groupedByYear.keys()).sort((a, b) => b - a);
+
+// Numbering inside the category (newest = totalInCategory)
+const yearStartNums = new Map<number, number>();
+let cursor = totalInCategory - 1; // featured
+yearsDescending.forEach((y) => {
+  yearStartNums.set(y, cursor);
+  cursor -= groupedByYear.get(y)!.length;
+});
+
+const olderCount = Math.max(0, totalInCategory - recentSlice.length);
+const displayCategory = reverseSlug(categorySlug);
+---
+
+<AlmanacLayout
+  title={`Blog · ${displayCategory} | ${SITE.title}`}
+  description={`${totalInCategory} posts filed under ${displayCategory}.`}
+  pageClass="blog"
+>
+  <Header current="blog" />
+
+  <main id="main">
+    <Intro
+      posts={allInCategory}
+      sinceYear={sinceYear}
+      currentCategory={displayCategory}
+    />
+
+    <FilterBar
+      categories={categoryChips}
+      totalCount={allPosts.length}
+      active={categorySlug}
+    />
+
+    <div id="posts-list" aria-live="polite" aria-atomic="false">
+      {featured && <Featured post={featured} />}
+
+      {yearsDescending.map((year) => (
+        <YearGroup
+          year={year}
+          posts={groupedByYear.get(year)!}
+          startNum={yearStartNums.get(year)!}
+        />
+      ))}
+    </div>
+
+    {olderCount > 0 && (
+      <div class="load-older">
+        <a href={`/blog/${categorySlug}/archive`}>
+          Load {olderCount} older <span class="arr" aria-hidden="true">→</span>
+        </a>
+      </div>
+    )}
+
+    <EndMark
+      showingCount={recentSlice.length}
+      totalCount={totalInCategory}
+    />
+
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>

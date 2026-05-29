@@ -1,0 +1,45 @@
+---
+import type { Post } from '@types';
+
+/**
+ * Year-index row — used on /blog/archive (and /blog/<cat>/archive).
+ * One row per year: big jade year number + post count + month span
+ * + latest post title. Whole row is the link to that year's TOC.
+ */
+interface Props {
+  year: number;
+  /** Posts in this year, newest-first. */
+  posts: Post[];
+  /** Path the row links to (e.g. /blog/year/2025 or /blog/music/year/2025). */
+  href: string;
+}
+const { year, posts, href } = Astro.props;
+
+const count = posts.length;
+const yearStr = String(year);
+const hi = yearStr.slice(0, 2);
+const tail = yearStr.slice(2);
+
+// Month span: earliest → latest within the year. If all posts fall
+// in one month, just show that single month.
+const fmtMonth = (d: Date) => d.toLocaleDateString('en-US', { month: 'short' });
+const latestPost = posts[0];
+const earliestPost = posts[posts.length - 1];
+const monthSpan =
+  fmtMonth(earliestPost.data.publishDate) ===
+  fmtMonth(latestPost.data.publishDate)
+    ? fmtMonth(latestPost.data.publishDate)
+    : `${fmtMonth(earliestPost.data.publishDate)} – ${fmtMonth(latestPost.data.publishDate)}`;
+---
+
+<a class="year-index-row" href={href} aria-label={`${count} posts from ${year}`}>
+  <span class="num">
+    <em>{hi}</em>{tail}
+  </span>
+  <span class="count">{count} {count === 1 ? 'post' : 'posts'}</span>
+  <span class="span">{monthSpan}</span>
+  <span class="latest">
+    latest: <strong>{latestPost.data.title}</strong>
+  </span>
+  <span class="arr" aria-hidden="true">→</span>
+</a>

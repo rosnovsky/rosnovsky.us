@@ -1,0 +1,113 @@
+---
+/**
+ * /blog/year/<year> — all posts in a single year, full magazine TOC.
+ * One static page per year present in the collection.
+ */
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Intro from '@components/almanac/blog/Intro.astro';
+import FilterBar from '@components/almanac/blog/FilterBar.astro';
+import YearGroup from '@components/almanac/blog/YearGroup.astro';
+import EndMark from '@components/almanac/blog/EndMark.astro';
+import { getSortedPosts, getCategoryChips } from '@utils/posts';
+import { SITE } from '@config';
+
+import '@styles/almanac/blog.css';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts();
+  const years = Array.from(
+    new Set(posts.map((p) => p.data.publishDate.getFullYear()))
+  );
+  return years.map((year) => ({
+    params: { year: String(year) },
+    props: { yearNum: year },
+  }));
+}
+
+interface Props {
+  yearNum: number;
+}
+const { yearNum } = Astro.props;
+
+const allPosts = await getSortedPosts();
+const totalPosts = allPosts.length;
+const sinceYear = 2003;
+
+const yearPosts = allPosts.filter(
+  (p) => p.data.publishDate.getFullYear() === yearNum
+);
+
+const { chips: categoryChips } = await getCategoryChips();
+
+// PostRow numbers: this year's posts get descending numbers relative
+// to where they sit in the global archive.
+const newerThanThisYear = allPosts.filter(
+  (p) => p.data.publishDate.getFullYear() > yearNum
+).length;
+const startNum = totalPosts - newerThanThisYear;
+
+// Adjacent years for "← 2024 / 2026 →" nav.
+const allYears = Array.from(
+  new Set(allPosts.map((p) => p.data.publishDate.getFullYear()))
+).sort((a, b) => b - a);
+const idx = allYears.indexOf(yearNum);
+const newerYear = idx > 0 ? allYears[idx - 1] : null;
+const olderYear = idx < allYears.length - 1 ? allYears[idx + 1] : null;
+---
+
+<AlmanacLayout
+  title={`${yearNum} | Blog | ${SITE.title}`}
+  description={`All ${yearPosts.length} posts published in ${yearNum}.`}
+  pageClass="blog blog-year"
+>
+  <Header current="blog" />
+
+  <main id="main">
+    <Intro
+      posts={allPosts}
+      sinceYear={sinceYear}
+      currentCategory={`year ${yearNum}`}
+    />
+
+    <FilterBar
+      categories={categoryChips}
+      totalCount={totalPosts}
+      active="all"
+    />
+
+    <div id="posts-list">
+      <YearGroup year={yearNum} posts={yearPosts} startNum={startNum} />
+    </div>
+
+    <nav class="year-nav" aria-label="Adjacent years">
+      <div class="prev">
+        {olderYear ? (
+          <a href={`/blog/year/${olderYear}`}>
+            <span aria-hidden="true">←</span> {olderYear}
+          </a>
+        ) : (
+          <span class="dim">— end of the line —</span>
+        )}
+      </div>
+      <a href="/blog/archive" class="back">All years</a>
+      <div class="next">
+        {newerYear ? (
+          <a href={`/blog/year/${newerYear}`}>
+            {newerYear} <span aria-hidden="true">→</span>
+          </a>
+        ) : (
+          <a href="/blog">Latest →</a>
+        )}
+      </div>
+    </nav>
+
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>

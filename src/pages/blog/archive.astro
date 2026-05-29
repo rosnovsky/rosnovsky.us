@@ -1,0 +1,78 @@
+---
+/**
+ * /blog/archive — the full year-by-year table of contents.
+ *
+ * One big-jade row per year, click to drill into /blog/year/<year>
+ * for that year's full TOC. Built to scale to 2000+ posts without
+ * the page itself getting heavy, because each year is one row.
+ */
+import AlmanacLayout from '@layouts/AlmanacLayout.astro';
+import Header from '@components/almanac/Header.astro';
+import Footer from '@components/almanac/Footer.astro';
+import Closer from '@components/almanac/Closer.astro';
+import Intro from '@components/almanac/blog/Intro.astro';
+import FilterBar from '@components/almanac/blog/FilterBar.astro';
+import YearIndex from '@components/almanac/blog/YearIndex.astro';
+import EndMark from '@components/almanac/blog/EndMark.astro';
+import { getSortedPosts, getCategoryChips } from '@utils/posts';
+import { SITE } from '@config';
+
+import '@styles/almanac/blog.css';
+
+export const prerender = true;
+
+const allPosts = await getSortedPosts();
+const totalPosts = allPosts.length;
+const sinceYear = 2003;
+
+const { chips: categoryChips } = await getCategoryChips();
+
+// Group every post by year so we can render one summary row per year.
+const groupedByYear = new Map<number, typeof allPosts>();
+allPosts.forEach((p) => {
+  const y = p.data.publishDate.getFullYear();
+  if (!groupedByYear.has(y)) groupedByYear.set(y, []);
+  groupedByYear.get(y)!.push(p);
+});
+const yearsDescending = Array.from(groupedByYear.keys()).sort((a, b) => b - a);
+
+const firstEver = allPosts[allPosts.length - 1];
+---
+
+<AlmanacLayout
+  title={`Archive | Blog | ${SITE.title}`}
+  description={`Year-by-year table of contents for the full ${totalPosts}-post archive.`}
+  pageClass="blog blog-archive"
+>
+  <Header current="blog" />
+
+  <main id="main">
+    <Intro posts={allPosts} sinceYear={sinceYear} />
+
+    <FilterBar
+      categories={categoryChips}
+      totalCount={totalPosts}
+      active="all"
+    />
+
+    <div class="year-index" id="posts-list">
+      {yearsDescending.map((year) => (
+        <YearIndex
+          year={year}
+          posts={groupedByYear.get(year)!}
+          href={`/blog/year/${year}`}
+        />
+      ))}
+    </div>
+
+    <EndMark
+      showingCount={totalPosts}
+      totalCount={totalPosts}
+      firstPost={firstEver}
+    />
+
+    <Closer />
+  </main>
+
+  <Footer />
+</AlmanacLayout>
