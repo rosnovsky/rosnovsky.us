@@ -191,6 +191,12 @@
   margin: 0 auto 80px;
   max-width: 1240px;
 }
+/* Posts with no h2 headings get no TOC — drop the left column so
+   the article body fills the freed space instead of being squeezed
+   into the empty 220px slot. */
+.almanac .article-wrap.no-toc {
+  grid-template-columns: minmax(0, 1fr) 220px;
+}
 
 /* ----- LEFT: sticky TOC ----- */
 .almanac .toc {
@@ -563,16 +569,24 @@
     grid-template-columns: 200px minmax(0, 1fr) 200px;
     gap: 48px;
   }
+  .almanac .article-wrap.no-toc {
+    grid-template-columns: minmax(0, 1fr) 200px;
+  }
 }
 @media (max-width: 1180px) {
-  .almanac .article-wrap {
+  .almanac .article-wrap,
+  .almanac .article-wrap.no-toc {
     grid-template-columns: 180px minmax(0, 1fr);
     gap: 40px;
+  }
+  .almanac .article-wrap.no-toc {
+    grid-template-columns: minmax(0, 1fr);
   }
   .almanac .side { display: none; }
 }
 @media (max-width: 900px) {
-  .almanac .article-wrap {
+  .almanac .article-wrap,
+  .almanac .article-wrap.no-toc {
     grid-template-columns: 1fr;
     gap: 32px;
   }

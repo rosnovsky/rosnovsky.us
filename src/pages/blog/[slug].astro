@@ -36,6 +36,11 @@ const { Content, headings, remarkPluginFrontmatter } = await postEntry.render();
 const minutesRead: string =
   remarkPluginFrontmatter?.minutesRead ?? '1 min read';
 
+// Posts without h2 headings render no TOC, so the grid wrapper needs
+// a modifier class to drop the left column — otherwise the article
+// gets squeezed into the empty 220px TOC slot.
+const hasToc = headings.some((h) => h.depth === 2);
+
 // Determine prev/next + post number based on global sort order.
 const allPosts = await getSortedPosts();
 const totalPosts = allPosts.length;
@@ -91,7 +96,7 @@ const ogImageUrl = typeof ogImage === 'string' ? ogImage : ogImage?.src;
         </figcaption>
       </figure>
 
-      <div class="article-wrap">
+      <div class={`article-wrap${hasToc ? '' : ' no-toc'}`}>
         <PostTOC headings={headings} />
 
         <div class="article">
