@@ -191,10 +191,24 @@
   margin: 0 auto 80px;
   max-width: 1240px;
 }
-/* Posts with no h2 headings get no TOC — drop the left column so
-   the article body fills the freed space instead of being squeezed
-   into the empty 220px slot. */
-.almanac .article-wrap.no-toc {
+
+/* ----------------------------------------------------------
+   NO-TOC LAYOUT — for posts without h2 headings.
+   With no TOC column, the article body would otherwise sit
+   inside a 924px column with a 720px max-width, leaving 200px
+   of dead space and making the hero image (still full-width
+   above) look like it overflows. Fix: shrink the wrap and
+   hero to align with the article column, centered.
+---------------------------------------------------------- */
+.almanac article.no-toc .crumb,
+.almanac article.no-toc .post-head,
+.almanac article.no-toc .hero-image,
+.almanac article.no-toc .article-wrap {
+  max-width: 1004px; /* 720 (article) + 64 (gap) + 220 (sidebar) */
+  margin-left: auto;
+  margin-right: auto;
+}
+.almanac article.no-toc .article-wrap {
   grid-template-columns: minmax(0, 1fr) 220px;
 }
 
@@ -569,24 +583,34 @@
     grid-template-columns: 200px minmax(0, 1fr) 200px;
     gap: 48px;
   }
-  .almanac .article-wrap.no-toc {
+  .almanac article.no-toc .article-wrap {
     grid-template-columns: minmax(0, 1fr) 200px;
+  }
+  .almanac article.no-toc .crumb,
+  .almanac article.no-toc .post-head,
+  .almanac article.no-toc .hero-image,
+  .almanac article.no-toc .article-wrap {
+    max-width: 968px; /* 720 + 48 + 200 */
   }
 }
 @media (max-width: 1180px) {
-  .almanac .article-wrap,
-  .almanac .article-wrap.no-toc {
+  .almanac .article-wrap {
     grid-template-columns: 180px minmax(0, 1fr);
     gap: 40px;
   }
-  .almanac .article-wrap.no-toc {
+  .almanac article.no-toc .article-wrap {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .almanac article.no-toc .crumb,
+  .almanac article.no-toc .post-head,
+  .almanac article.no-toc .hero-image,
+  .almanac article.no-toc .article-wrap {
+    max-width: 720px; /* article column only */
   }
   .almanac .side { display: none; }
 }
 @media (max-width: 900px) {
-  .almanac .article-wrap,
-  .almanac .article-wrap.no-toc {
+  .almanac .article-wrap {
     grid-template-columns: 1fr;
     gap: 32px;
   }
